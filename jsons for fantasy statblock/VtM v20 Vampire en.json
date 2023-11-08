@@ -1,0 +1,1987 @@
+{
+    "blocks": [
+        {
+            "type": "javascript",
+            "id": "0b399a5ac929",
+            "conditioned": false,
+            "code": "async function sleep(ms) { // sleep function to fully load the page\nreturn new Promise(resolve => setTimeout(resolve, ms));}\nsleep(250).then(() => { \n\n// определяется клан, и каждому клану подставляется своя картинка на бэкграунд\nvar clanImage = document.querySelector(\".line.clan .statblock-rendered-text-content.inline\").innerHTML;\n\nconst collapsedColumn = document.querySelector('.vtm-v20-vampire-en .collapse-container'); // определяется зона, которой будет назначен бэкграунд \n\nswitch (clanImage) { // каждому клану назначается соответствующий класс \n\tcase ('Assamite'):\n\t\tcollapsedColumn.classList.add('Assamite'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase 'Brujah':\n\t\tcollapsedColumn.classList.add('Brujah'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n    case ('Followers of Set'):\n\t\tcollapsedColumn.classList.add('Followers-of-Set'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n    case 'Ventrue':\n\t\tcollapsedColumn.classList.add('Ventrue'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase 'Gangrel':\n\t\tcollapsedColumn.classList.add('Gangrel'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase 'Giovanni':\n\t\tcollapsedColumn.classList.add('Giovanni'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase 'Lasombra':\n\t\tcollapsedColumn.classList.add('Lasombra'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase 'Malkavian':\n\t\tcollapsedColumn.classList.add('Malkavian'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase 'Nosferatu':\n\t\tcollapsedColumn.classList.add('Nosferatu'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase ('Ravnos'):\n\t\tcollapsedColumn.classList.add('Ravnos'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase ('Salubri'):\n\t\tcollapsedColumn.classList.add('Salubri'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase ('Toreador'):\n\t\tcollapsedColumn.classList.add('Toreador'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase ('Tremere'):\n\t\tcollapsedColumn.classList.add('Tremere'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase ('Tzimisce'):\n\t\tcollapsedColumn.classList.add('Tzimisce'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\t}; \n\n\n\n\n\n// В зависимости от поколения, меняется значение траты крови в ход\nconst generation = document.querySelector(\".line.generation .statblock-rendered-text-content.inline\").innerHTML;\nswitch (generation) {\n\tcase '13':\n\t\tdocument.querySelector(\".line.blood_per_turn .statblock-rendered-text-content.inline\").innerHTML = '1'; break;\n\tcase '12':\n\t\tdocument.querySelector(\".line.blood_per_turn .statblock-rendered-text-content.inline\").innerHTML = '1'; break;\n\tcase '11':\n\t\tdocument.querySelector(\".line.blood_per_turn .statblock-rendered-text-content.inline\").innerHTML = '1'; break;\n\tcase '10':\n\t\tdocument.querySelector(\".line.blood_per_turn .statblock-rendered-text-content.inline\").innerHTML = '1'; break;\n\tcase '9':\n\t\tdocument.querySelector(\".line.blood_per_turn .statblock-rendered-text-content.inline\").innerHTML = '2'; break;\n\tcase '8':\n\t\tdocument.querySelector(\".line.blood_per_turn .statblock-rendered-text-content.inline\").innerHTML = '3'; break;\n}\n\n\nconst path = document.querySelector(\".line.path .statblock-rendered-text-content.inline\").innerHTML; // найти значение пути, человечность это или нет\n    if (path != ('HUMANITY')) { // если путь не человечность, то...\n        document.querySelector(\".line.bearing\").innerHTML = ''; // удаляется вся строчка \"Столп\"\n        var pathModifier = document.querySelector(\".line.path_value .statblock-rendered-text-content.inline\").innerHTML; // получаем количество точек в пути\n        if (pathModifier = 10) {\n            document.querySelector(\".line.path_value .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        }\n    } else {var pathModifier = document.querySelector(\".line.path_value .statblock-rendered-text-content.inline\").innerHTML; // получаем количество точек в пути\n            switch (pathModifier) {\n                case '10':\n                    document.querySelector(\".line.path_value .statblock-rendered-text-content.inline\").innerHTML = 'X';\n                case 'X':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy ( -2 )'; break;\n                case '9':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy ( -1 )'; break;\n                case '8': \n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy ( -1 )'; break;\n                case '7':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy'; break;\n                case '6':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy'; break;\n                case '5':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy'; break;\n                case '4':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy'; break;\n                case '3':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy ( +1 )'; break;\n                case '2':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy ( +1 )'; break;\n                case '1':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy ( +2 )'; break;\n                default: \n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'You are the Beast!';\n                    if (document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML === null) {\n                        console.log('bearing block is missing')\n                    }\n            }\n    } \n\n\n// Еще меняем всякие иксы на нормальные 10\nvar willpowerValue = document.querySelector(\".line.willpower_main .statblock-rendered-text-content.inline\").innerHTML; // для воли\n\tif (willpowerValue == '10') {\n\t\tdocument.querySelector(\".line.willpower_main .statblock-rendered-text-content.inline\").innerHTML = 'X';\n\t}\n\nvar willpowerCurrentValue = document.querySelector(\".line.willpower_current .statblock-rendered-text-content.inline\").innerHTML; // для запаса воли\n\tif (willpowerCurrentValue == '10') {\n\t\tdocument.querySelector(\".line.willpower_current .statblock-rendered-text-content.inline\").innerHTML = 'X';\n\t}\n\n// Глобальный пересчет крови, чтобы из одной цифры (от 1 до 40) добавлялись и отображались нужные строчки, а ненужные - скрывались\nconst bloodCurrent = document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML; // для крови, первая строчка\nconsole.log('значение крови = ' + bloodCurrent)\n\tif (bloodCurrent <= 9) {\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current2)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current3)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\"; \n        console.log('проверка на меньше девяти')\n    } else if (bloodCurrent == 10 || bloodCurrent == 'X') {\n\t\tdocument.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current2)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current3)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\"; \n        console.log('проверка на равенство десяти или иксу')\n    } else if (bloodCurrent < 20) {\n        const bloodCurrentTwo = bloodCurrent-10;\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current2 .statblock-rendered-text-content.inline\").innerHTML = bloodCurrentTwo;\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current3)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\";\n        console.log('проверка на меньше двадцати')\n    } else if (bloodCurrent == 20) {\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current2 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current3)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\";\n    } else if (bloodCurrent < 30) {\n        const bloodCurrentThree = bloodCurrent-20;\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current2 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current3 .statblock-rendered-text-content.inline\").innerHTML = bloodCurrentThree;\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\";\n    } else if (bloodCurrent == 30) {\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current2 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current3 .statblock-rendered-text-content.inline\").innerHTML = 'X';;\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\";\n    } else if (bloodCurrent < 40) {\n        const bloodCurrentFour = bloodCurrent-30;\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current2 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current3 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current4 .statblock-rendered-text-content.inline\").innerHTML = bloodCurrentFour;\n    } else if (bloodCurrent == '40') {\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current2 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current3 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current4 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n    } else if (bloodCurrent >= 41) {\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current2)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current3)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\"; \n        document.querySelector(\".line.blood_per_turn\").innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrent + '.  Time to think about your Humanity!';\n    } else {\n        // do nothing\n    }\n\n\n// тут пробую запилить таки отображение в оглавлении\nif (typeof document.querySelector(\"h2\").innerHTML !== \"undefined\") {\n    var outlineName = document.querySelector(\"h2\").innerHTML }\nconst characterName = document.querySelector('h1 .statblock-rendered-text-content').innerHTML\n    if (outlineName.includes(characterName)) {\n        document.querySelector(\"h2\").innerHTML = \"\"\n    }\n\n\n// Разная обработка значений для характеристик, способностей и дисциплин\n        // Характеристики Физические\nvar valueStrength = document.querySelector(\".strength .statblock-rendered-text-content\").innerHTML;  // Сила\n    if (valueStrength == '-') {\n        document.querySelector(\".strength .statblock-rendered-text-content\").innerHTML = 1}    \n    if (valueStrength == 10) {\n        document.querySelector(\".strength .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueDexterity = document.querySelector(\".dexterity .statblock-rendered-text-content\").innerHTML;  // Ловкость\n    if (valueDexterity == '-') {\n        document.querySelector(\".dexterity .statblock-rendered-text-content\").innerHTML = 1}    \n    if (valueDexterity == 10) {\n        document.querySelector(\".dexterity .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueStamina = document.querySelector(\".stamina .statblock-rendered-text-content\").innerHTML;  // Выносливость\n    if (valueStamina == '-') {\n        document.querySelector(\".stamina .statblock-rendered-text-content\").innerHTML = 1} \n    if (valueStamina == 10) {\n        document.querySelector(\".stamina .statblock-rendered-text-content\").innerHTML = 'X'};\n\n        // Характеристики Социальные\nvar valueCharisma = document.querySelector(\".charisma .statblock-rendered-text-content\").innerHTML;  // Обаяние\n    if (valueCharisma == '-') {\n        document.querySelector(\".charisma .statblock-rendered-text-content\").innerHTML = 1}\n    if (valueCharisma == 10) {\n        document.querySelector(\".charisma .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueManipulation = document.querySelector(\".manipulation .statblock-rendered-text-content\").innerHTML;  // Манипуляция\n    if (valueManipulation == '-') {\n        document.querySelector(\".manipulation .statblock-rendered-text-content\").innerHTML = 1}\n    if (valueManipulation == 10) {\n        document.querySelector(\".manipulation .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".manipulation .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".manipulation .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n    \nvar valueAppearance = document.querySelector(\".appearance .statblock-rendered-text-content\").innerHTML;  // Привлекательность\n    if (valueAppearance == '-') {\n        document.querySelector(\".appearance .statblock-rendered-text-content\").innerHTML = 0;\n        document.querySelector(\".line.appearance .property-name\").style.textDecoration = \"line-through\"}\n    if (valueAppearance == 0) {\n        document.querySelector(\".line.appearance .property-name\").style.textDecoration = \"line-through\"}  \n    if (valueAppearance > 5) {\n        document.querySelector(\".appearance .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".appearance .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".appearance .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\n        // Характеристики Ментальные\nvar valuePerception = document.querySelector(\".perception .statblock-rendered-text-content\").innerHTML;  // Выносливость\n    if (valuePerception == '-') {\n        document.querySelector(\".perception .statblock-rendered-text-content\").innerHTML = 1} \n    if (valuePerception == 10) {\n        document.querySelector(\".perception .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueIntelligence = document.querySelector(\".intelligence .statblock-rendered-text-content\").innerHTML;  // Интеллект\n    if (valueIntelligence == '-') {\n        document.querySelector(\".intelligence .statblock-rendered-text-content\").innerHTML = 1} \n    if (valueIntelligence == 10) {\n        document.querySelector(\".intelligence .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueWits = document.querySelector(\".wits .statblock-rendered-text-content\").innerHTML;  // Смекалка\n    if (valueWits == '-') {\n        document.querySelector(\".wits .statblock-rendered-text-content\").innerHTML = 1} \n    if (valueWits == 10) {\n        document.querySelector(\".wits .statblock-rendered-text-content\").innerHTML = 'X'};\n\n\n        // Способности Таланты\nvar valueAthletics = document.querySelector(\".athletics .statblock-rendered-text-content\").innerHTML;  // Атлетика\n\tif (valueAthletics == '-') {\n\t\tdocument.querySelector(\".athletics .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueAthletics == 10) {\n        document.querySelector(\".athletics .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueAlertness = document.querySelector(\".alertness .statblock-rendered-text-content\").innerHTML;  // Бдительность\n\tif (valueAlertness == '-') {\n\t\tdocument.querySelector(\".alertness .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueAlertness > 9) {\n        document.querySelector(\".alertness .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".alertness .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".alertness .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueBrawl = document.querySelector(\".brawl .statblock-rendered-text-content\").innerHTML;  // Драка\n\tif (valueBrawl == '-') {\n\t\tdocument.querySelector(\".brawl .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueBrawl == 10) {\n        document.querySelector(\".brawl .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueIntimidation = document.querySelector(\".intimidation .statblock-rendered-text-content\").innerHTML;  // Запугивание\n\tif (valueIntimidation == '-') {\n\t\tdocument.querySelector(\".intimidation .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueIntimidation == 10) {\n        document.querySelector(\".intimidation .statblock-rendered-text-content\").innerHTML = X};\n\nvar valueExpression = document.querySelector(\".expression .statblock-rendered-text-content\").innerHTML;  // Красноречие\n\tif (valueExpression == '-') {\n\t\tdocument.querySelector(\".expression .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueExpression == 10) {\n        document.querySelector(\".expression .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueLeadership = document.querySelector(\".leadership .statblock-rendered-text-content\").innerHTML;  // Лидерство\n\tif (valueLeadership == '-') {\n\t\tdocument.querySelector(\".leadership .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueLeadership == 10) {\n        document.querySelector(\".leadership .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueStreetwise = document.querySelector(\".streetwise .statblock-rendered-text-content\").innerHTML;  // Уличное чутье\n\tif (valueStreetwise == '-') {\n\t\tdocument.querySelector(\".streetwise .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueAlertness > 9) {\n        document.querySelector(\".alertness .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".alertness .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".alertness .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueSubterfuge = document.querySelector(\".subterfuge .statblock-rendered-text-content\").innerHTML;  // Хитрость\n\tif (valueSubterfuge == '-') {\n\t\tdocument.querySelector(\".subterfuge .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueSubterfuge == 10) {\n        document.querySelector(\".subterfuge .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueAwareness = document.querySelector(\".awareness .statblock-rendered-text-content\").innerHTML;  // Шестое чувство\n\tif (valueAwareness == '-') {\n\t\tdocument.querySelector(\".awareness .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueAlertness > 7) {\n        document.querySelector(\".alertness .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".alertness .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".alertness .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueEmpathy = document.querySelector(\".empathy .statblock-rendered-text-content\").innerHTML;  // Эмпатия\n\tif (valueEmpathy == '-') {\n\t\tdocument.querySelector(\".empathy .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueEmpathy == 10) {\n        document.querySelector(\".empathy .statblock-rendered-text-content\").innerHTML = 'X'};\n    \n\n        // Способности Навыки\nvar valueDrive = document.querySelector(\".drive .statblock-rendered-text-content\").innerHTML;  // Вождение\n\tif (valueDrive == '-') {\n\t\tdocument.querySelector(\".drive .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueDrive == 10) {\n        document.querySelector(\".drive .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueLarceny = document.querySelector(\".larceny .statblock-rendered-text-content\").innerHTML;  // Воровство\n\tif (valueLarceny == '-') {\n\t\tdocument.querySelector(\".larceny .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueLarceny == 10) {\n        document.querySelector(\".larceny .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueSurvival = document.querySelector(\".survival .statblock-rendered-text-content\").innerHTML;  // Выживание\n\tif (valueSurvival == '-') {\n\t\tdocument.querySelector(\".survival .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueSurvival == 10) {\n        document.querySelector(\".survival .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valuePerformance = document.querySelector(\".performance .statblock-rendered-text-content\").innerHTML;  // Исполнение\n\tif (valuePerformance == '-') {\n\t\tdocument.querySelector(\".performance .statblock-rendered-text-content\").innerHTML = 0}\n    if (valuePerformance == 10) {\n        document.querySelector(\".performance .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueAnimalken = document.querySelector(\".animalken .statblock-rendered-text-content\").innerHTML;  // Обращение с животными\n\tif (valueAnimalken == '-') {\n\t\tdocument.querySelector(\".animalken .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueAnimalken > 6) {\n        document.querySelector(\".animalken .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".animalken .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".animalken .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueCrafts = document.querySelector(\".crafts .statblock-rendered-text-content\").innerHTML;  // Ремесло\n\tif (valueCrafts == '-') {\n\t\tdocument.querySelector(\".crafts .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueCrafts == 10) {\n        document.querySelector(\".crafts .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueStealth = document.querySelector(\".stealth .statblock-rendered-text-content\").innerHTML;  // Скрытность\n\tif (valueStealth == '-') {\n\t\tdocument.querySelector(\".stealth .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueStealth == 10) {\n        document.querySelector(\".stealth .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueFirearms = document.querySelector(\".firearms .statblock-rendered-text-content\").innerHTML;  // Стрельба\n\tif (valueFirearms == '-') {\n\t\tdocument.querySelector(\".firearms .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueFirearms == 10) {\n        document.querySelector(\".firearms .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueMelee = document.querySelector(\".melee .statblock-rendered-text-content\").innerHTML;  // Фехтование\n\tif (valueMelee == '-') {\n\t\tdocument.querySelector(\".melee .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueMelee == 10) {\n        document.querySelector(\".melee .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueEtiquette = document.querySelector(\".etiquette .statblock-rendered-text-content\").innerHTML;  // Этикет\n\tif (valueEtiquette == '-') {\n\t\tdocument.querySelector(\".etiquette .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueEtiquette == 10) {\n        document.querySelector(\".etiquette .statblock-rendered-text-content\").innerHTML = 'X'};\n\n\n       // Способности Навыки\nvar valueAcademics = document.querySelector(\".academics .statblock-rendered-text-content\").innerHTML;  // Гуманитарные науки\n\tif (valueAcademics == '-') {\n\t\tdocument.querySelector(\".academics .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueAcademics > 8) {\n        document.querySelector(\".academics .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".academics .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".academics .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueScience = document.querySelector(\".science .statblock-rendered-text-content\").innerHTML;  // Естественные науки\n\tif (valueScience == '-') {\n\t\tdocument.querySelector(\".science .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueScience > 8) {\n        document.querySelector(\".academics .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".academics .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".academics .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueLaw = document.querySelector(\".law .statblock-rendered-text-content\").innerHTML;  // Законы\n\tif (valueLaw == '-') {\n\t\tdocument.querySelector(\".law .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueLaw == 10) {\n        document.querySelector(\".law .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueComputer = document.querySelector(\".computer .statblock-rendered-text-content\").innerHTML;  // Информатика\n\tif (valueComputer == '-') {\n\t\tdocument.querySelector(\".computer .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueComputer > 8) {\n        document.querySelector(\".computer .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".computer .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".computer .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueMedicine = document.querySelector(\".medicine .statblock-rendered-text-content\").innerHTML;  // Медицина\n\tif (valueMedicine == '-') {\n\t\tdocument.querySelector(\".medicine .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueMedicine == 10) {\n        document.querySelector(\".medicine .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueOccult = document.querySelector(\".occult .statblock-rendered-text-content\").innerHTML;  // Оккультизм\n\tif (valueOccult == '-') {\n\t\tdocument.querySelector(\".occult .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueOccult == 10) {\n        document.querySelector(\".occult .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valuePolitics = document.querySelector(\".politics .statblock-rendered-text-content\").innerHTML;  // Политика\n\tif (valuePolitics == '-') {\n\t\tdocument.querySelector(\".politics .statblock-rendered-text-content\").innerHTML = 0}\n    if (valuePolitics == 10) {\n        document.querySelector(\".politics .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueInvestigation = document.querySelector(\".investigation .statblock-rendered-text-content\").innerHTML;  // Расследование\n\tif (valueInvestigation == '-') {\n\t\tdocument.querySelector(\".investigation .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueInvestigation > 8) {\n        document.querySelector(\".investigation .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".investigation .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".investigation .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueFinance = document.querySelector(\".finance .statblock-rendered-text-content\").innerHTML;  // Финансы\n\tif (valueFinance == '-') {\n\t\tdocument.querySelector(\".finance .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueFinance == 10) {\n        document.querySelector(\".finance .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueTechnology = document.querySelector(\".technology .statblock-rendered-text-content\").innerHTML;  // Электроника\n\tif (valueTechnology == '-') {\n\t\tdocument.querySelector(\".technology .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueTechnology == 10) {\n        document.querySelector(\".technology .statblock-rendered-text-content\").innerHTML = 'X'};\n\n\n       // Дисциплины\n\n// первая дисциплина\nvar valueDisсiplineOneName = document.querySelector(\".discipline1_name .statblock-rendered-text-content\").innerHTML; // находим имя дисциплины\nconsole.log(valueDisсiplineOneName)\nvar valueDisсiplineOneValue = document.querySelector(\".discipline1_value .statblock-rendered-text-content\").innerHTML; // находим количество точек\n    if (valueDisсiplineOneName.startsWith(\"<a data\")) {   // если в названии дисциплины есть ссылка...\n        console.log(valueDisсiplineOneName + ' - ето проверка на ссылку')\n        var valueDisсiplineOneName = document.querySelector(\".discipline1_name .statblock-rendered-text-content > a\").innerHTML //  ... то в ссылке находим имя\n        if (valueDisсiplineOneName.trim().length > 11 && valueDisсiplineOneValue > 9) { // дальше проверки на длину имени \n            document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\"; // и замену точек на цифры, если имя слишком длинное\n            document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineOneName.trim().length > 12 && valueDisсiplineOneValue > 8) { \n            document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineOneName.trim().length > 13 && valueDisсiplineOneValue > 7) {\n            document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineOneName.trim().length > 14 && valueDisсiplineOneValue > 6) {\n            document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineOneName.trim().length > 15 && valueDisсiplineOneValue > 5) {   // дальше пяти смысла нет проверять\n            document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}}\n    if (valueDisсiplineOneName.trim().length > 11 && valueDisсiplineOneValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки\n        document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineOneName.trim().length > 12 && valueDisсiplineOneValue > 8) {\n        document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineOneName.trim().length > 13 && valueDisсiplineOneValue > 7) {\n        document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineOneName.trim().length > 14 && valueDisсiplineOneValue > 6) {\n        document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineOneName.trim().length > 15 && valueDisсiplineOneValue > 5) {   \n        document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";  \n        document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    console.log(valueDisсiplineOneName + ' - ето общая проверка')\n\n\n// вторая дисциплина\nvar valueDisсiplineTwoName = document.querySelector(\".discipline2_name .statblock-rendered-text-content\").innerHTML; // находим имя дисциплины\nvar valueDisсiplineTwoValue = document.querySelector(\".discipline2_value .statblock-rendered-text-content\").innerHTML; // находим количество точек\n    if (valueDisсiplineTwoName.startsWith(\"<a data\")) {   // если в названии дисциплины есть ссылка...\n        var valueDisсiplineTwoName = document.querySelector(\".discipline2_name .statblock-rendered-text-content > a\").innerHTML //  ... то в ссылке находим имя\n        if (valueDisсiplineTwoName.trim().length > 11 && valueDisсiplineTwoValue > 9) { // дальше проверки на длину имени \n            document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\"; // и замену точек на цифры, если имя слишком длинное\n            document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineTwoName.trim().length > 12 && valueDisсiplineTwoValue > 8) { \n            document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineTwoName.trim().length > 13 && valueDisсiplineTwoValue > 7) {\n            document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineTwoName.trim().length > 14 && valueDisсiplineTwoValue > 6) {\n            document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineTwoName.trim().length > 15 && valueDisсiplineTwoValue > 5) {   // дальше пяти смысла нет проверять\n            document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}}\n    if (valueDisсiplineTwoName.trim().length > 11 && valueDisсiplineTwoValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки\n        document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineTwoName.trim().length > 12 && valueDisсiplineTwoValue > 8) {\n        document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineTwoName.trim().length > 13 && valueDisсiplineTwoValue > 7) {\n        document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineTwoName.trim().length > 14 && valueDisсiplineTwoValue > 6) {\n        document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineTwoName.trim().length > 15 && valueDisсiplineTwoValue > 5) {   \n        document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";  \n        document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    \n\n// третья дисциплина\nvar valueDisсiplineThreeName = document.querySelector(\".discipline3_name .statblock-rendered-text-content\").innerHTML; // находим имя дисциплины\nvar valueDisсiplineThreeValue = document.querySelector(\".discipline3_value .statblock-rendered-text-content\").innerHTML; // находим количество точек\n    if (valueDisсiplineThreeName.startsWith(\"<a data\")) {   // если в названии дисциплины есть ссылка...\n        var valueDisсiplineThreeName = document.querySelector(\".discipline3_name .statblock-rendered-text-content > a\").innerHTML //  ... то в ссылке находим имя\n        if (valueDisсiplineThreeName.trim().length > 11 && valueDisсiplineThreeValue > 9) { // дальше проверки на длину имени \n            document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\"; // и замену точек на цифры, если имя слишком длинное\n            document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineThreeName.trim().length > 12 && valueDisсiplineThreeValue > 8) { \n            document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineThreeName.trim().length > 13 && valueDisсiplineThreeValue > 7) {\n            document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineThreeName.trim().length > 14 && valueDisсiplineThreeValue > 6) {\n            document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineThreeName.trim().length > 15 && valueDisсiplineThreeValue > 5) {   // дальше пяти смысла нет проверять\n            document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}}\n    if (valueDisсiplineThreeName.trim().length > 11 && valueDisсiplineThreeValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки\n        document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineThreeName.trim().length > 12 && valueDisсiplineThreeValue > 8) {\n        document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineThreeName.trim().length > 13 && valueDisсiplineThreeValue > 7) {\n        document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineThreeName.trim().length > 14 && valueDisсiplineThreeValue > 6) {\n        document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineThreeName.trim().length > 15 && valueDisсiplineThreeValue > 5) {   \n        document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";  \n        document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n\n\n// четвертая дисциплина\nvar valueDisсiplineFourName = document.querySelector(\".discipline4_name .statblock-rendered-text-content\").innerHTML; // находим имя дисциплины\nvar valueDisсiplineFourValue = document.querySelector(\".discipline4_value .statblock-rendered-text-content\").innerHTML; // находим количество точек\n    if (valueDisсiplineFourName.startsWith(\"<a data\")) {   // если в названии дисциплины есть ссылка...\n        var valueDisсiplineFourName = document.querySelector(\".discipline4_name .statblock-rendered-text-content > a\").innerHTML //  ... то в ссылке находим имя\n        if (valueDisсiplineFourName.trim().length > 11 && valueDisсiplineFourValue > 9) { // дальше проверки на длину имени \n            document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\"; // и замену точек на цифры, если имя слишком длинное\n            document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFourName.trim().length > 12 && valueDisсiplineFourValue > 8) { \n            document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFourName.trim().length > 13 && valueDisсiplineFourValue > 7) {\n            document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFourName.trim().length > 14 && valueDisсiplineFourValue > 6) {\n            document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFourName.trim().length > 15 && valueDisсiplineFourValue > 5) {   // дальше пяти смысла нет проверять\n            document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}}\n    if (valueDisсiplineFourName.trim().length > 11 && valueDisсiplineFourValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки\n        document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFourName.trim().length > 12 && valueDisсiplineFourValue > 8) {\n        document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFourName.trim().length > 13 && valueDisсiplineFourValue > 7) {\n        document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFourName.trim().length > 14 && valueDisсiplineFourValue > 6) {\n        document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFourName.trim().length > 15 && valueDisсiplineFourValue > 5) {   \n        document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";  \n        document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n\n\n// пятая дисциплина\nvar valueDisсiplineFiveName = document.querySelector(\".discipline5_name .statblock-rendered-text-content\").innerHTML; // находим имя дисциплины\nvar valueDisсiplineFiveValue = document.querySelector(\".discipline5_value .statblock-rendered-text-content\").innerHTML; // находим количество точек\n    if (valueDisсiplineFiveName.startsWith(\"<a data\")) {   // если в названии дисциплины есть ссылка...\n        var valueDisсiplineFiveName = document.querySelector(\".discipline5_name .statblock-rendered-text-content > a\").innerHTML //  ... то в ссылке находим имя\n        if (valueDisсiplineFiveName.trim().length > 11 && valueDisсiplineFiveValue > 9) { // дальше проверки на длину имени \n            document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\"; // и замену точек на цифры, если имя слишком длинное\n            document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFiveName.trim().length > 12 && valueDisсiplineFiveValue > 8) { \n            document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFiveName.trim().length > 13 && valueDisсiplineFiveValue > 7) {\n            document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFiveName.trim().length > 14 && valueDisсiplineFiveValue > 6) {\n            document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFiveName.trim().length > 15 && valueDisсiplineFiveValue > 5) {   // дальше пяти смысла нет проверять\n            document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}}\n    if (valueDisсiplineFiveName.trim().length > 11 && valueDisсiplineFiveValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки\n        document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFiveName.trim().length > 12 && valueDisсiplineFiveValue > 8) {\n        document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFiveName.trim().length > 13 && valueDisсiplineFiveValue > 7) {\n        document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFiveName.trim().length > 14 && valueDisсiplineFiveValue > 6) {\n        document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFiveName.trim().length > 15 && valueDisсiplineFiveValue > 5) {   \n        document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";  \n        document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n\n\n// шестая дисциплина\nvar valueDisсiplineSixName = document.querySelector(\".discipline6_name .statblock-rendered-text-content\").innerHTML; // находим имя дисциплины\nvar valueDisсiplineSixValue = document.querySelector(\".discipline6_value .statblock-rendered-text-content\").innerHTML; // находим количество точек\n    if (valueDisсiplineSixName.startsWith(\"<a data\")) {   // если в названии дисциплины есть ссылка...\n        var valueDisсiplineSixName = document.querySelector(\".discipline6_name .statblock-rendered-text-content > a\").innerHTML //  ... то в ссылке находим имя\n        if (valueDisсiplineSixName.trim().length > 11 && valueDisсiplineSixValue > 9) { // дальше проверки на длину имени \n            document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\"; // и замену точек на цифры, если имя слишком длинное\n            document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineSixName.trim().length > 12 && valueDisсiplineSixValue > 8) { \n            document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineSixName.trim().length > 13 && valueDisсiplineSixValue > 7) {\n            document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineSixName.trim().length > 14 && valueDisсiplineSixValue > 6) {\n            document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineSixName.trim().length > 15 && valueDisсiplineSixValue > 5) {   // дальше пяти смысла нет проверять\n            document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}}\n    if (valueDisсiplineSixName.trim().length > 11 && valueDisсiplineSixValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки\n        document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineSixName.trim().length > 12 && valueDisсiplineSixValue > 8) {\n        document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineSixName.trim().length > 13 && valueDisсiplineSixValue > 7) {\n        document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineSixName.trim().length > 14 && valueDisсiplineSixValue > 6) {\n        document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineSixName.trim().length > 15 && valueDisсiplineSixValue > 5) {   \n        document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";  \n        document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n})\n\n\n\n\n//                  ## Планы-задум_очки ##\n//\\\\ 1. Превращать пустоту в нули для характеристик и способностей [DONE]\n//\\\\ 2. Переделать лейаут: [DONE]\n//\\\\\t\t- изъян отдельно по центру; [DONE]\n//\\\\\t\t- специализация под здоровьем; [DONE]\n//\\\\ \t\t- достоинства, недостатки, специализацию (а также, возможно, основную волю и первую строчку крови) переделать в проперти [DONE]\n//\\\\ 3. Попробовать сделать слэш в совести и самоконтроле побольше [skip]\n//\\\\ 4. Автоматические изъяны для каждого клана? [DONE]\n//\\\\ 5. Сделать ссылки на дисциплины? Точней, лучше добавить правило обработки ссылок, если это они [DONE]\n//\\\\ 6. Мегахитрость, чтобы запасы крови можно было вводить одним числом, а не бить на четыре строчки? [DONE]\n//\\\\ 7. В шрифте с маленькими кружками вернуть на место цифры с 6 по 9? и запилить Х на десятку? Даже не цифры можно вернуть, а просто добавлять кружочки. [DONE]\n//\\\\      - собсно кружочки [DONE]\n//\\\\      - 10 вместо Х [DONE]\n//\\\\      - цифры вместо кружочков для некоторых характеристик, а то не влезет ни пса [DONE]\n//\\\\             font-size: 14px;\n//\\\\             font-family: \"Marta\";\n//\\\\             margin-top: -2px !important;\n//\\\\      - а для дисциплин можно символы считать, и если их больше скольких-то, а значение больше 5-7 - то уже превращать в цифры\n//\\\\      - ограничения для добродетелей, чтоб не больше 5, надо или нафиг? [skip]\n//\\\\ 8. Все-таки что-то не так с отображением модификатора человечности, если путь - не человечность. [DONE]\n//\\\\ 9. Стрелочки для достоинств, недостаток, крови, воли, и так далее. [DONE]\n// 10. Надо таки найти какой-то код для ховера, дефолтный совсем ублюдский - или разобраться, чем я сломал дефолтный)\n// 11. Еще бы понять, как запихнуть скрипт в любую папку, а не только внутре обсидиана."
+        },
+        {
+            "type": "inline",
+            "id": "f83a38d83998",
+            "properties": [],
+            "nested": [
+                {
+                    "type": "group",
+                    "id": "f919d9f93a89",
+                    "properties": [],
+                    "nested": [
+                        {
+                            "type": "group",
+                            "id": "1b7bba48bba8",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "heading",
+                                    "id": "5b1b78282a6b",
+                                    "properties": [
+                                        "name"
+                                    ],
+                                    "size": 1,
+                                    "fallback": "-",
+                                    "conditioned": false
+                                },
+                                {
+                                    "type": "subheading",
+                                    "id": "68e8886b3bc8",
+                                    "properties": [
+                                        "desc"
+                                    ],
+                                    "separator": " ",
+                                    "fallback": "-",
+                                    "conditioned": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "inline",
+                            "id": "582b492889d9",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "group",
+                                    "id": "193b4a594af9",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "property",
+                                            "id": "1a6a3869d928",
+                                            "properties": [
+                                                "clan"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Clan:",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "baaa8a9a3bfb",
+                                            "properties": [
+                                                "generation"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Generation:",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "e9780b2a6889",
+                                            "properties": [
+                                                "sire"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Sire:",
+                                            "conditioned": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "group",
+                                    "id": "080a183ba95a",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "property",
+                                            "id": "2a7b79291928",
+                                            "properties": [
+                                                "nature"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Nature:",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "da09e81ae89a",
+                                            "properties": [
+                                                "demeanor"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Demeanor:",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "2bd90bbbd8ea",
+                                            "properties": [
+                                                "concept"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Concept:",
+                                            "conditioned": true
+                                        }
+                                    ]
+                                }
+                            ],
+                            "cls": ""
+                        }
+                    ],
+                    "hasRule": false,
+                    "cls": "general-text-info"
+                },
+                {
+                    "type": "group",
+                    "id": "bafb58798afa",
+                    "properties": [],
+                    "nested": [
+                        {
+                            "type": "image",
+                            "id": "bba97abbcb38",
+                            "properties": [
+                                "img"
+                            ],
+                            "fallback": "-",
+                            "conditioned": true
+                        },
+                        {
+                            "type": "text",
+                            "id": "4b08e989fa88",
+                            "properties": [
+                                "img_title"
+                            ],
+                            "text": null,
+                            "fallback": "-",
+                            "conditioned": true
+                        }
+                    ],
+                    "heading": "",
+                    "cls": "image-main"
+                },
+                {
+                    "type": "group",
+                    "id": "ebd818f82a29",
+                    "properties": [],
+                    "nested": [
+                        {
+                            "type": "image",
+                            "id": "bb4ac92aaa5a",
+                            "properties": [
+                                "img_alt"
+                            ],
+                            "fallback": "-",
+                            "conditioned": true
+                        },
+                        {
+                            "type": "text",
+                            "id": "3818e9b8697b",
+                            "properties": [
+                                "img_alt_title"
+                            ],
+                            "text": null,
+                            "fallback": "-",
+                            "conditioned": true
+                        }
+                    ],
+                    "cls": "image-alt"
+                }
+            ],
+            "hasRule": false,
+            "heading": "",
+            "cls": "general-info"
+        },
+        {
+            "type": "collapse",
+            "id": "9858d8ca4a6b",
+            "heading": "Character Sheet",
+            "hasRule": false,
+            "conditioned": false,
+            "nested": [
+                {
+                    "type": "group",
+                    "id": "39f91bc9f918",
+                    "properties": [],
+                    "nested": [
+                        {
+                            "type": "group",
+                            "id": "4b8b180bfbd8",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "heading",
+                                    "id": "78cad828898a",
+                                    "properties": [
+                                        "Attributes"
+                                    ],
+                                    "size": 4,
+                                    "fallback": "-",
+                                    "conditioned": false
+                                },
+                                {
+                                    "type": "inline",
+                                    "id": "19c8d839482a",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "group",
+                                            "id": "498b7a184989",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "49fa2858e85b",
+                                                    "properties": [
+                                                        "physical"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "7b4b9a496809",
+                                                    "properties": [
+                                                        "Strength"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Strength"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "1959390b6b8b",
+                                                    "properties": [
+                                                        "Dexterity"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Dexterity",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2abaeb28088b",
+                                                    "properties": [
+                                                        "Stamina"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Stamina",
+                                                    "conditioned": false
+                                                }
+                                            ],
+                                            "heading": ""
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "5bbbfb0bea7b",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "4b3a6bab68db",
+                                                    "properties": [
+                                                        "social"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "ebb88bbb98aa",
+                                                    "properties": [
+                                                        "Charisma"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Charisma",
+                                                    "conditioned": false,
+                                                    "dice": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "3a48c88a1aea",
+                                                    "properties": [
+                                                        "Manipulation"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Manipulation"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "89bab85b1bcb",
+                                                    "properties": [
+                                                        "Appearance"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Appearance",
+                                                    "conditioned": false
+                                                }
+                                            ],
+                                            "heading": ""
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "da384a4bb9bb",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "0a5a2b3be838",
+                                                    "properties": [
+                                                        "mental"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "58aac9a809bb",
+                                                    "properties": [
+                                                        "Perception"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Perception",
+                                                    "conditioned": false,
+                                                    "diceCallback": "",
+                                                    "dice": false,
+                                                    "diceProperty": "d10"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "1898c8286a0a",
+                                                    "properties": [
+                                                        "Intelligence"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Intelligence"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "88e8594a2a5b",
+                                                    "properties": [
+                                                        "Wits"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Wits"
+                                                }
+                                            ],
+                                            "heading": ""
+                                        }
+                                    ],
+                                    "cls": "attributes-group",
+                                    "heading": ""
+                                }
+                            ],
+                            "hasRule": false,
+                            "heading": ""
+                        },
+                        {
+                            "type": "group",
+                            "id": "286868994bc8",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "heading",
+                                    "id": "5b6ae82a694a",
+                                    "properties": [
+                                        "Abilities"
+                                    ],
+                                    "size": 4,
+                                    "fallback": "-",
+                                    "conditioned": true
+                                },
+                                {
+                                    "type": "inline",
+                                    "id": "f9b8b85898da",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "group",
+                                            "id": "191a1a59e87b",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "c9aadbd81829",
+                                                    "properties": [
+                                                        "Talents"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "a9896808082a",
+                                                    "properties": [
+                                                        "alertness"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Alertness",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "ead8883848e8",
+                                                    "properties": [
+                                                        "athletics"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Athletics"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2bb9da7b9a9b",
+                                                    "properties": [
+                                                        "awareness"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Awareness",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "08eb58a9f8e9",
+                                                    "properties": [
+                                                        "brawl"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Brawl",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2839ab59a96a",
+                                                    "properties": [
+                                                        "empathy"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Empathy"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "f8f8d9b97899",
+                                                    "properties": [
+                                                        "expression"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Expression",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "6b2b9bea2b2a",
+                                                    "properties": [
+                                                        "intimidation"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Intimidation",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "e9dbd9587bd8",
+                                                    "properties": [
+                                                        "leadership"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Leadership",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "5b4aba486919",
+                                                    "properties": [
+                                                        "streetwise"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Streetwise"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "58fb698a39da",
+                                                    "properties": [
+                                                        "subterfuge"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Subterfuge",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "0889fa2bea8b",
+                                                    "properties": [
+                                                        "empty_talent"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "________",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "ebdb7bbad938",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "4968188a984b",
+                                                    "properties": [
+                                                        "Skills"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "ba29c9da5959",
+                                                    "properties": [
+                                                        "animalken"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Animal Ken"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2ae8ba69aadb",
+                                                    "properties": [
+                                                        "crafts"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Crafts",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "49db69f88a8a",
+                                                    "properties": [
+                                                        "drive"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Drive"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "98b87a294858",
+                                                    "properties": [
+                                                        "etiquette"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Etiquette",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "984b1b9a9b18",
+                                                    "properties": [
+                                                        "firearms"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Firearms",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "4b9adb2a7808",
+                                                    "properties": [
+                                                        "larceny"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Larceny"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "dab80bf8fbfa",
+                                                    "properties": [
+                                                        "melee"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Melee"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "394ac9cba8cb",
+                                                    "properties": [
+                                                        "performance"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Performance",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "e989d8a80ac9",
+                                                    "properties": [
+                                                        "stealth"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Stealth"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "a9dae9982aba",
+                                                    "properties": [
+                                                        "survival"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Survival",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "8a9aeac9ea0b",
+                                                    "properties": [
+                                                        "empty_skill"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "________",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "899b5a29c96a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "c8b8183948bb",
+                                                    "properties": [
+                                                        "Knowledges"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "581bc82bc888",
+                                                    "properties": [
+                                                        "academics"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Academics"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "68298b8b395b",
+                                                    "properties": [
+                                                        "computer"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Computer",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "3abab85af8c8",
+                                                    "properties": [
+                                                        "finance"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Finance"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "fada3a9a0ab9",
+                                                    "properties": [
+                                                        "investigation"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Investigation"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2b08f9c8cafa",
+                                                    "properties": [
+                                                        "law"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Law",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "7bfb18bac90b",
+                                                    "properties": [
+                                                        "medicine"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Medicine"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "093b2889fa4a",
+                                                    "properties": [
+                                                        "occult"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Occult"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "5b5a4b7b0bdb",
+                                                    "properties": [
+                                                        "politics"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Politics"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "8b7a2ab959ba",
+                                                    "properties": [
+                                                        "science"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Science",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "8bc82858c92b",
+                                                    "properties": [
+                                                        "technology"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Technology"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "099ae81bbbd8",
+                                                    "properties": [
+                                                        "empty_knowledge"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "________",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "cls": "abilities-group"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "group",
+                            "id": "c9da7b6b98db",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "heading",
+                                    "id": "0a7b49b83b6b",
+                                    "properties": [
+                                        "Advantages"
+                                    ],
+                                    "size": 4,
+                                    "fallback": "-",
+                                    "conditioned": false
+                                },
+                                {
+                                    "type": "inline",
+                                    "id": "1a2918a92b3b",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "group",
+                                            "id": "fa593958d928",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "1b39a81b783b",
+                                                    "properties": [
+                                                        "Disciplines"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "bbcbd8193b69",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "5bcba8fa08a9",
+                                                            "properties": [
+                                                                "discipline1_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true,
+                                                            "doNotAddClass": false
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "181ba96af9bb",
+                                                            "properties": [
+                                                                "discipline1_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "heading": "",
+                                                    "cls": ""
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "385978a9f9b8",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "0bdbf9090af8",
+                                                            "properties": [
+                                                                "discipline2_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "ebabd99a3b9a",
+                                                            "properties": [
+                                                                "discipline2_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "8afb9be93a38",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "498a3bc81948",
+                                                            "properties": [
+                                                                "discipline3_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "ab3be91aabca",
+                                                            "properties": [
+                                                                "discipline3_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "49ca1a594aba",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "bb0b592a4a9a",
+                                                            "properties": [
+                                                                "discipline4_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "8809cb397b9a",
+                                                            "properties": [
+                                                                "discipline4_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "c8f94b4a7b18",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "cba9e82b38d9",
+                                                            "properties": [
+                                                                "discipline5_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "b9681adbc918",
+                                                            "properties": [
+                                                                "discipline5_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "6ac8d9e95929",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "a97ae91b7b98",
+                                                            "properties": [
+                                                                "discipline6_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "7b488b1859fa",
+                                                            "properties": [
+                                                                "discipline6_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "cls": "disciplines-group"
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "fa88fa4a99e9",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "697a48782a28",
+                                                    "properties": [
+                                                        "Backgrounds"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "a94aca998b2b",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "c8082ac9cb2b",
+                                                            "properties": [
+                                                                "background1_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "19d8db9b5a4b",
+                                                            "properties": [
+                                                                "background1_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "2abafb4a984a",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "7be8d8c95a18",
+                                                            "properties": [
+                                                                "background2_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "3a7a8b6ab898",
+                                                            "properties": [
+                                                                "background2_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "68db7b68997a",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "6969a85a19f8",
+                                                            "properties": [
+                                                                "background3_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "5afb7b4959ba",
+                                                            "properties": [
+                                                                "background3_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "5ada8b996a09",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "2858b86bba2b",
+                                                            "properties": [
+                                                                "background4_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "2b29484839fa",
+                                                            "properties": [
+                                                                "background4_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "89a99b88ea28",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "29e919d86b68",
+                                                            "properties": [
+                                                                "background5_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "7a08aa9b6bab",
+                                                            "properties": [
+                                                                "background5_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "a8883848ebfa",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "1abb8af9582b",
+                                                            "properties": [
+                                                                "background6_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "88eba939ba59",
+                                                            "properties": [
+                                                                "background6_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "heading": "",
+                                            "cls": "backgrounds-group"
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "c889f81a7b18",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "1b9809585928",
+                                                    "properties": [
+                                                        "Virtues"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2ae95a3ab968",
+                                                    "properties": [
+                                                        "conscience"
+                                                    ],
+                                                    "fallback": "1",
+                                                    "display": "Conscience/Conviction",
+                                                    "conditioned": true,
+                                                    "diceCallback": "",
+                                                    "dice": false,
+                                                    "callback": "",
+                                                    "diceProperty": ""
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "c8485a5bc8d8",
+                                                    "properties": [
+                                                        "selfcontrol"
+                                                    ],
+                                                    "fallback": "1",
+                                                    "display": "Self-Control/Instinct",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "db0809595be8",
+                                                    "properties": [
+                                                        "courage"
+                                                    ],
+                                                    "fallback": "1",
+                                                    "conditioned": true,
+                                                    "display": "Courage"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "heading": "",
+                                    "cls": "advantages-group"
+                                }
+                            ],
+                            "hasRule": true
+                        },
+                        {
+                            "type": "inline",
+                            "id": "5aaadbab0a4a",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "group",
+                                    "id": "e8fa79893a39",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "heading",
+                                            "id": "18a8f8cabb1b",
+                                            "properties": [
+                                                "Merits"
+                                            ],
+                                            "size": 6,
+                                            "fallback": "-"
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "4b692999baf8",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "29180b5b391a",
+                                                    "properties": [
+                                                        "merit_one_name"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "fa395a683a6a",
+                                                    "properties": [
+                                                        "merit_one_value"
+                                                    ],
+                                                    "fallback": "-"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "fbbb49dadb98",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "7b4b3afa883a",
+                                                    "properties": [
+                                                        "merit_two_name"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2be998fa1b78",
+                                                    "properties": [
+                                                        "merit_two_value"
+                                                    ],
+                                                    "fallback": "-"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "0b08da1a3b48",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "795b38f80a6a",
+                                                    "properties": [
+                                                        "merit_three_name"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "89d98ad929da",
+                                                    "properties": [
+                                                        "merit_three_value"
+                                                    ],
+                                                    "fallback": "-"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "eaa8eb389b8a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "0909fa2808c9",
+                                                    "properties": [
+                                                        "merit_four_name"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "c8b8985b7bf9",
+                                                    "properties": [
+                                                        "merit_four_value"
+                                                    ],
+                                                    "fallback": "-"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "5b9bbb68f869",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "4bcb2a9bcb29",
+                                                    "properties": [
+                                                        "merit_five_name"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "a919b94a0ab9",
+                                                    "properties": [
+                                                        "merit_five_value"
+                                                    ],
+                                                    "fallback": "-"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "heading",
+                                            "id": "5aa8d849dbfb",
+                                            "properties": [
+                                                "Flaws"
+                                            ],
+                                            "size": 6,
+                                            "fallback": "-"
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "597ab87bb8aa",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "3a8a1bfad809",
+                                                    "properties": [
+                                                        "flaw_one_name"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "f9ba292949fa",
+                                                    "properties": [
+                                                        "flaw_one_value"
+                                                    ],
+                                                    "fallback": "-"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "7af8cbe9995b",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "0ba8f8488bab",
+                                                    "properties": [
+                                                        "flaw_two_name"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "3b7ae84a7ac8",
+                                                    "properties": [
+                                                        "flaw_two_value"
+                                                    ],
+                                                    "fallback": "-"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "db4b19fad9db",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "4adabaeaba7b",
+                                                    "properties": [
+                                                        "flaw_three_name"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "fa1beaca395b",
+                                                    "properties": [
+                                                        "flaw_three_value"
+                                                    ],
+                                                    "fallback": "-"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "6bc8e8a9c9a8",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "287b39baabab",
+                                                    "properties": [
+                                                        "flaw_four_name"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "bb1a5858b86b",
+                                                    "properties": [
+                                                        "flaw_four_value"
+                                                    ],
+                                                    "fallback": "-"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "29190a68bbf9",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "39ebf8a9297b",
+                                                    "properties": [
+                                                        "flaw_five_name"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "4b68dbb8c91b",
+                                                    "properties": [
+                                                        "flaw_five_value"
+                                                    ],
+                                                    "fallback": "-"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "cls": "merits-and-flaws"
+                                },
+                                {
+                                    "type": "group",
+                                    "id": "faaadb184978",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "group",
+                                            "id": "399859baaae8",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "382b1968ba19",
+                                                    "properties": [
+                                                        "path"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "d9f89a394b89",
+                                                    "properties": [
+                                                        "path_value"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "b8fa982b993b",
+                                                    "properties": [
+                                                        "bearing"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Bearing:"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "db9a2b0a5a48",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "baeafb98dbfa",
+                                                    "properties": [
+                                                        "willpower"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "19396a69dbfb",
+                                                    "properties": [
+                                                        "willpower_main"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "b939b899186b",
+                                                    "properties": [
+                                                        "willpower_current"
+                                                    ],
+                                                    "fallback": "-"
+                                                }
+                                            ],
+                                            "heading": ""
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "987a2a88b81a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "d829b81ab81a",
+                                                    "properties": [
+                                                        "bloodpool"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "bb591ab848da",
+                                                    "properties": [
+                                                        "blood"
+                                                    ],
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "ab69297ae8fa",
+                                                    "properties": [
+                                                        "blood_current2"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "9818ca5be8cb",
+                                                    "properties": [
+                                                        "blood_current3"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "895b3a2a8a4a",
+                                                    "properties": [
+                                                        "blood_current4"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "9a78c9ea0a0b",
+                                                    "properties": [
+                                                        "blood_per_turn"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Blood Per Turn: "
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "group",
+                                    "id": "eb4b8a8be8fa",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "group",
+                                            "id": "f86ad918580a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "882809398aaa",
+                                                    "properties": [
+                                                        "Health"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "78e9abeb7b28",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "eb4bb97949ba",
+                                                            "properties": [
+                                                                "aggravated"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "29dbb8596968",
+                                                            "properties": [
+                                                                "lethal"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "988bc9ea295a",
+                                                            "properties": [
+                                                                "bashing"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "damage-values"
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "58ea18eb1a29",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "989bc92ae8f9",
+                                                            "properties": [
+                                                                "dmg_sq1"
+                                                            ],
+                                                            "fallback": "-"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "e87adb8b7b29",
+                                                            "properties": [
+                                                                "dmg_sq2"
+                                                            ],
+                                                            "fallback": "-"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "9a39b918fac9",
+                                                            "properties": [
+                                                                "dmg_sq3"
+                                                            ],
+                                                            "fallback": "-"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "7a89089a9b49",
+                                                            "properties": [
+                                                                "dmg_sq4"
+                                                            ],
+                                                            "fallback": "-"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "b84bdae95b9b",
+                                                            "properties": [
+                                                                "dmg_sq5"
+                                                            ],
+                                                            "fallback": "-"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "3adb28b88b4a",
+                                                            "properties": [
+                                                                "dmg_sq6"
+                                                            ],
+                                                            "fallback": "-"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "a809598ae989",
+                                                            "properties": [
+                                                                "dmg_sq7"
+                                                            ],
+                                                            "fallback": "-"
+                                                        }
+                                                    ],
+                                                    "cls": "damage-squares"
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "2ac8d96a5bea",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "39c8c8989a88",
+                                                            "properties": [
+                                                                "bruised"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "display": ""
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "a9c888ab9b18",
+                                                            "properties": [
+                                                                "hurt"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "display": "-1"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "6a19898998f8",
+                                                            "properties": [
+                                                                "injured"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "display": "-1"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "89bb79382919",
+                                                            "properties": [
+                                                                "wounded"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "display": "-2"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "9a687bd82b6a",
+                                                            "properties": [
+                                                                "mauled"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "display": "-2"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "1888dbba88e9",
+                                                            "properties": [
+                                                                "crippled"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "display": "-5"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "199b0bf9790a",
+                                                            "properties": [
+                                                                "incapacitated"
+                                                            ],
+                                                            "fallback": "-"
+                                                        }
+                                                    ],
+                                                    "cls": "damage-dice-penalties"
+                                                }
+                                            ],
+                                            "cls": "health-group"
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "5acb8b597b0a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "da2a3b9b0a0a",
+                                                    "properties": [
+                                                        "Specialties"
+                                                    ],
+                                                    "size": 6,
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "5aaaf9aa3898",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "6869bbcbf99b",
+                                                            "properties": [
+                                                                "specialty_one_origin"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "cb6bc99a096b",
+                                                            "properties": [
+                                                                "specialty_one_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "heading": "",
+                                                    "cls": "specialty_one"
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "5aab39dafa78",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "69ea2af89b6a",
+                                                            "properties": [
+                                                                "specialty_two_origin"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "e9eb5b983aa8",
+                                                            "properties": [
+                                                                "specialty_two_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "specialty_two"
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "3a9ab9fbeb69",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "c8c87b292b98",
+                                                            "properties": [
+                                                                "specialty_three_origin"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "8b0aabdbca4b",
+                                                            "properties": [
+                                                                "specialty_three_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "specialty_three"
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "da09ab8b1b59",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "d9ebc9b99b89",
+                                                            "properties": [
+                                                                "specialty_four_origin"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "38a81a7a0879",
+                                                            "properties": [
+                                                                "specialty_four_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "specialty_four"
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "68f84b69c8cb",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "d909ea98fba9",
+                                                            "properties": [
+                                                                "specialty_five_origin"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "6af9e90a89d9",
+                                                            "properties": [
+                                                                "specialty_five_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "specialty_five"
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "8b49fb6aa968",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "89e819fa5828",
+                                                            "properties": [
+                                                                "specialty_six_origin"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "58cb4a0aa80a",
+                                                            "properties": [
+                                                                "specialty_six_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "specialty_six"
+                                                }
+                                            ],
+                                            "cls": "specialities-group",
+                                            "heading": ""
+                                        }
+                                    ]
+                                }
+                            ],
+                            "hasRule": false,
+                            "cls": "others-group"
+                        },
+                        {
+                            "type": "property",
+                            "id": "7b282acb6869",
+                            "properties": [
+                                "weakness"
+                            ],
+                            "fallback": "-",
+                            "display": "WEAKNESS",
+                            "conditioned": false
+                        }
+                    ]
+                }
+            ],
+            "open": true
+        }
+    ],
+    "name": "VtM v20 Vampire en",
+    "id": "cb9b5b9ae8fb"
+}

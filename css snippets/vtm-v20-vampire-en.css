@@ -1,10 +1,10 @@
 
-/*  Скрывается заголовок в режиме чтения  */
+/*  Hide note's title in Reading view  */
 .markdown-reading-view:has(.vtm-v20-vampire-en-en) .inline-title {
     display: none;
 }
 
-/*  Имена пропертей в одном стиле  */
+/*  Same style for all the properties in the character sheet  */
 .vtm-v20-vampire-en span.property-name {
     text-transform: uppercase;
     font-size: 12.5px;
@@ -17,15 +17,15 @@
 }
 
 
-/*  =====================================================  */
-            /*  МЕГАБЛОК С ИМЕНЕМ И ФОТОЧКОЙ  */
-/*  =====================================================  */
+/*  ================================================================  */
+            /*  THE SECTION WITH THE NAME AND THE PICTURES  */
+/*  ================================================================  */
 
 .general-info-group {
     justify-content: space-evenly;
 }
 
-/*  Уменьшил размер блока с именем, чтобы подпись-пояснение (сабхединг) не уползала слишком далеко вниз, и указал другой шрифт  */
+/*  Reduced the size and the font of the name area, to prevent subheading going to far down   */
 .vtm-v20-vampire-en h1.heading .statblock-rendered-text-content {
     height: 32px;
     font-family: var(--statblock-content-font);
@@ -33,7 +33,7 @@
 }
 
 
-/*  Имя и описание персонажа выравниваются по центру  */
+/*  Name and subheading are aligned by the center of their area  */
 .vtm-v20-vampire-en .flex-container:has(h1.name) {
     justify-content: center;
 }
@@ -42,10 +42,11 @@
 }
 
 
-/*  Удаляется пустой блок, где должно быть фото, если собсно фото нет  */
+/*  Photo area is removed if no photo was provided  */
 .general-info-group .statblock-inline-item.group-container:empty {
     display: none;
 }
+
 
 
 /*  Равномерно и красиво разносятся текстовые поля в верхнем блоке, в зависимости от наличия фото и подписи к нему  */

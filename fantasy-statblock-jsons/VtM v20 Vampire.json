@@ -1833,7 +1833,7 @@
                                                         "blood_current2"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true
+                                                    "conditioned": false
                                                 },
                                                 {
                                                     "type": "property",
@@ -1842,7 +1842,7 @@
                                                         "blood_current3"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true
+                                                    "conditioned": false
                                                 },
                                                 {
                                                     "type": "property",
@@ -1851,7 +1851,7 @@
                                                         "blood_current4"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true
+                                                    "conditioned": false
                                                 },
                                                 {
                                                     "type": "property",

@@ -519,15 +519,15 @@ h6.heading.Disciplines, h6.heading.Backgrounds, h6.heading.Virtues {
 }
 
 
-/* Ширина строки и выравнивание значений по краям для характеристик... */
+/* Set up line width and position of names and dots for all attributes ...  */
 .vtm-v20-vampire-en .strength, .vtm-v20-vampire-en .dexterity, .vtm-v20-vampire-en .stamina,
 .vtm-v20-vampire-en .charisma, .vtm-v20-vampire-en .manipulation, .vtm-v20-vampire-en .appearance,
 .vtm-v20-vampire-en .perception, .vtm-v20-vampire-en .intelligence, .vtm-v20-vampire-en .wits,
-/*  талантов... */
+/*  talents...  */
 .vtm-v20-vampire-en .athletics, .vtm-v20-vampire-en .alertness, .vtm-v20-vampire-en .brawl, .vtm-v20-vampire-en .intimidation, .vtm-v20-vampire-en .expression, .vtm-v20-vampire-en .leadership, .vtm-v20-vampire-en .streetwise, .vtm-v20-vampire-en .subterfuge, .vtm-v20-vampire-en .awareness, .vtm-v20-vampire-en .empathy,
-/*  навыков... */
+/*  skills...  */
 .vtm-v20-vampire-en .drive, .vtm-v20-vampire-en .larceny, .vtm-v20-vampire-en .survival, .vtm-v20-vampire-en .performance, .vtm-v20-vampire-en .animalken, .vtm-v20-vampire-en .crafts, .vtm-v20-vampire-en .stealth, .vtm-v20-vampire-en .firearms, .vtm-v20-vampire-en .melee, .vtm-v20-vampire-en .etiquette,
-/*  и знаний... */
+/*  and knowledges...  */
 .vtm-v20-vampire-en .academics, .vtm-v20-vampire-en .science, .vtm-v20-vampire-en .law, .vtm-v20-vampire-en .computer, .vtm-v20-vampire-en .medicine, .vtm-v20-vampire-en .occult, .vtm-v20-vampire-en .politics, .vtm-v20-vampire-en .investigation, .vtm-v20-vampire-en .finance, .vtm-v20-vampire-en .technology
 {
     display: flex !important;
@@ -537,7 +537,7 @@ h6.heading.Disciplines, h6.heading.Backgrounds, h6.heading.Virtues {
 }
 
 
-/*  самодописанные таланты, навыки и знания выглядят как родные  */
+/*  new\additional self-added talents, skills, and knowledges default ones look the same  */
 .vtm-v20-vampire-en .line.new_talent .property-name, .vtm-v20-vampire-en .line.new_skill .property-name, .vtm-v20-vampire-en .line.new_knowledge .property-name {
     margin-right: 0;
 }
@@ -563,23 +563,23 @@ h6.heading.Disciplines, h6.heading.Backgrounds, h6.heading.Virtues {
 }
 
 
-/* Классные точки для характеристик... */
+/*  Beautiful dots for all attributes...  */
 .vtm-v20-vampire-en .strength .property-text, .vtm-v20-vampire-en .dexterity .property-text, .vtm-v20-vampire-en .stamina .property-text, 
 .vtm-v20-vampire-en .charisma .property-text, .vtm-v20-vampire-en .manipulation .property-text, .vtm-v20-vampire-en .appearance .property-text, 
 .vtm-v20-vampire-en .perception .property-text, .vtm-v20-vampire-en .intelligence .property-text, .vtm-v20-vampire-en .wits .property-text, 
-/* талантов... */
+/*  talents...  */
 .vtm-v20-vampire-en .athletics .property-text, .vtm-v20-vampire-en .alertness .property-text, .vtm-v20-vampire-en .brawl .property-text, .vtm-v20-vampire-en .intimidation .property-text, .vtm-v20-vampire-en .expression .property-text, .vtm-v20-vampire-en .leadership .property-text, .vtm-v20-vampire-en .streetwise .property-text, .vtm-v20-vampire-en .subterfuge .property-text, .vtm-v20-vampire-en .awareness .property-text, .vtm-v20-vampire-en .empathy .property-text, .vtm-v20-vampire-en .empty_talent .property-text,
-/* навыков... */
+/*  skills...  */
 .vtm-v20-vampire-en .drive .property-text, .vtm-v20-vampire-en .larceny .property-text, .vtm-v20-vampire-en .survival .property-text, .vtm-v20-vampire-en .performance .property-text, .vtm-v20-vampire-en .animalken .property-text, .vtm-v20-vampire-en .crafts .property-text, .vtm-v20-vampire-en .stealth .property-text, .vtm-v20-vampire-en .firearms .property-text, .vtm-v20-vampire-en .melee .property-text, .vtm-v20-vampire-en .etiquette .property-text, .vtm-v20-vampire-en .empty_skill .property-text,
-/* знаний... */
+/*  knowledges...  */
 .vtm-v20-vampire-en .academics .property-text, .vtm-v20-vampire-en .science .property-text, .vtm-v20-vampire-en .law .property-text, .vtm-v20-vampire-en .computer .property-text, .vtm-v20-vampire-en .medicine .property-text, .vtm-v20-vampire-en .occult .property-text, .vtm-v20-vampire-en .politics .property-text, .vtm-v20-vampire-en .investigation .property-text, .vtm-v20-vampire-en .finance .property-text, .vtm-v20-vampire-en .technology .property-text, .vtm-v20-vampire-en .empty_knowledge .property-text,
-/* самодописанных талантов, навыков и знаний... */
+/*  additional abilities...  */
 .vtm-v20-vampire-en .new_talent_value .property-text, .vtm-v20-vampire-en .new_skill_value .property-text, .vtm-v20-vampire-en .new_knowledge_value .property-text,
-/* дисциплин... */
+/*  disciplines...  */
 .vtm-v20-vampire-en .discipline1_value .property-text, .vtm-v20-vampire-en .discipline2_value .property-text, .vtm-v20-vampire-en .discipline3_value .property-text, .vtm-v20-vampire-en .discipline4_value .property-text, .vtm-v20-vampire-en .discipline5_value .property-text, .vtm-v20-vampire-en .discipline6_value .property-text,
-/* фактов биографии... */
+/*  backgrounds...  */
 .vtm-v20-vampire-en .background1_value .property-text, .vtm-v20-vampire-en .background2_value .property-text, .vtm-v20-vampire-en .background3_value .property-text, .vtm-v20-vampire-en .background4_value .property-text, .vtm-v20-vampire-en .background5_value .property-text, .vtm-v20-vampire-en .background6_value .property-text,
-/* добродетелей... */
+/*  virtues...  */
 .vtm-v20-vampire-en .conscience .property-text, .vtm-v20-vampire-en .selfcontrol .property-text, .vtm-v20-vampire-en .courage .property-text {
     font-size: 9px;
     font-family: "SmallCircles";
@@ -590,19 +590,19 @@ h6.heading.Disciplines, h6.heading.Backgrounds, h6.heading.Virtues {
 }
 
 
-/* Классные точки для дайсов в характеристиках... */
+/*  Beautiful dots, if dice roller is active, for all attributes...  */
 .vtm-v20-vampire-en .strength .dice-roller-result, .vtm-v20-vampire-en .dexterity .dice-roller-result, .vtm-v20-vampire-en .stamina .dice-roller-result,
 .vtm-v20-vampire-en .charisma .dice-roller-result, .vtm-v20-vampire-en .manipulation .dice-roller-result, .vtm-v20-vampire-en .appearance .dice-roller-result,
 .vtm-v20-vampire-en .perception .dice-roller-result, .vtm-v20-vampire-en .intelligence .dice-roller-result, .vtm-v20-vampire-en .wits .dice-roller-result,
-/* в талантах... */
+/*  talents...  */
 .vtm-v20-vampire-en .athletics .dice-roller-result, .vtm-v20-vampire-en .alertness .dice-roller-result, .vtm-v20-vampire-en .brawl .dice-roller-result, .vtm-v20-vampire-en .intimidation .dice-roller-result, .vtm-v20-vampire-en .expression .dice-roller-result, .vtm-v20-vampire-en .leadership .dice-roller-result, .vtm-v20-vampire-en .streetwise .dice-roller-result, .vtm-v20-vampire-en .subterfuge .dice-roller-result, .vtm-v20-vampire-en .awareness .dice-roller-result, .vtm-v20-vampire-en .empathy .dice-roller-result, .vtm-v20-vampire-en .empty_talent .dice-roller-result,
-/* в навыках... */
+/*  skills...  */
 .vtm-v20-vampire-en .drive .dice-roller-result, .vtm-v20-vampire-en .larceny .dice-roller-result, .vtm-v20-vampire-en .survival .dice-roller-result, .vtm-v20-vampire-en .performance .dice-roller-result, .vtm-v20-vampire-en .animalken .dice-roller-result, .vtm-v20-vampire-en .crafts .dice-roller-result, .vtm-v20-vampire-en .stealth .dice-roller-result, .vtm-v20-vampire-en .firearms .dice-roller-result, .vtm-v20-vampire-en .melee .dice-roller-result, .vtm-v20-vampire-en .etiquette .dice-roller-result, .vtm-v20-vampire-en .empty_skill .dice-roller-result,
-/* в знаниях... */
+/*  knowledges...  */
 .vtm-v20-vampire-en .academics .dice-roller-result, .vtm-v20-vampire-en .science .dice-roller-result, .vtm-v20-vampire-en .law .dice-roller-result, .vtm-v20-vampire-en .computer .dice-roller-result, .vtm-v20-vampire-en .medicine .dice-roller-result, .vtm-v20-vampire-en .occult .dice-roller-result, .vtm-v20-vampire-en .politics .dice-roller-result, .vtm-v20-vampire-en .investigation .dice-roller-result, .vtm-v20-vampire-en .finance .dice-roller-result, .vtm-v20-vampire-en .technology .dice-roller-result, .vtm-v20-vampire-en .empty_knowledge .dice-roller-result,
-/* самодописанных талантах, навыках и знанях... */
+/*  additional abilities...  */
 .vtm-v20-vampire-en .new_talent_value .dice-roller-result, .vtm-v20-vampire-en .new_skill_value .dice-roller-result, .vtm-v20-vampire-en .new_knowledge_value .dice-roller-result,
-/* в добродетелях... */
+/*  virtues...  */
 .vtm-v20-vampire-en .conscience .dice-roller-result, .vtm-v20-vampire-en .selfcontrol .dice-roller-result, .vtm-v20-vampire-en .courage .dice-roller-result {
     font-size: 9px;
     font-family: "SmallCircles";
@@ -617,9 +617,9 @@ span.dice-roller {
     cursor: grab;
 }
 
-/*  =====================================================  */
-                  /*  ПРЕИМУЩЕСТВА  */
-/*  =====================================================  */
+/*  =================================================  */
+                  /*  ADVANTAGES  */
+/*  =================================================  */
 
 
 .advantages-group {
@@ -636,14 +636,14 @@ span.dice-roller {
     height: 17.5px;
 }
 
-/*  Скрываются названия пропертей для дисциплин  */
+/*  Hide property names for disciplines  */
 .line.discipline1_name .property-name, .line.discipline1_value .property-name, 
 .line.discipline2_name .property-name, .line.discipline2_value .property-name, 
 .line.discipline3_name .property-name, .line.discipline3_value .property-name, 
 .line.discipline4_name .property-name, .line.discipline4_value .property-name, 
 .line.discipline5_name .property-name, .line.discipline5_value .property-name, 
 .line.discipline6_name .property-name, .line.discipline6_value .property-name, 
-/*  Скрываются названия пропертей для фактов биографии  */
+/*  Hide property names for backgrounds  */
 .line.background1_name .property-name, .line.background1_value .property-name, 
 .line.background2_name .property-name, .line.background2_value .property-name, 
 .line.background3_name .property-name, .line.background3_value .property-name, 
@@ -654,11 +654,11 @@ span.dice-roller {
 }
 
 
-/*  Изменяются имена дисциплин...  */
+/*  Change the style of discipline names...  */
 .discipline1_name .property-text .statblock-rendered-text-content, .discipline2_name .property-text .statblock-rendered-text-content, 
 .discipline3_name .property-text .statblock-rendered-text-content, .discipline4_name .property-text .statblock-rendered-text-content, 
 .discipline5_name .property-text .statblock-rendered-text-content, .discipline6_name .property-text .statblock-rendered-text-content, 
-/* ...и фактов биографии  */
+/* ...and background names  */
 .background1_name .property-text .statblock-rendered-text-content, .background2_name .property-text .statblock-rendered-text-content, 
 .background3_name .property-text .statblock-rendered-text-content, .background4_name .property-text .statblock-rendered-text-content, 
 .background5_name .property-text .statblock-rendered-text-content, .background6_name .property-text .statblock-rendered-text-content {
@@ -667,13 +667,13 @@ span.dice-roller {
 }
 
 
-/*  Cсылка в дисциплинах и фактах будет цвета обычного текста...  */
+/*  If discipine name has a link, it won't change color...  */
 .line.discipline1_name .property-text a, .line.discipline2_name .property-text a, .line.discipline3_name .property-text a, .line.discipline4_name .property-text a, .line.discipline5_name .property-text a, .line.discipline6_name .property-text a,
 .background1_name .property-text a, .background2_name .property-text a, .background3_name .property-text a, .background4_name .property-text a, .background5_name .property-text a, .background6_name .property-text a {
     color: var(--statblock-font-color);
 
 }
-/*  ...но сохранит подчеркивание при наведении  */
+/*  ...but keeps underline on hover  */
 @media (hover: hover) {
 .vtm-v20-vampire-en .markdown-rendered .internal-link:hover {
     text-decoration-line: var(--link-decoration-hover) !important;
@@ -681,7 +681,7 @@ span.dice-roller {
 }
 
 
-/*  убрал лишние отступы у дисциплин и фактов биографии  */
+/*  Removed unnessesary margin for disciplines and backgrounds  */
 .statblock-item-container.property-container:has(> .discipline1_name), .statblock-item-container.property-container:has(> .discipline1_value),
 .statblock-item-container.property-container:has(> .discipline2_name), .statblock-item-container.property-container:has(> .discipline2_value),
 .statblock-item-container.property-container:has(> .discipline3_name), .statblock-item-container.property-container:has(> .discipline3_value),
@@ -698,14 +698,14 @@ span.dice-roller {
 }
 
 
-/*  чуть отцентрировал точки для дисциплин и фактов биографии  */
+/*  A little bit aligned the dots of disciplines and backgrounds  */
 .line.discipline1_value, .line.discipline2_value, .line.discipline3_value, .line.discipline4_value, .line.discipline5_value, .line.discipline6_value,
 .line.background1_value, .line.background2_value, .line.background3_value, .line.background4_value, .line.background5_value, .line.background6_value {
     margin-top: 1px;
 }
 
 
-/*  Убрал отступ справа у добродетелей, чтобы ровнее выглядело, и добавил отступы сверху */
+/*  Removed left margin and top margin for virtues  */
 .vtm-v20-vampire-en .line.conscience .property-name, .vtm-v20-vampire-en .line.selfcontrol .property-name, .vtm-v20-vampire-en .line.courage .property-name {
     margin-right: 0;
     width: var(--main-line-widht);
@@ -716,7 +716,7 @@ span.dice-roller {
 }
 
 
-/* Центрируются добродетели и их значения  */
+/*  Align virtues in one column  */
 .vtm-v20-vampire-en .statblock-item-container.property-container:has(.conscience, .selfcontrol, .courage) {
     display: flex;
     justify-content: center;
@@ -730,7 +730,7 @@ span.dice-roller {
 }
 
 
-/*  ограничение высоты строки на случай использования дайс роллера  */
+/*  Hardcode virtues line's height if Dice Rolled is used  */
 .vtm-v20-vampire-en .conscience {
     height: 30.09px;
 }
@@ -739,8 +739,7 @@ span.dice-roller {
 }
 
 
-
-/*  Заменяет стандартный разделитель на двойную стрелочку; нужно включить разделитель для группы в настройках лэйаута  */
+/*  Default D&D-style rule is replaced with bidirectional VtM arrow  */
 .vtm-v20-vampire-en .rule-container {
     content: none;
     margin-left: 10px;
@@ -760,7 +759,7 @@ span.dice-roller {
 
 
 /*  ===============================================================  */
-   /*  ДОСТОИНСТВА\НЕДОСТАТКИ, ЧЕЛОВЕЧНОСТЬ, ЗДОРОВЬЕ И ПРОЧЕЕ  */
+        /*  MERITS AND FLAWS, PATH, HEALTH AND OTHER STUFF  */
 /*  ===============================================================  */
 
 
@@ -769,7 +768,7 @@ span.dice-roller {
 }
 
 
-/*  Сделал из заголовков достоинств, недостатков, специализации, воли, крови, здоровья и изъянов обычный текст  */
+/*  Style for level 6 headers - merits, flaws, specialties, path, willpower, boold, health, clan weakness  */
 h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .property-text, h6.heading.willpower, h6.heading.bloodpool, h6.heading.Health, .line.weakness .property-name {
     font-weight: 700 !important;
     letter-spacing: 0;
@@ -782,60 +781,48 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Убрал отступы снизу для достоинств, недостатков, специализаций, воли, крови, здоровья и   */
+/*  Removed some unnessesary bottom margins  */
 .statblock-item-container.heading-container:has(.heading.statblock-heading.Merits), 
 .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws), 
 .statblock-item-container.heading-container:has(.heading.statblock-heading.willpower), 
 .statblock-item-container.property-container:has(.line.willpower_main), 
 .statblock-item-container.heading-container:has(.heading.statblock-heading.bloodpool), 
 .statblock-item-container.heading-container:has(.heading.statblock-heading.Health),
-.statblock-item-container.heading-container:has(.heading.statblock-heading.Specialties)
- {
+.statblock-item-container.heading-container:has(.heading.statblock-heading.Specialties) {
     margin-bottom: 0;
 }
-
 .merits-and-flaws-column {
     width: var(--main-line-widht);
     margin-bottom: 0px;
 }
-.merits-and-flaws-column:has(.property-container:empty), .merits-and-flaws-column:has(.flex-container:empty) {
-    display: none;
-}
-.statblock-item-container.heading-container.merits-and-flaws-column:has(.flex-container:empty) {
-    display: none;
-}
-.statblock-inline-item.group-container:has(.heading-container.merits-and-flaws-column:first-of-type .flex-container:empty):has(.merits-and-flaws-column:nth-child(8) .flex-container:empty) {
-    display: none;
-}
 
 
-
-/*  Убрал названия пропертей для достоинств и недостатков  */
+/*  Removed names of merits and flaws properties  */
 .line.merit1_name .property-name, .line.merit1_value .property-name, .line.merit2_name .property-name, .line.merit2_value .property-name, .line.merit3_name .property-name, .line.merit3_value .property-name, .line.merit4_name .property-name, .line.merit4_value .property-name, .line.merit5_name .property-name, .line.merit5_value .property-name, .line.merit6_name .property-name, .line.merit6_value .property-name, .line.merit7_name .property-name, .line.merit7_value .property-name,
 .line.flaw1_name .property-name, .line.flaw1_value .property-name, .line.flaw2_name .property-name, .line.flaw2_value .property-name, .line.flaw3_name .property-name, .line.flaw3_value .property-name, .line.flaw4_name .property-name, .line.flaw4_value .property-name, .line.flaw5_name .property-name, .line.flaw5_value .property-name, .line.flaw6_name .property-name, .line.flaw6_value .property-name, .line.flaw7_name .property-name, .line.flaw7_value .property-name {
     display: none;
 }
 
-/*  достоинства и недостатки выравниваются по левой стороне (и так выравниваются, но вылезают в центр, если две и больше строк)  */
+/*  Additionally align merits and flaws by left side, if one merit/flaw name has two lines  */
 .merit1_name, .merit2_name, .merit3_name, .merit4_name, .merit5_name, .merit6_name, .merit7_name,
 .flaw1_name, .flaw2_name, .flaw3_name, .flaw4_name, .flaw5_name, .flaw6_name, .flaw6_name {
     text-align: start;
 }
 
 
-/*  Убрал у достоинств и недостатков отступ снизу, чтобы строчки не были такими высокими  */
+/*  Removed bottm margin of merits and flaws, to reduce their lines height  */
 .property-container:has(> .merit1_name), .property-container:has(> .merit2_name), .property-container:has(> .merit3_name), .property-container:has(> .merit4_name), .property-container:has(> .merit5_name), .property-container:has(> .merit6_name), .property-container:has(> .merit7_name), .property-container:has(> .flaw1_name), .property-container:has(> .flaw2_name), .property-container:has(> .flaw3_name), .property-container:has(> .flaw4_name), .property-container:has(> .flaw5_name), .property-container:has(> .flaw6_name), .property-container:has(> .flaw7_name),
 .property-container:has(> .merit1_value), .property-container:has(> .merit2_value), .property-container:has(> .merit3_value), .property-container:has(> .merit4_value), .property-container:has(> .merit5_value), .property-container:has(> .merit6_value), .property-container:has(> .merit7_value), .property-container:has(> .flaw1_value), .property-container:has(> .flaw2_value), .property-container:has(> .flaw3_value), .property-container:has(> .flaw4_value), .property-container:has(> .flaw5_value), .property-container:has(> .flaw6_value), .property-container:has(> .flaw7_value) {
     margin-bottom: 0;
 }
 
-/*  Добавил плюсик для достоинств, обычный почему-то не рендерится  */
+/*  + symbol from a statblock doesn't render somehow, so I'll add it  */
 .flaw1_value .statblock-rendered-text-content::before, .flaw2_value .statblock-rendered-text-content::before, .flaw3_value .statblock-rendered-text-content::before, .flaw4_value .statblock-rendered-text-content::before, .flaw5_value .statblock-rendered-text-content::before, .flaw6_value .statblock-rendered-text-content::before, .flaw7_value .statblock-rendered-text-content::before {
     content: '+';
 }
 
 
-/*  Отступы сверху для недостатков, специализаций, воли и крови, изъянов, чтобы блоки как-то разделить  */
+/*  Additional margins for some areas here, to divide one area from another in one column  */
 .vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws), 
 .vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.willpower), 
 .vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.bloodpool), 
@@ -843,27 +830,27 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
     margin-top: 9px;
 }
 
-/*  если нет заголовка достоинства или недостатка, весь блок со стрелочками скрывается  */
+/*  If main headers of merits/flaws is empty or not exists, the whole area will be hidden  */
 .vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Merits .statblock-rendered-text-content:empty),
-.vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Merits .statblock-rendered-text-content:empty) {
+.vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws .statblock-rendered-text-content:empty) {
     display: none;
 } 
 
-/*  если нет заголовка достоинства, убирается большой отступ сверху у недостатков  */
+/*  If main header of merit is empty or not exists, the top margin of flaw's header will have default top margin  */
 .vtm-v20-vampire-en .statblock-item-container.heading-container.merits-and-flaws-column:has(.flex-container:empty)  ~ .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws),
 .vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Merits .statblock-rendered-text-content:empty) ~ .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws) {
     margin-top: 0px !important;
 }
 
 
-/*  ссылки в достоинствах и недостатках отображаются обычным цветом  */
+/*  If merits/flaws has links, they won't change color  */
 .merit1_name a, .merit2_name a, .merit3_name a, .merit4_name a, .merit5_name a, .merit6_name a,
 .flaw1_name a, .flaw2_name a, .flaw3_name a, .flaw4_name a, .flaw5_name a, .flaw6_name a {
     color: var(--statblock-font-color) !important;
     opacity: 1;
 }
 
-/*  Классные точки для человечности и воли  */
+/*  Beautiful dots for path and willpower  */
 .line.path_value .property-text, .line.willpower_main .property-text {
     font-size: 15px;
     font-family: "BigCircles";
@@ -873,7 +860,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Классные точки для воли, но для дайсов  */
+/*  Beautiful dots for path and willpower if Dice Roller is active  */
 .vtm-v20-vampire-en .willpower_main .dice-roller-result {
     font-size: 15px;
     font-family: "BigCircles";
@@ -884,7 +871,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Меняются цифры у крови и запаса воли на квадратики  */
+/*  Beautiful squares for bloodpool  */
 .line.blood .property-text, .line.blood_current2 .property-text, .line.blood_current3 .property-text, .line.blood_current4 .property-text, .line.willpower_current .property-text {
     font-size: 15px;
     font-family: "Squares";
@@ -894,7 +881,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Меняются цифры у крови на квадратики для дайсов  */
+/*  Beautiful squares for bloodpool if Dice Roller is active  */
 .vtm-v20-vampire-en .willpower_current .dice-roller-result {
     font-size: 15px;
     font-family: "Squares";

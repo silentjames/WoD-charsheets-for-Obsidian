@@ -48,7 +48,6 @@
 }
 
 
-
 /*  Равномерно и красиво разносятся текстовые поля в верхнем блоке, в зависимости от наличия фото и подписи к нему  */
 .group-container:has(> .general-text-info-column) {
     display: flex;
@@ -58,7 +57,7 @@
 
 
 
-/*  Базовые данные (клан, натура, и т.д.) и их значения красиво располагаются друг за другом  */
+/*  All base data (clan, generation, concept, etc) and their values are perfectly aligned one by one  */
 .vtm-v20-vampire-en .clan, .vtm-v20-vampire-en .generation, .vtm-v20-vampire-en .sire, .vtm-v20-vampire-en .nature, .vtm-v20-vampire-en .demeanor, .vtm-v20-vampire-en .concept {
     display: flex !important;
     justify-content: space-between;
@@ -72,38 +71,59 @@
 }
 
 
-/*  Базовые данные всегда по центру, независимо от того, какие поля заполнены  */
-.vtm-v20-vampire-en .general-text-info {
+
+/*  All base data columns are aligned in center no matter what  */
+.vtm-v20-vampire .general-text-info {
     justify-content: space-around;
 }
 
 
-/*  ссылки для натуры и маски не меняют цвет  */
+/*  Links for sire, nature, demeanor and concept concept don't change color  */
 .line.sire a, .line.nature a, .line.demeanor a, .line.concept a {
     color: var(--statblock-font-color);
 }
 
 
-/*  Сильно уменьшил размеры картинки, когда она увеличивается при наведении  */
-body:has(.vtm-v20-vampire-en) .popover.hover-popover:has(> .image-embed),
-body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.is-loaded {
+/*  All base data are divided by two columns (if 4 or more fileds are presented)  */
+.vtm-v20-vampire .group-container.general-text-info-column:has(> .info-group) {
+    display: grid;
+    grid-template-columns: repeat 2;
+    grid-template-rows: repeat(3, min-content);
+    grid-auto-flow: column;
+    column-gap: 30px;
+    justify-content: center;
+}
+/* if only 3 fields are presented */
+.vtm-v20-vampire .group-container.general-text-info-column:has(> .info-group) > .property-container:nth-last-child(3):first-child,
+.vtm-v20-vampire .group-container.general-text-info-column:has(> .info-group) > .property-container:nth-last-child(3):first-child ~ .property-container {
+    grid-column: 1 / 1;
+}
+/* if 4 fields */
+.vtm-v20-vampire .group-container.general-text-info-column:has(> .info-group) > .property-container:nth-last-child(3):nth-child(2) ~ .property-container {
+    grid-column: 2
+}
+
+
+/*  Increase the size of hovered images  */
+body:has(.vtm-v20-vampire) .popover.hover-popover:has(> .image-embed),
+body:has(.vtm-v20-vampire) .popover.hover-popover > .media-embed.image-embed.is-loaded {
     max-width: 70vh;
 }
 
 
-/*  фото центрируется, если подпись шире самого фото  */
-.vtm-v20-vampire-en .image-container .image {
+/*  Align the image by center if the image's title is bigger  */
+.vtm-v20-vampire .image-container .image {
     margin-left: auto;
     margin-right: auto;
 }
 
 
 /*  =====================================================  */
-              /*  ПРОСТОЙ ХЭДЕР ДЛЯ СТРАНИЦЫ  */
-/*  =====================================================  */   
+              /*  SIMPLE HEADER FOR THE PAGE  */
+/*  =====================================================  */      
 
 
-/*  если добавить cssclass: wod-header, то то весь сворачивающийся блок исчезает  */
+/*  if you add cssclass: wod-header to a note, everything under the title CHARACTER SHEET will be hidden  */
 .view-content:has(.wod-header) .vtm-v20-vampire-en .collapse-container,
 .popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .collapse-container {
     display: none;
@@ -141,18 +161,18 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 
 
 
-/*  =====================================================  */
-                 /*  СВОРАЧИВАЮЩЕЕСЯ МЕНЮ  */
-/*  =====================================================  */
+/*  ================================================  */
+                 /*  COLLAPSED AREA  */
+/*  ================================================  */
 
 
-/*  Уменьшил отступ у основного блока сворачивания  */
+/*  Reduce the bottom margin of the CHARACTER SHEET area  */
 .vtm-v20-vampire-en .statblock-item-container.collapse-container:has(> details) {
     margin-bottom: 0;
 }
 
 
-/*  Настройки заголовка для блока сворчивания  */
+/*  Some settings for the CHARACTER SHEET title  */
 .vtm-v20-vampire-en details > summary {
     margin-bottom: 7px !important;
     margin-left: 11px;
@@ -168,11 +188,11 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 }
 
 
-/*  Не отображается дефолтная стрелочка...  */
+/*  Hide default arrow for collapsed area  */
 .vtm-v20-vampire-en .handle {
     display: none;
 }
-/*  ...но подвинуть ее все равно надо  */
+/*  ...and move it a bit to prevent unnecessary clicks   */
 .vtm-v20-vampire-en .collapser {
     position: absolute !important;
     right: 200px !important;
@@ -181,7 +201,7 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 }
 
 
-/*  Стрелочки до и после заголовка  */
+/*  Arrows before and after CHARACTER SHEETS title  */
 .vtm-v20-vampire-en .collapser::before {
     content: var(--arrow-tip);
     width: 25px;
@@ -213,7 +233,7 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 }
 
 
-/*  символы кланов  */
+/*  Clans backgrounds  */
 .Assamite {
     background-image: var(--Assamite-background-logo);
     background-repeat: no-repeat;
@@ -455,7 +475,7 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 
 
 /*  =====================================================  */
-            /*  ХАРАКТЕРИСТИКИ И СПОСОБНОСТИ  */
+            /*  ATTRIBUTES AND ABILITIES  */
 /*  =====================================================  */
 
 
@@ -464,7 +484,7 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 }
 
 
-/* Центрируются заголовки четвертого уровня (характеристики, способности, и т.д.), добавляется пустое место и стрелочки */
+/*  Level 4 headers (attributes, abilities, advantages) are centered and a little bit modified, arrows added  */
 .vtm-v20-vampire-en h4.Attributes .statblock-rendered-text-content.inline, .vtm-v20-vampire-en h4.Abilities .statblock-rendered-text-content.inline, .vtm-v20-vampire-en h4.Advantages .statblock-rendered-text-content.inline { 
     width: 210px;
     text-align: center;
@@ -485,7 +505,7 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
     background-size: 660px;
 }
 
-/*  Центрируются заголовки шестого уровня (названия столбцов)  */
+/*  Level 6 headers (columns names) are centered  */
 .flex-container:has(> h6.statblock-heading) {
     justify-content: center;
 }

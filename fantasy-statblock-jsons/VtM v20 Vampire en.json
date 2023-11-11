@@ -1,6 +1,12 @@
 {
     "blocks": [
         {
+            "type": "javascript",
+            "id": "0b399a5ac929",
+            "conditioned": false,
+            "code": "async function sleep(ms) { // sleep function to fully load the page\nreturn new Promise(resolve => setTimeout(resolve, ms));}\nsleep(250).then(() => { \n\n// определяется клан, и каждому клану подставляется своя картинка на бэкграунд\nvar clanImage = document.querySelector(\".line.clan .statblock-rendered-text-content.inline\").innerHTML;\n\nconst collapsedColumn = document.querySelector('.vtm-v20-vampire-en .collapse-container'); // определяется зона, которой будет назначен бэкграунд \n\nswitch (clanImage) { // каждому клану назначается соответствующий класс \n\tcase ('Assamite'):\n\t\tcollapsedColumn.classList.add('Assamite'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase 'Brujah':\n\t\tcollapsedColumn.classList.add('Brujah'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n    case ('Followers of Set'):\n\t\tcollapsedColumn.classList.add('Followers-of-Set'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n    case 'Ventrue':\n\t\tcollapsedColumn.classList.add('Ventrue'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase 'Gangrel':\n\t\tcollapsedColumn.classList.add('Gangrel'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase 'Giovanni':\n\t\tcollapsedColumn.classList.add('Giovanni'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase 'Lasombra':\n\t\tcollapsedColumn.classList.add('Lasombra'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase 'Malkavian':\n\t\tcollapsedColumn.classList.add('Malkavian'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase 'Nosferatu':\n\t\tcollapsedColumn.classList.add('Nosferatu'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase ('Ravnos'):\n\t\tcollapsedColumn.classList.add('Ravnos'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase ('Salubri'):\n\t\tcollapsedColumn.classList.add('Salubri'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase ('Toreador'):\n\t\tcollapsedColumn.classList.add('Toreador'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase ('Tremere'):\n\t\tcollapsedColumn.classList.add('Tremere'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\tcase ('Tzimisce'):\n\t\tcollapsedColumn.classList.add('Tzimisce'); \n        document.querySelector(\".line.weakness > .property-text > .statblock-rendered-text-content.inline\").innerHTML = ''; break;\n\t}; \n\n\n\n\n\n// В зависимости от поколения, меняется значение траты крови в ход\nconst generation = document.querySelector(\".line.generation .statblock-rendered-text-content.inline\").innerHTML;\nswitch (generation) {\n\tcase '13':\n\t\tdocument.querySelector(\".line.blood_per_turn .statblock-rendered-text-content.inline\").innerHTML = '1'; break;\n\tcase '12':\n\t\tdocument.querySelector(\".line.blood_per_turn .statblock-rendered-text-content.inline\").innerHTML = '1'; break;\n\tcase '11':\n\t\tdocument.querySelector(\".line.blood_per_turn .statblock-rendered-text-content.inline\").innerHTML = '1'; break;\n\tcase '10':\n\t\tdocument.querySelector(\".line.blood_per_turn .statblock-rendered-text-content.inline\").innerHTML = '1'; break;\n\tcase '9':\n\t\tdocument.querySelector(\".line.blood_per_turn .statblock-rendered-text-content.inline\").innerHTML = '2'; break;\n\tcase '8':\n\t\tdocument.querySelector(\".line.blood_per_turn .statblock-rendered-text-content.inline\").innerHTML = '3'; break;\n}\n\n\nconst path = document.querySelector(\".line.path .statblock-rendered-text-content.inline\").innerHTML; // найти значение пути, человечность это или нет\n    if (path != ('HUMANITY')) { // если путь не человечность, то...\n        document.querySelector(\".line.bearing\").innerHTML = ''; // удаляется вся строчка \"Столп\"\n        var pathModifier = document.querySelector(\".line.path_value .statblock-rendered-text-content.inline\").innerHTML; // получаем количество точек в пути\n        if (pathModifier = 10) {\n            document.querySelector(\".line.path_value .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        }\n    } else {var pathModifier = document.querySelector(\".line.path_value .statblock-rendered-text-content.inline\").innerHTML; // получаем количество точек в пути\n            switch (pathModifier) {\n                case '10':\n                    document.querySelector(\".line.path_value .statblock-rendered-text-content.inline\").innerHTML = 'X';\n                case 'X':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy ( -2 )'; break;\n                case '9':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy ( -1 )'; break;\n                case '8': \n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy ( -1 )'; break;\n                case '7':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy'; break;\n                case '6':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy'; break;\n                case '5':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy'; break;\n                case '4':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy'; break;\n                case '3':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy ( +1 )'; break;\n                case '2':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy ( +1 )'; break;\n                case '1':\n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'Normalcy ( +2 )'; break;\n                default: \n                    document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML = 'You are the Beast!';\n                    if (document.querySelector(\".line.bearing .statblock-rendered-text-content.inline\").innerHTML === null) {\n                        console.log('bearing block is missing')\n                    }\n            }\n    } \n\n\n// Еще меняем всякие иксы на нормальные 10\nvar willpowerValue = document.querySelector(\".line.willpower_main .statblock-rendered-text-content.inline\").innerHTML; // для воли\n\tif (willpowerValue == '10') {\n\t\tdocument.querySelector(\".line.willpower_main .statblock-rendered-text-content.inline\").innerHTML = 'X';\n\t}\n\nvar willpowerCurrentValue = document.querySelector(\".line.willpower_current .statblock-rendered-text-content.inline\").innerHTML; // для запаса воли\n\tif (willpowerCurrentValue == '10') {\n\t\tdocument.querySelector(\".line.willpower_current .statblock-rendered-text-content.inline\").innerHTML = 'X';\n\t}\n\n// Глобальный пересчет крови, чтобы из одной цифры (от 1 до 40) добавлялись и отображались нужные строчки, а ненужные - скрывались\nconst bloodCurrent = document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML; // для крови, первая строчка\nconsole.log('значение крови = ' + bloodCurrent)\n\tif (bloodCurrent <= 9) {\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current2)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current3)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\"; \n        console.log('проверка на меньше девяти')\n    } else if (bloodCurrent == 10 || bloodCurrent == 'X') {\n\t\tdocument.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current2)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current3)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\"; \n        console.log('проверка на равенство десяти или иксу')\n    } else if (bloodCurrent < 20) {\n        const bloodCurrentTwo = bloodCurrent-10;\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current2 .statblock-rendered-text-content.inline\").innerHTML = bloodCurrentTwo;\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current3)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\";\n        console.log('проверка на меньше двадцати')\n    } else if (bloodCurrent == 20) {\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current2 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current3)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\";\n    } else if (bloodCurrent < 30) {\n        const bloodCurrentThree = bloodCurrent-20;\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current2 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current3 .statblock-rendered-text-content.inline\").innerHTML = bloodCurrentThree;\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\";\n    } else if (bloodCurrent == 30) {\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current2 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current3 .statblock-rendered-text-content.inline\").innerHTML = 'X';;\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\";\n    } else if (bloodCurrent < 40) {\n        const bloodCurrentFour = bloodCurrent-30;\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current2 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current3 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current4 .statblock-rendered-text-content.inline\").innerHTML = bloodCurrentFour;\n    } else if (bloodCurrent == '40') {\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current2 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current3 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".line.blood_current4 .statblock-rendered-text-content.inline\").innerHTML = 'X';\n    } else if (bloodCurrent >= 41) {\n        document.querySelector(\".line.blood .statblock-rendered-text-content.inline\").innerHTML = 'X';\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current2)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current3)\").innerHTML = \"\";\n        document.querySelector(\".statblock-item-container.property-container:has(> .line.blood_current4)\").innerHTML = \"\"; \n        document.querySelector(\".line.blood_per_turn\").innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrent + '.  Time to think about your Humanity!';\n    } else {\n        // do nothing\n    }\n\n\n// тут пробую запилить таки отображение в оглавлении\nif (typeof document.querySelector(\"h2\").innerHTML !== \"undefined\") {\n    var outlineName = document.querySelector(\"h2\").innerHTML }\nconst characterName = document.querySelector('h1 .statblock-rendered-text-content').innerHTML\n    if (outlineName.includes(characterName)) {\n        document.querySelector(\"h2\").innerHTML = \"\"\n    }\n\n\n// Разная обработка значений для характеристик, способностей и дисциплин\n        // Характеристики Физические\nvar valueStrength = document.querySelector(\".strength .statblock-rendered-text-content\").innerHTML;  // Сила\n    if (valueStrength == '-') {\n        document.querySelector(\".strength .statblock-rendered-text-content\").innerHTML = 1}    \n    if (valueStrength == 10) {\n        document.querySelector(\".strength .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueDexterity = document.querySelector(\".dexterity .statblock-rendered-text-content\").innerHTML;  // Ловкость\n    if (valueDexterity == '-') {\n        document.querySelector(\".dexterity .statblock-rendered-text-content\").innerHTML = 1}    \n    if (valueDexterity == 10) {\n        document.querySelector(\".dexterity .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueStamina = document.querySelector(\".stamina .statblock-rendered-text-content\").innerHTML;  // Выносливость\n    if (valueStamina == '-') {\n        document.querySelector(\".stamina .statblock-rendered-text-content\").innerHTML = 1} \n    if (valueStamina == 10) {\n        document.querySelector(\".stamina .statblock-rendered-text-content\").innerHTML = 'X'};\n\n        // Характеристики Социальные\nvar valueCharisma = document.querySelector(\".charisma .statblock-rendered-text-content\").innerHTML;  // Обаяние\n    if (valueCharisma == '-') {\n        document.querySelector(\".charisma .statblock-rendered-text-content\").innerHTML = 1}\n    if (valueCharisma == 10) {\n        document.querySelector(\".charisma .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueManipulation = document.querySelector(\".manipulation .statblock-rendered-text-content\").innerHTML;  // Манипуляция\n    if (valueManipulation == '-') {\n        document.querySelector(\".manipulation .statblock-rendered-text-content\").innerHTML = 1}\n    if (valueManipulation == 10) {\n        document.querySelector(\".manipulation .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".manipulation .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".manipulation .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n    \nvar valueAppearance = document.querySelector(\".appearance .statblock-rendered-text-content\").innerHTML;  // Привлекательность\n    if (valueAppearance == '-') {\n        document.querySelector(\".appearance .statblock-rendered-text-content\").innerHTML = 0;\n        document.querySelector(\".line.appearance .property-name\").style.textDecoration = \"line-through\"}\n    if (valueAppearance == 0) {\n        document.querySelector(\".line.appearance .property-name\").style.textDecoration = \"line-through\"}  \n    if (valueAppearance > 5) {\n        document.querySelector(\".appearance .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".appearance .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".appearance .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\n        // Характеристики Ментальные\nvar valuePerception = document.querySelector(\".perception .statblock-rendered-text-content\").innerHTML;  // Выносливость\n    if (valuePerception == '-') {\n        document.querySelector(\".perception .statblock-rendered-text-content\").innerHTML = 1} \n    if (valuePerception == 10) {\n        document.querySelector(\".perception .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueIntelligence = document.querySelector(\".intelligence .statblock-rendered-text-content\").innerHTML;  // Интеллект\n    if (valueIntelligence == '-') {\n        document.querySelector(\".intelligence .statblock-rendered-text-content\").innerHTML = 1} \n    if (valueIntelligence == 10) {\n        document.querySelector(\".intelligence .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueWits = document.querySelector(\".wits .statblock-rendered-text-content\").innerHTML;  // Смекалка\n    if (valueWits == '-') {\n        document.querySelector(\".wits .statblock-rendered-text-content\").innerHTML = 1} \n    if (valueWits == 10) {\n        document.querySelector(\".wits .statblock-rendered-text-content\").innerHTML = 'X'};\n\n\n        // Способности Таланты\nvar valueAthletics = document.querySelector(\".athletics .statblock-rendered-text-content\").innerHTML;  // Атлетика\n\tif (valueAthletics == '-') {\n\t\tdocument.querySelector(\".athletics .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueAthletics == 10) {\n        document.querySelector(\".athletics .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueAlertness = document.querySelector(\".alertness .statblock-rendered-text-content\").innerHTML;  // Бдительность\n\tif (valueAlertness == '-') {\n\t\tdocument.querySelector(\".alertness .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueAlertness > 9) {\n        document.querySelector(\".alertness .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".alertness .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".alertness .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueBrawl = document.querySelector(\".brawl .statblock-rendered-text-content\").innerHTML;  // Драка\n\tif (valueBrawl == '-') {\n\t\tdocument.querySelector(\".brawl .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueBrawl == 10) {\n        document.querySelector(\".brawl .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueIntimidation = document.querySelector(\".intimidation .statblock-rendered-text-content\").innerHTML;  // Запугивание\n\tif (valueIntimidation == '-') {\n\t\tdocument.querySelector(\".intimidation .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueIntimidation == 10) {\n        document.querySelector(\".intimidation .statblock-rendered-text-content\").innerHTML = X};\n\nvar valueExpression = document.querySelector(\".expression .statblock-rendered-text-content\").innerHTML;  // Красноречие\n\tif (valueExpression == '-') {\n\t\tdocument.querySelector(\".expression .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueExpression == 10) {\n        document.querySelector(\".expression .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueLeadership = document.querySelector(\".leadership .statblock-rendered-text-content\").innerHTML;  // Лидерство\n\tif (valueLeadership == '-') {\n\t\tdocument.querySelector(\".leadership .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueLeadership == 10) {\n        document.querySelector(\".leadership .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueStreetwise = document.querySelector(\".streetwise .statblock-rendered-text-content\").innerHTML;  // Уличное чутье\n\tif (valueStreetwise == '-') {\n\t\tdocument.querySelector(\".streetwise .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueAlertness > 9) {\n        document.querySelector(\".alertness .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".alertness .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".alertness .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueSubterfuge = document.querySelector(\".subterfuge .statblock-rendered-text-content\").innerHTML;  // Хитрость\n\tif (valueSubterfuge == '-') {\n\t\tdocument.querySelector(\".subterfuge .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueSubterfuge == 10) {\n        document.querySelector(\".subterfuge .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueAwareness = document.querySelector(\".awareness .statblock-rendered-text-content\").innerHTML;  // Шестое чувство\n\tif (valueAwareness == '-') {\n\t\tdocument.querySelector(\".awareness .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueAlertness > 7) {\n        document.querySelector(\".alertness .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".alertness .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".alertness .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueEmpathy = document.querySelector(\".empathy .statblock-rendered-text-content\").innerHTML;  // Эмпатия\n\tif (valueEmpathy == '-') {\n\t\tdocument.querySelector(\".empathy .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueEmpathy == 10) {\n        document.querySelector(\".empathy .statblock-rendered-text-content\").innerHTML = 'X'};\n    \n\n        // Способности Навыки\nvar valueDrive = document.querySelector(\".drive .statblock-rendered-text-content\").innerHTML;  // Вождение\n\tif (valueDrive == '-') {\n\t\tdocument.querySelector(\".drive .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueDrive == 10) {\n        document.querySelector(\".drive .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueLarceny = document.querySelector(\".larceny .statblock-rendered-text-content\").innerHTML;  // Воровство\n\tif (valueLarceny == '-') {\n\t\tdocument.querySelector(\".larceny .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueLarceny == 10) {\n        document.querySelector(\".larceny .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueSurvival = document.querySelector(\".survival .statblock-rendered-text-content\").innerHTML;  // Выживание\n\tif (valueSurvival == '-') {\n\t\tdocument.querySelector(\".survival .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueSurvival == 10) {\n        document.querySelector(\".survival .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valuePerformance = document.querySelector(\".performance .statblock-rendered-text-content\").innerHTML;  // Исполнение\n\tif (valuePerformance == '-') {\n\t\tdocument.querySelector(\".performance .statblock-rendered-text-content\").innerHTML = 0}\n    if (valuePerformance == 10) {\n        document.querySelector(\".performance .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueAnimalken = document.querySelector(\".animalken .statblock-rendered-text-content\").innerHTML;  // Обращение с животными\n\tif (valueAnimalken == '-') {\n\t\tdocument.querySelector(\".animalken .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueAnimalken > 6) {\n        document.querySelector(\".animalken .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".animalken .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".animalken .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueCrafts = document.querySelector(\".crafts .statblock-rendered-text-content\").innerHTML;  // Ремесло\n\tif (valueCrafts == '-') {\n\t\tdocument.querySelector(\".crafts .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueCrafts == 10) {\n        document.querySelector(\".crafts .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueStealth = document.querySelector(\".stealth .statblock-rendered-text-content\").innerHTML;  // Скрытность\n\tif (valueStealth == '-') {\n\t\tdocument.querySelector(\".stealth .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueStealth == 10) {\n        document.querySelector(\".stealth .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueFirearms = document.querySelector(\".firearms .statblock-rendered-text-content\").innerHTML;  // Стрельба\n\tif (valueFirearms == '-') {\n\t\tdocument.querySelector(\".firearms .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueFirearms == 10) {\n        document.querySelector(\".firearms .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueMelee = document.querySelector(\".melee .statblock-rendered-text-content\").innerHTML;  // Фехтование\n\tif (valueMelee == '-') {\n\t\tdocument.querySelector(\".melee .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueMelee == 10) {\n        document.querySelector(\".melee .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueEtiquette = document.querySelector(\".etiquette .statblock-rendered-text-content\").innerHTML;  // Этикет\n\tif (valueEtiquette == '-') {\n\t\tdocument.querySelector(\".etiquette .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueEtiquette == 10) {\n        document.querySelector(\".etiquette .statblock-rendered-text-content\").innerHTML = 'X'};\n\n\n       // Способности Навыки\nvar valueAcademics = document.querySelector(\".academics .statblock-rendered-text-content\").innerHTML;  // Гуманитарные науки\n\tif (valueAcademics == '-') {\n\t\tdocument.querySelector(\".academics .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueAcademics > 8) {\n        document.querySelector(\".academics .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".academics .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".academics .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueScience = document.querySelector(\".science .statblock-rendered-text-content\").innerHTML;  // Естественные науки\n\tif (valueScience == '-') {\n\t\tdocument.querySelector(\".science .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueScience > 8) {\n        document.querySelector(\".academics .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".academics .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".academics .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueLaw = document.querySelector(\".law .statblock-rendered-text-content\").innerHTML;  // Законы\n\tif (valueLaw == '-') {\n\t\tdocument.querySelector(\".law .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueLaw == 10) {\n        document.querySelector(\".law .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueComputer = document.querySelector(\".computer .statblock-rendered-text-content\").innerHTML;  // Информатика\n\tif (valueComputer == '-') {\n\t\tdocument.querySelector(\".computer .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueComputer > 8) {\n        document.querySelector(\".computer .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".computer .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".computer .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueMedicine = document.querySelector(\".medicine .statblock-rendered-text-content\").innerHTML;  // Медицина\n\tif (valueMedicine == '-') {\n\t\tdocument.querySelector(\".medicine .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueMedicine == 10) {\n        document.querySelector(\".medicine .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueOccult = document.querySelector(\".occult .statblock-rendered-text-content\").innerHTML;  // Оккультизм\n\tif (valueOccult == '-') {\n\t\tdocument.querySelector(\".occult .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueOccult == 10) {\n        document.querySelector(\".occult .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valuePolitics = document.querySelector(\".politics .statblock-rendered-text-content\").innerHTML;  // Политика\n\tif (valuePolitics == '-') {\n\t\tdocument.querySelector(\".politics .statblock-rendered-text-content\").innerHTML = 0}\n    if (valuePolitics == 10) {\n        document.querySelector(\".politics .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueInvestigation = document.querySelector(\".investigation .statblock-rendered-text-content\").innerHTML;  // Расследование\n\tif (valueInvestigation == '-') {\n\t\tdocument.querySelector(\".investigation .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueInvestigation > 8) {\n        document.querySelector(\".investigation .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".investigation .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".investigation .property-text\").style.margin = \"-2px 0px 0px 0px\"};\n\nvar valueFinance = document.querySelector(\".finance .statblock-rendered-text-content\").innerHTML;  // Финансы\n\tif (valueFinance == '-') {\n\t\tdocument.querySelector(\".finance .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueFinance == 10) {\n        document.querySelector(\".finance .statblock-rendered-text-content\").innerHTML = 'X'};\n\nvar valueTechnology = document.querySelector(\".technology .statblock-rendered-text-content\").innerHTML;  // Электроника\n\tif (valueTechnology == '-') {\n\t\tdocument.querySelector(\".technology .statblock-rendered-text-content\").innerHTML = 0}\n    if (valueTechnology == 10) {\n        document.querySelector(\".technology .statblock-rendered-text-content\").innerHTML = 'X'};\n\n\n       // Дисциплины\n\n// первая дисциплина\nvar valueDisсiplineOneName = document.querySelector(\".discipline1_name .statblock-rendered-text-content\").innerHTML; // находим имя дисциплины\nconsole.log(valueDisсiplineOneName)\nvar valueDisсiplineOneValue = document.querySelector(\".discipline1_value .statblock-rendered-text-content\").innerHTML; // находим количество точек\n    if (valueDisсiplineOneName.startsWith(\"<a data\")) {   // если в названии дисциплины есть ссылка...\n        console.log(valueDisсiplineOneName + ' - ето проверка на ссылку')\n        var valueDisсiplineOneName = document.querySelector(\".discipline1_name .statblock-rendered-text-content > a\").innerHTML //  ... то в ссылке находим имя\n        if (valueDisсiplineOneName.trim().length > 11 && valueDisсiplineOneValue > 9) { // дальше проверки на длину имени \n            document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\"; // и замену точек на цифры, если имя слишком длинное\n            document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineOneName.trim().length > 12 && valueDisсiplineOneValue > 8) { \n            document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineOneName.trim().length > 13 && valueDisсiplineOneValue > 7) {\n            document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineOneName.trim().length > 14 && valueDisсiplineOneValue > 6) {\n            document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineOneName.trim().length > 15 && valueDisсiplineOneValue > 5) {   // дальше пяти смысла нет проверять\n            document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}}\n    if (valueDisсiplineOneName.trim().length > 11 && valueDisсiplineOneValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки\n        document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineOneName.trim().length > 12 && valueDisсiplineOneValue > 8) {\n        document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineOneName.trim().length > 13 && valueDisсiplineOneValue > 7) {\n        document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineOneName.trim().length > 14 && valueDisсiplineOneValue > 6) {\n        document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineOneName.trim().length > 15 && valueDisсiplineOneValue > 5) {   \n        document.querySelector(\".discipline1_value .property-text\").style.fontSize = \"14px\";  \n        document.querySelector(\".discipline1_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline1_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    console.log(valueDisсiplineOneName + ' - ето общая проверка')\n\n\n// вторая дисциплина\nvar valueDisсiplineTwoName = document.querySelector(\".discipline2_name .statblock-rendered-text-content\").innerHTML; // находим имя дисциплины\nvar valueDisсiplineTwoValue = document.querySelector(\".discipline2_value .statblock-rendered-text-content\").innerHTML; // находим количество точек\n    if (valueDisсiplineTwoName.startsWith(\"<a data\")) {   // если в названии дисциплины есть ссылка...\n        var valueDisсiplineTwoName = document.querySelector(\".discipline2_name .statblock-rendered-text-content > a\").innerHTML //  ... то в ссылке находим имя\n        if (valueDisсiplineTwoName.trim().length > 11 && valueDisсiplineTwoValue > 9) { // дальше проверки на длину имени \n            document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\"; // и замену точек на цифры, если имя слишком длинное\n            document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineTwoName.trim().length > 12 && valueDisсiplineTwoValue > 8) { \n            document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineTwoName.trim().length > 13 && valueDisсiplineTwoValue > 7) {\n            document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineTwoName.trim().length > 14 && valueDisсiplineTwoValue > 6) {\n            document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineTwoName.trim().length > 15 && valueDisсiplineTwoValue > 5) {   // дальше пяти смысла нет проверять\n            document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}}\n    if (valueDisсiplineTwoName.trim().length > 11 && valueDisсiplineTwoValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки\n        document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineTwoName.trim().length > 12 && valueDisсiplineTwoValue > 8) {\n        document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineTwoName.trim().length > 13 && valueDisсiplineTwoValue > 7) {\n        document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineTwoName.trim().length > 14 && valueDisсiplineTwoValue > 6) {\n        document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineTwoName.trim().length > 15 && valueDisсiplineTwoValue > 5) {   \n        document.querySelector(\".discipline2_value .property-text\").style.fontSize = \"14px\";  \n        document.querySelector(\".discipline2_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline2_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    \n\n// третья дисциплина\nvar valueDisсiplineThreeName = document.querySelector(\".discipline3_name .statblock-rendered-text-content\").innerHTML; // находим имя дисциплины\nvar valueDisсiplineThreeValue = document.querySelector(\".discipline3_value .statblock-rendered-text-content\").innerHTML; // находим количество точек\n    if (valueDisсiplineThreeName.startsWith(\"<a data\")) {   // если в названии дисциплины есть ссылка...\n        var valueDisсiplineThreeName = document.querySelector(\".discipline3_name .statblock-rendered-text-content > a\").innerHTML //  ... то в ссылке находим имя\n        if (valueDisсiplineThreeName.trim().length > 11 && valueDisсiplineThreeValue > 9) { // дальше проверки на длину имени \n            document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\"; // и замену точек на цифры, если имя слишком длинное\n            document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineThreeName.trim().length > 12 && valueDisсiplineThreeValue > 8) { \n            document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineThreeName.trim().length > 13 && valueDisсiplineThreeValue > 7) {\n            document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineThreeName.trim().length > 14 && valueDisсiplineThreeValue > 6) {\n            document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineThreeName.trim().length > 15 && valueDisсiplineThreeValue > 5) {   // дальше пяти смысла нет проверять\n            document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}}\n    if (valueDisсiplineThreeName.trim().length > 11 && valueDisсiplineThreeValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки\n        document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineThreeName.trim().length > 12 && valueDisсiplineThreeValue > 8) {\n        document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineThreeName.trim().length > 13 && valueDisсiplineThreeValue > 7) {\n        document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineThreeName.trim().length > 14 && valueDisсiplineThreeValue > 6) {\n        document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineThreeName.trim().length > 15 && valueDisсiplineThreeValue > 5) {   \n        document.querySelector(\".discipline3_value .property-text\").style.fontSize = \"14px\";  \n        document.querySelector(\".discipline3_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline3_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n\n\n// четвертая дисциплина\nvar valueDisсiplineFourName = document.querySelector(\".discipline4_name .statblock-rendered-text-content\").innerHTML; // находим имя дисциплины\nvar valueDisсiplineFourValue = document.querySelector(\".discipline4_value .statblock-rendered-text-content\").innerHTML; // находим количество точек\n    if (valueDisсiplineFourName.startsWith(\"<a data\")) {   // если в названии дисциплины есть ссылка...\n        var valueDisсiplineFourName = document.querySelector(\".discipline4_name .statblock-rendered-text-content > a\").innerHTML //  ... то в ссылке находим имя\n        if (valueDisсiplineFourName.trim().length > 11 && valueDisсiplineFourValue > 9) { // дальше проверки на длину имени \n            document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\"; // и замену точек на цифры, если имя слишком длинное\n            document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFourName.trim().length > 12 && valueDisсiplineFourValue > 8) { \n            document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFourName.trim().length > 13 && valueDisсiplineFourValue > 7) {\n            document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFourName.trim().length > 14 && valueDisсiplineFourValue > 6) {\n            document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFourName.trim().length > 15 && valueDisсiplineFourValue > 5) {   // дальше пяти смысла нет проверять\n            document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}}\n    if (valueDisсiplineFourName.trim().length > 11 && valueDisсiplineFourValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки\n        document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFourName.trim().length > 12 && valueDisсiplineFourValue > 8) {\n        document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFourName.trim().length > 13 && valueDisсiplineFourValue > 7) {\n        document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFourName.trim().length > 14 && valueDisсiplineFourValue > 6) {\n        document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFourName.trim().length > 15 && valueDisсiplineFourValue > 5) {   \n        document.querySelector(\".discipline4_value .property-text\").style.fontSize = \"14px\";  \n        document.querySelector(\".discipline4_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline4_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n\n\n// пятая дисциплина\nvar valueDisсiplineFiveName = document.querySelector(\".discipline5_name .statblock-rendered-text-content\").innerHTML; // находим имя дисциплины\nvar valueDisсiplineFiveValue = document.querySelector(\".discipline5_value .statblock-rendered-text-content\").innerHTML; // находим количество точек\n    if (valueDisсiplineFiveName.startsWith(\"<a data\")) {   // если в названии дисциплины есть ссылка...\n        var valueDisсiplineFiveName = document.querySelector(\".discipline5_name .statblock-rendered-text-content > a\").innerHTML //  ... то в ссылке находим имя\n        if (valueDisсiplineFiveName.trim().length > 11 && valueDisсiplineFiveValue > 9) { // дальше проверки на длину имени \n            document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\"; // и замену точек на цифры, если имя слишком длинное\n            document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFiveName.trim().length > 12 && valueDisсiplineFiveValue > 8) { \n            document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFiveName.trim().length > 13 && valueDisсiplineFiveValue > 7) {\n            document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFiveName.trim().length > 14 && valueDisсiplineFiveValue > 6) {\n            document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineFiveName.trim().length > 15 && valueDisсiplineFiveValue > 5) {   // дальше пяти смысла нет проверять\n            document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}}\n    if (valueDisсiplineFiveName.trim().length > 11 && valueDisсiplineFiveValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки\n        document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFiveName.trim().length > 12 && valueDisсiplineFiveValue > 8) {\n        document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFiveName.trim().length > 13 && valueDisсiplineFiveValue > 7) {\n        document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFiveName.trim().length > 14 && valueDisсiplineFiveValue > 6) {\n        document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineFiveName.trim().length > 15 && valueDisсiplineFiveValue > 5) {   \n        document.querySelector(\".discipline5_value .property-text\").style.fontSize = \"14px\";  \n        document.querySelector(\".discipline5_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline5_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n\n\n// шестая дисциплина\nvar valueDisсiplineSixName = document.querySelector(\".discipline6_name .statblock-rendered-text-content\").innerHTML; // находим имя дисциплины\nvar valueDisсiplineSixValue = document.querySelector(\".discipline6_value .statblock-rendered-text-content\").innerHTML; // находим количество точек\n    if (valueDisсiplineSixName.startsWith(\"<a data\")) {   // если в названии дисциплины есть ссылка...\n        var valueDisсiplineSixName = document.querySelector(\".discipline6_name .statblock-rendered-text-content > a\").innerHTML //  ... то в ссылке находим имя\n        if (valueDisсiplineSixName.trim().length > 11 && valueDisсiplineSixValue > 9) { // дальше проверки на длину имени \n            document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\"; // и замену точек на цифры, если имя слишком длинное\n            document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineSixName.trim().length > 12 && valueDisсiplineSixValue > 8) { \n            document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineSixName.trim().length > 13 && valueDisсiplineSixValue > 7) {\n            document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineSixName.trim().length > 14 && valueDisсiplineSixValue > 6) {\n            document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";\n            document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n        if (valueDisсiplineSixName.trim().length > 15 && valueDisсiplineSixValue > 5) {   // дальше пяти смысла нет проверять\n            document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";  \n            document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n            document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}}\n    if (valueDisсiplineSixName.trim().length > 11 && valueDisсiplineSixValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки\n        document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineSixName.trim().length > 12 && valueDisсiplineSixValue > 8) {\n        document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineSixName.trim().length > 13 && valueDisсiplineSixValue > 7) {\n        document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineSixName.trim().length > 14 && valueDisсiplineSixValue > 6) {\n        document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";\n        document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n    if (valueDisсiplineSixName.trim().length > 15 && valueDisсiplineSixValue > 5) {   \n        document.querySelector(\".discipline6_value .property-text\").style.fontSize = \"14px\";  \n        document.querySelector(\".discipline6_value .property-text\").style.fontFamily = \"Marta\";\n        document.querySelector(\".discipline6_value .property-text\").style.margin = \"-2px 0px 0px 0px\"}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n})\n\n\n\n\n//                  ## Планы-задум_очки ##\n//\\\\ 1. Превращать пустоту в нули для характеристик и способностей [DONE]\n//\\\\ 2. Переделать лейаут: [DONE]\n//\\\\\t\t- изъян отдельно по центру; [DONE]\n//\\\\\t\t- специализация под здоровьем; [DONE]\n//\\\\ \t\t- достоинства, недостатки, специализацию (а также, возможно, основную волю и первую строчку крови) переделать в проперти [DONE]\n//\\\\ 3. Попробовать сделать слэш в совести и самоконтроле побольше [skip]\n//\\\\ 4. Автоматические изъяны для каждого клана? [DONE]\n//\\\\ 5. Сделать ссылки на дисциплины? Точней, лучше добавить правило обработки ссылок, если это они [DONE]\n//\\\\ 6. Мегахитрость, чтобы запасы крови можно было вводить одним числом, а не бить на четыре строчки? [DONE]\n//\\\\ 7. В шрифте с маленькими кружками вернуть на место цифры с 6 по 9? и запилить Х на десятку? Даже не цифры можно вернуть, а просто добавлять кружочки. [DONE]\n//\\\\      - собсно кружочки [DONE]\n//\\\\      - 10 вместо Х [DONE]\n//\\\\      - цифры вместо кружочков для некоторых характеристик, а то не влезет ни пса [DONE]\n//\\\\             font-size: 14px;\n//\\\\             font-family: \"Marta\";\n//\\\\             margin-top: -2px !important;\n//\\\\      - а для дисциплин можно символы считать, и если их больше скольких-то, а значение больше 5-7 - то уже превращать в цифры\n//\\\\      - ограничения для добродетелей, чтоб не больше 5, надо или нафиг? [skip]\n//\\\\ 8. Все-таки что-то не так с отображением модификатора человечности, если путь - не человечность. [DONE]\n//\\\\ 9. Стрелочки для достоинств, недостаток, крови, воли, и так далее. [DONE]\n// 10. Надо таки найти какой-то код для ховера, дефолтный совсем ублюдский - или разобраться, чем я сломал дефолтный)\n// 11. Еще бы понять, как запихнуть скрипт в любую папку, а не только внутре обсидиана."
+        },
+        {
             "type": "inline",
             "id": "f83a38d83998",
             "properties": [],
@@ -38,82 +44,90 @@
                             ]
                         },
                         {
-                            "type": "group",
-                            "id": "2be98b787a6a",
+                            "type": "inline",
+                            "id": "582b492889d9",
                             "properties": [],
                             "nested": [
                                 {
-                                    "type": "property",
-                                    "id": "686b7868db6b",
-                                    "properties": [
-                                        "clan"
-                                    ],
-                                    "fallback": "-",
-                                    "conditioned": true,
-                                    "display": "Клан:",
-                                    "markdown": true
+                                    "type": "group",
+                                    "id": "193b4a594af9",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "property",
+                                            "id": "1a6a3869d928",
+                                            "properties": [
+                                                "clan"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Clan:",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "baaa8a9a3bfb",
+                                            "properties": [
+                                                "generation"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Generation:",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "e9780b2a6889",
+                                            "properties": [
+                                                "sire"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Sire:",
+                                            "conditioned": true
+                                        }
+                                    ]
                                 },
                                 {
-                                    "type": "property",
-                                    "id": "a91979dbb978",
-                                    "properties": [
-                                        "generation"
-                                    ],
-                                    "fallback": "-",
-                                    "display": "Поколение:",
-                                    "markdown": true,
-                                    "conditioned": true
-                                },
-                                {
-                                    "type": "property",
-                                    "id": "f908d8cadb9a",
-                                    "properties": [
-                                        "sire"
-                                    ],
-                                    "fallback": "-",
-                                    "conditioned": true,
-                                    "markdown": true,
-                                    "display": "Сир:"
-                                },
-                                {
-                                    "type": "property",
-                                    "id": "5a8b68793ad8",
-                                    "properties": [
-                                        "nature"
-                                    ],
-                                    "fallback": "-",
-                                    "conditioned": true,
-                                    "markdown": true,
-                                    "display": "Натура:"
-                                },
-                                {
-                                    "type": "property",
-                                    "id": "ca4bb89b584a",
-                                    "properties": [
-                                        "demeanor"
-                                    ],
-                                    "fallback": "-",
-                                    "conditioned": true,
-                                    "markdown": true,
-                                    "display": "Маска:"
-                                },
-                                {
-                                    "type": "property",
-                                    "id": "0b3ba91959d8",
-                                    "properties": [
-                                        "concept"
-                                    ],
-                                    "fallback": "-",
-                                    "conditioned": true,
-                                    "markdown": true,
-                                    "display": "Амплуа:"
+                                    "type": "group",
+                                    "id": "080a183ba95a",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "property",
+                                            "id": "2a7b79291928",
+                                            "properties": [
+                                                "nature"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Nature:",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "da09e81ae89a",
+                                            "properties": [
+                                                "demeanor"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Demeanor:",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "2bd90bbbd8ea",
+                                            "properties": [
+                                                "concept"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Concept:",
+                                            "conditioned": true
+                                        }
+                                    ]
                                 }
                             ],
-                            "cls": "info-group"
+                            "cls": ""
                         }
                     ],
                     "hasRule": false,
-                    "cls": "general-text-info-column"
+                    "cls": "general-text-info"
                 },
                 {
                     "type": "group",
@@ -141,7 +155,7 @@
                         }
                     ],
                     "heading": "",
-                    "cls": "image-main-block"
+                    "cls": "image-main"
                 },
                 {
                     "type": "group",
@@ -168,17 +182,17 @@
                             "conditioned": true
                         }
                     ],
-                    "cls": "image-alt-block"
+                    "cls": "image-alt"
                 }
             ],
             "hasRule": false,
             "heading": "",
-            "cls": "general-info-group"
+            "cls": "general-info"
         },
         {
             "type": "collapse",
             "id": "9858d8ca4a6b",
-            "heading": "Лист персонажа",
+            "heading": "Character Sheet",
             "hasRule": false,
             "conditioned": false,
             "nested": [
@@ -200,7 +214,7 @@
                                     ],
                                     "size": 4,
                                     "fallback": "-",
-                                    "conditioned": true
+                                    "conditioned": false
                                 },
                                 {
                                     "type": "inline",
@@ -216,13 +230,11 @@
                                                     "type": "heading",
                                                     "id": "49fa2858e85b",
                                                     "properties": [
-                                                        "Physical"
+                                                        "physical"
                                                     ],
                                                     "size": 6,
                                                     "fallback": "-",
-                                                    "conditioned": false,
-                                                    "dice": false,
-                                                    "diceCallback": ""
+                                                    "conditioned": false
                                                 },
                                                 {
                                                     "type": "property",
@@ -231,11 +243,8 @@
                                                         "Strength"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Сила",
-                                                    "diceCallback": "return [{ text: monster.Strength + 'd10>=6=-1sa\\|none|noform|nodice|text(' + monster.Strength +')' }]",
-                                                    "dice": true,
-                                                    "callback": ""
+                                                    "conditioned": false,
+                                                    "display": "Strength"
                                                 },
                                                 {
                                                     "type": "property",
@@ -244,11 +253,8 @@
                                                         "Dexterity"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Ловкость",
-                                                    "conditioned": true,
-                                                    "dice": true,
-                                                    "diceCallback": "return [{ text: monster.Dexterity + 'd10>=6=-1sa\\|none|noform|nodice|text(' + monster.Dexterity +')' }]",
-                                                    "callback": ""
+                                                    "display": "Dexterity",
+                                                    "conditioned": false
                                                 },
                                                 {
                                                     "type": "property",
@@ -257,14 +263,11 @@
                                                         "Stamina"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Выносливость",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.Stamina + 'd10|none|noform|nodice|text(' + monster.Stamina +')' }]",
-                                                    "dice": true
+                                                    "display": "Stamina",
+                                                    "conditioned": false
                                                 }
                                             ],
-                                            "heading": "",
-                                            "cls": "physical-column"
+                                            "heading": ""
                                         },
                                         {
                                             "type": "group",
@@ -275,7 +278,7 @@
                                                     "type": "heading",
                                                     "id": "4b3a6bab68db",
                                                     "properties": [
-                                                        "Social"
+                                                        "social"
                                                     ],
                                                     "size": 6,
                                                     "fallback": "-",
@@ -288,10 +291,9 @@
                                                         "Charisma"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Обаяние",
-                                                    "conditioned": true,
-                                                    "dice": true,
-                                                    "diceCallback": "return [{ text: monster.Charisma + 'd10|none|noform|nodice|text(' + monster.Charisma +')' }]"
+                                                    "display": "Charisma",
+                                                    "conditioned": false,
+                                                    "dice": false
                                                 },
                                                 {
                                                     "type": "property",
@@ -300,10 +302,8 @@
                                                         "Manipulation"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Манипуляция",
-                                                    "diceCallback": "return [{ text: monster.Manipulation + 'd10|none|noform|nodice|text(' + monster.Manipulation +')' }]",
-                                                    "dice": true
+                                                    "conditioned": false,
+                                                    "display": "Manipulation"
                                                 },
                                                 {
                                                     "type": "property",
@@ -312,14 +312,11 @@
                                                         "Appearance"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Привлекательность",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.Appearance + 'd10|none|noform|nodice|text(' + monster.Appearance +')' }]",
-                                                    "dice": true
+                                                    "display": "Appearance",
+                                                    "conditioned": false
                                                 }
                                             ],
-                                            "heading": "",
-                                            "cls": "social-column"
+                                            "heading": ""
                                         },
                                         {
                                             "type": "group",
@@ -330,7 +327,7 @@
                                                     "type": "heading",
                                                     "id": "0a5a2b3be838",
                                                     "properties": [
-                                                        "Mental"
+                                                        "mental"
                                                     ],
                                                     "size": 6,
                                                     "fallback": "-",
@@ -343,11 +340,11 @@
                                                         "Perception"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Восприятие",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.Perception + 'd10|none|noform|nodice|text(' + monster.Perception +')' }]",
-                                                    "dice": true,
-                                                    "diceProperty": ""
+                                                    "display": "Perception",
+                                                    "conditioned": false,
+                                                    "diceCallback": "",
+                                                    "dice": false,
+                                                    "diceProperty": "d10"
                                                 },
                                                 {
                                                     "type": "property",
@@ -356,10 +353,8 @@
                                                         "Intelligence"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Интеллект",
-                                                    "dice": true,
-                                                    "diceCallback": "return [{ text: monster.Intelligence + 'd10|none|noform|nodice|text(' + monster.Intelligence +')' }]"
+                                                    "conditioned": false,
+                                                    "display": "Intelligence"
                                                 },
                                                 {
                                                     "type": "property",
@@ -368,23 +363,19 @@
                                                         "Wits"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Смекалка",
-                                                    "diceCallback": "return [{ text: monster.Wits + 'd10|none|noform|nodice|text(' + monster.Wits +')' }]",
-                                                    "dice": true
+                                                    "conditioned": false,
+                                                    "display": "Wits"
                                                 }
                                             ],
-                                            "heading": "",
-                                            "cls": "mental-column"
+                                            "heading": ""
                                         }
                                     ],
-                                    "cls": "",
+                                    "cls": "attributes-group",
                                     "heading": ""
                                 }
                             ],
                             "hasRule": false,
-                            "heading": "",
-                            "cls": "attributes-group"
+                            "heading": ""
                         },
                         {
                             "type": "group",
@@ -423,100 +414,23 @@
                                                 },
                                                 {
                                                     "type": "property",
-                                                    "id": "ead8883848e8",
-                                                    "properties": [
-                                                        "athletics"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Атлетика",
-                                                    "dice": true,
-                                                    "diceCallback": "return [{ text: monster.athletics + 'd10|none|noform|nodice|text(' + monster.athletics +')' }]"
-                                                },
-                                                {
-                                                    "type": "property",
                                                     "id": "a9896808082a",
                                                     "properties": [
                                                         "alertness"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Бдительность",
-                                                    "conditioned": true,
-                                                    "dice": true,
-                                                    "diceCallback": "return [{ text: monster.alertness + 'd10|none|noform|nodice|text(' + monster.alertness +')' }]"
+                                                    "display": "Alertness",
+                                                    "conditioned": false
                                                 },
                                                 {
                                                     "type": "property",
-                                                    "id": "08eb58a9f8e9",
+                                                    "id": "ead8883848e8",
                                                     "properties": [
-                                                        "brawl"
+                                                        "athletics"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Драка",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.brawl + 'd10|none|noform|nodice|text(' + monster.brawl +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "6b2b9bea2b2a",
-                                                    "properties": [
-                                                        "intimidation"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "display": "Запугивание",
-                                                    "conditioned": true,
-                                                    "dice": true,
-                                                    "diceCallback": "return [{ text: monster.intimidation + 'd10|none|noform|nodice|text(' + monster.intimidation +')' }]",
-                                                    "hasRule": false
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "f8f8d9b97899",
-                                                    "properties": [
-                                                        "expression"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "display": "Красноречие",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.expression + 'd10|none|noform|nodice|text(' + monster.expression +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "e9dbd9587bd8",
-                                                    "properties": [
-                                                        "leadership"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "display": "Лидерство",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.leadership + 'd10|none|noform|nodice|text(' + monster.leadership +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "5b4aba486919",
-                                                    "properties": [
-                                                        "streetwise"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Уличное чутьё",
-                                                    "diceCallback": "return [{ text: monster.streetwise + 'd10|none|noform|nodice|text(' + monster.streetwise +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "58fb698a39da",
-                                                    "properties": [
-                                                        "subterfuge"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "display": "Хитрость",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.subterfuge + 'd10|none|noform|nodice|text(' + monster.subterfuge +')' }]",
-                                                    "dice": true
+                                                    "conditioned": false,
+                                                    "display": "Athletics"
                                                 },
                                                 {
                                                     "type": "property",
@@ -525,10 +439,18 @@
                                                         "awareness"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Шестое чувство",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.awareness + 'd10|none|noform|nodice|text(' + monster.awareness +')' }]",
-                                                    "dice": true
+                                                    "display": "Awareness",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "08eb58a9f8e9",
+                                                    "properties": [
+                                                        "brawl"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Brawl",
+                                                    "conditioned": false
                                                 },
                                                 {
                                                     "type": "property",
@@ -537,42 +459,70 @@
                                                         "empathy"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Эмпатия",
-                                                    "diceCallback": "return [{ text: monster.empathy + 'd10|none|noform|nodice|text(' + monster.empathy +')' }]",
-                                                    "dice": true
+                                                    "conditioned": false,
+                                                    "display": "Empathy"
                                                 },
                                                 {
-                                                    "type": "inline",
-                                                    "id": "6a7b1b7bcb4a",
-                                                    "properties": [],
-                                                    "nested": [
-                                                        {
-                                                            "type": "property",
-                                                            "id": "0889fa2bea8b",
-                                                            "properties": [
-                                                                "new_talent"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "display": "",
-                                                            "conditioned": true
-                                                        },
-                                                        {
-                                                            "type": "property",
-                                                            "id": "1b29e92a5898",
-                                                            "properties": [
-                                                                "new_talent_value"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true,
-                                                            "diceCallback": "return [{ text: monster.new_talent_value + 'd10|none|noform|nodice|text(' + monster.new_talent_value +')' }]",
-                                                            "dice": true
-                                                        }
+                                                    "type": "property",
+                                                    "id": "f8f8d9b97899",
+                                                    "properties": [
+                                                        "expression"
                                                     ],
-                                                    "cls": "new-talent-line"
+                                                    "fallback": "-",
+                                                    "display": "Expression",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "6b2b9bea2b2a",
+                                                    "properties": [
+                                                        "intimidation"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Intimidation",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "e9dbd9587bd8",
+                                                    "properties": [
+                                                        "leadership"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Leadership",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "5b4aba486919",
+                                                    "properties": [
+                                                        "streetwise"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Streetwise"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "58fb698a39da",
+                                                    "properties": [
+                                                        "subterfuge"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Subterfuge",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "0889fa2bea8b",
+                                                    "properties": [
+                                                        "empty_talent"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "________",
+                                                    "conditioned": true
                                                 }
-                                            ],
-                                            "cls": "talents-column"
+                                            ]
                                         },
                                         {
                                             "type": "group",
@@ -591,64 +541,13 @@
                                                 },
                                                 {
                                                     "type": "property",
-                                                    "id": "49db69f88a8a",
-                                                    "properties": [
-                                                        "drive"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Вождение",
-                                                    "diceCallback": "return [{ text: monster.drive + 'd10|none|noform|nodice|text(' + monster.drive +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "4b9adb2a7808",
-                                                    "properties": [
-                                                        "larceny"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Воровство",
-                                                    "diceCallback": "return [{ text: monster.larceny + 'd10|none|noform|nodice|text(' + monster.larceny +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "a9dae9982aba",
-                                                    "properties": [
-                                                        "survival"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "display": "Выживание",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.survival + 'd10|none|noform|nodice|text(' + monster.survival +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "394ac9cba8cb",
-                                                    "properties": [
-                                                        "performance"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "display": "Исполнение",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.performance + 'd10|none|noform|nodice|text(' + monster.performance +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
                                                     "id": "ba29c9da5959",
                                                     "properties": [
                                                         "animalken"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Обр. с животными",
-                                                    "diceCallback": "return [{ text: monster.animalken + 'd10|none|noform|nodice|text(' + monster.animalken +')' }]",
-                                                    "dice": true,
-                                                    "hasRule": false
+                                                    "conditioned": false,
+                                                    "display": "Animal Ken"
                                                 },
                                                 {
                                                     "type": "property",
@@ -657,47 +556,18 @@
                                                         "crafts"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Ремесло",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.crafts + 'd10|none|noform|nodice|text(' + monster.crafts +')' }]",
-                                                    "dice": true
+                                                    "display": "Crafts",
+                                                    "conditioned": false
                                                 },
                                                 {
                                                     "type": "property",
-                                                    "id": "e989d8a80ac9",
+                                                    "id": "49db69f88a8a",
                                                     "properties": [
-                                                        "stealth"
+                                                        "drive"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Скрытность",
-                                                    "diceCallback": "return [{ text: monster.stealth + 'd10|none|noform|nodice|text(' + monster.stealth +')' }]",
-                                                    "dice": true,
-                                                    "hasRule": false
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "984b1b9a9b18",
-                                                    "properties": [
-                                                        "firearms"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "display": "Стрельба",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.firearms + 'd10|none|noform|nodice|text(' + monster.firearms +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "dab80bf8fbfa",
-                                                    "properties": [
-                                                        "melee"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Фехтование",
-                                                    "diceCallback": "return [{ text: monster.melee + 'd10|none|noform|nodice|text(' + monster.melee +')' }]",
-                                                    "dice": true
+                                                    "conditioned": false,
+                                                    "display": "Drive"
                                                 },
                                                 {
                                                     "type": "property",
@@ -706,41 +576,80 @@
                                                         "etiquette"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Этикет",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.etiquette + 'd10|none|noform|nodice|text(' + monster.etiquette +')' }]",
-                                                    "dice": true
+                                                    "display": "Etiquette",
+                                                    "conditioned": false
                                                 },
                                                 {
-                                                    "type": "inline",
-                                                    "id": "bbc918a85b2a",
-                                                    "properties": [],
-                                                    "nested": [
-                                                        {
-                                                            "type": "property",
-                                                            "id": "d9eb4bdb38d8",
-                                                            "properties": [
-                                                                "new_skill"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        },
-                                                        {
-                                                            "type": "property",
-                                                            "id": "3bdb59c9f838",
-                                                            "properties": [
-                                                                "new_skill_value"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true,
-                                                            "dice": true,
-                                                            "diceCallback": "return [{ text: monster.new_skill_value + 'd10|none|noform|nodice|text(' + monster.new_skill_value +')' }]"
-                                                        }
+                                                    "type": "property",
+                                                    "id": "984b1b9a9b18",
+                                                    "properties": [
+                                                        "firearms"
                                                     ],
-                                                    "cls": "new-skill-line"
+                                                    "fallback": "-",
+                                                    "display": "Firearms",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "4b9adb2a7808",
+                                                    "properties": [
+                                                        "larceny"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Larceny"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "dab80bf8fbfa",
+                                                    "properties": [
+                                                        "melee"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Melee"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "394ac9cba8cb",
+                                                    "properties": [
+                                                        "performance"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Performance",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "e989d8a80ac9",
+                                                    "properties": [
+                                                        "stealth"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Stealth"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "a9dae9982aba",
+                                                    "properties": [
+                                                        "survival"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Survival",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "8a9aeac9ea0b",
+                                                    "properties": [
+                                                        "empty_skill"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "________",
+                                                    "conditioned": true
                                                 }
-                                            ],
-                                            "cls": "skills-column"
+                                            ]
                                         },
                                         {
                                             "type": "group",
@@ -764,34 +673,8 @@
                                                         "academics"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Гуманит. науки",
-                                                    "diceCallback": "return [{ text: monster.academics + 'd10|none|noform|nodice|text(' + monster.academics +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "8b7a2ab959ba",
-                                                    "properties": [
-                                                        "science"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "display": "Естеств. науки",
-                                                    "conditioned": true,
-                                                    "dice": true,
-                                                    "diceCallback": "return [{ text: monster.science + 'd10|none|noform|nodice|text(' + monster.science +')' }]"
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "2b08f9c8cafa",
-                                                    "properties": [
-                                                        "law"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "display": "Законы",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.law + 'd10|none|noform|nodice|text(' + monster.law +')' }]",
-                                                    "dice": true
+                                                    "conditioned": false,
+                                                    "display": "Academics"
                                                 },
                                                 {
                                                     "type": "property",
@@ -800,58 +683,8 @@
                                                         "computer"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Информатика",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.computer + 'd10|none|noform|nodice|text(' + monster.computer +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "7bfb18bac90b",
-                                                    "properties": [
-                                                        "medicine"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Медицина",
-                                                    "diceCallback": "return [{ text: monster.medicine + 'd10|none|noform|nodice|text(' + monster.medicine +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "093b2889fa4a",
-                                                    "properties": [
-                                                        "occult"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Оккультизм",
-                                                    "diceCallback": "return [{ text: monster.occult + 'd10|none|noform|nodice|text(' + monster.occult +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "5b5a4b7b0bdb",
-                                                    "properties": [
-                                                        "politics"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Политика",
-                                                    "diceCallback": "return [{ text: monster.politics + 'd10|none|noform|nodice|text(' + monster.politics +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "fada3a9a0ab9",
-                                                    "properties": [
-                                                        "investigation"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Расследование",
-                                                    "diceCallback": "return [{ text: monster.investigation + 'd10|none|noform|nodice|text(' + monster.investigation +')' }]",
-                                                    "dice": true
+                                                    "display": "Computer",
+                                                    "conditioned": false
                                                 },
                                                 {
                                                     "type": "property",
@@ -860,10 +693,68 @@
                                                         "finance"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Финансы",
-                                                    "diceCallback": "return [{ text: monster.finance + 'd10|none|noform|nodice|text(' + monster.finance +')' }]",
-                                                    "dice": true
+                                                    "conditioned": false,
+                                                    "display": "Finance"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "fada3a9a0ab9",
+                                                    "properties": [
+                                                        "investigation"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Investigation"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2b08f9c8cafa",
+                                                    "properties": [
+                                                        "law"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Law",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "7bfb18bac90b",
+                                                    "properties": [
+                                                        "medicine"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Medicine"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "093b2889fa4a",
+                                                    "properties": [
+                                                        "occult"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Occult"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "5b5a4b7b0bdb",
+                                                    "properties": [
+                                                        "politics"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": false,
+                                                    "display": "Politics"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "8b7a2ab959ba",
+                                                    "properties": [
+                                                        "science"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Science",
+                                                    "conditioned": false
                                                 },
                                                 {
                                                     "type": "property",
@@ -872,48 +763,25 @@
                                                         "technology"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Электроника",
-                                                    "diceCallback": "return [{ text: monster.technology + 'd10|none|noform|nodice|text(' + monster.technology +')' }]",
-                                                    "dice": true
+                                                    "conditioned": false,
+                                                    "display": "Technology"
                                                 },
                                                 {
-                                                    "type": "inline",
-                                                    "id": "a9f8aae85a0a",
-                                                    "properties": [],
-                                                    "nested": [
-                                                        {
-                                                            "type": "property",
-                                                            "id": "5bcb097a280a",
-                                                            "properties": [
-                                                                "new_knowledge"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        },
-                                                        {
-                                                            "type": "property",
-                                                            "id": "e978dbe97bdb",
-                                                            "properties": [
-                                                                "new_knowledge_value"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "diceCallback": "return [{ text: monster.new_knowledge_value + 'd10|none|noform|nodice|text(' + monster.new_knowledge_value +')' }]",
-                                                            "hasRule": false,
-                                                            "conditioned": true,
-                                                            "dice": true
-                                                        }
+                                                    "type": "property",
+                                                    "id": "099ae81bbbd8",
+                                                    "properties": [
+                                                        "empty_knowledge"
                                                     ],
-                                                    "cls": "new-knowledge-line"
+                                                    "fallback": "-",
+                                                    "display": "________",
+                                                    "conditioned": true
                                                 }
-                                            ],
-                                            "cls": "knowledges-column"
+                                            ]
                                         }
                                     ],
-                                    "cls": ""
+                                    "cls": "abilities-group"
                                 }
-                            ],
-                            "cls": "abilities-group"
+                            ]
                         },
                         {
                             "type": "group",
@@ -928,7 +796,7 @@
                                     ],
                                     "size": 4,
                                     "fallback": "-",
-                                    "conditioned": true
+                                    "conditioned": false
                                 },
                                 {
                                     "type": "inline",
@@ -1104,7 +972,7 @@
                                                     ]
                                                 }
                                             ],
-                                            "cls": "disciplines-column"
+                                            "cls": "disciplines-group"
                                         },
                                         {
                                             "type": "group",
@@ -1273,7 +1141,7 @@
                                                 }
                                             ],
                                             "heading": "",
-                                            "cls": "backgrounds-column"
+                                            "cls": "backgrounds-group"
                                         },
                                         {
                                             "type": "group",
@@ -1297,10 +1165,10 @@
                                                         "conscience"
                                                     ],
                                                     "fallback": "1",
-                                                    "display": "Cовесть/Решимость",
+                                                    "display": "Conscience/Conviction",
                                                     "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.conscience + 'd10|none|nodice|noform|text(' + monster.conscience +')' }]",
-                                                    "dice": true,
+                                                    "diceCallback": "",
+                                                    "dice": false,
                                                     "callback": "",
                                                     "diceProperty": ""
                                                 },
@@ -1311,11 +1179,8 @@
                                                         "selfcontrol"
                                                     ],
                                                     "fallback": "1",
-                                                    "display": "Самоконтроль/Инстинкты",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.selfcontrol + 'd10|none|nodice|noform|text(' + monster.selfcontrol +')' }]",
-                                                    "dice": true,
-                                                    "hasRule": false
+                                                    "display": "Self-Control/Instinct",
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -1325,21 +1190,16 @@
                                                     ],
                                                     "fallback": "1",
                                                     "conditioned": true,
-                                                    "display": "Смелость",
-                                                    "dice": true,
-                                                    "hasRule": false,
-                                                    "diceCallback": "return [{ text: monster.courage + 'd10|none|nodice|noform|text(' + monster.courage +')' }]"
+                                                    "display": "Courage"
                                                 }
-                                            ],
-                                            "cls": "virtues-column"
+                                            ]
                                         }
                                     ],
                                     "heading": "",
-                                    "cls": ""
+                                    "cls": "advantages-group"
                                 }
                             ],
-                            "hasRule": true,
-                            "cls": "advantages-group"
+                            "hasRule": true
                         },
                         {
                             "type": "inline",
@@ -1369,19 +1229,17 @@
                                                     "type": "property",
                                                     "id": "29180b5b391a",
                                                     "properties": [
-                                                        "merit1_name"
+                                                        "merit_one_name"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
                                                     "id": "fa395a683a6a",
                                                     "properties": [
-                                                        "merit1_value"
+                                                        "merit_one_value"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 }
                                             ]
                                         },
@@ -1394,19 +1252,17 @@
                                                     "type": "property",
                                                     "id": "7b4b3afa883a",
                                                     "properties": [
-                                                        "merit2_name"
+                                                        "merit_two_name"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
                                                     "id": "2be998fa1b78",
                                                     "properties": [
-                                                        "merit2_value"
+                                                        "merit_two_value"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 }
                                             ]
                                         },
@@ -1419,19 +1275,17 @@
                                                     "type": "property",
                                                     "id": "795b38f80a6a",
                                                     "properties": [
-                                                        "merit3_name"
+                                                        "merit_three_name"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
                                                     "id": "89d98ad929da",
                                                     "properties": [
-                                                        "merit3_value"
+                                                        "merit_three_value"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 }
                                             ]
                                         },
@@ -1444,19 +1298,17 @@
                                                     "type": "property",
                                                     "id": "0909fa2808c9",
                                                     "properties": [
-                                                        "merit4_name"
+                                                        "merit_four_name"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
                                                     "id": "c8b8985b7bf9",
                                                     "properties": [
-                                                        "merit4_value"
+                                                        "merit_four_value"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 }
                                             ]
                                         },
@@ -1469,69 +1321,17 @@
                                                     "type": "property",
                                                     "id": "4bcb2a9bcb29",
                                                     "properties": [
-                                                        "merit5_name"
+                                                        "merit_five_name"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
                                                     "id": "a919b94a0ab9",
                                                     "properties": [
-                                                        "merit5_value"
+                                                        "merit_five_value"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "inline",
-                                            "id": "68cadb090a78",
-                                            "properties": [],
-                                            "nested": [
-                                                {
-                                                    "type": "property",
-                                                    "id": "ca8939d8fb8b",
-                                                    "properties": [
-                                                        "merit6_name"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "68cbbafb7b48",
-                                                    "properties": [
-                                                        "merit6_value"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "group",
-                                            "id": "3bfae87ab9db",
-                                            "properties": [],
-                                            "nested": [
-                                                {
-                                                    "type": "property",
-                                                    "id": "287b6a081b5a",
-                                                    "properties": [
-                                                        "merit7_name"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "68a92a19f82b",
-                                                    "properties": [
-                                                        "merit7_value"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 }
                                             ]
                                         },
@@ -1553,19 +1353,17 @@
                                                     "type": "property",
                                                     "id": "3a8a1bfad809",
                                                     "properties": [
-                                                        "flaw1_name"
+                                                        "flaw_one_name"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
                                                     "id": "f9ba292949fa",
                                                     "properties": [
-                                                        "flaw1_value"
+                                                        "flaw_one_value"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 }
                                             ]
                                         },
@@ -1578,19 +1376,17 @@
                                                     "type": "property",
                                                     "id": "0ba8f8488bab",
                                                     "properties": [
-                                                        "flaw2_name"
+                                                        "flaw_two_name"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
                                                     "id": "3b7ae84a7ac8",
                                                     "properties": [
-                                                        "flaw2_value"
+                                                        "flaw_two_value"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 }
                                             ]
                                         },
@@ -1603,19 +1399,17 @@
                                                     "type": "property",
                                                     "id": "4adabaeaba7b",
                                                     "properties": [
-                                                        "flaw3_name"
+                                                        "flaw_three_name"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
                                                     "id": "fa1beaca395b",
                                                     "properties": [
-                                                        "flaw3_value"
+                                                        "flaw_three_value"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 }
                                             ]
                                         },
@@ -1628,19 +1422,17 @@
                                                     "type": "property",
                                                     "id": "287b39baabab",
                                                     "properties": [
-                                                        "flaw4_name"
+                                                        "flaw_four_name"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
                                                     "id": "bb1a5858b86b",
                                                     "properties": [
-                                                        "flaw4_value"
+                                                        "flaw_four_value"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 }
                                             ]
                                         },
@@ -1653,74 +1445,22 @@
                                                     "type": "property",
                                                     "id": "39ebf8a9297b",
                                                     "properties": [
-                                                        "flaw5_name"
+                                                        "flaw_five_name"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
                                                     "id": "4b68dbb8c91b",
                                                     "properties": [
-                                                        "flaw5_value"
+                                                        "flaw_five_value"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "inline",
-                                            "id": "1878da2a98eb",
-                                            "properties": [],
-                                            "nested": [
-                                                {
-                                                    "type": "property",
-                                                    "id": "eabbe9fb1828",
-                                                    "properties": [
-                                                        "flaw6_name"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "5a4aabd91b7a",
-                                                    "properties": [
-                                                        "flaw6_value"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "group",
-                                            "id": "bbc95b1a1b08",
-                                            "properties": [],
-                                            "nested": [
-                                                {
-                                                    "type": "property",
-                                                    "id": "a86bd928eb3a",
-                                                    "properties": [
-                                                        "flaw7_name"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "9b283b49a8fa",
-                                                    "properties": [
-                                                        "flaw7_value"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 }
                                             ]
                                         }
                                     ],
-                                    "cls": "merits-and-flaws-column"
+                                    "cls": "merits-and-flaws"
                                 },
                                 {
                                     "type": "group",
@@ -1738,8 +1478,7 @@
                                                     "properties": [
                                                         "path"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
@@ -1747,8 +1486,7 @@
                                                     "properties": [
                                                         "path_value"
                                                     ],
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
@@ -1757,10 +1495,9 @@
                                                         "bearing"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Столп:"
+                                                    "display": "Bearing:"
                                                 }
-                                            ],
-                                            "cls": "path-block"
+                                            ]
                                         },
                                         {
                                             "type": "group",
@@ -1774,8 +1511,7 @@
                                                         "willpower"
                                                     ],
                                                     "size": 6,
-                                                    "fallback": "-",
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
@@ -1783,10 +1519,7 @@
                                                     "properties": [
                                                         "willpower_main"
                                                     ],
-                                                    "fallback": "-",
-                                                    "diceCallback": "return [{ text: monster.willpower_main + 'd10|none|noform|nodice|text(' + monster.willpower_main +')' }]",
-                                                    "dice": true,
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
@@ -1794,14 +1527,10 @@
                                                     "properties": [
                                                         "willpower_current"
                                                     ],
-                                                    "fallback": "-",
-                                                    "diceCallback": "return [{ text: monster.willpower_current + 'd10|none|noform|nodice|text(' + monster.willpower_current +')' }]",
-                                                    "dice": true,
-                                                    "conditioned": true
+                                                    "fallback": "-"
                                                 }
                                             ],
-                                            "heading": "",
-                                            "cls": "willpower-block"
+                                            "heading": ""
                                         },
                                         {
                                             "type": "group",
@@ -1815,8 +1544,7 @@
                                                         "bloodpool"
                                                     ],
                                                     "size": 6,
-                                                    "fallback": "-",
-                                                    "conditioned": false
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "property",
@@ -1833,7 +1561,7 @@
                                                         "blood_current2"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": false
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -1842,7 +1570,7 @@
                                                         "blood_current3"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": false
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -1851,7 +1579,7 @@
                                                         "blood_current4"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": false
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -1860,10 +1588,9 @@
                                                         "blood_per_turn"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Предел траты в ход: "
+                                                    "display": "Blood Per Turn: "
                                                 }
-                                            ],
-                                            "cls": "blood-block"
+                                            ]
                                         }
                                     ]
                                 },
@@ -1884,8 +1611,7 @@
                                                         "Health"
                                                     ],
                                                     "size": 6,
-                                                    "fallback": "-",
-                                                    "conditioned": false
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "inline",
@@ -2057,7 +1783,7 @@
                                                     "cls": "damage-dice-penalties"
                                                 }
                                             ],
-                                            "cls": "health-block"
+                                            "cls": "health-group"
                                         },
                                         {
                                             "type": "group",
@@ -2071,8 +1797,7 @@
                                                         "Specialties"
                                                     ],
                                                     "size": 6,
-                                                    "fallback": "-",
-                                                    "conditioned": false
+                                                    "fallback": "-"
                                                 },
                                                 {
                                                     "type": "group",
@@ -2083,7 +1808,7 @@
                                                             "type": "property",
                                                             "id": "6869bbcbf99b",
                                                             "properties": [
-                                                                "specialty1_origin"
+                                                                "specialty_one_origin"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -2092,7 +1817,7 @@
                                                             "type": "property",
                                                             "id": "cb6bc99a096b",
                                                             "properties": [
-                                                                "specialty1_name"
+                                                                "specialty_one_name"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -2110,7 +1835,7 @@
                                                             "type": "property",
                                                             "id": "69ea2af89b6a",
                                                             "properties": [
-                                                                "specialty2_origin"
+                                                                "specialty_two_origin"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -2119,7 +1844,7 @@
                                                             "type": "property",
                                                             "id": "e9eb5b983aa8",
                                                             "properties": [
-                                                                "specialty2_name"
+                                                                "specialty_two_name"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -2136,7 +1861,7 @@
                                                             "type": "property",
                                                             "id": "c8c87b292b98",
                                                             "properties": [
-                                                                "specialty3_origin"
+                                                                "specialty_three_origin"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -2145,7 +1870,7 @@
                                                             "type": "property",
                                                             "id": "8b0aabdbca4b",
                                                             "properties": [
-                                                                "specialty3_name"
+                                                                "specialty_three_name"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -2162,7 +1887,7 @@
                                                             "type": "property",
                                                             "id": "d9ebc9b99b89",
                                                             "properties": [
-                                                                "specialty4_origin"
+                                                                "specialty_four_origin"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -2171,7 +1896,7 @@
                                                             "type": "property",
                                                             "id": "38a81a7a0879",
                                                             "properties": [
-                                                                "specialty4_name"
+                                                                "specialty_four_name"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -2188,7 +1913,7 @@
                                                             "type": "property",
                                                             "id": "d909ea98fba9",
                                                             "properties": [
-                                                                "specialty5_origin"
+                                                                "specialty_five_origin"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -2197,7 +1922,7 @@
                                                             "type": "property",
                                                             "id": "6af9e90a89d9",
                                                             "properties": [
-                                                                "specialty5_name"
+                                                                "specialty_five_name"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -2214,7 +1939,7 @@
                                                             "type": "property",
                                                             "id": "89e819fa5828",
                                                             "properties": [
-                                                                "specialty6_origin"
+                                                                "specialty_six_origin"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -2223,7 +1948,7 @@
                                                             "type": "property",
                                                             "id": "58cb4a0aa80a",
                                                             "properties": [
-                                                                "specialty6_name"
+                                                                "specialty_six_name"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -2232,7 +1957,7 @@
                                                     "cls": "specialty_six"
                                                 }
                                             ],
-                                            "cls": "specialities-block",
+                                            "cls": "specialities-group",
                                             "heading": ""
                                         }
                                     ]
@@ -2248,30 +1973,15 @@
                                 "weakness"
                             ],
                             "fallback": "-",
-                            "display": "ИЗЪЯН",
+                            "display": "WEAKNESS",
                             "conditioned": false
-                        },
-                        {
-                            "type": "property",
-                            "id": "49e8581aba5a",
-                            "properties": [
-                                "show_weakness"
-                            ],
-                            "fallback": "-",
-                            "conditioned": true
                         }
                     ]
                 }
             ],
             "open": true
-        },
-        {
-            "type": "javascript",
-            "id": "4ae91a6b7b48",
-            "conditioned": false,
-            "code": ""
         }
     ],
-    "name": "VtM v20 Vampire",
-    "id": "8a1b7b0bd889"
+    "name": "VtM v20 Vampire en",
+    "id": "cb9b5b9ae8fb"
 }

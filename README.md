@@ -1,6 +1,7 @@
 Some character sheets for World of Darkness (v20) characters, based on [Fantasy Statblock](https://github.com/javalent/fantasy-statblocks) and [Obsidian](https://github.com/obsidianmd).
 
 First of all, examples in English and Russian:
+
 <img src="https://user-images.githubusercontent.com/12649819/234894483-841cea0d-06ba-4732-a3d7-efeb48124689.png" width="400">   <img src="https://user-images.githubusercontent.com/12649819/234894513-43be6afb-3baf-44f6-bf9f-04ff2cc7bf69.png" width="424.685">
 
 ### General things

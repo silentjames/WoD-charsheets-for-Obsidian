@@ -523,8 +523,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     
-    // если имя персонажа, написанное H2, есть в заметке и совпадает с именем в статблоке, то оно удаляется - но остается в оглавлении
-    // 
+    // you can type character's name (in level 2 heading) in the note above the statblock, and if this heading is the same as character name in the statblock, it will be hidden in the reading view, but remains in the outlina panel
     if (document.querySelector("h2") != null) {
         var outlineName = document.querySelector("h2").innerHTML
     //  console.log(document.querySelector("h2").innerHTML);    
@@ -549,19 +548,20 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         // do nothing
     }
     
-    // Разная обработка значений для характеристик, способностей и дисциплин
-            // Характеристики Физические
+    // Some various modifications for attributes, abilities and disciplines; mostly copied from Russian version, so some changes might be needed
+    // The main purpose here - 
+            // physical attributes
     if (document.querySelector(".strength")) {
-        var valueStrength = document.querySelector(".strength .statblock-rendered-text-content");  // Сила
-        if (valueStrength != null) { // для обычного значения
+        var valueStrength = document.querySelector(".strength .statblock-rendered-text-content");  // strength
+        if (valueStrength != null) { // strength value always will be at least 1
             if (valueStrength.innerHTML == '-') {
                 document.querySelector(".strength .property-text").style.fontSize = "14px";
                 document.querySelector(".strength .property-text").style.fontFamily = "Marta";
                 document.querySelector(".strength .property-text").style.margin = "-1px 0px 0px 0px"
                 document.querySelector(".strength .statblock-rendered-text-content").innerHTML = "must be at least 1"}    
-            if (valueStrength.innerHTML == 10) {
+            if (valueStrength.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".strength .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueStrength = document.querySelector(".strength .dice-roller-result").innerHTML;
             if (valueStrength === 'null') {
                 document.querySelector(".strength .roller-result").style.display = "none";
@@ -573,16 +573,16 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
                 
     if (document.querySelector(".dexterity")) {
-        var valueDexterity = document.querySelector(".dexterity .statblock-rendered-text-content");  // Ловкость
-        if (valueDexterity != null) { // для обычного значения
+        var valueDexterity = document.querySelector(".dexterity .statblock-rendered-text-content");  // dexterity
+        if (valueDexterity != null) { // dexterity value always will be at least 1
             if (valueDexterity.innerHTML == '-') {
                 document.querySelector(".dexterity .property-text").style.fontSize = "14px";
                 document.querySelector(".dexterity .property-text").style.fontFamily = "Marta";
                 document.querySelector(".dexterity .property-text").style.margin = "-1px 0px 0px 0px"
                 document.querySelector(".dexterity .statblock-rendered-text-content").innerHTML = "must be at least 1"}      
-            if (valueDexterity.innerHTML == 10) {
+            if (valueDexterity.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".dexterity .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueDexterity = document.querySelector(".dexterity .dice-roller-result").innerHTML;
             if (valueDexterity === 'null') {
                 document.querySelector(".dexterity .roller-result").style.display = "none";
@@ -594,30 +594,34 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".stamina")) {
-        var valueStamina = document.querySelector(".stamina .statblock-rendered-text-content");  // Выносливость
-        if (valueStamina != null) { // для обычного значения
+        var valueStamina = document.querySelector(".stamina .statblock-rendered-text-content");  // stamina
+        if (valueStamina != null) { // stamina value always will be at least 1
             if (valueStamina.innerHTML == '-') {
                 document.querySelector(".stamina .property-text").style.fontSize = "14px";
                 document.querySelector(".stamina .property-text").style.fontFamily = "Marta";
                 document.querySelector(".stamina .property-text").style.margin = "-1px 0px 0px 0px"
                 document.querySelector(".stamina .statblock-rendered-text-content").innerHTML = "must be at least 1"}    
-            if (valueStamina.innerHTML == 10) {
-                document.querySelector(".stamina .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+            if (valueStamina.innerHTML >= 9) { // if the value is 9 or more, dots will be replaced with digits
+                document.querySelector(".stamina .statblock-rendered-text-content").style.fontSize = "14px";
+                document.querySelector(".stamina .statblock-rendered-text-content").style.fontFamily = "Marta";
+                document.querySelector(".stamina .statblock-rendered-text-content").style.margin = "-1px 0px 0px 0px";}}
+        else { // same code, but for Dice Roller
             valueStamina = document.querySelector(".stamina span.dice-roller-result").innerHTML;
             if (valueStamina === 'null'|| valueStamina == 0) {
                 document.querySelector(".stamina .roller-result").style.display = "none";
                 document.querySelector(".stamina .dice-original").style.display = "block";
                 document.querySelector(".stamina .dice-original").style.margin = "-1px 0px 0px 0px";
                 document.querySelector(".stamina .dice-original").innerHTML = "must be at least 1"}      
-            if (valueStamina == 10) {
-                document.querySelector(".stamina span.dice-roller-result").innerHTML = 'X'};}}
+            if (valueStamina >= 9) {
+                document.querySelector(".stamina .dice-roller-result").style.fontSize = "14px";
+                document.querySelector(".stamina .dice-roller-result").style.fontFamily = "Marta";
+                document.querySelector(".stamina .dice-roller-result").style.margin = "-1px 0px 0px 0px"};}}
     
     
             // Характеристики Социальные
     if (document.querySelector(".charisma")) {
-        var valueCharisma = document.querySelector(".charisma .statblock-rendered-text-content");  // Обаяние
-        if (valueCharisma != null) { // для обычного значения
+        var valueCharisma = document.querySelector(".charisma .statblock-rendered-text-content");  // charisma
+        if (valueCharisma != null) { // charisma value always will be at least 1
             if (valueCharisma.innerHTML == '-') {
                 document.querySelector(".charisma .property-text").style.fontSize = "14px";
                 document.querySelector(".charisma .property-text").style.fontFamily = "Marta";
@@ -625,7 +629,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".charisma .statblock-rendered-text-content").innerHTML = "must be at least 1"}    
             if (valueCharisma.innerHTML == 10) {
                 document.querySelector(".charisma .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueCharisma = document.querySelector(".charisma span.dice-roller-result").innerHTML;
             if (valueCharisma === 'null' || valueCharisma == 0 ) {
                 document.querySelector(".charisma .roller-result").style.display = "none";
@@ -637,43 +641,43 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".manipulation")) {
-        var valueManipulation = document.querySelector(".manipulation .statblock-rendered-text-content");  // Манипуляция
-        if (valueManipulation != null) { // для обычного значения
+        var valueManipulation = document.querySelector(".manipulation .statblock-rendered-text-content");  // manipulation
+        if (valueManipulation != null) { // manipulation value always will be at least 1
             if (valueManipulation.innerHTML == '-') {
                 document.querySelector(".manipulation .property-text").style.fontSize = "14px";
                 document.querySelector(".manipulation .property-text").style.fontFamily = "Marta";
                 document.querySelector(".manipulation .property-text").style.margin = "-1px 0px 0px 0px"
                 document.querySelector(".manipulation .statblock-rendered-text-content").innerHTML = "must be at least 1"}      
-            if (valueManipulation.innerHTML == 10) {
-                document.querySelector(".manipulation .property-text").style.fontSize = "14px";
-                document.querySelector(".manipulation .property-text").style.fontFamily = "Marta";
-                document.querySelector(".manipulation .property-text").style.margin = "-1px 0px 0px 0px"};}
-        else { // для дайс роллера
+            if (valueManipulation.innerHTML >= 9) { // if the value is 9 or more, dots will be replaced with digits
+                document.querySelector(".manipulation .statblock-rendered-text-content").style.fontSize = "14px";
+                document.querySelector(".manipulation .statblock-rendered-text-content").style.fontFamily = "Marta";
+                document.querySelector(".manipulation .statblock-rendered-text-content").style.margin = "-1px 0px 0px 0px";}}
+        else { // same code, but for Dice Roller
             valueManipulation = document.querySelector(".manipulation .dice-roller-result").innerHTML;
             if (valueManipulation === 'null' || valueManipulation == 0) {
                 document.querySelector(".manipulation .roller-result").style.display = "none";
                 document.querySelector(".manipulation .dice-original").style.display = "block";
                 document.querySelector(".manipulation .dice-original").style.margin = "-1px 0px 0px 0px";
                 document.querySelector(".manipulation .dice-original").innerHTML = "must be at least 1"}    
-            if (valueManipulation == 10) {
+            if (valueManipulation >= 9) {
                 document.querySelector(".manipulation .dice-roller-result").style.fontSize = "14px";
                 document.querySelector(".manipulation .dice-roller-result").style.fontFamily = "Marta";
                 document.querySelector(".manipulation .dice-roller-result").style.margin = "-1px 0px 0px 0px"};}}
     
     
     if (document.querySelector(".appearance")) {
-        var valueAppearance = document.querySelector(".appearance .statblock-rendered-text-content");  // Привлекательность
-        if (valueAppearance != null) { // для обычного значения
+        var valueAppearance = document.querySelector(".appearance .statblock-rendered-text-content");  // appearance
+        if (valueAppearance != null) { // appearance value always will be at least 1
             if (valueAppearance.innerHTML == '-') {
                 document.querySelector(".appearance .statblock-rendered-text-content").innerHTML = 0;
                 document.querySelector(".line.appearance .property-name").style.textDecoration = "line-through"}
-            if (valueAppearance.innerHTML == 0) {
+            if (valueAppearance.innerHTML == 0) { // strikethrough text if the value is 0 (hello Nosferatu)
                 document.querySelector(".line.appearance .property-name").style.textDecoration = "line-through"}  
-            if (valueAppearance.innerHTML > 5) {
+            if (valueAppearance.innerHTML > 5) { //// if the value is greater than 5, dots will be replaced with digits
                 document.querySelector(".appearance .property-text").style.fontSize = "14px";
                 document.querySelector(".appearance .property-text").style.fontFamily = "Marta";
                 document.querySelector(".appearance .property-text").style.margin = "-2px 0px 0px 0px"};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueAppearance = document.querySelector(".appearance .dice-roller-result").innerHTML;
             if (valueAppearance === 'null' || valueAppearance == 0) {
                 document.querySelector(".line.appearance .property-name").style.textDecoration = "line-through";
@@ -691,19 +695,19 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".appearance .dice-roller-result").style.margin = "-1px 0px 0px 0px"}}}
     
     
-            // Характеристики Ментальные
+            // mental attributes
     
     if (document.querySelector(".perception")) {
-        var valuePerception = document.querySelector(".perception .statblock-rendered-text-content");  // Восприятие
-        if (valuePerception != null) { // для обычного значения
+        var valuePerception = document.querySelector(".perception .statblock-rendered-text-content");  // perception
+        if (valuePerception != null) { // perception value always will be at least 1
             if (valuePerception.innerHTML == '-') {
                 document.querySelector(".perception .property-text").style.fontSize = "14px";
                 document.querySelector(".perception .property-text").style.fontFamily = "Marta";
                 document.querySelector(".perception .property-text").style.margin = "-1px 0px 0px 0px"
                 document.querySelector(".perception .statblock-rendered-text-content").innerHTML = "must be at least 1"}    
-            if (valuePerception.innerHTML == 10) {
+            if (valuePerception.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".perception .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valuePerception = document.querySelector(".perception .dice-roller-result").innerHTML;
             if (valuePerception === 'null' || valuePerception == 0) {
                 document.querySelector(".perception .roller-result").style.display = "none";
@@ -714,16 +718,16 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".perception .dice-roller-result").innerHTML = 'X'};}}
     
     if (document.querySelector(".intelligence")) {
-        var valueIntelligence = document.querySelector(".intelligence .statblock-rendered-text-content");  // Интеллект
-        if (valueIntelligence != null) { // для обычного значения
+        var valueIntelligence = document.querySelector(".intelligence .statblock-rendered-text-content");  // intelligence
+        if (valueIntelligence != null) { // intelligence value always will be at least 1
             if (valueIntelligence.innerHTML == '-') {
                 document.querySelector(".intelligence .property-text").style.fontSize = "14px";
                 document.querySelector(".intelligence .property-text").style.fontFamily = "Marta";
                 document.querySelector(".intelligence .property-text").style.margin = "-1px 0px 0px 0px"
                 document.querySelector(".intelligence .statblock-rendered-text-content").innerHTML = "must be at least 1"}   
-            if (valueIntelligence.innerHTML == 10) {
+            if (valueIntelligence.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".intelligence .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueIntelligence = document.querySelector(".intelligence .dice-roller-result").innerHTML;
             if (valueIntelligence === 'null' || valueIntelligence == 0) {
                 document.querySelector(".intelligence .roller-result").style.display = "none";
@@ -734,16 +738,16 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".intelligence .dice-roller-result").innerHTML = 'X'};}}
     
     if (document.querySelector(".wits")) {
-        var valueWits = document.querySelector(".wits .statblock-rendered-text-content");  // Смекалка
-        if (valueWits != null) { // для обычного значения
+        var valueWits = document.querySelector(".wits .statblock-rendered-text-content");  // wits
+        if (valueWits != null) { // wits value always will be at least 1
             if (valueWits.innerHTML == '-') {
                 document.querySelector(".wits .property-text").style.fontSize = "14px";
                 document.querySelector(".wits .property-text").style.fontFamily = "Marta";
                 document.querySelector(".wits .property-text").style.margin = "-1px 0px 0px 0px"
                 document.querySelector(".wits .statblock-rendered-text-content").innerHTML = "must be at least 1"}    
-            if (valueWits.innerHTML == 10) {
+            if (valueWits.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".wits .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueWits = document.querySelector(".wits .dice-roller-result").innerHTML;
             if (valueWits === 'null' || valueWits == 0) {
                 document.querySelector(".wits .roller-result").style.display = "none";
@@ -754,9 +758,9 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".wits .dice-roller-result").innerHTML = 'X'};}}
     
     
-            // Способности Таланты
+            // Abilities - Talents
     if (document.querySelector(".athletics")) {
-        var valueAthletics = document.querySelector(".athletics .statblock-rendered-text-content");  // Атлетика
+        var valueAthletics = document.querySelector(".athletics .statblock-rendered-text-content");  // athletics
         if (valueAthletics != null) { // для обычного значения
             if (valueAthletics.innerHTML == '-') {
                 document.querySelector(".athletics .statblock-rendered-text-content").innerHTML = 0}
@@ -1452,18 +1456,18 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     
-           // Дисциплины
-    
-    // первая дисциплина
+           // Disciplines
+    // Some high values will be transformed from dots to digits, based on the lenght of a disciple's name, to keep columns width
+    // 1st discipline
     if (document.querySelector(".discipline1_name .statblock-rendered-text-content")) {
-        var valueDisсiplineOneName = document.querySelector(".discipline1_name .statblock-rendered-text-content").innerHTML; // находим имя дисциплины
+        var valueDisсiplineOneName = document.querySelector(".discipline1_name .statblock-rendered-text-content").innerHTML; // find discipline's name
         // console.log(valueDisсiplineOneName)
-        var valueDisсiplineOneValue = document.querySelector(".discipline1_value .statblock-rendered-text-content").innerHTML; // находим количество точек
-            if (valueDisсiplineOneName.startsWith("<a data")) {   // если в названии дисциплины есть ссылка...
-        //        console.log(valueDisсiplineOneName + ' - ето проверка на ссылку')
-                var valueDisсiplineOneName = document.querySelector(".discipline1_name .statblock-rendered-text-content > a").innerHTML //  ... то в ссылке находим имя
-                if (valueDisсiplineOneName.trim().length > 11 && valueDisсiplineOneValue > 9) { // дальше проверки на длину имени 
-                    document.querySelector(".discipline1_value .property-text").style.fontSize = "14px"; // и замену точек на цифры, если имя слишком длинное
+        var valueDisсiplineOneValue = document.querySelector(".discipline1_value .statblock-rendered-text-content").innerHTML; // and it's value
+            if (valueDisсiplineOneName.startsWith("<a data")) {   // if there is not just text, but the link, then...
+        //        console.log(valueDisсiplineOneName + ' - it may be a link!')
+                var valueDisсiplineOneName = document.querySelector(".discipline1_name .statblock-rendered-text-content > a").innerHTML // ...find discipline's name inside the link
+                if (valueDisсiplineOneName.trim().length > 11 && valueDisсiplineOneValue > 9) { // let's check how long the name is
+                    document.querySelector(".discipline1_value .property-text").style.fontSize = "14px"; // and replace dots with digits if the name is too long
                     document.querySelector(".discipline1_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline1_value .property-text").style.margin = "-2px 0px 0px 0px"}
                 if (valueDisсiplineOneName.trim().length > 12 && valueDisсiplineOneValue > 8) { 
@@ -1478,11 +1482,11 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                     document.querySelector(".discipline1_value .property-text").style.fontSize = "14px";
                     document.querySelector(".discipline1_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline1_value .property-text").style.margin = "-2px 0px 0px 0px"}
-                if (valueDisсiplineOneName.trim().length > 15 && valueDisсiplineOneValue > 5) {   // дальше пяти смысла нет проверять
+                if (valueDisсiplineOneName.trim().length > 15 && valueDisсiplineOneValue > 5) {   // no point in further checking
                     document.querySelector(".discipline1_value .property-text").style.fontSize = "14px";  
                     document.querySelector(".discipline1_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline1_value .property-text").style.margin = "-2px 0px 0px 0px"}}
-            if (valueDisсiplineOneName.trim().length > 11 && valueDisсiplineOneValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки
+            if (valueDisсiplineOneName.trim().length > 11 && valueDisсiplineOneValue > 9) {  // same code for a name without a link 
                 document.querySelector(".discipline1_value .property-text").style.fontSize = "14px";
                 document.querySelector(".discipline1_value .property-text").style.fontFamily = "Marta";
                 document.querySelector(".discipline1_value .property-text").style.margin = "-2px 0px 0px 0px"}
@@ -1502,17 +1506,17 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".discipline1_value .property-text").style.fontSize = "14px";  
                 document.querySelector(".discipline1_value .property-text").style.fontFamily = "Marta";
                 document.querySelector(".discipline1_value .property-text").style.margin = "-2px 0px 0px 0px"}}
-    //    console.log(valueDisсiplineOneName + ' - ето общая проверка')
+    //    console.log(valueDisсiplineOneName + ' - 1st discipline's name')
     
     
-    // вторая дисциплина
+    // 2nd discipline
     if (document.querySelector(".discipline2_name .statblock-rendered-text-content")) {
-        var valueDisсiplineTwoName = document.querySelector(".discipline2_name .statblock-rendered-text-content").innerHTML; // находим имя дисциплины
-        var valueDisсiplineTwoValue = document.querySelector(".discipline2_value .statblock-rendered-text-content").innerHTML; // находим количество точек
-            if (valueDisсiplineTwoName.startsWith("<a data")) {   // если в названии дисциплины есть ссылка...
-                var valueDisсiplineTwoName = document.querySelector(".discipline2_name .statblock-rendered-text-content > a").innerHTML //  ... то в ссылке находим имя
-                if (valueDisсiplineTwoName.trim().length > 11 && valueDisсiplineTwoValue > 9) { // дальше проверки на длину имени 
-                    document.querySelector(".discipline2_value .property-text").style.fontSize = "14px"; // и замену точек на цифры, если имя слишком длинное
+        var valueDisсiplineTwoName = document.querySelector(".discipline2_name .statblock-rendered-text-content").innerHTML; // find discipline's name
+        var valueDisсiplineTwoValue = document.querySelector(".discipline2_value .statblock-rendered-text-content").innerHTML; // and it's value
+            if (valueDisсiplineTwoName.startsWith("<a data")) {   // if there is not just text, but the link, then...
+                var valueDisсiplineTwoName = document.querySelector(".discipline2_name .statblock-rendered-text-content > a").innerHTML // ...find discipline's name inside the link
+                if (valueDisсiplineTwoName.trim().length > 11 && valueDisсiplineTwoValue > 9) { // let's check how long the name is
+                    document.querySelector(".discipline2_value .property-text").style.fontSize = "14px"; // and replace dots with digits if the name is too long
                     document.querySelector(".discipline2_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline2_value .property-text").style.margin = "-2px 0px 0px 0px"}
                 if (valueDisсiplineTwoName.trim().length > 12 && valueDisсiplineTwoValue > 8) { 
@@ -1527,11 +1531,11 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                     document.querySelector(".discipline2_value .property-text").style.fontSize = "14px";
                     document.querySelector(".discipline2_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline2_value .property-text").style.margin = "-2px 0px 0px 0px"}
-                if (valueDisсiplineTwoName.trim().length > 15 && valueDisсiplineTwoValue > 5) {   // дальше пяти смысла нет проверять
+                if (valueDisсiplineTwoName.trim().length > 15 && valueDisсiplineTwoValue > 5) {   // no point in further checking
                     document.querySelector(".discipline2_value .property-text").style.fontSize = "14px";  
                     document.querySelector(".discipline2_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline2_value .property-text").style.margin = "-2px 0px 0px 0px"}}
-            if (valueDisсiplineTwoName.trim().length > 11 && valueDisсiplineTwoValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки
+            if (valueDisсiplineTwoName.trim().length > 11 && valueDisсiplineTwoValue > 9) {  // same code for a name without a link 
                 document.querySelector(".discipline2_value .property-text").style.fontSize = "14px";
                 document.querySelector(".discipline2_value .property-text").style.fontFamily = "Marta";
                 document.querySelector(".discipline2_value .property-text").style.margin = "-2px 0px 0px 0px"}
@@ -1553,14 +1557,14 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".discipline2_value .property-text").style.margin = "-2px 0px 0px 0px"}}
         
     
-    // третья дисциплина
+    // 3rd discipline
     if (document.querySelector(".discipline3_name .statblock-rendered-text-content")) {
-        var valueDisсiplineThreeName = document.querySelector(".discipline3_name .statblock-rendered-text-content").innerHTML; // находим имя дисциплины
-        var valueDisсiplineThreeValue = document.querySelector(".discipline3_value .statblock-rendered-text-content").innerHTML; // находим количество точек
-            if (valueDisсiplineThreeName.startsWith("<a data")) {   // если в названии дисциплины есть ссылка...
-                var valueDisсiplineThreeName = document.querySelector(".discipline3_name .statblock-rendered-text-content > a").innerHTML //  ... то в ссылке находим имя
-                if (valueDisсiplineThreeName.trim().length > 11 && valueDisсiplineThreeValue > 9) { // дальше проверки на длину имени 
-                    document.querySelector(".discipline3_value .property-text").style.fontSize = "14px"; // и замену точек на цифры, если имя слишком длинное
+        var valueDisсiplineThreeName = document.querySelector(".discipline3_name .statblock-rendered-text-content").innerHTML; // find discipline's name
+        var valueDisсiplineThreeValue = document.querySelector(".discipline3_value .statblock-rendered-text-content").innerHTML; // and it's value
+            if (valueDisсiplineThreeName.startsWith("<a data")) {   // if there is not just text, but the link, then...
+                var valueDisсiplineThreeName = document.querySelector(".discipline3_name .statblock-rendered-text-content > a").innerHTML // ...find discipline's name inside the link
+                if (valueDisсiplineThreeName.trim().length > 11 && valueDisсiplineThreeValue > 9) { // let's check how long the name is
+                    document.querySelector(".discipline3_value .property-text").style.fontSize = "14px"; // and replace dots with digits if the name is too long
                     document.querySelector(".discipline3_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline3_value .property-text").style.margin = "-2px 0px 0px 0px"}
                 if (valueDisсiplineThreeName.trim().length > 12 && valueDisсiplineThreeValue > 8) { 
@@ -1575,11 +1579,11 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                     document.querySelector(".discipline3_value .property-text").style.fontSize = "14px";
                     document.querySelector(".discipline3_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline3_value .property-text").style.margin = "-2px 0px 0px 0px"}
-                if (valueDisсiplineThreeName.trim().length > 15 && valueDisсiplineThreeValue > 5) {   // дальше пяти смысла нет проверять
+                if (valueDisсiplineThreeName.trim().length > 15 && valueDisсiplineThreeValue > 5) {   // no point in further checking
                     document.querySelector(".discipline3_value .property-text").style.fontSize = "14px";  
                     document.querySelector(".discipline3_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline3_value .property-text").style.margin = "-2px 0px 0px 0px"}}
-            if (valueDisсiplineThreeName.trim().length > 11 && valueDisсiplineThreeValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки
+            if (valueDisсiplineThreeName.trim().length > 11 && valueDisсiplineThreeValue > 9) {  // same code for a name without a link 
                 document.querySelector(".discipline3_value .property-text").style.fontSize = "14px";
                 document.querySelector(".discipline3_value .property-text").style.fontFamily = "Marta";
                 document.querySelector(".discipline3_value .property-text").style.margin = "-2px 0px 0px 0px"}
@@ -1601,14 +1605,14 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".discipline3_value .property-text").style.margin = "-2px 0px 0px 0px"}}
     
     
-    // четвертая дисциплина
+    // 4th discipline
     if (document.querySelector(".discipline4_name .statblock-rendered-text-content")) {
-        var valueDisсiplineFourName = document.querySelector(".discipline4_name .statblock-rendered-text-content").innerHTML; // находим имя дисциплины
-        var valueDisсiplineFourValue = document.querySelector(".discipline4_value .statblock-rendered-text-content").innerHTML; // находим количество точек
-            if (valueDisсiplineFourName.startsWith("<a data")) {   // если в названии дисциплины есть ссылка...
-                var valueDisсiplineFourName = document.querySelector(".discipline4_name .statblock-rendered-text-content > a").innerHTML //  ... то в ссылке находим имя
-                if (valueDisсiplineFourName.trim().length > 11 && valueDisсiplineFourValue > 9) { // дальше проверки на длину имени 
-                    document.querySelector(".discipline4_value .property-text").style.fontSize = "14px"; // и замену точек на цифры, если имя слишком длинное
+        var valueDisсiplineFourName = document.querySelector(".discipline4_name .statblock-rendered-text-content").innerHTML; // find discipline's name
+        var valueDisсiplineFourValue = document.querySelector(".discipline4_value .statblock-rendered-text-content").innerHTML; // and it's value
+            if (valueDisсiplineFourName.startsWith("<a data")) {   // if there is not just text, but the link, then...
+                var valueDisсiplineFourName = document.querySelector(".discipline4_name .statblock-rendered-text-content > a").innerHTML // ...find discipline's name inside the link
+                if (valueDisсiplineFourName.trim().length > 11 && valueDisсiplineFourValue > 9) { // let's check how long the name is
+                    document.querySelector(".discipline4_value .property-text").style.fontSize = "14px"; // and replace dots with digits if the name is too long
                     document.querySelector(".discipline4_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline4_value .property-text").style.margin = "-2px 0px 0px 0px"}
                 if (valueDisсiplineFourName.trim().length > 12 && valueDisсiplineFourValue > 8) { 
@@ -1623,11 +1627,11 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                     document.querySelector(".discipline4_value .property-text").style.fontSize = "14px";
                     document.querySelector(".discipline4_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline4_value .property-text").style.margin = "-2px 0px 0px 0px"}
-                if (valueDisсiplineFourName.trim().length > 15 && valueDisсiplineFourValue > 5) {   // дальше пяти смысла нет проверять
+                if (valueDisсiplineFourName.trim().length > 15 && valueDisсiplineFourValue > 5) {   // no point in further checking
                     document.querySelector(".discipline4_value .property-text").style.fontSize = "14px";  
                     document.querySelector(".discipline4_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline4_value .property-text").style.margin = "-2px 0px 0px 0px"}}
-            if (valueDisсiplineFourName.trim().length > 11 && valueDisсiplineFourValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки
+            if (valueDisсiplineFourName.trim().length > 11 && valueDisсiplineFourValue > 9) {  // same code for a name without a link 
                 document.querySelector(".discipline4_value .property-text").style.fontSize = "14px";
                 document.querySelector(".discipline4_value .property-text").style.fontFamily = "Marta";
                 document.querySelector(".discipline4_value .property-text").style.margin = "-2px 0px 0px 0px"}
@@ -1649,14 +1653,14 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".discipline4_value .property-text").style.margin = "-2px 0px 0px 0px"}}
     
     
-    // пятая дисциплина
+    // 5th discipline
     if (document.querySelector(".discipline5_name .statblock-rendered-text-content")) {
-        var valueDisсiplineFiveName = document.querySelector(".discipline5_name .statblock-rendered-text-content").innerHTML; // находим имя дисциплины
-        var valueDisсiplineFiveValue = document.querySelector(".discipline5_value .statblock-rendered-text-content").innerHTML; // находим количество точек
-            if (valueDisсiplineFiveName.startsWith("<a data")) {   // если в названии дисциплины есть ссылка...
-                var valueDisсiplineFiveName = document.querySelector(".discipline5_name .statblock-rendered-text-content > a").innerHTML //  ... то в ссылке находим имя
-                if (valueDisсiplineFiveName.trim().length > 11 && valueDisсiplineFiveValue > 9) { // дальше проверки на длину имени 
-                    document.querySelector(".discipline5_value .property-text").style.fontSize = "14px"; // и замену точек на цифры, если имя слишком длинное
+        var valueDisсiplineFiveName = document.querySelector(".discipline5_name .statblock-rendered-text-content").innerHTML; // find discipline's name
+        var valueDisсiplineFiveValue = document.querySelector(".discipline5_value .statblock-rendered-text-content").innerHTML; // and it's value
+            if (valueDisсiplineFiveName.startsWith("<a data")) {   // if there is not just text, but the link, then...
+                var valueDisсiplineFiveName = document.querySelector(".discipline5_name .statblock-rendered-text-content > a").innerHTML // ...find discipline's name inside the link
+                if (valueDisсiplineFiveName.trim().length > 11 && valueDisсiplineFiveValue > 9) { // let's check how long the name is
+                    document.querySelector(".discipline5_value .property-text").style.fontSize = "14px"; // and replace dots with digits if the name is too long
                     document.querySelector(".discipline5_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline5_value .property-text").style.margin = "-2px 0px 0px 0px"}
                 if (valueDisсiplineFiveName.trim().length > 12 && valueDisсiplineFiveValue > 8) { 
@@ -1671,11 +1675,11 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                     document.querySelector(".discipline5_value .property-text").style.fontSize = "14px";
                     document.querySelector(".discipline5_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline5_value .property-text").style.margin = "-2px 0px 0px 0px"}
-                if (valueDisсiplineFiveName.trim().length > 15 && valueDisсiplineFiveValue > 5) {   // дальше пяти смысла нет проверять
+                if (valueDisсiplineFiveName.trim().length > 15 && valueDisсiplineFiveValue > 5) {   // no point in further checking
                     document.querySelector(".discipline5_value .property-text").style.fontSize = "14px";  
                     document.querySelector(".discipline5_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline5_value .property-text").style.margin = "-2px 0px 0px 0px"}}
-            if (valueDisсiplineFiveName.trim().length > 11 && valueDisсiplineFiveValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки
+            if (valueDisсiplineFiveName.trim().length > 11 && valueDisсiplineFiveValue > 9) {  // same code for a name without a link 
                 document.querySelector(".discipline5_value .property-text").style.fontSize = "14px";
                 document.querySelector(".discipline5_value .property-text").style.fontFamily = "Marta";
                 document.querySelector(".discipline5_value .property-text").style.margin = "-2px 0px 0px 0px"}
@@ -1697,14 +1701,14 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".discipline5_value .property-text").style.margin = "-2px 0px 0px 0px"}}
     
     
-    // шестая дисциплина
+    // 6th discipline
     if (document.querySelector(".discipline6_name .statblock-rendered-text-content")) {
-        var valueDisсiplineSixName = document.querySelector(".discipline6_name .statblock-rendered-text-content").innerHTML; // находим имя дисциплины
-        var valueDisсiplineSixValue = document.querySelector(".discipline6_value .statblock-rendered-text-content").innerHTML; // находим количество точек
-            if (valueDisсiplineSixName.startsWith("<a data")) {   // если в названии дисциплины есть ссылка...
-                var valueDisсiplineSixName = document.querySelector(".discipline6_name .statblock-rendered-text-content > a").innerHTML //  ... то в ссылке находим имя
-                if (valueDisсiplineSixName.trim().length > 11 && valueDisсiplineSixValue > 9) { // дальше проверки на длину имени 
-                    document.querySelector(".discipline6_value .property-text").style.fontSize = "14px"; // и замену точек на цифры, если имя слишком длинное
+        var valueDisсiplineSixName = document.querySelector(".discipline6_name .statblock-rendered-text-content").innerHTML; // find discipline's name
+        var valueDisсiplineSixValue = document.querySelector(".discipline6_value .statblock-rendered-text-content").innerHTML; // and it's value
+            if (valueDisсiplineSixName.startsWith("<a data")) {   // if there is not just text, but the link, then...
+                var valueDisсiplineSixName = document.querySelector(".discipline6_name .statblock-rendered-text-content > a").innerHTML // ...find discipline's name inside the link
+                if (valueDisсiplineSixName.trim().length > 11 && valueDisсiplineSixValue > 9) { // let's check how long the name is
+                    document.querySelector(".discipline6_value .property-text").style.fontSize = "14px"; // and replace dots with digits if the name is too long
                     document.querySelector(".discipline6_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline6_value .property-text").style.margin = "-2px 0px 0px 0px"}
                 if (valueDisсiplineSixName.trim().length > 12 && valueDisсiplineSixValue > 8) { 
@@ -1719,11 +1723,11 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                     document.querySelector(".discipline6_value .property-text").style.fontSize = "14px";
                     document.querySelector(".discipline6_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline6_value .property-text").style.margin = "-2px 0px 0px 0px"}
-                if (valueDisсiplineSixName.trim().length > 15 && valueDisсiplineSixValue > 5) {   // дальше пяти смысла нет проверять
+                if (valueDisсiplineSixName.trim().length > 15 && valueDisсiplineSixValue > 5) {   // no point in further checking
                     document.querySelector(".discipline6_value .property-text").style.fontSize = "14px";  
                     document.querySelector(".discipline6_value .property-text").style.fontFamily = "Marta";
                     document.querySelector(".discipline6_value .property-text").style.margin = "-2px 0px 0px 0px"}}
-            if (valueDisсiplineSixName.trim().length > 11 && valueDisсiplineSixValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки
+            if (valueDisсiplineSixName.trim().length > 11 && valueDisсiplineSixValue > 9) {  // same code for a name without a link 
                 document.querySelector(".discipline6_value .property-text").style.fontSize = "14px";
                 document.querySelector(".discipline6_value .property-text").style.fontFamily = "Marta";
                 document.querySelector(".discipline6_value .property-text").style.margin = "-2px 0px 0px 0px"}
@@ -1747,7 +1751,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     
-    // определяем, с какой стороны показывать достоинства и недостатки у оборотней
+    // define where to show merits and flaws, on the left or right - for WEREWOLVES
     if (document.querySelector(".merits-and-flaws-column-left .line.where-to-show-merits-and-flaws") != null) { 
         var WhereToShowMeritsAndFlaws = document.querySelector(".line.where-to-show-merits-and-flaws .statblock-rendered-text-content").innerHTML;
         console.log('где же показывать достоинства и недостатки? ' + WhereToShowMeritsAndFlaws)
@@ -1769,21 +1773,21 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     
-    // в завимимости от названия пути и его значения, проставляется (или удаляется) модификатор столпа
+    // bearing and it's value are displayed based on the path and its value
     if (document.querySelector(".line.path .statblock-rendered-text-content") != null) { 
-    const path = document.querySelector(".path .statblock-rendered-text-content"); // найти значение пути, человечность это или нет
-        if (path === null ) { // если путь вообще не указан...
-            document.querySelector(".bearing").style.display = 'none'} // удаляется вся строчка "Столп"
-        else if (path.innerHTML != ('HUMANITY')) { // если путь не человечность, то...
-            document.querySelector(".bearing").style.display = 'none'; // удаляется вся строчка "Столп"
-            var pathModifier = document.querySelector(".line.path_value .statblock-rendered-text-content").innerHTML; // получаем количество точек в не-человечности
-            if (pathModifier = 10) {
+    const path = document.querySelector(".path .statblock-rendered-text-content"); // find the path, is it the humanity or not?
+        if (path === null ) { // if the path is not presented...
+            document.querySelector(".bearing").style.display = 'none'} // ...bearing line will be hidden
+        else if (path.innerHTML != ('HUMANITY')) { // if the path isn't the humanity...
+            document.querySelector(".bearing").style.display = 'none'; // ...bearing line will be hidden
+            var pathModifier = document.querySelector(".line.path_value .statblock-rendered-text-content").innerHTML; // let's get the value of non-humanity path
+            if (pathModifier = 10) { // replace 10 with X
             document.querySelector(".path_value .statblock-rendered-text-content").innerHTML = 'X';}} 
-        else {var pathModifier = document.querySelector(".line.path_value .statblock-rendered-text-content").innerHTML; // получаем количество точек в человечности
+        else {var pathModifier = document.querySelector(".line.path_value .statblock-rendered-text-content").innerHTML; // let's get the value of humanity path
             switch (pathModifier) {
-                case '10':
+                case '10': // replace 10 with X
                     document.querySelector(".line.path_value .statblock-rendered-text-content").innerHTML = 'X';
-                case 'X':
+                case 'X': // and then correspinding bearing values will be assigned
                     document.querySelector(".line.bearing .statblock-rendered-text-content").innerHTML = 'Normalcy ( -2 )'; break;
                 case '9':
                     document.querySelector(".line.bearing .statblock-rendered-text-content").innerHTML = 'Normalcy ( -1 )'; break;
@@ -1806,29 +1810,29 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 default: 
                     document.querySelector(".line.bearing .statblock-rendered-text-content").innerHTML = 'You are the Beast!';
                     if (document.querySelector(".line.bearing .statblock-rendered-text-content").innerHTML === null) {
-                        console.log('пропал блок со столпом')
+                        console.log('bearing line is missing')
                     }
             }
     } }
     else {
         //nothing
     }
-    // то же самое, но для ховера
+    // same code, but for a statblock in hover
     if (document.querySelector(".popover.hover-popover .path .statblock-rendered-text-content") != null) {
-    const pathHover = document.querySelector(".popover.hover-popover .path .statblock-rendered-text-content"); // найти значение пути, человечность это или нет
-    console.log(pathHover + 'есть ли путь в ховере')
-        if (pathHover === null ) { // если путь вообще не указан...
-            document.querySelector(".popover.hover-popover .line.bearing").style.display = 'none'} // удаляется вся строчка "Столп"
-        else if (pathHover.innerHTML != ('ЧЕЛОВЕЧНОСТЬ')) { // если путь не человечность, то...
-            document.querySelector(".popover.hover-popover .bearing").style.display = 'none'; // удаляется вся строчка "Столп"
-            var pathModifierHover = document.querySelector(".line.path_value .statblock-rendered-text-content").innerHTML; // получаем количество точек в не-человечности
+    const pathHover = document.querySelector(".popover.hover-popover .path .statblock-rendered-text-content"); // find the path, is it the humanity or not?
+    console.log(pathHover + 'is there the path in hover?')
+        if (pathHover === null ) { // if the path is not presented...
+            document.querySelector(".popover.hover-popover .line.bearing").style.display = 'none'} // ...bearing line will be hidden
+        else if (pathHover.innerHTML != ('ЧЕЛОВЕЧНОСТЬ')) { // if the path isn't the humanity...
+            document.querySelector(".popover.hover-popover .bearing").style.display = 'none'; // ...bearing line will be hidden
+            var pathModifierHover = document.querySelector(".line.path_value .statblock-rendered-text-content").innerHTML; // let's get the value of non-humanity path
             if (pathModifierHover = 10) {
             document.querySelector(".popover.hover-popover .path_value .statblock-rendered-text-content").innerHTML = 'X';}} 
-        else {var pathModifierHover = document.querySelector(".popover.hover-popover .line.path_value .statblock-rendered-text-content").innerHTML; // получаем количество точек в человечности
+        else {var pathModifierHover = document.querySelector(".popover.hover-popover .line.path_value .statblock-rendered-text-content").innerHTML; // let's get the value of humanity path
             switch (pathModifierHover) {
-                case '10':
+                case '10': // replace 10 with X
                     document.querySelector(".popover.hover-popover .line.path_value .statblock-rendered-text-content").innerHTML = 'X';
-                case 'X':
+                case 'X': // and then correspinding bearing values will be assigned
                     document.querySelector(".popover.hover-popover .line.bearing .statblock-rendered-text-content").innerHTML = 'Нормальность ( -2 )'; break;
                 case '9':
                     document.querySelector(".popover.hover-popover .line.bearing .statblock-rendered-text-content").innerHTML = 'Нормальность ( -1 )'; break;
@@ -1851,48 +1855,48 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 default: 
                     document.querySelector(".popover.hover-popover .line.bearing .statblock-rendered-text-content").innerHTML = 'Теперь ты Зверь!';
                     if (document.querySelector(".popover.hover-popover .line.bearing .statblock-rendered-text-content").innerHTML === null) {
-                        console.log('пропал блок со столпом в ховере')
+                        console.log('bearing line in hover is missing')
                     }
             }
     }} 
     
         
-    // Еще меняем всякие иксы на нормальные 10
+    // Replace more 10s with X
     if (document.querySelector(".willpower-block .line.willpower_main") != null) {
-        var willpowerValue = document.querySelector(".willpower_main .statblock-rendered-text-content")  // для воли
-        if (willpowerValue != null) { // для обычного значения 
+        var willpowerValue = document.querySelector(".willpower_main .statblock-rendered-text-content")  // willpower
+        if (willpowerValue != null) { // willpower
             if (willpowerValue.innerHTML == 10) {
                 document.querySelector(".willpower_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // for dice roller
             willpowerValue = document.querySelector(".willpower_main span.dice-roller-result").innerHTML;  
             if (willpowerValue == 10) {
                 document.querySelector(".willpower_main span.dice-roller-result").innerHTML = 'X'};}}
     else {
         //nothing
-        console.log('воля не норм')
+        console.log('something went wrong with willpower')
     }
-    // то же самое, но для ховера
+    // same code, but for Dice Roller 
     if (document.querySelector(".popover.hover-popover .willpower-block .line.willpower_main") != null) {
-        var willpowerValue = document.querySelector(".popover.hover-popover .willpower_main .statblock-rendered-text-content")  // для воли
-        if (willpowerValue != null) { // для обычного значения 
+        var willpowerValue = document.querySelector(".popover.hover-popover .willpower_main .statblock-rendered-text-content")  // willpower
+        if (willpowerValue != null) { // willpower
             if (willpowerValue.innerHTML == 10) {
                 document.querySelector(".popover.hover-popover .willpower_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // for dice roller
             willpowerValue = document.querySelector(".popover.hover-popover .willpower_main span.dice-roller-result").innerHTML;  
             if (willpowerValue == 10) {
                 document.querySelector(".popover.hover-popover .willpower_main span.dice-roller-result").innerHTML = 'X'};}}
     else {
         //nothing
-        console.log('воля в ховере не норм')
+        console.log('something went wrong with willpower in hover')
     }
     
     
     if (document.querySelector(".willpower-block .line.willpower_current") != null) {
-    var willpowerCurrentValue = document.querySelector(".willpower_current .statblock-rendered-text-content")  // для запаса воли
-    if (willpowerCurrentValue != null) { // для обычного значения 
+    var willpowerCurrentValue = document.querySelector(".willpower_current .statblock-rendered-text-content")  // willpower pool
+    if (willpowerCurrentValue != null) { // willpower pool
         if (willpowerCurrentValue.innerHTML == 10) {
             document.querySelector(".willpower_current .statblock-rendered-text-content").innerHTML = 'X'}}
-    else { // для дайс роллера
+    else { // for dice roller
         willpowerCurrentValue = document.querySelector(".willpower_current span.dice-roller-result").innerHTML;  
         if (willpowerCurrentValue == 10) {
             document.querySelector(".willpower_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -1901,11 +1905,11 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     }
     // то же самое, но для ховера
     if (document.querySelector(".popover.hover-popover .willpower-block .line.willpower_current") != null) {
-        var willpowerCurrentValue = document.querySelector(".popover.hover-popover .willpower_current .statblock-rendered-text-content")  // для запаса воли
-        if (willpowerCurrentValue != null) { // для обычного значения 
+        var willpowerCurrentValue = document.querySelector(".popover.hover-popover .willpower_current .statblock-rendered-text-content")  // willpower pool
+        if (willpowerCurrentValue != null) { // willpower pool
             if (willpowerCurrentValue.innerHTML == 10) {
                 document.querySelector(".popover.hover-popover .willpower_current .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // for dice roller
             willpowerCurrentValue = document.querySelector(".popover.hover-popover .willpower_current span.dice-roller-result").innerHTML;  
             if (willpowerCurrentValue == 10) {
                 document.querySelector(".popover.hover-popover .willpower_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -1916,20 +1920,21 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     // Глобальный пересчет крови, чтобы из одной цифры (от 1 до 40) добавлялись и отображались нужные строчки, а ненужные - скрывались
+    // The great recalculation of blood, to use one parameter\number - then show all the needen line and hide others
     if (document.querySelector(".line.blood") != null) { 
-    const bloodCurrent = document.querySelector(".line.blood .statblock-rendered-text-content.inline").innerHTML; // для крови, первая строчка
+    const bloodCurrent = document.querySelector(".line.blood .statblock-rendered-text-content.inline").innerHTML; // first line of blood
     console.log('значение крови = ' + bloodCurrent)
         if (bloodCurrent <= 9) {
             document.querySelector(".property-container:has(> .blood_current2)").style.display = "none";
             document.querySelector(".property-container:has(> .blood_current3)").style.display = "none";
             document.querySelector(".property-container:has(> .blood_current4)").style.display = "none"; 
-            console.log('проверка на меньше девяти')
+            console.log('small check when bloodpool is less than 9')
         } else if (bloodCurrent == 10) {
             document.querySelector(".line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".property-container:has(> .blood_current2)").style.display = "none";
             document.querySelector(".property-container:has(> .blood_current3)").style.display = "none";
             document.querySelector(".property-container:has(> .blood_current4)").style.display = "none"; 
-            console.log('проверка на равенство десяти или иксу')
+            console.log('small check when bloodpool is equal to 10 or X')
         } else if (bloodCurrent < 20) {
             var bloodCurrentTwo = bloodCurrent-10;
             document.querySelector(".line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
@@ -1937,14 +1942,14 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             document.querySelector(".line.blood_current2 .statblock-rendered-text-content.inline").innerHTML = bloodCurrentTwo;
             document.querySelector(".property-container:has(> .blood_current3)").style.display = "none";
             document.querySelector(".property-container:has(> .blood_current4)").style.display = "none"; 
-            console.log('проверка на меньше двадцати')
+            console.log('small check when bloodpool is less than 20')
         } else if (bloodCurrent == 20) {
             document.querySelector(".line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".property-container:has(> .blood_current2)").style.display = "block";
             document.querySelector(".line.blood_current2 .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".property-container:has(> .blood_current3)").style.display = "none";
             document.querySelector(".property-container:has(> .blood_current4)").style.display = "none";
-            console.log('проверка на равенство двадцати')
+            console.log('small check when bloodpool is equal to 20')
         } else if (bloodCurrent < 30) {
             var bloodCurrentThree = bloodCurrent-20;
             document.querySelector(".line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
@@ -1953,7 +1958,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             document.querySelector(".property-container:has(> .blood_current3)").style.display = "block";
             document.querySelector(".line.blood_current3 .statblock-rendered-text-content.inline").innerHTML = bloodCurrentThree;
             document.querySelector(".property-container:has(> .blood_current4)").style.display = "none";  
-            console.log('проверка на меньше тридцати')
+            console.log('small check when bloodpool is less than 30')
         } else if (bloodCurrent == 30) {
             document.querySelector(".line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".property-container:has(> .blood_current2)").style.display = "block";
@@ -1961,7 +1966,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             document.querySelector(".property-container:has(> .blood_current3)").style.display = "block";
             document.querySelector(".line.blood_current3 .statblock-rendered-text-content.inline").innerHTML = 'X';;
             document.querySelector(".property-container:has(> .blood_current4)").style.display = "none"; 
-            console.log('проверка на равенство тридцати')
+            console.log('small check when bloodpool is equal to 30')
         } else if (bloodCurrent < 40) {
             var bloodCurrentFour = bloodCurrent-30;
             document.querySelector(".line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
@@ -1970,7 +1975,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             document.querySelector(".property-container:has(> .blood_current3)").style.display = "block";
             document.querySelector(".line.blood_current3 .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".line.blood_current4 .statblock-rendered-text-content.inline").innerHTML = bloodCurrentFour;
-            console.log('проверка на меньше сорока')
+            console.log('small check when bloodpool is less than 40')
         } else if (bloodCurrent == '40') {
             document.querySelector(".line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".property-container:has(> .blood_current2)").style.display = "block";
@@ -1979,37 +1984,37 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             document.querySelector(".line.blood_current3 .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".property-container:has(> .blood_current3)").style.display = "block";
             document.querySelector(".line.blood_current4 .statblock-rendered-text-content.inline").innerHTML = 'X';
-            console.log('проверка на равенство сорока')
+            console.log('small check when bloodpool is equal to 40')
         } else if (bloodCurrent >= 41) {
             document.querySelector(".line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".statblock-item-container.property-container:has(> .line.blood_current2)").innerHTML = "";
             document.querySelector(".statblock-item-container.property-container:has(> .line.blood_current3)").innerHTML = "";
             document.querySelector(".statblock-item-container.property-container:has(> .line.blood_current4)").innerHTML = ""; 
             document.querySelector(".line.blood_per_turn").innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrent + '.  Time to think about your Humanity!';
-            console.log('проверка на больше сорока')
+            console.log('small check when bloodpool is greather than 40')
         } else {
             // do nothing
-            console.log('что-то с кровью пошло не так')
+            console.log('something went wrong with bloodpool')
         }
     }
     else {
         //nothing
     }
-        // то же самое, но для ховера
+        // same code, but for a statblock in hover
     if (document.querySelector(".popover.hover-popover .line.blood .statblock-rendered-text-content.inline") != null) {
-    const bloodCurrentHover = document.querySelector(".popover.hover-popover .line.blood .statblock-rendered-text-content.inline").innerHTML; // для крови, первая строчка
+    const bloodCurrentHover = document.querySelector(".popover.hover-popover .line.blood .statblock-rendered-text-content.inline").innerHTML; // first line of blood
     console.log('значение крови в ховере = ' + bloodCurrentHover)
         if (bloodCurrentHover <= 9) {
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current2)").style.display = "none";
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current3)").style.display = "none";
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current4)").style.display = "none"; 
-            console.log('проверка на меньше девяти в ховере')
+            console.log('small check when bloodpool is less than 9 in hover')
         } else if (bloodCurrentHover == 10) {
             document.querySelector(".popover.hover-popover .line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current2)").style.display = "none";
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current3)").style.display = "none";
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current4)").style.display = "none"; 
-            console.log('проверка на равенство десяти или иксу в ховере')
+            console.log('small check when bloodpool is equal to 10 or X in hover')
         } else if (bloodCurrentHover < 20) {
             var bloodCurrentTwoHover = bloodCurrentHover-10;
             document.querySelector(".popover.hover-popover .line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
@@ -2017,14 +2022,14 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             document.querySelector(".popover.hover-popover .line.blood_current2 .statblock-rendered-text-content.inline").innerHTML = bloodCurrentTwoHover;
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current3)").style.display = "none";
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current4)").style.display = "none"; 
-            console.log('проверка на меньше двадцати в ховере')
+            console.log('small check when bloodpool is less than 20 in hover')
         } else if (bloodCurrentHover == 20) {
             document.querySelector(".popover.hover-popover .line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current2)").style.display = "block";
             document.querySelector(".popover.hover-popover .line.blood_current2 .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current3)").style.display = "none";
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current4)").style.display = "none";
-            console.log('проверка на равенство двадцати в ховере')
+            console.log('small check when bloodpool is equal to 20 in hover')
         } else if (bloodCurrentHover < 30) {
             var bloodCurrentThreeHover = bloodCurrentHover-20;
             document.querySelector(".popover.hover-popover .line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
@@ -2033,7 +2038,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current3)").style.display = "block";
             document.querySelector(".popover.hover-popover .line.blood_current3 .statblock-rendered-text-content.inline").innerHTML = bloodCurrentThreeHover;
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current4)").style.display = "none";  
-            console.log('проверка на меньше тридцатив ховере')
+            console.log('small check when bloodpool is less than 30 in hover')
         } else if (bloodCurrentHover == 30) {
             document.querySelector(".popover.hover-popover .line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current2)").style.display = "block";
@@ -2041,7 +2046,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current3)").style.display = "block";
             document.querySelector(".popover.hover-popover .line.blood_current3 .statblock-rendered-text-content.inline").innerHTML = 'X';;
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current4)").style.display = "none"; 
-            console.log('проверка на равенство тридцати в ховере')
+            console.log('small check when bloodpool is equal to 30 in hover')
         } else if (bloodCurrentHover < 40) {
             var bloodCurrentFourHover = bloodCurrentHover-30;
             document.querySelector(".popover.hover-popover .line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
@@ -2050,7 +2055,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current3)").style.display = "block";
             document.querySelector(".popover.hover-popover .line.blood_current3 .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".popover.hover-popover .line.blood_current4 .statblock-rendered-text-content.inline").innerHTML = bloodCurrentFourHover;
-            console.log('проверка на меньше сорока в ховере')
+            console.log('small check when bloodpool is less than 40 in hover')
         } else if (bloodCurrentHover == '40') {
             document.querySelector(".popover.hover-popover .line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current2)").style.display = "block";
@@ -2059,21 +2064,21 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             document.querySelector(".popover.hover-popover .line.blood_current3 .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".popover.hover-popover .property-container:has(> .blood_current3)").style.display = "block";
             document.querySelector(".popover.hover-popover .line.blood_current4 .statblock-rendered-text-content.inline").innerHTML = 'X';
-            console.log('проверка на равенство сорока в ховере')
+            console.log('small check when bloodpool is equal to 40 in hover')
         } else if (bloodCurrentHover >= 41) {
             document.querySelector(".popover.hover-popover .line.blood .statblock-rendered-text-content.inline").innerHTML = 'X';
             document.querySelector(".popover.hover-popover .statblock-item-container.property-container:has(> .line.blood_current2)").innerHTML = "";
             document.querySelector(".popover.hover-popover .statblock-item-container.property-container:has(> .line.blood_current3)").innerHTML = "";
             document.querySelector(".popover.hover-popover .statblock-item-container.property-container:has(> .line.blood_current4)").innerHTML = ""; 
             document.querySelector(".popover.hover-popover .line.blood_per_turn").innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrentHover + '.  Time to think about your Humanity!';
-            console.log('проверка на больше сорока в ховере')
+            console.log('small check when bloodpool is greather than 40 in hover')
         } else {
             // do nothing
-            console.log('что-то с кровью в ховере пошло не так')
+            console.log('something went wrong with bloodpool in hover')
         }}
     
     
-       //  ОБОРОТНИ
+       //  WEREWOLVES
     if (document.querySelector(".rage-block .line.rage_main") != null) {
         var rageValue = document.querySelector(".rage_main .statblock-rendered-text-content")  // для ярости
         if (rageValue != null) { // для обычного значения 
@@ -2380,7 +2385,4 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     
-    })   
-    
-    
-    
+    })

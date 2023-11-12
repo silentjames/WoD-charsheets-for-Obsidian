@@ -1,22 +1,22 @@
-async function sleep(ms) { // сон, чтобы успела прогрузиться вся страница
+async function sleep(ms) { // sleep is needed to wait for a note and a statblok to be fully loaded
     return new Promise(resolve => setTimeout(resolve, ms));}
     sleep(120).then(() => {
     
     
     
-    // определяется клан, и каждому клану подставляется своя картинка на бэкграунд, и не только!
+    // define a clan, and set up different background and weakness for each clan
     //  console.log(document.querySelector(".mod-active .line.clan .statblock-markdown"))
         if (document.querySelector(".mod-active .line.clan .statblock-markdown") != null) { 
         var clanName = document.querySelector(".vtm-v20-vampire-en .line.clan .statblock-markdown > p").innerHTML;
     console.log(clanName)
-        const collapsedColumn = document.querySelector('.vtm-v20-vampire-en .collapse-container'); // определяется зона, которой будет назначен бэкграунд 
+        const collapsedColumn = document.querySelector('.vtm-v20-vampire-en .collapse-container'); // define the area for the background
         switch (clanName) { 
             case ('Assamite'):
-                // каждому клану назначается соответствующий класс 
+                // corresponding css-class is assigned for each clan
                 collapsedColumn.classList.add('Assamite'); 
-                // добавляется соответствующий клановый изъян
+                // and clan weakness is also added
                 document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = ''; 
-                // если для страницы стоит класс wod-header, логотип классы прячется под именем, рядом с фото
+                // if note has 'csslacss: wod-header', clan logo will be displayed there, as background for general character info
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) 
                     {document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Assamite-background-logo)"};
                 break;
@@ -223,10 +223,10 @@ async function sleep(ms) { // сон, чтобы успела прогрузит
             //nothing
         }
             
-        // для ховера - лого клана проставляется рядом с фото, если есть класс wod-header - все то же самое, в общем. 
+        // same code, but for the case when statblock is displayed in hover
         if (document.querySelector(".popover.hover-popover .vtm-v20-vampire-en .line.clan .statblock-markdown > p") != null) {
         var clanNameHover = document.querySelector(".popover.hover-popover .vtm-v20-vampire-en .line.clan .statblock-markdown > p").innerHTML;
-        const collapsedColumnHover = document.querySelector('.popover.hover-popover .vtm-v20-vampire-en .collapse-container'); // определяется зона, которой будет назначен бэкграунд 
+        const collapsedColumnHover = document.querySelector('.popover.hover-popover .vtm-v20-vampire-en .collapse-container'); // define the hover area for the background 
         switch (clanNameHover) { 
             case ('Ассамиты'):
                 collapsedColumnHover.classList.add('Assamite'); 
@@ -436,50 +436,51 @@ async function sleep(ms) { // сон, чтобы успела прогрузит
         };
     
     
-    // настройка, отвечающая за отображение изъяна
+    // the setting for displaying a clan's weakness
         if (document.querySelector(".line.show_weakness .statblock-rendered-text-content") != null) {
             const showWeakness = document.querySelector(".line.show_weakness .statblock-rendered-text-content").innerHTML;
             switch (showWeakness) {
                 case ('no'):
-                    console.log('показывать изъян? ' + showWeakness)
+                    console.log('do you wanna see the weakness? ' + showWeakness)
                     document.querySelector(".property-container:has(> .line.weakness)").style.display = "none";
                     break;
                 case ('false'):
-                    console.log('показывать изъян? ' + showWeakness)
+                    console.log('do you wanna see the weakness? ' + showWeakness)
                     document.querySelector(".property-container:has(.line.weakness)").style.display = "none";
                     break;
             }
         }
         else {
-            console.log('показывать изъян? YES');
+            console.log('the weakness will be displayed');
             }
     
-        // и она же для ховера
+        // same setting, for statblock in hover
         if (document.querySelector(".popover.hover-popover .line.show_weakness .statblock-rendered-text-content") != null) {
             const showWeaknessHover = document.querySelector(".popover.hover-popover .line.show_weakness .statblock-rendered-text-content").innerHTML;
             switch (showWeaknessHover) {
                 case ('no'):
-                    console.log('показывать изъян в ховере? ' + showWeaknessHover)
+                    console.log('do you wanna see the weakness in hover? ' + showWeaknessHover)
                     document.querySelector(".popover.hover-popover .property-container:has(> .line.weakness)").style.display = "none";
                     break;
                 case ('false'):
-                    console.log('показывать изъян в ховере? ' + showWeaknessHover)
+                    console.log('do you wanna see the weakness in hover ' + showWeaknessHover)
                     document.querySelector(".popover.hover-popover .property-container:has(.line.weakness)").style.display = "none";
                     break;
             }
         }
         else {
-            console.log('показывать изъян в ховере? YES');
+            console.log('the weakness in hover will be displayed');
             }
         
     
     
     
-    // В зависимости от поколения, меняется значение траты крови в ход
+    // Set up blood per turn value, based on the generation
     if (document.querySelector(".line.generation .statblock-markdown p") != null) { 
-    var generationFull = document.querySelector(".line.generation .statblock-markdown").textContent; // нашел поколение
-    var generation = generationFull.slice(0, 2); // берем только первые два символа, если поколение вдруг длиннее за счет инфы про диаблери
-    console.log('поколение - ' + generation);
+    var generationFull = document.querySelector(".line.generation .statblock-markdown").textContent; // find the generation
+    var generation = generationFull.slice(0, 2); // pick only two first symbols, in case if the generation has info about diablery (like 9  ̶1̶0̶)
+    var generation = generation.replace(/\s/g, ''); // remove spaces, if the generation is 8 or 9
+    console.log('the generation of this Kindred is ' + generation);
     switch (generation) {
         case '13':
             document.querySelector(".line.blood_per_turn .statblock-rendered-text-content.inline").innerHTML = '1'; break;
@@ -497,11 +498,11 @@ async function sleep(ms) { // сон, чтобы успела прогрузит
     else {
         //nothing
     }
-    // то же самое, но для ховера
+    // same code, but for statblock in hover
     if (document.querySelector(".popover.hover-popover .line.generation .statblock-markdown > p") != null) {
-    const generationFullHover = document.querySelector(".popover.hover-popover .line.generation .statblock-markdown > p").textContent; // нашел поколение
-    var generationHover = generationFullHover.slice(0, 2); // берем только первые два символа, если поколение вдруг длиннее за счет инфы про диаблери
-    var generationHover = generationHover.replace(/\s/g, ''); // убираем пробелы, если поколение 8-9
+    const generationFullHover = document.querySelector(".popover.hover-popover .line.generation .statblock-markdown > p").textContent;
+    var generationHover = generationFullHover.slice(0, 2); 
+    var generationHover = generationHover.replace(/\s/g, ''); 
     console.log('поколение в ховере - ' + generationHover);
     switch (generationHover) {
         case '13':
@@ -523,23 +524,24 @@ async function sleep(ms) { // сон, чтобы успела прогрузит
     
     
     // если имя персонажа, написанное H2, есть в заметке и совпадает с именем в статблоке, то оно удаляется - но остается в оглавлении
+    // 
     if (document.querySelector("h2") != null) {
         var outlineName = document.querySelector("h2").innerHTML
     //  console.log(document.querySelector("h2").innerHTML);    
         const characterName = document.querySelector('h1 .statblock-rendered-text-content').innerHTML
-    //  console.log('имя из статблока = ' + characterName)
+    //  console.log('the name from the stablock = ' + characterName)
             if (outlineName.includes(characterName)) {
                 document.querySelector("h2").style.display = "none";
         }}
     else {
         // do nothing
     }
-    // то же самое, но для ховера
+    // same code, but for statblock in hover
     if (document.querySelector(".popover.hover-popover h2") != null) {
         var outlineName_hover = document.querySelector(".popover.hover-popover h2").innerHTML
-    //  console.log('имя в заметке в ховере - ' + outlineName_hover)
+    //  console.log('the name from the hover stablock - ' + outlineName_hover)
         const characterName_hover = document.querySelector('.popover.hover-popover h1 .statblock-rendered-text-content').innerHTML
-    //  console.log('имя из статблока в ховере = ' + characterName_hover)
+    //  console.log('the name from the hover stablock = ' + characterName_hover)
             if (outlineName_hover.includes(characterName_hover)) {
                 document.querySelector(".popover.hover-popover h2").style.display = "none";
         }}

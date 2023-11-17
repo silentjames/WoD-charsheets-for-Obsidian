@@ -627,7 +627,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".charisma .property-text").style.fontFamily = "Marta";
                 document.querySelector(".charisma .property-text").style.margin = "-1px 0px 0px 0px"
                 document.querySelector(".charisma .statblock-rendered-text-content").innerHTML = "must be at least 1"}    
-            if (valueCharisma.innerHTML == 10) {
+            if (valueCharisma.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".charisma .statblock-rendered-text-content").innerHTML = 'X'};}
         else { // same code, but for Dice Roller
             valueCharisma = document.querySelector(".charisma span.dice-roller-result").innerHTML;
@@ -673,7 +673,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".line.appearance .property-name").style.textDecoration = "line-through"}
             if (valueAppearance.innerHTML == 0) { // strikethrough text if the value is 0 (hello Nosferatu)
                 document.querySelector(".line.appearance .property-name").style.textDecoration = "line-through"}  
-            if (valueAppearance.innerHTML > 5) { //// if the value is greater than 5, dots will be replaced with digits
+            if (valueAppearance.innerHTML > 5) { // if the value is greater than 5, dots will be replaced with digits
                 document.querySelector(".appearance .property-text").style.fontSize = "14px";
                 document.querySelector(".appearance .property-text").style.fontFamily = "Marta";
                 document.querySelector(".appearance .property-text").style.margin = "-2px 0px 0px 0px"};}
@@ -761,12 +761,12 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             // Abilities - Talents
     if (document.querySelector(".athletics")) {
         var valueAthletics = document.querySelector(".athletics .statblock-rendered-text-content");  // athletics
-        if (valueAthletics != null) { // для обычного значения
+        if (valueAthletics != null) { // usual code
             if (valueAthletics.innerHTML == '-') {
                 document.querySelector(".athletics .statblock-rendered-text-content").innerHTML = 0}
-            if (valueAthletics.innerHTML == 10) {
+            if (valueAthletics.innerHTML == 10) { // replaces dots with digits for "10"
                 document.querySelector(".athletics .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueAthletics = document.querySelector(".athletics .dice-roller-result").innerHTML;
             if (valueAthletics === 'null' || valueAthletics == 0) {
                 document.querySelector(".athletics .dice-roller-result").style.display = "none";
@@ -782,15 +782,15 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".alertness")) {
-        var valueAlertness = document.querySelector(".alertness .statblock-rendered-text-content");  // Бдительность
-        if (valueAlertness != null) { // для обычного значения
+        var valueAlertness = document.querySelector(".alertness .statblock-rendered-text-content");  // alertness
+        if (valueAlertness != null) { // usual code
             if (valueAlertness.innerHTML == '-') {
                 document.querySelector(".alertness .statblock-rendered-text-content").innerHTML = 0}
-            if (valueAlertness.innerHTML == 10) {
+            if (valueAlertness.innerHTML == 10) { // replaces dots with digits for "10"
                 document.querySelector(".alertness .dice-roller-result").style.fontSize = "14px";
                 document.querySelector(".alertness .dice-roller-result").style.fontFamily = "Marta";
                 document.querySelector(".alertness .dice-roller-result").style.margin = "-2px 0px 0px 0px"};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueAlertness = document.querySelector(".alertness .dice-roller-result").innerHTML;
             if (valueAlertness === 'null' || valueAlertness == 0) {
                 document.querySelector(".alertness .dice-roller-result").style.display = "none";
@@ -808,13 +808,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".brawl")) {
-        var valueBrawl = document.querySelector(".brawl .statblock-rendered-text-content");  // Драка
-        if (valueBrawl != null) { // для обычного значения
+        var valueBrawl = document.querySelector(".brawl .statblock-rendered-text-content");  // brawl
+        if (valueBrawl != null) { // usual code
             if (valueBrawl.innerHTML == '-') {
                 document.querySelector(".brawl .statblock-rendered-text-content").innerHTML = 1}
-            if (valueBrawl.innerHTML == 10) {
+            if (valueBrawl.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".brawl .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueBrawl = document.querySelector(".brawl .dice-roller-result").innerHTML;
             if (valueBrawl === 'null' || valueBrawl == 0) {
                 document.querySelector(".brawl .dice-roller-result").style.display = "none";
@@ -830,13 +830,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".intimidation")) {
-        var valueIntimidation = document.querySelector(".intimidation .statblock-rendered-text-content");  // Запугивание
-        if (valueIntimidation != null) { // для обычного значения
+        var valueIntimidation = document.querySelector(".intimidation .statblock-rendered-text-content");  // intimidation
+        if (valueIntimidation != null) { // usual code
             if (valueIntimidation.innerHTML == '-') {
                 document.querySelector(".intimidation .statblock-rendered-text-content").innerHTML = 0}
-            if (valueIntimidation.innerHTML == 10) {
+            if (valueIntimidation.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".intimidation .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueIntimidation = document.querySelector(".intimidation .dice-roller-result").innerHTML;
             if (valueIntimidation === 'null' || valueIntimidation == 0) {
                 document.querySelector(".intimidation .dice-roller-result").style.display = "none";
@@ -852,13 +852,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".expression")) {
-        var valueExpression = document.querySelector(".expression .statblock-rendered-text-content");  // Красноречие
-        if (valueExpression != null) { // для обычного значения
+        var valueExpression = document.querySelector(".expression .statblock-rendered-text-content");  // expression
+        if (valueExpression != null) { // usual code
             if (valueExpression.innerHTML == '-') {
                 document.querySelector(".expression .statblock-rendered-text-content").innerHTML = 0}
-            if (valueExpression.innerHTML == 10) {
+            if (valueExpression.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".expression .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueExpression = document.querySelector(".expression .dice-roller-result").innerHTML;
             if (valueExpression === 'null' || valueExpression == 0) {
                 document.querySelector(".expression .dice-roller-result").style.display = "none";
@@ -874,13 +874,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".leadership")) {
-        var valueLeadership = document.querySelector(".leadership .statblock-rendered-text-content");  // Лидерство
-        if (valueLeadership != null) { // для обычного значения
+        var valueLeadership = document.querySelector(".leadership .statblock-rendered-text-content");  // leadership
+        if (valueLeadership != null) { // usual code
             if (valueLeadership.innerHTML == '-') {
                 document.querySelector(".leadership .statblock-rendered-text-content").innerHTML = 0}
-            if (valueLeadership.innerHTML == 10) {
+            if (valueLeadership.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".leadership .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueLeadership = document.querySelector(".leadership .dice-roller-result").innerHTML;
             if (valueLeadership === 'null' || valueLeadership == 0) {
                 document.querySelector(".leadership .dice-roller-result").style.display = "none";
@@ -896,15 +896,15 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".streetwise")) {
-        var valueStreetwise = document.querySelector(".streetwise .statblock-rendered-text-content");  // Уличное чутье
-        if (valueStreetwise != null) { // для обычного значения
+        var valueStreetwise = document.querySelector(".streetwise .statblock-rendered-text-content");  // streetwise
+        if (valueStreetwise != null) { // usual code
             if (valueStreetwise.innerHTML == '-') {
                 document.querySelector(".streetwise .statblock-rendered-text-content").innerHTML = 0}
-            if (valueStreetwise.innerHTML > 9) {
+            if (valueStreetwise.innerHTML > 9) { // if the value is greater than 9, dots will be replaced with digits
                 document.querySelector(".streetwise .dice-roller-result").style.fontSize = "14px";
                 document.querySelector(".streetwise .dice-roller-result").style.fontFamily = "Marta";
                 document.querySelector(".streetwise .dice-roller-result").style.margin = "-2px 0px 0px 0px"};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueStreetwise = document.querySelector(".streetwise .dice-roller-result").innerHTML;
             if (valueStreetwise === 'null' || valueStreetwise == 0) {
                 document.querySelector(".streetwise .dice-roller-result").style.display = "none";
@@ -922,13 +922,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".subterfuge")) {
-        var valueSubterfuge = document.querySelector(".subterfuge .statblock-rendered-text-content");  // Хитрость
-        if (valueSubterfuge != null) { // для обычного значения
+        var valueSubterfuge = document.querySelector(".subterfuge .statblock-rendered-text-content");  // subterfuge
+        if (valueSubterfuge != null) { // usual code
             if (valueSubterfuge.innerHTML == '-') {
                 document.querySelector(".subterfuge .statblock-rendered-text-content").innerHTML = 0}
-            if (valueSubterfuge.innerHTML == 10) {
+            if (valueSubterfuge.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".subterfuge .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueSubterfuge = document.querySelector(".subterfuge .dice-roller-result").innerHTML;
             if (valueSubterfuge === 'null' || valueSubterfuge == 0) {
                 document.querySelector(".subterfuge .dice-roller-result").style.display = "none";
@@ -944,15 +944,15 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".awareness")) {
-        var valueAwareness = document.querySelector(".awareness .statblock-rendered-text-content");  // Шестое чувство
-        if (valueAwareness != null) { // для обычного значения
+        var valueAwareness = document.querySelector(".awareness .statblock-rendered-text-content");  // awareness
+        if (valueAwareness != null) { // usual code
             if (valueAwareness.innerHTML == '-') {
                 document.querySelector(".awareness .statblock-rendered-text-content").innerHTML = 0}
-            if (valueAwareness.innerHTML > 7) {
+            if (valueAwareness.innerHTML > 7) { // if the value is greater than 7, dots will be replaced with digits
                 document.querySelector(".awareness .dice-roller-result").style.fontSize = "14px";
                 document.querySelector(".awareness .dice-roller-result").style.fontFamily = "Marta";
                 document.querySelector(".awareness .dice-roller-result").style.margin = "-2px 0px 0px 0px"};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueAwareness = document.querySelector(".awareness .dice-roller-result").innerHTML;
             if (valueAwareness === 'null' || valueAwareness == 0) {
                 document.querySelector(".awareness .dice-roller-result").style.display = "none";
@@ -970,13 +970,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".empathy")) {
-        var valueEmpathy = document.querySelector(".empathy .statblock-rendered-text-content");  // Эмпатия
-        if (valueEmpathy != null) { // для обычного значения
+        var valueEmpathy = document.querySelector(".empathy .statblock-rendered-text-content");  // empathy
+        if (valueEmpathy != null) { // usual code
             if (valueEmpathy.innerHTML == '-') {
                 document.querySelector(".empathy .statblock-rendered-text-content").innerHTML = 0}
-            if (valueEmpathy.innerHTML == 10) {
+            if (valueEmpathy.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".empathy .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueEmpathy = document.querySelector(".empathy .dice-roller-result").innerHTML;
             if (valueEmpathy === 'null' || valueEmpathy == 0) {
                 document.querySelector(".empathy .dice-roller-result").style.display = "none";
@@ -991,16 +991,16 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".empathy .dice-roller-result").innerHTML = 'X'};}}
     
     
-            // Способности Навыки
+            // Abilities - Skills
     
     if (document.querySelector(".drive")) {
-        var valueDrive = document.querySelector(".drive .statblock-rendered-text-content");  // Вождение
-        if (valueDrive != null) { // для обычного значения
+        var valueDrive = document.querySelector(".drive .statblock-rendered-text-content");  // drive
+        if (valueDrive != null) { // usual code
             if (valueDrive.innerHTML == '-') {
                 document.querySelector(".drive .statblock-rendered-text-content").innerHTML = 0}
-            if (valueDrive.innerHTML == 10) {
+            if (valueDrive.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".drive .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueDrive = document.querySelector(".drive .dice-roller-result").innerHTML;
             if (valueDrive === 'null' || valueDrive == 0) {
                 document.querySelector(".drive .dice-roller-result").style.display = "none";
@@ -1016,13 +1016,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".larceny")) {
-        var valueLarceny = document.querySelector(".larceny .statblock-rendered-text-content");  // Воровство
-        if (valueLarceny != null) { // для обычного значения
+        var valueLarceny = document.querySelector(".larceny .statblock-rendered-text-content");  // larceny
+        if (valueLarceny != null) { // usual code
             if (valueLarceny.innerHTML == '-') {
                 document.querySelector(".larceny .statblock-rendered-text-content").innerHTML = 0}
-            if (valueLarceny.innerHTML == 10) {
+            if (valueLarceny.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".larceny .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueLarceny = document.querySelector(".larceny .dice-roller-result").innerHTML;
             if (valueLarceny === 'null' || valueLarceny == 0) {
                 document.querySelector(".larceny .dice-roller-result").style.display = "none";
@@ -1038,13 +1038,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".survival")) {
-        var valueSurvival = document.querySelector(".survival .statblock-rendered-text-content");  // Выживание
-        if (valueSurvival != null) { // для обычного значения
+        var valueSurvival = document.querySelector(".survival .statblock-rendered-text-content");  // survival
+        if (valueSurvival != null) { // usual code
             if (valueSurvival.innerHTML == '-') {
                 document.querySelector(".survival .statblock-rendered-text-content").innerHTML = 0}
-            if (valueSurvival.innerHTML == 10) {
+            if (valueSurvival.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".survival .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueSurvival = document.querySelector(".survival .dice-roller-result").innerHTML;
             if (valueSurvival === 'null' || valueSurvival == 0) {
                 document.querySelector(".survival .dice-roller-result").style.display = "none";
@@ -1060,13 +1060,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".performance")) {
-        var valuePerformance = document.querySelector(".performance .statblock-rendered-text-content");  // Исполнение
-        if (valuePerformance != null) { // для обычного значения
+        var valuePerformance = document.querySelector(".performance .statblock-rendered-text-content");  // performance
+        if (valuePerformance != null) { // usual code
             if (valuePerformance.innerHTML == '-') {
                 document.querySelector(".performance .statblock-rendered-text-content").innerHTML = 0}
-            if (valuePerformance.innerHTML == 10) {
+            if (valuePerformance.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".performance .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valuePerformance = document.querySelector(".performance .dice-roller-result").innerHTML;
             if (valuePerformance === 'null' || valuePerformance == 0) {
                 document.querySelector(".performance .dice-roller-result").style.display = "none";
@@ -1082,15 +1082,15 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".animalken")) {
-        var valueAnimalken = document.querySelector(".animalken .statblock-rendered-text-content");  // Обращение с животными
-        if (valueAnimalken != null) { // для обычного значения
+        var valueAnimalken = document.querySelector(".animalken .statblock-rendered-text-content");  // animal ken
+        if (valueAnimalken != null) { // usual code
             if (valueAnimalken.innerHTML == '-') {
                 document.querySelector(".animalken .statblock-rendered-text-content").innerHTML = 0}
-            if (valueAnimalken.innerHTML > 6) {
+            if (valueAnimalken.innerHTML > 6) { // if the value is greater than 6, dots will be replaced with digits
                 document.querySelector(".animalken .dice-roller-result").style.fontSize = "14px";
                 document.querySelector(".animalken .dice-roller-result").style.fontFamily = "Marta";
                 document.querySelector(".animalken .dice-roller-result").style.margin = "-2px 0px 0px 0px"};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueAnimalken = document.querySelector(".animalken .dice-roller-result").innerHTML;
             if (valueAnimalken === 'null' || valueAnimalken == 0) {
                 document.querySelector(".animalken .dice-roller-result").style.display = "none";
@@ -1108,13 +1108,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".crafts")) {
-        var valueCrafts = document.querySelector(".crafts .statblock-rendered-text-content");  // Ремесло
-        if (valueCrafts != null) { // для обычного значения
+        var valueCrafts = document.querySelector(".crafts .statblock-rendered-text-content");  // crafts
+        if (valueCrafts != null) { // usual code
             if (valueCrafts.innerHTML == '-') {
                 document.querySelector(".crafts .statblock-rendered-text-content").innerHTML = 0}
-            if (valueCrafts.innerHTML == 10) {
+            if (valueCrafts.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".crafts .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueCrafts = document.querySelector(".crafts .dice-roller-result").innerHTML;
             if (valueCrafts === 'null' || valueCrafts == 0) {
                 document.querySelector(".crafts .dice-roller-result").style.display = "none";
@@ -1130,13 +1130,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".stealth")) {
-        var valueStealth = document.querySelector(".stealth .statblock-rendered-text-content");  // Скрытность
-        if (valueStealth != null) { // для обычного значения
+        var valueStealth = document.querySelector(".stealth .statblock-rendered-text-content");  // stealth
+        if (valueStealth != null) { // usual code
             if (valueStealth.innerHTML == '-') {
                 document.querySelector(".stealth .statblock-rendered-text-content").innerHTML = 0}
-            if (valueStealth.innerHTML == 10) {
+            if (valueStealth.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".stealth .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueStealth = document.querySelector(".stealth span.dice-roller-result").innerHTML;
             if (valueStealth === 'null' || valueCrafts == 0) {
                 document.querySelector(".crafts .dice-roller-result").style.display = "none";
@@ -1152,13 +1152,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".firearms")) {
-        var valueFirearms = document.querySelector(".firearms .statblock-rendered-text-content");  // Стрельба
-        if (valueFirearms != null) { // для обычного значения
+        var valueFirearms = document.querySelector(".firearms .statblock-rendered-text-content");  // firearms
+        if (valueFirearms != null) { // usual code
             if (valueFirearms.innerHTML == '-') {
                 document.querySelector(".firearms .statblock-rendered-text-content").innerHTML = 0}
-            if (valueFirearms.innerHTML == 10) {
+            if (valueFirearms.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".firearms .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueFirearms = document.querySelector(".firearms .dice-roller-result").innerHTML;
             if (valueFirearms === 'null' || valueFirearms == 0) {
                 document.querySelector(".firearms .dice-roller-result").style.display = "none";
@@ -1174,13 +1174,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".melee")) {
-        var valueMelee = document.querySelector(".melee .statblock-rendered-text-content");  // Фехтование
-        if (valueMelee != null) { // для обычного значения
+        var valueMelee = document.querySelector(".melee .statblock-rendered-text-content");  // melee
+        if (valueMelee != null) { // usual code
             if (valueMelee.innerHTML == '-') {
                 document.querySelector(".melee .statblock-rendered-text-content").innerHTML = 0}
-            if (valueMelee.innerHTML == 10) {
+            if (valueMelee.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".melee .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueMelee = document.querySelector(".melee .dice-roller-result").innerHTML;
             if (valueMelee === 'null' || valueMelee == 0) {
                 document.querySelector(".melee .dice-roller-result").style.display = "none";
@@ -1196,13 +1196,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".etiquette")) {
-        var valueEtiquette = document.querySelector(".etiquette .statblock-rendered-text-content");  // Этикет
-        if (valueEtiquette != null) { // для обычного значения
+        var valueEtiquette = document.querySelector(".etiquette .statblock-rendered-text-content");  // etiquette
+        if (valueEtiquette != null) { // usual code
             if (valueEtiquette.innerHTML == '-') {
                 document.querySelector(".etiquette .statblock-rendered-text-content").innerHTML = 0}
-            if (valueEtiquette.innerHTML == 10) {
+            if (valueEtiquette.innerHTML == 10) { // replaces 10 with X
                 document.querySelector(".etiquette .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueEtiquette = document.querySelector(".etiquette .dice-roller-result").innerHTML;
             if (valueEtiquette === 'null' || valueEtiquette == 0) {
                 document.querySelector(".etiquette .dice-roller-result").style.display = "none";
@@ -1217,18 +1217,18 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
                 document.querySelector(".etiquette .dice-roller-result").innerHTML = 'X'};}}
     
     
-           // Способности Навыки
+           // Abilities - Knowledges
     
     if (document.querySelector(".academics")) {
-        var valueAcademics = document.querySelector(".academics .statblock-rendered-text-content");  // Гуманитарные науки
-        if (valueAcademics != null) { // для обычного значения
+        var valueAcademics = document.querySelector(".academics .statblock-rendered-text-content");  // academics
+        if (valueAcademics != null) { // usual code
             if (valueAcademics.innerHTML == '-') {
                 document.querySelector(".academics .statblock-rendered-text-content").innerHTML = 0}
-            if (valueAcademics.innerHTML > 8) {
+            if (valueAcademics.innerHTML > 8) { // if the value is greater than 8, dots will be replaced with digits
                 document.querySelector(".academics .dice-roller-result").style.fontSize = "14px";
                 document.querySelector(".academics .dice-roller-result").style.fontFamily = "Marta";
                 document.querySelector(".academics .dice-roller-result").style.margin = "-2px 0px 0px 0px"};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueAcademics = document.querySelector(".academics .dice-roller-result").innerHTML;
             if (valueAcademics === 'null' || valueAcademics == 0) {
                 document.querySelector(".academics .dice-roller-result").style.display = "none";
@@ -1246,15 +1246,15 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".science")) {
-        var valueScience = document.querySelector(".science .statblock-rendered-text-content");  // Естественные науки
-        if (valueScience != null) { // для обычного значения
+        var valueScience = document.querySelector(".science .statblock-rendered-text-content");  // science
+        if (valueScience != null) { // usual code
             if (valueScience.innerHTML == '-') {
                 document.querySelector(".science .statblock-rendered-text-content").innerHTML = 0}
-            if (valueScience.innerHTML > 8) {
+            if (valueScience.innerHTML > 8) { // if the value is greater than 8, dots will be replaced with digits
                 document.querySelector(".science .dice-roller-result").style.fontSize = "14px";
                 document.querySelector(".science .dice-roller-result").style.fontFamily = "Marta";
                 document.querySelector(".science .dice-roller-result").style.margin = "-2px 0px 0px 0px"};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueScience = document.querySelector(".science .dice-roller-result").innerHTML;
             if (valueScience === 'null' || valueScience == 0) {
                 document.querySelector(".science .dice-roller-result").style.display = "none";
@@ -1272,13 +1272,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
             
     if (document.querySelector(".law")) {
-        var valueLaw = document.querySelector(".law .statblock-rendered-text-content");  // Законы
-        if (valueLaw != null) { // для обычного значения
+        var valueLaw = document.querySelector(".law .statblock-rendered-text-content");  // law
+        if (valueLaw != null) { // usual code
             if (valueLaw.innerHTML == '-') {
                 document.querySelector(".law .statblock-rendered-text-content").innerHTML = 0}
             if (valueLaw.innerHTML == 10) {
                 document.querySelector(".law .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueLaw = document.querySelector(".law .dice-roller-result").innerHTML;
             if (valueLaw === 'null' || valueLaw == 0) {
                 document.querySelector(".law .dice-roller-result").style.display = "none";
@@ -1294,15 +1294,15 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".computer")) {
-        var valueComputer = document.querySelector(".computer .statblock-rendered-text-content");  // Информатика
-        if (valueComputer != null) { // для обычного значения
+        var valueComputer = document.querySelector(".computer .statblock-rendered-text-content");  // computer
+        if (valueComputer != null) { // usual code
             if (valueComputer.innerHTML == '-') {
                 document.querySelector(".computer .statblock-rendered-text-content").innerHTML = 0}
-            if (valueComputer.innerHTML > 8) {
+            if (valueComputer.innerHTML > 8) { // if the value is greater than 8, dots will be replaced with digits
                 document.querySelector(".computer .dice-roller-result").style.fontSize = "14px";
                 document.querySelector(".computer .dice-roller-result").style.fontFamily = "Marta";
                 document.querySelector(".computer .dice-roller-result").style.margin = "-2px 0px 0px 0px"};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueComputer = document.querySelector(".computer .dice-roller-result").innerHTML;
             if (valueComputer === 'null' || valueComputer == 0) {
                 document.querySelector(".computer .dice-roller-result").style.display = "none";
@@ -1320,13 +1320,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             
     
     if (document.querySelector(".medicine")) {
-        var valueMedicine = document.querySelector(".medicine .statblock-rendered-text-content");  // Медицина
-        if (valueMedicine != null) { // для обычного значения
+        var valueMedicine = document.querySelector(".medicine .statblock-rendered-text-content");  // medicine
+        if (valueMedicine != null) { // usual code
             if (valueMedicine.innerHTML == '-') {
                 document.querySelector(".medicine .statblock-rendered-text-content").innerHTML = 0}
             if (valueMedicine.innerHTML == 10) {
                 document.querySelector(".medicine .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueMedicine = document.querySelector(".medicine .dice-roller-result").innerHTML;
             if (valueMedicine === 'null' || valueMedicine == 0) {
                 document.querySelector(".medicine .dice-roller-result").style.display = "none";
@@ -1342,13 +1342,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
       
     
     if (document.querySelector(".occult")) {
-        var valueOccult = document.querySelector(".occult .statblock-rendered-text-content");  // Оккультизм
-        if (valueOccult != null) { // для обычного значения
+        var valueOccult = document.querySelector(".occult .statblock-rendered-text-content");  // occult
+        if (valueOccult != null) { // usual code
             if (valueOccult.innerHTML == '-') {
                 document.querySelector(".occult .statblock-rendered-text-content").innerHTML = 0}
             if (valueOccult.innerHTML == 10) {
                 document.querySelector(".occult .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueOccult = document.querySelector(".occult .dice-roller-result").innerHTML;
             if (valueOccult === 'null' || valueOccult == 0) {
                 document.querySelector(".occult .dice-roller-result").style.display = "none";
@@ -1364,13 +1364,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             
     
     if (document.querySelector(".politics")) {
-        var valuePolitics = document.querySelector(".politics .statblock-rendered-text-content");  // Политика
-        if (valuePolitics != null) { // для обычного значения
+        var valuePolitics = document.querySelector(".politics .statblock-rendered-text-content");  // politics
+        if (valuePolitics != null) { // usual code
             if (valuePolitics.innerHTML == '-') {
                 document.querySelector(".politics .statblock-rendered-text-content").innerHTML = 0}
             if (valuePolitics.innerHTML == 10) {
                 document.querySelector(".politics .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valuePolitics = document.querySelector(".politics .dice-roller-result").innerHTML;
             if (valuePolitics === 'null' || valuePolitics == 0) {
                 document.querySelector(".politics .dice-roller-result").style.display = "none";
@@ -1386,15 +1386,15 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".investigation")) {
-        var valueInvestigation = document.querySelector(".investigation .statblock-rendered-text-content");  // Расследование
-        if (valueInvestigation != null) { // для обычного значения
+        var valueInvestigation = document.querySelector(".investigation .statblock-rendered-text-content");  // investigation
+        if (valueInvestigation != null) { // usual code
             if (valueInvestigation.innerHTML == '-') {
                 document.querySelector(".investigation .statblock-rendered-text-content").innerHTML = 0}
-            if (valueInvestigation.innerHTML > 8) {
+            if (valueInvestigation.innerHTML > 8) { //  if the value is greater than 8, dots will be replaced with digits
                 document.querySelector(".investigation .dice-roller-result").style.fontSize = "14px";
                 document.querySelector(".investigation .dice-roller-result").style.fontFamily = "Marta";
                 document.querySelector(".investigation .dice-roller-result").style.margin = "-2px 0px 0px 0px"};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueInvestigation = document.querySelector(".investigation .dice-roller-result").innerHTML;
             if (valueInvestigation === 'null' || valueInvestigation == 0) {
                 document.querySelector(".investigation .dice-roller-result").style.display = "none";
@@ -1412,13 +1412,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".finance")) {
-        var valueFinance = document.querySelector(".finance .statblock-rendered-text-content");  // Финансы
-        if (valueFinance != null) { // для обычного значения
+        var valueFinance = document.querySelector(".finance .statblock-rendered-text-content");  // finance
+        if (valueFinance != null) { // usual code
             if (valueFinance.innerHTML == '-') {
                 document.querySelector(".finance .statblock-rendered-text-content").innerHTML = 0}
             if (valueFinance.innerHTML == 10) {
                 document.querySelector(".finance .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueFinance = document.querySelector(".finance .dice-roller-result").innerHTML;
             if (valueFinance === 'null' || valueFinance == 0) {
                 document.querySelector(".finance .dice-roller-result").style.display = "none";
@@ -1434,13 +1434,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".technology")) {
-        var valueTechnology = document.querySelector(".technology .statblock-rendered-text-content");  // Электроника
-        if (valueTechnology != null) { // для обычного значения
+        var valueTechnology = document.querySelector(".technology .statblock-rendered-text-content");  // technology
+        if (valueTechnology != null) { // usual code
             if (valueTechnology.innerHTML == '-') {
                 document.querySelector(".technology .statblock-rendered-text-content").innerHTML = 0}
             if (valueTechnology.innerHTML == 10) {
                 document.querySelector(".technology .statblock-rendered-text-content").innerHTML = 'X'};}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             valueTechnology = document.querySelector(".technology .dice-roller-result").innerHTML;
             if (valueTechnology === 'null' || valueTechnology == 0) {
                 document.querySelector(".technology .dice-roller-result").style.display = "none";
@@ -1918,8 +1918,6 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         }
     
     
-    
-    // Глобальный пересчет крови, чтобы из одной цифры (от 1 до 40) добавлялись и отображались нужные строчки, а ненужные - скрывались
     // The great recalculation of blood, to use one parameter\number - then show all the needen line and hide others
     if (document.querySelector(".line.blood") != null) { 
     const bloodCurrent = document.querySelector(".line.blood .statblock-rendered-text-content.inline").innerHTML; // first line of blood
@@ -2080,11 +2078,11 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
        //  WEREWOLVES
     if (document.querySelector(".rage-block .line.rage_main") != null) {
-        var rageValue = document.querySelector(".rage_main .statblock-rendered-text-content")  // для ярости
-        if (rageValue != null) { // для обычного значения 
+        var rageValue = document.querySelector(".rage_main .statblock-rendered-text-content")  // Rage
+        if (rageValue != null) { // usual code
             if (rageValue.innerHTML == 10) {
                 document.querySelector(".rage_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // usual code
             rageValue = document.querySelector(".rage_main span.dice-roller-result").innerHTML;  
             if (rageValue == 10) {
                 document.querySelector(".rage_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2092,13 +2090,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         //nothing
         console.log('ярость не норм')
     }
-    // то же самое, но для ховера
+    // same code, but for a statblock in hover
     if (document.querySelector(".popover.hover-popover .rage-block .line.rage_main") != null) {
-        var rageValue = document.querySelector(".popover.hover-popover .rage_main .statblock-rendered-text-content")  // для ярости
-        if (rageValue != null) { // для обычного значения 
+        var rageValue = document.querySelector(".popover.hover-popover .rage_main .statblock-rendered-text-content")  // rage
+        if (rageValue != null) { // usual code
             if (rageValue.innerHTML == 10) {
                 document.querySelector(".popover.hover-popover .rage_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // for dice roller
             rageValue = document.querySelector(".popover.hover-popover .rage_main span.dice-roller-result").innerHTML;  
             if (rageValue == 10) {
                 document.querySelector(".popover.hover-popover .rage_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2109,11 +2107,11 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".rage-block .line.rage_current") != null) {
-        var rageCurrentValue = document.querySelector(".rage_current .statblock-rendered-text-content")  // для запаса ярости
-        if (rageCurrentValue != null) { // для обычного значения 
+        var rageCurrentValue = document.querySelector(".rage_current .statblock-rendered-text-content")  // rage pool
+        if (rageCurrentValue != null) { // usual code
             if (rageCurrentValue.innerHTML == 10) {
                 document.querySelector(".rage_current .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // for dice roller
             rageCurrentValue = document.querySelector(".rage_current span.dice-roller-result").innerHTML;  
             if (rageCurrentValue == 10) {
                 document.querySelector(".rage_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -2121,13 +2119,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             //nothing
             console.log('запас ярости не норм')
         }
-        // то же самое, но для ховера
+        // same code, but for a statblock in hover
         if (document.querySelector(".popover.hover-popover .rage-block .line.rage_current") != null) {
             var rageCurrentValue = document.querySelector(".popover.hover-popover .rage_current .statblock-rendered-text-content")  // для запаса ярости
-            if (rageCurrentValue != null) { // для обычного значения 
+            if (rageCurrentValue != null) { // usual code
                 if (rageCurrentValue.innerHTML == 10) {
                     document.querySelector(".popover.hover-popover .rage_current .statblock-rendered-text-content").innerHTML = 'X'}}
-            else { // для дайс роллера
+            else { // for dice roller
                 rageCurrentValue = document.querySelector(".popover.hover-popover .rage_current span.dice-roller-result").innerHTML;  
                 if (rageCurrentValue == 10) {
                     document.querySelector(".popover.hover-popover .rage_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -2138,11 +2136,11 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     if (document.querySelector(".gnosis-block .line.gnosis_main") != null) {
-        var gnosisValue = document.querySelector(".gnosis_main .statblock-rendered-text-content")  // для гнозиса
-        if (gnosisValue != null) { // для обычного значения 
+        var gnosisValue = document.querySelector(".gnosis_main .statblock-rendered-text-content")  // Gnosis
+        if (gnosisValue != null) { // usual code
             if (gnosisValue.innerHTML == 10) {
                 document.querySelector(".gnosis_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // for dice roller
             gnosisValue = document.querySelector(".gnosis_main span.dice-roller-result").innerHTML;  
             if (gnosisValue == 10) {
                 document.querySelector(".gnosis_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2150,13 +2148,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         //nothing
         console.log('гнозис не норм')
     }
-    // то же самое, но для ховера
+    // same code, but for a statblock in hover
     if (document.querySelector(".popover.hover-popover .gnosis-block .line.gnosis_main") != null) {
-        var gnosisValue = document.querySelector(".popover.hover-popover .gnosis_main .statblock-rendered-text-content")  // для гнозиса
-        if (gnosisValue != null) { // для обычного значения 
+        var gnosisValue = document.querySelector(".popover.hover-popover .gnosis_main .statblock-rendered-text-content")  // gnosis main
+        if (gnosisValue != null) { // usual code
             if (gnosisValue.innerHTML == 10) {
                 document.querySelector(".popover.hover-popover .gnosis_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // for dice roller
             gnosisValue = document.querySelector(".popover.hover-popover .gnosis_main span.dice-roller-result").innerHTML;  
             if (gnosisValue == 10) {
                 document.querySelector(".popover.hover-popover .gnosis_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2166,11 +2164,11 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     }
     
     if (document.querySelector(".gnosis-block .line.gnosis_current") != null) {
-        var gnosisCurrentValue = document.querySelector(".gnosis_current .statblock-rendered-text-content")  // для запаса гнозиса
-        if (gnosisCurrentValue != null) { // для обычного значения 
+        var gnosisCurrentValue = document.querySelector(".gnosis_current .statblock-rendered-text-content")  // gnosis pool
+        if (gnosisCurrentValue != null) { // usual code
             if (gnosisCurrentValue.innerHTML == 10) {
                 document.querySelector(".gnosis_current .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // usual code
             gnosisCurrentValue = document.querySelector(".gnosis_current span.dice-roller-result").innerHTML;  
             if (gnosisCurrentValue == 10) {
                 document.querySelector(".gnosis_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -2181,10 +2179,10 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         // то же самое, но для ховера
         if (document.querySelector(".popover.hover-popover .gnosis-block .line.gnosis_current") != null) {
             var gnosisCurrentValue = document.querySelector(".popover.hover-popover .gnosis_current .statblock-rendered-text-content")  // для запаса гнозиса
-            if (gnosisCurrentValue != null) { // для обычного значения 
+            if (gnosisCurrentValue != null) { // usual code
                 if (gnosisCurrentValue.innerHTML == 10) {
                     document.querySelector(".popover.hover-popover .gnosis_current .statblock-rendered-text-content").innerHTML = 'X'}}
-            else { // для дайс роллера
+            else { // usual code
                 gnosisCurrentValue = document.querySelector(".popover.hover-popover .gnosis_current span.dice-roller-result").innerHTML;  
                 if (gnosisCurrentValue == 10) {
                     document.querySelector(".popover.hover-popover .gnosis_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -2196,10 +2194,10 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     if (document.querySelector(".glory-block .line.glory_main") != null) {
         var gloryValue = document.querySelector(".glory_main .statblock-rendered-text-content")  // для славы
-        if (gloryValue != null) { // для обычного значения 
+        if (gloryValue != null) { // usual code
             if (gloryValue.innerHTML == 10) {
                 document.querySelector(".glory_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // usual code
             gloryValue = document.querySelector(".glory_main span.dice-roller-result").innerHTML;  
             if (gloryValue == 10) {
                 document.querySelector(".glory_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2210,10 +2208,10 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     // то же самое, но для ховера
     if (document.querySelector(".popover.hover-popover .glory-block .line.glory_main") != null) {
         var gloryValue = document.querySelector(".popover.hover-popover .glory_main .statblock-rendered-text-content")  // для славы
-        if (gloryValue != null) { // для обычного значения 
+        if (gloryValue != null) { // usual code
             if (gloryValue.innerHTML == 10) {
                 document.querySelector(".popover.hover-popover .glory_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // usual code
             gloryValue = document.querySelector(".popover.hover-popover .glory_main span.dice-roller-result").innerHTML;  
             if (gloryValue == 10) {
                 document.querySelector(".popover.hover-popover .glory_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2225,10 +2223,10 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     if (document.querySelector(".glory-block .line.glory_current") != null) {
         var gloryCurrentValue = document.querySelector(".glory_current .statblock-rendered-text-content")  // для запаса славы
-        if (gloryCurrentValue != null) { // для обычного значения 
+        if (gloryCurrentValue != null) { // usual code
             if (gloryCurrentValue.innerHTML == 10) {
                 document.querySelector(".glory_current .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // usual code
             gloryCurrentValue = document.querySelector(".glory_current span.dice-roller-result").innerHTML;  
             if (gloryCurrentValue == 10) {
                 document.querySelector(".glory_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -2239,10 +2237,10 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         // то же самое, но для ховера
         if (document.querySelector(".popover.hover-popover .glory-block .line.glory_current") != null) {
             var gloryCurrentValue = document.querySelector(".popover.hover-popover .glory_current .statblock-rendered-text-content")  // для запаса славы
-            if (gloryCurrentValue != null) { // для обычного значения 
+            if (gloryCurrentValue != null) { // usual code
                 if (gloryCurrentValue.innerHTML == 10) {
                     document.querySelector(".popover.hover-popover .glory_current .statblock-rendered-text-content").innerHTML = 'X'}}
-            else { // для дайс роллера
+            else { // usual code
                 gloryCurrentValue = document.querySelector(".popover.hover-popover .glory_current span.dice-roller-result").innerHTML;  
                 if (gloryCurrentValue == 10) {
                     document.querySelector(".popover.hover-popover .glory_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -2254,10 +2252,10 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     if (document.querySelector(".honor-block .line.honor_main") != null) {
         var honorValue = document.querySelector(".honor_main .statblock-rendered-text-content")  // для чести
-        if (honorValue != null) { // для обычного значения 
+        if (honorValue != null) { // usual code
             if (honorValue.innerHTML == 10) {
                 document.querySelector(".honor_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // usual code
             honorValue = document.querySelector(".honor_main span.dice-roller-result").innerHTML;  
             if (honorValue == 10) {
                 document.querySelector(".honor_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2268,10 +2266,10 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     // то же самое, но для ховера
     if (document.querySelector(".popover.hover-popover .honor-block .line.honor_main") != null) {
         var honorValue = document.querySelector(".popover.hover-popover .honor_main .statblock-rendered-text-content")  // для чести
-        if (honorValue != null) { // для обычного значения 
+        if (honorValue != null) { // usual code
             if (honorValue.innerHTML == 10) {
                 document.querySelector(".popover.hover-popover .honor_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // usual code
             honorValue = document.querySelector(".popover.hover-popover .honor_main span.dice-roller-result").innerHTML;  
             if (honorValue == 10) {
                 document.querySelector(".popover.hover-popover .honor_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2283,10 +2281,10 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     if (document.querySelector(".honor-block .line.honor_current") != null) {
         var honorCurrentValue = document.querySelector(".honor_current .statblock-rendered-text-content")  // для запаса чести
-        if (honorCurrentValue != null) { // для обычного значения 
+        if (honorCurrentValue != null) { // usual code
             if (honorCurrentValue.innerHTML == 10) {
                 document.querySelector(".honor_current .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // usual code
             honorCurrentValue = document.querySelector(".honor_current span.dice-roller-result").innerHTML;  
             if (honorCurrentValue == 10) {
                 document.querySelector(".honor_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -2297,7 +2295,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         // то же самое, но для ховера
         if (document.querySelector(".popover.hover-popover .honor-block .line.honor_current") != null) {
             var honorCurrentValue = document.querySelector(".popover.hover-popover .honor_current .statblock-rendered-text-content")  // для запаса чести
-            if (honorCurrentValue != null) { // для обычного значения 
+            if (honorCurrentValue != null) { // usual code
                 if (honorCurrentValue.innerHTML == 10) {
                     document.querySelector(".popover.hover-popover .honor_current .statblock-rendered-text-content").innerHTML = 'X'}}
             else { // для дайс роллера
@@ -2312,10 +2310,10 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     if (document.querySelector(".wisdom-block .line.wisdom_main") != null) {
         var wisdomValue = document.querySelector(".wisdom_main .statblock-rendered-text-content")  // для мудрости
-        if (wisdomValue != null) { // для обычного значения 
+        if (wisdomValue != null) { // usual code
             if (wisdomValue.innerHTML == 10) {
                 document.querySelector(".wisdom_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // usual code
             wisdomValue = document.querySelector(".wisdom_main span.dice-roller-result").innerHTML;  
             if (wisdomValue == 10) {
                 document.querySelector(".wisdom_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2326,10 +2324,10 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     // то же самое, но для ховера
     if (document.querySelector(".popover.hover-popover .wisdom-block .line.wisdom_main") != null) {
         var wisdomValue = document.querySelector(".popover.hover-popover .wisdom_main .statblock-rendered-text-content")  // для мудрости
-        if (wisdomValue != null) { // для обычного значения 
+        if (wisdomValue != null) { // usual code
             if (wisdomValue.innerHTML == 10) {
                 document.querySelector(".popover.hover-popover .wisdom_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // usual code
             wisdomValue = document.querySelector(".popover.hover-popover .wisdom_main span.dice-roller-result").innerHTML;  
             if (wisdomValue == 10) {
                 document.querySelector(".popover.hover-popover .wisdom_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2341,7 +2339,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     if (document.querySelector(".wisdom-block .line.wisdom_current") != null) {
         var wisdomCurrentValue = document.querySelector(".wisdom_current .statblock-rendered-text-content")  // для запаса мудрости
-        if (wisdomCurrentValue != null) { // для обычного значения 
+        if (wisdomCurrentValue != null) { // usual code
             if (wisdomCurrentValue.innerHTML == 10) {
                 document.querySelector(".wisdom_current .statblock-rendered-text-content").innerHTML = 'X'}}
         else { // для дайс роллера
@@ -2355,10 +2353,10 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         // то же самое, но для ховера
         if (document.querySelector(".popover.hover-popover .wisdom-block .line.wisdom_current") != null) {
             var wisdomCurrentValue = document.querySelector(".popover.hover-popover .wisdom_current .statblock-rendered-text-content")  // для запаса мудрости
-            if (wisdomCurrentValue != null) { // для обычного значения 
+            if (wisdomCurrentValue != null) { // usual code
                 if (wisdomCurrentValue.innerHTML == 10) {
                     document.querySelector(".popover.hover-popover .wisdom_current .statblock-rendered-text-content").innerHTML = 'X'}}
-            else { // для дайс роллера
+            else { // usual code
                 wisdomCurrentValue = document.querySelector(".popover.hover-popover .wisdom_current span.dice-roller-result").innerHTML;  
                 if (wisdomCurrentValue == 10) {
                     document.querySelector(".popover.hover-popover .wisdom_current span.dice-roller-result").innerHTML = 'X'};}}

@@ -223,7 +223,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             //nothing
         }
             
-        // same code, but for the case when statblock is displayed in hover
+        // same code, but for a statblock in hover
         if (document.querySelector(".popover.hover-popover .vtm-v20-vampire-en .line.clan .statblock-markdown > p") != null) {
         var clanNameHover = document.querySelector(".popover.hover-popover .vtm-v20-vampire-en .line.clan .statblock-markdown > p").innerHTML;
         const collapsedColumnHover = document.querySelector('.popover.hover-popover .vtm-v20-vampire-en .collapse-container'); // define the hover area for the background 
@@ -454,7 +454,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             console.log('the weakness will be displayed');
             }
     
-        // same setting, for statblock in hover
+        // same code, but for a statblock in hover
         if (document.querySelector(".popover.hover-popover .line.show_weakness .statblock-rendered-text-content") != null) {
             const showWeaknessHover = document.querySelector(".popover.hover-popover .line.show_weakness .statblock-rendered-text-content").innerHTML;
             switch (showWeaknessHover) {
@@ -498,7 +498,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     else {
         //nothing
     }
-    // same code, but for statblock in hover
+    // same code, but for a statblock in hover
     if (document.querySelector(".popover.hover-popover .line.generation .statblock-markdown > p") != null) {
     const generationFullHover = document.querySelector(".popover.hover-popover .line.generation .statblock-markdown > p").textContent;
     var generationHover = generationFullHover.slice(0, 2); 
@@ -535,7 +535,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     else {
         // do nothing
     }
-    // same code, but for statblock in hover
+    // same code, but for a statblock in hover
     if (document.querySelector(".popover.hover-popover h2") != null) {
         var outlineName_hover = document.querySelector(".popover.hover-popover h2").innerHTML
     //  console.log('the name from the hover stablock - ' + outlineName_hover)
@@ -1867,7 +1867,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         if (willpowerValue != null) { // willpower
             if (willpowerValue.innerHTML == 10) {
                 document.querySelector(".willpower_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // for dice roller
+        else { // same code, but for Dice Roller
             willpowerValue = document.querySelector(".willpower_main span.dice-roller-result").innerHTML;  
             if (willpowerValue == 10) {
                 document.querySelector(".willpower_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -1875,7 +1875,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         //nothing
         console.log('something went wrong with willpower')
     }
-    // same code, but for Dice Roller 
+    // same code, but for hover 
     if (document.querySelector(".popover.hover-popover .willpower-block .line.willpower_main") != null) {
         var willpowerValue = document.querySelector(".popover.hover-popover .willpower_main .statblock-rendered-text-content")  // willpower
         if (willpowerValue != null) { // willpower
@@ -1896,20 +1896,20 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     if (willpowerCurrentValue != null) { // willpower pool
         if (willpowerCurrentValue.innerHTML == 10) {
             document.querySelector(".willpower_current .statblock-rendered-text-content").innerHTML = 'X'}}
-    else { // for dice roller
+    else { // same code, but for Dice Roller
         willpowerCurrentValue = document.querySelector(".willpower_current span.dice-roller-result").innerHTML;  
         if (willpowerCurrentValue == 10) {
             document.querySelector(".willpower_current span.dice-roller-result").innerHTML = 'X'};}}
     else {
         //nothing
     }
-    // то же самое, но для ховера
+    // same code, but for a statblock in hover
     if (document.querySelector(".popover.hover-popover .willpower-block .line.willpower_current") != null) {
         var willpowerCurrentValue = document.querySelector(".popover.hover-popover .willpower_current .statblock-rendered-text-content")  // willpower pool
         if (willpowerCurrentValue != null) { // willpower pool
             if (willpowerCurrentValue.innerHTML == 10) {
                 document.querySelector(".popover.hover-popover .willpower_current .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // for dice roller
+        else { // same code, but for Dice Roller
             willpowerCurrentValue = document.querySelector(".popover.hover-popover .willpower_current span.dice-roller-result").innerHTML;  
             if (willpowerCurrentValue == 10) {
                 document.querySelector(".popover.hover-popover .willpower_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -2096,7 +2096,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         if (rageValue != null) { // usual code
             if (rageValue.innerHTML == 10) {
                 document.querySelector(".popover.hover-popover .rage_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // for dice roller
+        else { // same code, but for Dice Roller
             rageValue = document.querySelector(".popover.hover-popover .rage_main span.dice-roller-result").innerHTML;  
             if (rageValue == 10) {
                 document.querySelector(".popover.hover-popover .rage_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2111,7 +2111,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         if (rageCurrentValue != null) { // usual code
             if (rageCurrentValue.innerHTML == 10) {
                 document.querySelector(".rage_current .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // for dice roller
+        else { // same code, but for Dice Roller
             rageCurrentValue = document.querySelector(".rage_current span.dice-roller-result").innerHTML;  
             if (rageCurrentValue == 10) {
                 document.querySelector(".rage_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -2125,7 +2125,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             if (rageCurrentValue != null) { // usual code
                 if (rageCurrentValue.innerHTML == 10) {
                     document.querySelector(".popover.hover-popover .rage_current .statblock-rendered-text-content").innerHTML = 'X'}}
-            else { // for dice roller
+            else { // same code, but for Dice Roller
                 rageCurrentValue = document.querySelector(".popover.hover-popover .rage_current span.dice-roller-result").innerHTML;  
                 if (rageCurrentValue == 10) {
                     document.querySelector(".popover.hover-popover .rage_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -2140,7 +2140,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         if (gnosisValue != null) { // usual code
             if (gnosisValue.innerHTML == 10) {
                 document.querySelector(".gnosis_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // for dice roller
+        else { // same code, but for Dice Roller
             gnosisValue = document.querySelector(".gnosis_main span.dice-roller-result").innerHTML;  
             if (gnosisValue == 10) {
                 document.querySelector(".gnosis_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2154,7 +2154,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         if (gnosisValue != null) { // usual code
             if (gnosisValue.innerHTML == 10) {
                 document.querySelector(".popover.hover-popover .gnosis_main .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // for dice roller
+        else { // same code, but for Dice Roller
             gnosisValue = document.querySelector(".popover.hover-popover .gnosis_main span.dice-roller-result").innerHTML;  
             if (gnosisValue == 10) {
                 document.querySelector(".popover.hover-popover .gnosis_main span.dice-roller-result").innerHTML = 'X'};}}
@@ -2176,7 +2176,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             //nothing
             console.log('запас гнозиса не норм')
         }
-        // то же самое, но для ховера
+        // same code, but for a statblock in hover
         if (document.querySelector(".popover.hover-popover .gnosis-block .line.gnosis_current") != null) {
             var gnosisCurrentValue = document.querySelector(".popover.hover-popover .gnosis_current .statblock-rendered-text-content")  // для запаса гнозиса
             if (gnosisCurrentValue != null) { // usual code
@@ -2205,7 +2205,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         //nothing
         console.log('слава не норм')
     }
-    // то же самое, но для ховера
+    // same code, but for a statblock in hover
     if (document.querySelector(".popover.hover-popover .glory-block .line.glory_main") != null) {
         var gloryValue = document.querySelector(".popover.hover-popover .glory_main .statblock-rendered-text-content")  // для славы
         if (gloryValue != null) { // usual code
@@ -2234,7 +2234,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             //nothing
             console.log('запас славы не норм')
         }
-        // то же самое, но для ховера
+        // same code, but for a statblock in hover
         if (document.querySelector(".popover.hover-popover .glory-block .line.glory_current") != null) {
             var gloryCurrentValue = document.querySelector(".popover.hover-popover .glory_current .statblock-rendered-text-content")  // для запаса славы
             if (gloryCurrentValue != null) { // usual code
@@ -2263,7 +2263,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         //nothing
         console.log('честь не норм')
     }
-    // то же самое, но для ховера
+    // same code, but for a statblock in hover
     if (document.querySelector(".popover.hover-popover .honor-block .line.honor_main") != null) {
         var honorValue = document.querySelector(".popover.hover-popover .honor_main .statblock-rendered-text-content")  // для чести
         if (honorValue != null) { // usual code
@@ -2292,13 +2292,13 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             //nothing
             console.log('запас чести не норм')
         }
-        // то же самое, но для ховера
+        // same code, but for a statblock in hover
         if (document.querySelector(".popover.hover-popover .honor-block .line.honor_current") != null) {
             var honorCurrentValue = document.querySelector(".popover.hover-popover .honor_current .statblock-rendered-text-content")  // для запаса чести
             if (honorCurrentValue != null) { // usual code
                 if (honorCurrentValue.innerHTML == 10) {
                     document.querySelector(".popover.hover-popover .honor_current .statblock-rendered-text-content").innerHTML = 'X'}}
-            else { // для дайс роллера
+            else { // same code, but for Dice Roller
                 honorCurrentValue = document.querySelector(".popover.hover-popover .honor_current span.dice-roller-result").innerHTML;  
                 if (honorCurrentValue == 10) {
                     document.querySelector(".popover.hover-popover .honor_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -2321,7 +2321,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         //nothing
         console.log('мудрость не норм')
     }
-    // то же самое, но для ховера
+    // same code, but for a statblock in hover
     if (document.querySelector(".popover.hover-popover .wisdom-block .line.wisdom_main") != null) {
         var wisdomValue = document.querySelector(".popover.hover-popover .wisdom_main .statblock-rendered-text-content")  // для мудрости
         if (wisdomValue != null) { // usual code
@@ -2342,7 +2342,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
         if (wisdomCurrentValue != null) { // usual code
             if (wisdomCurrentValue.innerHTML == 10) {
                 document.querySelector(".wisdom_current .statblock-rendered-text-content").innerHTML = 'X'}}
-        else { // для дайс роллера
+        else { // same code, but for Dice Roller
             wisdomCurrentValue = document.querySelector(".wisdom_current span.dice-roller-result").innerHTML;  
             if (wisdomCurrentValue == 10) {
                 document.querySelector(".wisdom_current span.dice-roller-result").innerHTML = 'X'};}}
@@ -2350,7 +2350,7 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
             //nothing
             console.log('запас мудрости не норм')
         }
-        // то же самое, но для ховера
+        // same code, but for a statblock in hover
         if (document.querySelector(".popover.hover-popover .wisdom-block .line.wisdom_current") != null) {
             var wisdomCurrentValue = document.querySelector(".popover.hover-popover .wisdom_current .statblock-rendered-text-content")  // для запаса мудрости
             if (wisdomCurrentValue != null) { // usual code

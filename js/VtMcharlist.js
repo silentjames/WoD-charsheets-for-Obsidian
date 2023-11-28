@@ -523,11 +523,11 @@ switch (generationHover) {
 
 
 // если имя персонажа, написанное H2, есть в заметке и совпадает с именем в статблоке, то оно удаляется - но остается в оглавлении
-if (document.querySelector("h2") != null) {
-    var outlineName = document.querySelector("h2").innerHTML
-//  console.log(document.querySelector("h2").innerHTML);    
-    const characterName = document.querySelector('h1 .statblock-rendered-text-content').innerHTML
-//  console.log('имя из статблока = ' + characterName)
+if (document.querySelector(".mod-active .markdown-reading-view h2") != null) {
+    var outlineName = document.querySelector(".mod-active .markdown-reading-view h2").innerText
+    console.log(outlineName + ' - имя из заметки');    
+    const characterName = document.querySelector('.mod-active .markdown-reading-view h1.heading .statblock-rendered-text-content').innerHTML
+    console.log('имя из статблока = ' + characterName)
         if (outlineName.includes(characterName)) {
             document.querySelector("h2").style.display = "none";
     }}
@@ -538,11 +538,9 @@ else {
 if (document.querySelector(".popover.hover-popover h2") != null) {
     var outlineName_hover = document.querySelector(".popover.hover-popover h2").innerHTML
 //  console.log('имя в заметке в ховере - ' + outlineName_hover)
-    const characterName_hover = document.querySelector('.popover.hover-popover h1 .statblock-rendered-text-content').innerHTML
+    const characterName_hover = document.querySelector('.popover.hover-popover h1.heading .statblock-rendered-text-content').innerHTML
 //  console.log('имя из статблока в ховере = ' + characterName_hover)
-        if (outlineName_hover.includes(characterName_hover)) {
-            document.querySelector(".popover.hover-popover h2").style.display = "none";
-    }}
+}
 else {
     // do nothing
 }

@@ -524,11 +524,11 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     
     
     // you can type character's name (in level 2 heading) in the note above the statblock, and if this heading is the same as character name in the statblock, it will be hidden in the reading view, but remains in the outlina panel
-    if (document.querySelector("h2") != null) {
-        var outlineName = document.querySelector("h2").innerHTML
-    //  console.log(document.querySelector("h2").innerHTML);    
-        const characterName = document.querySelector('h1 .statblock-rendered-text-content').innerHTML
-    //  console.log('the name from the stablock = ' + characterName)
+    if (document.querySelector(".mod-active .markdown-reading-view h2") != null) {
+        var outlineName = document.querySelector(".mod-active .markdown-reading-view h2").innerText
+        console.log(outlineName + ' - имя из заметки');    
+        const characterName = document.querySelector('.mod-active .markdown-reading-view h1.heading .statblock-rendered-text-content').innerHTML
+        console.log('имя из статблока = ' + characterName)
             if (outlineName.includes(characterName)) {
                 document.querySelector("h2").style.display = "none";
         }}
@@ -538,12 +538,10 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
     // same code, but for a statblock in hover
     if (document.querySelector(".popover.hover-popover h2") != null) {
         var outlineName_hover = document.querySelector(".popover.hover-popover h2").innerHTML
-    //  console.log('the name from the hover stablock - ' + outlineName_hover)
-        const characterName_hover = document.querySelector('.popover.hover-popover h1 .statblock-rendered-text-content').innerHTML
-    //  console.log('the name from the hover stablock = ' + characterName_hover)
-            if (outlineName_hover.includes(characterName_hover)) {
-                document.querySelector(".popover.hover-popover h2").style.display = "none";
-        }}
+    //  console.log('имя в заметке в ховере - ' + outlineName_hover)
+        const characterName_hover = document.querySelector('.popover.hover-popover h1.heading .statblock-rendered-text-content').innerHTML
+    //  console.log('имя из статблока в ховере = ' + characterName_hover)
+    }
     else {
         // do nothing
     }

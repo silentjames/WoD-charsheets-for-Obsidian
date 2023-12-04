@@ -33,8 +33,14 @@ What js-script does:
 In general, almost all the things could be done manually (except clan image, I suppose), so the script just automates something.
 
 ### Third-party content
-As already been said, it’s based on Russian translation of the game, and because of that I used Marta and TrajanPro3 fonts. Background image is taken from VtM Style Guide from Storytellers Vault; all the dots, squares, damage symbols are also separate fonts; arrows and clan’s logos are vector images. Everything was included in css file as base64 strings – but I’m not sure what can I share because of legal reasons. 
+As already been said, it’s based on Russian translation of the game, and because of that I used Marta and Trajan Pro 3 fonts. Background image is taken from VtM Style Guide from Storytellers Vault; all the dots, squares, damage symbols are also separate fonts; arrows and clan’s logos are vector images. Everything was included in css file as base64 strings – but I’m not sure what can I share because of legal reasons. 
 So I removed some “sensitive” content, but there is still a place for them in the files.
+
+### Fonts
+
+In previous paragraph I mentioned that some fonts, Marta and Trajan Pro 3, were used in this statblock; you can also see them on the screenshots. Of course, they can't be added here because of legal reasons.
+But this statblock supports the great [Style Settings plugin](https://github.com/mgmeyers/obsidian-style-settings/), and if you have these fonts installed in your system, you can just select them in the settings. 
+For Marta you'll need normal and italic, for Trajan Pro 3 - normal, bold and black.
 
 ### Epilogue 
 Well, that’s all, folks! Please let me know what do you think about this layout, and how it can be improved. For example, still not sure about the way the Specialties are displayed, but can’t think up something better.

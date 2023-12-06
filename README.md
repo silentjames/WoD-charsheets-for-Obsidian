@@ -41,6 +41,7 @@ So I removed some “sensitive” content, but there is still a place for them i
 In previous paragraph I mentioned that some fonts, Marta and Trajan Pro 3, were used in this statblock; you can also see them on the screenshots. Of course, they can't be added here because of legal reasons.
 But this statblock supports the great [Style Settings plugin](https://github.com/mgmeyers/obsidian-style-settings/), and if you have these fonts installed in your system, you can just select them in the settings. 
 For Marta you'll need normal and italic, for Trajan Pro 3 - normal, bold and black.
+But you can choose another font! Just keep in mind that these fonts will work on your computer only, not on mobile
 
 ![](/imgs/style%20settings.png)
 

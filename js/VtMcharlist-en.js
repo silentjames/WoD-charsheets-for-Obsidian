@@ -460,13 +460,13 @@ sleep(120).then(() => {
 
 
     // you can type character's name (in level 2 heading) in the note above the statblock, and if this heading is the same as character name in the statblock, it will be hidden in the reading view, but remains in the outlina panel
-    if (document.querySelector(".mod-active .markdown-reading-view h2") != null) {
-        var outlineName = document.querySelector(".mod-active .markdown-reading-view h2").innerText
-        console.log(outlineName + ' - имя из заметки');
-        const characterName = document.querySelector('.mod-active .markdown-reading-view h1.heading .statblock-rendered-text-content').innerHTML
-        console.log('имя из статблока = ' + characterName)
+    if (document.querySelector(".workspace-leaf.mod-active .markdown-reading-view h2") != null) {
+        var outlineName = document.querySelector(".workspace-leaf.mod-active .markdown-reading-view h2").innerText
+        console.log(outlineName + ' - H2 name from the note');
+        const characterName = document.querySelector('.statblock h1.heading .statblock-rendered-text-content').innerHTML
+        console.log('the name from the statblock - ' + characterName)
         if (outlineName.includes(characterName)) {
-            document.querySelector("h2").style.display = "none";
+            document.querySelector(".workspace-leaf.mod-active .markdown-reading-view h2").style.display = "none";
         }
     }
     else {

@@ -1197,8 +1197,8 @@ settings:
     
   -
     id: vampire-content-font
-    title: Font for all the other content, including charater's name. The statblock was designed using "Marta" font here.
-    description: 
+    title: Font for all the other content
+    description: All other lines' font, including charater's name. The statblock was designed using "Marta" font here.
     type: variable-text
     default: ??
     quotes: true

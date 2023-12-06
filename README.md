@@ -42,6 +42,8 @@ In previous paragraph I mentioned that some fonts, Marta and Trajan Pro 3, were 
 But this statblock supports the great [Style Settings plugin](https://github.com/mgmeyers/obsidian-style-settings/), and if you have these fonts installed in your system, you can just select them in the settings. 
 For Marta you'll need normal and italic, for Trajan Pro 3 - normal, bold and black.
 
+![](/imgs/style%20settings.png)
+
 ### Epilogue 
 Well, that’s all, folks! Please let me know what do you think about this layout, and how it can be improved. For example, still not sure about the way the Specialties are displayed, but can’t think up something better.
 I also a little bit sad that, in general, this layout is just an info page. Storytelling System assumes that you combine two of your stats, Intelligence + Academics, for example, and then roll all the dice. If you know how it can be achieved – please let me know!

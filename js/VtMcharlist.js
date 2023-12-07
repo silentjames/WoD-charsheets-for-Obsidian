@@ -4,7 +4,6 @@ async function sleep(ms) { // сон, чтобы успела прогрузит
 sleep(120).then(() => {
 
 
-
     // определяется клан, и каждому клану подставляется своя картинка на бэкграунд, и не только!
     //  console.log(document.querySelector(".mod-active .line.clan .statblock-markdown"))
     if (document.querySelector(".mod-active .line.clan .statblock-markdown") != null) {
@@ -16,173 +15,173 @@ sleep(120).then(() => {
                 // каждому клану назначается соответствующий класс 
                 collapsedColumn.classList.add('Assamite');
                 // добавляется соответствующий клановый изъян
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Из-за проклятия Тремер любой Ассамит, выпивший кровь другого Сородича, получает одно неотвратимое тяжёлое повреждение за каждый выпитый пункт крови. Совершив диаблери, персонаж получает по одному неотвратимому губительному повреждению за каждый пункт значения воли жертвы; даже если диаблерист сумеет это пережить, он не получит от совершения диаблери никаких преимуществ, а его поколение не изменится. Кроме того, все Ассамиты обязаны отдавать часть прибыли от выполненных контрактов своим сирам и старейшинам (как правило, около 10 %).';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 // если для страницы стоит класс vtm-header, логотип классы прячется под именем, рядом с фото
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Assamite-background-logo)" };
                 break;
             case ('Антитрибу Ассамитов'):
                 collapsedColumn.classList.add('Assamite-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Ассамит‐антитрибу, пьющий кровь другого Сородича, должен пройти проверку самоконтроля / инстинктов (со сложностью, равной 3 + количество выпитых пунктов крови). Если проверка заканчивается неудачей, персонаж получает пристрастие к вампирской крови. <br> Теперь каждый раз, когда он получает возможность испить витэ другого Сородича, он должен либо поддаться своему пристрастию, либо пройти ещё одну проверку самоконтроля / инстинктов (сложность 6). В случае неудачи Ассамит впадает в ярость и атакует жертву (вампира), стремясь впиться в него Поцелуем и выпить как можно больше его витэ.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Assamite-Antitribu-background-logo)" };
                 break;
             case 'Баали':
                 collapsedColumn.classList.add('Baali');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Баали не выносят священных символов любых религий. Демоны вынуждены <br> отводить от них взгляд, а касание любого такого предмета обжигает их плоть. <br> Если персонаж‐Баали сталкивается с проявлением Истинной Веры, связанным с попыткой отпугнуть вампира, вывести его из строя или нанести ему урон, эффект этого воздействия удваивается.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Baali-background-logo)" };
                 break;
             case 'Бруха':
                 collapsedColumn.classList.add('Brujah');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Те же душевные порывы, что толкают Бруха на путь величия или порока, могут разжечь в них пламя неистовой ярости. Сложность проверок, связанных с попытками сдерживать или контролировать приступы ярости, возрастает на два пункта (вплоть до максимума 10). Кроме того, Бруха не могут тратить пункты воли, чтобы предотвратить приступ ярости, но если приступ уже начался, персонаж, как обычно, может потратить пункт воли, чтобы взять себя в руки на один ход.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Brujah-background-logo)" };
                 break;
             case 'Антитрибу Бруха':
                 collapsedColumn.classList.add('Brujah-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Бруха‐антитрибу обладают тем же изъяном, что и представители основной линии клана. Сложность проверок, связанных с попытками сдерживать или контролировать приступы ярости, возрастает на два пункта (вплоть до максимума 10). Однако в отличие от Бруха, состоящих в рядах Камарильи, отступники не стыдятся своего буйного нрава, а наслаждаются яростью <br> обуревающих их страстей.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Brujah-Antitribu-background-logo)" };
                 break;
             case 'Истинные Бруха':
                 collapsedColumn.classList.add('True-Brujah');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Истинные Бруха утрачивают значительную часть своей эмоциональности в момент Становления, и с годами их холодность и отчуждённость становятся лишь заметнее и сильнее. Сложность всех проверок совести и решимости увеличивается на два пункта (вплоть до максимума 10), а развитие совести, решимости, Человечности и Путей Просветления стоит вдвое больше пунктов опыта, чем обычно.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--True-Brujah-background-logo)" };
                 break;
             case 'Каппадокийцы':
                 collapsedColumn.classList.add('Cappadocians');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Каппадокийцы отличались мертвенной бледностью, которая лишь усиливалась по мере того, как вампир становился старше. Молодые Каппадокийцы, хоть и с большим трудом, но ещё могли сойти за простых смертных, старейшинам же подобное было уже не под силу — усыхающая кожа начинала обтягивать кости, делая этих Сородичей слишком уж похожими на живых покойников.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Cappadocians-background-logo)" };
                 break;
             case 'Каитиф':
                 collapsedColumn.classList.add('Caitiff');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Из‐за ущербного положения в обществе каитифы не могут выбирать факт биографии «Статус» на этапе создания персонажа. Каитиф — это не только клан, но и порочащий титул. Пока такой персонаж не сделает себе имя внутри домена или сообщества, он будет иметь +2 к сложности социальных проверок в присутствии не каитифов. Если Каитиф дарует Становление, его потомки тоже становятся каитифами.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Caitiff-background-logo)" };
                 break;
             case 'Пандер':
                 collapsedColumn.classList.add('Caitiff-Antitribu-Pander');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'У Пандеров нет характерных слабостей. Персонажи‐Пандеры не могут начать игру с поколением старше девятого, но могут понизить своё поколение уже по ходу игры при помощи диаблери.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Caitiff-Antitribu-Pander-background-logo)" };
                 break;
             case 'Вентру':
                 collapsedColumn.classList.add('Ventrue');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Всем Вентру присущ утончённый вкус — в пищу им годится кровь только одной определённой категории смертных. Когда игрок создаёт персонажа‐Вентру, он должен вместе с рассказчиком определить эту категорию. Обратите внимание, что выбор этот окончательный, и после начала игры его уже нельзя будет изменить. Кровь смертных, не относящихся к выбранной категории <br> (в том числе кровь животных), не пополняет запас пунктов крови персонажа вне зависимости <br> от того, сколько он её выпьет, — его просто немедленно стошнит. Категория жертв, кровь которых годится для персонажа‐Вентру, может быть как довольно узкой (например, младшие сёстры),  <br>  так и относительно широкой (например, обнажённые подростки). Кровь Сородичей не подпадает под эти ограничения.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ventrue-background-logo)" };
                 break;
             case 'Антитрибу Вентру':
                 collapsedColumn.classList.add('Ventrue-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Всем Вентру присущ утончённый вкус — в пищу им годится кровь только одной определённой категории смертных. Когда игрок создаёт персонажа‐Вентру, он должен вместе с рассказчиком определить эту категорию. Обратите внимание, что выбор этот окончательный, и после начала игры его уже нельзя будет изменить. Кровь смертных, не относящихся к выбранной категории <br> (в том числе кровь животных), не пополняет запас пунктов крови персонажа вне зависимости <br> от того, сколько он её выпьет, — его просто немедленно стошнит. Категория жертв, кровь которых годится для персонажа‐вентру, может быть как довольно узкой (например, младшие сёстры),  <br>  так и относительно широкой (например, обнажённые подростки). Кровь Сородичей не подпадает под эти ограничения.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ventrue-Antitribu-background-logo)" };
                 break;
             case 'Гангрел':
                 collapsedColumn.classList.add('Gangrel');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Каждый раз, когда персонажа‐Гангрела охватывает приступ ярости, он временно получает <br> какой‐нибудь звериный признак (который может заменить уже существующий временный звериный признак, оставшийся после прошлого приступа): пробивающаяся по всему телу шерсть, краткая послеобеденная спячка, стремление избегать больших скоплений народа и прочие подобные атавизмы. Обратите внимание, что этот атавизм может быть не только физическим, но и чисто поведенческим. Игроки вместе с рассказчиком должны определить, что это будет <br> за атавизм (на его тип и вид могут повлиять, например, обстоятельства, которые вызвали <br> приступ ярости, — бегство, сражение и т. п.). Со временем или в исключительных обстоятельствах некоторые временные атавизмы могут становиться постоянными, и тогда следующий временный атавизм не заменит уже существующий, а дополнит его. При желании рассказчик может решить, что атавизмы должны влиять на параметры персонажа, например, отнимать пункты Человечности или временно снижать социальные характеристики. Впрочем, это совсем не обязательно, и рассказчик вправе ограничиться чисто описательными эффектами.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Gangrel-background-logo)" };
                 break;
             case 'Дикие Гангрелы':
                 collapsedColumn.classList.add('Country-Gangrel');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Дикие Гангрелы обладают тем же изъяном, что и представители основной линии клана. Каждый раз, когда персонажа охватывает приступ ярости, он временно получает какой‐нибудь звериный признак — атавизм, который может заменить уже существующий временный атавизм, оставшийся после прошлого приступа. Рассказчик сам определяет, будет ли этот атавизм влиять на параметры персонажа, и если будет, то как именно.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Country-Gangrel-background-logo)" };
                 break;
             case 'Городские Гангрелы':
                 collapsedColumn.classList.add('City-Gangrel');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Городские Гангрелы обладают тем же изъяном, что и представители основной линии клана. Каждый раз, когда персонажа охватывает приступ ярости, он временно получает какой‐нибудь звериный признак — атавизм, который может заменить уже существующий временный атавизм, оставшийся после прошлого приступа. Рассказчик сам определяет, будет ли этот атавизм влиять на параметрып ерсонажа, и если будет,то как именно. Атавизмы Городских Гангрелов, как правило, имеют отношение к представителям городского животного мира: крысам, собакам, кошкам, голубям и даже насекомым.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--City-Gangrel-background-logo)" };
                 break;
             case 'Джованни':
                 collapsedColumn.classList.add('Giovanni');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Поцелуи вампиров из клана Джованни причиняют смертным мучительную боль. Если Джованни не будет осторожен, сосуд, из которого он пьёт, может погибнуть от болевого шока ещё до того, как будет обескровлен. Когда Джованни пьёт кровь смертного, он причиняет ему вдвое больше повреждений, чем любой другой вампир (т. е. два, а не одно). Именно поэтому Джованни предпочитают прибегать к услугам донорских пунктов и другим источникам крови — тем, что <br> не кричат и не отбиваются.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Giovanni-background-logo)" };
                 break;
             case 'Дочери Какофонии':
                 collapsedColumn.classList.add('Daughters-of-Cacophony');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Дочери Какофонии постоянно слышат музыку. Кто‐то воспринимает её как некую форму синестезии, кто‐то — как слуховые галлюцинации. Эта неумолкающая музыка не только ведёт Сирен по дороге бессмертия, но и здорово отвлекает от того, что происходит вокруг. Сложность всех проверок восприятия возрастает на два пункта; кроме того, показатель бдительности персонажа‐Сирены не может быть выше трёх пунктов.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Daughters-of-Cacophony-background-logo)" };
                 break;
             case 'Киасиды':
                 collapsedColumn.classList.add('Kiasyd');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Помимо своей крайне примечательной внешности, Киасиды обладают острой восприимчивостью к железу. Даже простого прикосновения к любому железному предмету достаточно для того, чтобы спровоцировать проверку сопротивления ярости, а оружие, сделанное из холодного железа, наносит Киасидам губительные повреждения.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Kiasyd-background-logo)" };
                 break;
             case 'Ласомбра':
                 collapsedColumn.classList.add('Lasombra');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Вампиры из клана Ласомбра не отражаются в полированных поверхностях, спокойной воде, зеркалах заднего вида и т. д.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Lasombra-background-logo)" };
                 break;
             case 'Малкавиан':
                 collapsedColumn.classList.add('Malkavian');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Все члены клана Малкавиан страдают от перманентного психического расстройства. Это расстройство действует как любое другое — оно не мешает приобретать новые психические расстройства и его, как и обычное расстройство, можно временно нейтрализовать при помощи воли, но, в отличие от новообретённых расстройств, перманентное психическое расстройство нельзя исцелить.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Malkavian-background-logo)" };
                 break;
             case 'Антитрибу Малкавиан':
                 collapsedColumn.classList.add('Malkavian-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Малкавиане-антитрибу, как и все Малкавиане, безумны. На этапе создания персонажа игрок должен выбрать психическое расстройство, от которого Фрик никогда не сможет излечиться.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Malkavian-Antitribu-background-logo)" };
                 break;
             case 'Носферату':
                 collapsedColumn.classList.add('Nosferatu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Показатель привлекательности всех Носферату равен нулю, и они никак не могут это изменить. Зачеркните эту характеристику в своём бланке персонажа. Проверки, в которых задействована привлекательность, даются этим Сородичам с большим трудом.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Nosferatu-background-logo)" };
                 break;
             case 'Антитрибу Носферату':
                 collapsedColumn.classList.add('Nosferatu-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Носферату Шабаша столь же уродливы, сколь и Носферату Камарильи, и, соответственно, страдают от того же самого изъяна: показатель привлекательности всех Носферату равен нулю, и они никак не могут это изменить.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Nosferatu-Antitribu-background-logo)" };
                 break;
             case ('Последователи Сета'):
                 collapsedColumn.classList.add('Followers-of-Set');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Из‐за своей приверженности тьме Последователи Сета особенно уязвимы к яркому свету. Солнечный свет наносит им на два повреждения больше обычного, а если персонаж‐сетит предпринимает любое действие, требующее проверки, находясь под воздействием любого источника яркого света (полицейского прожектора, театральных софитов, сигнальной ракеты и т. п.), пул этой проверки уменьшается на один d10.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Followers-of-Set-background-logo)" };
                 break;
             case ('Змеи Света'):
                 collapsedColumn.classList.add('Serpents-of-Light');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Несмотря на своё название, Змеи Света столь же уязвимы к воздействию яркого освещения, сколь и представители основной линии клана. Солнечный свет наносит им на два повреждения больше обычного, а если персонаж предпринимает любое действие, требующее проверки, находясь под воздействием любого источника яркого света, пул этой проверки уменьшается на один d10.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Serpents-of-Light-background-logo)" };
                 break;
             case ('Равнос'):
                 collapsedColumn.classList.add('Ravnos');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Каждый вампир из клана Равнос является рабом того или иного порока. Кто‐то, например, <br> не может не лгать, кому‐то чуждо сострадание, а кто‐то попросту неспособен устоять перед возможностью стащить что‐нибудь, что плохо лежит. Когда персонажу предоставляется возможность поддаться выбранному пороку, он должен сделать это, если не пройдёт проверку самоконтроля или инстинктов (сложность 6).';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ravnos-background-logo)" };
                 break;
             case ('Антитрибу Равнос'):
                 collapsedColumn.classList.add('Ravnos-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Равнос‐антитрибу обладают тем же изъяном, что и представители основной линии клана. Каждый из них является рабом того или иного порока. Тяга к нарушению запретов у Проходимцев и Обманщиков в крови. Когда персонажу предоставляется возможность поддаться выбранному пороку, он должен сделать это, если не пройдёт проверку самоконтроля или инстинктов (сложность 6).';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ravnos-Antitribu-background-logo)" };
                 break;
             case ('Салюбри'):
                 collapsedColumn.classList.add('Salubri');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Салюбри сложно пить кровь насильно. Если Циклоп утоляет голод при помощи жертвы, которая отдаёт ему свою кровь не по доброй воле, он теряет один пункт воли.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Salubri-background-logo)" };
                 break;
             case ('Антитрибу Салюбри'):
                 collapsedColumn.classList.add('Salubri-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'В отличие от своих единокровных сородичей‐непротивленцев, Салюбри Шабаша могут питаться лишь кровью, которая взята силой, желательно в бою. Запас крови такого персонажа может пополнить только витэ павшего врага или жертвы, которая оказала вампиру активное сопротивление. Кроме того, на начало игры Салюбри‐антитрибу может принадлежать только к десятому, одиннадцатому или двенадцатому поколению — Фурии всегда были немногочисленны, и их линия крови пока не успела распространиться достаточно широко.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Salubri-Antitribu-background-logo)" };
                 break;
             case ('Самеди'):
                 collapsedColumn.classList.add('Samedi');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Самеди выглядят как гниющие трупы — их показатель привлекательности всегда равен нулю, а проверки, для которых используется этот параметр, всегда считаются неудачными.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Samedi-background-logo)" };
                 break;
             case ('Тореадор'):
                 collapsedColumn.classList.add('Toreador');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Когда персонаж‐Тореадор переживает некое действительно прекрасное ощущение — например, видит очень красивого человека, потрясающую картину или восхитительный рассвет, — он должен пройти проверку самоконтроля или инстинктов (сложность 6). Неудача означает, что персонаж замирает, охваченный восторгом. В этом состоянии персонаж пребывает до конца сцены, и единственное, что он способен делать, — это восхищаться и комментировать свои ощущения. Если источник переживания перестаёт воздействовать на персонажа (скрывается из виду, разрушается и т. п.), восторг стихает, и персонаж может действовать как обычно. Обратите внимание, что замерший тореадор не может ни шевелиться, ни даже защищаться, если его атакуют, но если персонаж получает повреждение, он может попытаться стряхнуть оцепенение — для этого он вновь должен пройти проверку самоконтроля или инстинктов со сложностью 6.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Toreador-background-logo)" };
                 break;
             case ('Антитрибу Тореадор'):
                 collapsedColumn.classList.add('Toreador-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Со временем одержимость Тореадоров‐отступников красотой перерастает в извращённую жажду бессмысленной жестокости. Если персонажу предоставляется возможность причинить кому‐либо физическую или душевную боль (подвергнуть пленника пыткам, подорвать амбиции юного протеже и т. п.), он должен сделать это, если не пройдёт проверку самоконтроля или инстинктов (сложность 6) или не потратит пункт воли.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Toreador-Antitribu-background-logo)" };
                 break;
             case ('Тремер'):
                 collapsedColumn.classList.add('Tremere');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Зависимость вампиров клана Тремер от крови выражена ярче, чем у других Сородичей. Для того чтобы стать вассалом уз крови третьей ступени, Тремеру достаточно дважды испить витэ Сородича (а не трижды, как обычно). Испив витэ Сородича единожды, Тремер сразу становится вассалом уз крови второй ступени. Старейшины клана прекрасно знают об этом и активно пользуются своим знанием — вскоре после Становления любой неонат обязательно проходит торжественный обряд посвящения, в ходе которого причащается кровью семи старейшин клана.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Tremere-background-logo)" };
                 break;
             case ('Антитрибу Тремер'):
                 collapsedColumn.classList.add('Tremere-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Любой Чернокнижник Камарильи, увидев Тремера‐антитрибу, немедленно узнает в нём предателя. Это невидимое клеймо распознаётся на уровне бессознательных ощущений и никак не влияет на параметры персонажа, но если Тремер‐антитрибу будет опознан как предатель, тремеры Камарильи при первой же возможности постараются его уничтожить. При этом Заклинатели, как и все тремеры, чрезвычайно восприимчивы к силе крови, поэтому получают +1 к результатам проверок силы братских уз. Кроме того, Тремерам Шабаша всегда было запрещено занимать руководящие посты в структуре фракции.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Tremere-Antitribu-background-logo)" };
                 break;
             case ('Цимисхи'):
                 collapsedColumn.classList.add('Tzimisce');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = 'Цимисхи неразрывно связаны с местом своего происхождения. Для полноценного <br> дневного отдыха Сородичам этого клана необходимо касаться хотя бы двух пригоршней родной земли — почвы, набранной в месте, тесно связанном с их прошлой, смертной жизнью. Это может быть земля родного города или, скажем, кладбища, где вампиру было даровано Становление. Каждый день, когда Цимисх отдыхает, не касаясь родной земли, пул проверок всех его параметров уменьшается вдвое. Этот штраф накапливается каждую ночь, пока пул не уменьшится до одного d10. Накопленный штраф сохраняется до тех пор, пока вампир не отдохнёт как минимум сутки, касаясь хотя бы двух пригоршней родной земли.';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Tzimisce-background-logo)" };
                 break;
         };
@@ -198,172 +197,172 @@ sleep(120).then(() => {
         switch (clanNameHover) {
             case ('Ассамиты'):
                 collapsedColumnHover.classList.add('Assamite');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Из-за проклятия Тремер любой Ассамит, выпивший кровь другого Сородича, получает одно неотвратимое тяжёлое повреждение за каждый выпитый пункт крови. Совершив диаблери, персонаж получает по одному неотвратимому губительному повреждению за каждый пункт значения воли жертвы; даже если диаблерист сумеет это пережить, он не получит от совершения диаблери никаких преимуществ, а его поколение не изменится. Кроме того, все Ассамиты обязаны отдавать часть прибыли от выполненных контрактов своим сирам и старейшинам (как правило, около 10 %).';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Assamite-background-logo)" };
                 break;
             case ('Антитрибу Ассамитов'):
                 collapsedColumnHover.classList.add('Assamite-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Ассамит‐антитрибу, пьющий кровь другого Сородича, должен пройти проверку самоконтроля / инстинктов (со сложностью, равной 3 + количество выпитых пунктов крови). Если проверка заканчивается неудачей, персонаж получает пристрастие к вампирской крови. <br> Теперь каждый раз, когда он получает возможность испить витэ другого Сородича, он должен либо поддаться своему пристрастию, либо пройти ещё одну проверку самоконтроля / инстинктов (сложность 6). В случае неудачи Ассамит впадает в ярость и атакует жертву (вампира), стремясь впиться в него Поцелуем и выпить как можно больше его витэ.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Assamite-Antitribu-background-logo)" };
                 break;
             case 'Баали':
                 collapsedColumnHover.classList.add('Baali');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Баали не выносят священных символов любых религий. Демоны вынуждены <br> отводить от них взгляд, а касание любого такого предмета обжигает их плоть. <br> Если персонаж‐Баали сталкивается с проявлением Истинной Веры, связанным с попыткой отпугнуть вампира, вывести его из строя или нанести ему урон, эффект этого воздействия удваивается.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Baali-background-logo)" };
                 break;
             case 'Бруха':
                 collapsedColumnHover.classList.add('Brujah');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Те же душевные порывы, что толкают Бруха на путь величия или порока, могут разжечь в них пламя неистовой ярости. Сложность проверок, связанных с попытками сдерживать или контролировать приступы ярости, возрастает на два пункта (вплоть до максимума 10). Кроме того, Бруха не могут тратить пункты воли, чтобы предотвратить приступ ярости, но если приступ уже начался, персонаж, как обычно, может потратить пункт воли, чтобы взять себя в руки на один ход.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Brujah-background-logo)" };
                 break;
             case 'Антитрибу Бруха':
                 collapsedColumnHover.classList.add('Brujah-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Бруха‐антитрибу обладают тем же изъяном, что и представители основной линии клана. Сложность проверок, связанных с попытками сдерживать или контролировать приступы ярости, возрастает на два пункта (вплоть до максимума 10). Однако в отличие от Бруха, состоящих в рядах Камарильи, отступники не стыдятся своего буйного нрава, а наслаждаются яростью <br> обуревающих их страстей.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Brujah-Antitribu-background-logo)" };
                 break;
             case 'Истинные Бруха':
                 collapsedColumnHover.classList.add('True-Brujah');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Истинные Бруха утрачивают значительную часть своей эмоциональности в момент Становления, и с годами их холодность и отчуждённость становятся лишь заметнее и сильнее. Сложность всех проверок совести и решимости увеличивается на два пункта (вплоть до максимума 10), а развитие совести, решимости, Человечности и Путей Просветления стоит вдвое больше пунктов опыта, чем обычно.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--True-Brujah-background-logo)" };
                 break;
             case 'Каппадокийцы':
                 collapsedColumnHover.classList.add('Cappadocians');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Каппадокийцы отличались мертвенной бледностью, которая лишь усиливалась по мере того, как вампир становился старше. Молодые Каппадокийцы, хоть и с большим трудом, но ещё могли сойти за простых смертных, старейшинам же подобное было уже не под силу — усыхающая кожа начинала обтягивать кости, делая этих Сородичей слишком уж похожими на живых покойников.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Cappadocians-background-logo)" };
                 break;
             case 'Каитиф':
                 collapsedColumnHover.classList.add('Caitiff');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Из‐за ущербного положения в обществе каитифы не могут выбирать факт биографии «Статус» на этапе создания персонажа. Каитиф — это не только клан, но и порочащий титул. Пока такой персонаж не сделает себе имя внутри домена или сообщества, он будет иметь +2 к сложности социальных проверок в присутствии не каитифов. Если Каитиф дарует Становление, его потомки тоже становятся каитифами.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Caitiff-background-logo)" };
                 break;
             case 'Пандер':
                 collapsedColumnHover.classList.add('Caitiff-Antitribu-Pander');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'У Пандеров нет характерных слабостей. Персонажи‐Пандеры не могут начать игру с поколением старше девятого, но могут понизить своё поколение уже по ходу игры при помощи диаблери.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Caitiff-Antitribu-Pander-background-logo)" };
                 break;
             case 'Вентру':
                 collapsedColumnHover.classList.add('Ventrue');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Всем Вентру присущ утончённый вкус — в пищу им годится кровь только одной определённой категории смертных. Когда игрок создаёт персонажа‐Вентру, он должен вместе с рассказчиком определить эту категорию. Обратите внимание, что выбор этот окончательный, и после начала игры его уже нельзя будет изменить. Кровь смертных, не относящихся к выбранной категории <br> (в том числе кровь животных), не пополняет запас пунктов крови персонажа вне зависимости <br> от того, сколько он её выпьет, — его просто немедленно стошнит. Категория жертв, кровь которых годится для персонажа‐Вентру, может быть как довольно узкой (например, младшие сёстры),  <br>  так и относительно широкой (например, обнажённые подростки). Кровь Сородичей не подпадает под эти ограничения.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ventrue-background-logo)" };
                 break;
             case 'Антитрибу Вентру':
                 collapsedColumnHover.classList.add('Ventrue-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Всем Вентру присущ утончённый вкус — в пищу им годится кровь только одной определённой категории смертных. Когда игрок создаёт персонажа‐Вентру, он должен вместе с рассказчиком определить эту категорию. Обратите внимание, что выбор этот окончательный, и после начала игры его уже нельзя будет изменить. Кровь смертных, не относящихся к выбранной категории <br> (в том числе кровь животных), не пополняет запас пунктов крови персонажа вне зависимости <br> от того, сколько он её выпьет, — его просто немедленно стошнит. Категория жертв, кровь которых годится для персонажа‐вентру, может быть как довольно узкой (например, младшие сёстры),  <br>  так и относительно широкой (например, обнажённые подростки). Кровь Сородичей не подпадает под эти ограничения.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ventrue-Antitribu-background-logo)" };
                 break;
             case 'Гангрел':
                 collapsedColumnHover.classList.add('Gangrel');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Каждый раз, когда персонажа‐Гангрела охватывает приступ ярости, он временно получает <br> какой‐нибудь звериный признак (который может заменить уже существующий временный звериный признак, оставшийся после прошлого приступа): пробивающаяся по всему телу шерсть, краткая послеобеденная спячка, стремление избегать больших скоплений народа и прочие подобные атавизмы. Обратите внимание, что этот атавизм может быть не только физическим, но и чисто поведенческим. Игроки вместе с рассказчиком должны определить, что это будет <br> за атавизм (на его тип и вид могут повлиять, например, обстоятельства, которые вызвали <br> приступ ярости, — бегство, сражение и т. п.). Со временем или в исключительных обстоятельствах некоторые временные атавизмы могут становиться постоянными, и тогда следующий временный атавизм не заменит уже существующий, а дополнит его. При желании рассказчик может решить, что атавизмы должны влиять на параметры персонажа, например, отнимать пункты Человечности или временно снижать социальные характеристики. Впрочем, это совсем не обязательно, и рассказчик вправе ограничиться чисто описательными эффектами.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Gangrel-background-logo)" };
                 break;
             case 'Дикие Гангрелы':
                 collapsedColumnHover.classList.add('Country-Gangrel');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Дикие Гангрелы обладают тем же изъяном, что и представители основной линии клана. Каждый раз, когда персонажа охватывает приступ ярости, он временно получает какой‐нибудь звериный признак — атавизм, который может заменить уже существующий временный атавизм, оставшийся после прошлого приступа. Рассказчик сам определяет, будет ли этот атавизм влиять на параметры персонажа, и если будет, то как именно.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Country-Gangrel-background-logo)" };
                 break;
             case 'Городские Гангрелы':
                 collapsedColumnHover.classList.add('City-Gangrel');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Городские Гангрелы обладают тем же изъяном, что и представители основной линии клана. Каждый раз, когда персонажа охватывает приступ ярости, он временно получает какой‐нибудь звериный признак — атавизм, который может заменить уже существующий временный атавизм, оставшийся после прошлого приступа. Рассказчик сам определяет, будет ли этот атавизм влиять на параметрып ерсонажа, и если будет,то как именно. Атавизмы Городских Гангрелов, как правило, имеют отношение к представителям городского животного мира: крысам, собакам, кошкам, голубям и даже насекомым.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--City-Gangrel-background-logo)" };
                 break;
             case 'Джованни':
                 collapsedColumnHover.classList.add('Giovanni');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Поцелуи вампиров из клана Джованни причиняют смертным мучительную боль. Если Джованни не будет осторожен, сосуд, из которого он пьёт, может погибнуть от болевого шока ещё до того, как будет обескровлен. Когда Джованни пьёт кровь смертного, он причиняет ему вдвое больше повреждений, чем любой другой вампир (т. е. два, а не одно). Именно поэтому Джованни предпочитают прибегать к услугам донорских пунктов и другим источникам крови — тем, что <br> не кричат и не отбиваются.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Giovanni-background-logo)" };
                 break;
             case 'Дочери Какофонии':
                 collapsedColumnHover.classList.add('Daughters-of-Cacophony');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Дочери Какофонии постоянно слышат музыку. Кто‐то воспринимает её как некую форму синестезии, кто‐то — как слуховые галлюцинации. Эта неумолкающая музыка не только ведёт Сирен по дороге бессмертия, но и здорово отвлекает от того, что происходит вокруг. Сложность всех проверок восприятия возрастает на два пункта; кроме того, показатель бдительности персонажа‐Сирены не может быть выше трёх пунктов.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Daughters-of-Cacophony-background-logo)" };
                 break;
             case 'Киасиды':
                 collapsedColumnHover.classList.add('Kiasyd');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Помимо своей крайне примечательной внешности, Киасиды обладают острой восприимчивостью к железу. Даже простого прикосновения к любому железному предмету достаточно для того, чтобы спровоцировать проверку сопротивления ярости, а оружие, сделанное из холодного железа, наносит Киасидам губительные повреждения.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Kiasyd-background-logo)" };
                 break;
             case 'Ласомбра':
                 collapsedColumnHover.classList.add('Lasombra');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Вампиры из клана Ласомбра не отражаются в полированных поверхностях, спокойной воде, зеркалах заднего вида и т. д.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Lasombra-background-logo)" };
                 break;
             case 'Малкавиан':
                 collapsedColumnHover.classList.add('Malkavian');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Все члены клана Малкавиан страдают от перманентного психического расстройства. Это расстройство действует как любое другое — оно не мешает приобретать новые психические расстройства и его, как и обычное расстройство, можно временно нейтрализовать при помощи воли, но, в отличие от новообретённых расстройств, перманентное психическое расстройство нельзя исцелить.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Malkavian-background-logo)" };
                 break;
             case 'Антитрибу Малкавиан':
                 collapsedColumnHover.classList.add('Malkavian-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Малкавиане-антитрибу, как и все Малкавиане, безумны. На этапе создания персонажа игрок должен выбрать психическое расстройство, от которого Фрик никогда не сможет излечиться.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Malkavian-Antitribu-background-logo)" };
                 break;
             case 'Носферату':
                 collapsedColumnHover.classList.add('Nosferatu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Показатель привлекательности всех Носферату равен нулю, и они никак не могут это изменить. Зачеркните эту характеристику в своём бланке персонажа. Проверки, в которых задействована привлекательность, даются этим Сородичам с большим трудом.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Nosferatu-background-logo)" };
                 break;
             case 'Антитрибу Носферату':
                 collapsedColumnHover.classList.add('Nosferatu-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Носферату Шабаша столь же уродливы, сколь и Носферату Камарильи, и, соответственно, страдают от того же самого изъяна: показатель привлекательности всех Носферату равен нулю, и они никак не могут это изменить.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Nosferatu-Antitribu-background-logo)" };
                 break;
             case ('Последователи Сета'):
                 collapsedColumnHover.classList.add('Followers-of-Set');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Из‐за своей приверженности тьме Последователи Сета особенно уязвимы к яркому свету. Солнечный свет наносит им на два повреждения больше обычного, а если персонаж‐сетит предпринимает любое действие, требующее проверки, находясь под воздействием любого источника яркого света (полицейского прожектора, театральных софитов, сигнальной ракеты и т. п.), пул этой проверки уменьшается на один d10.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Followers-of-Set-background-logo)" };
                 break;
             case ('Змеи Света'):
                 collapsedColumnHover.classList.add('Serpents-of-Light');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Несмотря на своё название, Змеи Света столь же уязвимы к воздействию яркого освещения, сколь и представители основной линии клана. Солнечный свет наносит им на два повреждения больше обычного, а если персонаж предпринимает любое действие, требующее проверки, находясь под воздействием любого источника яркого света, пул этой проверки уменьшается на один d10.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Serpents-of-Light-background-logo)" };
                 break;
             case ('Равнос'):
                 collapsedColumnHover.classList.add('Ravnos');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Каждый вампир из клана Равнос является рабом того или иного порока. Кто‐то, например, <br> не может не лгать, кому‐то чуждо сострадание, а кто‐то попросту неспособен устоять перед возможностью стащить что‐нибудь, что плохо лежит. Когда персонажу предоставляется возможность поддаться выбранному пороку, он должен сделать это, если не пройдёт проверку самоконтроля или инстинктов (сложность 6).';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ravnos-background-logo)" };
                 break;
             case ('Антитрибу Равнос'):
                 collapsedColumnHover.classList.add('Ravnos-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Равнос‐антитрибу обладают тем же изъяном, что и представители основной линии клана. Каждый из них является рабом того или иного порока. Тяга к нарушению запретов у Проходимцев и Обманщиков в крови. Когда персонажу предоставляется возможность поддаться выбранному пороку, он должен сделать это, если не пройдёт проверку самоконтроля или инстинктов (сложность 6).';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ravnos-Antitribu-background-logo)" };
                 break;
             case ('Салюбри'):
                 collapsedColumnHover.classList.add('Salubri');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Салюбри сложно пить кровь насильно. Если Циклоп утоляет голод при помощи жертвы, которая отдаёт ему свою кровь не по доброй воле, он теряет один пункт воли.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Salubri-background-logo)" };
                 break;
             case ('Антитрибу Салюбри'):
                 collapsedColumnHover.classList.add('Salubri-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'В отличие от своих единокровных сородичей‐непротивленцев, Салюбри Шабаша могут питаться лишь кровью, которая взята силой, желательно в бою. Запас крови такого персонажа может пополнить только витэ павшего врага или жертвы, которая оказала вампиру активное сопротивление. Кроме того, на начало игры Салюбри‐антитрибу может принадлежать только к десятому, одиннадцатому или двенадцатому поколению — Фурии всегда были немногочисленны, и их линия крови пока не успела распространиться достаточно широко.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Salubri-Antitribu-background-logo)" };
                 break;
             case ('Самеди'):
                 collapsedColumnHover.classList.add('Samedi');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Самеди выглядят как гниющие трупы — их показатель привлекательности всегда равен нулю, а проверки, для которых используется этот параметр, всегда считаются неудачными.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Samedi-background-logo)" };
                 break;
             case ('Тореадор'):
                 collapsedColumnHover.classList.add('Toreador');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Когда персонаж‐Тореадор переживает некое действительно прекрасное ощущение — например, видит очень красивого человека, потрясающую картину или восхитительный рассвет, — он должен пройти проверку самоконтроля или инстинктов (сложность 6). Неудача означает, что персонаж замирает, охваченный восторгом. В этом состоянии персонаж пребывает до конца сцены, и единственное, что он способен делать, — это восхищаться и комментировать свои ощущения. Если источник переживания перестаёт воздействовать на персонажа (скрывается из виду, разрушается и т. п.), восторг стихает, и персонаж может действовать как обычно. Обратите внимание, что замерший тореадор не может ни шевелиться, ни даже защищаться, если его атакуют, но если персонаж получает повреждение, он может попытаться стряхнуть оцепенение — для этого он вновь должен пройти проверку самоконтроля или инстинктов со сложностью 6.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Toreador-background-logo)" };
                 break;
             case ('Антитрибу Тореадор'):
                 collapsedColumnHover.classList.add('Toreador-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Со временем одержимость Тореадоров‐отступников красотой перерастает в извращённую жажду бессмысленной жестокости. Если персонажу предоставляется возможность причинить кому‐либо физическую или душевную боль (подвергнуть пленника пыткам, подорвать амбиции юного протеже и т. п.), он должен сделать это, если не пройдёт проверку самоконтроля или инстинктов (сложность 6) или не потратит пункт воли.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Toreador-Antitribu-background-logo)" };
                 break;
             case ('Тремер'):
                 collapsedColumnHover.classList.add('Tremere');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Зависимость вампиров клана Тремер от крови выражена ярче, чем у других Сородичей. Для того чтобы стать вассалом уз крови третьей ступени, Тремеру достаточно дважды испить витэ Сородича (а не трижды, как обычно). Испив витэ Сородича единожды, Тремер сразу становится вассалом уз крови второй ступени. Старейшины клана прекрасно знают об этом и активно пользуются своим знанием — вскоре после Становления любой неонат обязательно проходит торжественный обряд посвящения, в ходе которого причащается кровью семи старейшин клана.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Tremere-background-logo)" };
                 break;
             case ('Антитрибу Тремер'):
                 collapsedColumnHover.classList.add('Tremere-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Любой Чернокнижник Камарильи, увидев Тремера‐антитрибу, немедленно узнает в нём предателя. Это невидимое клеймо распознаётся на уровне бессознательных ощущений и никак не влияет на параметры персонажа, но если Тремер‐антитрибу будет опознан как предатель, тремеры Камарильи при первой же возможности постараются его уничтожить. При этом Заклинатели, как и все тремеры, чрезвычайно восприимчивы к силе крови, поэтому получают +1 к результатам проверок силы братских уз. Кроме того, Тремерам Шабаша всегда было запрещено занимать руководящие посты в структуре фракции.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Tremere-Antitribu-background-logo)" };
                 break;
             case ('Цимисхи'):
                 collapsedColumnHover.classList.add('Tzimisce');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = 'Цимисхи неразрывно связаны с местом своего происхождения. Для полноценного <br> дневного отдыха Сородичам этого клана необходимо касаться хотя бы двух пригоршней родной земли — почвы, набранной в месте, тесно связанном с их прошлой, смертной жизнью. Это может быть земля родного города или, скажем, кладбища, где вампиру было даровано Становление. Каждый день, когда Цимисх отдыхает, не касаясь родной земли, пул проверок всех его параметров уменьшается вдвое. Этот штраф накапливается каждую ночь, пока пул не уменьшится до одного d10. Накопленный штраф сохраняется до тех пор, пока вампир не отдохнёт как минимум сутки, касаясь хотя бы двух пригоршней родной земли.';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.vtm-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Tzimisce-background-logo)" };
                 break;
         };

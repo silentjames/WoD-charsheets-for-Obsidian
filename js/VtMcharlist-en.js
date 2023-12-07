@@ -3,186 +3,223 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
 }
 sleep(120).then(() => {
 
+// найти активную открытую вкладку для вампирского статблока
+const activeTab = '.workspace-leaf.mod-active .vtm-v20-vampire-en '
+
+// 
+const weaknessAssamite = '';
+const weaknessAssamiteAntitribu = '';
+const weaknessBaali = '';
+const weaknessBrujah = '';
+const weaknessBrujahAntitribu = '';
+const weaknessTrueBrujah = '';
+const weaknessCappadocians = '';
+const weaknessCaitiff = '';
+const weaknessCaitiffAntitribuPander = '';
+const weaknessFollowersOfSet = '';
+const weaknessSerpentsOfLight = '';
+const weaknessGangrel = '';
+const weaknessCountryGangrel = '';
+const weaknessCityGangrel = '';
+const weaknessGiovanni = '';
+const weaknessDaughtersOfCacophony = '';
+const weaknessKiasyd = '';
+const weaknessLasombra = '';
+const weaknessMalkavian = '';
+const weaknessMalkavianAntitribu = '';
+const weaknessNosferatu = '';
+const weaknessNosferatuAntitribu = '';
+const weaknessRavnos = '';
+const weaknessRavnosAntitribu = '';
+const weaknessSalubri = '';
+const weaknessSalubriAntitribu = '';
+const weaknessSamedi = '';
+const weaknessToreador = '';
+const weaknessToreadorAntitribu = '';
+const weaknessTremere = '';
+const weaknessTremereAntitribu = '';
+const weaknessTzimisce = '';
+const weaknessVentrue = '';
+const weaknessVentrueAntitribu = '';
 
 
     // define a clan, and set up different background and weakness for each clan
-    //  console.log(document.querySelector(".mod-active .line.clan .statblock-markdown"))
-    if (document.querySelector(".mod-active .line.clan .statblock-markdown") != null) {
-        var clanName = document.querySelector(".vtm-v20-vampire-en .line.clan .statblock-markdown > p").innerHTML;
-        console.log(clanName)
-        const collapsedColumn = document.querySelector('.vtm-v20-vampire-en .collapse-container'); // define the area for the background
+    if (document.querySelector(activeTab + '.line.clan .statblock-markdown') != null) {
+        var clanName = document.querySelector(activeTab + '.line.clan .statblock-markdown > p').innerHTML;
+        console.log(clanName + ' - название клана')
+        const collapsedColumn = document.querySelector(activeTab + '.collapse-container'); // определяется зона, которой будет назначен бэкграунд
         switch (clanName) {
             case ('Assamite'):
                 // corresponding css-class is assigned for each clan
                 collapsedColumn.classList.add('Assamite');
                 // and clan weakness is also added
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessAssamite;
                 // if note has 'csslacss: wod-header', clan logo will be displayed there, as background for general character info
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Assamite-background-logo)" };
                 break;
             case ('Assamite Antitribu'):
                 collapsedColumn.classList.add('Assamite-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessAssamiteAntitribu;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Assamite-Antitribu-background-logo)" };
                 break;
             case 'Baali':
                 collapsedColumn.classList.add('Baali');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessBaali;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Baali-background-logo)" };
                 break;
             case 'Brujah':
                 collapsedColumn.classList.add('Brujah');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessBrujah;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Brujah-background-logo)" };
                 break;
             case 'Brujah Antitribu':
                 collapsedColumn.classList.add('Brujah-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessBrujahAntitribu;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Brujah-Antitribu-background-logo)" };
                 break;
             case 'True Brujah':
                 collapsedColumn.classList.add('True-Brujah');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessTrueBrujah;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--True-Brujah-background-logo)" };
                 break;
             case 'Cappadocians':
                 collapsedColumn.classList.add('Cappadocians');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessCappadocians;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Cappadocians-background-logo)" };
                 break;
             case 'Caitiff':
                 collapsedColumn.classList.add('Caitiff');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessCaitiff;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Caitiff-background-logo)" };
                 break;
             case 'Pander':
                 collapsedColumn.classList.add('Caitiff-Antitribu-Pander');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessCaitiffAntitribuPander;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Caitiff-Antitribu-Pander-background-logo)" };
                 break;
             case 'Ventrue':
                 collapsedColumn.classList.add('Ventrue');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessVentrue;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ventrue-background-logo)" };
                 break;
             case 'Ventrue Antitribu':
                 collapsedColumn.classList.add('Ventrue-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessVentrueAntitribu;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ventrue-Antitribu-background-logo)" };
                 break;
             case 'Gangrel':
                 collapsedColumn.classList.add('Gangrel');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessGangrel;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Gangrel-background-logo)" };
                 break;
             case 'Country Gangrel':
                 collapsedColumn.classList.add('Country-Gangrel');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessCountryGangrel;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Country-Gangrel-background-logo)" };
                 break;
             case 'City Gangrel':
                 collapsedColumn.classList.add('City-Gangrel');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessCityGangrel;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--City-Gangrel-background-logo)" };
                 break;
             case 'Giovanni':
                 collapsedColumn.classList.add('Giovanni');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessGiovanni;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Giovanni-background-logo)" };
                 break;
             case 'Daughters of Cacophony':
                 collapsedColumn.classList.add('Daughters-of-Cacophony');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessDaughtersOfCacophony;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Daughters-of-Cacophony-background-logo)" };
                 break;
             case 'Kiasyd':
                 collapsedColumn.classList.add('Kiasyd');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessKiasyd;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Kiasyd-background-logo)" };
                 break;
             case 'Lasombra':
                 collapsedColumn.classList.add('Lasombra');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessLasombra;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Lasombra-background-logo)" };
                 break;
             case 'Malkavian':
                 collapsedColumn.classList.add('Malkavian');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessMalkavian;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Malkavian-background-logo)" };
                 break;
             case 'Malkavian Antitribu':
                 collapsedColumn.classList.add('Malkavian-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessMalkavianAntitribu;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Malkavian-Antitribu-background-logo)" };
                 break;
             case 'Nosferatu':
                 collapsedColumn.classList.add('Nosferatu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessNosferatu;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Nosferatu-background-logo)" };
                 break;
             case 'Nosferatu Antitribu':
                 collapsedColumn.classList.add('Nosferatu-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessNosferatuAntitribu;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Nosferatu-Antitribu-background-logo)" };
                 break;
             case ('Followers of Set'):
                 collapsedColumn.classList.add('Followers-of-Set');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessFollowersOfSet;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Followers-of-Set-background-logo)" };
                 break;
             case ('Serpents of Light'):
                 collapsedColumn.classList.add('Serpents-of-Light');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessSerpentsOfLight;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Serpents-of-Light-background-logo)" };
                 break;
             case ('Ravnos'):
                 collapsedColumn.classList.add('Ravnos');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessRavnos;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ravnos-background-logo)" };
                 break;
             case ('Ravnos Antitribu'):
                 collapsedColumn.classList.add('Ravnos-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessRavnosAntitribu;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ravnos-Antitribu-background-logo)" };
                 break;
             case ('Salubri'):
                 collapsedColumn.classList.add('Salubri');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessSalubri;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Salubri-background-logo)" };
                 break;
             case ('Salubri Antitribu'):
                 collapsedColumn.classList.add('Salubri-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessSalubriAntitribu;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Salubri-Antitribu-background-logo)" };
                 break;
             case ('Samedi'):
                 collapsedColumn.classList.add('Samedi');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessSamedi;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Samedi-background-logo)" };
                 break;
             case ('Toreador'):
                 collapsedColumn.classList.add('Toreador');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessToreador;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Toreador-background-logo)" };
                 break;
             case ('Toreador Antitribu'):
                 collapsedColumn.classList.add('Toreador-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessToreadorAntitribu;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Toreador-Antitribu-background-logo)" };
                 break;
             case ('Tremere'):
                 collapsedColumn.classList.add('Tremere');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessTremere;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Tremere-background-logo)" };
                 break;
             case ('Tremere Antitribu'):
                 collapsedColumn.classList.add('Tremere-Antitribu');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessTremereAntitribu;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Tremere-Antitribu-background-logo)" };
                 break;
             case ('Tzimisce'):
                 collapsedColumn.classList.add('Tzimisce');
-                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".weakness .statblock-rendered-text-content").innerHTML = weaknessTzimisce;
                 if (document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Tzimisce-background-logo)" };
                 break;
         };
@@ -198,172 +235,172 @@ sleep(120).then(() => {
         switch (clanNameHover) {
             case ('Ассамиты'):
                 collapsedColumnHover.classList.add('Assamite');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessAssamite;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Assamite-background-logo)" };
                 break;
             case ('Антитрибу Ассамитов'):
                 collapsedColumnHover.classList.add('Assamite-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessAssamiteAntitribu;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Assamite-Antitribu-background-logo)" };
                 break;
             case 'Баали':
                 collapsedColumnHover.classList.add('Baali');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessBaali;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Baali-background-logo)" };
                 break;
             case 'Бруха':
                 collapsedColumnHover.classList.add('Brujah');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessBrujah;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Brujah-background-logo)" };
                 break;
             case 'Антитрибу Бруха':
                 collapsedColumnHover.classList.add('Brujah-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessBrujahAntitribu;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Brujah-Antitribu-background-logo)" };
                 break;
             case 'Истинные Бруха':
                 collapsedColumnHover.classList.add('True-Brujah');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessTrueBrujah;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--True-Brujah-background-logo)" };
                 break;
             case 'Каппадокийцы':
                 collapsedColumnHover.classList.add('Cappadocians');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessCappadocians;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Cappadocians-background-logo)" };
                 break;
             case 'Каитиф':
                 collapsedColumnHover.classList.add('Caitiff');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessCaitiff;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Caitiff-background-logo)" };
                 break;
             case 'Пандер':
                 collapsedColumnHover.classList.add('Caitiff-Antitribu-Pander');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessCaitiffAntitribuPander;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Caitiff-Antitribu-Pander-background-logo)" };
                 break;
             case 'Вентру':
                 collapsedColumnHover.classList.add('Ventrue');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessVentrue;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ventrue-background-logo)" };
                 break;
             case 'Антитрибу Вентру':
                 collapsedColumnHover.classList.add('Ventrue-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessVentrueAntitribu;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ventrue-Antitribu-background-logo)" };
                 break;
             case 'Гангрел':
                 collapsedColumnHover.classList.add('Gangrel');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessGangrel;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Gangrel-background-logo)" };
                 break;
             case 'Дикие Гангрелы':
                 collapsedColumnHover.classList.add('Country-Gangrel');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessCountryGangrel;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Country-Gangrel-background-logo)" };
                 break;
             case 'Городские Гангрелы':
                 collapsedColumnHover.classList.add('City-Gangrel');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessCityGangrel;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--City-Gangrel-background-logo)" };
                 break;
             case 'Джованни':
                 collapsedColumnHover.classList.add('Giovanni');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessGiovanni;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Giovanni-background-logo)" };
                 break;
             case 'Дочери Какофонии':
                 collapsedColumnHover.classList.add('Daughters-of-Cacophony');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessDaughtersOfCacophony;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Daughters-of-Cacophony-background-logo)" };
                 break;
             case 'Киасиды':
                 collapsedColumnHover.classList.add('Kiasyd');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessKiasyd;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Kiasyd-background-logo)" };
                 break;
             case 'Ласомбра':
                 collapsedColumnHover.classList.add('Lasombra');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessLasombra;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Lasombra-background-logo)" };
                 break;
             case 'Малкавиан':
                 collapsedColumnHover.classList.add('Malkavian');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessMalkavian;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Malkavian-background-logo)" };
                 break;
             case 'Антитрибу Малкавиан':
                 collapsedColumnHover.classList.add('Malkavian-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessMalkavianAntitribu;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Malkavian-Antitribu-background-logo)" };
                 break;
             case 'Nosferatu':
                 collapsedColumnHover.classList.add('Nosferatu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessNosferatu;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Nosferatu-background-logo)" };
                 break;
             case 'Антитрибу Носферату':
                 collapsedColumnHover.classList.add('Nosferatu-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessNosferatuAntitribu;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Nosferatu-Antitribu-background-logo)" };
                 break;
             case ('Последователи Сета'):
                 collapsedColumnHover.classList.add('Followers-of-Set');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessFollowersOfSet;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Followers-of-Set-background-logo)" };
                 break;
             case ('Змеи Света'):
                 collapsedColumnHover.classList.add('Serpents-of-Light');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessSerpentsOfLight;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Serpents-of-Light-background-logo)" };
                 break;
             case ('Равнос'):
                 collapsedColumnHover.classList.add('Ravnos');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessRavnos;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ravnos-background-logo)" };
                 break;
             case ('Антитрибу Равнос'):
                 collapsedColumnHover.classList.add('Ravnos-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessRavnosAntitribu;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Ravnos-Antitribu-background-logo)" };
                 break;
             case ('Салюбри'):
                 collapsedColumnHover.classList.add('Salubri');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessSalubri;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Salubri-background-logo)" };
                 break;
             case ('Антитрибу Салюбри'):
                 collapsedColumnHover.classList.add('Salubri-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessSalubriAntitribu;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Salubri-Antitribu-background-logo)" };
                 break;
             case ('Самеди'):
                 collapsedColumnHover.classList.add('Samedi');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessSamedi;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Samedi-background-logo)" };
                 break;
             case ('Тореадор'):
                 collapsedColumnHover.classList.add('Toreador');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessToreador;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Toreador-background-logo)" };
                 break;
             case ('Антитрибу Тореадор'):
                 collapsedColumnHover.classList.add('Toreador-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessToreadorAntitribu;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Toreador-Antitribu-background-logo)" };
                 break;
             case ('Тремер'):
                 collapsedColumnHover.classList.add('Tremere');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessTremere;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Tremere-background-logo)" };
                 break;
             case ('Антитрибу Тремер'):
                 collapsedColumnHover.classList.add('Tremere-Antitribu');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessTremereAntitribu;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Tremere-Antitribu-background-logo)" };
                 break;
             case ('Цимисхи'):
                 collapsedColumnHover.classList.add('Tzimisce');
-                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = '';
+                document.querySelector(".popover.hover-popover .weakness .statblock-rendered-text-content").innerHTML = weaknessTzimisce;
                 if (document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container") != null) { document.querySelector(".popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container").style.backgroundImage = "var(--Tzimisce-background-logo)" };
                 break;
         };
@@ -438,7 +475,7 @@ sleep(120).then(() => {
         const generationFullHover = document.querySelector(".popover.hover-popover .line.generation .statblock-markdown > p").textContent;
         var generationHover = generationFullHover.slice(0, 2);
         var generationHover = generationHover.replace(/\s/g, '');
-        console.log('поколение в ховере - ' + generationHover);
+        console.log('generation in hover - ' + generationHover);
         switch (generationHover) {
             case '13':
                 document.querySelector(".popover.hover-popover .line.blood_per_turn .statblock-rendered-text-content.inline").innerHTML = '1'; break;
@@ -463,7 +500,7 @@ sleep(120).then(() => {
     if (document.querySelector(".workspace-leaf.mod-active .markdown-reading-view h2") != null) {
         var outlineName = document.querySelector(".workspace-leaf.mod-active .markdown-reading-view h2").innerText
         console.log(outlineName + ' - H2 name from the note');
-        const characterName = document.querySelector('.statblock h1.heading .statblock-rendered-text-content').innerHTML
+        const characterName = document.querySelector(activeTab + 'h1.heading .statblock-rendered-text-content').innerHTML
         console.log('the name from the statblock - ' + characterName)
         if (outlineName.includes(characterName)) {
             document.querySelector(".workspace-leaf.mod-active .markdown-reading-view h2").style.display = "none";
@@ -478,13 +515,15 @@ sleep(120).then(() => {
         //  console.log('имя в заметке в ховере - ' + outlineName_hover)
         const characterName_hover = document.querySelector('.popover.hover-popover h1.heading .statblock-rendered-text-content').innerHTML
         //  console.log('имя из статблока в ховере = ' + characterName_hover)
+if (outlineName_hover.includes(characterName_hover)) {
+            document.querySelector(".popover.hover-popover h2").style.display = "none";
+        }
     }
     else {
         // do nothing
     }
 
     // Some various modifications for attributes, abilities and disciplines; mostly copied from Russian version, so some changes might be needed
-    // The main purpose here - 
     // physical attributes
     if (document.querySelector(".strength")) {
         var valueStrength = document.querySelector(".strength .statblock-rendered-text-content");  // strength
@@ -2403,8 +2442,10 @@ sleep(120).then(() => {
             };
         }
     }
-    else {
+else if (document.querySelector(".wta-v20-werewolf") == null) {
         //nothing
+    }
+    else {
         console.log('ярость не норм')
     }
     // same code, but for a statblock in hover
@@ -2422,8 +2463,10 @@ sleep(120).then(() => {
             };
         }
     }
-    else {
+else if (document.querySelector(".popover.hover-popover .wta-v20-werewolf") == null) {
         //nothing
+    }
+    else {
         console.log('ярость в ховере не норм')
     }
 

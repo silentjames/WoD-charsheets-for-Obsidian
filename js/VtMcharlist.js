@@ -3,7 +3,7 @@ async function sleep(ms) { // сон, чтобы успела прогрузит
 }
 sleep(120).then(() => {
 
-// найти активную открытую вкладку для вампирского статблока
+    // найти активную открытую вкладку для вампирского статблока
     const statblockVampireName = '.vtm-v20-vampire'
     const activeTab = '.workspace-leaf.mod-active ' + statblockVampireName;
 
@@ -50,362 +50,370 @@ sleep(120).then(() => {
         console.log(clanName + ' - название клана')
         const collapsedColumn = document.querySelector(activeTab + ' .collapse-container'); // определяется зона, которой будет назначен бэкграунд 
         switch (clanName) {
-            case ('Ассамиты'):
-                // каждому клану назначается соответствующий класс 
-                collapsedColumn.classList.add('Assamite');
-                // добавляется соответствующий клановый изъян
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessAssamite;
-                // если для страницы стоит класс wod-header, логотип классы прячется под именем, рядом с фото
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Assamite-background-logo)' };
+            case 'Ассамиты':
+                // каждому клану назначается соответствующий класс, для которого в css уже вшито изображение
+                var collapsedBackgroundClan = 'Assamite';
+                // изъян - соответствующий клану из списка выше
+                var clanWeakness = weaknessAssamite;
+                //  если у заметки есть класс wod-header, логотип клана будет под именем, рядом с фото
+                var headerBackgroundClan = 'var(--Assamite-background-logo)';
                 break;
-            case ('Антитрибу Ассамитов'):
-                collapsedColumn.classList.add('Assamite-Antitribu');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessAssamiteAntitribu;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Assamite-Antitribu-background-logo)' };
+            case 'Антитрибу Ассамитов':
+                var collapsedBackgroundClan = 'Assamite-Antitribu';
+                var clanWeakness = weaknessAssamiteAntitribu;
+                var headerBackgroundClan = 'var(--Assamite-Antitribu-background-logo)';
                 break;
             case 'Баали':
-                collapsedColumn.classList.add('Baali');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessBaali;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Baali-background-logo)' };
+                var collapsedBackgroundClan = 'Baali';
+                var clanWeakness = weaknessBaali;
+                var headerBackgroundClan = 'var(--Baali-background-logo)';
                 break;
             case 'Бруха':
-                collapsedColumn.classList.add('Brujah');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessBrujah;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Brujah-background-logo)' };
+                var collapsedBackgroundClan = 'Brujah';
+                var clanWeakness = weaknessBrujah;
+                var headerBackgroundClan = 'var(--Brujah-background-logo)';
                 break;
             case 'Антитрибу Бруха':
-                collapsedColumn.classList.add('Brujah-Antitribu');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessBrujahAntitribu;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Brujah-Antitribu-background-logo)' };
+                var collapsedBackgroundClan = 'Brujah-Antitribu';
+                var clanWeakness = weaknessBrujahAntitribu;
+                var headerBackgroundClan = 'var(--Brujah-Antitribu-background-logo)';
                 break;
             case 'Истинные Бруха':
-                collapsedColumn.classList.add('True-Brujah');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessTrueBrujah;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--True-Brujah-background-logo)' };
+                var collapsedBackgroundClan = 'True-Brujah';
+                var clanWeakness = weaknessTrueBrujah;
+                var headerBackgroundClan = 'var(--True-Brujah-background-logo)';
                 break;
             case 'Каппадокийцы':
-                collapsedColumn.classList.add('Cappadocians');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessCappadocians;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Cappadocians-background-logo)' };
+                var collapsedBackgroundClan = 'Cappadocians';
+                var clanWeakness = weaknessCappadocians;
+                var headerBackgroundClan = 'var(--Cappadocians-background-logo)';
                 break;
             case 'Каитиф':
-                collapsedColumn.classList.add('Caitiff');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessCaitiff;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Caitiff-background-logo)' };
+                var collapsedBackgroundClan = 'Caitiff';
+                var clanWeakness = weaknessCaitiff;
+                var headerBackgroundClan = 'var(--Caitiff-background-logo)';
                 break;
             case 'Пандер':
-                collapsedColumn.classList.add('Caitiff-Antitribu-Pander');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessCaitiffAntitribuPander;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Caitiff-Antitribu-Pander-background-logo)' };
+                var collapsedBackgroundClan = 'Caitiff-Antitribu-Pander';
+                var clanWeakness = weaknessCaitiffAntitribuPander;
+                var headerBackgroundClan = 'var(--Caitiff-Antitribu-Pander-background-logo)';
                 break;
             case 'Вентру':
-                collapsedColumn.classList.add('Ventrue');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessVentrue;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Ventrue-background-logo)' };
+                var collapsedBackgroundClan = 'Ventrue';
+                var clanWeakness = weaknessVentrue;
+                var headerBackgroundClan = 'var(--Ventrue-background-logo)';
                 break;
             case 'Антитрибу Вентру':
-                collapsedColumn.classList.add('Ventrue-Antitribu');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessVentrueAntitribu;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Ventrue-Antitribu-background-logo)' };
+                var collapsedBackgroundClan = 'Ventrue-Antitribu';
+                var clanWeakness = weaknessVentrueAntitribu;
+                var headerBackgroundClan = 'var(--Ventrue-Antitribu-background-logo)';
                 break;
             case 'Гангрел':
-                collapsedColumn.classList.add('Gangrel');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessGangrel;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Gangrel-background-logo)' };
+                var collapsedBackgroundClan = 'Gangrel';
+                var clanWeakness = weaknessGangrel;
+                var headerBackgroundClan = 'var(--Gangrel-background-logo)';
                 break;
             case 'Дикие Гангрелы':
-                collapsedColumn.classList.add('Country-Gangrel');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessCountryGangrel;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Country-Gangrel-background-logo)' };
+                var collapsedBackgroundClan = 'Country-Gangrel';
+                var clanWeakness = weaknessCountryGangrel;
+                var headerBackgroundClan = 'var(--Country-Gangrel-background-logo)';
                 break;
             case 'Городские Гангрелы':
-                collapsedColumn.classList.add('City-Gangrel');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessCityGangrel;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--City-Gangrel-background-logo)' };
+                var collapsedBackgroundClan = 'City-Gangrel';
+                var clanWeakness = weaknessCityGangrel;
+                var headerBackgroundClan = 'var(--City-Gangrel-background-logo)';
                 break;
             case 'Джованни':
-                collapsedColumn.classList.add('Giovanni');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessGiovanni;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Giovanni-background-logo)' };
+                var collapsedBackgroundClan = 'Giovanni';
+                var clanWeakness = weaknessGiovanni;
+                var headerBackgroundClan = 'var(--Giovanni-background-logo)';
                 break;
             case 'Дочери Какофонии':
-                collapsedColumn.classList.add('Daughters-of-Cacophony');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessDaughtersOfCacophony;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Daughters-of-Cacophony-background-logo)' };
+                var collapsedBackgroundClan = 'Daughters-of-Cacophony';
+                var clanWeakness = weaknessDaughtersOfCacophony;
+                var headerBackgroundClan = 'var(--Daughters-of-Cacophony-background-logo)';
                 break;
             case 'Киасиды':
-                collapsedColumn.classList.add('Kiasyd');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessKiasyd;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Kiasyd-background-logo)' };
+                var collapsedBackgroundClan = 'Kiasyd';
+                var clanWeakness = weaknessKiasyd;
+                var headerBackgroundClan = 'var(--Kiasyd-background-logo)';
                 break;
             case 'Ласомбра':
-                collapsedColumn.classList.add('Lasombra');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessLasombra;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Lasombra-background-logo)' };
+                var collapsedBackgroundClan = 'Lasombra';
+                var clanWeakness = weaknessLasombra;
+                var headerBackgroundClan = 'var(--Lasombra-background-logo)';
                 break;
             case 'Малкавиан':
-                collapsedColumn.classList.add('Malkavian');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessMalkavian;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Malkavian-background-logo)' };
+                var collapsedBackgroundClan = 'Malkavian';
+                var clanWeakness = weaknessMalkavian;
+                var headerBackgroundClan = 'var(--Malkavian-background-logo)';
                 break;
             case 'Антитрибу Малкавиан':
-                collapsedColumn.classList.add('Malkavian-Antitribu');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessMalkavianAntitribu;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Malkavian-Antitribu-background-logo)' };
+                var collapsedBackgroundClan = 'Malkavian-Antitribu';
+                var clanWeakness = weaknessMalkavianAntitribu;
+                var headerBackgroundClan = 'var(--Malkavian-Antitribu-background-logo)';
                 break;
             case 'Носферату':
-                collapsedColumn.classList.add('Nosferatu');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessNosferatu;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Nosferatu-background-logo)' };
+                var collapsedBackgroundClan = 'Nosferatu';
+                var clanWeakness = weaknessNosferatu;
+                var headerBackgroundClan = 'var(--Nosferatu-background-logo)';
                 break;
             case 'Антитрибу Носферату':
-                collapsedColumn.classList.add('Nosferatu-Antitribu');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessNosferatuAntitribu;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Nosferatu-Antitribu-background-logo)' };
+                var collapsedBackgroundClan = 'Nosferatu-Antitribu';
+                var clanWeakness = weaknessNosferatuAntitribu;
+                var headerBackgroundClan = 'var(--Nosferatu-Antitribu-background-logo)';
                 break;
             case ('Последователи Сета'):
-                collapsedColumn.classList.add('Followers-of-Set');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessFollowersOfSet;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Followers-of-Set-background-logo)' };
+                var collapsedBackgroundClan = 'Followers-of-Set';
+                var clanWeakness = weaknessFollowersOfSet;
+                var headerBackgroundClan = 'var(--Followers-of-Set-background-logo)';
                 break;
             case ('Змеи Света'):
-                collapsedColumn.classList.add('Serpents-of-Light');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessSerpentsOfLight;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Serpents-of-Light-background-logo)' };
+                var collapsedBackgroundClan = 'Serpents-of-Light';
+                var clanWeakness = weaknessSerpentsOfLight;
+                var headerBackgroundClan = 'var(--Serpents-of-Light-background-logo)';
                 break;
             case ('Равнос'):
-                collapsedColumn.classList.add('Ravnos');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessRavnos;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Ravnos-background-logo)' };
+                var collapsedBackgroundClan = 'Ravnos';
+                var clanWeakness = weaknessRavnos;
+                var headerBackgroundClan = 'var(--Ravnos-background-logo)';
                 break;
             case ('Антитрибу Равнос'):
-                collapsedColumn.classList.add('Ravnos-Antitribu');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessRavnosAntitribu;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Ravnos-Antitribu-background-logo)' };
+                var collapsedBackgroundClan = 'Ravnos-Antitribu';
+                var clanWeakness = weaknessRavnosAntitribu;
+                var headerBackgroundClan = 'var(--Ravnos-Antitribu-background-logo)';
                 break;
             case ('Салюбри'):
-                collapsedColumn.classList.add('Salubri');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessSalubri;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Salubri-background-logo)' };
+                var collapsedBackgroundClan = 'Salubri';
+                var clanWeakness = weaknessSalubri;
+                var headerBackgroundClan = 'var(--Salubri-background-logo)';
                 break;
-            case ('Антитрибу Салюбри'):
-                collapsedColumn.classList.add('Salubri-Antitribu');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessSalubriAntitribu;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Salubri-Antitribu-background-logo)' };
+            case 'Антитрибу Салюбри':
+                var collapsedBackgroundClan = 'Salubri-Antitribu';
+                var clanWeakness = weaknessSalubriAntitribu;
+                var headerBackgroundClan = 'var(--Salubri-Antitribu-background-logo)';
                 break;
-            case ('Самеди'):
-                collapsedColumn.classList.add('Samedi');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessSamedi;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Samedi-background-logo)' };
+            case 'Самеди':
+                var collapsedBackgroundClan = 'Samedi';
+                var clanWeakness = weaknessSamedi;
+                var headerBackgroundClan = 'var(--Samedi-background-logo)';
                 break;
-            case ('Тореадор'):
-                collapsedColumn.classList.add('Toreador');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessToreador;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Toreador-background-logo)' };
+            case 'Тореадор':
+                var collapsedBackgroundClan = 'Toreador';
+                var clanWeakness = weaknessToreador;
+                var headerBackgroundClan = 'var(--Toreador-background-logo)';
                 break;
-            case ('Антитрибу Тореадор'):
-                collapsedColumn.classList.add('Toreador-Antitribu');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessToreadorAntitribu;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Toreador-Antitribu-background-logo)' };
+            case 'Антитрибу Тореадор':
+                var collapsedBackgroundClan = 'Toreador-Antitribu';
+                var clanWeakness = weaknessToreadorAntitribu;
+                var headerBackgroundClan = 'var(--Toreador-Antitribu-background-logo)';
                 break;
-            case ('Тремер'):
-                collapsedColumn.classList.add('Tremere');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessTremere;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Tremere-background-logo)' };
+            case 'Тремер':
+                var collapsedBackgroundClan = 'Tremere';
+                var clanWeakness = weaknessTremere;
+                var headerBackgroundClan = 'var(--Tremere-background-logo)';
                 break;
-            case ('Антитрибу Тремер'):
-                collapsedColumn.classList.add('Tremere-Antitribu');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessTremereAntitribu;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Tremere-Antitribu-background-logo)' };
+            case 'Антитрибу Тремер':
+                var collapsedBackgroundClan = 'Tremere-Antitribu';
+                var clanWeakness = weaknessTremereAntitribu;
+                var headerBackgroundClan = 'var(--Tremere-Antitribu-background-logo)';
                 break;
-            case ('Цимисхи'):
-                collapsedColumn.classList.add('Tzimisce');
-                document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessTzimisce;
-                if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Tzimisce-background-logo)' };
+            case 'Цимисхи':
+                var collapsedBackgroundClan = 'Tzimisce';
+                var clanWeakness = weaknessTzimisce;
+                var headerBackgroundClan = 'var(--Tzimisce-background-logo)';
                 break;
         };
+collapsedColumn.classList.add(collapsedBackgroundClan);
+        document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = clanWeakness;
+        if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan };
     }
     else {
         //nothing
     }
-
     // для ховера - лого клана проставляется рядом с фото, если есть класс wod-header - все то же самое, в общем. 
-    if (document.querySelector('.popover.hover-popover' + statblockVampireName + ' .line.clan .statblock-markdown > p') != null) {
+    if (document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .line.clan .statblock-markdown > p') != null) {
         var clanNameHover = document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .line.clan .statblock-markdown > p').innerHTML;
         const collapsedColumnHover = document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .collapse-container'); // определяется зона, которой будет назначен бэкграунд 
         switch (clanNameHover) {
-            case ('Ассамиты'):
-                collapsedColumnHover.classList.add('Assamite');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessAssamite;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Assamite-background-logo)' };
+            case 'Ассамиты':
+                var collapsedBackgroundClanHover = 'Assamite';
+                var clanWeaknessHover = weaknessAssamite;
+                var headerBackgroundClanHover = 'var(--Assamite-background-logo)';
                 break;
-            case ('Антитрибу Ассамитов'):
-                collapsedColumnHover.classList.add('Assamite-Antitribu');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessAssamiteAntitribu;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Assamite-Antitribu-background-logo)' };
+            case 'Антитрибу Ассамитов':
+                var collapsedBackgroundClanHover = 'Assamite-Antitribu';
+                var clanWeaknessHover = weaknessAssamiteAntitribu;
+                var headerBackgroundClanHover = 'var(--Assamite-Antitribu-background-logo)';
                 break;
             case 'Баали':
-                collapsedColumnHover.classList.add('Baali');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessBaali;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Baali-background-logo)' };
+                var collapsedBackgroundClanHover = 'Baali';
+                var clanWeaknessHover = weaknessBaali;
+                var headerBackgroundClanHover = 'var(--Baali-background-logo)';
                 break;
             case 'Бруха':
-                collapsedColumnHover.classList.add('Brujah');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessBrujah;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Brujah-background-logo)' };
+                var collapsedBackgroundClanHover = 'Brujah';
+                var clanWeaknessHover = weaknessBrujah;
+                var headerBackgroundClanHover = 'var(--Brujah-background-logo)';
                 break;
             case 'Антитрибу Бруха':
-                collapsedColumnHover.classList.add('Brujah-Antitribu');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessBrujahAntitribu;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Brujah-Antitribu-background-logo)' };
+                var collapsedBackgroundClanHover = 'Brujah-Antitribu';
+                var clanWeaknessHover = weaknessBrujahAntitribu;
+                var headerBackgroundClanHover = 'var(--Brujah-Antitribu-background-logo)';
                 break;
             case 'Истинные Бруха':
-                collapsedColumnHover.classList.add('True-Brujah');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessTrueBrujah;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--True-Brujah-background-logo)' };
+                var collapsedBackgroundClanHover = 'True-Brujah';
+                var clanWeaknessHover = weaknessTrueBrujah;
+                var headerBackgroundClanHover = 'var(--True-Brujah-background-logo)';
                 break;
             case 'Каппадокийцы':
-                collapsedColumnHover.classList.add('Cappadocians');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessCappadocians;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Cappadocians-background-logo)' };
+                var collapsedBackgroundClanHover = 'Cappadocians';
+                var clanWeaknessHover = weaknessCappadocians;
+                var headerBackgroundClanHover = 'var(--Cappadocians-background-logo)';
                 break;
             case 'Каитиф':
-                collapsedColumnHover.classList.add('Caitiff');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessCaitiff;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Caitiff-background-logo)' };
+                var collapsedBackgroundClanHover = 'Caitiff';
+                var clanWeaknessHover = weaknessCaitiff;
+                var headerBackgroundClanHover = 'var(--Caitiff-background-logo)';
                 break;
             case 'Пандер':
-                collapsedColumnHover.classList.add('Caitiff-Antitribu-Pander');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessCaitiffAntitribuPander;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Caitiff-Antitribu-Pander-background-logo)' };
+                var collapsedBackgroundClanHover = 'Caitiff-Antitribu-Pander';
+                var clanWeaknessHover = weaknessCaitiffAntitribuPander;
+                var headerBackgroundClanHover = 'var(--Caitiff-Antitribu-Pander-background-logo)';
                 break;
             case 'Вентру':
-                collapsedColumnHover.classList.add('Ventrue');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessVentrue;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Ventrue-background-logo)' };
+                var collapsedBackgroundClanHover = 'Ventrue';
+                var clanWeaknessHover = weaknessVentrue;
+                var headerBackgroundClanHover = 'var(--Ventrue-background-logo)';
                 break;
             case 'Антитрибу Вентру':
-                collapsedColumnHover.classList.add('Ventrue-Antitribu');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessVentrueAntitribu;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Ventrue-Antitribu-background-logo)' };
+                var collapsedBackgroundClanHover = 'Ventrue-Antitribu';
+                var clanWeaknessHover = weaknessVentrueAntitribu;
+                var headerBackgroundClanHover = 'var(--Ventrue-Antitribu-background-logo)';
                 break;
             case 'Гангрел':
-                collapsedColumnHover.classList.add('Gangrel');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessGangrel;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Gangrel-background-logo)' };
+                var collapsedBackgroundClanHover = 'Gangrel';
+                var clanWeaknessHover = weaknessGangrel;
+                var headerBackgroundClanHover = 'var(--Gangrel-background-logo)';
                 break;
             case 'Дикие Гангрелы':
-                collapsedColumnHover.classList.add('Country-Gangrel');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessCountryGangrel;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Country-Gangrel-background-logo)' };
+                var collapsedBackgroundClanHover = 'Country-Gangrel';
+                var clanWeaknessHover = weaknessCountryGangrel;
+                var headerBackgroundClanHover = 'var(--Country-Gangrel-background-logo)';
                 break;
             case 'Городские Гангрелы':
-                collapsedColumnHover.classList.add('City-Gangrel');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessCityGangrel;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--City-Gangrel-background-logo)' };
+                var collapsedBackgroundClanHover = 'City-Gangrel';
+                var clanWeaknessHover = weaknessCityGangrel;
+                var headerBackgroundClanHover = 'var(--City-Gangrel-background-logo)';
                 break;
             case 'Джованни':
-                collapsedColumnHover.classList.add('Giovanni');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessGiovanni;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Giovanni-background-logo)' };
+                var collapsedBackgroundClanHover = 'Giovanni';
+                var clanWeaknessHover = weaknessGiovanni;
+                var headerBackgroundClanHover = 'var(--Giovanni-background-logo)';
                 break;
             case 'Дочери Какофонии':
-                collapsedColumnHover.classList.add('Daughters-of-Cacophony');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessDaughtersOfCacophony;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Daughters-of-Cacophony-background-logo)' };
+                var collapsedBackgroundClanHover = 'Daughters-of-Cacophony';
+                var clanWeaknessHover = weaknessDaughtersOfCacophony;
+                var headerBackgroundClanHover = 'var(--Daughters-of-Cacophony-background-logo)';
                 break;
             case 'Киасиды':
-                collapsedColumnHover.classList.add('Kiasyd');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessKiasyd;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Kiasyd-background-logo)' };
+                var collapsedBackgroundClanHover = 'Kiasyd';
+                var clanWeaknessHover = weaknessKiasyd;
+                var headerBackgroundClanHover = 'var(--Kiasyd-background-logo)';
                 break;
             case 'Ласомбра':
-                collapsedColumnHover.classList.add('Lasombra');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessLasombra;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Lasombra-background-logo)' };
+                var collapsedBackgroundClanHover = 'Lasombra';
+                var clanWeaknessHover = weaknessLasombra;
+                var headerBackgroundClanHover = 'var(--Lasombra-background-logo)';
                 break;
             case 'Малкавиан':
-                collapsedColumnHover.classList.add('Malkavian');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessMalkavian;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Malkavian-background-logo)' };
+                var collapsedBackgroundClanHover = 'Malkavian';
+                var clanWeaknessHover = weaknessMalkavian;
+                var headerBackgroundClanHover = 'var(--Malkavian-background-logo)';
                 break;
             case 'Антитрибу Малкавиан':
-                collapsedColumnHover.classList.add('Malkavian-Antitribu');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessMalkavianAntitribu;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Malkavian-Antitribu-background-logo)' };
+                var collapsedBackgroundClanHover = 'Malkavian-Antitribu';
+                var clanWeaknessHover = weaknessMalkavianAntitribu;
+                var headerBackgroundClanHover = 'var(--Malkavian-Antitribu-background-logo)';
                 break;
             case 'Носферату':
-                collapsedColumnHover.classList.add('Nosferatu');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessNosferatu;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Nosferatu-background-logo)' };
+                var collapsedBackgroundClanHover = 'Nosferatu';
+                var clanWeaknessHover = weaknessNosferatu;
+                var headerBackgroundClanHover = 'var(--Nosferatu-background-logo)';
                 break;
             case 'Антитрибу Носферату':
-                collapsedColumnHover.classList.add('Nosferatu-Antitribu');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessNosferatuAntitribu;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Nosferatu-Antitribu-background-logo)' };
+                var collapsedBackgroundClanHover = 'Nosferatu-Antitribu';
+                var clanWeaknessHover = weaknessNosferatuAntitribu;
+                var headerBackgroundClanHover = 'var(--Nosferatu-Antitribu-background-logo)';
                 break;
             case ('Последователи Сета'):
-                collapsedColumnHover.classList.add('Followers-of-Set');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessFollowersOfSet;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Followers-of-Set-background-logo)' };
+                var collapsedBackgroundClanHover = 'Followers-of-Set';
+                var clanWeaknessHover = weaknessFollowersOfSet;
+                var headerBackgroundClanHover = 'var(--Followers-of-Set-background-logo)';
                 break;
             case ('Змеи Света'):
-                collapsedColumnHover.classList.add('Serpents-of-Light');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessSerpentsOfLight;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Serpents-of-Light-background-logo)' };
+                var collapsedBackgroundClanHover = 'Serpents-of-Light';
+                var clanWeaknessHover = weaknessSerpentsOfLight;
+                var headerBackgroundClanHover = 'var(--Serpents-of-Light-background-logo)';
                 break;
             case ('Равнос'):
-                collapsedColumnHover.classList.add('Ravnos');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessRavnos;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Ravnos-background-logo)' };
+                var collapsedBackgroundClanHover = 'Ravnos';
+                var clanWeaknessHover = weaknessRavnos;
+                var headerBackgroundClanHover = 'var(--Ravnos-background-logo)';
                 break;
             case ('Антитрибу Равнос'):
-                collapsedColumnHover.classList.add('Ravnos-Antitribu');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessRavnosAntitribu;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Ravnos-Antitribu-background-logo)' };
+                var collapsedBackgroundClanHover = 'Ravnos-Antitribu';
+                var clanWeaknessHover = weaknessRavnosAntitribu;
+                var headerBackgroundClanHover = 'var(--Ravnos-Antitribu-background-logo)';
                 break;
             case ('Салюбри'):
-                collapsedColumnHover.classList.add('Salubri');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessSalubri;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Salubri-background-logo)' };
+                var collapsedBackgroundClanHover = 'Salubri';
+                var clanWeaknessHover = weaknessSalubri;
+                var headerBackgroundClanHover = 'var(--Salubri-background-logo)';
                 break;
             case ('Антитрибу Салюбри'):
-                collapsedColumnHover.classList.add('Salubri-Antitribu');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessSalubriAntitribu;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Salubri-Antitribu-background-logo)' };
+                var collapsedBackgroundClanHover = 'Salubri-Antitribu';
+                var clanWeaknessHover = weaknessSalubriAntitribu;
+                var headerBackgroundClanHover = 'var(--Salubri-Antitribu-background-logo)';
                 break;
             case ('Самеди'):
-                collapsedColumnHover.classList.add('Samedi');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessSamedi;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Samedi-background-logo)' };
+                var collapsedBackgroundClanHover = 'Samedi';
+                var clanWeaknessHover = weaknessSamedi;
+                var headerBackgroundClanHover = 'var(--Samedi-background-logo)';
                 break;
             case ('Тореадор'):
-                collapsedColumnHover.classList.add('Toreador');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessToreador;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Toreador-background-logo)' };
+                var collapsedBackgroundClanHover = 'Toreador';
+                var clanWeaknessHover = weaknessToreador;
+                var headerBackgroundClanHover = 'var(--Toreador-background-logo)';
                 break;
             case ('Антитрибу Тореадор'):
-                collapsedColumnHover.classList.add('Toreador-Antitribu');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessToreadorAntitribu;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Toreador-Antitribu-background-logo)' };
+                var collapsedBackgroundClanHover = 'Toreador-Antitribu';
+                var clanWeaknessHover = weaknessToreadorAntitribu;
+                var headerBackgroundClanHover = 'var(--Toreador-Antitribu-background-logo)';
                 break;
             case ('Тремер'):
-                collapsedColumnHover.classList.add('Tremere');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessTremere;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Tremere-background-logo)' };
+                var collapsedBackgroundClanHover = 'Tremere';
+                var clanWeaknessHover = weaknessTremere;
+                var headerBackgroundClanHover = 'var(--Tremere-background-logo)';
                 break;
             case ('Антитрибу Тремер'):
-                collapsedColumnHover.classList.add('Tremere-Antitribu');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessTremereAntitribu;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Tremere-Antitribu-background-logo)' };
+                var collapsedBackgroundClanHover = 'Tremere-Antitribu';
+                var clanWeaknessHover = weaknessTremereAntitribu;
+                var headerBackgroundClanHover = 'var(--Tremere-Antitribu-background-logo)';
                 break;
             case ('Цимисхи'):
-                collapsedColumnHover.classList.add('Tzimisce');
-                document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = weaknessTzimisce;
-                if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Tzimisce-background-logo)' };
+                var collapsedBackgroundClanHover = 'Tzimisce';
+                var clanWeaknessHover = weaknessTzimisce;
+                var headerBackgroundClanHover = 'var(--Tzimisce-background-logo)';
                 break;
         };
-    };
+    collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
+        document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = clanWeaknessHover;
+        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover };
+    }
+    else {
+        //nothing
+    }
 
 
     // настройка, отвечающая за отображение изъяна
@@ -425,7 +433,6 @@ sleep(120).then(() => {
     else {
         console.log('показывать изъян? ДА');
     }
-
     // и она же для ховера
     if (document.querySelector('.popover.hover-popover .line.show_weakness .statblock-rendered-text-content') != null) {
         const showWeaknessHover = document.querySelector('.popover.hover-popover .line.show_weakness .statblock-rendered-text-content').innerHTML;
@@ -451,7 +458,7 @@ sleep(120).then(() => {
     if (document.querySelector('.line.generation .statblock-markdown p') != null) {
         var generationFull = document.querySelector('.line.generation .statblock-markdown').textContent; // нашел поколение
         var generation = generationFull.slice(0, 2); // берем только первые два символа, если поколение вдруг длиннее за счет инфы про диаблери
-var generation = generation.replace(/\s/g, ''); // убираем пробелы, если поколение 8-9
+        var generation = generation.replace(/\s/g, ''); // убираем пробелы, если поколение 8-9
         console.log('поколение - ' + generation);
         switch (generation) {
             case '13':
@@ -512,11 +519,11 @@ var generation = generation.replace(/\s/g, ''); // убираем пробелы
     }
     // то же самое, но для ховера
     if (document.querySelector('.popover.hover-popover h2') != null) {
-        var outlineName_hover = document.querySelector('.popover.hover-popover h2').innerHTML
+        var outlineName_hover = document.querySelector('.popover.hover-popover h2').innerText
         //  console.log('имя в заметке в ховере - ' + outlineName_hover)
         const characterName_hover = document.querySelector('.popover.hover-popover h1.heading .statblock-rendered-text-content').innerHTML
         //  console.log('имя из статблока в ховере = ' + characterName_hover)
-if (outlineName_hover.includes(characterName_hover)) {
+        if (outlineName_hover.includes(characterName_hover)) {
             document.querySelector('.popover.hover-popover h2').style.display = 'none';
         }
     }
@@ -797,7 +804,7 @@ if (outlineName_hover.includes(characterName_hover)) {
     }
 
 
-    // Способности Таланты
+    // Способности - Таланты
     if (document.querySelector('.athletics')) {
         var valueAthletics = document.querySelector('.athletics .statblock-rendered-text-content');  // Атлетика
         if (valueAthletics != null) { // для обычного значения
@@ -1100,7 +1107,7 @@ if (outlineName_hover.includes(characterName_hover)) {
     }
 
 
-    // Способности Навыки
+    // Способности - Навыки
 
     if (document.querySelector('.drive')) {
         var valueDrive = document.querySelector('.drive .statblock-rendered-text-content');  // Вождение
@@ -1396,7 +1403,7 @@ if (outlineName_hover.includes(characterName_hover)) {
     }
 
 
-    // Способности Навыки
+    // Способности - Навыки
 
     if (document.querySelector('.academics')) {
         var valueAcademics = document.querySelector('.academics .statblock-rendered-text-content');  // Гуманитарные науки
@@ -1705,369 +1712,125 @@ if (outlineName_hover.includes(characterName_hover)) {
 
 
 
-    // Дисциплины
-
-    // первая дисциплина
-    if (document.querySelector('.discipline1_name .statblock-rendered-text-content')) {
-        var valueDisсiplineOneName = document.querySelector('.discipline1_name .statblock-rendered-text-content').innerHTML; // находим имя дисциплины
-        // console.log(valueDisсiplineOneName)
-        var valueDisсiplineOneValue = document.querySelector('.discipline1_value .statblock-rendered-text-content').innerHTML; // находим количество точек
-        if (valueDisсiplineOneName.startsWith('<a data')) {   // если в названии дисциплины есть ссылка...
-            //        console.log(valueDisсiplineOneName + ' - ето проверка на ссылку')
-            var valueDisсiplineOneName = document.querySelector('.discipline1_name .statblock-rendered-text-content > a').innerHTML //  ... то в ссылке находим имя
-            if (valueDisсiplineOneName.trim().length > 11 && valueDisсiplineOneValue > 9) { // дальше проверки на длину имени 
-                document.querySelector('.discipline1_value .property-text').style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
-                document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+   // Дисциплины
+   if (document.querySelector('.discipline1_name .statblock-rendered-text-content')) {
+    var disciplinesList = document.querySelectorAll('.disciplines-column .statblock-rendered-text-content');
+    // console.log(disciplinesList);
+    for (let i = 1; i < disciplinesList.length; i += 2) {
+        if (disciplinesList[i].innerHTML.startsWith('<a data')) {
+            if (disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9) {
+                disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineOneName.trim().length > 12 && valueDisсiplineOneValue > 8) {
-                document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8) {
+                disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineOneName.trim().length > 13 && valueDisсiplineOneValue > 7) {
-                document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 13 && disciplinesList[i + 1].innerText > 7) {
+                disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineOneName.trim().length > 14 && valueDisсiplineOneValue > 6) {
-                document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 14 && disciplinesList[i + 1].innerText > 6) {
+                disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineOneName.trim().length > 15 && valueDisсiplineOneValue > 5) {   // дальше пяти смысла нет проверять
-                document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 15 && disciplinesList[i + 1].innerText > 5) {
+                disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
         }
-        if (valueDisсiplineOneName.trim().length > 11 && valueDisсiplineOneValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки
-            document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+        else if (disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9) {
+            disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+            disciplinesList[i + 1].style.fontFamily = 'Marta';
+            disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
         }
-        if (valueDisсiplineOneName.trim().length > 12 && valueDisсiplineOneValue > 8) {
-            document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+        if (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8) {
+            disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+            disciplinesList[i + 1].style.fontFamily = 'Marta';
+            disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
         }
-        if (valueDisсiplineOneName.trim().length > 13 && valueDisсiplineOneValue > 7) {
-            document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+        if (disciplinesList[i].innerText.length >= 13 && disciplinesList[i + 1].innerText > 7) {
+            disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+            disciplinesList[i + 1].style.fontFamily = 'Marta';
+            disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
         }
-        if (valueDisсiplineOneName.trim().length > 14 && valueDisсiplineOneValue > 6) {
-            document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+        if (disciplinesList[i].innerText.length >= 14 && disciplinesList[i + 1].innerText > 6) {
+            disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+            disciplinesList[i + 1].style.fontFamily = 'Marta';
+            disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
         }
-        if (valueDisсiplineOneName.trim().length > 15 && valueDisсiplineOneValue > 5) {
-            document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+        if (disciplinesList[i].innerText.length >= 15 && disciplinesList[i + 1].innerText > 5) {
+            disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+            disciplinesList[i + 1].style.fontFamily = 'Marta';
+            disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
         }
     }
-    //    console.log(valueDisсiplineOneName + ' - ето общая проверка')
+}
 
-
-    // вторая дисциплина
-    if (document.querySelector('.discipline2_name .statblock-rendered-text-content')) {
-        var valueDisсiplineTwoName = document.querySelector('.discipline2_name .statblock-rendered-text-content').innerHTML; // находим имя дисциплины
-        var valueDisсiplineTwoValue = document.querySelector('.discipline2_value .statblock-rendered-text-content').innerHTML; // находим количество точек
-        if (valueDisсiplineTwoName.startsWith('<a data')) {   // если в названии дисциплины есть ссылка...
-            var valueDisсiplineTwoName = document.querySelector('.discipline2_name .statblock-rendered-text-content > a').innerHTML //  ... то в ссылке находим имя
-            if (valueDisсiplineTwoName.trim().length > 11 && valueDisсiplineTwoValue > 9) { // дальше проверки на длину имени 
-                document.querySelector('.discipline2_value .property-text').style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
-                document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+// Дисциплины в ховере
+if (document.querySelector('.popover.hover-popover .discipline1_name .statblock-rendered-text-content')) {
+    var disciplinesList = document.querySelectorAll('.popover.hover-popover .disciplines-column .statblock-rendered-text-content');
+    // console.log(disciplinesList);
+    for (let i = 1; i < disciplinesList.length; i += 2) {
+        if (disciplinesList[i].innerHTML.startsWith('<a data')) {
+            if (disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9) {
+                disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineTwoName.trim().length > 12 && valueDisсiplineTwoValue > 8) {
-                document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8) {
+                disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineTwoName.trim().length > 13 && valueDisсiplineTwoValue > 7) {
-                document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 13 && disciplinesList[i + 1].innerText > 7) {
+                disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineTwoName.trim().length > 14 && valueDisсiplineTwoValue > 6) {
-                document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 14 && disciplinesList[i + 1].innerText > 6) {
+                disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineTwoName.trim().length > 15 && valueDisсiplineTwoValue > 5) {   // дальше пяти смысла нет проверять
-                document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 15 && disciplinesList[i + 1].innerText > 5) {
+                disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
         }
-        if (valueDisсiplineTwoName.trim().length > 11 && valueDisсiplineTwoValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки
-            document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+        else if (disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9) {
+            disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+            disciplinesList[i + 1].style.fontFamily = 'Marta';
+            disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
         }
-        if (valueDisсiplineTwoName.trim().length > 12 && valueDisсiplineTwoValue > 8) {
-            document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+        if (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8) {
+            disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+            disciplinesList[i + 1].style.fontFamily = 'Marta';
+            disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
         }
-        if (valueDisсiplineTwoName.trim().length > 13 && valueDisсiplineTwoValue > 7) {
-            document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+        if (disciplinesList[i].innerText.length >= 13 && disciplinesList[i + 1].innerText > 7) {
+            disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+            disciplinesList[i + 1].style.fontFamily = 'Marta';
+            disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
         }
-        if (valueDisсiplineTwoName.trim().length > 14 && valueDisсiplineTwoValue > 6) {
-            document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+        if (disciplinesList[i].innerText.length >= 14 && disciplinesList[i + 1].innerText > 6) {
+            disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+            disciplinesList[i + 1].style.fontFamily = 'Marta';
+            disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
         }
-        if (valueDisсiplineTwoName.trim().length > 15 && valueDisсiplineTwoValue > 5) {
-            document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+        if (disciplinesList[i].innerText.length >= 15 && disciplinesList[i + 1].innerText > 5) {
+            disciplinesList[i + 1].style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
+            disciplinesList[i + 1].style.fontFamily = 'Marta';
+            disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
         }
     }
-
-
-    // третья дисциплина
-    if (document.querySelector('.discipline3_name .statblock-rendered-text-content')) {
-        var valueDisсiplineThreeName = document.querySelector('.discipline3_name .statblock-rendered-text-content').innerHTML; // находим имя дисциплины
-        var valueDisсiplineThreeValue = document.querySelector('.discipline3_value .statblock-rendered-text-content').innerHTML; // находим количество точек
-        if (valueDisсiplineThreeName.startsWith('<a data')) {   // если в названии дисциплины есть ссылка...
-            var valueDisсiplineThreeName = document.querySelector('.discipline3_name .statblock-rendered-text-content > a').innerHTML //  ... то в ссылке находим имя
-            if (valueDisсiplineThreeName.trim().length > 11 && valueDisсiplineThreeValue > 9) { // дальше проверки на длину имени 
-                document.querySelector('.discipline3_value .property-text').style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
-                document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineThreeName.trim().length > 12 && valueDisсiplineThreeValue > 8) {
-                document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineThreeName.trim().length > 13 && valueDisсiplineThreeValue > 7) {
-                document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineThreeName.trim().length > 14 && valueDisсiplineThreeValue > 6) {
-                document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineThreeName.trim().length > 15 && valueDisсiplineThreeValue > 5) {   // дальше пяти смысла нет проверять
-                document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-        }
-        if (valueDisсiplineThreeName.trim().length > 11 && valueDisсiplineThreeValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки
-            document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineThreeName.trim().length > 12 && valueDisсiplineThreeValue > 8) {
-            document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineThreeName.trim().length > 13 && valueDisсiplineThreeValue > 7) {
-            document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineThreeName.trim().length > 14 && valueDisсiplineThreeValue > 6) {
-            document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineThreeName.trim().length > 15 && valueDisсiplineThreeValue > 5) {
-            document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-    }
-
-
-    // четвертая дисциплина
-    if (document.querySelector('.discipline4_name .statblock-rendered-text-content')) {
-        var valueDisсiplineFourName = document.querySelector('.discipline4_name .statblock-rendered-text-content').innerHTML; // находим имя дисциплины
-        var valueDisсiplineFourValue = document.querySelector('.discipline4_value .statblock-rendered-text-content').innerHTML; // находим количество точек
-        if (valueDisсiplineFourName.startsWith('<a data')) {   // если в названии дисциплины есть ссылка...
-            var valueDisсiplineFourName = document.querySelector('.discipline4_name .statblock-rendered-text-content > a').innerHTML //  ... то в ссылке находим имя
-            if (valueDisсiplineFourName.trim().length > 11 && valueDisсiplineFourValue > 9) { // дальше проверки на длину имени 
-                document.querySelector('.discipline4_value .property-text').style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
-                document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFourName.trim().length > 12 && valueDisсiplineFourValue > 8) {
-                document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFourName.trim().length > 13 && valueDisсiplineFourValue > 7) {
-                document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFourName.trim().length > 14 && valueDisсiplineFourValue > 6) {
-                document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFourName.trim().length > 15 && valueDisсiplineFourValue > 5) {   // дальше пяти смысла нет проверять
-                document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-        }
-        if (valueDisсiplineFourName.trim().length > 11 && valueDisсiplineFourValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки
-            document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFourName.trim().length > 12 && valueDisсiplineFourValue > 8) {
-            document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFourName.trim().length > 13 && valueDisсiplineFourValue > 7) {
-            document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFourName.trim().length > 14 && valueDisсiplineFourValue > 6) {
-            document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFourName.trim().length > 15 && valueDisсiplineFourValue > 5) {
-            document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-    }
-
-
-    // пятая дисциплина
-    if (document.querySelector('.discipline5_name .statblock-rendered-text-content')) {
-        var valueDisсiplineFiveName = document.querySelector('.discipline5_name .statblock-rendered-text-content').innerHTML; // находим имя дисциплины
-        var valueDisсiplineFiveValue = document.querySelector('.discipline5_value .statblock-rendered-text-content').innerHTML; // находим количество точек
-        if (valueDisсiplineFiveName.startsWith('<a data')) {   // если в названии дисциплины есть ссылка...
-            var valueDisсiplineFiveName = document.querySelector('.discipline5_name .statblock-rendered-text-content > a').innerHTML //  ... то в ссылке находим имя
-            if (valueDisсiplineFiveName.trim().length > 11 && valueDisсiplineFiveValue > 9) { // дальше проверки на длину имени 
-                document.querySelector('.discipline5_value .property-text').style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
-                document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFiveName.trim().length > 12 && valueDisсiplineFiveValue > 8) {
-                document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFiveName.trim().length > 13 && valueDisсiplineFiveValue > 7) {
-                document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFiveName.trim().length > 14 && valueDisсiplineFiveValue > 6) {
-                document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFiveName.trim().length > 15 && valueDisсiplineFiveValue > 5) {   // дальше пяти смысла нет проверять
-                document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-        }
-        if (valueDisсiplineFiveName.trim().length > 11 && valueDisсiplineFiveValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки
-            document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFiveName.trim().length > 12 && valueDisсiplineFiveValue > 8) {
-            document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFiveName.trim().length > 13 && valueDisсiplineFiveValue > 7) {
-            document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFiveName.trim().length > 14 && valueDisсiplineFiveValue > 6) {
-            document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFiveName.trim().length > 15 && valueDisсiplineFiveValue > 5) {
-            document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-    }
-
-
-    // шестая дисциплина
-    if (document.querySelector('.discipline6_name .statblock-rendered-text-content')) {
-        var valueDisсiplineSixName = document.querySelector('.discipline6_name .statblock-rendered-text-content').innerHTML; // находим имя дисциплины
-        var valueDisсiplineSixValue = document.querySelector('.discipline6_value .statblock-rendered-text-content').innerHTML; // находим количество точек
-        if (valueDisсiplineSixName.startsWith('<a data')) {   // если в названии дисциплины есть ссылка...
-            var valueDisсiplineSixName = document.querySelector('.discipline6_name .statblock-rendered-text-content > a').innerHTML //  ... то в ссылке находим имя
-            if (valueDisсiplineSixName.trim().length > 11 && valueDisсiplineSixValue > 9) { // дальше проверки на длину имени 
-                document.querySelector('.discipline6_value .property-text').style.fontSize = '14px'; // и замену точек на цифры, если имя слишком длинное
-                document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineSixName.trim().length > 12 && valueDisсiplineSixValue > 8) {
-                document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineSixName.trim().length > 13 && valueDisсiplineSixValue > 7) {
-                document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineSixName.trim().length > 14 && valueDisсiplineSixValue > 6) {
-                document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineSixName.trim().length > 15 && valueDisсiplineSixValue > 5) {   // дальше пяти смысла нет проверять
-                document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-        }
-        if (valueDisсiplineSixName.trim().length > 11 && valueDisсiplineSixValue > 9) {  // тут то же самое, но для текста, в котором нет ссылки
-            document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineSixName.trim().length > 12 && valueDisсiplineSixValue > 8) {
-            document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineSixName.trim().length > 13 && valueDisсiplineSixValue > 7) {
-            document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineSixName.trim().length > 14 && valueDisсiplineSixValue > 6) {
-            document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineSixName.trim().length > 15 && valueDisсiplineSixValue > 5) {
-            document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-    }
+}
 
 
 
@@ -2096,19 +1859,26 @@ if (outlineName_hover.includes(characterName_hover)) {
 
     // в завимимости от названия пути и его значения, проставляется (или удаляется) модификатор столпа
     if (document.querySelector('.line.path .statblock-rendered-text-content') != null) {
-        const path = document.querySelector('.path .statblock-rendered-text-content'); // найти значение пути, человечность это или нет
-        if (path === null) { // если путь вообще не указан...
+        // найти значение пути, человечность это или нет
+        const path = document.querySelector('.path .statblock-rendered-text-content');
+        // если путь вообще не указан...
+if (path === null) {
+            // ...удаляется вся строчка 'Столп'
             document.querySelector('.bearing').style.display = 'none'
-        } // удаляется вся строчка 'Столп'
-        else if (path.innerHTML != ('ЧЕЛОВЕЧНОСТЬ')) { // если путь не человечность, то...
-            document.querySelector('.bearing').style.display = 'none'; // удаляется вся строчка 'Столп'
-            var pathModifier = document.querySelector('.line.path_value .statblock-rendered-text-content').innerHTML; // получаем количество точек в не-человечности
+        }
+        // если путь не человечность, то...
+        else if (path.innerHTML != ('ЧЕЛОВЕЧНОСТЬ')) { 
+            // ...удаляется вся строчка 'Столп'
+            document.querySelector('.bearing').style.display = 'none'; 
+            // получаем количество точек в не-человечности
+            var pathModifier = document.querySelector('.line.path_value .statblock-rendered-text-content').innerHTML;
             if (pathModifier = 10) {
                 document.querySelector('.path_value .statblock-rendered-text-content').innerHTML = 'X';
             }
         }
         else {
-            var pathModifier = document.querySelector('.line.path_value .statblock-rendered-text-content').innerHTML; // получаем количество точек в человечности
+            // получаем количество точек в человечности
+            var pathModifier = document.querySelector('.line.path_value .statblock-rendered-text-content').innerHTML;
             switch (pathModifier) {
                 case '10':
                     document.querySelector('.line.path_value .statblock-rendered-text-content').innerHTML = 'X';
@@ -2192,80 +1962,43 @@ if (outlineName_hover.includes(characterName_hover)) {
     }
 
 
-    // Еще меняем всякие иксы на нормальные 10
+    // Меняем всякие иксы на нормальные 10 для воли
+
+    // задаем названия классов, по которым будем искать волю и запас воли
+    const willpowerOptions = ['.willpower_main', '.willpower_current'];
+    // проверяем, есть ли вообще воля в статблоке
     if (document.querySelector('.willpower-block .line.willpower_main') != null) {
-        var willpowerValue = document.querySelector('.willpower_main .statblock-rendered-text-content')  // для воли
-        if (willpowerValue != null) { // для обычного значения 
-            if (willpowerValue.innerHTML == 10) {
-                document.querySelector('.willpower_main .statblock-rendered-text-content').innerHTML = 'X'
+        for (let i = 0; i < willpowerOptions.length; i++) {
+            // находим значение воли или запаса для обычного текса
+            var willpowerValue = document.querySelector(willpowerOptions[i] + ' .statblock-rendered-text-content');
+            // если оно есть и равно десяти...
+            if (willpowerValue != null && willpowerValue.innerHTML == 10) {
+                // меняем его на Х
+                document.querySelector(willpowerOptions[i] + ' .statblock-rendered-text-content').innerHTML = 'X'
+            }
+            // если обычного текста нет, значит, тут дайс роллер
+            else {
+                willpowerValue = document.querySelector(willpowerOptions[i] + ' span.dice-roller-result').innerHTML;
+                if (willpowerValue == 10) {
+                    document.querySelector(willpowerOptions[i] + ' span.dice-roller-result').innerHTML = 'X'
+                };
             }
         }
-        else { // для дайс роллера
-            willpowerValue = document.querySelector('.willpower_main span.dice-roller-result').innerHTML;
-            if (willpowerValue == 10) {
-                document.querySelector('.willpower_main span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else {
-        //nothing
-        console.log('воля не норм')
     }
     // то же самое, но для ховера
     if (document.querySelector('.popover.hover-popover .willpower-block .line.willpower_main') != null) {
-        var willpowerValue = document.querySelector('.popover.hover-popover .willpower_main .statblock-rendered-text-content')  // для воли
-        if (willpowerValue != null) { // для обычного значения 
-            if (willpowerValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover .willpower_main .statblock-rendered-text-content').innerHTML = 'X'
+        for (let i = 0; i < willpowerOptions.length; i++) {
+            var willpowerValue = document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' .statblock-rendered-text-content');
+            if (willpowerValue != null && willpowerValue.innerHTML == 10) {
+                document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' .statblock-rendered-text-content').innerHTML = 'X'
+            }
+            else {
+                willpowerValue = document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' span.dice-roller-result').innerHTML;
+                if (willpowerValue == 10) {
+                    document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' span.dice-roller-result').innerHTML = 'X'
+                };
             }
         }
-        else { // для дайс роллера
-            willpowerValue = document.querySelector('.popover.hover-popover .willpower_main span.dice-roller-result').innerHTML;
-            if (willpowerValue == 10) {
-                document.querySelector('.popover.hover-popover .willpower_main span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else {
-        //nothing
-        console.log('воля в ховере не норм')
-    }
-
-
-    if (document.querySelector('.willpower-block .line.willpower_current') != null) {
-        var willpowerCurrentValue = document.querySelector('.willpower_current .statblock-rendered-text-content')  // для запаса воли
-        if (willpowerCurrentValue != null) { // для обычного значения 
-            if (willpowerCurrentValue.innerHTML == 10) {
-                document.querySelector('.willpower_current .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            willpowerCurrentValue = document.querySelector('.willpower_current span.dice-roller-result').innerHTML;
-            if (willpowerCurrentValue == 10) {
-                document.querySelector('.willpower_current span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else {
-        //nothing
-    }
-    // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .willpower-block .line.willpower_current') != null) {
-        var willpowerCurrentValue = document.querySelector('.popover.hover-popover .willpower_current .statblock-rendered-text-content')  // для запаса воли
-        if (willpowerCurrentValue != null) { // для обычного значения 
-            if (willpowerCurrentValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover .willpower_current .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            willpowerCurrentValue = document.querySelector('.popover.hover-popover .willpower_current span.dice-roller-result').innerHTML;
-            if (willpowerCurrentValue == 10) {
-                document.querySelector('.popover.hover-popover .willpower_current span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else {
-        //nothing
     }
 
 
@@ -2387,7 +2120,7 @@ if (outlineName_hover.includes(characterName_hover)) {
             document.querySelector('.popover.hover-popover .property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector('.popover.hover-popover .line.blood_current3 .statblock-rendered-text-content.inline').innerHTML = bloodCurrentThreeHover;
             document.querySelector('.popover.hover-popover .property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('проверка на меньше тридцатив ховере')
+            console.log('проверка на меньше тридцати в ховере')
         } else if (bloodCurrentHover == 30) {
             document.querySelector('.popover.hover-popover .line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
             document.querySelector('.popover.hover-popover .property-container:has(> .blood_current2)').style.display = 'block';
@@ -2443,7 +2176,7 @@ if (outlineName_hover.includes(characterName_hover)) {
             };
         }
     }
-else if (document.querySelector('.wta-v20-werewolf') == null) {
+    else if (document.querySelector('.wta-v20-werewolf') == null) {
         //nothing
     }
     else {
@@ -2464,7 +2197,7 @@ else if (document.querySelector('.wta-v20-werewolf') == null) {
             };
         }
     }
-else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
+    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
         //nothing
     }
     else {
@@ -2486,8 +2219,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+    else if (document.querySelector('.wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('запас ярости не норм')
     }
     // то же самое, но для ховера
@@ -2505,8 +2240,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('запас ярости в ховере не норм')
     }
 
@@ -2525,8 +2262,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+    else if (document.querySelector('.wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('гнозис не норм')
     }
     // то же самое, но для ховера
@@ -2544,8 +2283,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('гнозис в ховере не норм')
     }
 
@@ -2563,8 +2304,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+    else if (document.querySelector('.wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('запас гнозиса не норм')
     }
     // то же самое, но для ховера
@@ -2582,8 +2325,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('запас гнозиса в ховере не норм')
     }
 
@@ -2602,8 +2347,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+    else if (document.querySelector('.wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('слава не норм')
     }
     // то же самое, но для ховера
@@ -2621,8 +2368,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('слава в ховере не норм')
     }
 
@@ -2641,8 +2390,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+    else if (document.querySelector('.wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('запас славы не норм')
     }
     // то же самое, но для ховера
@@ -2660,8 +2411,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('запас славы в ховере не норм')
     }
 
@@ -2680,8 +2433,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+    else if (document.querySelector('.wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('честь не норм')
     }
     // то же самое, но для ховера
@@ -2699,8 +2454,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('честь в ховере не норм')
     }
 
@@ -2719,8 +2476,9 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
+    else if (document.querySelector('.wta-v20-werewolf') == null) {
+    }
     else {
-        //nothing
         console.log('запас чести не норм')
     }
     // то же самое, но для ховера
@@ -2738,8 +2496,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('запас чести в ховере не норм')
     }
 
@@ -2758,8 +2518,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+else if (document.querySelector('.wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('мудрость не норм')
     }
     // то же самое, но для ховера
@@ -2777,8 +2539,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('мудрость в ховере не норм')
     }
 
@@ -2797,8 +2561,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+else if (document.querySelector('.wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('запас мудрости не норм')
     }
     // то же самое, но для ховера
@@ -2816,8 +2582,10 @@ else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == n
             };
         }
     }
-    else {
+else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
         //nothing
+    }
+    else {
         console.log('запас мудрости в ховере не норм')
     }
 

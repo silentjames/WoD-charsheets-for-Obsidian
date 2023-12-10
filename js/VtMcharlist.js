@@ -824,9 +824,11 @@ if (path === null) {
             // находим значение воли или запаса для обычного текса
             var willpowerValue = document.querySelector(willpowerOptions[i] + ' .statblock-rendered-text-content');
             // если оно есть и равно десяти...
-            if (willpowerValue != null && willpowerValue.innerHTML == 10) {
+            if (willpowerValue != null) {
+                if (willpowerValue.innerHTML == 10) {
                 // меняем его на Х
                 document.querySelector(willpowerOptions[i] + ' .statblock-rendered-text-content').innerHTML = 'X'
+}
             }
             // если обычного текста нет, значит, тут дайс роллер
             else {
@@ -1015,8 +1017,37 @@ if (path === null) {
 
 
 
+    // задаем названия классов, по которым будем искать волю и запас воли
+    const werewolfOptions = ['rage', 'gnosis', 'glory', 'honor', 'wisdom'];
+    for (let y = 0; y < werewolfOptions.length; y++) {
+        if (document.querySelector('.' + werewolfOptions[y] + '-block .line.' + werewolfOptions[y] + '_main') != null) {
+            var optionValue = document.querySelector('.' + werewolfOptions[y] + '_main .statblock-rendered-text-content');
+            if (optionValue != null) {
+                if (optionValue.innerHTML == 10) {
+                    document.querySelector('.' + werewolfOptions[y] + '_main .statblock-rendered-text-content').innerHTML = 'X'
+                }
+
+            }
+            else {
+                optionValue = document.querySelector('.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML;
+                if (optionValue == 10) {
+                    document.querySelector('.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML = 'X'
+                }
+            }
+        }
+        else if (document.querySelector('.wta-v20-werewolf') == null) {
+            //nothing
+        }
+        else {
+            console.log(werewolfOptions[y] + ' не норм')
+        }
+    }
+
+
+
+
     //  ОБОРОТНИ
-    if (document.querySelector('.wta-v20-werewolf .rage-block .line.rage_main') != null) {
+    if (document.querySelector('.rage-block .line.rage_main') != null) {
         var rageValue = document.querySelector('.rage_main .statblock-rendered-text-content')  // для ярости
         if (rageValue != null) { // для обычного значения 
             if (rageValue.innerHTML == 10) {
@@ -1037,7 +1068,7 @@ if (path === null) {
         console.log('ярость не норм')
     }
     // то же самое, но для ховера
-    if (document.querySelector('.wta-v20-werewolf .popover.hover-popover .rage-block .line.rage_main') != null) {
+    if (document.querySelector('.popover.hover-popover .rage-block .line.rage_main') != null) {
         var rageValue = document.querySelector('.popover.hover-popover .rage_main .statblock-rendered-text-content')  // для ярости
         if (rageValue != null) { // для обычного значения 
             if (rageValue.innerHTML == 10) {

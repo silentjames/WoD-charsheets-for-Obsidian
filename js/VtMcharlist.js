@@ -224,7 +224,7 @@ sleep(120).then(() => {
                 var headerBackgroundClan = 'var(--Tzimisce-background-logo)';
                 break;
         };
-collapsedColumn.classList.add(collapsedBackgroundClan);
+        collapsedColumn.classList.add(collapsedBackgroundClan);
         document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = clanWeakness;
         if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan };
     }
@@ -407,7 +407,7 @@ collapsedColumn.classList.add(collapsedBackgroundClan);
                 var headerBackgroundClanHover = 'var(--Tzimisce-background-logo)';
                 break;
         };
-    collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
+        collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
         document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = clanWeaknessHover;
         if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover };
     }
@@ -461,7 +461,7 @@ collapsedColumn.classList.add(collapsedBackgroundClan);
         // берем только первые два символа, если поколение вдруг длиннее за счет инфы про диаблери
         var generation = generationFull.slice(0, 2);
         // убираем пробелы, если поколение 8-9
-var generation = generation.replace(/\s/g, '');
+        var generation = generation.replace(/\s/g, '');
         console.log('поколение - ' + generation);
         switch (generation) {
             case '13':
@@ -553,7 +553,8 @@ var generation = generation.replace(/\s/g, '');
             // код для обычных точек
             if (valueAbility !== null) {
                 // если привлекательность 0 и в имени клана есть "Носферату" или "Самеди", то строка привлекательности зачеркивается
-                if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (clanName.includes('Носферату') || clanName.includes('Самеди')) && (vampireAbilities[x].includes('.appearance'))) {
+                if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (typeof clanName !== 'undefined' && (clanName.includes('Носферату') || clanName.includes('Самеди')))
+                    && (vampireAbilities[x].includes('.appearance'))) {
                     document.querySelector('.line.appearance .property-name').style.textDecoration = 'line-through';
                 }
                 // если значение характеристик равно 0, вместо точек появится предупреждение 
@@ -584,7 +585,8 @@ var generation = generation.replace(/\s/g, '');
                 valueAbility = document.querySelector(vampireAbilities[x] + ' .dice-roller-result').innerHTML;
                 // console.log(nameAbility + ' - это ' + nameAbility.length + ' и ' + valueAbility);
                 // если привлекательность 0 и в имени клана есть "Носферату" или "Самеди", то строка привлекательности зачеркивается
-                if ((valueAbility === 'null' || valueAbility == 0) && (clanName.includes('Носферату') || clanName.includes('Самеди')) && (vampireAbilities[x].includes('.appearance'))) {
+                if ((valueAbility === 'null' || valueAbility == 0) && (typeof clanName !== 'undefined' && (clanName.includes('Носферату') || clanName.includes('Самеди')))
+                    && (vampireAbilities[x].includes('.appearance'))) {
                     // console.log('КТО ПОШЕЛ ПО НОСФЕРАТАМ??? ЭТО ' + vampireAbilities[x]);
                     document.querySelector('.line.appearance .property-name').style.textDecoration = 'line-through';
                     document.querySelector('.appearance .dice-roller-result').style.display = 'none';
@@ -686,42 +688,19 @@ var generation = generation.replace(/\s/g, '');
 
 
 
-
-    // определяем, с какой стороны показывать достоинства и недостатки у оборотней
-    if (document.querySelector('.merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
-        var WhereToShowMeritsAndFlaws = document.querySelector('.line.where-to-show-merits-and-flaws .statblock-rendered-text-content').innerHTML;
-        console.log('где же показывать достоинства и недостатки? ' + WhereToShowMeritsAndFlaws)
-        switch (WhereToShowMeritsAndFlaws) {
-            case ('left'):
-                document.querySelector('.statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';
-                document.querySelector('.statblock-inline-item.group-container:has(.statblock-item-container.group-container:first-child:last-child > .merits-and-flaws-column-left)').style.display = 'block';
-                break;
-            case ('right'):
-                document.querySelector('.statblock-item-container.group-container:has(>.merits-and-flaws-column-left)').style.display = 'none';
-                break;
-        }
-    }
-    else { // do nothing
-    }
-
-
-
-
-
-
     // в завимимости от названия пути и его значения, проставляется (или удаляется) модификатор столпа
     if (document.querySelector('.line.path .statblock-rendered-text-content') != null) {
         // найти значение пути, человечность это или нет
         const path = document.querySelector('.path .statblock-rendered-text-content');
         // если путь вообще не указан...
-if (path === null) {
+        if (path === null) {
             // ...удаляется вся строчка 'Столп'
             document.querySelector('.bearing').style.display = 'none'
         }
         // если путь не человечность, то...
-        else if (path.innerHTML != ('ЧЕЛОВЕЧНОСТЬ')) { 
+        else if (path.innerHTML != ('ЧЕЛОВЕЧНОСТЬ')) {
             // ...удаляется вся строчка 'Столп'
-            document.querySelector('.bearing').style.display = 'none'; 
+            document.querySelector('.bearing').style.display = 'none';
             // получаем количество точек в не-человечности
             var pathModifier = document.querySelector('.line.path_value .statblock-rendered-text-content').innerHTML;
             if (pathModifier = 10) {
@@ -826,9 +805,9 @@ if (path === null) {
             // если оно есть и равно десяти...
             if (willpowerValue != null) {
                 if (willpowerValue.innerHTML == 10) {
-                // меняем его на Х
-                document.querySelector(willpowerOptions[i] + ' .statblock-rendered-text-content').innerHTML = 'X'
-}
+                    // меняем его на Х
+                    document.querySelector(willpowerOptions[i] + ' .statblock-rendered-text-content').innerHTML = 'X'
+                }
             }
             // если обычного текста нет, значит, тут дайс роллер
             else {
@@ -843,12 +822,14 @@ if (path === null) {
     if (document.querySelector('.popover.hover-popover .willpower-block .line.willpower_main') != null) {
         for (let i = 0; i < willpowerOptions.length; i++) {
             var willpowerValue = document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' .statblock-rendered-text-content');
-            if (willpowerValue != null && willpowerValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' .statblock-rendered-text-content').innerHTML = 'X'
+            if (willpowerValue != null) {
+                if (willpowerValue.innerHTML == 10) {
+                    document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' .statblock-rendered-text-content').innerHTML = 'X'
+                }
             }
             else {
-                willpowerValue = document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' span.dice-roller-result').innerHTML;
-                if (willpowerValue == 10) {
+                willpowerValue = document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' span.dice-roller-result');
+                if (willpowerValue.innerHTML == 10) {
                     document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' span.dice-roller-result').innerHTML = 'X'
                 };
             }
@@ -1016,22 +997,75 @@ if (path === null) {
     }
 
 
+    //  ОБОРОТНИ
 
-    // задаем названия классов, по которым будем искать волю и запас воли
+
+    // определяем, с какой стороны показывать достоинства и недостатки у оборотней
+    if (document.querySelector('.merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
+        var WhereToShowMeritsAndFlaws = document.querySelector('.line.where-to-show-merits-and-flaws .statblock-rendered-text-content').innerHTML;
+        console.log('где же показывать достоинства и недостатки? ' + WhereToShowMeritsAndFlaws)
+        switch (WhereToShowMeritsAndFlaws) {
+            case ('left'):
+                document.querySelector('.statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';
+                document.querySelector('.statblock-inline-item.group-container:has(.statblock-item-container.group-container:first-child:last-child > .merits-and-flaws-column-left)').style.display = 'block';
+                break;
+            case ('right'):
+                document.querySelector('.statblock-item-container.group-container:has(>.merits-and-flaws-column-left)').style.display = 'none';
+                break;
+        }
+    }
+    else { // do nothing
+    }
+    // то же самое для ховера
+    if (document.querySelector('.popover.hover-popover .merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
+        var WhereToShowMeritsAndFlaws = document.querySelector('.popover.hover-popover .line.where-to-show-merits-and-flaws .statblock-rendered-text-content').innerHTML;
+        switch (WhereToShowMeritsAndFlaws) {
+            case ('left'):
+                document.querySelector('.popover.hover-popover .statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';
+                document.querySelector('.popover.hover-popover .statblock-inline-item.group-container:has(.statblock-item-container.group-container:first-child:last-child > .merits-and-flaws-column-left)').style.display = 'block';
+                break;
+            case ('right'):
+                document.querySelector('.popover.hover-popover .statblock-item-container.group-container:has(>.merits-and-flaws-column-left)').style.display = 'none';
+                break;
+        }
+    }
+    else { // do nothing
+    }
+
+
+    // задаем названия классов, по которым будем искать оборотневские характеристики
     const werewolfOptions = ['rage', 'gnosis', 'glory', 'honor', 'wisdom'];
     for (let y = 0; y < werewolfOptions.length; y++) {
+        // если вообще есть соответствующий блок...
         if (document.querySelector('.' + werewolfOptions[y] + '-block .line.' + werewolfOptions[y] + '_main') != null) {
-            var optionValue = document.querySelector('.' + werewolfOptions[y] + '_main .statblock-rendered-text-content');
+            // console.log('найден блок для ' + werewolfOptions[y].toUpperCase());
+            // ищем значение для обычных точек 
+            optionValue = document.querySelector('.' + werewolfOptions[y] + '_main .statblock-rendered-text-content')
+            // если оно есть...
             if (optionValue != null) {
+                // и равно десяти
                 if (optionValue.innerHTML == 10) {
-                    document.querySelector('.' + werewolfOptions[y] + '_main .statblock-rendered-text-content').innerHTML = 'X'
+                    // заменяем на Х
+                    document.querySelector('.' + werewolfOptions[y] + '_main .statblock-rendered-text-content').innerHTML = 'X';
+                    // console.log('заменили десятку для обычного значения ' + werewolfOptions[y].toUpperCase());
                 }
-
+                // а если нет - то и ладно
+                else {
+                    // console.log('обычный ' + werewolfOptions[y].toUpperCase() + ' в полном порядке')
+                }
             }
+            // если нет обычных точек - значит, тут дайс роллер 
             else {
-                optionValue = document.querySelector('.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML;
+                var optionValue = document.querySelector('.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML;
+                // если равно десяти
                 if (optionValue == 10) {
-                    document.querySelector('.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML = 'X'
+                    // заменяем на Х
+                    document.querySelector('.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML = 'X';
+                    // console.log('заменили десятку для дайсового значения ' + werewolfOptions[y].toUpperCase());
+                }
+                // а если нет - то и ладно
+                else {
+                    // console.log('дайсовый ' + werewolfOptions[y].toUpperCase() + ' в полном порядке')
                 }
             }
         }
@@ -1039,460 +1073,124 @@ if (path === null) {
             //nothing
         }
         else {
-            console.log(werewolfOptions[y] + ' не норм')
+            console.log('c ' + werewolfOptions[y].toUpperCase() + ' что-то пошло не так')
         }
-    }
-
-
-
-
-    //  ОБОРОТНИ
-    if (document.querySelector('.rage-block .line.rage_main') != null) {
-        var rageValue = document.querySelector('.rage_main .statblock-rendered-text-content')  // для ярости
-        if (rageValue != null) { // для обычного значения 
-            if (rageValue.innerHTML == 10) {
-                document.querySelector('.rage_main .statblock-rendered-text-content').innerHTML = 'X'
+        // то же самое для ховера
+        if (document.querySelector('.popover.hover-popover .' + werewolfOptions[y] + '-block .line.' + werewolfOptions[y] + '_main') != null) {
+            // console.log('найден блок для ' + werewolfOptions[y].toUpperCase() + ' в ховере');
+            optionValue = document.querySelector('.popover.hover-popover .' + werewolfOptions[y] + '_main .statblock-rendered-text-content')
+            if (optionValue != null) {
+                if (optionValue.innerHTML == 10) {
+                    document.querySelector('.popover.hover-popover .' + werewolfOptions[y] + '_main .statblock-rendered-text-content').innerHTML = 'X';
+                    // console.log('заменили десятку для обычного значения ' + werewolfOptions[y].toUpperCase() + ' в ховере');
+                }
+                else {
+                    // console.log(werewolfOptions[y].toUpperCase() + ' в ховере в полном порядке')
+                }
+            }
+            else {
+                var optionValue = document.querySelector('.popover.hover-popover .' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML;
+                if (optionValue == 10) {
+                    document.querySelector('.popover.hover-popover .' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML = 'X';
+                    // console.log('заменили десятку для дайсового значения ' + werewolfOptions[y].toUpperCase() + ' в ховере');
+                }
+                else {
+                    // console.log(werewolfOptions[y].toUpperCase() + ' в ховере в полном порядке')
+                }
             }
         }
-        else { // для дайс роллера
-            rageValue = document.querySelector('.rage_main span.dice-roller-result').innerHTML;
-            if (rageValue == 10) {
-                document.querySelector('.rage_main span.dice-roller-result').innerHTML = 'X'
-            };
+        else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
+            //nothing
+        }
+        else {
+            console.log('c ' + werewolfOptions[y].toUpperCase() + ' в ховере что-то пошло не так')
         }
     }
-    else if (document.querySelector('.wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('ярость не норм')
-    }
-    // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .rage-block .line.rage_main') != null) {
-        var rageValue = document.querySelector('.popover.hover-popover .rage_main .statblock-rendered-text-content')  // для ярости
-        if (rageValue != null) { // для обычного значения 
-            if (rageValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover .rage_main .statblock-rendered-text-content').innerHTML = 'X'
+
+    // запасы тех же самых оборотневых характеристик
+    for (let z = 0; z < werewolfOptions.length; z++) {
+        // если вообще есть соответствующий блок...
+        if (document.querySelector('.' + werewolfOptions[z] + '-block .line.' + werewolfOptions[z] + '_current') != null) {
+            // console.log('найден блок для запаса ' + werewolfOptions[z].toUpperCase());
+            // ищем 
+            optionValue = document.querySelector('.' + werewolfOptions[z] + '_current .statblock-rendered-text-content')
+            if (optionValue != null) {
+                if (optionValue.innerHTML == 10) {
+                    document.querySelector('.' + werewolfOptions[z] + '_current .statblock-rendered-text-content').innerHTML = 'X';
+                    // console.log('заменили десятку для обычного значения запаса ' + werewolfOptions[z].toUpperCase());
+                }
+                else {
+                    // console.log('с запасом' + werewolfOptions[z].toUpperCase() + ' в полном порядке')
+                }
+            }
+            else {
+                var optionValue = document.querySelector('.' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML;
+                if (optionValue == 10) {
+                    document.querySelector('.' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML = 'X';
+                    мconsole.log('заменили десятку  для дайсового значения запаса ' + werewolfOptions[z].toUpperCase());
+                }
+                else {
+                    // console.log('с запасом' + werewolfOptions[z].toUpperCase() + ' в полном порядке')
+                }
             }
         }
-        else { // для дайс роллера
-            rageValue = document.querySelector('.popover.hover-popover .rage_main span.dice-roller-result').innerHTML;
-            if (rageValue == 10) {
-                document.querySelector('.popover.hover-popover .rage_main span.dice-roller-result').innerHTML = 'X'
-            };
+        else if (document.querySelector('.wta-v20-werewolf') == null) {
+            //nothing
         }
-    }
-    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('ярость в ховере не норм')
-    }
-
-
-    if (document.querySelector('.rage-block .line.rage_current') != null) {
-        var rageCurrentValue = document.querySelector('.rage_current .statblock-rendered-text-content')  // для запаса ярости
-        if (rageCurrentValue != null) { // для обычного значения 
-            if (rageCurrentValue.innerHTML == 10) {
-                document.querySelector('.rage_current .statblock-rendered-text-content').innerHTML = 'X'
+        else {
+            console.log('с запасом ' + werewolfOptions[z].toUpperCase() + ' что-то пошло не так')
+        }
+        // то же самое для ховера
+        if (document.querySelector('.popover.hover-popover .' + werewolfOptions[z] + '-block .line.' + werewolfOptions[z] + '_current') != null) {
+            // console.log('найден блок для ' + werewolfOptions[z].toUpperCase() + ' в ховере');
+            optionValue = document.querySelector('.popover.hover-popover .' + werewolfOptions[z] + '_current .statblock-rendered-text-content')
+            if (optionValue != null) {
+                if (optionValue.innerHTML == 10) {
+                    document.querySelector('.popover.hover-popover .' + werewolfOptions[z] + '_current .statblock-rendered-text-content').innerHTML = 'X';
+                    // console.log('заменили десятку для обычного значения запаса ' + werewolfOptions[z].toUpperCase() + ' в ховере');
+                }
+                else {
+                    // console.log('с запасом' + werewolfOptions[z].toUpperCase() + ' в ховере в полном порядке')
+                }
+            }
+            else {
+                var optionValue = document.querySelector('.popover.hover-popover .' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML;
+                if (optionValue == 10) {
+                    document.querySelector('.popover.hover-popover .' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML = 'X';
+                    // console.log('заменили десятку для дайсового значения запаса ' + werewolfOptions[z].toUpperCase()) + ' в ховере';
+                }
+                else {
+                    // console.log('с запасом' + werewolfOptions[z].toUpperCase() + ' в ховере вполном порядке')
+                }
             }
         }
-        else { // для дайс роллера
-            rageCurrentValue = document.querySelector('.rage_current span.dice-roller-result').innerHTML;
-            if (rageCurrentValue == 10) {
-                document.querySelector('.rage_current span.dice-roller-result').innerHTML = 'X'
-            };
+        else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
+            //nothing
+        }
+        else {
+            console.log('с запасом ' + werewolfOptions[z].toUpperCase() + ' в ховере что-то пошло не так')
         }
     }
-    else if (document.querySelector('.wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('запас ярости не норм')
-    }
-    // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .rage-block .line.rage_current') != null) {
-        var rageCurrentValue = document.querySelector('.popover.hover-popover .rage_current .statblock-rendered-text-content')  // для запаса ярости
-        if (rageCurrentValue != null) { // для обычного значения 
-            if (rageCurrentValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover .rage_current .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            rageCurrentValue = document.querySelector('.popover.hover-popover .rage_current span.dice-roller-result').innerHTML;
-            if (rageCurrentValue == 10) {
-                document.querySelector('.popover.hover-popover .rage_current span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('запас ярости в ховере не норм')
-    }
-
-
-    if (document.querySelector('.gnosis-block .line.gnosis_main') != null) {
-        var gnosisValue = document.querySelector('.gnosis_main .statblock-rendered-text-content')  // для гнозиса
-        if (gnosisValue != null) { // для обычного значения 
-            if (gnosisValue.innerHTML == 10) {
-                document.querySelector('.gnosis_main .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            gnosisValue = document.querySelector('.gnosis_main span.dice-roller-result').innerHTML;
-            if (gnosisValue == 10) {
-                document.querySelector('.gnosis_main span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else if (document.querySelector('.wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('гнозис не норм')
-    }
-    // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .gnosis-block .line.gnosis_main') != null) {
-        var gnosisValue = document.querySelector('.popover.hover-popover .gnosis_main .statblock-rendered-text-content')  // для гнозиса
-        if (gnosisValue != null) { // для обычного значения 
-            if (gnosisValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover .gnosis_main .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            gnosisValue = document.querySelector('.popover.hover-popover .gnosis_main span.dice-roller-result').innerHTML;
-            if (gnosisValue == 10) {
-                document.querySelector('.popover.hover-popover .gnosis_main span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('гнозис в ховере не норм')
-    }
-
-    if (document.querySelector('.gnosis-block .line.gnosis_current') != null) {
-        var gnosisCurrentValue = document.querySelector('.gnosis_current .statblock-rendered-text-content')  // для запаса гнозиса
-        if (gnosisCurrentValue != null) { // для обычного значения 
-            if (gnosisCurrentValue.innerHTML == 10) {
-                document.querySelector('.gnosis_current .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            gnosisCurrentValue = document.querySelector('.gnosis_current span.dice-roller-result').innerHTML;
-            if (gnosisCurrentValue == 10) {
-                document.querySelector('.gnosis_current span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else if (document.querySelector('.wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('запас гнозиса не норм')
-    }
-    // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .gnosis-block .line.gnosis_current') != null) {
-        var gnosisCurrentValue = document.querySelector('.popover.hover-popover .gnosis_current .statblock-rendered-text-content')  // для запаса гнозиса
-        if (gnosisCurrentValue != null) { // для обычного значения 
-            if (gnosisCurrentValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover .gnosis_current .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            gnosisCurrentValue = document.querySelector('.popover.hover-popover .gnosis_current span.dice-roller-result').innerHTML;
-            if (gnosisCurrentValue == 10) {
-                document.querySelector('.popover.hover-popover .gnosis_current span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('запас гнозиса в ховере не норм')
-    }
-
-
-    if (document.querySelector('.glory-block .line.glory_main') != null) {
-        var gloryValue = document.querySelector('.glory_main .statblock-rendered-text-content')  // для славы
-        if (gloryValue != null) { // для обычного значения 
-            if (gloryValue.innerHTML == 10) {
-                document.querySelector('.glory_main .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            gloryValue = document.querySelector('.glory_main span.dice-roller-result').innerHTML;
-            if (gloryValue == 10) {
-                document.querySelector('.glory_main span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else if (document.querySelector('.wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('слава не норм')
-    }
-    // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .glory-block .line.glory_main') != null) {
-        var gloryValue = document.querySelector('.popover.hover-popover .glory_main .statblock-rendered-text-content')  // для славы
-        if (gloryValue != null) { // для обычного значения 
-            if (gloryValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover .glory_main .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            gloryValue = document.querySelector('.popover.hover-popover .glory_main span.dice-roller-result').innerHTML;
-            if (gloryValue == 10) {
-                document.querySelector('.popover.hover-popover .glory_main span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('слава в ховере не норм')
-    }
-
-
-    if (document.querySelector('.glory-block .line.glory_current') != null) {
-        var gloryCurrentValue = document.querySelector('.glory_current .statblock-rendered-text-content')  // для запаса славы
-        if (gloryCurrentValue != null) { // для обычного значения 
-            if (gloryCurrentValue.innerHTML == 10) {
-                document.querySelector('.glory_current .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            gloryCurrentValue = document.querySelector('.glory_current span.dice-roller-result').innerHTML;
-            if (gloryCurrentValue == 10) {
-                document.querySelector('.glory_current span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else if (document.querySelector('.wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('запас славы не норм')
-    }
-    // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .glory-block .line.glory_current') != null) {
-        var gloryCurrentValue = document.querySelector('.popover.hover-popover .glory_current .statblock-rendered-text-content')  // для запаса славы
-        if (gloryCurrentValue != null) { // для обычного значения 
-            if (gloryCurrentValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover .glory_current .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            gloryCurrentValue = document.querySelector('.popover.hover-popover .glory_current span.dice-roller-result').innerHTML;
-            if (gloryCurrentValue == 10) {
-                document.querySelector('.popover.hover-popover .glory_current span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('запас славы в ховере не норм')
-    }
-
-
-    if (document.querySelector('.honor-block .line.honor_main') != null) {
-        var honorValue = document.querySelector('.honor_main .statblock-rendered-text-content')  // для чести
-        if (honorValue != null) { // для обычного значения 
-            if (honorValue.innerHTML == 10) {
-                document.querySelector('.honor_main .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            honorValue = document.querySelector('.honor_main span.dice-roller-result').innerHTML;
-            if (honorValue == 10) {
-                document.querySelector('.honor_main span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else if (document.querySelector('.wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('честь не норм')
-    }
-    // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .honor-block .line.honor_main') != null) {
-        var honorValue = document.querySelector('.popover.hover-popover .honor_main .statblock-rendered-text-content')  // для чести
-        if (honorValue != null) { // для обычного значения 
-            if (honorValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover .honor_main .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            honorValue = document.querySelector('.popover.hover-popover .honor_main span.dice-roller-result').innerHTML;
-            if (honorValue == 10) {
-                document.querySelector('.popover.hover-popover .honor_main span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('честь в ховере не норм')
-    }
-
-
-    if (document.querySelector('.honor-block .line.honor_current') != null) {
-        var honorCurrentValue = document.querySelector('.honor_current .statblock-rendered-text-content')  // для запаса чести
-        if (honorCurrentValue != null) { // для обычного значения 
-            if (honorCurrentValue.innerHTML == 10) {
-                document.querySelector('.honor_current .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            honorCurrentValue = document.querySelector('.honor_current span.dice-roller-result').innerHTML;
-            if (honorCurrentValue == 10) {
-                document.querySelector('.honor_current span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-    else if (document.querySelector('.wta-v20-werewolf') == null) {
-    }
-    else {
-        console.log('запас чести не норм')
-    }
-    // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .honor-block .line.honor_current') != null) {
-        var honorCurrentValue = document.querySelector('.popover.hover-popover .honor_current .statblock-rendered-text-content')  // для запаса чести
-        if (honorCurrentValue != null) { // для обычного значения 
-            if (honorCurrentValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover .honor_current .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            honorCurrentValue = document.querySelector('.popover.hover-popover .honor_current span.dice-roller-result').innerHTML;
-            if (honorCurrentValue == 10) {
-                document.querySelector('.popover.hover-popover .honor_current span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('запас чести в ховере не норм')
-    }
-
-
-    if (document.querySelector('.wisdom-block .line.wisdom_main') != null) {
-        var wisdomValue = document.querySelector('.wisdom_main .statblock-rendered-text-content')  // для мудрости
-        if (wisdomValue != null) { // для обычного значения 
-            if (wisdomValue.innerHTML == 10) {
-                document.querySelector('.wisdom_main .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            wisdomValue = document.querySelector('.wisdom_main span.dice-roller-result').innerHTML;
-            if (wisdomValue == 10) {
-                document.querySelector('.wisdom_main span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-else if (document.querySelector('.wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('мудрость не норм')
-    }
-    // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .wisdom-block .line.wisdom_main') != null) {
-        var wisdomValue = document.querySelector('.popover.hover-popover .wisdom_main .statblock-rendered-text-content')  // для мудрости
-        if (wisdomValue != null) { // для обычного значения 
-            if (wisdomValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover .wisdom_main .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            wisdomValue = document.querySelector('.popover.hover-popover .wisdom_main span.dice-roller-result').innerHTML;
-            if (wisdomValue == 10) {
-                document.querySelector('.popover.hover-popover .wisdom_main span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('мудрость в ховере не норм')
-    }
-
-
-    if (document.querySelector('.wisdom-block .line.wisdom_current') != null) {
-        var wisdomCurrentValue = document.querySelector('.wisdom_current .statblock-rendered-text-content')  // для запаса мудрости
-        if (wisdomCurrentValue != null) { // для обычного значения 
-            if (wisdomCurrentValue.innerHTML == 10) {
-                document.querySelector('.wisdom_current .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            wisdomCurrentValue = document.querySelector('.wisdom_current span.dice-roller-result').innerHTML;
-            if (wisdomCurrentValue == 10) {
-                document.querySelector('.wisdom_current span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-else if (document.querySelector('.wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('запас мудрости не норм')
-    }
-    // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .wisdom-block .line.wisdom_current') != null) {
-        var wisdomCurrentValue = document.querySelector('.popover.hover-popover .wisdom_current .statblock-rendered-text-content')  // для запаса мудрости
-        if (wisdomCurrentValue != null) { // для обычного значения 
-            if (wisdomCurrentValue.innerHTML == 10) {
-                document.querySelector('.popover.hover-popover .wisdom_current .statblock-rendered-text-content').innerHTML = 'X'
-            }
-        }
-        else { // для дайс роллера
-            wisdomCurrentValue = document.querySelector('.popover.hover-popover .wisdom_current span.dice-roller-result').innerHTML;
-            if (wisdomCurrentValue == 10) {
-                document.querySelector('.popover.hover-popover .wisdom_current span.dice-roller-result').innerHTML = 'X'
-            };
-        }
-    }
-else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
-        //nothing
-    }
-    else {
-        console.log('запас мудрости в ховере не норм')
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

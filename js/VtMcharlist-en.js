@@ -50,7 +50,7 @@ sleep(120).then(() => {
         console.log(clanName + ' - the clan')
         const collapsedColumn = document.querySelector(activeTab + ' .collapse-container'); // define the area where a clan image should be placed 
         switch (clanName) {
-            case ('Assamite'):
+            case 'Assamite':
                 // corresponding css-class is assigned for each clan 
                 collapsedColumn.classList.add('Assamite');
                 // and clan weakness is also added
@@ -58,7 +58,7 @@ sleep(120).then(() => {
                 // if note has 'csslacss: wod-header', clan logo will be displayed there, as background for general character info
                 if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Assamite-background-logo)' };
                 break;
-            case ('Assamite Antitribu'):
+            case 'Assamite Antitribu':
                 collapsedColumn.classList.add('Assamite-Antitribu');
                 document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = weaknessAssamiteAntitribu;
                 if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Assamite-Antitribu-background-logo)' };
@@ -224,6 +224,9 @@ sleep(120).then(() => {
                 if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Tzimisce-background-logo)' };
                 break;
         };
+collapsedColumn.classList.add(collapsedBackgroundClan);
+        document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = clanWeakness;
+        if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan };
     }
     else {
         //nothing
@@ -405,7 +408,13 @@ sleep(120).then(() => {
                 if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = 'var(--Tzimisce-background-logo)' };
                 break;
         };
-    };
+    collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
+        document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = clanWeaknessHover;
+        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover };
+    }
+    else {
+        //nothing
+    }
 
 
     // setting to display merits and flaws left or right
@@ -425,7 +434,6 @@ sleep(120).then(() => {
     else {
         console.log('the weakness will be displayed');
     }
-
     // same code, but for a statblock in hover
     if (document.querySelector('.popover.hover-popover .line.show_weakness .statblock-rendered-text-content') != null) {
         const showWeaknessHover = document.querySelector('.popover.hover-popover .line.show_weakness .statblock-rendered-text-content').innerHTML;
@@ -449,9 +457,12 @@ sleep(120).then(() => {
 
     // Set up blood per turn value, based on the generation
     if (document.querySelector('.line.generation .statblock-markdown p') != null) {
-        var generationFull = document.querySelector('.line.generation .statblock-markdown').textContent; // find the generation
-        var generation = generationFull.slice(0, 2); // pick only two first symbols, in case if the generation has info about diablery (like 9  ̶1̶0̶)
-        var generation = generation.replace(/\s/g, ''); // remove spaces, if the generation is 8 or 9
+        // find the generation
+        var generationFull = document.querySelector('.line.generation .statblock-markdown').textContent; 
+        // pick only two first symbols, in case if the generation has info about diablery (like 9  ̶1̶0̶)
+        var generation = generationFull.slice(0, 2); 
+        // remove spaces, if the generation is 8 or 9
+        var generation = generation.replace(/\s/g, ''); 
         console.log('the generation of this Kindred is ' + generation);
         switch (generation) {
             case '13':
@@ -525,7 +536,7 @@ sleep(120).then(() => {
     }
 
     // Some various modifications for attributes, abilities and disciplines; mostly copied from Russian version, so some changes might be needed
-    // Physical Attributes
+    // Physical - Attributes
     if (document.querySelector('.strength')) {
         var valueStrength = document.querySelector('.strength .statblock-rendered-text-content');  // strength
         if (valueStrength != null) { // strength value always will be at least 1
@@ -1706,366 +1717,121 @@ sleep(120).then(() => {
 
 
     // Disciplines
-    // Some high values will be transformed from dots to digits, based on the lenght of a disciple's name, to keep columns width
-    // 1st discipline
+    // Some high values will be transformed from dots to digits, based on the lenght of a disciple's name, to keep columns width.
     if (document.querySelector('.discipline1_name .statblock-rendered-text-content')) {
-        var valueDisсiplineOneName = document.querySelector('.discipline1_name .statblock-rendered-text-content').innerHTML; // find discipline's name
-        // console.log(valueDisсiplineOneName)
-        var valueDisсiplineOneValue = document.querySelector('.discipline1_value .statblock-rendered-text-content').innerHTML; // and it's value
-        if (valueDisсiplineOneName.startsWith('<a data')) {   // if there is not just text, but the link, then...
-            //        console.log(valueDisсiplineOneName + ' - it may be a link!')
-            var valueDisсiplineOneName = document.querySelector('.discipline1_name .statblock-rendered-text-content > a').innerHTML // ...find discipline's name inside the link
-            if (valueDisсiplineOneName.trim().length > 11 && valueDisсiplineOneValue > 9) { // let's check how long the name is 
-                document.querySelector('.discipline1_value .property-text').style.fontSize = '14px'; // and replace dots with digits if the name is too long
-                document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+        var disciplinesList = document.querySelectorAll('.disciplines-column .statblock-rendered-text-content');
+        // console.log(disciplinesList);
+        for (let i = 1; i < disciplinesList.length; i += 2) {
+            if (disciplinesList[i].innerHTML.startsWith('<a data')) {
+                if (disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9) {
+                    disciplinesList[i + 1].style.fontSize = '14px';
+                    disciplinesList[i + 1].style.fontFamily = 'Marta';
+                    disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
+                }
+                if (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8) {
+                    disciplinesList[i + 1].style.fontSize = '14px';
+                    disciplinesList[i + 1].style.fontFamily = 'Marta';
+                    disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
+                }
+                if (disciplinesList[i].innerText.length >= 13 && disciplinesList[i + 1].innerText > 7) {
+                    disciplinesList[i + 1].style.fontSize = '14px';
+                    disciplinesList[i + 1].style.fontFamily = 'Marta';
+                    disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
+                }
+                if (disciplinesList[i].innerText.length >= 14 && disciplinesList[i + 1].innerText > 6) {
+                    disciplinesList[i + 1].style.fontSize = '14px';
+                    disciplinesList[i + 1].style.fontFamily = 'Marta';
+                    disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
+                }
+                if (disciplinesList[i].innerText.length >= 15 && disciplinesList[i + 1].innerText > 5) {
+                    disciplinesList[i + 1].style.fontSize = '14px';
+                    disciplinesList[i + 1].style.fontFamily = 'Marta';
+                    disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
+                }
             }
-            if (valueDisсiplineOneName.trim().length > 12 && valueDisсiplineOneValue > 8) {
-                document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+            else if (disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9) {
+                disciplinesList[i + 1].style.fontSize = '14px';
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineOneName.trim().length > 13 && valueDisсiplineOneValue > 7) {
-                document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8) {
+                disciplinesList[i + 1].style.fontSize = '14px';
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineOneName.trim().length > 14 && valueDisсiplineOneValue > 6) {
-                document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 13 && disciplinesList[i + 1].innerText > 7) {
+                disciplinesList[i + 1].style.fontSize = '14px';
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineOneName.trim().length > 15 && valueDisсiplineOneValue > 5) {   // no point in further checking
-                document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 14 && disciplinesList[i + 1].innerText > 6) {
+                disciplinesList[i + 1].style.fontSize = '14px';
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-        }
-        if (valueDisсiplineOneName.trim().length > 11 && valueDisсiplineOneValue > 9) {  // same code for a name without a link
-            document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineOneName.trim().length > 12 && valueDisсiplineOneValue > 8) {
-            document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineOneName.trim().length > 13 && valueDisсiplineOneValue > 7) {
-            document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineOneName.trim().length > 14 && valueDisсiplineOneValue > 6) {
-            document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineOneName.trim().length > 15 && valueDisсiplineOneValue > 5) {
-            document.querySelector('.discipline1_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline1_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline1_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 15 && disciplinesList[i + 1].innerText > 5) {
+                disciplinesList[i + 1].style.fontSize = '14px';
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
+            }
         }
     }
-    //    console.log(valueDisсiplineOneName + ' - 1st discipline's name')
-
-
-    // 2nd discipline
-    if (document.querySelector('.discipline2_name .statblock-rendered-text-content')) {
-        var valueDisсiplineTwoName = document.querySelector('.discipline2_name .statblock-rendered-text-content').innerHTML; // find discipline's name
-        var valueDisсiplineTwoValue = document.querySelector('.discipline2_value .statblock-rendered-text-content').innerHTML; // and it's value
-        if (valueDisсiplineTwoName.startsWith('<a data')) {   // if there is not just text, but the link, then...
-            var valueDisсiplineTwoName = document.querySelector('.discipline2_name .statblock-rendered-text-content > a').innerHTML // ...find discipline's name inside the link
-            if (valueDisсiplineTwoName.trim().length > 11 && valueDisсiplineTwoValue > 9) { // let's check how long the name is 
-                document.querySelector('.discipline2_value .property-text').style.fontSize = '14px'; // and replace dots with digits if the name is too long
-                document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+    // same code, but for a statblock in hover
+    if (document.querySelector('.popover.hover-popover .discipline1_name .statblock-rendered-text-content')) {
+        var disciplinesList = document.querySelectorAll('.popover.hover-popover .disciplines-column .statblock-rendered-text-content');
+        for (let i = 1; i < disciplinesList.length; i += 2) {
+            if (disciplinesList[i].innerHTML.startsWith('<a data')) {
+                if (disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9) {
+                    disciplinesList[i + 1].style.fontSize = '14px';
+                    disciplinesList[i + 1].style.fontFamily = 'Marta';
+                    disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
+                }
+                if (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8) {
+                    disciplinesList[i + 1].style.fontSize = '14px';
+                    disciplinesList[i + 1].style.fontFamily = 'Marta';
+                    disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
+                }
+                if (disciplinesList[i].innerText.length >= 13 && disciplinesList[i + 1].innerText > 7) {
+                    disciplinesList[i + 1].style.fontSize = '14px';
+                    disciplinesList[i + 1].style.fontFamily = 'Marta';
+                    disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
+                }
+                if (disciplinesList[i].innerText.length >= 14 && disciplinesList[i + 1].innerText > 6) {
+                    disciplinesList[i + 1].style.fontSize = '14px';
+                    disciplinesList[i + 1].style.fontFamily = 'Marta';
+                    disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
+                }
+                if (disciplinesList[i].innerText.length >= 15 && disciplinesList[i + 1].innerText > 5) {
+                    disciplinesList[i + 1].style.fontSize = '14px';
+                    disciplinesList[i + 1].style.fontFamily = 'Marta';
+                    disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
+                }
             }
-            if (valueDisсiplineTwoName.trim().length > 12 && valueDisсiplineTwoValue > 8) {
-                document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+            else if (disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9) {
+                disciplinesList[i + 1].style.fontSize = '14px';
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineTwoName.trim().length > 13 && valueDisсiplineTwoValue > 7) {
-                document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8) {
+                disciplinesList[i + 1].style.fontSize = '14px';
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineTwoName.trim().length > 14 && valueDisсiplineTwoValue > 6) {
-                document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 13 && disciplinesList[i + 1].innerText > 7) {
+                disciplinesList[i + 1].style.fontSize = '14px';
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineTwoName.trim().length > 15 && valueDisсiplineTwoValue > 5) {   // no point in further checking
-                document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 14 && disciplinesList[i + 1].innerText > 6) {
+                disciplinesList[i + 1].style.fontSize = '14px';
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-        }
-        if (valueDisсiplineTwoName.trim().length > 11 && valueDisсiplineTwoValue > 9) {  // same code for a name without a link
-            document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineTwoName.trim().length > 12 && valueDisсiplineTwoValue > 8) {
-            document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineTwoName.trim().length > 13 && valueDisсiplineTwoValue > 7) {
-            document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineTwoName.trim().length > 14 && valueDisсiplineTwoValue > 6) {
-            document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineTwoName.trim().length > 15 && valueDisсiplineTwoValue > 5) {
-            document.querySelector('.discipline2_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline2_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline2_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-    }
-
-
-    // 3rd discipline
-    if (document.querySelector('.discipline3_name .statblock-rendered-text-content')) {
-        var valueDisсiplineThreeName = document.querySelector('.discipline3_name .statblock-rendered-text-content').innerHTML; // find discipline's name
-        var valueDisсiplineThreeValue = document.querySelector('.discipline3_value .statblock-rendered-text-content').innerHTML; // and it's value
-        if (valueDisсiplineThreeName.startsWith('<a data')) {   // if there is not just text, but the link, then...
-            var valueDisсiplineThreeName = document.querySelector('.discipline3_name .statblock-rendered-text-content > a').innerHTML // ...find discipline's name inside the link
-            if (valueDisсiplineThreeName.trim().length > 11 && valueDisсiplineThreeValue > 9) { // let's check how long the name is 
-                document.querySelector('.discipline3_value .property-text').style.fontSize = '14px'; // and replace dots with digits if the name is too long
-                document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
+            if (disciplinesList[i].innerText.length >= 15 && disciplinesList[i + 1].innerText > 5) {
+                disciplinesList[i + 1].style.fontSize = '14px';
+                disciplinesList[i + 1].style.fontFamily = 'Marta';
+                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
             }
-            if (valueDisсiplineThreeName.trim().length > 12 && valueDisсiplineThreeValue > 8) {
-                document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineThreeName.trim().length > 13 && valueDisсiplineThreeValue > 7) {
-                document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineThreeName.trim().length > 14 && valueDisсiplineThreeValue > 6) {
-                document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineThreeName.trim().length > 15 && valueDisсiplineThreeValue > 5) {   // no point in further checking
-                document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-        }
-        if (valueDisсiplineThreeName.trim().length > 11 && valueDisсiplineThreeValue > 9) {  // same code for a name without a link
-            document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineThreeName.trim().length > 12 && valueDisсiplineThreeValue > 8) {
-            document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineThreeName.trim().length > 13 && valueDisсiplineThreeValue > 7) {
-            document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineThreeName.trim().length > 14 && valueDisсiplineThreeValue > 6) {
-            document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineThreeName.trim().length > 15 && valueDisсiplineThreeValue > 5) {
-            document.querySelector('.discipline3_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline3_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline3_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-    }
-
-
-    // 4th discipline
-    if (document.querySelector('.discipline4_name .statblock-rendered-text-content')) {
-        var valueDisсiplineFourName = document.querySelector('.discipline4_name .statblock-rendered-text-content').innerHTML; // find discipline's name
-        var valueDisсiplineFourValue = document.querySelector('.discipline4_value .statblock-rendered-text-content').innerHTML; // and it's value
-        if (valueDisсiplineFourName.startsWith('<a data')) {   // if there is not just text, but the link, then...
-            var valueDisсiplineFourName = document.querySelector('.discipline4_name .statblock-rendered-text-content > a').innerHTML // ...find discipline's name inside the link
-            if (valueDisсiplineFourName.trim().length > 11 && valueDisсiplineFourValue > 9) { // let's check how long the name is 
-                document.querySelector('.discipline4_value .property-text').style.fontSize = '14px'; // and replace dots with digits if the name is too long
-                document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFourName.trim().length > 12 && valueDisсiplineFourValue > 8) {
-                document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFourName.trim().length > 13 && valueDisсiplineFourValue > 7) {
-                document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFourName.trim().length > 14 && valueDisсiplineFourValue > 6) {
-                document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFourName.trim().length > 15 && valueDisсiplineFourValue > 5) {   // no point in further checking
-                document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-        }
-        if (valueDisсiplineFourName.trim().length > 11 && valueDisсiplineFourValue > 9) {  // same code for a name without a link
-            document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFourName.trim().length > 12 && valueDisсiplineFourValue > 8) {
-            document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFourName.trim().length > 13 && valueDisсiplineFourValue > 7) {
-            document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFourName.trim().length > 14 && valueDisсiplineFourValue > 6) {
-            document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFourName.trim().length > 15 && valueDisсiplineFourValue > 5) {
-            document.querySelector('.discipline4_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline4_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline4_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-    }
-
-
-    // 5th discipline
-    if (document.querySelector('.discipline5_name .statblock-rendered-text-content')) {
-        var valueDisсiplineFiveName = document.querySelector('.discipline5_name .statblock-rendered-text-content').innerHTML; // find discipline's name
-        var valueDisсiplineFiveValue = document.querySelector('.discipline5_value .statblock-rendered-text-content').innerHTML; // and it's value
-        if (valueDisсiplineFiveName.startsWith('<a data')) {   // if there is not just text, but the link, then...
-            var valueDisсiplineFiveName = document.querySelector('.discipline5_name .statblock-rendered-text-content > a').innerHTML // ...find discipline's name inside the link
-            if (valueDisсiplineFiveName.trim().length > 11 && valueDisсiplineFiveValue > 9) { // let's check how long the name is 
-                document.querySelector('.discipline5_value .property-text').style.fontSize = '14px'; // and replace dots with digits if the name is too long
-                document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFiveName.trim().length > 12 && valueDisсiplineFiveValue > 8) {
-                document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFiveName.trim().length > 13 && valueDisсiplineFiveValue > 7) {
-                document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFiveName.trim().length > 14 && valueDisсiplineFiveValue > 6) {
-                document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineFiveName.trim().length > 15 && valueDisсiplineFiveValue > 5) {   // no point in further checking
-                document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-        }
-        if (valueDisсiplineFiveName.trim().length > 11 && valueDisсiplineFiveValue > 9) {  // same code for a name without a link
-            document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFiveName.trim().length > 12 && valueDisсiplineFiveValue > 8) {
-            document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFiveName.trim().length > 13 && valueDisсiplineFiveValue > 7) {
-            document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFiveName.trim().length > 14 && valueDisсiplineFiveValue > 6) {
-            document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineFiveName.trim().length > 15 && valueDisсiplineFiveValue > 5) {
-            document.querySelector('.discipline5_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline5_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline5_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-    }
-
-
-    // 6th discipline
-    if (document.querySelector('.discipline6_name .statblock-rendered-text-content')) {
-        var valueDisсiplineSixName = document.querySelector('.discipline6_name .statblock-rendered-text-content').innerHTML; // find discipline's name
-        var valueDisсiplineSixValue = document.querySelector('.discipline6_value .statblock-rendered-text-content').innerHTML; // and it's value
-        if (valueDisсiplineSixName.startsWith('<a data')) {   // if there is not just text, but the link, then...
-            var valueDisсiplineSixName = document.querySelector('.discipline6_name .statblock-rendered-text-content > a').innerHTML // ...find discipline's name inside the link
-            if (valueDisсiplineSixName.trim().length > 11 && valueDisсiplineSixValue > 9) { // let's check how long the name is 
-                document.querySelector('.discipline6_value .property-text').style.fontSize = '14px'; // and replace dots with digits if the name is too long
-                document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineSixName.trim().length > 12 && valueDisсiplineSixValue > 8) {
-                document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineSixName.trim().length > 13 && valueDisсiplineSixValue > 7) {
-                document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineSixName.trim().length > 14 && valueDisсiplineSixValue > 6) {
-                document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-            if (valueDisсiplineSixName.trim().length > 15 && valueDisсiplineSixValue > 5) {   // no point in further checking
-                document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-                document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-                document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-            }
-        }
-        if (valueDisсiplineSixName.trim().length > 11 && valueDisсiplineSixValue > 9) {  // same code for a name without a link
-            document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineSixName.trim().length > 12 && valueDisсiplineSixValue > 8) {
-            document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineSixName.trim().length > 13 && valueDisсiplineSixValue > 7) {
-            document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineSixName.trim().length > 14 && valueDisсiplineSixValue > 6) {
-            document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
-        }
-        if (valueDisсiplineSixName.trim().length > 15 && valueDisсiplineSixValue > 5) {
-            document.querySelector('.discipline6_value .property-text').style.fontSize = '14px';
-            document.querySelector('.discipline6_value .property-text').style.fontFamily = 'Marta';
-            document.querySelector('.discipline6_value .property-text').style.margin = '-2px 0px 0px 0px'
         }
     }
 
@@ -2163,27 +1929,27 @@ sleep(120).then(() => {
                 case '10': // replace 10 with X
                     document.querySelector('.popover.hover-popover .line.path_value .statblock-rendered-text-content').innerHTML = 'X';
                 case 'X': // and then correspinding bearing values will be assigned
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( -2 )'; break;
+                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Normalcy ( -2 )'; break;
                 case '9':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( -1 )'; break;
+                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Normalcy ( -1 )'; break;
                 case '8':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( -1 )'; break;
+                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Normalcy ( -1 )'; break;
                 case '7':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность'; break;
+                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Normalcy'; break;
                 case '6':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность'; break;
+                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Normalcy'; break;
                 case '5':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность'; break;
+                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Normalcy'; break;
                 case '4':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность'; break;
+                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Normalcy'; break;
                 case '3':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( +1 )'; break;
+                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Normalcy ( +1 )'; break;
                 case '2':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( +1 )'; break;
+                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Normalcy ( +1 )'; break;
                 case '1':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( +2 )'; break;
+                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Normalcy ( +2 )'; break;
                 default:
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Теперь ты Зверь!';
+                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'You are the Beast!';
                     if (document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML === null) {
                         console.log('bearing line in hover is missing')
                     }

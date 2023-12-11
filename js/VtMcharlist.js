@@ -234,7 +234,7 @@ sleep(120).then(() => {
     // для ховера - лого клана проставляется рядом с фото, если есть класс wod-header - все то же самое, в общем. 
     if (document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .line.clan .statblock-markdown > p') != null) {
         var clanNameHover = document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .line.clan .statblock-markdown > p').innerHTML;
-        const collapsedColumnHover = document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .collapse-container'); // определяется зона, которой будет назначен бэкграунд 
+        const collapsedColumnHover = document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .collapse-container');
         switch (clanNameHover) {
             case 'Ассамиты':
                 var collapsedBackgroundClanHover = 'Assamite';

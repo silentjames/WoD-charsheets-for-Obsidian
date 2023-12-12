@@ -2,7 +2,8 @@ Some character sheets for World of Darkness (v20) characters, based on [Fantasy 
 
 First of all, examples in English and Russian:
 
-<img src="https://user-images.githubusercontent.com/12649819/234894483-841cea0d-06ba-4732-a3d7-efeb48124689.png" width="400">   <img src="https://user-images.githubusercontent.com/12649819/234894513-43be6afb-3baf-44f6-bf9f-04ff2cc7bf69.png" width="424.685">
+<img src='imgs/en_cut_small.png' width='400'>
+<img src='imgs/ru_cut_small.png' width='434'>
 
 ### General things
 This statblock is based on custom layout (obviously), css snippet and js-script. To run the script, you’ll need Dataview plugin. I’ll describe css and js later. And one final warning – I’m not a software developer at all, so css and js are full of sh#tcode :)
@@ -43,7 +44,7 @@ But this statblock supports the great [Style Settings plugin](https://github.com
 For Marta you'll need normal and italic, for Trajan Pro 3 - normal, bold and black.
 But you can choose another font! Just keep in mind that these fonts will work on your computer only, not on mobile
 
-![](/imgs/style%20settings.png)
+<img src='imgs/style_settings.png' width='650'>
 
 ### Epilogue 
 Well, that’s all, folks! Please let me know what do you think about this layout, and how it can be improved. For example, still not sure about the way the Specialties are displayed, but can’t think up something better.

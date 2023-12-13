@@ -4,14 +4,6 @@
     display: none;
 }
 
-/*  Same style for all the properties in the character sheet  */
-.vtm-v20-vampire-en span.property-name {
-    text-transform: uppercase;
-    font-size: 12.5px;
-    font-weight: normal !important;
-}
-
-
 .statblock-inline-item.group-container:has(.heading-container.disciplines-column > .flex-container:empty) {
     display: none;
 }
@@ -71,7 +63,6 @@
 }
 
 
-
 /*  All base data columns are aligned in center no matter what  */
 .vtm-v20-vampire .general-text-info {
     justify-content: space-around;
@@ -116,6 +107,7 @@ body:has(.vtm-v20-vampire) .popover.hover-popover > .media-embed.image-embed.is-
     margin-left: auto;
     margin-right: auto;
 }
+
 
 
 /*  =====================================================  */
@@ -179,7 +171,7 @@ body:has(.vtm-v20-vampire) .popover.hover-popover > .media-embed.image-embed.is-
     margin-right: 11px;
     text-align: center;
     font-size: 17.5px;
-    font-family: var(--statblock-heading-font);
+    font-family: 'TrajanPro3';
     font-weight: normal !important;
     text-transform: uppercase;
     justify-content: center;
@@ -490,7 +482,7 @@ body:has(.vtm-v20-vampire) .popover.hover-popover > .media-embed.image-embed.is-
     text-align: center;
     letter-spacing: 1px;
     font-size: 16px;
-    font-weight: bolder;
+    font-weight: 900;
     text-transform: uppercase;
 }
 .flex-container:has(> h4.statblock-heading) {
@@ -515,7 +507,7 @@ h6.heading.Talents, h6.heading.Skills, h6.heading.Knowledges,
 h6.heading.Disciplines, h6.heading.Backgrounds, h6.heading.Virtues {
     font-size: 14px;
     letter-spacing: 0;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 
@@ -770,10 +762,10 @@ span.dice-roller {
 
 /*  Style for level 6 headers - merits, flaws, specialties, path, willpower, boold, health, clan weakness  */
 h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .property-text, h6.heading.willpower, h6.heading.bloodpool, h6.heading.Health, .line.weakness .property-name {
-    font-weight: bold !important;
+    font-weight: 700 !important;
     letter-spacing: 0;
     font-size: 14px;
-    font-family: var(--statblock-heading-font);
+    font-family: 'TrajanPro3';
     justify-content: center;
     margin-right: 7px;
     margin-left: 7px;
@@ -791,6 +783,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 .statblock-item-container.heading-container:has(.heading.statblock-heading.Specialties) {
     margin-bottom: 0;
 }
+
 .merits-and-flaws-column {
     width: var(--main-line-widht);
     margin-bottom: 0px;
@@ -892,7 +885,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/* Центрируются человечность, воля и кровь  */
+/*  Align humanity, willpower and blood blocks  */
 .statblock-item-container.property-container:has(> .line.path) {
     display: flex;
     justify-content: center;
@@ -901,13 +894,13 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Попрятал названия пропертей для человечности, воли и крови  */
+/*  Hide system properties' names for humanity, willpower and blood  */
 .line.path .property-name, .line.path_value .property-name, .line.willpower_main .property-name, .line.willpower_current .property-name, .line.blood .property-name, .line.blood_current2 .property-name, .line.blood_current3 .property-name, .line.blood_current4 .property-name {
     display: none;
 }
 
 
-/*  На всякий случай зацентрировал заголовок пути/человечности (из всего блока только там может меняться заголовок), а потом и все остальные  */
+/*  Align by center all humanity, willpower and blood texts  */
 .line.path, .line.bearing, .line.path_value, .line.willpower_main, .line.willpower_current, .line.blood, .line.blood_current2, .line.blood_current3, .line.blood_current4, .line.blood_per_turn {
     text-align: center;
 }
@@ -918,31 +911,26 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Удаляются ненужные названия и значения пропертей для блока про здоровье  */
-.line.bruised .property-name, .line.bruised .property-text, .line.hurt .property-text, .line.hurt_value .property-text, .line.injured .property-text, .line.injured_value .property-text, .line.wounded .property-text, .line.wounded_value .property-text, .line.mauled .property-text, .line.mauled_value .property-text, .line.crippled .property-text, .line.crippled_value .property-text, .line.incapacitated .property-name, .line.incapacitated .property-text, .line.aggravated .property-name, .line.lethal .property-name, .line.bashing .property-name {
-    display: none;
-}
-
-
-/*  Убрать названия и значения пропертей для квадратов  */
+/*  Hide system properties' names for health  */
+.line.bruised .property-name, .line.bruised .property-text, .line.hurt .property-text, .line.hurt_value .property-text, .line.injured .property-text, .line.injured_value .property-text, .line.wounded .property-text, .line.wounded_value .property-text, .line.mauled .property-text, .line.mauled_value .property-text, .line.crippled .property-text, .line.crippled_value .property-text, .line.incapacitated .property-name, .line.incapacitated .property-text, .line.aggravated .property-name, .line.lethal .property-name, .line.bashing .property-name,
 .line.dmg_sq1 .property-name, .line.dmg_sq2 .property-name, .line.dmg_sq3 .property-name, .line.dmg_sq4 .property-name, .line.dmg_sq5 .property-name, .line.dmg_sq6 .property-name, .line.dmg_sq7 .property-name {
     display: none;
 }
 
-/*  Заменяется значение пропертей для dmg на квадратики  */
+/*  Replace the font for damage with custom Squares  */
 .line.dmg_sq1 .property-text, .line.dmg_sq2 .property-text, .line.dmg_sq3 .property-text, .line.dmg_sq4 .property-text, .line.dmg_sq5 .property-text, .line.dmg_sq6 .property-text, .line.dmg_sq7 .property-text {
     font-size: 20px;
     font-family: 'Squares';
 }
 
-/*  Убрал отступ снизу у всякого здоровья  */
+/*  Hide margin bottom for health  */
 .health-block:has(> .health-block.damage-squares), .health-block:has(> .health-block.damage-dice-penalties),
 .property-container:has(> .dmg_sq1), .property-container:has(> .dmg_sq2), .property-container:has(> .dmg_sq3), .property-container:has(> .dmg_sq4), .property-container:has(> .dmg_sq5), .property-container:has(> .dmg_sq6), .property-container:has(> .dmg_sq7) {
     margin-bottom: 0;
 }
 
 
-/*  Крестики поверх квадратиков здоровья  */
+/*  Damage crosses are placed above the health squares  */
 .health-block {
     position: relative;
 }
@@ -959,7 +947,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Побольше шрифт для штрафов за здоровье, выровнял и подвинул поближе к квадратикам */
+/*  bigger font and positioning health penalty numbers  */
 .health-block.damage-dice-penalties {
     width: 149px;
     margin-left: 26px;
@@ -972,7 +960,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Шрифты, размер и цвет для крестиков здоровья  */
+/*  Fonts, size and color for all damage crosses  */
 .aggravated .property-text {
     font-family: "Damage-Aggravated";
     font-size: 17.5px;
@@ -990,7 +978,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Удаляются названия переменных для специализации  */
+/*  Hide system property names for specialies  */
 .line.specialty1_origin .property-name, .line.specialty1_name .property-name,
 .line.specialty2_origin .property-name, .line.specialty2_name .property-name,
 .line.specialty3_origin .property-name, .line.specialty3_name .property-name,
@@ -1001,7 +989,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Удаляются названия переменных для специализации  */
+/*  Align specialties names on left side   */
 .property-container:has(.line.specialty1_origin), .property-container:has(.line.line.specialty1_name),
 .property-container:has(.line.specialty2_origin), .property-container:has(.line.line.specialty2_name),
 .property-container:has(.line.specialty3_origin), .property-container:has(.line.line.specialty3_name),
@@ -1013,7 +1001,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Проперти специализации превращаются в сетку типа таблицу  */
+/*  Transform specialties block into table  */
 .specialities-block:has(> .specialty_one), .specialities-block:has(> .specialty_two), .specialities-block:has(> .specialty_three),
 .specialities-block:has(> .specialty_four), .specialities-block:has(> .specialty_five), .specialities-block:has(> .specialty_six) {
     display: grid;
@@ -1022,7 +1010,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Добавляется стрелочный маркер перед специализациями (чтобы было видно, что к чему относится)  */
+/*  Add arrow marker for specialties  */
 .vtm-v20-vampire-en .specialities-block:has(> .specialty_one):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_two):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_three):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_four):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_five):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_six):before {
     content: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cjxzdmcgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwIDQ3IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zOnNlcmlmPSJodHRwOi8vd3d3LnNlcmlmLmNvbS8iIHN0eWxlPSJmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDA7Ij4KICAgIDxnIGlkPSJwb2x5Z29uMTAiIHRyYW5zZm9ybT0ibWF0cml4KDAuOSwwLDAsMC45LDQuNjYyOTRlLTE2LDMuNzAwMzYpIj4KICAgICAgICA8cGF0aCBkPSJNMi45MDksMjMuNTAxTDIuNzcxLDIyLjcwOEwyLjM3NiwyMS42ODVMMS42ODMsMjAuNjY2TDAuODg5LDE5LjlMMCwxOS4yNTlMMC45OSwxOC43NUwxLjg3OSwxNy45ODRMMi41NzUsMTYuOTY1TDMuMDY5LDE1Ljk0NkwzLjY2MywxNC41NEw0LjA1OSwxMi44ODFMNC41NTYsOS4xODFMNS4wNDksLTAuMDAxTDUuNTQ2LDkuMTgxTDYuMDM5LDEyLjg4MUw2LjQzNSwxNC40MTRMNi45MzEsMTUuOTQ2TDcuNjI0LDE3LjA5MUw4LjIxOSwxNy44NThMOS4xMTEsMTguNjI0TDEwLDE5LjEzM0w5LjIwOSwxOS45TDguNDE1LDIwLjUzNUw3LjcyMiwyMS40MzJMNy4zMjcsMjIuNzA4TDcuMDk1LDIzLjUwMUw3LjMyNywyNC4yOTRMNy43MjIsMjUuNTdMOC40MTUsMjYuNDY3TDkuMjA5LDI3LjEwM0wxMCwyNy44NjlMOS4xMTEsMjguMzc4TDguMjE5LDI5LjE0NUw3LjYyNCwyOS45MTFMNi45MzEsMzEuMDU2TDYuNDM1LDMyLjU4OEw2LjAzOSwzNC4xMjFMNS41NDYsMzcuODIyTDUuMDQ5LDQ3LjAwNEw0LjU1NiwzNy44MjJMNC4wNTksMzQuMTIxTDMuNjYzLDMyLjQ2MkwzLjA2OSwzMS4wNTZMMi41NzUsMzAuMDM3TDEuODc5LDI5LjAxOEwwLjk5LDI4LjI1MkwwLDI3Ljc0M0wwLjg4OSwyNy4xMDNMMS42ODMsMjYuMzM2TDIuMzc2LDI1LjMxOEwyLjc3MSwyNC4yOTRMMi45MDksMjMuNTAxWiIgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6cmdiKDM1LDMxLDMyKTtzdHJva2Utd2lkdGg6MC42MnB4OyIvPgogICAgPC9nPgo8L3N2Zz4K");
     height: 39px;
@@ -1034,7 +1022,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Чуть выравниваются высоты у специализаций, чтобы ровно смотрелись напротив стрелки-маркера  */
+/*  Move specialties a little bit up to align them next to the arrow  */
 .line.specialty1_origin, .line.specialty1_name, .line.specialty2_origin, .line.specialty2_name,
 .line.specialty3_origin, .line.specialty3_name, .line.specialty4_origin, .line.specialty4_name,
 .line.specialty5_origin, .line.specialty5_name, .line.specialty6origin, .line.specialty6_name {
@@ -1042,7 +1030,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  Изъян превращается в столбик и центрируется  */
+/*  Weakness is now centered  */
 .property-container:has(.line.weakness) {
     display: flex;
     justify-content: space-around;
@@ -1064,20 +1052,20 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 }
 
 
-/*  скрывается настройка SHOW_WEAKNESS  */
+/*  Hide SHOW_WEAKNESS setting  */
 .property-container:has(> .line.show_weakness) {
     display: none;
 }
 
-/*  скрывается блок джаваскрипта (который и так бы не отображался, а место почему-то занимает)  */
+/*  Hide javascript block  */
 .javascript-container {
     display: none;
 }
 
 
-/*  =====================================================  */
-                /*  УДАЛЕНИЕ ПУСТЫХ БЛОКОВ  */
-/*  =====================================================  */
+/*  ===================================================  */
+                /*  REMOVE EMPTY BLOCKS  */
+/*  ===================================================  */
 
 
 /*  сворачивающееся меню удаляется, если пусто в каждом из столбцов характеристик, способностей и преимуществ  
@@ -1112,7 +1100,7 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 } */
 
 
-/*  совсем удаляются блоки про дисциплины и факты биографии, если в них ничего нет  */
+/*  Remove disciplines and background blocks if empty  */
 .statblock-item-container.disciplines-column:has(.property-container:empty), .statblock-item-container.disciplines-column:has(.flex-container:empty),
 .statblock-item-container.backgrounds-column:has(.property-container:empty), .statblock-item-container.backgrounds-column:has(.flex-container:empty) {
     display: none;
@@ -1126,61 +1114,44 @@ h6.heading.Merits, h6.heading.Flaws, h6.heading.Specialties, .line.path .propert
 
 
 
-/*  совсем удаляется блок про достоинства и недостатки, если в нем ничего нет  
-.statblock-item-container.merits-and-flaws-column:has(.property-container:empty), 
-.statblock-item-container.merits-and-flaws-column:has(.flex-container:empty) {
+/*  Remove merits and flaws block if empty  */
+.merits-and-flaws-column:has(.property-container:empty), .merits-and-flaws-column:has(.flex-container:empty) {
     display: none;
-}*/
+}
+.statblock-item-container.heading-container.merits-and-flaws-column:has(.flex-container:empty) {
+    display: none;
+}
+.statblock-inline-item.group-container:has(.heading-container.merits-and-flaws-column:first-of-type .flex-container:empty):has(.merits-and-flaws-column:nth-child(8) .flex-container:empty) {
+    display: none;
+}
 
 
-/*  совсем удаляется блок про кровь, если в нем ничего нет  */
+/*  Remove blood block if empty  */
 .statblock-item-container.group-container:has(> .blood-block):has(h6.heading.bloodpool .statblock-rendered-text-content:empty) {
     display: none;
 }
 
 
-/*  совсем удаляется блок про здоровье, если в нем нет заголовка "Health"  */
+/*  Remove health block if "Health" heading is not presented  */
 .statblock-item-container.group-container:has(> .health-block):has(h6.heading.Health .statblock-rendered-text-content:empty) {
     display: none;
 }
-/*  если блока про здоровье нет, а про специализацию есть, то у заголовка специализации убирается отступ сверху  */
+/*  If there is no health block, but specialties block exists, the top margin of the specialties block will be removed  */
 .statblock-inline-item.group-container > .statblock-item-container.group-container:has(.health-block, .specialities-block, h6.heading.Health .statblock-rendered-text-content:empty) .statblock-item-container.heading-container:has(.heading.statblock-heading.Specialties) {
     margin-top: 0px !important;
 }
 
-/*  совсем удаляется блок про специализации, если в нем нет заголовка "Specialties"  */
+/*  Remove specialties block if "Specialties" heading is not presented  */
 .statblock-item-container.group-container:has(> .specialities-block):has(h6.heading.Specialties .statblock-rendered-text-content:empty) {
     display: none;
 }
 
-/*  если нет ни здоровья, ни специализации, весь столбец исчезает  */
+/*  The coulmn that contains health and specialties blocks will be removed if both blocks aren't presented  */
 .statblock-inline-item.group-container:has(h6.heading.Health .statblock-rendered-text-content:empty):has(h6.heading.Specialties .statblock-rendered-text-content:empty) {
     display: none;
 }
 
 
-
-/* ============= ОСНОВНОЙ блок ============== */
-
-.vtm-v20-vampire-en .group-container.general-text-info-column:has(> .info-group) {
-    display: grid;
-    grid-template-columns: repeat 2;
-    grid-template-rows: repeat(3, min-content);
-    grid-auto-flow: column;
-    column-gap: 30px;
-    justify-content: center;
-}
-
-/* всего 3 элемента */
-.vtm-v20-vampire-en .group-container.general-text-info-column:has(> .info-group) > .property-container:nth-last-child(3):first-child,
-.vtm-v20-vampire-en .group-container.general-text-info-column:has(> .info-group) > .property-container:nth-last-child(3):first-child ~ .property-container {
-    grid-column: 1 / 1;
-}
-
-/* всего 4 элемента */
-.vtm-v20-vampire-en .group-container.general-text-info-column:has(> .info-group) > .property-container:nth-last-child(3):nth-child(2) ~ .property-container {
-    grid-column: 2
-}
 /* @settings
 
 name: Vampire the Masquerade (v20) Statblock
@@ -1206,14 +1177,12 @@ settings:
 
 
 
-
-
 /*  =====================================================  */
-            /*  ОБЩИЕ НАСТРОКИ ДЛЯ ЛЭЙАУТА  */
+                /*  GENERAL LAYOUT SETTINGS  */
 /*  =====================================================  */
 
 
-/*  Имена пропертей в одном стиле  */
+/*  Same style for all the properties in the character sheet  */
 .vtm-v20-vampire-en span.property-name {
     text-transform: uppercase;
     font-size: 12.5px;
@@ -1221,15 +1190,16 @@ settings:
 }
 
 
-/*  Цвета верхнего бара  */
-.vtm-v20-vampire-en .bar {
-    background: rgb(2, 48, 21) !important;
-} 
-
-
+/*  Hide unnecessary dice roller element  */
 .vtm-v20-vampire-en .dice-original {
     display: none;
 }
+
+
+/*  Color for top and bottom bar  */
+.vtm-v20-vampire-en .bar {
+    background: rgb(2, 48, 21) !important;
+} 
 
 
 /*  Общие мега-настройки для конкретного вампирского лейаута  */

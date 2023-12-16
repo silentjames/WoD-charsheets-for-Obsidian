@@ -1,7 +1,8 @@
 /*  Скрывается заголовок в режиме чтения  */
 /*  Hide note's title in Reading view  */
 .markdown-reading-view:has(.vtm-v20-vampire) .inline-title,
-.markdown-reading-view:has(.vtm-v20-vampire-en-en) .inline-title {
+.markdown-reading-view:has(.vtm-v20-vampire-en-en) .inline-title,
+.markdown-reading-view:has(.wod-v20-mortal) .inline-title {
     display: none;
 }
 
@@ -16,14 +17,16 @@
 /*  ================================================================  */
 
 .vtm-v20-vampire .general-info-group,
-.vtm-v20-vampire-en .general-info-group {
+.vtm-v20-vampire-en .general-info-group,
+.wod-v20-mortal .general-info-group {
     justify-content: space-evenly;
 }
 
 /*  Уменьшил размер блока с именем, чтобы подпись-пояснение (сабхединг) не уползала слишком далеко вниз, и указал другой шрифт  */
 /*  Reduced the size and the font of the name area, to prevent subheading going to far down   */
 .vtm-v20-vampire h1.heading .statblock-rendered-text-content,
-.vtm-v20-vampire-en h1.heading .statblock-rendered-text-content {
+.vtm-v20-vampire-en h1.heading .statblock-rendered-text-content,
+.wod-v20-mortal h1.heading .statblock-rendered-text-content {
     height: 32px;
     font-family: var(--statblock-content-font);
     font-size: 1.7rem;
@@ -33,11 +36,13 @@
 /*  Имя и описание персонажа выравниваются по центру  */
 /*  Name and subheading are aligned by the center of their area  */
 .vtm-v20-vampire .flex-container:has(h1.name),
-.vtm-v20-vampire-en .flex-container:has(h1.name) {
+.vtm-v20-vampire-en .flex-container:has(h1.name),
+.wod-v20-mortal .flex-container:has(h1.name) {
     justify-content: center;
 }
 .vtm-v20-vampire .statblock-item-container,
-.vtm-v20-vampire-en .statblock-item-container {
+.vtm-v20-vampire-en .statblock-item-container,
+.wod-v20-mortal .statblock-item-container {
     text-align: center;
 }
 
@@ -45,7 +50,8 @@
 /*  Удаляется пустой блок, где должно быть фото, если собсно фото нет  */
 /*  Photo area is removed if no photo was provided  */
 .vtm-v20-vampire .general-info-group .statblock-inline-item.group-container:empty,
-.vtm-v20-vampire-en .general-info-group .statblock-inline-item.group-container:empty {
+.vtm-v20-vampire-en .general-info-group .statblock-inline-item.group-container:empty,
+.wod-v20-mortal .general-info-group .statblock-inline-item.group-container:empty {
     display: none;
 }
 
@@ -58,13 +64,20 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
+.general-info-group > div:nth-child(1) {
+    display: flex;
+}
+.statblock-item-container:has(.general-text-info-column), .group-container:has(.line.clan), .group-container:has(.line.nature) {
+    margin-bottom: 0 !important;
+}
 
 
 
 /*  Базовые данные (клан, натура, и т.д.) и их значения красиво располагаются друг за другом  */
 /*  All base data (clan, generation, concept, etc) and their values are perfectly aligned one by one  */
 .vtm-v20-vampire .clan, .vtm-v20-vampire .generation, .vtm-v20-vampire .sire, .vtm-v20-vampire .nature, .vtm-v20-vampire .demeanor, .vtm-v20-vampire .concept,
-.vtm-v20-vampire-en .clan, .vtm-v20-vampire-en .generation, .vtm-v20-vampire-en .sire, .vtm-v20-vampire-en .nature, .vtm-v20-vampire-en .demeanor, .vtm-v20-vampire-en .concept {
+.vtm-v20-vampire-en .clan, .vtm-v20-vampire-en .generation, .vtm-v20-vampire-en .sire, .vtm-v20-vampire-en .nature, .vtm-v20-vampire-en .demeanor, .vtm-v20-vampire-en .concept,
+.wod-v20-mortal .nature, .wod-v20-mortal .mask, .wod-v20-mortal .amplua {
     display: flex !important;
     justify-content: space-between;
     min-width: var(--attributes-line-width);;
@@ -80,7 +93,13 @@
 /*  Базовые данные всегда по центру, независимо от того, какие поля заполнены  */
 /*  All base data columns are aligned in center no matter what  */
 .vtm-v20-vampire .general-text-info,
-.vtm-v20-vampire-en .general-text-info {
+.vtm-v20-vampire-en .general-text-info,
+.wod-v20-mortal .general-text-info {
+    justify-content: space-around;
+}
+
+/*  центрируются натура, маска и амплуа, у человека ж больше и нет ничего  */
+.wod-v20-mortal div.statblock-item-container.inline-container.general-text-info-column > div {
     justify-content: space-around;
 }
 
@@ -121,7 +140,9 @@
 body:has(.vtm-v20-vampire) .popover.hover-popover:has(> .image-embed),
 body:has(.vtm-v20-vampire) .popover.hover-popover > .media-embed.image-embed.is-loaded,
 body:has(.vtm-v20-vampire-en) .popover.hover-popover:has(> .image-embed),
-body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.is-loaded {
+body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.is-loaded,
+body:has(.wod-v20-mortal) .popover.hover-popover:has(> .image-embed),
+body:has(.wod-v20-mortal) .popover.hover-popover > .media-embed.image-embed.is-loaded {
     max-width: 70vh;
 }
 
@@ -129,7 +150,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  фото центрируется, если подпись шире самого фото  */
 /*  Align the image by center if the image's title is bigger  */
 .vtm-v20-vampire .image-container .image,
-.vtm-v20-vampire-en .image-container .image {
+.vtm-v20-vampire-en .image-container .image,
+.wod-v20-mortal .image-container .image {
     margin-left: auto;
     margin-right: auto;
 }
@@ -147,14 +169,24 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 .view-content:has(.wod-header) .vtm-v20-vampire .collapse-container,
 .popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire .collapse-container,
 .view-content:has(.wod-header) .vtm-v20-vampire-en .collapse-container,
-.popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .collapse-container {
+.popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .collapse-container,
+.view-content:has(.wod-header) .wod-v20-mortal .collapse-container,
+.popover.hover-popover .markdown-embed-content:has(.wod-header) .wod-v20-mortal .collapse-container {
     display: none;
 }
 
 .view-content:has(.wod-header) .vtm-v20-vampire .image-main-block .image,
 .markdown-embed-content:has(.wod-header) .vtm-v20-vampire .image-main-block .image,
+.view-content:has(.wod-header) .vtm-v20-vampire .image-alt-block .image,
+.markdown-embed-content:has(.wod-header) .vtm-v20-vampire .image-alt-block .image,
 .view-content:has(.wod-header) .vtm-v20-vampire-en .image-main-block .image,
-.markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .image-main-block .image {
+.markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .image-main-block .image,
+.view-content:has(.wod-header) .vtm-v20-vampire-en .image-alt-block .image,
+.markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .image-alt-block .image,
+.view-content:has(.wod-header) .wod-v20-mortal .image-main-block .image,
+.markdown-embed-content:has(.wod-header) .wod-v20-mortal .image-main-block .image,
+.view-content:has(.wod-header) .wod-v20-mortal .image-alt-block .image,
+.markdown-embed-content:has(.wod-header) .wod-v20-mortal .image-alt-block .image  {
     width: 210px;
     height: 210px;
 }
@@ -162,28 +194,36 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 .view-content:has(.wod-header) .vtm-v20-vampire h1.heading .statblock-rendered-text-content,
 .markdown-embed-content:has(.wod-header) .vtm-v20-vampire h1.heading .statblock-rendered-text-content,
 .view-content:has(.wod-header) .vtm-v20-vampire-en h1.heading .statblock-rendered-text-content,
-.markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en h1.heading .statblock-rendered-text-content {
+.markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en h1.heading .statblock-rendered-text-content,
+.view-content:has(.wod-header) .wod-v20-mortal h1.heading .statblock-rendered-text-content,
+.markdown-embed-content:has(.wod-header) .wod-v20-mortal h1.heading .statblock-rendered-text-content {
     font-size: 1.5em;
 }
 
 .view-content:has(.wod-header) .vtm-v20-vampire .subheading-container,
 .markdown-embed-content:has(.wod-header) .vtm-v20-vampire .subheading-container,
 .view-content:has(.wod-header) .vtm-v20-vampire-en .subheading-container,
-.markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .subheading-container {
+.markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .subheading-container,
+.view-content:has(.wod-header) .wod-v20-mortal .subheading-container,
+.markdown-embed-content:has(.wod-header) .wod-v20-mortal .subheading-container {
     margin-top: 10px;
 }
 
 .view-content:has(.wod-header) .vtm-v20-vampire .subheading-container .statblock-rendered-text-content, 
 .markdown-embed-content:has(.wod-header) .vtm-v20-vampire .subheading-container .statblock-rendered-text-content,
 .view-content:has(.wod-header) .vtm-v20-vampire-en .subheading-container .statblock-rendered-text-content, 
-.markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .subheading-container .statblock-rendered-text-content {
+.markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .subheading-container .statblock-rendered-text-content,
+.view-content:has(.wod-header) .wod-v20-mortal .subheading-container .statblock-rendered-text-content, 
+.markdown-embed-content:has(.wod-header) .wod-v20-mortal .subheading-container .statblock-rendered-text-content {
     font-size: 1.2em;
 }
 
 .view-content:has(.wod-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container,
 .popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire .general-info-group > .statblock-inline-item.group-container,
 .view-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container,
-.popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container {
+.popover.hover-popover .markdown-embed-content:has(.wod-header) .vtm-v20-vampire-en .general-info-group > .statblock-inline-item.group-container,
+.view-content:has(.wod-header) .wod-v20-mortal .general-info-group > .statblock-inline-item.group-container,
+.popover.hover-popover .markdown-embed-content:has(.wod-header) .wod-v20-mortal .general-info-group > .statblock-inline-item.group-container {
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center ;
@@ -202,7 +242,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Уменьшил отступ у основного блока сворачивания  */
 /*  Reduce the bottom margin of the CHARACTER SHEET area  */
 .vtm-v20-vampire .statblock-item-container.collapse-container:has(> details),
-.vtm-v20-vampire-en .statblock-item-container.collapse-container:has(> details) {
+.vtm-v20-vampire-en .statblock-item-container.collapse-container:has(> details),
+.wod-v20-mortal .statblock-item-container.collapse-container:has(> details) {
     margin-bottom: 0;
 }
 
@@ -210,7 +251,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Настройки заголовка для блока сворчивания  */
 /*  Some settings for the CHARACTER SHEET title  */
 .vtm-v20-vampire details > summary,
-.vtm-v20-vampire-en details > summary {
+.vtm-v20-vampire-en details > summary,
+.wod-v20-mortal details > summary {
     margin-bottom: 7px !important;
     margin-left: 11px;
     margin-right: 11px;
@@ -228,13 +270,15 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Не отображается дефолтная стрелочка...  */
 /*  Hide default arrow for collapsed area  */
 .vtm-v20-vampire .handle,
-.vtm-v20-vampire-en .handle {
+.vtm-v20-vampire-en .handle,
+.wod-v20-mortal .handle {
     display: none;
 }
 /*  ...но подвинуть ее все равно надо  */
 /*  ...and move it a bit to prevent unnecessary clicks   */
 .vtm-v20-vampire .collapser,
-.vtm-v20-vampire-en .collapser {
+.vtm-v20-vampire-en .collapser,
+.wod-v20-mortal .collapser {
     position: absolute !important;
     right: 200px !important;
     display: flex;
@@ -245,7 +289,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Стрелочки до и после заголовка  */
 /*  Arrows before and after CHARACTER SHEETS title  */
 .vtm-v20-vampire .collapser::before,
-.vtm-v20-vampire-en .collapser::before {
+.vtm-v20-vampire-en .collapser::before,
+.wod-v20-mortal .collapser::before {
     content: var(--arrow-tip);
     width: 25px;
     transform: rotate(0deg);
@@ -258,11 +303,13 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
     vertical-align: middle;
 }
 .vtm-v20-vampire details[open]>summary>.collapser::before,
-.vtm-v20-vampire-en details[open]>summary>.collapser::before {
+.vtm-v20-vampire-en details[open]>summary>.collapser::before,
+.wod-v20-mortal details[open]>summary>.collapser::before {
     transform: rotate(-90deg);
 }
 .vtm-v20-vampire .collapser::after,
-.vtm-v20-vampire-en .collapser::after {
+.vtm-v20-vampire-en .collapser::after,
+.wod-v20-mortal .collapser::after {
     content: var(--arrow-tip);
     width: 25px;
     transform: rotate(-180deg);
@@ -274,7 +321,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
     vertical-align: middle;
 }
 .vtm-v20-vampire details[open]>summary>.collapser::after,
-.vtm-v20-vampire-en details[open]>summary>.collapser::after {
+.vtm-v20-vampire-en details[open]>summary>.collapser::after,
+.wod-v20-mortal details[open]>summary>.collapser::after {
     transform: rotate(-90deg);
 }
 
@@ -528,7 +576,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 
 
 .vtm-v20-vampire .attributes-group, .vtm-v20-vampire .abilities-group,
-.vtm-v20-vampire-en .attributes-group, .vtm-v20-vampire-en .abilities-group {
+.vtm-v20-vampire-en .attributes-group, .vtm-v20-vampire-en .abilities-group,
+.wod-v20-mortal .attributes-group, .wod-v20-mortal .abilities-group {
     justify-content: space-evenly;
 }
 
@@ -536,7 +585,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Центрируются заголовки четвертого уровня (характеристики, способности, и т.д.), добавляется пустое место и стрелочки  */
 /*  Level 4 headers (attributes, abilities, advantages) are centered and a little bit modified, arrows added  */
 .vtm-v20-vampire h4.Attributes .statblock-rendered-text-content.inline, .vtm-v20-vampire h4.Abilities .statblock-rendered-text-content.inline, .vtm-v20-vampire h4.Advantages .statblock-rendered-text-content.inline,
-.vtm-v20-vampire-en h4.Attributes .statblock-rendered-text-content.inline, .vtm-v20-vampire-en h4.Abilities .statblock-rendered-text-content.inline, .vtm-v20-vampire-en h4.Advantages .statblock-rendered-text-content.inline { 
+.vtm-v20-vampire-en h4.Attributes .statblock-rendered-text-content.inline, .vtm-v20-vampire-en h4.Abilities .statblock-rendered-text-content.inline, .vtm-v20-vampire-en h4.Advantages .statblock-rendered-text-content.inline, 
+.wod-v20-mortal h4.Attributes .statblock-rendered-text-content.inline, .wod-v20-mortal h4.Abilities .statblock-rendered-text-content.inline, .wod-v20-mortal h4.Advantages .statblock-rendered-text-content.inline { 
     width: 210px;
     text-align: center;
     letter-spacing: 1px;
@@ -545,7 +595,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
     text-transform: uppercase;
 }
 .vtm-v20-vampire .flex-container:has(> h4.statblock-heading),
-.vtm-v20-vampire-en .flex-container:has(> h4.statblock-heading) {
+.vtm-v20-vampire-en .flex-container:has(> h4.statblock-heading),
+.wod-v20-mortal .flex-container:has(> h4.statblock-heading) {
     display: flex;
     justify-content: center;
 }
@@ -562,7 +613,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Центрируются заголовки шестого уровня (названия столбцов)  */
 /*  Level 6 headers (columns names) are centered  */
 .vtm-v20-vampire .flex-container:has(> h6.statblock-heading),
-.vtm-v20-vampire-en .flex-container:has(> h6.statblock-heading) {
+.vtm-v20-vampire-en .flex-container:has(> h6.statblock-heading),
+.wod-v20-mortal .flex-container:has(> h6.statblock-heading) {
     justify-content: center;
 }
 
@@ -571,7 +623,10 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 .vtm-v20-vampire h6.heading.Disciplines, .vtm-v20-vampire h6.heading.Backgrounds, .vtm-v20-vampire h6.heading.Virtues,
 .vtm-v20-vampire-en h6.heading.Physical, .vtm-v20-vampire-en h6.heading.Social, .vtm-v20-vampire-en h6.heading.Mental, 
 .vtm-v20-vampire-en h6.heading.Talents, .vtm-v20-vampire-en h6.heading.Skills, .vtm-v20-vampire-en h6.heading.Knowledges,
-.vtm-v20-vampire-en h6.heading.Disciplines, .vtm-v20-vampire-en h6.heading.Backgrounds, .vtm-v20-vampire-en h6.heading.Virtues {
+.vtm-v20-vampire-en h6.heading.Disciplines, .vtm-v20-vampire-en h6.heading.Backgrounds, .vtm-v20-vampire-en h6.heading.Virtues,
+.wod-v20-mortal h6.heading.Physical, .wod-v20-mortal h6.heading.Social, .wod-v20-mortal h6.heading.Mental, 
+.wod-v20-mortal h6.heading.Talents, .wod-v20-mortal h6.heading.Skills, .wod-v20-mortal h6.heading.Knowledges,
+.wod-v20-mortal h6.heading.Disciplines, .wod-v20-mortal h6.heading.Backgrounds, .wod-v20-mortal h6.heading.Virtues {
     font-size: 14px;
     letter-spacing: 0;
     font-weight: 700;
@@ -586,18 +641,27 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 .vtm-v20-vampire-en .strength, .vtm-v20-vampire-en .dexterity, .vtm-v20-vampire-en .stamina,
 .vtm-v20-vampire-en .charisma, .vtm-v20-vampire-en .manipulation, .vtm-v20-vampire-en .appearance,
 .vtm-v20-vampire-en .perception, .vtm-v20-vampire-en .intelligence, .vtm-v20-vampire-en .wits,
+.wod-v20-mortal .strength, .wod-v20-mortal .dexterity, .wod-v20-mortal .stamina,
+.wod-v20-mortal .charisma, .wod-v20-mortal .manipulation, .wod-v20-mortal .appearance,
+.wod-v20-mortal .perception, .wod-v20-mortal .intelligence, .wod-v20-mortal .wits,
 /*  талантов... */
 /*  talents...  */
 .vtm-v20-vampire .athletics, .vtm-v20-vampire .alertness, .vtm-v20-vampire .brawl, .vtm-v20-vampire .intimidation, .vtm-v20-vampire .expression, .vtm-v20-vampire .leadership, .vtm-v20-vampire .streetwise, .vtm-v20-vampire .subterfuge, .vtm-v20-vampire .awareness, .vtm-v20-vampire .empathy,
 .vtm-v20-vampire-en .athletics, .vtm-v20-vampire-en .alertness, .vtm-v20-vampire-en .brawl, .vtm-v20-vampire-en .intimidation, .vtm-v20-vampire-en .expression, .vtm-v20-vampire-en .leadership, .vtm-v20-vampire-en .streetwise, .vtm-v20-vampire-en .subterfuge, .vtm-v20-vampire-en .awareness, .vtm-v20-vampire-en .empathy,
+.wod-v20-mortal .athletics, .wod-v20-mortal .alertness, .wod-v20-mortal .brawl, .wod-v20-mortal .intimidation, .wod-v20-mortal .expression, .wod-v20-mortal .leadership, .wod-v20-mortal .streetwise, .wod-v20-mortal .subterfuge, .wod-v20-mortal .awareness, .wod-v20-mortal .empathy,
 /*  навыков... */
 /*  skills...  */
 .vtm-v20-vampire .drive, .vtm-v20-vampire .larceny, .vtm-v20-vampire .survival, .vtm-v20-vampire .performance, .vtm-v20-vampire .animalken, .vtm-v20-vampire .crafts, .vtm-v20-vampire .stealth, .vtm-v20-vampire .firearms, .vtm-v20-vampire .melee, .vtm-v20-vampire .etiquette,
 .vtm-v20-vampire-en .drive, .vtm-v20-vampire-en .larceny, .vtm-v20-vampire-en .survival, .vtm-v20-vampire-en .performance, .vtm-v20-vampire-en .animalken, .vtm-v20-vampire-en .crafts, .vtm-v20-vampire-en .stealth, .vtm-v20-vampire-en .firearms, .vtm-v20-vampire-en .melee, .vtm-v20-vampire-en .etiquette,
+.wod-v20-mortal .drive, .wod-v20-mortal .larceny, .wod-v20-mortal .survival, .wod-v20-mortal .performance, .wod-v20-mortal .animalken, .wod-v20-mortal .crafts, .wod-v20-mortal .stealth, .wod-v20-mortal .firearms, .wod-v20-mortal .melee, .wod-v20-mortal .etiquette,
 /*  и знаний... */
 /*  and knowledges...  */
 .vtm-v20-vampire .academics, .vtm-v20-vampire .science, .vtm-v20-vampire .law, .vtm-v20-vampire .computer, .vtm-v20-vampire .medicine, .vtm-v20-vampire .occult, .vtm-v20-vampire .politics, .vtm-v20-vampire .investigation, .vtm-v20-vampire .finance, .vtm-v20-vampire .technology,
-.vtm-v20-vampire-en .academics, .vtm-v20-vampire-en .science, .vtm-v20-vampire-en .law, .vtm-v20-vampire-en .computer, .vtm-v20-vampire-en .medicine, .vtm-v20-vampire-en .occult, .vtm-v20-vampire-en .politics, .vtm-v20-vampire-en .investigation, .vtm-v20-vampire-en .finance, .vtm-v20-vampire-en .technology
+.vtm-v20-vampire-en .academics, .vtm-v20-vampire-en .science, .vtm-v20-vampire-en .law, .vtm-v20-vampire-en .computer, .vtm-v20-vampire-en .medicine, .vtm-v20-vampire-en .occult, .vtm-v20-vampire-en .politics, .vtm-v20-vampire-en .investigation, .vtm-v20-vampire-en .finance, .vtm-v20-vampire-en .technology,
+.wod-v20-mortal .academics, .wod-v20-mortal .science, .wod-v20-mortal .law, .wod-v20-mortal .computer, .wod-v20-mortal .medicine, .wod-v20-mortal .occult, .wod-v20-mortal .politics, .wod-v20-mortal .investigation, .wod-v20-mortal .finance, .wod-v20-mortal .technology,
+/*  и добродетелей (для всех смертных)  */
+/*  and virtues (for all kind of mortals)  */
+.wod-v20-mortal .conscience, .wod-v20-mortal .selfcontrol, .wod-v20-mortal .courage
 {
     display: flex !important;
     justify-content: space-between;
@@ -609,37 +673,46 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  самодописанные таланты, навыки и знания выглядят как родные  */
 /*  new\additional self-added talents, skills, and knowledges default ones look the same  */
 .vtm-v20-vampire .line.new_talent .property-name, .vtm-v20-vampire .line.new_skill .property-name, .vtm-v20-vampire .line.new_knowledge .property-name,
-.vtm-v20-vampire-en .line.new_talent .property-name, .vtm-v20-vampire-en .line.new_skill .property-name, .vtm-v20-vampire-en .line.new_knowledge .property-name {
+.vtm-v20-vampire-en .line.new_talent .property-name, .vtm-v20-vampire-en .line.new_skill .property-name, .vtm-v20-vampire-en .line.new_knowledge .property-name,
+.wod-v20-mortal .line.new_talent .property-name, .wod-v20-mortal .line.new_skill .property-name, .wod-v20-mortal .line.new_knowledge .property-name {
     margin-right: 0;
 }
 .vtm-v20-vampire .line.new_talent, .vtm-v20-vampire .line.new_skill, .vtm-v20-vampire .line.new_knowledge,
-.vtm-v20-vampire-en .line.new_talent, .vtm-v20-vampire-en .line.new_skill, .vtm-v20-vampire-en .line.new_knowledge {
+.vtm-v20-vampire-en .line.new_talent, .vtm-v20-vampire-en .line.new_skill, .vtm-v20-vampire-en .line.new_knowledge,
+.wod-v20-mortal .line.new_talent, .wod-v20-mortal .line.new_skill, .wod-v20-mortal .line.new_knowledge {
     margin-top: -1px;
 }
 .vtm-v20-vampire .line.new_talent .property-text, .vtm-v20-vampire .line.new_skill .property-text, .vtm-v20-vampire .line.new_knowledge .property-text,
-.vtm-v20-vampire-en .line.new_talent .property-text, .vtm-v20-vampire-en .line.new_skill .property-text, .vtm-v20-vampire-en .line.new_knowledge .property-text {
+.vtm-v20-vampire-en .line.new_talent .property-text, .vtm-v20-vampire-en .line.new_skill .property-text, .vtm-v20-vampire-en .line.new_knowledge .property-text,
+.wod-v20-mortal .line.new_talent .property-text, .wod-v20-mortal .line.new_skill .property-text, .wod-v20-mortal .line.new_knowledge .property-text {
     text-transform: uppercase;
     font-size: 12.5px;
 }
 .vtm-v20-vampire .line.new_talent .property-name, .vtm-v20-vampire .line.new_skill .property-name, .vtm-v20-vampire .line.new_knowledge .property-name,
 .vtm-v20-vampire .line.new_talent_value .property-name, .vtm-v20-vampire .line.new_skill_value .property-name, .vtm-v20-vampire .line.new_knowledge_value .property-name,
 .vtm-v20-vampire-en .line.new_talent .property-name, .vtm-v20-vampire-en .line.new_skill .property-name, .vtm-v20-vampire-en .line.new_knowledge .property-name,
-.vtm-v20-vampire-en .line.new_talent_value .property-name, .vtm-v20-vampire-en .line.new_skill_value .property-name, .vtm-v20-vampire-en .line.new_knowledge_value .property-name {
+.vtm-v20-vampire-en .line.new_talent_value .property-name, .vtm-v20-vampire-en .line.new_skill_value .property-name, .vtm-v20-vampire-en .line.new_knowledge_value .property-name,
+.wod-v20-mortal .line.new_talent .property-name, .wod-v20-mortal .line.new_skill .property-name, .wod-v20-mortal .line.new_knowledge .property-name,
+.wod-v20-mortal .line.new_talent_value .property-name, .wod-v20-mortal .line.new_skill_value .property-name, .wod-v20-mortal .line.new_knowledge_value .property-name {
     display: none;
 }
 .vtm-v20-vampire .new-talent-line, .vtm-v20-vampire .new-skill-line, .vtm-v20-vampire .new-knowledge-line,
-.vtm-v20-vampire-en .new-talent-line, .vtm-v20-vampire-en .new-skill-line, .vtm-v20-vampire-en .new-knowledge-line {
+.vtm-v20-vampire-en .new-talent-line, .vtm-v20-vampire-en .new-skill-line, .vtm-v20-vampire-en .new-knowledge-line,
+.wod-v20-mortal .new-talent-line, .wod-v20-mortal .new-skill-line, .wod-v20-mortal .new-knowledge-line {
     width: var(--main-line-widht);
     height: var(--main-line-height)
 }
 /*  убирается строчка для новых, самописных талантов, навыков и знаний, если в ней ничего нет  */
+/*  remove self-added abilities if they aren't presented  */
 .vtm-v20-vampire .talents-column:has(> .line.empathy) + .talents-column:has(.talents-column.new-talent-line > .statblock-inline-item.property-container:empty),
 .vtm-v20-vampire .skills-column:has(> .line.etiquette) + .skills-column:has(.skills-column.new-skill-line > .statblock-inline-item.property-container:empty),
 .vtm-v20-vampire .knowledges-column:has(> .line.technology) + .knowledges-column:has(.knowledges-column.new-knowledge-line > .statblock-inline-item.property-container:empty),
-/*  remove self-added abilities if they aren't presented  */
 .vtm-v20-vampire-en .talents-column:has(> .line.subterfuge) + .talents-column:has(.talents-column.new-talent-line > .statblock-inline-item.property-container:empty),
 .vtm-v20-vampire-en .skills-column:has(> .line.survival) + .skills-column:has(.skills-column.new-skill-line > .statblock-inline-item.property-container:empty),
-.vtm-v20-vampire-en .knowledges-column:has(> .line.technology) + .knowledges-column:has(.knowledges-column.new-knowledge-line > .statblock-inline-item.property-container:empty) {
+.vtm-v20-vampire-en .knowledges-column:has(> .line.technology) + .knowledges-column:has(.knowledges-column.new-knowledge-line > .statblock-inline-item.property-container:empty),
+.wod-v20-mortal .talents-column:has(> .line.empathy) + .talents-column:has(.talents-column.new-talent-line > .statblock-inline-item.property-container:empty),
+.wod-v20-mortal .skills-column:has(> .line.etiquette) + .skills-column:has(.skills-column.new-skill-line > .statblock-inline-item.property-container:empty),
+.wod-v20-mortal .knowledges-column:has(> .line.technology) + .knowledges-column:has(.knowledges-column.new-knowledge-line > .statblock-inline-item.property-container:empty) {
     display: none;
 }
 
@@ -652,34 +725,44 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 .vtm-v20-vampire-en .strength .property-text, .vtm-v20-vampire-en .dexterity .property-text, .vtm-v20-vampire-en .stamina .property-text, 
 .vtm-v20-vampire-en .charisma .property-text, .vtm-v20-vampire-en .manipulation .property-text, .vtm-v20-vampire-en .appearance .property-text, 
 .vtm-v20-vampire-en .perception .property-text, .vtm-v20-vampire-en .intelligence .property-text, .vtm-v20-vampire-en .wits .property-text, 
+.wod-v20-mortal .strength .property-text, .wod-v20-mortal .dexterity .property-text, .wod-v20-mortal .stamina .property-text, 
+.wod-v20-mortal .charisma .property-text, .wod-v20-mortal .manipulation .property-text, .wod-v20-mortal .appearance .property-text, 
+.wod-v20-mortal .perception .property-text, .wod-v20-mortal .intelligence .property-text, .wod-v20-mortal .wits .property-text, 
 /*  талантов...  */
 /*  talents...  */
 .vtm-v20-vampire .athletics .property-text, .vtm-v20-vampire .alertness .property-text, .vtm-v20-vampire .brawl .property-text, .vtm-v20-vampire .intimidation .property-text, .vtm-v20-vampire .expression .property-text, .vtm-v20-vampire .leadership .property-text, .vtm-v20-vampire .streetwise .property-text, .vtm-v20-vampire .subterfuge .property-text, .vtm-v20-vampire .awareness .property-text, .vtm-v20-vampire .empathy .property-text, .vtm-v20-vampire .empty_talent .property-text,
 .vtm-v20-vampire-en .athletics .property-text, .vtm-v20-vampire-en .alertness .property-text, .vtm-v20-vampire-en .brawl .property-text, .vtm-v20-vampire-en .intimidation .property-text, .vtm-v20-vampire-en .expression .property-text, .vtm-v20-vampire-en .leadership .property-text, .vtm-v20-vampire-en .streetwise .property-text, .vtm-v20-vampire-en .subterfuge .property-text, .vtm-v20-vampire-en .awareness .property-text, .vtm-v20-vampire-en .empathy .property-text, .vtm-v20-vampire-en .empty_talent .property-text,
+.wod-v20-mortal .athletics .property-text, .wod-v20-mortal .alertness .property-text, .wod-v20-mortal .brawl .property-text, .wod-v20-mortal .intimidation .property-text, .wod-v20-mortal .expression .property-text, .wod-v20-mortal .leadership .property-text, .wod-v20-mortal .streetwise .property-text, .wod-v20-mortal .subterfuge .property-text, .wod-v20-mortal .awareness .property-text, .wod-v20-mortal .empathy .property-text, .wod-v20-mortal .empty_talent .property-text,
 /*  навыков...  */
 /*  skills...  */
 .vtm-v20-vampire .drive .property-text, .vtm-v20-vampire .larceny .property-text, .vtm-v20-vampire .survival .property-text, .vtm-v20-vampire .performance .property-text, .vtm-v20-vampire .animalken .property-text, .vtm-v20-vampire .crafts .property-text, .vtm-v20-vampire .stealth .property-text, .vtm-v20-vampire .firearms .property-text, .vtm-v20-vampire .melee .property-text, .vtm-v20-vampire .etiquette .property-text, .vtm-v20-vampire .empty_skill .property-text,
 .vtm-v20-vampire-en .drive .property-text, .vtm-v20-vampire-en .larceny .property-text, .vtm-v20-vampire-en .survival .property-text, .vtm-v20-vampire-en .performance .property-text, .vtm-v20-vampire-en .animalken .property-text, .vtm-v20-vampire-en .crafts .property-text, .vtm-v20-vampire-en .stealth .property-text, .vtm-v20-vampire-en .firearms .property-text, .vtm-v20-vampire-en .melee .property-text, .vtm-v20-vampire-en .etiquette .property-text, .vtm-v20-vampire-en .empty_skill .property-text,
+.wod-v20-mortal .drive .property-text, .wod-v20-mortal .larceny .property-text, .wod-v20-mortal .survival .property-text, .wod-v20-mortal .performance .property-text, .wod-v20-mortal .animalken .property-text, .wod-v20-mortal .crafts .property-text, .wod-v20-mortal .stealth .property-text, .wod-v20-mortal .firearms .property-text, .wod-v20-mortal .melee .property-text, .wod-v20-mortal .etiquette .property-text, .wod-v20-mortal .empty_skill .property-text,
 /*  знаний...  */
 /*  knowledges...  */
 .vtm-v20-vampire .academics .property-text, .vtm-v20-vampire .science .property-text, .vtm-v20-vampire .law .property-text, .vtm-v20-vampire .computer .property-text, .vtm-v20-vampire .medicine .property-text, .vtm-v20-vampire .occult .property-text, .vtm-v20-vampire .politics .property-text, .vtm-v20-vampire .investigation .property-text, .vtm-v20-vampire .finance .property-text, .vtm-v20-vampire .technology .property-text, .vtm-v20-vampire .empty_knowledge .property-text,
 .vtm-v20-vampire-en .academics .property-text, .vtm-v20-vampire-en .science .property-text, .vtm-v20-vampire-en .law .property-text, .vtm-v20-vampire-en .computer .property-text, .vtm-v20-vampire-en .medicine .property-text, .vtm-v20-vampire-en .occult .property-text, .vtm-v20-vampire-en .politics .property-text, .vtm-v20-vampire-en .investigation .property-text, .vtm-v20-vampire-en .finance .property-text, .vtm-v20-vampire-en .technology .property-text, .vtm-v20-vampire-en .empty_knowledge .property-text,
+.wod-v20-mortal .academics .property-text, .wod-v20-mortal .science .property-text, .wod-v20-mortal .law .property-text, .wod-v20-mortal .computer .property-text, .wod-v20-mortal .medicine .property-text, .wod-v20-mortal .occult .property-text, .wod-v20-mortal .politics .property-text, .wod-v20-mortal .investigation .property-text, .wod-v20-mortal .finance .property-text, .wod-v20-mortal .technology .property-text, .wod-v20-mortal .empty_knowledge .property-text,
 /*  самодописанных талантов, навыков и знаний...  */
 /*  additional abilities...  */
 .vtm-v20-vampire .new_talent_value .property-text, .vtm-v20-vampire .new_skill_value .property-text, .vtm-v20-vampire .new_knowledge_value .property-text,
 .vtm-v20-vampire-en .new_talent_value .property-text, .vtm-v20-vampire-en .new_skill_value .property-text, .vtm-v20-vampire-en .new_knowledge_value .property-text,
+.wod-v20-mortal .new_talent_value .property-text, .wod-v20-mortal .new_skill_value .property-text, .wod-v20-mortal .new_knowledge_value .property-text,
 /*  дисциплин...  */
 /*  disciplines...  */
 .vtm-v20-vampire .discipline1_value .property-text, .vtm-v20-vampire .discipline2_value .property-text, .vtm-v20-vampire .discipline3_value .property-text, .vtm-v20-vampire .discipline4_value .property-text, .vtm-v20-vampire .discipline5_value .property-text, .vtm-v20-vampire .discipline6_value .property-text,
 .vtm-v20-vampire-en .discipline1_value .property-text, .vtm-v20-vampire-en .discipline2_value .property-text, .vtm-v20-vampire-en .discipline3_value .property-text, .vtm-v20-vampire-en .discipline4_value .property-text, .vtm-v20-vampire-en .discipline5_value .property-text, .vtm-v20-vampire-en .discipline6_value .property-text,
+.wod-v20-mortal .discipline1_value .property-text, .wod-v20-mortal .discipline2_value .property-text, .wod-v20-mortal .discipline3_value .property-text, .wod-v20-mortal .discipline4_value .property-text, .wod-v20-mortal .discipline5_value .property-text, .wod-v20-mortal .discipline6_value .property-text,
 /*  фактов биографии...  */
 /*  backgrounds...  */
 .vtm-v20-vampire .background1_value .property-text, .vtm-v20-vampire .background2_value .property-text, .vtm-v20-vampire .background3_value .property-text, .vtm-v20-vampire .background4_value .property-text, .vtm-v20-vampire .background5_value .property-text, .vtm-v20-vampire .background6_value .property-text,
 .vtm-v20-vampire-en .background1_value .property-text, .vtm-v20-vampire-en .background2_value .property-text, .vtm-v20-vampire-en .background3_value .property-text, .vtm-v20-vampire-en .background4_value .property-text, .vtm-v20-vampire-en .background5_value .property-text, .vtm-v20-vampire-en .background6_value .property-text,
+.wod-v20-mortal .background1_value .property-text, .wod-v20-mortal .background2_value .property-text, .wod-v20-mortal .background3_value .property-text, .wod-v20-mortal .background4_value .property-text, .wod-v20-mortal .background5_value .property-text, .wod-v20-mortal .background6_value .property-text,
 /*  добродетелей...  */
 /*  virtues...  */
 .vtm-v20-vampire .conscience .property-text, .vtm-v20-vampire .selfcontrol .property-text, .vtm-v20-vampire .courage .property-text,
-.vtm-v20-vampire-en .conscience .property-text, .vtm-v20-vampire-en .selfcontrol .property-text, .vtm-v20-vampire-en .courage .property-text {
+.vtm-v20-vampire-en .conscience .property-text, .vtm-v20-vampire-en .selfcontrol .property-text, .vtm-v20-vampire-en .courage .property-text,
+.wod-v20-mortal .conscience .property-text, .wod-v20-mortal .selfcontrol .property-text, .wod-v20-mortal .courage .property-text {
     font-size: 9px;
     font-family: "SmallCircles";
     display: inline-block;
@@ -697,26 +780,34 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 .vtm-v20-vampire-en .strength .dice-roller-result, .vtm-v20-vampire-en .dexterity .dice-roller-result, .vtm-v20-vampire-en .stamina .dice-roller-result,
 .vtm-v20-vampire-en .charisma .dice-roller-result, .vtm-v20-vampire-en .manipulation .dice-roller-result, .vtm-v20-vampire-en .appearance .dice-roller-result,
 .vtm-v20-vampire-en .perception .dice-roller-result, .vtm-v20-vampire-en .intelligence .dice-roller-result, .vtm-v20-vampire-en .wits .dice-roller-result,
+.wod-v20-mortal .strength .dice-roller-result, .wod-v20-mortal .dexterity .dice-roller-result, .wod-v20-mortal .stamina .dice-roller-result,
+.wod-v20-mortal .charisma .dice-roller-result, .wod-v20-mortal .manipulation .dice-roller-result, .wod-v20-mortal .appearance .dice-roller-result,
+.wod-v20-mortal .perception .dice-roller-result, .wod-v20-mortal .intelligence .dice-roller-result, .wod-v20-mortal .wits .dice-roller-result,
 /*  в талантах...  */
 /*  talents...  */
 .vtm-v20-vampire .athletics .dice-roller-result, .vtm-v20-vampire .alertness .dice-roller-result, .vtm-v20-vampire .brawl .dice-roller-result, .vtm-v20-vampire .intimidation .dice-roller-result, .vtm-v20-vampire .expression .dice-roller-result, .vtm-v20-vampire .leadership .dice-roller-result, .vtm-v20-vampire .streetwise .dice-roller-result, .vtm-v20-vampire .subterfuge .dice-roller-result, .vtm-v20-vampire .awareness .dice-roller-result, .vtm-v20-vampire .empathy .dice-roller-result, .vtm-v20-vampire .empty_talent .dice-roller-result,
 .vtm-v20-vampire-en .athletics .dice-roller-result, .vtm-v20-vampire-en .alertness .dice-roller-result, .vtm-v20-vampire-en .brawl .dice-roller-result, .vtm-v20-vampire-en .intimidation .dice-roller-result, .vtm-v20-vampire-en .expression .dice-roller-result, .vtm-v20-vampire-en .leadership .dice-roller-result, .vtm-v20-vampire-en .streetwise .dice-roller-result, .vtm-v20-vampire-en .subterfuge .dice-roller-result, .vtm-v20-vampire-en .awareness .dice-roller-result, .vtm-v20-vampire-en .empathy .dice-roller-result, .vtm-v20-vampire-en .empty_talent .dice-roller-result,
+.wod-v20-mortal .athletics .dice-roller-result, .wod-v20-mortal .alertness .dice-roller-result, .wod-v20-mortal .brawl .dice-roller-result, .wod-v20-mortal .intimidation .dice-roller-result, .wod-v20-mortal .expression .dice-roller-result, .wod-v20-mortal .leadership .dice-roller-result, .wod-v20-mortal .streetwise .dice-roller-result, .wod-v20-mortal .subterfuge .dice-roller-result, .wod-v20-mortal .awareness .dice-roller-result, .wod-v20-mortal .empathy .dice-roller-result, .wod-v20-mortal .empty_talent .dice-roller-result,
 /*  в навыках...  */
 /*  skills...  */
 .vtm-v20-vampire .drive .dice-roller-result, .vtm-v20-vampire .larceny .dice-roller-result, .vtm-v20-vampire .survival .dice-roller-result, .vtm-v20-vampire .performance .dice-roller-result, .vtm-v20-vampire .animalken .dice-roller-result, .vtm-v20-vampire .crafts .dice-roller-result, .vtm-v20-vampire .stealth .dice-roller-result, .vtm-v20-vampire .firearms .dice-roller-result, .vtm-v20-vampire .melee .dice-roller-result, .vtm-v20-vampire .etiquette .dice-roller-result, .vtm-v20-vampire .empty_skill .dice-roller-result,
 .vtm-v20-vampire-en .drive .dice-roller-result, .vtm-v20-vampire-en .larceny .dice-roller-result, .vtm-v20-vampire-en .survival .dice-roller-result, .vtm-v20-vampire-en .performance .dice-roller-result, .vtm-v20-vampire-en .animalken .dice-roller-result, .vtm-v20-vampire-en .crafts .dice-roller-result, .vtm-v20-vampire-en .stealth .dice-roller-result, .vtm-v20-vampire-en .firearms .dice-roller-result, .vtm-v20-vampire-en .melee .dice-roller-result, .vtm-v20-vampire-en .etiquette .dice-roller-result, .vtm-v20-vampire-en .empty_skill .dice-roller-result,
+.wod-v20-mortal .drive .dice-roller-result, .wod-v20-mortal .larceny .dice-roller-result, .wod-v20-mortal .survival .dice-roller-result, .wod-v20-mortal .performance .dice-roller-result, .wod-v20-mortal .animalken .dice-roller-result, .wod-v20-mortal .crafts .dice-roller-result, .wod-v20-mortal .stealth .dice-roller-result, .wod-v20-mortal .firearms .dice-roller-result, .wod-v20-mortal .melee .dice-roller-result, .wod-v20-mortal .etiquette .dice-roller-result, .wod-v20-mortal .empty_skill .dice-roller-result,
 /*  в знаниях...  */
 /*  knowledges...  */
 .vtm-v20-vampire .academics .dice-roller-result, .vtm-v20-vampire .science .dice-roller-result, .vtm-v20-vampire .law .dice-roller-result, .vtm-v20-vampire .computer .dice-roller-result, .vtm-v20-vampire .medicine .dice-roller-result, .vtm-v20-vampire .occult .dice-roller-result, .vtm-v20-vampire .politics .dice-roller-result, .vtm-v20-vampire .investigation .dice-roller-result, .vtm-v20-vampire .finance .dice-roller-result, .vtm-v20-vampire .technology .dice-roller-result, .vtm-v20-vampire .empty_knowledge .dice-roller-result,
 .vtm-v20-vampire-en .academics .dice-roller-result, .vtm-v20-vampire-en .science .dice-roller-result, .vtm-v20-vampire-en .law .dice-roller-result, .vtm-v20-vampire-en .computer .dice-roller-result, .vtm-v20-vampire-en .medicine .dice-roller-result, .vtm-v20-vampire-en .occult .dice-roller-result, .vtm-v20-vampire-en .politics .dice-roller-result, .vtm-v20-vampire-en .investigation .dice-roller-result, .vtm-v20-vampire-en .finance .dice-roller-result, .vtm-v20-vampire-en .technology .dice-roller-result, .vtm-v20-vampire-en .empty_knowledge .dice-roller-result,
+.wod-v20-mortal .academics .dice-roller-result, .wod-v20-mortal .science .dice-roller-result, .wod-v20-mortal .law .dice-roller-result, .wod-v20-mortal .computer .dice-roller-result, .wod-v20-mortal .medicine .dice-roller-result, .wod-v20-mortal .occult .dice-roller-result, .wod-v20-mortal .politics .dice-roller-result, .wod-v20-mortal .investigation .dice-roller-result, .wod-v20-mortal .finance .dice-roller-result, .wod-v20-mortal .technology .dice-roller-result, .wod-v20-mortal .empty_knowledge .dice-roller-result,
 /*  самодописанных талантах, навыках и знанях...  */
 /*  additional abilities...  */
 .vtm-v20-vampire .new_talent_value .dice-roller-result, .vtm-v20-vampire .new_skill_value .dice-roller-result, .vtm-v20-vampire .new_knowledge_value .dice-roller-result,
 .vtm-v20-vampire-en .new_talent_value .dice-roller-result, .vtm-v20-vampire-en .new_skill_value .dice-roller-result, .vtm-v20-vampire-en .new_knowledge_value .dice-roller-result,
+.wod-v20-mortal .new_talent_value .dice-roller-result, .wod-v20-mortal .new_skill_value .dice-roller-result, .wod-v20-mortal .new_knowledge_value .dice-roller-result,
 /*  в добродетелях...  */
 /*  virtues...  */
 .vtm-v20-vampire .conscience .dice-roller-result, .vtm-v20-vampire .selfcontrol .dice-roller-result, .vtm-v20-vampire .courage .dice-roller-result,
-.vtm-v20-vampire-en .conscience .dice-roller-result, .vtm-v20-vampire-en .selfcontrol .dice-roller-result, .vtm-v20-vampire-en .courage .dice-roller-result {
+.vtm-v20-vampire-en .conscience .dice-roller-result, .vtm-v20-vampire-en .selfcontrol .dice-roller-result, .vtm-v20-vampire-en .courage .dice-roller-result,
+.wod-v20-mortal .conscience .dice-roller-result, .wod-v20-mortal .selfcontrol .dice-roller-result, .wod-v20-mortal .courage .dice-roller-result {
     font-size: 9px;
     font-family: "SmallCircles";
     display: inline-block;
@@ -727,7 +818,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 
 
 .vtm-v20-vampire span.dice-roller,
-.vtm-v20-vampire-en span.dice-roller {
+.vtm-v20-vampire-en span.dice-roller,
+.wod-v20-mortal span.dice-roller {
     cursor: grab;
 }
 
@@ -737,20 +829,27 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  =================================================  */
 
 .vtm-v20-vampire .advantages-group,
-.vtm-v20-vampire-en .advantages-group {
+.vtm-v20-vampire-en .advantages-group, 
+.wod-v20-mortal .advantages-group {
     justify-content: space-evenly;
 }
 
 .vtm-v20-vampire .property-container:empty,
-.vtm-v20-vampire-en .property-container:empty {
+.vtm-v20-vampire-en .property-container:empty,
+.wod-v20-mortal .property-container:empty {
     display: none;
 }
 
 
 .vtm-v20-vampire .disciplines-column:not(:has(.heading)), .vtm-v20-vampire .backgrounds-column:not(:has(.heading)),
-.vtm-v20-vampire-en .disciplines-column:not(:has(.heading)), .vtm-v20-vampire-en .backgrounds-column:not(:has(.heading)) {
+.vtm-v20-vampire-en .disciplines-column:not(:has(.heading)), .vtm-v20-vampire-en .backgrounds-column:not(:has(.heading)),
+.wod-v20-mortal .disciplines-column:not(:has(.heading)), .wod-v20-mortal .backgrounds-column:not(:has(.heading)) {
     width: var(--main-line-widht);
     height: 17.5px;
+}
+
+.wod-v20-mortal .disciplines-column, .wod-v20-mortal .backgrounds-column {
+    width: var(--main-line-widht);
 }
 
 /*  Скрываются названия пропертей для дисциплин  */
@@ -799,7 +898,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  ...but keeps underline on hover  */
 @media (hover: hover) {
 .vtm-v20-vampire .markdown-rendered .internal-link:hover,
-.vtm-v20-vampire-en .markdown-rendered .internal-link:hover {
+.vtm-v20-vampire-en .markdown-rendered .internal-link:hover,
+.wod-v20-mortal .markdown-rendered .internal-link:hover {
     text-decoration-line: var(--link-decoration-hover) !important;
 }
 }
@@ -830,6 +930,9 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 }
 
 
+/*  Отдельные настройки добродетелей для вампиров  */
+/*  Separate virtues settings for vampires  */
+
 /*  Убрал отступ справа у добродетелей, чтобы ровнее выглядело, и добавил отступы сверху */
 /*  Removed left margin and top margin for virtues  */
 .vtm-v20-vampire .line.conscience .property-name, .vtm-v20-vampire .line.selfcontrol .property-name, .vtm-v20-vampire .line.courage .property-name,
@@ -842,8 +945,6 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 .vtm-v20-vampire-en .line.selfcontrol .property-name, .vtm-v20-vampire-en .line.courage .property-name {
     margin-top: 5px;
 }
-
-
 /*  Центрируются добродетели и их значения  */
 /*  Align virtues in one column  */
 .vtm-v20-vampire .statblock-item-container.property-container:has(.conscience, .selfcontrol, .courage),
@@ -860,8 +961,6 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 .vtm-v20-vampire-en .conscience .property-text, .vtm-v20-vampire-en .selfcontrol .property-text, .vtm-v20-vampire-en .courage .property-text {
     text-align: center;
 }
-
-
 /*  ограничение высоты строки на случай использования дайс роллера  */
 /*  Hardcode virtues line's height if Dice Rolled is used  */
 .vtm-v20-vampire .conscience,
@@ -877,7 +976,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Заменяет стандартный разделитель на двойную стрелочку; нужно включить разделитель для группы в настройках лэйаута  */ 
 /*  Default D&D-style rule is replaced with bidirectional VtM arrow  */
 .vtm-v20-vampire .rule-container,
-.vtm-v20-vampire-en .rule-container {
+.vtm-v20-vampire-en .rule-container,
+.wod-v20-mortal .rule-container {
     content: none;
     margin-left: 10px;
     margin-right: 9px;
@@ -886,11 +986,13 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
     height: 20px;
 }
 .vtm-v20-vampire .tapered-rule,
-.vtm-v20-vampire-en .tapered-rule {
+.vtm-v20-vampire-en .tapered-rule,
+.wod-v20-mortal .tapered-rule {
     display: none;
 }
 .vtm-v20-vampire .rule-container::after,
-.vtm-v20-vampire-en .rule-container::after {
+.vtm-v20-vampire-en .rule-container::after,
+.wod-v20-mortal .rule-container::after {
     content: var(--rule-arrow);
     width: 660px;
 }
@@ -904,7 +1006,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 
 
 .vtm-v20-vampire .others-group,
-.vtm-v20-vampire-en .others-group {
+.vtm-v20-vampire-en .others-group,
+.wod-v20-mortal .others-group {
     justify-content: space-evenly;
 }
 
@@ -912,7 +1015,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Сделал из заголовков достоинств, недостатков, специализации, воли, крови, здоровья и изъянов обычный текст  */
 /*  Style for level 6 headers - merits, flaws, specialties, path, willpower, boold, health, clan weakness  */
 .vtm-v20-vampire h6.heading.Merits, .vtm-v20-vampire h6.heading.Flaws, .vtm-v20-vampire h6.heading.Specialties, .vtm-v20-vampire .line.path .property-text, .vtm-v20-vampire h6.heading.willpower, .vtm-v20-vampire h6.heading.bloodpool, .vtm-v20-vampire h6.heading.Health, .vtm-v20-vampire .line.weakness .property-name,
-.vtm-v20-vampire-en h6.heading.Merits, .vtm-v20-vampire-en h6.heading.Flaws, .vtm-v20-vampire-en h6.heading.Specialties, .vtm-v20-vampire-en .line.path .property-text, .vtm-v20-vampire-en h6.heading.willpower, .vtm-v20-vampire-en h6.heading.bloodpool, .vtm-v20-vampire-en h6.heading.Health, .vtm-v20-vampire-en .line.weakness .property-name {
+.vtm-v20-vampire-en h6.heading.Merits, .vtm-v20-vampire-en h6.heading.Flaws, .vtm-v20-vampire-en h6.heading.Specialties, .vtm-v20-vampire-en .line.path .property-text, .vtm-v20-vampire-en h6.heading.willpower, .vtm-v20-vampire-en h6.heading.bloodpool, .vtm-v20-vampire-en h6.heading.Health, .vtm-v20-vampire-en .line.weakness .property-name,
+.wod-v20-mortal h6.heading.Merits, .wod-v20-mortal h6.heading.Flaws, .wod-v20-mortal h6.heading.Specialties, .wod-v20-mortal .line.humanity .property-text, .wod-v20-mortal h6.heading.willpower, .wod-v20-mortal h6.heading.Health {
     font-weight: 700 !important;
     letter-spacing: 0;
     font-size: 14px;
@@ -1093,7 +1197,10 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 .vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws), 
 .vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.willpower), 
 .vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.bloodpool), 
-.vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Weakness) {
+.vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Weakness),
+.wod-v20-mortal .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws), 
+.wod-v20-mortal .statblock-item-container.heading-container:has(.heading.statblock-heading.willpower), 
+.wod-v20-mortal .statblock-item-container.heading-container:has(.heading.statblock-heading.Health) {
     margin-top: 9px;
 }
 
@@ -1103,7 +1210,9 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 .vtm-v20-vampire .statblock-item-container.heading-container:has(.heading.statblock-heading.Merits .statblock-rendered-text-content:empty),
 .vtm-v20-vampire .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws .statblock-rendered-text-content:empty),
 .vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Merits .statblock-rendered-text-content:empty),
-.vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws .statblock-rendered-text-content:empty) {
+.vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws .statblock-rendered-text-content:empty),
+.wod-v20-mortal .statblock-item-container.heading-container:has(.heading.statblock-heading.Merits .statblock-rendered-text-content:empty),
+.wod-v20-mortal .statblock-item-container.heading-container:has(.heading.statblock-heading.Merits .statblock-rendered-text-content:empty) {
     display: none;
 } 
 
@@ -1113,7 +1222,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 .vtm-v20-vampire .statblock-item-container.heading-container.merits-and-flaws-column:has(.flex-container:empty)  ~ .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws),
 .vtm-v20-vampire .statblock-item-container.heading-container:has(.heading.statblock-heading.Merits .statblock-rendered-text-content:empty) ~ .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws),
 .vtm-v20-vampire-en .statblock-item-container.heading-container.merits-and-flaws-column:has(.flex-container:empty)  ~ .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws),
-.vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Merits .statblock-rendered-text-content:empty) ~ .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws) {
+.vtm-v20-vampire-en .statblock-item-container.heading-container:has(.heading.statblock-heading.Merits .statblock-rendered-text-content:empty) ~ .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws),
+.wod-v20-mortal .statblock-item-container.heading-container:has(.heading.statblock-heading.Merits .statblock-rendered-text-content:empty) ~ .statblock-item-container.heading-container:has(.heading.statblock-heading.Flaws) {
     margin-top: 0px !important;
 }
 
@@ -1130,7 +1240,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Классные точки для человечности и воли  */
 /*  Beautiful dots for path and willpower  */
 .vtm-v20-vampire .line.path_value .property-text, .vtm-v20-vampire .line.willpower_main .property-text,
-.vtm-v20-vampire-en .line.path_value .property-text, .vtm-v20-vampire-en .line.willpower_main .property-text {
+.vtm-v20-vampire-en .line.path_value .property-text, .vtm-v20-vampire-en .line.willpower_main .property-text,
+.wod-v20-mortal .line.humanity_value .property-text, .wod-v20-mortal .line.willpower_main .property-text {
     font-size: 15px;
     font-family: "BigCircles";
     margin: 0 auto;
@@ -1142,7 +1253,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Классные точки для воли, но для дайсов  */
 /*  Beautiful dots for path and willpower if Dice Roller is active  */
 .vtm-v20-vampire .willpower_main .dice-roller-result,
-.vtm-v20-vampire-en .willpower_main .dice-roller-result {
+.vtm-v20-vampire-en .willpower_main .dice-roller-result,
+.wod-v20-mortal .willpower_main .dice-roller-result {
     font-size: 15px;
     font-family: "BigCircles";
     margin: 0 auto;
@@ -1155,7 +1267,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Меняются цифры у крови и запаса воли на квадратики  */
 /*  Beautiful squares for bloodpool  */
 .vtm-v20-vampire .line.blood .property-text, .vtm-v20-vampire .line.blood_current2 .property-text, .vtm-v20-vampire .line.blood_current3 .property-text, .vtm-v20-vampire .line.blood_current4 .property-text, .vtm-v20-vampire .line.willpower_current .property-text,
-.vtm-v20-vampire-en .line.blood .property-text, .vtm-v20-vampire-en .line.blood_current2 .property-text, .vtm-v20-vampire-en .line.blood_current3 .property-text, .vtm-v20-vampire-en .line.blood_current4 .property-text, .vtm-v20-vampire-en .line.willpower_current .property-text {
+.vtm-v20-vampire-en .line.blood .property-text, .vtm-v20-vampire-en .line.blood_current2 .property-text, .vtm-v20-vampire-en .line.blood_current3 .property-text, .vtm-v20-vampire-en .line.blood_current4 .property-text, .vtm-v20-vampire-en .line.willpower_current .property-text,
+.wod-v20-mortal .line.willpower_current .property-text {
     font-size: 15px;
     font-family: "Squares";
     margin: 0 auto;
@@ -1167,7 +1280,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Меняются цифры у крови на квадратики для дайсов  */
 /*  Beautiful squares for bloodpool if Dice Roller is active  */
 .vtm-v20-vampire .willpower_current .dice-roller-result,
-.vtm-v20-vampire-en .willpower_current .dice-roller-result {
+.vtm-v20-vampire-en .willpower_current .dice-roller-result,
+.wod-v20-mortal .willpower_current .dice-roller-result {
     font-size: 15px;
     font-family: "Squares";
     margin: 0 auto;
@@ -1180,7 +1294,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /* Центрируются блоки человечности, воли и крови  */
 /*  Align humanity, willpower and blood blocks  */
 .vtm-v20-vampire .statblock-item-container.property-container:has(> .line.path),
-.vtm-v20-vampire-en .statblock-item-container.property-container:has(> .line.path) {
+.vtm-v20-vampire-en .statblock-item-container.property-container:has(> .line.path),
+.wod-v20-mortal .statblock-item-container.property-container:has(> .line.humanity) {
     display: flex;
     justify-content: center;
 /*  margin-top: 0.6px; */
@@ -1191,7 +1306,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Попрятал названия пропертей для человечности, воли и крови  */
 /*  Hide system properties' names for humanity, willpower and blood  */
 .vtm-v20-vampire .line.path .property-name, .vtm-v20-vampire .line.path_value .property-name, .vtm-v20-vampire .line.willpower_main .property-name, .vtm-v20-vampire .line.willpower_current .property-name, .vtm-v20-vampire .line.blood .property-name, .vtm-v20-vampire .line.blood_current2 .property-name, .vtm-v20-vampire .line.blood_current3 .property-name, .vtm-v20-vampire .line.blood_current4 .property-name,
-.vtm-v20-vampire-en .line.path .property-name, .vtm-v20-vampire-en .line.path_value .property-name, .vtm-v20-vampire-en .line.willpower_main .property-name, .vtm-v20-vampire-en .line.willpower_current .property-name, .vtm-v20-vampire-en .line.blood .property-name, .vtm-v20-vampire-en .line.blood_current2 .property-name, .vtm-v20-vampire-en .line.blood_current3 .property-name, .vtm-v20-vampire-en .line.blood_current4 .property-name {
+.vtm-v20-vampire-en .line.path .property-name, .vtm-v20-vampire-en .line.path_value .property-name, .vtm-v20-vampire-en .line.willpower_main .property-name, .vtm-v20-vampire-en .line.willpower_current .property-name, .vtm-v20-vampire-en .line.blood .property-name, .vtm-v20-vampire-en .line.blood_current2 .property-name, .vtm-v20-vampire-en .line.blood_current3 .property-name, .vtm-v20-vampire-en .line.blood_current4 .property-name,
+.wod-v20-mortal .line.humanity .property-name, .wod-v20-mortal .line.humanity_value .property-name, .wod-v20-mortal .line.willpower_main .property-name, .wod-v20-mortal .line.willpower_current .property-name {
     display: none;
 }
 
@@ -1199,7 +1315,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  На всякий случай зацентрировал заголовок пути/человечности (из всего блока только там может меняться заголовок), а потом и все остальные  */
 /*  Align by center all humanity, willpower and blood texts  */
 .vtm-v20-vampire .line.path, .vtm-v20-vampire .line.bearing, .vtm-v20-vampire .line.path_value, .vtm-v20-vampire .line.willpower_main, .vtm-v20-vampire .line.willpower_current, .vtm-v20-vampire .line.blood, .vtm-v20-vampire .line.blood_current2, .vtm-v20-vampire .line.blood_current3, .vtm-v20-vampire .line.blood_current4, .vtm-v20-vampire .line.blood_per_turn,
-.vtm-v20-vampire-en .line.path, .vtm-v20-vampire-en .line.bearing, .vtm-v20-vampire-en .line.path_value, .vtm-v20-vampire-en .vtm-v20-vampire-en .line.willpower_main, .vtm-v20-vampire-en .line.willpower_current, .vtm-v20-vampire-en .line.blood, .vtm-v20-vampire-en .line.blood_current2, .vtm-v20-vampire-en .line.blood_current3, .vtm-v20-vampire-en .line.blood_current4, .vtm-v20-vampire-en .line.blood_per_turn {
+.vtm-v20-vampire-en .line.path, .vtm-v20-vampire-en .line.bearing, .vtm-v20-vampire-en .line.path_value, .vtm-v20-vampire-en .vtm-v20-vampire-en .line.willpower_main, .vtm-v20-vampire-en .line.willpower_current, .vtm-v20-vampire-en .line.blood, .vtm-v20-vampire-en .line.blood_current2, .vtm-v20-vampire-en .line.blood_current3, .vtm-v20-vampire-en .line.blood_current4, .vtm-v20-vampire-en .line.blood_per_turn,
+.wod-v20-mortal .line.humanity, .wod-v20-mortal .line.bearing, .wod-v20-mortal .line.humanity_value, .wod-v20-mortal .line.willpower_main, .wod-v20-mortal .line.willpower_current {
     text-align: center;
 }
 
@@ -1231,21 +1348,25 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
     margin-bottom: 0;
 }
 
+
 /*  Крестики поверх квадратиков здоровья  */
 /*  Damage crosses are placed above the health squares  */
 .vtm-v20-vampire .health-block,
-.vtm-v20-vampire-en .health-block {
+.vtm-v20-vampire-en .health-block,
+.wod-v20-mortal .health-block {
     position: relative;
 }
 .vtm-v20-vampire .health-block.damage-values,
-.vtm-v20-vampire-en .health-block.damage-values {
+.vtm-v20-vampire-en .health-block.damage-values,
+.wod-v20-mortal .health-block.damage-values {
     position: absolute;
     justify-content: flex-start;
     top: 3px;
     margin-left: 11px;
 }
 .vtm-v20-vampire .health-block.damage-squares,
-.vtm-v20-vampire-en .health-block.damage-squares {
+.vtm-v20-vampire-en .health-block.damage-squares,
+.wod-v20-mortal .health-block.damage-squares {
     justify-content: space-evenly;
     margin-top: -7.2px;
     margin-bottom: 0;
@@ -1255,14 +1376,16 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 /*  Побольше шрифт для штрафов за здоровье, выровнял и подвинул поближе к квадратикам  */
 /*  bigger font and positioning for health penalty numbers  */
 .vtm-v20-vampire .health-block.damage-dice-penalties,
-.vtm-v20-vampire-en .health-block.damage-dice-penalties {
+.vtm-v20-vampire-en .health-block.damage-dice-penalties,
+.wod-v20-mortal .health-block.damage-dice-penalties {
     width: 149px;
     margin-left: 26px;
     margin-top: -4px;
     
 }
 .vtm-v20-vampire .line.hurt .property-name, .vtm-v20-vampire .line.injured .property-name, .vtm-v20-vampire .line.wounded .property-name, .vtm-v20-vampire .line.mauled .property-name, .vtm-v20-vampire .line.crippled .property-name, .vtm-v20-vampire .line.incapacitated .property-name, .vtm-v20-vampire .line.incapacitated .property-name, .vtm-v20-vampire .line.crippled .property-name,
-.vtm-v20-vampire-en .line.hurt .property-name, .vtm-v20-vampire-en .line.injured .property-name, .vtm-v20-vampire-en .line.wounded .property-name, .vtm-v20-vampire-en .line.mauled .property-name, .vtm-v20-vampire-en .line.crippled .property-name, .vtm-v20-vampire-en .line.incapacitated .property-name, .vtm-v20-vampire-en .line.incapacitated .property-name, .vtm-v20-vampire-en .line.crippled .property-name {
+.vtm-v20-vampire-en .line.hurt .property-name, .vtm-v20-vampire-en .line.injured .property-name, .vtm-v20-vampire-en .line.wounded .property-name, .vtm-v20-vampire-en .line.mauled .property-name, .vtm-v20-vampire-en .line.crippled .property-name, .vtm-v20-vampire-en .line.incapacitated .property-name, .vtm-v20-vampire-en .line.incapacitated .property-name, .vtm-v20-vampire-en .line.crippled .property-name,
+.wod-v20-mortal .line.hurt .property-name, .wod-v20-mortal .line.injured .property-name, .wod-v20-mortal .line.wounded .property-name, .wod-v20-mortal .line.mauled .property-name, .wod-v20-mortal .line.crippled .property-name, .wod-v20-mortal .line.incapacitated .property-name, .wod-v20-mortal .line.incapacitated .property-name, .wod-v20-mortal .line.crippled .property-name {
     margin-right: 0;
     font-size: 15px;
 }
@@ -1324,7 +1447,8 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 
 /*  Add arrow marker for specialties  */
 .vtm-v20-vampire .specialities-block:has(> .specialty_one):before, .vtm-v20-vampire .specialities-block:has(> .specialty_two):before, .vtm-v20-vampire .specialities-block:has(> .specialty_three):before, .vtm-v20-vampire .specialities-block:has(> .specialty_four):before, .vtm-v20-vampire .specialities-block:has(> .specialty_five):before, .vtm-v20-vampire .specialities-block:has(> .specialty_six):before,
-.vtm-v20-vampire-en .specialities-block:has(> .specialty_one):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_two):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_three):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_four):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_five):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_six):before {
+.vtm-v20-vampire-en .specialities-block:has(> .specialty_one):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_two):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_three):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_four):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_five):before, .vtm-v20-vampire-en .specialities-block:has(> .specialty_six):before,
+.wod-v20-mortal .specialities-block:has(> .specialty_one):before, .wod-v20-mortal .specialities-block:has(> .specialty_two):before, .wod-v20-mortal .specialities-block:has(> .specialty_three):before, .wod-v20-mortal .specialities-block:has(> .specialty_four):before, .wod-v20-mortal .specialities-block:has(> .specialty_five):before, .wod-v20-mortal .specialities-block:has(> .specialty_six):before {
     content: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cjxzdmcgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEwIDQ3IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zOnNlcmlmPSJodHRwOi8vd3d3LnNlcmlmLmNvbS8iIHN0eWxlPSJmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDA7Ij4KICAgIDxnIGlkPSJwb2x5Z29uMTAiIHRyYW5zZm9ybT0ibWF0cml4KDAuOSwwLDAsMC45LDQuNjYyOTRlLTE2LDMuNzAwMzYpIj4KICAgICAgICA8cGF0aCBkPSJNMi45MDksMjMuNTAxTDIuNzcxLDIyLjcwOEwyLjM3NiwyMS42ODVMMS42ODMsMjAuNjY2TDAuODg5LDE5LjlMMCwxOS4yNTlMMC45OSwxOC43NUwxLjg3OSwxNy45ODRMMi41NzUsMTYuOTY1TDMuMDY5LDE1Ljk0NkwzLjY2MywxNC41NEw0LjA1OSwxMi44ODFMNC41NTYsOS4xODFMNS4wNDksLTAuMDAxTDUuNTQ2LDkuMTgxTDYuMDM5LDEyLjg4MUw2LjQzNSwxNC40MTRMNi45MzEsMTUuOTQ2TDcuNjI0LDE3LjA5MUw4LjIxOSwxNy44NThMOS4xMTEsMTguNjI0TDEwLDE5LjEzM0w5LjIwOSwxOS45TDguNDE1LDIwLjUzNUw3LjcyMiwyMS40MzJMNy4zMjcsMjIuNzA4TDcuMDk1LDIzLjUwMUw3LjMyNywyNC4yOTRMNy43MjIsMjUuNTdMOC40MTUsMjYuNDY3TDkuMjA5LDI3LjEwM0wxMCwyNy44NjlMOS4xMTEsMjguMzc4TDguMjE5LDI5LjE0NUw3LjYyNCwyOS45MTFMNi45MzEsMzEuMDU2TDYuNDM1LDMyLjU4OEw2LjAzOSwzNC4xMjFMNS41NDYsMzcuODIyTDUuMDQ5LDQ3LjAwNEw0LjU1NiwzNy44MjJMNC4wNTksMzQuMTIxTDMuNjYzLDMyLjQ2MkwzLjA2OSwzMS4wNTZMMi41NzUsMzAuMDM3TDEuODc5LDI5LjAxOEwwLjk5LDI4LjI1MkwwLDI3Ljc0M0wwLjg4OSwyNy4xMDNMMS42ODMsMjYuMzM2TDIuMzc2LDI1LjMxOEwyLjc3MSwyNC4yOTRMMi45MDksMjMuNTAxWiIgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6cmdiKDM1LDMxLDMyKTtzdHJva2Utd2lkdGg6MC42MnB4OyIvPgogICAgPC9nPgo8L3N2Zz4K");
     height: 39px;
     width: 8px;
@@ -1373,9 +1497,117 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
     display: none;
 }
 
+
+/*  скрывается блок джаваскрипта (который и так бы не отображался, а место почему-то занимает)  */
 /*  Hide javascript block  */
 .javascript-container {
     display: none;
+}
+
+
+/*  ===============================================  */
+                /*  ТАБЛИЦА ОРУЖИЯ  */
+/*  ===============================================  */
+
+/*  у заголовков столбцов скрываются значения (которые и не нужны)  */
+.line.weapon_header .property-text, .line.damage_header .property-text, .line.range_header .property-text, .line.firerate_header .property-text, 
+.line.clip_header .property-text, .line.conceal_header .property-text {
+    display: none;
+}
+
+/*  скрываются названия пропертей для оружия  */
+.line.weapon1_name .property-name, .line.weapon2_name .property-name, .line.weapon3_name .property-name, .line.weapon4_name .property-name, 
+.line.damage1 .property-name, .line.damage2 .property-name, .line.damage3 .property-name, .line.damage4 .property-name, 
+.line.range1 .property-name, .line.range2 .property-name, .line.range3 .property-name, .line.range4 .property-name, 
+.line.firerate1 .property-name, .line.firerate2 .property-name, .line.firerate3 .property-name, .line.firerate4 .property-name, 
+.line.clip1 .property-name, .line.clip2 .property-name, .line.clip3 .property-name, .line.clip4 .property-name, 
+.line.conceal1 .property-name, .line.conceal2 .property-name, .line.conceal3 .property-name, .line.conceal4 .property-name {
+    display: none;
+}
+
+/*  группа превращается в таблицу  */ 
+.weapon-table {
+    display: grid;
+    grid-template-columns: 260px 55px 88px 108px repeat(2, 75px);
+    grid-template-rows: 24px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-content: center;
+    border: 1px solid;
+    width: 660px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/*  хэдер из низа таблицы перемещается на самый верх  */
+.weapon-table-header > .statblock-inline-item:has(.line.weapon_header) {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    margin-bottom: 0;
+}
+.weapon-table-header > .statblock-inline-item:has(.line.damage_header) {
+    grid-row: 1/2;
+    grid-column: 2/3;
+    margin-bottom: 0;
+}
+.weapon-table-header > .statblock-inline-item:has(.line.range_header) {
+    grid-row: 1/2;
+    grid-column: 3/4;
+    margin-bottom: 0;
+}
+.weapon-table-header > .statblock-inline-item:has(.line.firerate_header) {
+    grid-row: 1/2;
+    grid-column: 4/5;
+    margin-bottom: 0;
+}
+.weapon-table-header > .statblock-inline-item:has(.line.clip_header) {
+    grid-row: 1/2;
+    grid-column: 5/6;
+    margin-bottom: 0;
+}
+.weapon-table-header > .statblock-inline-item:has(.line.conceal_header) {
+    grid-row: 1/2;
+    grid-column: 6/7;
+    margin-bottom: 0;
+}
+.weapon-table-header .statblock-item-container.group-container {
+    margin-top: 2px;
+    margin-bottom: 0;
+}
+.weapon-table-header .statblock-inline-item.group-container:not(:empty) {
+    border: 0.5px solid;
+    border-left: 0.5px solid;
+    border-right: 0.5px solid;
+}
+
+/*  немножко выравниваются строчки  */
+.weapon-table-header .property-container {
+    margin-bottom: 0;
+}
+.weapon-table .line .property-name {
+    margin-right: 0px;
+}
+
+
+/* подсказка по скрытному ношению */
+.line.conceal_one, .line.conceal_two, .line.conceal_three, .line.conceal_four {
+    position: relative;
+  }
+.line.conceal_one:before, .line.conceal_two:before, .line.conceal_three:before, .line.conceal_four:before {
+    position: absolute;
+    padding: 8px;
+    color: var(--text-normal);
+    background-color: var(--background-primary-alt);
+    border-radius: 15px;
+    font-size: 100%;
+    display: none;
+    z-index: 1000;
+    top: 1.8em;
+    width: 200px;
+    content: 'ВК — можно спрятать в кармане; ПК — можно спрятать под курткой; ПП — можно спрятать под плащом; Н — скрытное ношение невозможно.'
+}
+.line.conceal_one:hover:before, .line.conceal_two:hover:before, .line.conceal_three:hover:before, .line.conceal_four:hover:before {
+    display: inline; 
 }
 
 
@@ -1476,6 +1708,12 @@ body:has(.vtm-v20-vampire-en) .popover.hover-popover > .media-embed.image-embed.
 }
 
 
+/*  скрывается вся таблица оружия, если нет названия у первого оружия  */
+.weapon-table-header:has(.group-container:first-child:empty) {
+    display: none;
+}
+
+
 /* @settings
 
 name: Vampire the Masquerade (v20) Statblock
@@ -1511,7 +1749,8 @@ settings:
 /*  Имена пропертей в одном стиле  */
 /*  Same style for all the properties in the character sheet  */
 .vtm-v20-vampire span.property-name,
-.vtm-v20-vampire-en span.property-name {
+.vtm-v20-vampire-en span.property-name,
+.wod-v20-mortal .property-name {
     text-transform: uppercase;
     font-size: 12.5px;
     font-weight: normal !important;
@@ -1521,7 +1760,8 @@ settings:
 /*  Скрывается ненужная строчка дайс роллера  */
 /*  Hide unnecessary dice roller element  */
 .vtm-v20-vampire .dice-original,
-.vtm-v20-vampire-en .dice-original {
+.vtm-v20-vampire-en .dice-original,
+.wod-v20-mortal .dice-original {
     display: none;
 }
 
@@ -1531,11 +1771,16 @@ settings:
 .vtm-v20-vampire-en .bar {
     background: rgb(2, 48, 21) !important;
 } 
+.wod-v20-mortal .bar {
+    background: rgb(178, 156, 151) !important;
+} 
+
 
 
 /*  Common settings for all the layouts  */
 .vtm-v20-vampire.statblock,
-.vtm-v20-vampire-en.statblock {
+.vtm-v20-vampire-en.statblock,
+.wod-v20-mortal.statblock {
     background-position: top;
     background-repeat: repeat;
     --statblock-image-width: 120px;

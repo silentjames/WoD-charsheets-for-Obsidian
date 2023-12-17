@@ -57,7 +57,7 @@
                                     "type": "property",
                                     "id": "99ca7b383b8b",
                                     "properties": [
-                                        "mask"
+                                        "demeanor"
                                     ],
                                     "fallback": "-",
                                     "conditioned": true,
@@ -68,7 +68,7 @@
                                     "type": "property",
                                     "id": "1948ab9a88bb",
                                     "properties": [
-                                        "amplua"
+                                        "concept"
                                     ],
                                     "fallback": "-",
                                     "display": "Амплуа:",

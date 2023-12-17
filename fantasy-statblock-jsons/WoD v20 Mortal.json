@@ -63,7 +63,7 @@
                                             "type": "property",
                                             "id": "da09e81ae89a",
                                             "properties": [
-                                                "mask"
+                                                "demeanor"
                                             ],
                                             "fallback": "-",
                                             "display": "Маска:",
@@ -74,7 +74,7 @@
                                             "type": "property",
                                             "id": "2bd90bbbd8ea",
                                             "properties": [
-                                                "amplua"
+                                                "concept"
                                             ],
                                             "fallback": "-",
                                             "display": "Амплуа:",

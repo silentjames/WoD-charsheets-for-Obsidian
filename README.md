@@ -2,8 +2,8 @@ Some character sheets for World of Darkness (v20) characters, based on [Fantasy 
 
 First of all, examples in English and Russian:
 
-<img src='imgs/en_cut_small.png' width='400'>
-<img src='imgs/ru_cut_small.png' width='434'>
+<img src='imgs/en_cut_small.png' width='395'>
+<img src='imgs/ru_cut_small.png' width='428'>
 
 ### General things
 This statblock is based on custom layout (obviously), css snippet and js-script. To run the script, you’ll need Dataview plugin. I’ll describe css and js later. And one final warning – I’m not a software developer at all, so css and js are full of sh#tcode :)

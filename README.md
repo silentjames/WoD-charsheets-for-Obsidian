@@ -47,7 +47,9 @@ But this statblock supports the great [Style Settings plugin](https://github.com
 For Marta you'll need normal and italic, for Trajan Pro 3 - normal, bold and black.
 But you can choose another font! Just keep in mind that these fonts will work on your computer only, not on mobile
 
-<img src='imgs/style_settings.png' width='650'>
+<p align="center">
+    <img src='imgs/style_settings.png' width='650'>
+</p>
 
 ### Epilogue 
 Well, that’s all, folks! Please let me know what do you think about this layout, and how it can be improved. For example, still not sure about the way the Specialties are displayed, but can’t think up something better.

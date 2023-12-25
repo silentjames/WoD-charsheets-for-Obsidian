@@ -83,11 +83,11 @@ There are also the option to add the top part of the charsheet as header of your
   <summary>Click here to see all headers</summary>
     <p align="center">
         <img style="vertical-align: middle;" src='imgs/header_vampire.png' width='395'>
-        <img style="vertical-align: middle;" src='imgs/header_werewolf.png' width='428'>
+        <img style="vertical-align: middle;" src='imgs/header_werewolf.png' width='395'>
     </p>
     <p align="center">
         <img style="vertical-align: middle;" src='imgs/header_mortal.png' width='395'>
-        <img style="vertical-align: middle;" src='imgs/header_agent.png' width='428'>
+        <img style="vertical-align: middle;" src='imgs/header_agent.png' width='395'>
     </p>
 </details>
 
@@ -914,6 +914,9 @@ Also, this statblock supports the great [Style Settings](https://github.com/mgme
 <br>
 **A**: -->
 
+**Q**: Weakness of my vampire is empty! 
+<br>
+**A**: That's because I can't include long quotation from the rulebook. There is the place for them at the beginning of the js script, like `const weaknessBrujah = '';`. Open the script with a notepad and add the weakness between quotes.
 
 **Q**: C'mon, 10mb css file? Why it is so huge?
 <br>

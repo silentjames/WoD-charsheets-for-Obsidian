@@ -82,12 +82,12 @@ There are also the option to add the top part of the charsheet as header of your
 <br>
   <summary>Click here to see all headers</summary>
     <p align="center">
-        <img style="vertical-align: middle;" src='imgs/header_vampire.png' width='395'>
-        <img style="vertical-align: middle;" src='imgs/header_werewolf.png' width='395'>
+        <img align="center" src='imgs/header_vampire.png' width='395'>
+        <img align="center" src='imgs/header_werewolf.png' width='395'>
     </p>
     <p align="center">
-        <img style="vertical-align: middle;" src='imgs/header_mortal.png' width='395'>
-        <img style="vertical-align: middle;" src='imgs/header_agent.png' width='395'>
+        <img align="center" src='imgs/header_mortal.png' width='395'>
+        <img align="center" src='imgs/header_agent.png' width='395'>
     </p>
 </details>
 

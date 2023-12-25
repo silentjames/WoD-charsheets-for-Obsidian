@@ -120,8 +120,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <details>
     <summary>Vampire (English)</summary>
 
-    ````
-
     ```statblock
     columnWidth: 680
     column: 1
@@ -308,15 +306,13 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty6_name: 
 
     show_weakness: no
-    ````
+
 </details>
 
 <br>
 
 <details>
     <summary>Werewolf (Russian)</summary>
-
-    ````
 
     ```statblock
     columnWidth: 680
@@ -515,16 +511,12 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty6_name: 
     ```
 
-    ````
-
 </details>
 
 <br>
 
 <details>
     <summary>Mortal (Russian)</summary>
-    
-    ````
 
     ```statblock
     columnWidth: 680
@@ -716,16 +708,12 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     conceal1: ПК
     ```
 
-    ````
-
 </details>
 
 <br>
 
 <details>
     <summary>Agents (Russian)</summary>
-
-    ````
 
     ```statblock
     column: 1
@@ -895,15 +883,16 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty6_name: 
     ```
 
-    ````
-
 </details>
 
 ## FAQ
 
-**Q**: Why do you need to run the script from unknown guy's github?
+**Q**: Why should I run the script from unknown guy's github?
 <br>
-**A**: In general, you can use only css file. Without it:
+**A**: In general, you can use only css file. Without it you:
+- lose clan's logos;
+- must use 'X' as replacement to '10';
+- need to manually add `bearing`, `blood_per_turn` and `blood_current` properties.
 
 **Q**: When I add the layout into Fantasy Statblock, I see warning about Javascript code! What's this?
 <br>
@@ -924,6 +913,7 @@ Also, this statblock supports the great [Style Settings](https://github.com/mgme
 **Q**: Allright, I did it, but still can't see the fonts on my mobile!
 <br>
 **A**: -->
+
 
 **Q**: C'mon, 10mb css file? Why it is so huge?
 <br>

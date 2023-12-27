@@ -1,40 +1,5 @@
 Some character sheets for World of Darkness (v20) characters, based on [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) and [Obsidian](https://github.com/obsidianmd).
-Currently there are **vampires**, **mortals**, **government agents** (mortal reskin actually, kinda based on 'Project Twilight') and **werewolves** (in progress).
-
-# Description
-
-This statblock contains custom layout (obviously), css snippet and js script. 
-
-**Layout + CSS**
-<br>
-- the snippet stores all the graphic elements of the statblock - background textures, clan logos, etc.
-- all dots and squares are shown using a few custom fonts (also sttored inside the snippet). Values from 0 to 9 can be easily displayed (in the most common cases, 5 or less are enough), but for "10" you must type "X" (if you don’t want to use the js script);
-- the layouts supports [Dice Roller](https://github.com/javalent/dice-roller) plugin;
-- internal links inside various lines (such as nature, demeanor, disciplines, flaws and merits) will be displayed as simple text, but still work;
-
-**Javascript**
-<br>
-It adds a couple of simple visual tricks and also does some automation, just to simplify some things:
-- you can add the name of your character in H2 above the statblock, and it will be hidden in reading view – but remains in the outline panel;
-- change the clan image background according to the “Clan” property;
-- “Blood per Turn” value will be calculated according to “Generation” property;
-- all Attributes are equal to 1 by default; 
-- if some traits have more than 5 dots, dots could be replaced with simple numbers, according to the length of the corresponding name; 
-- if the path of your Kindred is Humanity, “Normalcy“ will be added as the bearing, with modifier. If it isn't, bearing line will be hidden;
-- you can now set "10" property value as well, not "X";
-- “Bloodpool” area will add new lines of squares if there are more blood than 10, 20, etc, up to 40 as max;
-- “Weakness” is also filled automatically, according to the clan.
-
-Almost all the things I mentioned could be done manually (except clan image, I suppose), so the script just automates some stuff.
-
-> To run the script, you’ll need [Obsidian Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin. 
-
-The design is based on the official Russian version of the character sheet. In general, Russian language is 30-40% longer than English, so the statblock could have been not so width… But not yet. 
-
-## Some restrictions
-This was started as small project for me and my friends only, so the final result is not really customisable at some points. For example, it’s made for 680px width, and cannot be split into two or more columns. On the other hand, I did my best to hide some rows or blocks if they are empty and/or not important – but you can change it in the layout.
-
-And one final warning – I’m not a software developer at all, so css and js are full of sh#tcode :)
+Currently, there are **vampires**, **mortals**, **government agents** (mortal reskin actually, kinda based on 'Project Twilight') and **werewolves** (in progress).
 
 # General things
 
@@ -46,12 +11,11 @@ First of all, examples of VtM character sheets in English and Russian:
     <img src='imgs/ru_vampire.png' width='428'>
 </p>
 
-
 Other charsheets are available at this moment in Russian only - but you can change the names of the abilities manually in Fantasy Statblocks settings and send me a pull request. Feel free to ask for any help!
 
 ## Werewolves, mortals and agents
 
-Under the spoilers you can find all other charsheets.
+Under the spoilers, you can find all other charsheets.
 
 <details>
     <summary>Werewolf (work in progress)</summary>
@@ -59,14 +23,14 @@ Under the spoilers you can find all other charsheets.
             <img src='imgs/ru_werewolf.png' width='450'>
         </p>
 </details>
-<br>
+
 <details>
-    <summary>Mortal (close to the vampire charsheet)</summary>
+    <summary>Mortal (similar to the vampire charsheet)</summary>
         <p align="center">
             <img src='imgs/ru_mortal.png' width='450'>
         </p>
 </details>
-<br>
+
 <details>
     <summary>"Project Twilight" agent - FBI, SAD, CIA, NSA...</summary>
         <p align="center">
@@ -76,29 +40,62 @@ Under the spoilers you can find all other charsheets.
 
 ## Headers
 
-There are also the option to add the top part of the charsheet as header of your note, in case you don't need all the stats of a character - just left all the fields below "image" blank, or add `cssclasses: wod-header` into your note's properties.
-<br>
-<details>
-<br>
-  <summary>Click here to see all headers</summary>
-    <p align="center">
-        <img align="center" src='imgs/header_vampire.png' width='395'>
-        <img align="center" src='imgs/header_werewolf.png' width='395'>
-    </p>
-    <p align="center">
-        <img align="center" src='imgs/header_mortal.png' width='395'>
-        <img align="center" src='imgs/header_agent.png' width='395'>
-    </p>
-</details>
+There is also the option to add the top part of the charsheet as a header of your note, in case you don't need all the stats of a character - just leave all the fields below image block blank, or add `cssclasses: wod-header` into your note's properties.
 
-## Usage
+<p align="center">
+    <img align="center" src='imgs/header_vampire.png' width='395'>
+    <img align="center" src='imgs/header_werewolf.png' width='395'>
+</p>
+<p align="center">
+    <img align="center" src='imgs/header_mortal.png' width='395'>
+    <img align="center" src='imgs/header_agent.png' width='395'>
+</p>
+
+# Description
+
+This statblock contains the custom layout JSON (obviously), CSS snippet and JS script. 
+
+**JSON + CSS**
+<br>
+
+- the snippet stores all the graphic elements of the statblock - background textures, clan logos, etc;
+- all dots and squares are shown using a few custom fonts (also stored inside the snippet). Values from 0 to 9 can be easily displayed (in the most common cases, 5 or less are enough), but for "10" you must type "X" (if you don’t want to use the JS script);
+- the layouts support [Dice Roller](https://github.com/javalent/dice-roller) plugin;
+- internal links inside various lines (such as nature, demeanor, disciplines, flaws and merits) will be displayed as simple text, but still work.
+
+**Javascript**
+<br>
+
+It adds a couple of simple visual tricks and also does some automation, just to simplify some things;
+- you can add the name of your character in H2 above the statblock, and it will be hidden in the reading view – but it remains in the outline panel;
+- change the clan image background according to the “Clan” property;
+- “Weakness” is also filled automatically, according to the clan.
+- The “Blood per Turn” value will be calculated according to the “Generation” property;
+- all Attributes are equal to 1 by default; 
+- if some traits have more than 5 dots, dots could be replaced with simple numbers, according to the length of the respective name, for saving the design's beauty; 
+- if the path of your Kindred is Humanity, “Normalcy“ will be added as the bearing, with the modifier. If it isn't, the bearing line will be hidden;
+- you can now set "10" property value as well, not "X";
+- The “Bloodpool” area will add new lines of squares if there are more blood than 10, 20, etc, up to 40 as max;
+
+Almost all the things I mentioned could be done manually (except clan image, I suppose), so the script just automates some stuff.
+
+> To run the script, you’ll need [Obsidian Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin. 
+
+The design is based on the official Russian version of the character sheet. In general, the Russian language is 30-40% longer than English, so the statblock could have been not so wide… But not yet. 
+
+## Some restrictions
+This was started as a small project for me and my friends only, so the final result is not customizable at some points. For example, it’s made for 680px width, and cannot be split into two or more columns. On the other hand, I did my best to hide some rows or blocks if they are empty and/or not important – but you can change it in the layout.
+
+And one final warning – I’m not a software developer at all, so CSS and JS files are full of sh#tcode :)
+
+# Usage
 
 What should you do to start using these statblocks?
 
-1. Download json file for a needed character, `world-of-darkness-statblocks.css`, and `WoDCharsheets.js` (or `WoDCharsheets-en.js` for English version);
+1. Download JSON file for a needed character, `world-of-darkness-statblocks.css`, and `WoDCharsheets.js` (or `WoDCharsheets-en.js` for English version);
 2. Install [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) plugin and enable it;
-3. Go to Fantasy Statblocks and upload the json using "Import From JSON" button. The new layout must appear in the list below.
-4. Copy `world-of-darkness-statblocks.css` into your Obsidian "snippets" folder, then go to Obsidian's Apperance settings and enable it;
+3. Go to Fantasy Statblocks and upload the JSON using the "Import From JSON" button. The new layout must appear in the list below.
+4. Copy `world-of-darkness-statblocks.css` into your Obsidian "snippets" folder, then go to Obsidian's Appearance settings and enable it;
 5. Copy `WoDCharsheets.js` (or `WoDCharsheets-en.js`) **into the folder inside your Obsidian vault**;
 6. Install [Obsidian Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin and enable it;
 7. Create a new note;
@@ -108,7 +105,7 @@ What should you do to start using these statblocks?
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 ```
 ````
-`"/z_Z manuals/WoDCharsheets.js"` - it's my path to js file inside my Obsidian vault, you must replace it with your own.
+`"/z_Z manuals/WoDCharsheets.js"` - it's my path to the JS file inside my Obsidian vault, you must replace it with your own.
 
 9. Copy the blank layout of your character from below and paste it into your note;
 10.   Done! Now you can start filling a charsheet!
@@ -887,41 +884,41 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
 ## FAQ
 
-**Q**: Why should I run the script from unknown guy's github?
+**Q**: Why should I run the script from an unknown guy's GitHub?
 <br>
-**A**: In general, you can use only css file. Without it you:
+**A**: In general, you can use only CSS file. Without it you:
 - lose clan's logos;
-- must use 'X' as replacement to '10';
-- need to manually add `bearing`, `blood_per_turn` and `blood_current` properties.
+- must use 'X' as a replacement for '10';
+- need to manually add `bearing`, `blood_per_turn` and, if needed, `blood_current2`, `blood_current3`, `blood_current4` properties.
 
-**Q**: When I add the layout into Fantasy Statblock, I see warning about Javascript code! What's this?
+**Q**: When I add the layout into Fantasy Statblock, I see a warning about Javascript code! What's this?
 <br>
-**A**: The layout has some code inside, to used with [Dice Roller](https://github.com/javalent/dice-roller) plugin. 
+**A**: The layout has some simple blocks of code inside, to be used with [Dice Roller](https://github.com/javalent/dice-roller) plugin. 
 
-**Q**: My statblock doesn't have fonts I see on your screenshots. 
+**Q**: My statblock doesn't have fonts which I see on your screenshots. 
 <br>
 **A**: I can't add these fonts into the statblock because of legal reasons. But you can add them manually into your system, and then the statblock will use them.<br>
-For vampires and mortals you'll need Marta and Trajan Pro 3.<br>
+For vampires and mortals, you'll need Marta and Trajan Pro 3.<br>
 For werewolves - Marta and KistyCC.<br>
 For agents - GNUTypewriter.<br>
-Also, this statblock supports the great [Style Settings](https://github.com/mgmeyers/obsidian-style-settings/) plugin, so you can choose other fonts there, if you want.
+Also, this statblock supports the great [Style Settings](https://github.com/mgmeyers/obsidian-style-settings/) plugin, so you can choose other fonts there if you want.
 <p align="center">
     <img src='imgs/style_settings.png' width='650'>
 </p>
 
 <!--
-**Q**: Allright, I did it, but still can't see the fonts on my mobile!
+**Q**: Alright, I did it, but still can't see the fonts on my mobile!
 <br>
 **A**: -->
 
-**Q**: Weakness of my vampire is empty! 
+**Q**: The "Weakness" area is empty in my charsheet! 
 <br>
-**A**: That's because I can't include long quotation from the rulebook. There is the place for them at the beginning of the js script, like `const weaknessBrujah = '';`. Open the script with a notepad and add the weakness between quotes.
+**A**: That's because I can't include long quotations from the rulebook. There is a place for them at the beginning of the JS script, like `const weaknessBrujah = '';`. Open the script with a notepad and add the weakness between quotes. If you aren't using JS script, just add the `weakness` property and the corresponding text into your statblock.
 
 **Q**: C'mon, 10mb css file? Why it is so huge?
 <br>
-**A**: That's because it stores the graphic elements (in base64 strings) for all the statblocks, especially background testures. I placed all these elements in the end of the file and divided their blocks with comments like `/*  ALL THE GRAPHIC FOR AGENTS  */`. If you aren't going to use, for example, agents, open the css snippet in notepad and remove such block. 
+**A**: That's because it stores the graphic elements (in base64 strings) for all the statblocks, especially background textures. I placed all these elements at the end of the file and divided their blocks with comments like `/*  ALL THE GRAPHIC FOR AGENTS  */`. If you aren't going to use, for example, agents, open the CSS snippet in Notepad and remove such block. 
 
 ## Epilogue 
-Well, that’s all, folks! Please let me know what do you think about this layout, and how it can be improved. For example, still not sure about the way the Specialties are displayed, but can’t think up something better.
-I also a little bit sad that, in general, this layout is just an info page. Storytelling System assumes that you combine two of your stats, Intelligence + Academics, for example, and then roll all the dice. If you know how it can be achieved – please let me know!
+Well, that’s all, folks! Please let me know what you think about this layout, and how it can be improved. For example, still not sure about the way the Specialties are displayed, but can’t think up something better.
+I am also a little bit sad that, in general, this layout is just an info page. Storytelling System assumes that you combine two of your stats, Intelligence + Academics, for example, and then roll all the dice. If you know how it can be achieved – please let me know!

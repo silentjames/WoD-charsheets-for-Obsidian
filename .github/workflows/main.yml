@@ -13,7 +13,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
           name: world-of-darkness-statblocks
-          path: /css-snippets
+          path: ./css-snippets/*.css
 
   release-project:
       name: Release

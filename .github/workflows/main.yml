@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults: 
       run:
-        working-directory: /home/runner/work/wod-charsheets-for-obsidian/wod-charsheets-for-obsidian
+        working-directory: /home/runner/work
     name: Collent invididual files
     steps:
     - run: cd ./ && ls

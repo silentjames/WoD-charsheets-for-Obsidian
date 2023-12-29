@@ -14,7 +14,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
           name: world-of-darkness-statblocks
-          path: wod-charsheets-for-obsidian/css-snippets
+          path: ${{ github.workspace }}
           if-no-files-found: error
 
   release-project:

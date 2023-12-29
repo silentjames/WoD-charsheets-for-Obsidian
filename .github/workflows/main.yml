@@ -11,10 +11,10 @@ jobs:
     name: Collent invididual files
     steps:
     - run: cd ./ && ls
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
           name: world-of-darkness-statblocks
-          path: .github/workflows
+          path: '.github/workflows'
           if-no-files-found: error
 
   release-project:

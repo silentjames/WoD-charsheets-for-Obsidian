@@ -10,14 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     defaults: 
       run:
-        working-directory: /home/runner/work/wod-charsheets-for-obsidian/
+        working-directory: /home/runner/work/silentjames/wod-charsheets-for-obsidian/
     name: Collent invididual files
     steps:
     - run: cd ./ && ls
     - uses: actions/upload-artifact@v4
       with:
           name: world-of-darkness-statblocks
-          path: ${{ github.workspace }}
+          path: js
           if-no-files-found: error
 
   release-project:

@@ -1,8 +1,8 @@
 name: Release new statblocks package
 on:
   push:
-    branches:
-      - main
+    paths:
+      - '**.yml'
       
 jobs:
 
@@ -13,7 +13,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
           name: world-of-darkness-statblocks
-          path: js/*
+          path: .github/workflows
           if-no-files-found: error
 
   release-project:

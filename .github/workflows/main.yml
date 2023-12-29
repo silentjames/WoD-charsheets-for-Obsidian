@@ -1,4 +1,3 @@
-# https://github.com/SilentVoid13/Templater/blob/master/.github/workflows/release.yml
 name: Release new statblocks package
 on:
   push:
@@ -8,19 +7,18 @@ on:
 jobs:
   build-project:
     runs-on: ubuntu-latest
-    name: Collent invididual files
+    permissions:
+      contents: write
     steps:
-    - run: mkdir -p css-snippets
-    - run: echo hello > css-snippets/world-of-darkness-statblocks.css
-    - uses: actions/upload-artifact@v4
+    - uses: actions/checkout@v3
+    - uses: ncipollo/release-action@v1
       with:
-          name: world-of-darkness-statblocks
-          path: css-snippets/world-of-darkness-statblocks.css
+        artifacts: "css-snippets/world-of-darkness-statblocks.css, js/WoDCharsheets.js"
   release-project:
-      name: Release
-      runs-on: ubuntu-latest
-      steps: 
-        - name: Download all files
-          uses: actions/download-artifact@v4.1.0
-        - name: Display structure of downloaded files
-          run: ls -R
+    name: Release
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Download all files
+        uses: actions/download-artifact@v4.1.0
+      - name: Display structure of downloaded files
+        run: ls -R

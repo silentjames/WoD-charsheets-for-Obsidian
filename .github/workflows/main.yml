@@ -16,7 +16,7 @@ jobs:
           name: wod-charsheets-obsidian
           path: fantasy-statblock-jsons/*
       - name: Collent invididual files
-          steps:
+        steps:
         - run: mkdir -p css-snippets
         - run: echo hello > css-snippets/world-of-darkness-statblocks.css
         - uses: actions/upload-artifact@v4

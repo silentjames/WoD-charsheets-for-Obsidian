@@ -5,20 +5,21 @@ on:
       - main
       
 jobs:
+
   build-project:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    name: Collent invididual files
     steps:
-    - uses: actions/checkout@v3
-    - uses: ncipollo/release-action@v1
+    - uses: actions/upload-artifact@v3
       with:
-        artifacts: "css-snippets/world-of-darkness-statblocks.css, js/WoDCharsheets.js"
+          name: world-of-darkness-statblocks
+          path: css-snippets/
+
   release-project:
-    name: Release
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Download all files
-        uses: actions/download-artifact@v4.1.0
-      - name: Display structure of downloaded files
-        run: ls -R
+      name: Release
+      runs-on: ubuntu-latest
+      steps: 
+        - name: Download all files
+          uses: actions/download-artifact@v3
+        - name: Display structure of downloaded files
+          run: ls -R

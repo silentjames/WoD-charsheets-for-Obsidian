@@ -17,8 +17,9 @@ jobs:
           if-no-files-found: error
 
   release-project:
-      name: Release
       runs-on: ubuntu-latest
+      name: Release
+      needs: build-project
       steps: 
         - name: Download all files
           uses: actions/download-artifact@v3

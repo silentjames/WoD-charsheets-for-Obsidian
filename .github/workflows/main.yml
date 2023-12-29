@@ -7,22 +7,15 @@ on:
       
 jobs:
   build-project:
-    name: Collect all the files
     runs-on: ubuntu-latest
+    name: Collent invididual files
     steps:
-      - name: Collent JSON files as archive
-        uses: actions/upload-artifact@v4.0.0
-        with:
-          name: wod-charsheets-obsidian
-          path: fantasy-statblock-jsons/*
-      - name: Collent invididual files
-        steps:
-        - run: mkdir -p css-snippets
-        - run: echo hello > css-snippets/world-of-darkness-statblocks.css
-        - uses: actions/upload-artifact@v4
-          with:
-            name: world-of-darkness-statblocks
-            path: css-snippets/world-of-darkness-statblocks.css
+    - run: mkdir -p css-snippets
+    - run: echo hello > css-snippets/world-of-darkness-statblocks.css
+    - uses: actions/upload-artifact@v4
+      with:
+          name: world-of-darkness-statblocks
+          path: css-snippets/world-of-darkness-statblocks.css
   release-project:
       name: Release
       runs-on: ubuntu-latest

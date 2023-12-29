@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Collent invididual files
     steps:
+    - run: cd ./ && ls
     - uses: actions/upload-artifact@v3
       with:
           name: world-of-darkness-statblocks

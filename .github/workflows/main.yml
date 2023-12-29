@@ -16,14 +16,14 @@ jobs:
           name: wod-charsheets-obsidian
           # A file, directory or wildcard pattern that describes what to upload
           path: |
-            css-snippets/world-of-darkness-statblocks.css
-            js/WoDCharsheets.js
+            ./css-snippets/world-of-darkness-statblocks.css
+            ./js/WoDCharsheets.js
       - name: Collent JSON files as archive
         uses: actions/upload-artifact@v4.0.0
         with:
           name: wod-charsheets-obsidian
           # A file, directory or wildcard pattern that describes what to upload
-          path: fantasy-statblock-jsons/*
+          path: ./fantasy-statblock-jsons/*
   release-project:
       name: Release
       runs-on: ubuntu-latest

@@ -8,7 +8,6 @@ on:
       - '**.yml' # тест
       - '**.yaml' # тест
 
-
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -17,8 +17,8 @@ jobs:
         with:
             name: world-of-darkness-statblocks
             path: | 
-              fantasy-statblock-jsons
-              css-snippets
+              fantasy-statblock-jsons/
+              css-snippets/
               js/WoDCharsheets.js
             if-no-files-found: error
 

@@ -42,7 +42,7 @@ jobs:
           uses: thedoctor0/zip-release@0.7.5
           with:
             type: 'zip'
-            path: ./world-of-darkness-statblocks/
+            path: ./world-of-darkness-statblocks-v${{ github.run_number }}/
             filename: 'world-of-darkness-statblocks.zip'
         - name: Create JSON archive
           uses: thedoctor0/zip-release@0.7.5

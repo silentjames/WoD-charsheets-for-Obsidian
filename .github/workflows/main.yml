@@ -15,14 +15,19 @@ jobs:
       - name: Collent all JSON files into one archive
         uses: actions/upload-artifact@v4
         with:
-            name: world-of-darkness-statblocks
+            name: jsons
             path: fantasy-statblock-jsons
             if-no-files-found: error
-      - name: Collect individual files
-        uses: ncipollo/release-action@v1.12.0
+      - name: Collent all files into
+        uses: actions/upload-artifact@v4
         with:
-          artifacts: "js/WoDCharsheets.js,css-snippets/world-of-darkness-statblocks.css"
-          token: ${{ secrets.GITHUB_TOKEN }}
+            name: world-of-darkness-statblocks
+            path: | 
+              fantasy-statblock-jsons
+              css-snippets
+              js/WoDCharsheets.js
+            if-no-files-found: error
+
 
   release-project:
       runs-on: ubuntu-latest

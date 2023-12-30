@@ -7,7 +7,7 @@ on:
 jobs:
 
   build-project:
-    name: Build
+    name: Build and collect everything
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code 
@@ -20,6 +20,12 @@ jobs:
               fantasy-statblock-jsons/
               css-snippets/
               js/WoDCharsheets.js
+            if-no-files-found: error
+      - name: Collent all files into one archive
+        uses: actions/upload-artifact@v4
+        with:
+            name: jsons
+            path: fantasy-statblock-jsons/
             if-no-files-found: error
 
 

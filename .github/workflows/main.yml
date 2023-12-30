@@ -22,7 +22,7 @@ jobs:
               css-snippets/
               js/WoDCharsheets.js
             if-no-files-found: error
-      - name: Collent all files into one archive
+      - name: Collent all JSONS into one archive
         uses: actions/upload-artifact@v4
         with:
             name: jsons
@@ -40,9 +40,20 @@ jobs:
         - name: Display structure of downloaded files
           run: ls -R
         - name: Create GH release
+          id: create-gh-release
           uses: actions/create-release@v1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
             tag_name: ${{ github.run_number }}
             release_name: Release ${{ github.run_number }}
+        - name: Upload All-in-One Release Asset
+          id: upload-release-asset
+          uses: actions/upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            upload_url: ${{ steps.create-gh-release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+            asset_path: ./world-of-darkness-statblocks.zip
+            asset_name: world-of-darkness-statblocks-v${{ github.run_number }}.zip
+            asset_content_type: application/zip

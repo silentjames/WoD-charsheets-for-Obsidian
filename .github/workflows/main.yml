@@ -42,15 +42,14 @@ jobs:
           uses: thedoctor0/zip-release@0.7.5
           with:
             type: 'zip'
+            path: ./world-of-darkness-statblocks/
             filename: 'world-of-darkness-statblocks.zip'
-            exclusions: '*.git* *imgs/* README*.md'
         - name: Create JSON archive
           uses: thedoctor0/zip-release@0.7.5
           with:
             type: 'zip'
-            path: ./fantasy-statblock-jsons/
+            path: ./jsons/
             filename: 'statblock-jsons.zip'
-            exclusions: '*.git* *imgs/* README* .'
         - name: Create GH release
           id: create-gh-release
           uses: actions/create-release@v1

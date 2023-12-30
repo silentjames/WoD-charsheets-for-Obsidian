@@ -76,5 +76,3 @@ jobs:
                   asset_path: css-snippets/world-of-darkness-statblocks.css
                   asset_name: world-of-darkness-statblocks.css
                   asset_content_type: text/css
-
-    

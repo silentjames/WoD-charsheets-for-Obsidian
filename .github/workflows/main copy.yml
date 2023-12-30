@@ -1,0 +1,40 @@
+name: Release new statblocks package
+on:
+  push:
+    paths:
+      - '**.yml'
+      
+jobs:
+
+  build-project:
+    name: Build and collect everything
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v4
+      - name: Collent all files into one archive
+        uses: actions/upload-artifact@v4
+        with:
+            name: world-of-darkness-statblocks
+            path: | 
+              fantasy-statblock-jsons/
+              css-snippets/
+              js/WoDCharsheets.js
+            if-no-files-found: error
+      - name: Collent all files into one archive
+        uses: actions/upload-artifact@v4
+        with:
+            name: jsons
+            path: fantasy-statblock-jsons/
+            if-no-files-found: error
+
+
+  release-project:
+      runs-on: ubuntu-latest
+      name: Release
+      needs: build-project
+      steps: 
+        - name: Download all files
+          uses: actions/download-artifact@v4
+        - name: Display structure of downloaded files
+          run: ls -R

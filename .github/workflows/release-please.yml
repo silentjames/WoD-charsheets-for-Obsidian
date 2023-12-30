@@ -1,7 +1,7 @@
 on:
     push:
-        paths:
-          - '**.yml'
+        branches:
+            - 'main'
 env:
     PLUGIN_NAME: world-of-darkness-obsidian-statblocks
 

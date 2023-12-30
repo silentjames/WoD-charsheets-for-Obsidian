@@ -30,5 +30,7 @@ jobs:
       steps: 
         - name: Download all files
           uses: actions/download-artifact@v3
+          with:
+            name: world-of-darkness-statblocks
         - name: Display structure of downloaded files
           run: ls -R

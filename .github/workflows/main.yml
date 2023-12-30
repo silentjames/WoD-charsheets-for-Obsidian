@@ -12,13 +12,7 @@ jobs:
     steps:
       - name: Checkout code 
         uses: actions/checkout@v4
-      - name: Collent all JSON files into one archive
-        uses: actions/upload-artifact@v4
-        with:
-            name: jsons
-            path: fantasy-statblock-jsons
-            if-no-files-found: error
-      - name: Collent all files into
+      - name: Collent all files into one archive
         uses: actions/upload-artifact@v4
         with:
             name: world-of-darkness-statblocks

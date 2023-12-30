@@ -16,7 +16,7 @@ jobs:
       - name: Collent all files into one archive
         uses: actions/upload-artifact@v4
         with:
-            name: world-of-darkness-statblocks
+            name: world-of-darkness-statblocks-v${{ github.run_number }}
             path: | 
               fantasy-statblock-jsons/
               css-snippets/
@@ -25,7 +25,7 @@ jobs:
       - name: Collent all JSONS into one archive
         uses: actions/upload-artifact@v4
         with:
-            name: jsons
+            name: jsons-v${{ github.run_number }}
             path: fantasy-statblock-jsons/
             if-no-files-found: error
 
@@ -48,7 +48,7 @@ jobs:
           uses: thedoctor0/zip-release@0.7.5
           with:
             type: 'zip'
-            path: ./jsons/
+            path: ./jsons-v${{ github.run_number }}/
             filename: 'statblock-jsons.zip'
         - name: Create GH release
           id: create-gh-release

@@ -33,6 +33,7 @@ jobs:
         with:
           type: 'zip'
           filename: 'world-of-darkness-statblocks.zip'
+          exclusions: '*.git* *imgs/* README* .'
 
 
 
@@ -73,3 +74,12 @@ jobs:
             asset_path: ./world-of-darkness-statblocks/js/WoDCharsheets.js
             asset_name: WoDCharsheets-v${{ github.run_number }}.js
             asset_content_type: application/javascript
+        - name: Upload main archive
+          uses: actions/upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            upload_url: ${{ steps.create-gh-release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+            asset_path: ./world-of-darkness-statblocks.zip
+            asset_name: world-of-darkness-statblocks-v${{ github.run_number }}.zip
+            asset_content_type: application/zip

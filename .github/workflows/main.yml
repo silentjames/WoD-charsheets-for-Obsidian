@@ -10,14 +10,19 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout code 
         uses: actions/checkout@v4
-      - name: Collent invididual files
+      - name: Collent all JSON files into one archive
         uses: actions/upload-artifact@v4
         with:
             name: world-of-darkness-statblocks
-            path: js
+            path: fantasy-statblock-jsons
             if-no-files-found: error
+      - name: Collect individual files
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          artifacts: "js/WoDCharsheets.js,css-snippets/world-of-darkness-statblocks.css"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   release-project:
       runs-on: ubuntu-latest

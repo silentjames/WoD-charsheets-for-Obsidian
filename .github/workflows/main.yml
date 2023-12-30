@@ -47,6 +47,8 @@ jobs:
           with:
             tag_name: ${{ github.run_number }}
             release_name: Release ${{ github.run_number }}
+        - name: Check
+          run: cd ./ && ls -R
         - name: Upload All-in-One Release Asset
           id: upload-release-asset
           uses: actions/upload-release-asset@v1

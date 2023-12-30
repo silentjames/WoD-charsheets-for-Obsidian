@@ -43,7 +43,7 @@ jobs:
           with:
             type: 'zip'
             filename: 'world-of-darkness-statblocks.zip'
-            exclusions: '*.git* *imgs/* README* .'
+            exclusions: '*.git* *imgs/* README*.md'
         - name: Create JSON archive
           uses: thedoctor0/zip-release@0.7.5
           with:

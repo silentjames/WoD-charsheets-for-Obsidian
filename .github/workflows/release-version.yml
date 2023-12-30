@@ -35,8 +35,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./manifest.json
-          asset_name: manifest.json
+          asset_path: js/WoDCharsheets.js
+          asset_name: WoDCharsheets.js
           asset_content_type: application/json
       - name: Upload theme.css
         id: upload-css
@@ -45,6 +45,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./theme.css
-          asset_name: theme.css
+          asset_path: css-snippets/world-of-darkness-statblocks.css
+          asset_name: world-of-darkness-statblocks.css
           asset_content_type: text/css

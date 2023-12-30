@@ -1,0 +1,21 @@
+# https://github.com/SilentVoid13/Templater/blob/master/.github/workflows/release.yml
+name: Plugin release
+on:
+  push:
+    paths:
+      - '**.yml' # тест
+      - '**.yaml' # тест
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code 
+        uses: actions/checkout@v3
+      - name: Plugin release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          artifacts: "css-snippets/world-of-darkness-statblocks.css,js/WoDCharsheets.js"
+          token: ${{ secrets.GITHUB_TOKEN }}

@@ -29,8 +29,6 @@ jobs:
       needs: build-project
       steps: 
         - name: Download all files
-          uses: actions/download-artifact@v3
-          with:
-            name: world-of-darkness-statblocks
+          uses: actions/download-artifact@v4
         - name: Display structure of downloaded files
           run: ls -R

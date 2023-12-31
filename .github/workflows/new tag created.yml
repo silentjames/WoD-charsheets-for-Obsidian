@@ -15,7 +15,7 @@ jobs:
         name: Prepare
         id: prepare
         run: |
-          TAG=${GITHUB_REF#refs/tags/}
+          TAG=${git describe --tags --abbrev=0}
           MINOR=${TAG%.*}
           MAJOR=${MINOR%.*}
           echo ::set-output name=tag_name::${TAG}

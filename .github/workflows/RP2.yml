@@ -1,0 +1,18 @@
+name: Release Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Release with release-please
+        uses: google-github-actions/release-please-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: simple

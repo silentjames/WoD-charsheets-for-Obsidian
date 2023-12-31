@@ -1,9 +1,7 @@
 name: Release new statblocks package
+
 on:
-  push:
-    paths:
-      - '**.yml'
-      - '**.yaml'
+  workflow_dispatch:
       
 jobs:
 
@@ -20,7 +18,7 @@ jobs:
             path: | 
               fantasy-statblock-jsons/
               css-snippets/
-              js/WoDCharsheets.js
+              js/
             if-no-files-found: error
       - name: Collent all JSONS into one archive
         uses: actions/upload-artifact@v4

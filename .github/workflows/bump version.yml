@@ -65,7 +65,7 @@ jobs:
               uses: thedoctor0/zip-release@0.7.5
               with:
                 type: 'zip'
-                path: ./jsons-v${{ github.run_number }}/
+                path: ./jsons-${{needs.build-prepare.outputs.new-tag-created}}
                 filename: 'statblock-jsons.zip'
 
             # создается релиз

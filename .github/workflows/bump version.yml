@@ -3,43 +3,63 @@ on:
     workflow_dispatch:
 
 jobs:
-    build-project:
+    build-prepare:
         name: Build and collect everything
         runs-on: ubuntu-latest
+        outputs: 
+            new-tag-created: ${{ steps.tag_version.outputs.new_tag }}
+            new-changelog-created: ${{ steps.tag_version.outputs.changelog }}
         steps:
+            # чекаут проекта
           - name: Checkout code 
             uses: actions/checkout@v4
+
+            # обновляется версия и пушится новый тэг
+          - name: Bump version and push tag
+            id: tag_version
+            uses: mathieudutour/github-tag-action@v6.1
+            with:
+              github_token: ${{ secrets.GITHUB_TOKEN }}
+
+            # все нужные файлы репозитория собираются в первую папку
           - name: Collent all files into one archive
             uses: actions/upload-artifact@v4
             with:
-                name: world-of-darkness-statblocks-v${{ github.run_number }}
+                name: world-of-darkness-statblocks-${{ steps.tag_version.outputs.new_tag }}
                 path: | 
                   fantasy-statblock-jsons/
                   css-snippets/
                   js/
                 if-no-files-found: error
-          - name: Collent all JSONS into one archive
+
+            # все JSON-файлы собираются во вторую папку
+          - name: Collent all JSONs into one archive
             uses: actions/upload-artifact@v4
             with:
-                name: jsons-v${{ github.run_number }}
+                name: jsons-${{ steps.tag_version.outputs.new_tag }}
                 path: fantasy-statblock-jsons/
                 if-no-files-found: error
 
 
     release-project:
         runs-on: ubuntu-latest
+        needs: build-prepare
+        name: Release
         steps: 
+            # скачиваются все файлы
             - name: Download all files
               uses: actions/download-artifact@v4
             - name: Display structure of downloaded files
               run: ls -R
+
             # создается общий архив со всеми файлами
             - name: Create main archive
               uses: thedoctor0/zip-release@0.7.5
               with:
                 type: 'zip'
-                path: ./world-of-darkness-statblocks-v${{ github.run_number }}/
+                path: ./world-of-darkness-statblocks-${{needs.build-prepare.outputs.new-tag-created}}
                 filename: 'world-of-darkness-statblocks.zip'
+
             # создается отдельный архив для JSON файлов
             - name: Create JSON archive
               uses: thedoctor0/zip-release@0.7.5
@@ -47,22 +67,20 @@ jobs:
                 type: 'zip'
                 path: ./jsons-v${{ github.run_number }}/
                 filename: 'statblock-jsons.zip'
-            - name: Bump version and push tag
-              id: tag_version
-              uses: mathieudutour/github-tag-action@v6.1
-              with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
+
             # создается релиз
             - name: Create a GitHub release
               id: create-gh-release
               uses: ncipollo/release-action@v1
               with:
-                tag: ${{ steps.tag_version.outputs.new_tag }}
-                name: Release ${{ steps.tag_version.outputs.new_tag }}
-                body: ${{ steps.tag_version.outputs.changelog }}
-                      # проверяются доступные файлы
-            - name: Check
+                tag: ${{needs.build-prepare.outputs.new-tag-created}}
+                name: Release ${{needs.build-prepare.outputs.new-tag-created}}
+                body: ${{needs.build-prepare.outputs.new-changelog-created}}
+
+            # проверяются доступные файлы
+            - name: Second check
               run: cd ./ && ls -R
+
             # выкладывается CSS файл
             - name: Upload WoD CSS file
               uses: actions/upload-release-asset@v1
@@ -70,9 +88,10 @@ jobs:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                 upload_url: ${{ steps.create-gh-release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-                asset_path: ./world-of-darkness-statblocks-v${{ github.run_number }}/css-snippets/world-of-darkness-statblocks.css
-                asset_name: world-of-darkness-statblocks-v${{ github.run_number }}.css
+                asset_path: ./world-of-darkness-statblocks-${{needs.build-prepare.outputs.new-tag-created}}/css-snippets/world-of-darkness-statblocks.css
+                asset_name: world-of-darkness-statblocks-${{needs.build-prepare.outputs.new-tag-created}}.css
                 asset_content_type: text/css
+
             # выкладывается JS скрипт
             - name: Upload WoD JS script
               uses: actions/upload-release-asset@v1
@@ -80,9 +99,10 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                 upload_url: ${{ steps.create-gh-release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-                asset_path: ./world-of-darkness-statblocks-v${{ github.run_number }}/js/WoDCharsheets.js
-                asset_name: WoDCharsheets-v${{ github.run_number }}.js
+                asset_path: ./world-of-darkness-statblocks-${{needs.build-prepare.outputs.new-tag-created}}/js/WoDCharsheets.js
+                asset_name: WoDCharsheets-${{needs.build-prepare.outputs.new-tag-created}}.js
                 asset_content_type: application/javascript
+
             # выкладывается англоязычный JS скрипт
             - name: Upload WoD JS-en script
               uses: actions/upload-release-asset@v1
@@ -90,9 +110,10 @@ jobs:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                 upload_url: ${{ steps.create-gh-release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-                asset_path: ./world-of-darkness-statblocks-v${{ github.run_number }}/js/WoDCharsheets-en.js
-                asset_name: WoDCharsheets-en-v${{ github.run_number }}.js
+                asset_path: ./world-of-darkness-statblocks-${{needs.build-prepare.outputs.new-tag-created}}/js/WoDCharsheets-en.js
+                asset_name: WoDCharsheets-en-${{needs.build-prepare.outputs.new-tag-created}}.js
                 asset_content_type: application/javascript
+
             # выкладывается отдельный архив с JSON файлами
             - name: Upload JSON archive
               uses: actions/upload-release-asset@v1
@@ -101,8 +122,9 @@ jobs:
               with:
                 upload_url: ${{ steps.create-gh-release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
                 asset_path: ./statblock-jsons.zip
-                asset_name: wod-statblock-jsons-v${{ github.run_number }}.zip
+                asset_name: wod-statblock-jsons-${{needs.build-prepare.outputs.new-tag-created}}.zip
                 asset_content_type: application/zip
+
             # выкладывается общий архив со всеми файлами
             - name: Upload main archive
               uses: actions/upload-release-asset@v1
@@ -111,5 +133,5 @@ jobs:
               with:
                 upload_url: ${{ steps.create-gh-release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
                 asset_path: ./world-of-darkness-statblocks.zip
-                asset_name: world-of-darkness-statblocks-v${{ github.run_number }}-AllinOne.zip
+                asset_name: world-of-darkness-statblocks-${{needs.build-prepare.outputs.new-tag-created}}-AllinOne.zip
                 asset_content_type: application/zip

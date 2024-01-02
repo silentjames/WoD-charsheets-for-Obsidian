@@ -78,7 +78,7 @@ jobs:
                 body: ${{needs.build-prepare.outputs.new-changelog-created}}
 
             # проверяются доступные файлы
-            - name: Second check
+            - name: Files check
               run: cd ./ && ls -R
 
             # выкладывается CSS файл

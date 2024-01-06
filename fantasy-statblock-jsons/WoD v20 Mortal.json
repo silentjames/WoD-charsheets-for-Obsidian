@@ -925,7 +925,7 @@
                                                     "type": "heading",
                                                     "id": "1b39a81b783b",
                                                     "properties": [
-                                                        "Disciplines"
+                                                        "Numina"
                                                     ],
                                                     "size": 6,
                                                     "fallback": "-",
@@ -940,7 +940,7 @@
                                                             "type": "property",
                                                             "id": "5bcba8fa08a9",
                                                             "properties": [
-                                                                "discipline1_name"
+                                                                "numina1_name"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true,
@@ -950,7 +950,7 @@
                                                             "type": "property",
                                                             "id": "181ba96af9bb",
                                                             "properties": [
-                                                                "discipline1_value"
+                                                                "numina1_value"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -968,7 +968,7 @@
                                                             "type": "property",
                                                             "id": "0bdbf9090af8",
                                                             "properties": [
-                                                                "discipline2_name"
+                                                                "numina2_name"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -977,7 +977,7 @@
                                                             "type": "property",
                                                             "id": "ebabd99a3b9a",
                                                             "properties": [
-                                                                "discipline2_value"
+                                                                "numina2_value"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -993,7 +993,7 @@
                                                             "type": "property",
                                                             "id": "498a3bc81948",
                                                             "properties": [
-                                                                "discipline3_name"
+                                                                "numina3_name"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -1002,7 +1002,7 @@
                                                             "type": "property",
                                                             "id": "ab3be91aabca",
                                                             "properties": [
-                                                                "discipline3_value"
+                                                                "numina3_value"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -1018,7 +1018,7 @@
                                                             "type": "property",
                                                             "id": "bb0b592a4a9a",
                                                             "properties": [
-                                                                "discipline4_name"
+                                                                "numina4_name"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -1027,7 +1027,7 @@
                                                             "type": "property",
                                                             "id": "8809cb397b9a",
                                                             "properties": [
-                                                                "discipline4_value"
+                                                                "numina4_value"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -1043,7 +1043,7 @@
                                                             "type": "property",
                                                             "id": "cba9e82b38d9",
                                                             "properties": [
-                                                                "discipline5_name"
+                                                                "numina5_name"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -1052,7 +1052,7 @@
                                                             "type": "property",
                                                             "id": "b9681adbc918",
                                                             "properties": [
-                                                                "discipline5_value"
+                                                                "numina5_value"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -1068,7 +1068,7 @@
                                                             "type": "property",
                                                             "id": "a97ae91b7b98",
                                                             "properties": [
-                                                                "discipline6_name"
+                                                                "numina6_name"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -1077,7 +1077,7 @@
                                                             "type": "property",
                                                             "id": "7b488b1859fa",
                                                             "properties": [
-                                                                "discipline6_value"
+                                                                "numina6_value"
                                                             ],
                                                             "fallback": "-",
                                                             "conditioned": true
@@ -1085,7 +1085,7 @@
                                                     ]
                                                 }
                                             ],
-                                            "cls": "disciplines-column"
+                                            "cls": "numina-column"
                                         },
                                         {
                                             "type": "group",

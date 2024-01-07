@@ -1,3 +1,13 @@
+<p align="center">
+    <a href="https://github.com/silentjames/wod-charsheets-for-obsidian/blob/main/README.md">
+        <img alt=" ReadMe in English" src=https://img.shields.io/badge/lang-en-red.svg>
+    </a>
+    &nbsp
+    <a href="https://github.com/silentjames/wod-charsheets-for-obsidian/blob/main/README.ru.md">
+        <img alt=" ReadMe на русском" src=https://img.shields.io/badge/%D1%8F%D0%B7%D1%8B%D0%BA-ru-cian.svg>
+    </a>
+</p>
+
 Some character sheets for World of Darkness (v20) characters, based on [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) and [Obsidian](https://github.com/obsidianmd).
 Currently, there are **vampires**, **mortals**, **government agents** (mortal reskin actually, kinda based on 'Project Twilight') and **werewolves** (in progress).
 
@@ -891,7 +901,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 - must use 'X' as a replacement for '10';
 - need to manually add `bearing`, `blood_per_turn` and, if needed, `blood_current2`, `blood_current3`, `blood_current4` properties.
 
-**Q**: When I add the layout into Fantasy Statblock, I see a warning about Javascript code! What's this?
+**Q**: When I add the layout into Fantasy Statblock, I see a warning about included Javascript blocks! What's this?
 <br>
 **A**: The layout has some simple blocks of code inside, to be used with [Dice Roller](https://github.com/javalent/dice-roller) plugin. 
 
@@ -913,7 +923,7 @@ Also, this statblock supports the great [Style Settings](https://github.com/mgme
 
 **Q**: The "Weakness" area is empty in my charsheet! 
 <br>
-**A**: That's because I can't include long quotations from the rulebook. There is a place for them at the beginning of the JS script, like `const weaknessBrujah = '';`. Open the script with a notepad and add the weakness between quotes. If you aren't using JS script, just add the `weakness` property and the corresponding text into your statblock.
+**A**: That's because I can't include long quotations from the rulebook. There is a place for them at the beginning of the JS script, like `const weaknessBrujah = '';`. Open the script with a notepad and add the weakness between quotes. <br> Also (and if case you aren't using JS script) just add the `weakness` property and the corresponding text into your statblock.
 
 **Q**: C'mon, 10mb css file? Why it is so huge?
 <br>

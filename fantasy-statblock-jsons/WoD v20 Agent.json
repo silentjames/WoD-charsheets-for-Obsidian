@@ -216,7 +216,7 @@
                                     "properties": [
                                         "Attributes"
                                     ],
-                                    "size": 4,
+                                    "size": 2,
                                     "fallback": "-",
                                     "conditioned": true
                                 },
@@ -236,7 +236,7 @@
                                                     "properties": [
                                                         "Physical"
                                                     ],
-                                                    "size": 6,
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false
                                                 },
@@ -292,7 +292,7 @@
                                                     "properties": [
                                                         "Social"
                                                     ],
-                                                    "size": 6,
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false
                                                 },
@@ -347,7 +347,7 @@
                                                     "properties": [
                                                         "Mental"
                                                     ],
-                                                    "size": 6,
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false
                                                 },
@@ -412,7 +412,7 @@
                                     "properties": [
                                         "Abilities"
                                     ],
-                                    "size": 4,
+                                    "size": 2,
                                     "fallback": "-",
                                     "conditioned": true
                                 },
@@ -432,7 +432,7 @@
                                                     "properties": [
                                                         "Talents"
                                                     ],
-                                                    "size": 6,
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false
                                                 },
@@ -599,7 +599,7 @@
                                                     "properties": [
                                                         "Skills"
                                                     ],
-                                                    "size": 6,
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false
                                                 },
@@ -767,7 +767,7 @@
                                                     "properties": [
                                                         "Knowledges"
                                                     ],
-                                                    "size": 6,
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false
                                                 },
@@ -949,7 +949,7 @@
                                     "properties": [
                                         "Advantages"
                                     ],
-                                    "size": 4,
+                                    "size": 2,
                                     "fallback": "-",
                                     "conditioned": true
                                 },
@@ -969,7 +969,7 @@
                                                     "properties": [
                                                         "Numina"
                                                     ],
-                                                    "size": 6,
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false
                                                 },
@@ -1140,7 +1140,7 @@
                                                     "properties": [
                                                         "Backgrounds"
                                                     ],
-                                                    "size": 6,
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false
                                                 },
@@ -1309,7 +1309,7 @@
                                                     "properties": [
                                                         "Virtues"
                                                     ],
-                                                    "size": 6,
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false
                                                 },
@@ -1380,7 +1380,7 @@
                                             "properties": [
                                                 "Merits"
                                             ],
-                                            "size": 6,
+                                            "size": 3,
                                             "fallback": "-"
                                         },
                                         {
@@ -1564,7 +1564,7 @@
                                             "properties": [
                                                 "Flaws"
                                             ],
-                                            "size": 6,
+                                            "size": 3,
                                             "fallback": "-"
                                         },
                                         {
@@ -1787,7 +1787,7 @@
                                                     "properties": [
                                                         "willpower"
                                                     ],
-                                                    "size": 6,
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 },
@@ -1828,7 +1828,7 @@
                                                     "properties": [
                                                         "Health"
                                                     ],
-                                                    "size": 6,
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false
                                                 },
@@ -2013,7 +2013,7 @@
                                                     "properties": [
                                                         "Specialties"
                                                     ],
-                                                    "size": 6,
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false
                                                 },

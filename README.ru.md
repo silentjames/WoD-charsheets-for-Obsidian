@@ -1,6 +1,6 @@
 <p align="center">
     <a style='text-decoration: none' href="README.md"><img src=https://img.shields.io/badge/lang-en-red.svg></a>
-    &nsbp
+    &nbsp
     <a style='text-decoration: none' href="README.ru.md"><img src=https://img.shields.io/badge/%D1%8F%D0%B7%D1%8B%D0%BA-ru-cian.svg></a>
 </p>
 

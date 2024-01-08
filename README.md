@@ -1,9 +1,9 @@
 <p align="center">
-    <a href="https://github.com/silentjames/wod-charsheets-for-obsidian/blob/main/README.md">
+    <a  style='text-decoration: none' href="https://github.com/silentjames/wod-charsheets-for-obsidian/blob/main/README.md">
         <img alt=" ReadMe in English" src=https://img.shields.io/badge/lang-en-red.svg>
     </a>
     &nbsp
-    <a href="https://github.com/silentjames/wod-charsheets-for-obsidian/blob/main/README.ru.md">
+    <a style='text-decoration: none' href="https://github.com/silentjames/wod-charsheets-for-obsidian/blob/main/README.ru.md">
         <img alt=" ReadMe на русском" src=https://img.shields.io/badge/%D1%8F%D0%B7%D1%8B%D0%BA-ru-cian.svg>
     </a>
 </p>
@@ -17,8 +17,8 @@ Currently, there are **vampires**, **mortals**, **government agents** (mortal re
 First of all, examples of VtM character sheets in English and Russian:
 
 <p align="center">
-    <img src='imgs/en_vampire.png' width='395'>
-    <img src='imgs/ru_vampire.png' width='428'>
+    <img src='imgs/en_vampire_small.png' href='https://github.com/silentjames/wod-charsheets-for-obsidian/blob/main/imgs/en_vampire.png' width='395'>
+    <img src='imgs/ru_vampire_small.png' href='https://github.com/silentjames/wod-charsheets-for-obsidian/blob/main/imgs/ru_vampire.png' width='428'>
 </p>
 
 Other charsheets are available at this moment in Russian only - but you can change the names of the abilities manually in Fantasy Statblocks settings and send me a pull request. Feel free to ask for any help!

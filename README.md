@@ -17,8 +17,8 @@ Currently, there are **vampires**, **mortals**, **government agents** (mortal re
 First of all, examples of VtM character sheets in English and Russian:
 
 <p align="center">
-    <img src='imgs/en_vampire_small.png' href='https://github.com/silentjames/wod-charsheets-for-obsidian/blob/main/imgs/en_vampire.png' width='395'>
-    <img src='imgs/ru_vampire_small.png' href='https://github.com/silentjames/wod-charsheets-for-obsidian/blob/main/imgs/ru_vampire.png' width='428'>
+    <a href='imgs/en_vampire.png'><img src='imgs/en_vampire_small.png' width='395'></a>
+    <a href='imgs/ru_vampire.png'><img src='imgs/ru_vampire_small.png' width='428'></a>
 </p>
 
 Other charsheets are available at this moment in Russian only - but you can change the names of the abilities manually in Fantasy Statblocks settings and send me a pull request. Feel free to ask for any help!

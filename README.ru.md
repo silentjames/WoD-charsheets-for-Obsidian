@@ -17,8 +17,8 @@
 Для начала, примеры бланков для вампиров, на русском и английском:
 
 <p align="center">
-    <img src='imgs/en_vampire.png' width='395'>
-    <img src='imgs/ru_vampire.png' width='428'>
+    <a href='imgs/en_vampire.png'><img src='imgs/en_vampire_small.png' width='395'></a>
+    <a href='imgs/ru_vampire.png'><img src='imgs/ru_vampire_small.png' width='428'></a>
 </p>
 
 Остальные персонажи доступны пока только на русском языке - но это можно изменить в ваших настройках Fantasy Statblocks, а после отправить мне пулл-реквест. Если возникнут вопросы - обращайтесь!

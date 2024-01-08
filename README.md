@@ -1,11 +1,7 @@
 <p align="center">
-    <a  style='text-decoration: none' href="https://github.com/silentjames/wod-charsheets-for-obsidian/blob/main/README.md">
-        <img alt=" ReadMe in English" src=https://img.shields.io/badge/lang-en-red.svg>
-    </a>
+    <a style='text-decoration: none' href="README.md"><img src=https://img.shields.io/badge/lang-en-red.svg></a>
     &nbsp
-    <a style='text-decoration: none' href="https://github.com/silentjames/wod-charsheets-for-obsidian/blob/main/README.ru.md">
-        <img alt=" ReadMe на русском" src=https://img.shields.io/badge/%D1%8F%D0%B7%D1%8B%D0%BA-ru-cian.svg>
-    </a>
+    <a style='text-decoration: none' href="README.ru.md"><img src=https://img.shields.io/badge/%D1%8F%D0%B7%D1%8B%D0%BA-ru-cian.svg></a>
 </p>
 
 Some character sheets for World of Darkness (v20) characters, based on [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) and [Obsidian](https://github.com/obsidianmd).

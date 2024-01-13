@@ -92,7 +92,7 @@
 
 # Как пользоваться
 
-Что нужно сделать, чтобы неконец-то начать пользоваться этими статблоками?
+## Пошаговая инструкция
 
 1. Скачать три основных компонента: JSON для нужного персонажа, `world-of-darkness-statblocks.css`, и скрипт `WoDCharsheets.js` (или `WoDCharsheets-en.js` для английской версии);
 2. Установить и включить плагин [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks);
@@ -116,13 +116,213 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     <img src='imgs/dataview_example.png' width='650'>
 </p>
 
+### Доступные статблоки
+
+<details>
+    <summary>Вампир (RU)</summary>
+
+    ```statblock
+    columnWidth: 680
+    column: 1
+    layout: VtM v20 Vampire
+    dice: true
+
+                            #### ОСНОВНАЯ ИНФОРМАЦИЯ ####
+
+    name: 
+    desc: 
+    clan: 
+    generation: 
+    sire: 
+    nature: 
+    demeanor:  # Маска
+    concept:  # Амплуа
+
+    img: 
+    img_title: 
+    img_alt: 
+    img_alt_title: 
+
+                            #### ХАРАКТЕРИСТИКИ ####
+
+    Attributes: Характеристики
+
+    Physical: ФИЗИЧЕСКИЕ
+    Strength: 0
+    Dexterity: 0
+    Stamina: 0
+
+    Social: СОЦИАЛЬНЫЕ
+    Charisma: 0
+    Manipulation: 0
+    Appearance: 0
+
+    Mental: МЕНТАЛЬНЫЕ
+    Perception: 0
+    Intelligence: 0
+    Wits: 0
+
+                                #### СПОСОБНОСТИ ####
+
+    Abilities: Способности
+
+    Talents: ТАЛАНТЫ
+    athletics: 0 # Атлетика
+    alertness: 0 # Бдительность
+    brawl: 0 # Драка
+    intimidation: 0 # Запугивание
+    expression: 0 # Красноречие
+    leadership: 0
+    streetwise: 0 # Уличное чутье
+    subterfuge: 0 # Хитрость
+    awareness: 0 # Шестое чувство
+    empathy: 0
+    new_talent: 
+    new_talent_value: 
+
+    Skills: НАВЫКИ
+    drive: 0
+    larceny: 0 # Воровство
+    survival: 0
+    performance: 0
+    animalken: 0
+    crafts: 0
+    stealth: 0
+    firearms: 0
+    melee: 0
+    etiquette: 0
+    new_skill: 
+    new_skill_value: 
+
+    Knowledges: ЗНАНИЯ
+    academics: 0
+    science: 0
+    law: 0
+    computer: 0 # Информатика
+    medicine: 0
+    occult: 0
+    politics: 0
+    investigation: 0
+    finance: 0
+    technology: 0 # Электроника
+    new_knowledge: 
+    new_knowledge_value: 
+
+
+                                #### ПРЕИМУЩЕСТВА ####
+    Advantages: Преимущества
+
+    Disciplines: ДИСЦИПЛИНЫ
+    discipline1_name: 
+    discipline1_value: 
+    discipline2_name: 
+    discipline2_value: 
+    discipline3_name: 
+    discipline3_value: 
+    discipline4_name: 
+    discipline4_value: 
+    discipline5_name: 
+    discipline5_value: 
+    discipline6_name: 
+    discipline6_value: 
+
+    Backgrounds: ФАКТЫ БИОГРАФИИ
+    background1_name: 
+    background1_value: 
+    background2_name: 
+    background2_value: 
+    background3_name: 
+    background3_value: 
+    background4_name: 
+    background4_value: 
+    background5_name: 
+    background5_value: 
+    background6_name: 
+    background6_value: 
+
+    Virtues: ДОБРОДЕТЕЛИ
+    conscience: 0
+    selfcontrol: 0
+    courage: 0
+
+                        #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
+
+    Merits: ДОСТОИНСТВА
+    merit1_name: 
+    merit1_value: 
+    merit2_name: 
+    merit2_value: 
+    merit3_name: 
+    merit3_value: 
+    merit4_name: 
+    merit4_value: 
+    merit5_name: 
+    merit5_value: 
+    merit6_name: 
+    merit6_value: 
+    merit7_name: 
+    merit7_value: 
+
+    Flaws: НЕДОСТАТКИ
+    flaw1_name: 
+    flaw1_value: 
+    flaw2_name: 
+    flaw2_value: 
+    flaw3_name: 
+    flaw3_value: 
+    flaw4_name: 
+    flaw4_value: 
+    flaw5_name: 
+    flaw5_value: 
+    flaw6_name: 
+    flaw6_value: 
+    flaw7_name: 
+    flaw7_value: 
+
+                        #### ПУТЬ / ВОЛЯ / КРОВЬ ####
+
+    path: ЧЕЛОВЕЧНОСТЬ
+    path_value: 
+
+    willpower: Воля
+    willpower_main: 
+    willpower_current: 
+
+    bloodpool: Запас крови
+    blood: 
+
+    Health: Здоровье
+    aggravated: 
+    lethal: 
+    bashing: 
+
+    Specialties: Специализация
+    specialty1_origin: 
+    specialty1_name: 
+    specialty2_origin: 
+    specialty2_name: 
+    specialty3_origin: 
+    specialty3_name: 
+    specialty4_origin: 
+    specialty4_name: 
+    specialty5_origin: 
+    specialty5_name: 
+    specialty6_origin: 
+    specialty6_name: 
+
+    show_weakness: yes
+
+</details>
+
+<br>
+
 <details>
     <summary>Вампир (EN)</summary>
 
     ```statblock
     columnWidth: 680
     column: 1
-    layout: VtM v20 Vampire
+    layout: VtM v20 Vampire en
     dice: true
 
                             #### GENERAL INFO ####
@@ -141,7 +341,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     img_alt: 
     img_alt_title: 
 
-                            #### Attributes ####
+                            #### ATTRIBUTES ####
 
     Attributes: Attributes
 
@@ -160,7 +360,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     Intelligence: 0
     Wits: 0
 
-                                #### Abilities ####
+                                #### ABILITIES ####
 
     Abilities: Abilities
 
@@ -206,7 +406,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     new_knowledge: 
     new_knowledge_value: 
 
-                                #### Advantages #### 
+                                #### ADVANTAGES #### 
 
     Advantages: Advantages
 
@@ -243,7 +443,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     selfcontrol: 0
     courage: 0
 
-                        #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
+                        #### MERITS / FLAWS ####
 
     Merits: MERITS
     merit1_name: 

@@ -13,8 +13,8 @@
 Для начала, примеры бланков для вампиров, на русском и английском:
 
 <p align="center">
-    <a href='imgs/en_vampire.png'><img src='imgs/en_vampire_small.png' width='395'></a>
-    <a href='imgs/ru_vampire.png'><img src='imgs/ru_vampire_small.png' width='428'></a>
+    <a href='imgs/vampire_en.png'><img src='imgs/vampire_en_small.png' width='395'></a>
+    <a href='imgs/vampire_ru.png'><img src='imgs/vampire_ru_small.png' width='428'></a>
 </p>
 
 Остальные персонажи доступны пока только на русском языке - но это можно изменить в ваших настройках Fantasy Statblocks, а после отправить мне пулл-реквест. Если возникнут вопросы - обращайтесь!
@@ -26,21 +26,21 @@
 <details>
     <summary>Оборотни (в разработке)</summary>
         <p align="center">
-            <img src='imgs/ru_werewolf.png' width='450'>
+            <a href='imgs/werewolf_ru.png'><img src='imgs/werewolf_ru_small.png' width='450'></a>
         </p>
 </details>
 
 <details>
     <summary>Смертные</summary>
         <p align="center">
-            <img src='imgs/ru_mortal.png' width='450'>
+            <a href='imgs/mortal_ru.png'><img src='imgs/mortal_ru_small.png' width='450'></a>
         </p>
 </details>
 
 <details>
     <summary>Правительственные агенты</summary>
         <p align="center">
-            <img src='imgs/ru_agent.png' width='450'>
+            <a href='imgs/agent_ru.png'><img src='imgs/agent_ru_small.png' width='450'></a>
         </p>
 </details>
 

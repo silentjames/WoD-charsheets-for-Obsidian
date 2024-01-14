@@ -13,8 +13,8 @@ Currently, there are **vampires**, **mortals**, **government agents** (mortal re
 First of all, examples of VtM character sheets in English and Russian:
 
 <p align="center">
-    <a href='imgs/en_vampire.png'><img src='imgs/en_vampire_small.png' width='395'></a>
-    <a href='imgs/ru_vampire.png'><img src='imgs/ru_vampire_small.png' width='428'></a>
+    <a href='imgs/vampire_en.png'><img src='imgs/vampire_en_small.png' width='395'></a>
+    <a href='imgs/vampire_ru.png'><img src='imgs/vampire_ru_small.png' width='428'></a>
 </p>
 
 Other charsheets are available at this moment in Russian only - but you can change the names of the abilities manually in Fantasy Statblocks settings and send me a pull request. Feel free to ask for any help!
@@ -26,21 +26,21 @@ Under the spoilers, you can find all other charsheets.
 <details>
     <summary>Werewolf (work in progress)</summary>
         <p align="center">
-            <img src='imgs/ru_werewolf.png' width='450'>
+            <a href='imgs/werewolf_ru.png'><img src='imgs/werewolf_ru_small.png' width='450'></a>
         </p>
 </details>
 
 <details>
     <summary>Mortal (similar to the vampire charsheet)</summary>
         <p align="center">
-            <img src='imgs/ru_mortal.png' width='450'>
+            <a href='imgs/mortal_ru.png'><img src='imgs/mortal_ru_small.png' width='450'></a>
         </p>
 </details>
 
 <details>
     <summary>"Project Twilight" agent - FBI, SAD, CIA, NSA...</summary>
         <p align="center">
-            <img src='imgs/ru_agent.png' width='450'>
+            <a href='imgs/agent_ru.png'><img src='imgs/agent_ru_small.png' width='450'></a>
         </p>
 </details>
 

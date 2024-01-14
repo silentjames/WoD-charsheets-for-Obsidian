@@ -1750,7 +1750,8 @@
                                                         "road_name"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true
+                                                    "conditioned": true,
+                                                    "markdown": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -1759,7 +1760,8 @@
                                                         "road_value"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true
+                                                    "conditioned": true,
+                                                    "markdown": false
                                                 },
                                                 {
                                                     "type": "property",

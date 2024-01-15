@@ -1005,12 +1005,11 @@ sleep(120).then(() => {
 
     // define where to show merits and flaws, on the left or right - for WEREWOLVES
     if (document.querySelector('.merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
-        var WhereToShowMeritsAndFlaws = document.querySelector('.line.where-to-show-merits-and-flaws .statblock-rendered-text-content').innerHTML;
-        console.log('where to show merits and flaws? left or right? = ' + WhereToShowMeritsAndFlaws)
-        switch (WhereToShowMeritsAndFlaws) {
+        var whereToShowMeritsAndFlaws = document.querySelector('.line.where-to-show-merits-and-flaws .statblock-rendered-text-content').innerHTML;
+        console.log('where to show merits and flaws? left or right? = ' + whereToShowMeritsAndFlaws)
+        switch (whereToShowMeritsAndFlaws) {
             case ('left'):
                 document.querySelector('.statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';
-                document.querySelector('.statblock-inline-item.group-container:has(.statblock-item-container.group-container:first-child:last-child > .merits-and-flaws-column-left)').style.display = 'block';
                 break;
             case ('right'):
                 document.querySelector('.statblock-item-container.group-container:has(>.merits-and-flaws-column-left)').style.display = 'none';
@@ -1021,11 +1020,10 @@ sleep(120).then(() => {
     }
     // same code, but for a statblock in hover
     if (document.querySelector('.popover.hover-popover .merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
-        var WhereToShowMeritsAndFlaws = document.querySelector('.popover.hover-popover .line.where-to-show-merits-and-flaws .statblock-rendered-text-content').innerHTML;
-        switch (WhereToShowMeritsAndFlaws) {
+        var whereToShowMeritsAndFlaws_hover = document.querySelector('.popover.hover-popover .line.where-to-show-merits-and-flaws .statblock-rendered-text-content').innerHTML;
+        switch (whereToShowMeritsAndFlaws_hover) {
             case ('left'):
                 document.querySelector('.popover.hover-popover .statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';
-                document.querySelector('.popover.hover-popover .statblock-inline-item.group-container:has(.statblock-item-container.group-container:first-child:last-child > .merits-and-flaws-column-left)').style.display = 'block';
                 break;
             case ('right'):
                 document.querySelector('.popover.hover-popover .statblock-item-container.group-container:has(>.merits-and-flaws-column-left)').style.display = 'none';

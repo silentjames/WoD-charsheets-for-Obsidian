@@ -540,12 +540,13 @@ sleep(120).then(() => {
     // Some various modifications for attributes, abilities and disciplines
 
     // set up the names of all Attributes and Abilities 
-    const allAttributes = ['.strength', '.dexterity', '.stamina', '.charisma', '.manipulation', '.appearance', '.perception', '.intelligence', '.wits'];
-    const allTalents = ['.athletics', '.alertness', '.brawl', '.intimidation', '.expression', '.leadership', '.streetwise', '.subterfuge', '.awareness', '.empathy']
-    const allSkills = ['.drive', '.larceny', '.survival', '.performance', '.animalken', '.crafts', '.stealth', '.firearms', '.melee', '.etiquette']
-    const allKnowledges = ['.academics', '.science', '.law', '.computer', '.medicine', '.occult', '.politics', '.investigation', '.finance', '.technology']
+    const basicAttributes = ['.strength', '.dexterity', '.stamina', '.charisma', '.manipulation', '.appearance', '.perception', '.intelligence', '.wits'];
+    const basicTalents = ['.athletics', '.alertness', '.brawl', '.intimidation', '.expression', '.leadership', '.streetwise', '.subterfuge', '.awareness', '.empathy']
+    const basicSkills = ['.drive', '.larceny', '.survival', '.performance', '.animalken', '.crafts', '.stealth', '.firearms', '.melee', '.etiquette']
+    const basicKnowledges = ['.academics', '.science', '.law', '.computer', '.medicine', '.occult', '.politics', '.investigation', '.finance', '.technology']
+    const additionalDarkAgesAbilities = ['.legerdemain', '.ride', '.commerce', '.archery', '.enigmas', '.hearthwisdom', '.seneschal', '.theology']
     // combine all into one list\array
-    const vampireAbilities = allAttributes.concat(allTalents, allSkills, allKnowledges);
+    const vampireAbilities = basicAttributes.concat(basicTalents, basicSkills, basicKnowledges, additionalDarkAgesAbilities);
     for (let x = 0; x < vampireAbilities.length; x++) {
         if (document.querySelector(vampireAbilities[x]) != null) {
             // let's find the name of the property and its value
@@ -559,8 +560,8 @@ sleep(120).then(() => {
                     document.querySelector('.line.appearance .property-name').style.textDecoration = 'line-through';
                 }
                 // if attributes value is 0, there will be warning 
-                else if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (allAttributes.includes(vampireAbilities[x]))) {
-                    document.querySelector(vampireAbilities[x] + ' .property-text').style.fontSize = '14px';
+                else if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (basicAttributes.includes(vampireAbilities[x]))) {
+                    document.querySelector(vampireAbilities[x] + ' .property-text').style.fontSize = '13px';
                     document.querySelector(vampireAbilities[x] + ' .property-text').style.fontFamily = 'Marta';
                     document.querySelector(vampireAbilities[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
                     document.querySelector(vampireAbilities[x] + ' .statblock-rendered-text-content').innerHTML = 'at least 1'
@@ -599,7 +600,7 @@ sleep(120).then(() => {
                     document.querySelector('.appearance .dice-original').style.fontWeight = 'normal'
                 }
                 // if attributes value is 0, there will be warning 
-                else if ((valueAbility === 'null' || valueAbility == 0) && (allAttributes.includes(vampireAbilities[x]))) {
+                else if ((valueAbility === 'null' || valueAbility == 0) && (basicAttributes.includes(vampireAbilities[x]))) {
                     // console.log('is there a zero value??? yes, in ' + vampireAbilities[x]);
                     document.querySelector(vampireAbilities[x] + ' .roller-result').style.display = 'none';
                     document.querySelector(vampireAbilities[x] + ' .dice-original').style.display = 'block';

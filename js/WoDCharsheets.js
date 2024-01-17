@@ -539,12 +539,13 @@ sleep(120).then(() => {
     // Разная обработка значений для характеристик, способностей и дисциплин
 
     // задаем названия классов, по которым будем искать 
-    const allAttributes = ['.strength', '.dexterity', '.stamina', '.charisma', '.manipulation', '.appearance', '.perception', '.intelligence', '.wits'];
-    const allTalents = ['.athletics', '.alertness', '.brawl', '.intimidation', '.expression', '.leadership', '.streetwise', '.subterfuge', '.awareness', '.empathy']
-    const allSkills = ['.drive', '.larceny', '.survival', '.performance', '.animalken', '.crafts', '.stealth', '.firearms', '.melee', '.etiquette']
-    const allKnowledges = ['.academics', '.science', '.law', '.computer', '.medicine', '.occult', '.politics', '.investigation', '.finance', '.technology']
+    const basicAttributes = ['.strength', '.dexterity', '.stamina', '.charisma', '.manipulation', '.appearance', '.perception', '.intelligence', '.wits'];
+    const basicTalents = ['.athletics', '.alertness', '.brawl', '.intimidation', '.expression', '.leadership', '.streetwise', '.subterfuge', '.awareness', '.empathy']
+    const basicSkills = ['.drive', '.larceny', '.survival', '.performance', '.animalken', '.crafts', '.stealth', '.firearms', '.melee', '.etiquette']
+    const basicKnowledges = ['.academics', '.science', '.law', '.computer', '.medicine', '.occult', '.politics', '.investigation', '.finance', '.technology']
+    const additionalDarkAgesAbilities = ['.legerdemain', '.ride', '.commerce', '.archery', '.enigmas', '.hearthwisdom', '.seneschal', '.theology']
     // собираем все в один список
-    const vampireAbilities = allAttributes.concat(allTalents, allSkills, allKnowledges);
+    const vampireAbilities = basicAttributes.concat(basicTalents, basicSkills, basicKnowledges, additionalDarkAgesAbilities);
     for (let x = 0; x < vampireAbilities.length; x++) {
         if (document.querySelector(vampireAbilities[x]) != null) {
             // находим имя и значение для каждого параметра
@@ -558,8 +559,8 @@ sleep(120).then(() => {
                     document.querySelector('.line.appearance .property-name').style.textDecoration = 'line-through';
                 }
                 // если значение характеристик равно 0, вместо точек появится предупреждение 
-                else if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (allAttributes.includes(vampireAbilities[x]))) {
-                    document.querySelector(vampireAbilities[x] + ' .property-text').style.fontSize = '14px';
+                else if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (basicAttributes.includes(vampireAbilities[x]))) {
+                    document.querySelector(vampireAbilities[x] + ' .property-text').style.fontSize = '13px';
                     document.querySelector(vampireAbilities[x] + ' .property-text').style.fontFamily = 'Marta';
                     document.querySelector(vampireAbilities[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
                     document.querySelector(vampireAbilities[x] + ' .statblock-rendered-text-content').innerHTML = 'at least 1'
@@ -581,13 +582,12 @@ sleep(120).then(() => {
             }
             // для дайс роллера
             else {
-                // находим значение из дайс роллера
                 valueAbility = document.querySelector(vampireAbilities[x] + ' .dice-roller-result').innerHTML;
                 // console.log(nameAbility + ' - это ' + nameAbility.length + ' и ' + valueAbility);
                 // если привлекательность 0 и в имени клана есть "Носферату" или "Самеди", то строка привлекательности зачеркивается
                 if ((valueAbility === 'null' || valueAbility == 0) && (typeof clanName !== 'undefined' && (clanName.includes('Носферату') || clanName.includes('Самеди')))
                     && (vampireAbilities[x].includes('.appearance'))) {
-                    // console.log('КТО ПОШЕЛ ПО НОСФЕРАТАМ??? ЭТО ' + vampireAbilities[x]);
+                    // console.log('Какая способность пошла к Носферату? Это ' + vampireAbilities[x]);
                     document.querySelector('.line.appearance .property-name').style.textDecoration = 'line-through';
                     document.querySelector('.appearance .dice-roller-result').style.display = 'none';
                     document.querySelector('.appearance .dice-original').innerHTML = 0;
@@ -599,8 +599,8 @@ sleep(120).then(() => {
                     document.querySelector('.appearance .dice-original').style.fontWeight = 'normal'
                 }
                 // если значение характеристик равно 0, вместо точек появится предупреждение 
-                else if ((valueAbility === 'null' || valueAbility == 0) && (allAttributes.includes(vampireAbilities[x]))) {
-                    // console.log('КТО ПОШЕЛ ПО НУЛЯМ??? ЭТО ' + vampireAbilities[x]);
+                else if ((valueAbility === 'null' || valueAbility == 0) && (basicAttributes.includes(vampireAbilities[x]))) {
+                    // console.log('У кого нулевое значение? Это ' + vampireAbilities[x]);
                     document.querySelector(vampireAbilities[x] + ' .roller-result').style.display = 'none';
                     document.querySelector(vampireAbilities[x] + ' .dice-original').style.display = 'block';
                     document.querySelector(vampireAbilities[x] + ' .dice-original').style.margin = '-1px 0px 0px 0px';
@@ -612,14 +612,14 @@ sleep(120).then(() => {
                     || (nameAbility.length >= 13 && valueAbility > 7)
                     || (nameAbility.length >= 14 && valueAbility > 6)
                     || (nameAbility.length >= 15 && valueAbility > 5)) {
-                    // console.log('КТО ПОШЕЛ ПО УСЛОВИЯМ??? ЭТО ' + vampireAbilities[x]);
+                    // console.log('Кому сменили точки на цифры? Это ' + vampireAbilities[x]);
                     document.querySelector(vampireAbilities[x] + ' .dice-roller-result').style.fontSize = '14px';
                     document.querySelector(vampireAbilities[x] + ' .dice-roller-result').style.fontFamily = 'Marta';
                     document.querySelector(vampireAbilities[x] + ' .dice-roller-result').style.margin = '-1px 0px 0px 0px'
                 }
                 // меняем десятку на X
                 else if (valueAbility == 10) {
-                    // console.log('КТО ПОШЕЛ ПО ДЕСЯТКЕ??? ЭТО ' + vampireAbilities[x]);
+                    // console.log('У кого есть десятка? Это ' + vampireAbilities[x]);
                     document.querySelector(vampireAbilities[x] + ' .dice-roller-result').innerHTML = 'X'
                 }
             }

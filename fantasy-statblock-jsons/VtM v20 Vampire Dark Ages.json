@@ -789,7 +789,7 @@
                                                         "hearthwisdom"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Житейская мудр.",
+                                                    "display": "Житейская мудрость",
                                                     "conditioned": true,
                                                     "dice": true,
                                                     "diceCallback": "return [{ text: monster.hearthwisdom + 'd10|none|noform|nodice|text(' + monster.hearthwisdom +')' }]"
@@ -1784,7 +1784,7 @@
                                                     "type": "heading",
                                                     "id": "baeafb98dbfa",
                                                     "properties": [
-                                                        "willpower"
+                                                        "Willpower"
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
@@ -1825,7 +1825,7 @@
                                                     "type": "heading",
                                                     "id": "d829b81ab81a",
                                                     "properties": [
-                                                        "bloodpool"
+                                                        "Bloodpool"
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",

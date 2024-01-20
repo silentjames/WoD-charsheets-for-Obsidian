@@ -249,7 +249,7 @@
                                                     "fallback": "-",
                                                     "conditioned": true,
                                                     "display": "Сила",
-                                                    "diceCallback": "return [{ text: monster.Strength + 'd10>=6=-1sa\\|nodice|render|text(' + monster.Strength +')' }]",
+                                                    "diceCallback": "return [{ text: monster.Strength + 'd10|none|noform|nodice|text(' + monster.Strength +')' }]",
                                                     "dice": true,
                                                     "callback": ""
                                                 },
@@ -445,7 +445,7 @@
                                                     "fallback": "-",
                                                     "conditioned": true,
                                                     "display": "Атлетика",
-                                                    "dice": true,
+                                                    "dice": false,
                                                     "diceCallback": "return [{ text: monster.athletics + 'd10|none|noform|nodice|text(' + monster.athletics +')' }]"
                                                 },
                                                 {
@@ -1756,11 +1756,12 @@
                                             "properties": [],
                                             "nested": [
                                                 {
-                                                    "type": "property",
-                                                    "id": "382b1968ba19",
+                                                    "type": "heading",
+                                                    "id": "586b79281b79",
                                                     "properties": [
-                                                        "humanity"
+                                                        "Humanity"
                                                     ],
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 },
@@ -1785,7 +1786,7 @@
                                                     "type": "heading",
                                                     "id": "baeafb98dbfa",
                                                     "properties": [
-                                                        "willpower"
+                                                        "Willpower"
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",

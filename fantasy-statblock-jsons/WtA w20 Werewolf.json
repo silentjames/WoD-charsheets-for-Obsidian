@@ -1290,7 +1290,7 @@
                                                     "type": "javascript",
                                                     "id": "09bacb8bf89a",
                                                     "conditioned": false,
-                                                    "code": "if (document.querySelector(\".merits-and-flaws-column-left .line.where-to-show-merits-and-flaws\") != null) { \n    var WhereToShowMeritsAndFlaws = document.querySelector(\".line.where-to-show-merits-and-flaws .statblock-rendered-text-content\").innerHTML;\n    console.log('где же показывать достоинства и недостатки? ' + WhereToShowMeritsAndFlaws)\n    switch (WhereToShowMeritsAndFlaws) {\n        case ('left'):\n            document.querySelector(\".statblock-item-container.group-container:has(>.merits-and-flaws-column-right)\").style.display = \"none\";\n            break;\n        case ('right'):\n            document.querySelector(\".statblock-item-container.group-container:has(>.merits-and-flaws-column-left)\").style.display = \"none\";\n            break;\n        }\n} \nelse { // do nothing\n}"
+                                                    "code": "if (document.querySelector(\".merits-and-flaws-column-left .line.where-to-show-merits-and-flaws\") != null) { \n    var WhereToShowMeritsAndFlaws = document.querySelector(\".line.where-to-show-merits-and-flaws .statblock-rendered-text-content\").innerHTML;\n    switch (WhereToShowMeritsAndFlaws) {\n        case ('left'):\n            document.querySelector(\".statblock-item-container.group-container:has(>.merits-and-flaws-column-right)\").style.display = \"none\";\n            break;\n        case ('right'):\n            document.querySelector(\".statblock-item-container.group-container:has(>.merits-and-flaws-column-left)\").style.display = \"none\";\n            break;\n        }\n} \nelse { // do nothing\n}"
                                                 },
                                                 {
                                                     "type": "heading",
@@ -1689,7 +1689,7 @@
                                                             "type": "heading",
                                                             "id": "f90849d91b88",
                                                             "properties": [
-                                                                "glory"
+                                                                "Glory"
                                                             ],
                                                             "size": 4,
                                                             "fallback": "-",
@@ -1725,7 +1725,7 @@
                                                             "type": "heading",
                                                             "id": "093afa5b8bda",
                                                             "properties": [
-                                                                "honor"
+                                                                "Honor"
                                                             ],
                                                             "size": 4,
                                                             "fallback": "-",
@@ -1761,7 +1761,7 @@
                                                             "type": "heading",
                                                             "id": "0a095b39296a",
                                                             "properties": [
-                                                                "wisdom"
+                                                                "Wisdom"
                                                             ],
                                                             "size": 4,
                                                             "fallback": "-",
@@ -1808,7 +1808,7 @@
                                                     "type": "heading",
                                                     "id": "9b59594ad8a8",
                                                     "properties": [
-                                                        "rage"
+                                                        "Rage"
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
@@ -1821,7 +1821,8 @@
                                                         "rage_main"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.rage_main + 'd10|none|noform|nodice|text(' + monster.rage_main +')' }]"
                                                 },
                                                 {
                                                     "type": "property",
@@ -1844,7 +1845,7 @@
                                                     "type": "heading",
                                                     "id": "baeafb98dbfa",
                                                     "properties": [
-                                                        "gnosis"
+                                                        "Gnosis"
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
@@ -1885,7 +1886,7 @@
                                                     "type": "heading",
                                                     "id": "d829b81ab81a",
                                                     "properties": [
-                                                        "willpower"
+                                                        "Willpower"
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
@@ -1898,7 +1899,8 @@
                                                         "willpower_main"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.willpower_main + 'd10|none|noform|nodice|text(' + monster.willpower_main +')' }]"
                                                 },
                                                 {
                                                     "type": "property",
@@ -2706,6 +2708,14 @@
                                             "fallback": "-",
                                             "display": "Сложность: ",
                                             "callback": "return 6"
+                                        },
+                                        {
+                                            "type": "heading",
+                                            "id": "f8fa7819fa18",
+                                            "properties": [],
+                                            "size": 4,
+                                            "fallback": "Хомид",
+                                            "conditioned": false
                                         }
                                     ],
                                     "heading": "",

@@ -1715,11 +1715,12 @@
                                             "properties": [],
                                             "nested": [
                                                 {
-                                                    "type": "property",
-                                                    "id": "382b1968ba19",
+                                                    "type": "heading",
+                                                    "id": "ea9bfbdb8859",
                                                     "properties": [
-                                                        "humanity"
+                                                        "Humanity"
                                                     ],
+                                                    "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 },
@@ -1744,7 +1745,7 @@
                                                     "type": "heading",
                                                     "id": "baeafb98dbfa",
                                                     "properties": [
-                                                        "willpower"
+                                                        "Willpower"
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",

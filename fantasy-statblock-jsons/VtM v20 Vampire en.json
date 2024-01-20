@@ -1743,7 +1743,7 @@
                                                     "type": "property",
                                                     "id": "382b1968ba19",
                                                     "properties": [
-                                                        "path"
+                                                        "Path"
                                                     ],
                                                     "fallback": "-",
                                                     "conditioned": true
@@ -1778,7 +1778,7 @@
                                                     "type": "heading",
                                                     "id": "baeafb98dbfa",
                                                     "properties": [
-                                                        "willpower"
+                                                        "Willpower"
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
@@ -1819,7 +1819,7 @@
                                                     "type": "heading",
                                                     "id": "d829b81ab81a",
                                                     "properties": [
-                                                        "bloodpool"
+                                                        "Bloodpool"
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
@@ -2252,10 +2252,10 @@
                             "type": "property",
                             "id": "7b282acb6869",
                             "properties": [
-                                "weakness"
+                                "Weakness"
                             ],
                             "fallback": "-",
-                            "display": "weakness",
+                            "display": "Weakness",
                             "conditioned": false
                         },
                         {

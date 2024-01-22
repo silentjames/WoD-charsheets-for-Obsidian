@@ -5,7 +5,7 @@
 </p>
 
 Несколько бланков персонажей старого Мира Тьмы (для двадцатой редакции, она же v20, она же "Классические правила"). Этакое дополнение, предназначенное для [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) и [Obsidian](https://github.com/obsidianmd).
-На данный момент, доступны бланки для **вампиров**, **смертных**, **правительственных агентов** (рескин смертных) и **оборотней** (в разработке).
+На данный момент, доступны бланки для **вампиров** (современность и темные века), **смертных**, **правительственных агентов** (рескин смертных) и **оборотней** (в разработке).
 
 # Общее
 
@@ -22,6 +22,13 @@
 ## Оборотни, смертные и агенты
 
 Под спойлером - остальные примеры.
+
+<details>
+    <summary>Вампиры (Темные века)</summary>
+        <p align="center">
+            <a href='imgs/vampire_dark_ages_en.png'><img src='imgs/vampire_dark_ages_en_small.png' width='450'></a>
+        </p>
+</details>
 
 <details>
     <summary>Оборотни (в разработке)</summary>
@@ -121,6 +128,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <details>
     <summary>Вампир (RU)</summary>
 
+    ````
     ```statblock
     columnWidth: 680
     column: 1
@@ -145,7 +153,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                             #### ХАРАКТЕРИСТИКИ ####
 
-    Attributes: Характеристики
+    Attributes: ХАРАКТЕРИСТИКИ
 
     Physical: ФИЗИЧЕСКИЕ
     Strength: 0
@@ -162,12 +170,12 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     Intelligence: 0
     Wits: 0
 
-                                #### СПОСОБНОСТИ ####
+                            #### СПОСОБНОСТИ ####
 
-    Abilities: Способности
+    Abilities: СПОСОБНОСТИ
 
     Talents: ТАЛАНТЫ
-    athletics: 0 # Атлетика
+    athletics: 0
     alertness: 0 # Бдительность
     brawl: 0 # Драка
     intimidation: 0 # Запугивание
@@ -208,9 +216,9 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     new_knowledge: 
     new_knowledge_value: 
 
+                            #### ПРЕИМУЩЕСТВА ####
 
-                                #### ПРЕИМУЩЕСТВА ####
-    Advantages: Преимущества
+    Advantages: ПРЕИМУЩЕСТВА
 
     Disciplines: ДИСЦИПЛИНЫ
     discipline1_name: 
@@ -281,14 +289,14 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                         #### ПУТЬ / ВОЛЯ / КРОВЬ ####
 
-    path: ЧЕЛОВЕЧНОСТЬ
+    Path: ЧЕЛОВЕЧНОСТЬ
     path_value: 
 
-    willpower: Воля
+    Willpower: ВОЛЯ
     willpower_main: 
     willpower_current: 
 
-    bloodpool: Запас крови
+    Bloodpool: ЗАПАС КРОВИ
     blood: 
 
     Health: Здоровье
@@ -296,7 +304,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     lethal: 
     bashing: 
 
-    Specialties: Специализация
+    Specialties: СПЕЦИАЛИЗАЦИЯ
     specialty1_origin: 
     specialty1_name: 
     specialty2_origin: 
@@ -310,7 +318,9 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty6_origin: 
     specialty6_name: 
 
-    show_weakness: yes
+    show_weakness: 
+    ```
+    ````
 
 </details>
 
@@ -319,6 +329,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <details>
     <summary>Вампир (EN)</summary>
 
+    ````
     ```statblock
     columnWidth: 680
     column: 1
@@ -333,8 +344,8 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     generation: 
     sire: 
     nature: 
-    demeanor: 
-    concept: 
+    demeanor:  # Маска
+    concept:  # Амплуа
 
     img: 
     img_title: 
@@ -343,7 +354,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                             #### ATTRIBUTES ####
 
-    Attributes: Attributes
+    Attributes: ATTRIBUTES
 
     Physical: Physical
     Strength: 0
@@ -362,7 +373,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                                 #### ABILITIES ####
 
-    Abilities: Abilities
+    Abilities: ABILITIES
 
     Talents: Talents
     alertness: 0
@@ -408,7 +419,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                                 #### ADVANTAGES #### 
 
-    Advantages: Advantages
+    Advantages: ADVANTAGES
 
     Disciplines: DISCIPLINES
     discipline1_name: 
@@ -475,14 +486,14 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                         #### PATH / WILLPOWER / BLOOD ####
 
-    path: HUMANITY
+    Path: HUMANITY
     path_value: 
 
-    willpower: WILLPOWER
+    Willpower: WILLPOWER
     willpower_main: 
     willpower_current: 
 
-    bloodpool: BLOODPOOL
+    Bloodpool: BLOOD POOL
     blood: 
 
     Health: HEALTH
@@ -504,7 +515,212 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty6_origin: 
     specialty6_name: 
 
-    show_weakness: no
+    show_weakness: 
+    ```
+    ````
+
+</details>
+
+<br>
+
+<details>
+    <summary>Вампир Темные века (RU)</summary>
+
+    ````
+    ```statblock
+    columnWidth: 680
+    column: 1
+    layout: VtM v20 Vampire Dark Ages
+    dice: true
+
+                            #### ОСНОВНАЯ ИНФОРМАЦИЯ ####
+
+    name: 
+    desc: 
+    clan: 
+    generation: 
+    sire: 
+    nature: 
+    demeanor:  # Маска
+    concept:  # Амплуа
+
+    img: 
+    img_title: 
+    img_alt: 
+    img_alt_title: 
+
+                            #### ХАРАКТЕРИСТИКИ ####
+
+    Attributes: ХАРАКТЕРИСТИКИ
+
+    Physical: ФИЗИЧЕСКИЕ
+    Strength: 0
+    Dexterity: 0
+    Stamina: 0
+
+    Social: СОЦИАЛЬНЫЕ
+    Charisma: 0
+    Manipulation: 0
+    Appearance: 0
+
+    Mental: МЕНТАЛЬНЫЕ
+    Perception: 0
+    Intelligence: 0
+    Wits: 0
+
+                            #### СПОСОБНОСТИ ####
+
+    Abilities: СПОСОБНОСТИ
+
+    Talents: ТАЛАНТЫ
+    athletics: 
+    alertness: 0 # Бдительность
+    brawl: 0 # Драка
+    intimidation: 0 # Запугивание
+    expression: 0 # Красноречие
+    leadership: 0
+    legerdemain: 0 # Ловкость рук
+    subterfuge: 0 # Хитрость
+    awareness: 0 # Шестое чувство
+    empathy: 0
+    new_talent: 
+    new_talent_value: 
+
+    Skills: НАВЫКИ
+    ride: 0 # Верховая езда
+    survival: 2
+    performance: 0
+    commerce: 0 # Коммерция
+    animalken: 0
+    crafts: 0
+    stealth: 0
+    archery: 0 # Стрельба из лука
+    melee: 0
+    etiquette: 0
+    new_skill: 
+    new_skill_value: 
+
+    Knowledges: ЗНАНИЯ
+    enigmas: 0 # Головоломки
+    academics: 0
+    hearthwisdom: 0 # Житейская мудрость
+    law: 0
+    medicine: 0
+    occult: 0
+    politics: 0
+    seneschal: 0
+    investigation: 0
+    theology: 0
+    new_knowledge: 
+    new_knowledge_value: 
+
+                            #### ПРЕИМУЩЕСТВА ####
+
+    Advantages: ПРЕИМУЩЕСТВА
+
+    Disciplines: ДИСЦИПЛИНЫ
+    discipline1_name: 
+    discipline1_value: 
+    discipline2_name: 
+    discipline2_value: 
+    discipline3_name: 
+    discipline3_value: 
+    discipline4_name: 
+    discipline4_value: 
+    discipline5_name: 
+    discipline5_value: 
+    discipline6_name: 
+    discipline6_value: 
+
+    Backgrounds: ФАКТЫ БИОГРАФИИ
+    background1_name: 
+    background1_value: 
+    background2_name: 
+    background2_value: 
+    background3_name: 
+    background3_value: 
+    background4_name: 
+    background4_value: 
+    background5_name: 
+    background5_value: 
+    background6_name: 
+    background6_value: 
+
+    Virtues: ДОБРОДЕТЕЛИ
+    conscience: 0
+    selfcontrol: 0
+    courage: 0
+
+                        #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
+
+    Merits: ДОСТОИНСТВА
+    merit1_name: 
+    merit1_value: 
+    merit2_name: 
+    merit2_value: 
+    merit3_name: 
+    merit3_value: 
+    merit4_name: 
+    merit4_value:
+    merit5_name: 
+    merit5_value: 
+    merit6_name: 
+    merit6_value: 
+    merit7_name: 
+    merit7_value: 
+
+    Flaws: НЕДОСТАТКИ
+    flaw1_name: 
+    flaw1_value: 
+    flaw2_name: 
+    flaw2_value: 
+    flaw3_name: 
+    flaw3_value: 
+    flaw4_name: 
+    flaw4_value: 
+    flaw5_name: 
+    flaw5_value: 
+    flaw6_name: 
+    flaw6_value: 
+    flaw7_name: 
+    flaw7_value: 
+
+                        #### ПУТЬ / ВОЛЯ / КРОВЬ ####
+
+    Road: ДОРОГА
+    road_name: 
+    road_value: 
+    aura: 
+
+    willpower: ВОЛЯ
+    willpower_main: 
+    willpower_current: 
+
+    bloodpool: ЗАПАС КРОВИ
+    blood: 
+
+    Health: ЗДОРОВЬЕ
+    aggravated: 
+    lethal: 
+    bashing: 
+
+    Specialties: СПЕЦИАЛИЗАЦИЯ
+    specialty1_origin: 
+    specialty1_name: 
+    specialty2_origin: 
+    specialty2_name: 
+    specialty3_origin: 
+    specialty3_name: 
+    specialty4_origin: 
+    specialty4_name: 
+    specialty5_origin: 
+    specialty5_name: 
+    specialty6_origin: 
+    specialty6_name: 
+
+    show_weakness:
+    ```
+    ````
 
 </details>
 
@@ -513,6 +729,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <details>
     <summary>Оборотень (RU)</summary>
 
+    ````
     ```statblock
     columnWidth: 680
     column: 1
@@ -529,8 +746,8 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     pack_name: 
     totem: 
     nature: 
-    demeanor: 
-    concept: 
+    demeanor:  # Маска
+    concept:  # Амплуа
 
     img: 
     img_title: 
@@ -539,7 +756,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                                 #### ХАРАКТЕРИСТИКИ ####
 
-    Attributes: Характеристики
+    Attributes: ХАРАКТЕРИСТИКИ
 
     Physical: ФИЗИЧЕСКИЕ
     Strength: 0
@@ -558,7 +775,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                                 #### СПОСОБНОСТИ ####
 
-    Abilities: Способности
+    Abilities: СПОСОБНОСТИ
 
     Talents: ТАЛАНТЫ
     athletics: 0 # Атлетика
@@ -604,9 +821,9 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                             #### ПРЕИМУЩЕСТВА ####
 
-    Advantages: Преимущества
+    Advantages: ПРЕИМУЩЕСТВА
 
-    Backgrounds: ФАКТЫ  БИОГРАФИИ
+    Backgrounds: ФАКТЫ БИОГРАФИИ
     background1_name: 
     background1_value: 
     background2_name: 
@@ -664,38 +881,36 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
     Renown: Почет
 
-    glory: Слава
+    Glory: Слава
     glory_main: 0
     glory_current: 0
 
-    honor: Честь
+    Honor: Честь
     honor_main: 0
     honor_current: 0
 
-    wisdom: Мудрость
+    Wisdom: Мудрость
     wisdom_main: 0
     wisdom_current: 0
 
-
-    rage: Ярость
+    Rage: Ярость
     rage_main: 0
     rage_current: 0
 
-    gnosis: Гнозис
+    Gnosis: Гнозис
     gnosis_main: 0
     gnosis_current: 0
 
-    willpower: Воля
+    willpower: ВОЛЯ
     willpower_main: 0
     willpower_current: 0
 
-
-    Health: Здоровье
+    Health: ЗДОРОВЬЕ
     aggravated: 
     lethal: 
     bashing: 
 
-    Specialties: 
+    Specialties: СПЕЦИАЛИЗАЦИЯ
     specialty1_origin: 
     specialty1_name: 
     specialty2_origin: 
@@ -709,6 +924,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty6_origin: 
     specialty6_name: 
     ```
+    ````
 
 </details>
 
@@ -717,6 +933,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <details>
     <summary>Смертный (RU)</summary>
 
+    ````
     ```statblock
     columnWidth: 680
     column: 1
@@ -728,8 +945,8 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     name: 
     desc: 
     nature: 
-    demeanor: 
-    concept: 
+    demeanor:  # Маска
+    concept:  # Амплуа
 
     img: 
     img_title: 
@@ -757,7 +974,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                                 #### СПОСОБНОСТИ ####
 
-    Abilities: Способности
+    Abilities: СПОСОБНОСТИ
 
     Talents: ТАЛАНТЫ
     athletics: 0 # Атлетика
@@ -803,7 +1020,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                                 #### ПРЕИМУЩЕСТВА ####
 
-    Advantages: Преимущества
+    Advantages: ПРЕИМУЩЕСТВА
 
     Disciplines: ДАРЫ И ПАРАМЕТРЫ
     discipline1_name: 
@@ -819,7 +1036,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     discipline6_name: 
     discipline6_value: 
 
-    Backgrounds: ФАКТЫ  БИОГРАФИИ
+    Backgrounds: ФАКТЫ БИОГРАФИИ
     background1_name: 
     background1_value: 
     background2_name: 
@@ -883,7 +1100,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                                 #### СПЕЦИАЛИЗАЦИЯ ####
 
-    Specialties: Специализация
+    Specialties: СПЕЦИАЛИЗАЦИЯ
     specialty1_origin: 
     specialty1_name: 
     specialty2_origin: 
@@ -906,14 +1123,16 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     clip1: 15
     conceal1: ПК
     ```
+    ````
 
 </details>
 
 <br>
 
 <details>
-    <summary>Агент (RU)</summary>
+    <summary>Правительственный агент (RU)</summary>
 
+    ````
     ```statblock
     column: 1
     columnWidth: 680
@@ -925,8 +1144,8 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     name: 
     desc: 
     nature: 
-    demeanor: 
-    concept: 
+    demeanor:  # Маска
+    concept:  # Амплуа
     agency: 
     rank: 
     codename: 
@@ -938,7 +1157,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                             #### ХАРАКТЕРИСТИКИ ####
 
-    Attributes: Характеристики
+    Attributes: ХАРАКТЕРИСТИКИ
 
     Physical: ФИЗИЧЕСКИЕ
     Strength: 0
@@ -957,7 +1176,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                                 #### СПОСОБНОСТИ ####
 
-    Abilities: Способности
+    Abilities: СПОСОБНОСТИ
 
     Talents: ТАЛАНТЫ
     athletics: 0 # Атлетика
@@ -1003,9 +1222,9 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                                 #### ПРЕИМУЩЕСТВА ####
 
-    Advantages: Преимущества
+    Advantages: ПРЕИМУЩЕСТВА
 
-    Backgrounds: ФАКТЫ  БИОГРАФИИ
+    Backgrounds: ФАКТЫ БИОГРАФИИ
     background1_name: 
     background1_value: 
     background2_name: 
@@ -1016,6 +1235,8 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     background4_value: 
     background5_name: 
     background5_value: 
+    background6_name: 
+    background6_value: 
 
     Virtues: ДОБРОДЕТЕЛИ
     conscience: 0
@@ -1054,20 +1275,20 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
                         #### ЧЕЛОВЕЧНОСТЬ / ВОЛЯ / ЗДОРОВЬЕ ####
 
 
-    humanity: ЧЕЛОВЕЧНОСТЬ
+    Humanity: ЧЕЛОВЕЧНОСТЬ
     humanity_value: 0
 
-    willpower: ВОЛЯ
+    Willpower: ВОЛЯ
     willpower_main: 0
     willpower_current: 0
 
-    Health: здоровье
+    Health: ЗДОРОВЬЕ
     bashing: 0
     lethal: 0
 
                                 #### СПЕЦИАЛИЗАЦИЯ ####
 
-    Specialties: Специализация
+    Specialties: СПЕЦИАЛИЗАЦИЯ
     specialty1_origin: 
     specialty1_name: 
     specialty2_origin: 
@@ -1081,6 +1302,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty6_origin: 
     specialty6_name: 
     ```
+    ````
 
 </details>
 

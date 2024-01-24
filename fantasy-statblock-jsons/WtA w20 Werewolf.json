@@ -1913,6 +1913,16 @@
                                                 }
                                             ],
                                             "cls": "willpower-block"
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "e92a59998bdb",
+                                            "properties": [
+                                                "Rank"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true,
+                                            "display": "Ранг"
                                         }
                                     ]
                                 },
@@ -2673,6 +2683,215 @@
                         },
                         {
                             "type": "inline",
+                            "id": "f908682aea38",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "group",
+                                    "id": "c85b3a392bd8",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "heading",
+                                            "id": "9a7b2868cb2b",
+                                            "properties": [
+                                                "Fetishes"
+                                            ],
+                                            "size": 3,
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "5ac9a93bfa28",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "6a3a398b8bba",
+                                                    "properties": [
+                                                        "fetish1_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "markdown": true,
+                                                    "display": "Имя"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "fb381a987aaa",
+                                                    "properties": [
+                                                        "fetish1_level"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Уровень"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "e88a599b7b89",
+                                                    "properties": [
+                                                        "fetish1_gnosis"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Гнозис"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "58ab4a3bc93a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "cbeb3ad89bf8",
+                                                    "properties": [
+                                                        "fetish2_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "markdown": true,
+                                                    "display": "Имя"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "28e9781b1a38",
+                                                    "properties": [
+                                                        "fetish2_level"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Уровень"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2828781ab84b",
+                                                    "properties": [
+                                                        "fetish2_gnosis"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Гнозис"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "b8e83878796b",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "5b1898fbeadb",
+                                                    "properties": [
+                                                        "fetish3_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "markdown": true,
+                                                    "display": "Имя"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "fb3a9aaab84b",
+                                                    "properties": [
+                                                        "fetish3_level"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Уровень"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "7928398be828",
+                                                    "properties": [
+                                                        "fetish3_gnosis"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Гнозис"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "cls": "fetishes-column"
+                                },
+                                {
+                                    "type": "group",
+                                    "id": "aab81bf97b4b",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "heading",
+                                            "id": "2839cb9a093a",
+                                            "properties": [
+                                                "Rites"
+                                            ],
+                                            "size": 3,
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "bab94b3b59aa",
+                                            "properties": [
+                                                "rite1"
+                                            ],
+                                            "fallback": "-",
+                                            "markdown": true,
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "b8d888fac87a",
+                                            "properties": [
+                                                "rite2"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true,
+                                            "markdown": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "fa6b0ab9e84a",
+                                            "properties": [
+                                                "rite3"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true,
+                                            "markdown": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "493a89d899bb",
+                                            "properties": [
+                                                "rite4"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true,
+                                            "markdown": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "e928096a38a8",
+                                            "properties": [
+                                                "rite5"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true,
+                                            "markdown": true
+                                        }
+                                    ],
+                                    "cls": "rites-column"
+                                }
+                            ],
+                            "hasRule": true,
+                            "cls": "fetishes-rites-block"
+                        },
+                        {
+                            "type": "inline",
                             "id": "b85aa90a7bc8",
                             "properties": [],
                             "nested": [
@@ -2708,14 +2927,6 @@
                                             "fallback": "-",
                                             "display": "Сложность: ",
                                             "callback": "return 6"
-                                        },
-                                        {
-                                            "type": "heading",
-                                            "id": "f8fa7819fa18",
-                                            "properties": [],
-                                            "size": 4,
-                                            "fallback": "Хомид",
-                                            "conditioned": false
                                         }
                                     ],
                                     "heading": "",

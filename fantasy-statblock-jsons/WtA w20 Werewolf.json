@@ -1922,7 +1922,8 @@
                                             ],
                                             "fallback": "-",
                                             "conditioned": true,
-                                            "display": "Ранг"
+                                            "display": "Ранг",
+                                            "markdown": true
                                         }
                                     ]
                                 },

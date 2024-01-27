@@ -1,0 +1,2688 @@
+{
+    "blocks": [
+        {
+            "type": "inline",
+            "id": "f83a38d83998",
+            "properties": [],
+            "nested": [
+                {
+                    "type": "group",
+                    "id": "f919d9f93a89",
+                    "properties": [],
+                    "nested": [
+                        {
+                            "type": "group",
+                            "id": "1b7bba48bba8",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "heading",
+                                    "id": "5b1b78282a6b",
+                                    "properties": [
+                                        "name"
+                                    ],
+                                    "size": 1,
+                                    "fallback": "-",
+                                    "conditioned": false
+                                },
+                                {
+                                    "type": "subheading",
+                                    "id": "68e8886b3bc8",
+                                    "properties": [
+                                        "desc"
+                                    ],
+                                    "separator": " ",
+                                    "fallback": "-",
+                                    "conditioned": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "group",
+                            "id": "1ada795aa838",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "property",
+                                    "id": "ca8b3a6828fb",
+                                    "properties": [
+                                        "nature"
+                                    ],
+                                    "fallback": "-",
+                                    "conditioned": true,
+                                    "markdown": true,
+                                    "display": "Nature:"
+                                },
+                                {
+                                    "type": "property",
+                                    "id": "99ca7b383b8b",
+                                    "properties": [
+                                        "demeanor"
+                                    ],
+                                    "fallback": "-",
+                                    "conditioned": true,
+                                    "markdown": true,
+                                    "display": "Demeanor:"
+                                },
+                                {
+                                    "type": "property",
+                                    "id": "1948ab9a88bb",
+                                    "properties": [
+                                        "concept"
+                                    ],
+                                    "fallback": "-",
+                                    "display": "Concept:",
+                                    "conditioned": true,
+                                    "markdown": true
+                                },
+                                {
+                                    "type": "property",
+                                    "id": "2b3b7afbbb99",
+                                    "properties": [
+                                        "agency"
+                                    ],
+                                    "fallback": "-",
+                                    "display": "Agency:",
+                                    "conditioned": true,
+                                    "markdown": true
+                                },
+                                {
+                                    "type": "property",
+                                    "id": "eacbeaa86828",
+                                    "properties": [
+                                        "rank"
+                                    ],
+                                    "fallback": "-",
+                                    "conditioned": true,
+                                    "markdown": true,
+                                    "display": "Rank:"
+                                },
+                                {
+                                    "type": "property",
+                                    "id": "8b2aab68d968",
+                                    "properties": [
+                                        "codename"
+                                    ],
+                                    "fallback": "-",
+                                    "display": "Codename:",
+                                    "conditioned": true,
+                                    "markdown": true
+                                },
+                                {
+                                    "type": "property",
+                                    "id": "883a8b5aa8fa",
+                                    "properties": [
+                                        "birthdate"
+                                    ],
+                                    "fallback": "-",
+                                    "display": "Date of Birth:"
+                                },
+                                {
+                                    "type": "property",
+                                    "id": "d95b1a6a69ea",
+                                    "properties": [
+                                        "birthplace"
+                                    ],
+                                    "fallback": "-",
+                                    "display": "Place of Birth:"
+                                }
+                            ],
+                            "cls": "agent-info-group"
+                        }
+                    ],
+                    "hasRule": false,
+                    "cls": "general-text-info-column"
+                },
+                {
+                    "type": "group",
+                    "id": "bafb58798afa",
+                    "properties": [],
+                    "nested": [
+                        {
+                            "type": "image",
+                            "id": "bba97abbcb38",
+                            "properties": [
+                                "img"
+                            ],
+                            "fallback": "-",
+                            "conditioned": true
+                        },
+                        {
+                            "type": "text",
+                            "id": "4b08e989fa88",
+                            "properties": [
+                                "img_title"
+                            ],
+                            "text": null,
+                            "fallback": "-",
+                            "conditioned": true
+                        }
+                    ],
+                    "heading": "",
+                    "cls": "image-main-block"
+                },
+                {
+                    "type": "group",
+                    "id": "ebd818f82a29",
+                    "properties": [],
+                    "nested": [
+                        {
+                            "type": "image",
+                            "id": "bb4ac92aaa5a",
+                            "properties": [
+                                "img_alt"
+                            ],
+                            "fallback": "-",
+                            "conditioned": true
+                        },
+                        {
+                            "type": "text",
+                            "id": "3818e9b8697b",
+                            "properties": [
+                                "img_alt_title"
+                            ],
+                            "text": null,
+                            "fallback": "-",
+                            "conditioned": true
+                        }
+                    ],
+                    "cls": "image-alt-block"
+                }
+            ],
+            "hasRule": false,
+            "heading": "",
+            "cls": "general-info-group"
+        },
+        {
+            "type": "collapse",
+            "id": "9858d8ca4a6b",
+            "heading": "Personal Dossier",
+            "hasRule": false,
+            "conditioned": false,
+            "nested": [
+                {
+                    "type": "group",
+                    "id": "39f91bc9f918",
+                    "properties": [],
+                    "nested": [
+                        {
+                            "type": "group",
+                            "id": "4b8b180bfbd8",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "heading",
+                                    "id": "78cad828898a",
+                                    "properties": [
+                                        "Attributes"
+                                    ],
+                                    "size": 2,
+                                    "fallback": "-",
+                                    "conditioned": true
+                                },
+                                {
+                                    "type": "inline",
+                                    "id": "19c8d839482a",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "group",
+                                            "id": "498b7a184989",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "49fa2858e85b",
+                                                    "properties": [
+                                                        "Physical"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "7b4b9a496809",
+                                                    "properties": [
+                                                        "Strength"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Strength",
+                                                    "diceCallback": "return [{ text: monster.Strength + 'd10|none|noform|nodice|text(' + monster.Strength +')' }]",
+                                                    "dice": true,
+                                                    "callback": ""
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "1959390b6b8b",
+                                                    "properties": [
+                                                        "Dexterity"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Dexterity",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.Dexterity + 'd10|none|noform|nodice|text(' + monster.Dexterity +')' }]"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2abaeb28088b",
+                                                    "properties": [
+                                                        "Stamina"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Stamina",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.Stamina + 'd10|none|noform|nodice|text(' + monster.Stamina +')' }]",
+                                                    "dice": true
+                                                }
+                                            ],
+                                            "heading": "",
+                                            "cls": "physical-column"
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "5bbbfb0bea7b",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "4b3a6bab68db",
+                                                    "properties": [
+                                                        "Social"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "ebb88bbb98aa",
+                                                    "properties": [
+                                                        "Charisma"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Charisma",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.Charisma + 'd10|none|noform|nodice|text(' + monster.Charisma +')' }]"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "3a48c88a1aea",
+                                                    "properties": [
+                                                        "Manipulation"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Manipulation",
+                                                    "diceCallback": "return [{ text: monster.Manipulation + 'd10|none|noform|nodice|text(' + monster.Manipulation +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "89bab85b1bcb",
+                                                    "properties": [
+                                                        "Appearance"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Appearance",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.Appearance + 'd10|none|noform|nodice|text(' + monster.Appearance +')' }]",
+                                                    "dice": true
+                                                }
+                                            ],
+                                            "heading": "",
+                                            "cls": "social-column"
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "da384a4bb9bb",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "0a5a2b3be838",
+                                                    "properties": [
+                                                        "Mental"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "58aac9a809bb",
+                                                    "properties": [
+                                                        "Perception"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Perception",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.Perception + 'd10|none|noform|nodice|text(' + monster.Perception +')' }]",
+                                                    "dice": true,
+                                                    "diceProperty": ""
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "1898c8286a0a",
+                                                    "properties": [
+                                                        "Intelligence"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Intelligence",
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.Intelligence + 'd10|none|noform|nodice|text(' + monster.Intelligence +')' }]"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "88e8594a2a5b",
+                                                    "properties": [
+                                                        "Wits"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Wits",
+                                                    "diceCallback": "return [{ text: monster.Wits + 'd10|none|noform|nodice|text(' + monster.Wits +')' }]",
+                                                    "dice": true
+                                                }
+                                            ],
+                                            "heading": "",
+                                            "cls": "mental-column"
+                                        }
+                                    ],
+                                    "cls": "",
+                                    "heading": ""
+                                }
+                            ],
+                            "hasRule": false,
+                            "heading": "",
+                            "cls": "attributes-group"
+                        },
+                        {
+                            "type": "group",
+                            "id": "286868994bc8",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "heading",
+                                    "id": "5b6ae82a694a",
+                                    "properties": [
+                                        "Abilities"
+                                    ],
+                                    "size": 2,
+                                    "fallback": "-",
+                                    "conditioned": true
+                                },
+                                {
+                                    "type": "inline",
+                                    "id": "f9b8b85898da",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "group",
+                                            "id": "191a1a59e87b",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "c9aadbd81829",
+                                                    "properties": [
+                                                        "Talents"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "a9896808082a",
+                                                    "properties": [
+                                                        "alertness"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Alertness",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.alertness + 'd10|none|noform|nodice|text(' + monster.alertness +')' }]"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "ead8883848e8",
+                                                    "properties": [
+                                                        "athletics"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Athletics",
+                                                    "dice": false,
+                                                    "diceCallback": "return [{ text: monster.athletics + 'd10|none|noform|nodice|text(' + monster.athletics +')' }]"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2bb9da7b9a9b",
+                                                    "properties": [
+                                                        "awareness"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Awareness",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.awareness + 'd10|none|noform|nodice|text(' + monster.awareness +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "08eb58a9f8e9",
+                                                    "properties": [
+                                                        "brawl"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Brawl",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.brawl + 'd10|none|noform|nodice|text(' + monster.brawl +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2839ab59a96a",
+                                                    "properties": [
+                                                        "empathy"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Empathy",
+                                                    "diceCallback": "return [{ text: monster.empathy + 'd10|none|noform|nodice|text(' + monster.empathy +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "f8f8d9b97899",
+                                                    "properties": [
+                                                        "expression"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Expression",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.expression + 'd10|none|noform|nodice|text(' + monster.expression +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "6b2b9bea2b2a",
+                                                    "properties": [
+                                                        "intimidation"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Intimidation",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.intimidation + 'd10|none|noform|nodice|text(' + monster.intimidation +')' }]",
+                                                    "hasRule": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "e9dbd9587bd8",
+                                                    "properties": [
+                                                        "leadership"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Leadership",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.leadership + 'd10|none|noform|nodice|text(' + monster.leadership +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "5b4aba486919",
+                                                    "properties": [
+                                                        "streetwise"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Streetwise",
+                                                    "diceCallback": "return [{ text: monster.streetwise + 'd10|none|noform|nodice|text(' + monster.streetwise +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "58fb698a39da",
+                                                    "properties": [
+                                                        "subterfuge"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Subterfuge",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.subterfuge + 'd10|none|noform|nodice|text(' + monster.subterfuge +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "2bb85beb3bfa",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "da5bc81b8baa",
+                                                            "properties": [
+                                                                "new_talent"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "c8f8099a09ba",
+                                                            "properties": [
+                                                                "new_talent_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "diceCallback": "return [{ text: monster.new_talent_value + 'd10|none|noform|nodice|text(' + monster.new_talent_value +')' }]",
+                                                            "dice": true,
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "new-talent-line"
+                                                }
+                                            ],
+                                            "cls": "talents-column"
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "ebdb7bbad938",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "4968188a984b",
+                                                    "properties": [
+                                                        "Skills"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "ba29c9da5959",
+                                                    "properties": [
+                                                        "animalken"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Animal Ken",
+                                                    "diceCallback": "return [{ text: monster.animalken + 'd10|none|noform|nodice|text(' + monster.animalken +')' }]",
+                                                    "dice": true,
+                                                    "hasRule": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2ae8ba69aadb",
+                                                    "properties": [
+                                                        "crafts"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Crafts",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.crafts + 'd10|none|noform|nodice|text(' + monster.crafts +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "49db69f88a8a",
+                                                    "properties": [
+                                                        "drive"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Drive",
+                                                    "diceCallback": "return [{ text: monster.drive + 'd10|none|noform|nodice|text(' + monster.drive +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "98b87a294858",
+                                                    "properties": [
+                                                        "etiquette"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Etiquette",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.etiquette + 'd10|none|noform|nodice|text(' + monster.etiquette +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "984b1b9a9b18",
+                                                    "properties": [
+                                                        "firearms"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Firearms",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.firearms + 'd10|none|noform|nodice|text(' + monster.firearms +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "4b9adb2a7808",
+                                                    "properties": [
+                                                        "larceny"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Larceny",
+                                                    "diceCallback": "return [{ text: monster.larceny + 'd10|none|noform|nodice|text(' + monster.larceny +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "dab80bf8fbfa",
+                                                    "properties": [
+                                                        "melee"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Melee",
+                                                    "diceCallback": "return [{ text: monster.melee + 'd10|none|noform|nodice|text(' + monster.melee +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "394ac9cba8cb",
+                                                    "properties": [
+                                                        "performance"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Performance",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.performance + 'd10|none|noform|nodice|text(' + monster.performance +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "e989d8a80ac9",
+                                                    "properties": [
+                                                        "stealth"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Stealth",
+                                                    "diceCallback": "return [{ text: monster.stealth + 'd10|none|noform|nodice|text(' + monster.stealth +')' }]",
+                                                    "dice": true,
+                                                    "hasRule": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "a9dae9982aba",
+                                                    "properties": [
+                                                        "survival"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Survival",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.survival + 'd10|none|noform|nodice|text(' + monster.survival +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "29c928799869",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "fa9b5b6a1a9a",
+                                                            "properties": [
+                                                                "new_skill"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "3a197959a92b",
+                                                            "properties": [
+                                                                "new_skill_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "diceCallback": "return [{ text: monster.new_skill_value + 'd10|none|noform|nodice|text(' + monster.new_skill_value +')' }]",
+                                                            "conditioned": true,
+                                                            "dice": true
+                                                        }
+                                                    ],
+                                                    "cls": "new-skill-line"
+                                                }
+                                            ],
+                                            "cls": "skills-column"
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "899b5a29c96a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "c8b8183948bb",
+                                                    "properties": [
+                                                        "Knowledges"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "581bc82bc888",
+                                                    "properties": [
+                                                        "academics"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Academics",
+                                                    "diceCallback": "return [{ text: monster.academics + 'd10|none|noform|nodice|text(' + monster.academics +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "68298b8b395b",
+                                                    "properties": [
+                                                        "computer"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Computer",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.computer + 'd10|none|noform|nodice|text(' + monster.computer +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "3abab85af8c8",
+                                                    "properties": [
+                                                        "finance"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Finance",
+                                                    "diceCallback": "return [{ text: monster.finance + 'd10|none|noform|nodice|text(' + monster.finance +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "fada3a9a0ab9",
+                                                    "properties": [
+                                                        "investigation"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Investigation",
+                                                    "diceCallback": "return [{ text: monster.investigation + 'd10|none|noform|nodice|text(' + monster.investigation +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2b08f9c8cafa",
+                                                    "properties": [
+                                                        "law"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Law",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.law + 'd10|none|noform|nodice|text(' + monster.law +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "7bfb18bac90b",
+                                                    "properties": [
+                                                        "medicine"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Medicine",
+                                                    "diceCallback": "return [{ text: monster.medicine + 'd10|none|noform|nodice|text(' + monster.medicine +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "093b2889fa4a",
+                                                    "properties": [
+                                                        "occult"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Occult",
+                                                    "diceCallback": "return [{ text: monster.occult + 'd10|none|noform|nodice|text(' + monster.occult +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "5b5a4b7b0bdb",
+                                                    "properties": [
+                                                        "politics"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Politics",
+                                                    "diceCallback": "return [{ text: monster.politics + 'd10|none|noform|nodice|text(' + monster.politics +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "8b7a2ab959ba",
+                                                    "properties": [
+                                                        "science"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Science",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.science + 'd10|none|noform|nodice|text(' + monster.science +')' }]"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "8bc82858c92b",
+                                                    "properties": [
+                                                        "technology"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Technology",
+                                                    "diceCallback": "return [{ text: monster.technology + 'd10|none|noform|nodice|text(' + monster.technology +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "9ba8e8a829a9",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "cb2bc998695a",
+                                                            "properties": [
+                                                                "new_knowledge"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "78383a0948d9",
+                                                            "properties": [
+                                                                "new_knowledge_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "diceCallback": "return [{ text: monster.new_knowledge_value + 'd10|none|noform|nodice|text(' + monster.new_knowledge_value +')' }]",
+                                                            "conditioned": true,
+                                                            "dice": true
+                                                        }
+                                                    ],
+                                                    "cls": "new-knowledge-line"
+                                                }
+                                            ],
+                                            "cls": "knowledges-column"
+                                        }
+                                    ],
+                                    "cls": ""
+                                }
+                            ],
+                            "cls": "abilities-group"
+                        },
+                        {
+                            "type": "group",
+                            "id": "c9da7b6b98db",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "heading",
+                                    "id": "0a7b49b83b6b",
+                                    "properties": [
+                                        "Advantages"
+                                    ],
+                                    "size": 2,
+                                    "fallback": "-",
+                                    "conditioned": true
+                                },
+                                {
+                                    "type": "inline",
+                                    "id": "1a2918a92b3b",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "group",
+                                            "id": "fa593958d928",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "1b39a81b783b",
+                                                    "properties": [
+                                                        "Numina"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "bbcbd8193b69",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "5bcba8fa08a9",
+                                                            "properties": [
+                                                                "numina1_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true,
+                                                            "doNotAddClass": false
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "181ba96af9bb",
+                                                            "properties": [
+                                                                "numina1_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "heading": "",
+                                                    "cls": ""
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "385978a9f9b8",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "0bdbf9090af8",
+                                                            "properties": [
+                                                                "numina2_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "ebabd99a3b9a",
+                                                            "properties": [
+                                                                "numina2_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "8afb9be93a38",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "498a3bc81948",
+                                                            "properties": [
+                                                                "numina3_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "ab3be91aabca",
+                                                            "properties": [
+                                                                "numina3_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "49ca1a594aba",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "bb0b592a4a9a",
+                                                            "properties": [
+                                                                "numina4_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "8809cb397b9a",
+                                                            "properties": [
+                                                                "numina4_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "c8f94b4a7b18",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "cba9e82b38d9",
+                                                            "properties": [
+                                                                "numina5_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "b9681adbc918",
+                                                            "properties": [
+                                                                "numina5_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "6ac8d9e95929",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "a97ae91b7b98",
+                                                            "properties": [
+                                                                "numina6_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "7b488b1859fa",
+                                                            "properties": [
+                                                                "numina6_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "cls": "numina-column"
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "fa88fa4a99e9",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "697a48782a28",
+                                                    "properties": [
+                                                        "Backgrounds"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "a94aca998b2b",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "c8082ac9cb2b",
+                                                            "properties": [
+                                                                "background1_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "19d8db9b5a4b",
+                                                            "properties": [
+                                                                "background1_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "2abafb4a984a",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "7be8d8c95a18",
+                                                            "properties": [
+                                                                "background2_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "3a7a8b6ab898",
+                                                            "properties": [
+                                                                "background2_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "68db7b68997a",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "6969a85a19f8",
+                                                            "properties": [
+                                                                "background3_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "5afb7b4959ba",
+                                                            "properties": [
+                                                                "background3_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "5ada8b996a09",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "2858b86bba2b",
+                                                            "properties": [
+                                                                "background4_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "2b29484839fa",
+                                                            "properties": [
+                                                                "background4_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "89a99b88ea28",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "29e919d86b68",
+                                                            "properties": [
+                                                                "background5_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "7a08aa9b6bab",
+                                                            "properties": [
+                                                                "background5_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "a8883848ebfa",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "1abb8af9582b",
+                                                            "properties": [
+                                                                "background6_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "88eba939ba59",
+                                                            "properties": [
+                                                                "background6_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "heading": "",
+                                            "cls": "backgrounds-column"
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "c889f81a7b18",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "1b9809585928",
+                                                    "properties": [
+                                                        "Virtues"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2ae95a3ab968",
+                                                    "properties": [
+                                                        "conscience"
+                                                    ],
+                                                    "fallback": "1",
+                                                    "display": "Conscience",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.conscience + 'd10|none|nodice|noform|text(' + monster.conscience +')' }]",
+                                                    "dice": true,
+                                                    "callback": "",
+                                                    "diceProperty": ""
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "c8485a5bc8d8",
+                                                    "properties": [
+                                                        "selfcontrol"
+                                                    ],
+                                                    "fallback": "1",
+                                                    "display": "Self-Control",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.selfcontrol + 'd10|none|nodice|noform|text(' + monster.selfcontrol +')' }]",
+                                                    "dice": true,
+                                                    "hasRule": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "db0809595be8",
+                                                    "properties": [
+                                                        "courage"
+                                                    ],
+                                                    "fallback": "1",
+                                                    "conditioned": true,
+                                                    "display": "Courage",
+                                                    "dice": true,
+                                                    "hasRule": false,
+                                                    "diceCallback": "return [{ text: monster.courage + 'd10|none|nodice|noform|text(' + monster.courage +')' }]"
+                                                }
+                                            ],
+                                            "cls": "virtues-column"
+                                        }
+                                    ],
+                                    "heading": "",
+                                    "cls": ""
+                                }
+                            ],
+                            "hasRule": true,
+                            "cls": "advantages-group"
+                        },
+                        {
+                            "type": "inline",
+                            "id": "5aaadbab0a4a",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "group",
+                                    "id": "e8fa79893a39",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "heading",
+                                            "id": "18a8f8cabb1b",
+                                            "properties": [
+                                                "Merits"
+                                            ],
+                                            "size": 3,
+                                            "fallback": "-"
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "4b692999baf8",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "29180b5b391a",
+                                                    "properties": [
+                                                        "merit1_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "fa395a683a6a",
+                                                    "properties": [
+                                                        "merit1_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "fbbb49dadb98",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "7b4b3afa883a",
+                                                    "properties": [
+                                                        "merit2_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2be998fa1b78",
+                                                    "properties": [
+                                                        "merit2_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "0b08da1a3b48",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "795b38f80a6a",
+                                                    "properties": [
+                                                        "merit3_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "89d98ad929da",
+                                                    "properties": [
+                                                        "merit3_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "eaa8eb389b8a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "0909fa2808c9",
+                                                    "properties": [
+                                                        "merit4_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "c8b8985b7bf9",
+                                                    "properties": [
+                                                        "merit4_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "5b9bbb68f869",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "4bcb2a9bcb29",
+                                                    "properties": [
+                                                        "merit5_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "a919b94a0ab9",
+                                                    "properties": [
+                                                        "merit5_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "f99be968ca78",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "ba8b3b0adbd9",
+                                                    "properties": [
+                                                        "merit6_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "783ba988b8ab",
+                                                    "properties": [
+                                                        "merit6_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "1a8b7aa96bc8",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "ab48db4b68f9",
+                                                    "properties": [
+                                                        "merit7_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "69f9e9284818",
+                                                    "properties": [
+                                                        "merit7_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "heading",
+                                            "id": "5aa8d849dbfb",
+                                            "properties": [
+                                                "Flaws"
+                                            ],
+                                            "size": 3,
+                                            "fallback": "-"
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "597ab87bb8aa",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "3a8a1bfad809",
+                                                    "properties": [
+                                                        "flaw1_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "f9ba292949fa",
+                                                    "properties": [
+                                                        "flaw1_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "7af8cbe9995b",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "0ba8f8488bab",
+                                                    "properties": [
+                                                        "flaw2_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "3b7ae84a7ac8",
+                                                    "properties": [
+                                                        "flaw2_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "db4b19fad9db",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "4adabaeaba7b",
+                                                    "properties": [
+                                                        "flaw3_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "fa1beaca395b",
+                                                    "properties": [
+                                                        "flaw3_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "6bc8e8a9c9a8",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "287b39baabab",
+                                                    "properties": [
+                                                        "flaw4_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "bb1a5858b86b",
+                                                    "properties": [
+                                                        "flaw4_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "29190a68bbf9",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "39ebf8a9297b",
+                                                    "properties": [
+                                                        "flaw5_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "4b68dbb8c91b",
+                                                    "properties": [
+                                                        "flaw5_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "inline",
+                                            "id": "f97b9a389bc8",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "e87b5af88839",
+                                                    "properties": [
+                                                        "flaw6_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "e95bc978abab",
+                                                    "properties": [
+                                                        "flaw6_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "0b89faab6afa",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "3a4a8b891b58",
+                                                    "properties": [
+                                                        "flaw7_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "1ab80b98b909",
+                                                    "properties": [
+                                                        "flaw7_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "cls": "merits-and-flaws-column"
+                                },
+                                {
+                                    "type": "group",
+                                    "id": "faaadb184978",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "group",
+                                            "id": "399859baaae8",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "b8ab2a9b5bea",
+                                                    "properties": [
+                                                        "Humanity"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "d9f89a394b89",
+                                                    "properties": [
+                                                        "humanity_value"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ],
+                                            "cls": "path-block"
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "db9a2b0a5a48",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "baeafb98dbfa",
+                                                    "properties": [
+                                                        "Willpower"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "19396a69dbfb",
+                                                    "properties": [
+                                                        "willpower_main"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "diceCallback": "return [{ text: monster.willpower_main + 'd10|none|noform|nodice|text(' + monster.willpower_main +')' }]",
+                                                    "dice": true,
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "b939b899186b",
+                                                    "properties": [
+                                                        "willpower_current"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "diceCallback": "return [{ text: monster.willpower_current + 'd10|none|noform|nodice|text(' + monster.willpower_current +')' }]",
+                                                    "dice": true,
+                                                    "conditioned": true
+                                                }
+                                            ],
+                                            "heading": "",
+                                            "cls": "willpower-block"
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "5819eb4828da",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "794a8859c8ea",
+                                                    "properties": [
+                                                        "Health"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "295ae9bbbb89",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "1b6b1b8af958",
+                                                            "properties": [
+                                                                "lethal"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "4a8a2b9b3959",
+                                                            "properties": [
+                                                                "bashing"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "damage-values"
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "780b4acb2a28",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "8b2baa3a6888",
+                                                            "properties": [
+                                                                "dmg_sq1"
+                                                            ],
+                                                            "fallback": "-"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "7a3b1bdb9ad8",
+                                                            "properties": [
+                                                                "dmg_sq2"
+                                                            ],
+                                                            "fallback": "-"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "499b48c8d808",
+                                                            "properties": [
+                                                                "dmg_sq3"
+                                                            ],
+                                                            "fallback": "-"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "38584ae93ac8",
+                                                            "properties": [
+                                                                "dmg_sq4"
+                                                            ],
+                                                            "fallback": "-"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "b91b1b59d8fa",
+                                                            "properties": [
+                                                                "dmg_sq5"
+                                                            ],
+                                                            "fallback": "-"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "b88b4bdb9aaa",
+                                                            "properties": [
+                                                                "dmg_sq6"
+                                                            ],
+                                                            "fallback": "-"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "69096a6a2abb",
+                                                            "properties": [
+                                                                "dmg_sq7"
+                                                            ],
+                                                            "fallback": "-"
+                                                        }
+                                                    ],
+                                                    "cls": "damage-squares"
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "d8f8685be948",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "1ba96bba58a8",
+                                                            "properties": [
+                                                                "bruised"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "display": ""
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "b858da086a8a",
+                                                            "properties": [
+                                                                "hurt"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "display": "-1"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "9a2ba86a9a8b",
+                                                            "properties": [
+                                                                "injured"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "display": "-1"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "f8fba8697ac9",
+                                                            "properties": [
+                                                                "wounded"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "display": "-2"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "390808e988c8",
+                                                            "properties": [
+                                                                "mauled"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "display": "-2"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "da6be98aba08",
+                                                            "properties": [
+                                                                "crippled"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "display": "-5"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "19b85b480b7b",
+                                                            "properties": [
+                                                                "incapacitated"
+                                                            ],
+                                                            "fallback": "-"
+                                                        }
+                                                    ],
+                                                    "cls": "damage-dice-penalties"
+                                                }
+                                            ],
+                                            "cls": "health-block"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "group",
+                                    "id": "eb4b8a8be8fa",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "group",
+                                            "id": "5acb8b597b0a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "da2a3b9b0a0a",
+                                                    "properties": [
+                                                        "Specialties"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": false
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "5aaaf9aa3898",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "6869bbcbf99b",
+                                                            "properties": [
+                                                                "specialty1_origin"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "cb6bc99a096b",
+                                                            "properties": [
+                                                                "specialty1_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true,
+                                                            "markdown": false
+                                                        }
+                                                    ],
+                                                    "heading": "",
+                                                    "cls": "specialty_one"
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "5aab39dafa78",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "69ea2af89b6a",
+                                                            "properties": [
+                                                                "specialty2_origin"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "e9eb5b983aa8",
+                                                            "properties": [
+                                                                "specialty2_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "specialty_two"
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "3a9ab9fbeb69",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "c8c87b292b98",
+                                                            "properties": [
+                                                                "specialty3_origin"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "8b0aabdbca4b",
+                                                            "properties": [
+                                                                "specialty3_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "specialty_three"
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "da09ab8b1b59",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "d9ebc9b99b89",
+                                                            "properties": [
+                                                                "specialty4_origin"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "38a81a7a0879",
+                                                            "properties": [
+                                                                "specialty4_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "specialty_four"
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "68f84b69c8cb",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "d909ea98fba9",
+                                                            "properties": [
+                                                                "specialty5_origin"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "6af9e90a89d9",
+                                                            "properties": [
+                                                                "specialty5_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "specialty_five"
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "8b49fb6aa968",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "89e819fa5828",
+                                                            "properties": [
+                                                                "specialty6_origin"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "58cb4a0aa80a",
+                                                            "properties": [
+                                                                "specialty6_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "specialty_six"
+                                                }
+                                            ],
+                                            "cls": "specialities-block",
+                                            "heading": ""
+                                        }
+                                    ]
+                                }
+                            ],
+                            "hasRule": false,
+                            "cls": "others-group"
+                        },
+                        {
+                            "type": "group",
+                            "id": "294abb2a69c8",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "inline",
+                                    "id": "59280bd87b4a",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "group",
+                                            "id": "7a9bb8c869f9",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "6b3a7b8a4848",
+                                                    "properties": [
+                                                        "weapon1_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "ebca1b98e938",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "5bba09789b7a",
+                                                    "properties": [
+                                                        "damage1"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "f9da489818ba",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "48f9f91b6839",
+                                                    "properties": [
+                                                        "range1"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "8b282ae98b78",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "ea093ae9589a",
+                                                    "properties": [
+                                                        "firerate1"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "39da0b3aa95b",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "0a39b9bbd808",
+                                                    "properties": [
+                                                        "capacity1"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "9a7a883908cb",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "eaeba8f83a4b",
+                                                    "properties": [
+                                                        "conceal1"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "8aa9fb2bd83b",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "cbc9d909c929",
+                                                    "properties": [
+                                                        "weapon2_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "1959d9ba39eb",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "7be87b2a2b19",
+                                                    "properties": [
+                                                        "damage2"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "eae9f8d9f8ba",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "da7ac99bf858",
+                                                    "properties": [
+                                                        "range2"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "e97bea0a7af8",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "6a186a78883b",
+                                                    "properties": [
+                                                        "firerate2"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "298ae9cada6b",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "486a6ad9b8aa",
+                                                    "properties": [
+                                                        "capacity2"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "e898296998b9",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "c9ba1b58bb68",
+                                                    "properties": [
+                                                        "conceal2"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "9a795a2a8b78",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "8b8a3b7ae9a9",
+                                                    "properties": [
+                                                        "weapon3_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "4bfad859bad8",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "aa1848fb7bca",
+                                                    "properties": [
+                                                        "damage3"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "c97ada0ad888",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "dbc97beab9a8",
+                                                    "properties": [
+                                                        "range3"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "3888ab488a98",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "4aabeb4abb68",
+                                                    "properties": [
+                                                        "firerate3"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "6bca0809a978",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "195bb8dbeafa",
+                                                    "properties": [
+                                                        "capacity3"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "98c8ea89e9fa",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "d84a59aae83b",
+                                                    "properties": [
+                                                        "conceal3"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "0b9bc9885a8a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "88584ab85a5b",
+                                                    "properties": [
+                                                        "weapon4_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "39bafadae82a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "6aab7a696848",
+                                                    "properties": [
+                                                        "damage4"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "199a5a8b9b5b",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "195999e99b9a",
+                                                    "properties": [
+                                                        "range4"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "bbeb3bfba809",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "ab0adaf9ab19",
+                                                    "properties": [
+                                                        "firerate4"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "2a7918e9ebb9",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "cb7bfb3a0a69",
+                                                    "properties": [
+                                                        "capacity4"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "197b38daab8a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "f86a48fadbca",
+                                                    "properties": [
+                                                        "conceal4"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "0a0a79fbb85a",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "5a8878080b78",
+                                                    "properties": [
+                                                        "weapon_header"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Weapon Name"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "7a485ad9e8c8",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "984b3ae8a88b",
+                                                    "properties": [
+                                                        "damage_header"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Damage"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "5a9b886a08fb",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "d8f8eb5a79da",
+                                                    "properties": [
+                                                        "range_header"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Range"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "898ba8a8a8f9",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "8869fbf83a29",
+                                                    "properties": [
+                                                        "firerate_header"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Fire Rate"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "eb8ac9b8ebab",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "4bc87898ab9b",
+                                                    "properties": [
+                                                        "capacity_header"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Capacity"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "693bcab8eafa",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "683a69196a88",
+                                                    "properties": [
+                                                        "conceal_header"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Conceal"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "cls": "weapon-table-header"
+                                }
+                            ],
+                            "cls": "weapon-table"
+                        }
+                    ]
+                }
+            ],
+            "open": true
+        },
+        {
+            "type": "javascript",
+            "id": "4ae91a6b7b48",
+            "conditioned": false,
+            "code": ""
+        }
+    ],
+    "name": "WoD v20 Agent en",
+    "id": "0b8879c94b4b"
+}

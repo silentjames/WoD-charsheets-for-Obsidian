@@ -3,54 +3,66 @@ async function sleep(ms) { // сон, чтобы успела прогрузит
 }
 sleep(120).then(() => {
 
-    // найти активную открытую вкладку для вампирского статблока
-    const statblockVampireName = '.vtm-v20-vampire'
-    const activeTab = '.workspace-leaf.mod-active ' + statblockVampireName;
-
-    // список изъянов для всех поддерживаемых кланов
-    const weaknessAssamite = '';
-    const weaknessAssamiteAntitribu = '';
-    const weaknessBaali = '';
+    // список изъянов для кланов
+    // Камарилья
     const weaknessBrujah = '';
-    const weaknessBrujahAntitribu = '';
-    const weaknessTrueBrujah = '';
-    const weaknessCappadocians = '';
     const weaknessCaitiff = '';
-    const weaknessCaitiffAntitribuPander = '';
-    const weaknessFollowersOfSet = '';
-    const weaknessSerpentsOfLight = '';
     const weaknessGangrel = '';
-    const weaknessCountryGangrel = '';
-    const weaknessCityGangrel = '';
-    const weaknessGiovanni = '';
-    const weaknessDaughtersOfCacophony = '';
-    const weaknessKiasyd = '';
-    const weaknessLasombra = '';
     const weaknessMalkavian = '';
-    const weaknessMalkavianAntitribu = '';
     const weaknessNosferatu = '';
-    const weaknessNosferatuAntitribu = '';
-    const weaknessRavnos = '';
-    const weaknessRavnosAntitribu = '';
-    const weaknessSalubri = ''
-    const weaknessSalubriAntitribu = '';
-    const weaknessSamedi = '';
     const weaknessToreador = '';
-    const weaknessToreadorAntitribu = '';
     const weaknessTremere = '';
+    const weaknessVentrue = '';
+    // Шабаш
+    const weaknessAssamiteAntitribu = '';
+    const weaknessBrujahAntitribu = '';
+    const weaknessCaitiffAntitribuPander = '';
+    const weaknessLasombra = '';
+    const weaknessMalkavianAntitribu = '';
+    const weaknessNosferatuAntitribu = '';
+    const weaknessRavnosAntitribu = '';
+    const weaknessSalubriAntitribu = '';
+    const weaknessToreadorAntitribu = '';
     const weaknessTremereAntitribu = '';
     const weaknessTzimisce = '';
-    const weaknessVentrue = '';
     const weaknessVentrueAntitribu = '';
+    // Независимые кланы
+    const weaknessAssamite = '';
+    const weaknessFollowersOfSet = '';
+    const weaknessGiovanni = '';
+    const weaknessRavnos = '';
+    // Линии крови
+    const weaknessBaali = '';
+    const weaknessCappadocians = '';
+    const weaknessCountryGangrel = '';
+    const weaknessCityGangrel = '';
+    const weaknessDaughtersOfCacophony = '';
+    const weaknessKiasyd = '';
+    const weaknessSalubri = '';
+    const weaknessSamedi = '';
+    const weaknessSerpentsOfLight = '';
+    const weaknessTrueBrujah = '';
 
 
-    // определяется клан, и каждому клану подставляется своя картинка на бэкграунд, и изъян
-    if (document.querySelector(activeTab + ' .line.clan .statblock-markdown') != null) {
+    // найти активную открытую вкладку для вампирского статблока
+    const statblockClassList = document.querySelector('.obsidian-statblock-plugin.statblock').classList
+    var allClasses = statblockClassList.value.toString()
+    var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
+    var statblockCSSclass = '.' + allClasses.match(regex);
+    // console.log(statblockCSSclass + '|= css-класс статблока')
+    const activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass;
+
+
+    // используется ли обычный вампирский статблок?
+    if ((statblockCSSclass = '.vtm-v20-vampire' || '.vtm-v20-vampire-en') && document.querySelector(activeTab + ' .line.clan .statblock-markdown') != null) {
+        // определяется клан, и каждому клану подставляется своя картинка на бэкграунд, и изъян
         var clanName = document.querySelector(activeTab + ' .line.clan .statblock-markdown > p').innerHTML;
         console.log(clanName + ' - название клана')
-        const collapsedColumn = document.querySelector(activeTab + ' .collapse-container'); // определяется зона, которой будет назначен бэкграунд 
+        // определяется зона, которой будет назначен бэкграунд
+        const collapsedColumn = document.querySelector(activeTab + ' .collapse-container');
         switch (clanName) {
             case 'Ассамиты':
+            case 'Assamite':
                 // каждому клану назначается соответствующий класс, для которого в css уже вшито изображение
                 var collapsedBackgroundClan = 'Assamite';
                 // изъян - соответствующий клану из списка выше
@@ -59,357 +71,430 @@ sleep(120).then(() => {
                 var headerBackgroundClan = 'var(--Assamite-background-logo)';
                 break;
             case 'Антитрибу Ассамитов':
+            case 'Assamite Antitribu':
                 var collapsedBackgroundClan = 'Assamite-Antitribu';
                 var clanWeakness = weaknessAssamiteAntitribu;
                 var headerBackgroundClan = 'var(--Assamite-Antitribu-background-logo)';
                 break;
             case 'Баали':
+            case 'Baali':
                 var collapsedBackgroundClan = 'Baali';
                 var clanWeakness = weaknessBaali;
                 var headerBackgroundClan = 'var(--Baali-background-logo)';
                 break;
             case 'Бруха':
+            case 'Brujah':
                 var collapsedBackgroundClan = 'Brujah';
                 var clanWeakness = weaknessBrujah;
                 var headerBackgroundClan = 'var(--Brujah-background-logo)';
                 break;
             case 'Антитрибу Бруха':
+            case 'Brujah Antitribu':
                 var collapsedBackgroundClan = 'Brujah-Antitribu';
                 var clanWeakness = weaknessBrujahAntitribu;
                 var headerBackgroundClan = 'var(--Brujah-Antitribu-background-logo)';
                 break;
             case 'Истинные Бруха':
+            case 'True Brujah':
                 var collapsedBackgroundClan = 'True-Brujah';
                 var clanWeakness = weaknessTrueBrujah;
                 var headerBackgroundClan = 'var(--True-Brujah-background-logo)';
                 break;
             case 'Каппадокийцы':
+            case 'Cappadocians':
                 var collapsedBackgroundClan = 'Cappadocians';
                 var clanWeakness = weaknessCappadocians;
                 var headerBackgroundClan = 'var(--Cappadocians-background-logo)';
                 break;
             case 'Каитиф':
+            case 'Caitiff':
                 var collapsedBackgroundClan = 'Caitiff';
                 var clanWeakness = weaknessCaitiff;
                 var headerBackgroundClan = 'var(--Caitiff-background-logo)';
                 break;
             case 'Пандер':
+            case 'Pander':
                 var collapsedBackgroundClan = 'Caitiff-Antitribu-Pander';
                 var clanWeakness = weaknessCaitiffAntitribuPander;
                 var headerBackgroundClan = 'var(--Caitiff-Antitribu-Pander-background-logo)';
                 break;
             case 'Вентру':
+            case 'Ventrue':
                 var collapsedBackgroundClan = 'Ventrue';
                 var clanWeakness = weaknessVentrue;
                 var headerBackgroundClan = 'var(--Ventrue-background-logo)';
                 break;
             case 'Антитрибу Вентру':
+            case 'Ventrue Antitribu':
                 var collapsedBackgroundClan = 'Ventrue-Antitribu';
                 var clanWeakness = weaknessVentrueAntitribu;
                 var headerBackgroundClan = 'var(--Ventrue-Antitribu-background-logo)';
                 break;
             case 'Гангрел':
+            case 'Gangrel':
                 var collapsedBackgroundClan = 'Gangrel';
                 var clanWeakness = weaknessGangrel;
                 var headerBackgroundClan = 'var(--Gangrel-background-logo)';
                 break;
             case 'Дикие Гангрелы':
+            case 'Country Gangrel':
                 var collapsedBackgroundClan = 'Country-Gangrel';
                 var clanWeakness = weaknessCountryGangrel;
                 var headerBackgroundClan = 'var(--Country-Gangrel-background-logo)';
                 break;
             case 'Городские Гангрелы':
+            case 'City Gangrel':
                 var collapsedBackgroundClan = 'City-Gangrel';
                 var clanWeakness = weaknessCityGangrel;
                 var headerBackgroundClan = 'var(--City-Gangrel-background-logo)';
                 break;
             case 'Джованни':
+            case 'Giovanni':
                 var collapsedBackgroundClan = 'Giovanni';
                 var clanWeakness = weaknessGiovanni;
                 var headerBackgroundClan = 'var(--Giovanni-background-logo)';
                 break;
             case 'Дочери Какофонии':
+            case 'Daughters of Cacophony':
                 var collapsedBackgroundClan = 'Daughters-of-Cacophony';
                 var clanWeakness = weaknessDaughtersOfCacophony;
                 var headerBackgroundClan = 'var(--Daughters-of-Cacophony-background-logo)';
                 break;
             case 'Киасиды':
+            case 'Kiasyd':
                 var collapsedBackgroundClan = 'Kiasyd';
                 var clanWeakness = weaknessKiasyd;
                 var headerBackgroundClan = 'var(--Kiasyd-background-logo)';
                 break;
             case 'Ласомбра':
+            case 'Lasombra':
                 var collapsedBackgroundClan = 'Lasombra';
                 var clanWeakness = weaknessLasombra;
                 var headerBackgroundClan = 'var(--Lasombra-background-logo)';
                 break;
+            case 'Малкавиане':
             case 'Малкавиан':
+            case 'Malkavian':
                 var collapsedBackgroundClan = 'Malkavian';
                 var clanWeakness = weaknessMalkavian;
                 var headerBackgroundClan = 'var(--Malkavian-background-logo)';
                 break;
             case 'Антитрибу Малкавиан':
+            case 'Malkavian Antitribu':
                 var collapsedBackgroundClan = 'Malkavian-Antitribu';
                 var clanWeakness = weaknessMalkavianAntitribu;
                 var headerBackgroundClan = 'var(--Malkavian-Antitribu-background-logo)';
                 break;
             case 'Носферату':
+            case 'Nosferatu':
                 var collapsedBackgroundClan = 'Nosferatu';
                 var clanWeakness = weaknessNosferatu;
                 var headerBackgroundClan = 'var(--Nosferatu-background-logo)';
                 break;
             case 'Антитрибу Носферату':
+            case 'Nosferatu Antitribu':
                 var collapsedBackgroundClan = 'Nosferatu-Antitribu';
                 var clanWeakness = weaknessNosferatuAntitribu;
                 var headerBackgroundClan = 'var(--Nosferatu-Antitribu-background-logo)';
                 break;
             case ('Последователи Сета'):
+            case ('Followers of Set'):
                 var collapsedBackgroundClan = 'Followers-of-Set';
                 var clanWeakness = weaknessFollowersOfSet;
                 var headerBackgroundClan = 'var(--Followers-of-Set-background-logo)';
                 break;
             case ('Змеи Света'):
+            case ('Serpents of Light'):
                 var collapsedBackgroundClan = 'Serpents-of-Light';
                 var clanWeakness = weaknessSerpentsOfLight;
                 var headerBackgroundClan = 'var(--Serpents-of-Light-background-logo)';
                 break;
             case ('Равнос'):
+            case ('Ravnos'):
                 var collapsedBackgroundClan = 'Ravnos';
                 var clanWeakness = weaknessRavnos;
                 var headerBackgroundClan = 'var(--Ravnos-background-logo)';
                 break;
             case ('Антитрибу Равнос'):
+            case ('Ravnos Antitribu'):
                 var collapsedBackgroundClan = 'Ravnos-Antitribu';
                 var clanWeakness = weaknessRavnosAntitribu;
                 var headerBackgroundClan = 'var(--Ravnos-Antitribu-background-logo)';
                 break;
             case ('Салюбри'):
+            case ('Salubri'):
                 var collapsedBackgroundClan = 'Salubri';
                 var clanWeakness = weaknessSalubri;
                 var headerBackgroundClan = 'var(--Salubri-background-logo)';
                 break;
             case 'Антитрибу Салюбри':
+            case 'Salubri Antitribu':
                 var collapsedBackgroundClan = 'Salubri-Antitribu';
                 var clanWeakness = weaknessSalubriAntitribu;
                 var headerBackgroundClan = 'var(--Salubri-Antitribu-background-logo)';
                 break;
             case 'Самеди':
+            case 'Samedi':
                 var collapsedBackgroundClan = 'Samedi';
                 var clanWeakness = weaknessSamedi;
                 var headerBackgroundClan = 'var(--Samedi-background-logo)';
                 break;
             case 'Тореадор':
+            case 'Toreador':
                 var collapsedBackgroundClan = 'Toreador';
                 var clanWeakness = weaknessToreador;
                 var headerBackgroundClan = 'var(--Toreador-background-logo)';
                 break;
             case 'Антитрибу Тореадор':
+            case 'Toreador Antitribu':
                 var collapsedBackgroundClan = 'Toreador-Antitribu';
                 var clanWeakness = weaknessToreadorAntitribu;
                 var headerBackgroundClan = 'var(--Toreador-Antitribu-background-logo)';
                 break;
             case 'Тремер':
+            case 'Tremere':
                 var collapsedBackgroundClan = 'Tremere';
                 var clanWeakness = weaknessTremere;
                 var headerBackgroundClan = 'var(--Tremere-background-logo)';
                 break;
             case 'Антитрибу Тремер':
+            case 'Tremere Antitribu':
                 var collapsedBackgroundClan = 'Tremere-Antitribu';
                 var clanWeakness = weaknessTremereAntitribu;
                 var headerBackgroundClan = 'var(--Tremere-Antitribu-background-logo)';
                 break;
             case 'Цимисхи':
+            case 'Tzimisce':
                 var collapsedBackgroundClan = 'Tzimisce';
                 var clanWeakness = weaknessTzimisce;
                 var headerBackgroundClan = 'var(--Tzimisce-background-logo)';
                 break;
         };
         collapsedColumn.classList.add(collapsedBackgroundClan);
-        document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = clanWeakness;
-        if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan };
+        document.querySelector('.weakness .inline').innerHTML = clanWeakness;
+        if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
+        };
     }
     else {
         //nothing
     }
-    // для ховера - лого клана проставляется рядом с фото, если есть класс wod-header - все то же самое, в общем. 
-    if (document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .line.clan .statblock-markdown > p') != null) {
-        var clanNameHover = document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .line.clan .statblock-markdown > p').innerHTML;
-        const collapsedColumnHover = document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .collapse-container');
+    // для ховера все то же самое 
+    if ((statblockCSSclass = '.vtm-v20-vampire' || '.vtm-v20-vampire-en') && document.querySelector('.popover.hover-popover ' + statblockCSSclass + ' .line.clan .statblock-markdown > p') != null) {
+        var clanNameHover = document.querySelector('.popover.hover-popover ' + statblockCSSclass + ' .line.clan .statblock-markdown > p').innerHTML;
+        const collapsedColumnHover = document.querySelector('.popover.hover-popover ' + statblockCSSclass + ' .collapse-container');
         switch (clanNameHover) {
             case 'Ассамиты':
+            case 'Assamite':
                 var collapsedBackgroundClanHover = 'Assamite';
                 var clanWeaknessHover = weaknessAssamite;
                 var headerBackgroundClanHover = 'var(--Assamite-background-logo)';
                 break;
             case 'Антитрибу Ассамитов':
+            case 'Assamite Antitribu':
                 var collapsedBackgroundClanHover = 'Assamite-Antitribu';
                 var clanWeaknessHover = weaknessAssamiteAntitribu;
                 var headerBackgroundClanHover = 'var(--Assamite-Antitribu-background-logo)';
                 break;
             case 'Баали':
+            case 'Baali':
                 var collapsedBackgroundClanHover = 'Baali';
                 var clanWeaknessHover = weaknessBaali;
                 var headerBackgroundClanHover = 'var(--Baali-background-logo)';
                 break;
             case 'Бруха':
+            case 'Brujah':
                 var collapsedBackgroundClanHover = 'Brujah';
                 var clanWeaknessHover = weaknessBrujah;
                 var headerBackgroundClanHover = 'var(--Brujah-background-logo)';
                 break;
             case 'Антитрибу Бруха':
+            case 'Brujah Antitribu':
                 var collapsedBackgroundClanHover = 'Brujah-Antitribu';
                 var clanWeaknessHover = weaknessBrujahAntitribu;
                 var headerBackgroundClanHover = 'var(--Brujah-Antitribu-background-logo)';
                 break;
             case 'Истинные Бруха':
+            case 'True Brujah':
                 var collapsedBackgroundClanHover = 'True-Brujah';
                 var clanWeaknessHover = weaknessTrueBrujah;
                 var headerBackgroundClanHover = 'var(--True-Brujah-background-logo)';
                 break;
             case 'Каппадокийцы':
+            case 'Cappadocians':
                 var collapsedBackgroundClanHover = 'Cappadocians';
                 var clanWeaknessHover = weaknessCappadocians;
                 var headerBackgroundClanHover = 'var(--Cappadocians-background-logo)';
                 break;
             case 'Каитиф':
+            case 'Caitiff':
                 var collapsedBackgroundClanHover = 'Caitiff';
                 var clanWeaknessHover = weaknessCaitiff;
                 var headerBackgroundClanHover = 'var(--Caitiff-background-logo)';
                 break;
             case 'Пандер':
+            case 'Pander':
                 var collapsedBackgroundClanHover = 'Caitiff-Antitribu-Pander';
                 var clanWeaknessHover = weaknessCaitiffAntitribuPander;
                 var headerBackgroundClanHover = 'var(--Caitiff-Antitribu-Pander-background-logo)';
                 break;
             case 'Вентру':
+            case 'Ventrue':
                 var collapsedBackgroundClanHover = 'Ventrue';
                 var clanWeaknessHover = weaknessVentrue;
                 var headerBackgroundClanHover = 'var(--Ventrue-background-logo)';
                 break;
             case 'Антитрибу Вентру':
+            case 'Ventrue Antitribu':
                 var collapsedBackgroundClanHover = 'Ventrue-Antitribu';
                 var clanWeaknessHover = weaknessVentrueAntitribu;
                 var headerBackgroundClanHover = 'var(--Ventrue-Antitribu-background-logo)';
                 break;
             case 'Гангрел':
+            case 'Gangrel':
                 var collapsedBackgroundClanHover = 'Gangrel';
                 var clanWeaknessHover = weaknessGangrel;
                 var headerBackgroundClanHover = 'var(--Gangrel-background-logo)';
                 break;
             case 'Дикие Гангрелы':
+            case 'Country Gangrel':
                 var collapsedBackgroundClanHover = 'Country-Gangrel';
                 var clanWeaknessHover = weaknessCountryGangrel;
                 var headerBackgroundClanHover = 'var(--Country-Gangrel-background-logo)';
                 break;
             case 'Городские Гангрелы':
+            case 'City Gangrel':
                 var collapsedBackgroundClanHover = 'City-Gangrel';
                 var clanWeaknessHover = weaknessCityGangrel;
                 var headerBackgroundClanHover = 'var(--City-Gangrel-background-logo)';
                 break;
             case 'Джованни':
+            case 'Giovanni':
                 var collapsedBackgroundClanHover = 'Giovanni';
                 var clanWeaknessHover = weaknessGiovanni;
                 var headerBackgroundClanHover = 'var(--Giovanni-background-logo)';
                 break;
             case 'Дочери Какофонии':
+            case 'Daughters of Cacophony':
                 var collapsedBackgroundClanHover = 'Daughters-of-Cacophony';
                 var clanWeaknessHover = weaknessDaughtersOfCacophony;
                 var headerBackgroundClanHover = 'var(--Daughters-of-Cacophony-background-logo)';
                 break;
             case 'Киасиды':
+            case 'Kiasyd':
                 var collapsedBackgroundClanHover = 'Kiasyd';
                 var clanWeaknessHover = weaknessKiasyd;
                 var headerBackgroundClanHover = 'var(--Kiasyd-background-logo)';
                 break;
             case 'Ласомбра':
+            case 'Lasombra':
                 var collapsedBackgroundClanHover = 'Lasombra';
                 var clanWeaknessHover = weaknessLasombra;
                 var headerBackgroundClanHover = 'var(--Lasombra-background-logo)';
                 break;
+            case 'Малкавиане':
             case 'Малкавиан':
+            case 'Malkavian':
                 var collapsedBackgroundClanHover = 'Malkavian';
                 var clanWeaknessHover = weaknessMalkavian;
                 var headerBackgroundClanHover = 'var(--Malkavian-background-logo)';
                 break;
             case 'Антитрибу Малкавиан':
+            case 'Malkavian Antitribu':
                 var collapsedBackgroundClanHover = 'Malkavian-Antitribu';
                 var clanWeaknessHover = weaknessMalkavianAntitribu;
                 var headerBackgroundClanHover = 'var(--Malkavian-Antitribu-background-logo)';
                 break;
             case 'Носферату':
+            case 'Nosferatu':
                 var collapsedBackgroundClanHover = 'Nosferatu';
                 var clanWeaknessHover = weaknessNosferatu;
                 var headerBackgroundClanHover = 'var(--Nosferatu-background-logo)';
                 break;
             case 'Антитрибу Носферату':
+            case 'Nosferatu Antitribu':
                 var collapsedBackgroundClanHover = 'Nosferatu-Antitribu';
                 var clanWeaknessHover = weaknessNosferatuAntitribu;
                 var headerBackgroundClanHover = 'var(--Nosferatu-Antitribu-background-logo)';
                 break;
             case ('Последователи Сета'):
+            case ('Followers of Set'):
                 var collapsedBackgroundClanHover = 'Followers-of-Set';
                 var clanWeaknessHover = weaknessFollowersOfSet;
                 var headerBackgroundClanHover = 'var(--Followers-of-Set-background-logo)';
                 break;
             case ('Змеи Света'):
+            case ('Serpents of Light'):
                 var collapsedBackgroundClanHover = 'Serpents-of-Light';
                 var clanWeaknessHover = weaknessSerpentsOfLight;
                 var headerBackgroundClanHover = 'var(--Serpents-of-Light-background-logo)';
                 break;
             case ('Равнос'):
+            case ('Ravnos'):
                 var collapsedBackgroundClanHover = 'Ravnos';
                 var clanWeaknessHover = weaknessRavnos;
                 var headerBackgroundClanHover = 'var(--Ravnos-background-logo)';
                 break;
             case ('Антитрибу Равнос'):
+            case ('Ravnos Antitribu'):
                 var collapsedBackgroundClanHover = 'Ravnos-Antitribu';
                 var clanWeaknessHover = weaknessRavnosAntitribu;
                 var headerBackgroundClanHover = 'var(--Ravnos-Antitribu-background-logo)';
                 break;
             case ('Салюбри'):
+            case ('Salubri'):
                 var collapsedBackgroundClanHover = 'Salubri';
                 var clanWeaknessHover = weaknessSalubri;
                 var headerBackgroundClanHover = 'var(--Salubri-background-logo)';
                 break;
-            case ('Антитрибу Салюбри'):
+            case 'Антитрибу Салюбри':
+            case 'Salubri Antitribu':
                 var collapsedBackgroundClanHover = 'Salubri-Antitribu';
                 var clanWeaknessHover = weaknessSalubriAntitribu;
                 var headerBackgroundClanHover = 'var(--Salubri-Antitribu-background-logo)';
                 break;
-            case ('Самеди'):
+            case 'Самеди':
+            case 'Samedi':
                 var collapsedBackgroundClanHover = 'Samedi';
                 var clanWeaknessHover = weaknessSamedi;
                 var headerBackgroundClanHover = 'var(--Samedi-background-logo)';
                 break;
-            case ('Тореадор'):
+            case 'Тореадор':
+            case 'Toreador':
                 var collapsedBackgroundClanHover = 'Toreador';
                 var clanWeaknessHover = weaknessToreador;
                 var headerBackgroundClanHover = 'var(--Toreador-background-logo)';
                 break;
-            case ('Антитрибу Тореадор'):
+            case 'Антитрибу Тореадор':
+            case 'Toreador Antitribu':
                 var collapsedBackgroundClanHover = 'Toreador-Antitribu';
                 var clanWeaknessHover = weaknessToreadorAntitribu;
                 var headerBackgroundClanHover = 'var(--Toreador-Antitribu-background-logo)';
                 break;
-            case ('Тремер'):
+            case 'Тремер':
+            case 'Tremere':
                 var collapsedBackgroundClanHover = 'Tremere';
                 var clanWeaknessHover = weaknessTremere;
                 var headerBackgroundClanHover = 'var(--Tremere-background-logo)';
                 break;
-            case ('Антитрибу Тремер'):
-                var collapsedBackgroundClanHover = 'Tremere-Antitribu';
+            case 'Антитрибу Тремер':
+            case 'Tremere Antitribu':
+                var headerBackgroundClanHover = 'Tremere-Antitribu';
                 var clanWeaknessHover = weaknessTremereAntitribu;
                 var headerBackgroundClanHover = 'var(--Tremere-Antitribu-background-logo)';
                 break;
-            case ('Цимисхи'):
+            case 'Цимисхи':
+            case 'Tzimisce':
                 var collapsedBackgroundClanHover = 'Tzimisce';
                 var clanWeaknessHover = weaknessTzimisce;
                 var headerBackgroundClanHover = 'var(--Tzimisce-background-logo)';
                 break;
         };
         collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
-        document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = clanWeaknessHover;
-        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover };
+        document.querySelector('.popover.hover-popover .weakness .inline').innerHTML = clanWeaknessHover;
+        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover
+        };
     }
     else {
         //nothing

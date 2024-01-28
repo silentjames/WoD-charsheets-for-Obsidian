@@ -3,49 +3,58 @@ async function sleep(ms) { // sleep is needed to wait for a note and a statblok 
 }
 sleep(120).then(() => {
 
-    // find the statblock's layout name and opened active tab
-    const statblockVampireName = '.vtm-v20-vampire-en'
-    const activeTab = '.workspace-leaf.mod-active ' + statblockVampireName;
-
     // the list of weaknesses for all the supported clans
-    const weaknessAssamite = '';
-    const weaknessAssamiteAntitribu = '';
-    const weaknessBaali = '';
+    // Camarilla
     const weaknessBrujah = '';
-    const weaknessBrujahAntitribu = '';
-    const weaknessTrueBrujah = '';
-    const weaknessCappadocians = '';
     const weaknessCaitiff = '';
-    const weaknessCaitiffAntitribuPander = '';
-    const weaknessFollowersOfSet = '';
-    const weaknessSerpentsOfLight = '';
     const weaknessGangrel = '';
-    const weaknessCountryGangrel = '';
-    const weaknessCityGangrel = '';
-    const weaknessGiovanni = '';
-    const weaknessDaughtersOfCacophony = '';
-    const weaknessKiasyd = '';
-    const weaknessLasombra = '';
     const weaknessMalkavian = '';
-    const weaknessMalkavianAntitribu = '';
     const weaknessNosferatu = '';
-    const weaknessNosferatuAntitribu = '';
-    const weaknessRavnos = '';
-    const weaknessRavnosAntitribu = '';
-    const weaknessSalubri = '';
-    const weaknessSalubriAntitribu = '';
-    const weaknessSamedi = '';
     const weaknessToreador = '';
-    const weaknessToreadorAntitribu = '';
     const weaknessTremere = '';
+    const weaknessVentrue = '';
+    // Shabbat
+    const weaknessAssamiteAntitribu = '';
+    const weaknessBrujahAntitribu = '';
+    const weaknessCaitiffAntitribuPander = '';
+    const weaknessLasombra = '';
+    const weaknessMalkavianAntitribu = '';
+    const weaknessNosferatuAntitribu = '';
+    const weaknessRavnosAntitribu = '';
+    const weaknessSalubriAntitribu = '';
+    const weaknessToreadorAntitribu = '';
     const weaknessTremereAntitribu = '';
     const weaknessTzimisce = '';
-    const weaknessVentrue = '';
     const weaknessVentrueAntitribu = '';
+    // Independent clans
+    const weaknessAssamite = '';
+    const weaknessFollowersOfSet = '';
+    const weaknessGiovanni = '';
+    const weaknessRavnos = '';
+    // Bloodlines
+    const weaknessBaali = '';
+    const weaknessCappadocians = '';
+    const weaknessCountryGangrel = '';
+    const weaknessCityGangrel = '';
+    const weaknessDaughtersOfCacophony = '';
+    const weaknessKiasyd = '';
+    const weaknessSalubri = '';
+    const weaknessSamedi = '';
+    const weaknessSerpentsOfLight = '';
+    const weaknessTrueBrujah = '';
+
+
+    // find the statblock's layout name and opened active tab
+    const statblockClassList = document.querySelector('.obsidian-statblock-plugin.statblock').classList
+    var allClasses = statblockClassList.value.toString()
+    var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
+    var statblockCSSclass = '.' + allClasses.match(regex);
+    // console.log(statblockCSSclass + '|= statblock css-class')
+    const activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass;
 
 
     // define a clan, and set up different background and weakness for each clan
-    if (document.querySelector(activeTab + ' .line.clan .statblock-markdown') != null) {
+    if ((statblockCSSclass = '.vtm-v20-vampire' || '.vtm-v20-vampire-en') && document.querySelector(activeTab + ' .line.clan .statblock-markdown') != null) {
         var clanName = document.querySelector(activeTab + ' .line.clan .statblock-markdown > p').innerHTML;
         console.log(clanName + ' - the clan')
         // define the area where a clan image should be placed 
@@ -226,16 +235,18 @@ sleep(120).then(() => {
                 break;
         };
         collapsedColumn.classList.add(collapsedBackgroundClan);
-        document.querySelector('.weakness .statblock-rendered-text-content').innerHTML = clanWeakness;
-        if (document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.view-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan };
+        document.querySelector('.weakness .inline').innerHTML = clanWeakness;
+        if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
+        };
     }
     else {
         //nothing
     }
     // same code, but for a statblock in hover
-    if (document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .line.clan .statblock-markdown > p') != null) {
-        var clanNameHover = document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .line.clan .statblock-markdown > p').innerHTML;
-        const collapsedColumnHover = document.querySelector('.popover.hover-popover ' + statblockVampireName + ' .collapse-container');
+    if ((statblockCSSclass = '.vtm-v20-vampire' || '.vtm-v20-vampire-en') && document.querySelector('.popover.hover-popover ' + statblockCSSclass + ' .line.clan .statblock-markdown > p') != null) {
+        var clanNameHover = document.querySelector('.popover.hover-popover ' + statblockCSSclass + ' .line.clan .statblock-markdown > p').innerHTML;
+        const collapsedColumnHover = document.querySelector('.popover.hover-popover ' + statblockCSSclass + ' .collapse-container');
         switch (clanNameHover) {
             case ('Assamite'):
                 var collapsedBackgroundClanHover = 'Assamite';
@@ -409,8 +420,10 @@ sleep(120).then(() => {
                 break;
         };
         collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
-        document.querySelector('.popover.hover-popover .weakness .statblock-rendered-text-content').innerHTML = clanWeaknessHover;
-        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container') != null) { document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockVampireName + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover };
+        document.querySelector('.popover.hover-popover .weakness .inline').innerHTML = clanWeaknessHover;
+        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover
+        };
     }
     else {
         //nothing

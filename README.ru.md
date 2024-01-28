@@ -5,7 +5,7 @@
 </p>
 
 Несколько бланков персонажей старого Мира Тьмы (для двадцатой редакции, она же v20, она же "Классические правила"). Этакое дополнение, предназначенное для [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) и [Obsidian](https://github.com/obsidianmd).
-На данный момент, доступны бланки для **вампиров** (современность и темные века), **смертных**, **правительственных агентов** (рескин смертных) и **оборотней** (в разработке).
+На данный момент, доступны бланки для **вампиров** (современность и темные века), **оборотней**, **смертных** и **правительственных агентов** (рескин смертных).
 
 # Общее
 
@@ -31,7 +31,7 @@
 </details>
 
 <details>
-    <summary>Оборотни (в разработке)</summary>
+    <summary>Оборотни</summary>
         <p align="center">
             <a href='imgs/werewolf_ru.png'><img src='imgs/werewolf_ru_small.png' width='450'></a>
         </p>
@@ -128,7 +128,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <details>
     <summary>Вампир (RU)</summary>
 
-    ````
     ```statblock
     columnWidth: 680
     column: 1
@@ -320,7 +319,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
     show_weakness: 
     ```
-    ````
 
 </details>
 
@@ -329,7 +327,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <details>
     <summary>Вампир (EN)</summary>
 
-    ````
     ```statblock
     columnWidth: 680
     column: 1
@@ -517,7 +514,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
     show_weakness: 
     ```
-    ````
 
 </details>
 
@@ -526,7 +522,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <details>
     <summary>Вампир Темные века (RU)</summary>
 
-    ````
     ```statblock
     columnWidth: 680
     column: 1
@@ -720,7 +715,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
     show_weakness:
     ```
-    ````
 
 </details>
 
@@ -729,7 +723,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <details>
     <summary>Оборотень (RU)</summary>
 
-    ````
     ```statblock
     columnWidth: 680
     column: 1
@@ -924,7 +917,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty6_origin: 
     specialty6_name: 
     ```
-    ````
 
 </details>
 
@@ -933,7 +925,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <details>
     <summary>Смертный (RU)</summary>
 
-    ````
     ```statblock
     columnWidth: 680
     column: 1
@@ -1022,19 +1013,19 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
     Advantages: ПРЕИМУЩЕСТВА
 
-    Disciplines: ДАРЫ И ПАРАМЕТРЫ
-    discipline1_name: 
-    discipline1_value: 
-    discipline2_name: 
-    discipline2_value: 
-    discipline3_name: 
-    discipline3_value: 
-    discipline4_name: 
-    discipline4_value: 
-    discipline5_name: 
-    discipline5_value: 
-    discipline6_name: 
-    discipline6_value: 
+    Numina: NUMINA
+    numina1_name: 
+    numina1_value: 
+    numina2_name: 
+    numina2_value: 
+    numina3_name: 
+    numina3_value: 
+    numina4_name: 
+    numina4_value: 
+    numina5_name: 
+    numina5_value: 
+    numina6_name: 
+    numina6_value: 
 
     Backgrounds: ФАКТЫ БИОГРАФИИ
     background1_name: 
@@ -1116,14 +1107,34 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
                                     #### ОРУЖИЕ ####
 
-    weapon1_name: пистолет
-    damage1: 4
-    range1: 20
-    firerate1: 4
-    clip1: 15
-    conceal1: ПК
+    weapon1_name: 
+    damage1: 
+    range1: 
+    firerate1: 
+    clip1: 
+    conceal1: 
+
+    weapon2_name: 
+    damage2: 
+    range2: 
+    firerate2: 
+    capacity2: 
+    conceal2: 
+
+    weapon3_name: 
+    damage3: 
+    range3: 
+    firerate3: 
+    capacity3: 
+    conceal3: 
+
+    weapon4_name: 
+    damage4: 
+    range4: 
+    firerate4: 
+    capacity4: 
+    conceal4: 
     ```
-    ````
 
 </details>
 
@@ -1132,7 +1143,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <details>
     <summary>Правительственный агент (RU)</summary>
 
-    ````
     ```statblock
     column: 1
     columnWidth: 680
@@ -1224,6 +1234,20 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
     Advantages: ПРЕИМУЩЕСТВА
 
+    Numina: ДАРЫ И ПАРАМЕТРЫ
+    numina1_name: 
+    numina1_value: 
+    numina2_name: 
+    numina2_value: 
+    numina3_name: 
+    numina3_value: 
+    numina4_name: 
+    numina4_value: 
+    numina5_name: 
+    numina5_value: 
+    numina6_name: 
+    numina6_value: 
+
     Backgrounds: ФАКТЫ БИОГРАФИИ
     background1_name: 
     background1_value: 
@@ -1301,8 +1325,37 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty5_name: 
     specialty6_origin: 
     specialty6_name: 
+
+                                    #### ОРУЖИЕ ####
+
+    weapon1_name: 
+    damage1: 
+    range1: 
+    firerate1: 
+    clip1: 
+    conceal1: 
+
+    weapon2_name: 
+    damage2: 
+    range2: 
+    firerate2: 
+    capacity2: 
+    conceal2: 
+
+    weapon3_name: 
+    damage3: 
+    range3: 
+    firerate3: 
+    capacity3: 
+    conceal3: 
+
+    weapon4_name: 
+    damage4: 
+    range4: 
+    firerate4: 
+    capacity4: 
+    conceal4: 
     ```
-    ````
 
 </details>
 

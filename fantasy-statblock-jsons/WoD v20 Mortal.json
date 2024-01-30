@@ -56,7 +56,7 @@
                                             "fallback": "-",
                                             "display": "Натура:",
                                             "conditioned": true,
-                                            "markdown": false,
+                                            "markdown": true,
                                             "doNotAddClass": false
                                         },
                                         {

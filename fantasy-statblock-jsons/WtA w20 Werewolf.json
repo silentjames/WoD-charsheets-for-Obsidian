@@ -2954,7 +2954,7 @@
                                                 "glabro_strength"
                                             ],
                                             "fallback": "-",
-                                            "display": "Сила (+2): ",
+                                            "display": "Сила:",
                                             "diceCallback": "",
                                             "callback": "return monster.Strength + 2"
                                         },
@@ -2965,7 +2965,7 @@
                                                 "glabro_stamina"
                                             ],
                                             "fallback": "-",
-                                            "display": "Выносл. (+2): ",
+                                            "display": "Вынослив.:",
                                             "callback": "return monster.Stamina + 2"
                                         },
                                         {
@@ -2975,7 +2975,7 @@
                                                 "glabro_appearance"
                                             ],
                                             "fallback": "-",
-                                            "display": "Привлекат. (-1): ",
+                                            "display": "Привлекат.:",
                                             "callback": "return monster.Appearance - 1"
                                         },
                                         {
@@ -2985,7 +2985,7 @@
                                                 "glabro_manipulation"
                                             ],
                                             "fallback": "-",
-                                            "display": "Манипул. (-2): ",
+                                            "display": "Манипул.:",
                                             "callback": "return monster.Manipulation - 2"
                                         },
                                         {
@@ -3022,7 +3022,7 @@
                                                 "crinos_strength"
                                             ],
                                             "fallback": "-",
-                                            "display": "Сила (+4): ",
+                                            "display": "Сила:",
                                             "callback": "return monster.Strength + 4"
                                         },
                                         {
@@ -3032,7 +3032,7 @@
                                                 "crinos_dexterity"
                                             ],
                                             "fallback": "-",
-                                            "display": "Ловкость (+1): ",
+                                            "display": "Ловкость:",
                                             "callback": "return monster.Dexterity + 1"
                                         },
                                         {
@@ -3042,7 +3042,7 @@
                                                 "crinos_stamina"
                                             ],
                                             "fallback": "-",
-                                            "display": "Выносл. (+3): ",
+                                            "display": "Вынослив.:",
                                             "callback": "return monster.Stamina + 3"
                                         },
                                         {
@@ -3052,7 +3052,7 @@
                                                 "crinos_manipulation"
                                             ],
                                             "fallback": "-",
-                                            "display": "Манипул. (-3): ",
+                                            "display": "Манипул.:",
                                             "callback": "return monster.Manipulation - 3"
                                         },
                                         {
@@ -3110,7 +3110,7 @@
                                                 "hispo_strength"
                                             ],
                                             "fallback": "-",
-                                            "display": "Сила (+3): ",
+                                            "display": "Сила:",
                                             "callback": "return monster.Strength + 3"
                                         },
                                         {
@@ -3120,7 +3120,7 @@
                                                 "hispo_dexterity"
                                             ],
                                             "fallback": "-",
-                                            "display": "Ловкость (+2): ",
+                                            "display": "Ловкость:",
                                             "callback": "return monster.Dexterity + 2"
                                         },
                                         {
@@ -3130,7 +3130,7 @@
                                                 "hispo_stamina"
                                             ],
                                             "fallback": "-",
-                                            "display": "Выносл. (+3): ",
+                                            "display": "Вынослив.:",
                                             "callback": "return monster.Stamina + 3"
                                         },
                                         {
@@ -3140,7 +3140,7 @@
                                                 "hispo_manipulation"
                                             ],
                                             "fallback": "-",
-                                            "display": "Манипул. (-3): ",
+                                            "display": "Манипул.:",
                                             "callback": "return monster.Manipulation - 3"
                                         },
                                         {
@@ -3186,7 +3186,7 @@
                                                 "lupus_strength"
                                             ],
                                             "fallback": "-",
-                                            "display": "Сила (+1): ",
+                                            "display": "Сила:",
                                             "callback": "return monster.Strength + 1"
                                         },
                                         {
@@ -3196,7 +3196,7 @@
                                                 "lupus_dexterity"
                                             ],
                                             "fallback": "-",
-                                            "display": "Ловкость (+2): ",
+                                            "display": "Ловкость:",
                                             "callback": "return monster.Dexterity + 2"
                                         },
                                         {
@@ -3206,7 +3206,7 @@
                                                 "lupus_stamina"
                                             ],
                                             "fallback": "-",
-                                            "display": "Выносл. (+2): ",
+                                            "display": "Вынослив.:",
                                             "callback": "return monster.Stamina + 2"
                                         },
                                         {
@@ -3216,7 +3216,7 @@
                                                 "lupus_manipulation"
                                             ],
                                             "fallback": "-",
-                                            "display": "Манипул. (-3): ",
+                                            "display": "Манипул.:",
                                             "callback": "return monster.Manipulation - 3"
                                         },
                                         {

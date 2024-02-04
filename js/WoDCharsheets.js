@@ -45,21 +45,30 @@ sleep(120).then(() => {
 
 
     // найти активную открытую вкладку для вампирского статблока
-    const statblockClassList = document.querySelector('.obsidian-statblock-plugin.statblock').classList
+    const statblockClassList = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock').classList
     var allClasses = statblockClassList.value.toString()
     var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
     var statblockCSSclass = '.' + allClasses.match(regex);
-    // console.log(statblockCSSclass + '|= css-класс статблока')
-    const activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass;
+    // console.log(statblockCSSclass + ' |=| css-класс статблока')
+    const activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass + ' ';
+
+    // найти статблок в ховере
+    if (document.querySelector('.popover.hover-popover') != null) {
+        var statblockClassListHover = document.querySelector('.popover.hover-popover .obsidian-statblock-plugin.statblock').classList;
+        var allClassesHover = statblockClassListHover.value.toString()
+        var statblockCSSclassHover = '.' + allClassesHover.match(regex);
+        // console.log(statblockCSSclassHover + ' |=| css-класс статблока в ховере')
+        var statblockCSSpathHover = '.popover.hover-popover ' + statblockCSSclassHover + ' ';
+    }
 
 
     // используется ли обычный вампирский статблок?
-    if ((statblockCSSclass = '.vtm-v20-vampire' || '.vtm-v20-vampire-en') && document.querySelector(activeTab + ' .line.clan .statblock-markdown') != null) {
+    if (document.querySelector(activeTab + '.line.clan .statblock-markdown') != null && (statblockCSSclass.endsWith('.vtm-v20-vampire') || statblockCSSclass.endsWith('.vtm-v20-vampire-en'))) {
         // определяется клан, и каждому клану подставляется своя картинка на бэкграунд, и изъян
-        var clanName = document.querySelector(activeTab + ' .line.clan .statblock-markdown > p').innerHTML;
+        var clanName = document.querySelector(activeTab + '.line.clan .statblock-markdown > p').innerHTML;
         console.log(clanName + ' - название клана')
         // определяется зона, которой будет назначен бэкграунд
-        const collapsedColumn = document.querySelector(activeTab + ' .collapse-container');
+        const collapsedColumn = document.querySelector(activeTab + '.collapse-container');
         switch (clanName) {
             case 'Ассамиты':
             case 'Assamite':
@@ -197,32 +206,32 @@ sleep(120).then(() => {
                 var clanWeakness = weaknessNosferatuAntitribu;
                 var headerBackgroundClan = 'var(--Nosferatu-Antitribu-background-logo)';
                 break;
-            case ('Последователи Сета'):
-            case ('Followers of Set'):
+            case 'Последователи Сета':
+            case 'Followers of Set':
                 var collapsedBackgroundClan = 'Followers-of-Set';
                 var clanWeakness = weaknessFollowersOfSet;
                 var headerBackgroundClan = 'var(--Followers-of-Set-background-logo)';
                 break;
-            case ('Змеи Света'):
-            case ('Serpents of Light'):
+            case 'Змеи Света':
+            case 'Serpents of Light':
                 var collapsedBackgroundClan = 'Serpents-of-Light';
                 var clanWeakness = weaknessSerpentsOfLight;
                 var headerBackgroundClan = 'var(--Serpents-of-Light-background-logo)';
                 break;
-            case ('Равнос'):
-            case ('Ravnos'):
+            case 'Равнос':
+            case 'Ravnos':
                 var collapsedBackgroundClan = 'Ravnos';
                 var clanWeakness = weaknessRavnos;
                 var headerBackgroundClan = 'var(--Ravnos-background-logo)';
                 break;
-            case ('Антитрибу Равнос'):
-            case ('Ravnos Antitribu'):
+            case 'Антитрибу Равнос':
+            case 'Ravnos Antitribu':
                 var collapsedBackgroundClan = 'Ravnos-Antitribu';
                 var clanWeakness = weaknessRavnosAntitribu;
                 var headerBackgroundClan = 'var(--Ravnos-Antitribu-background-logo)';
                 break;
-            case ('Салюбри'):
-            case ('Salubri'):
+            case 'Салюбри':
+            case 'Salubri':
                 var collapsedBackgroundClan = 'Salubri';
                 var clanWeakness = weaknessSalubri;
                 var headerBackgroundClan = 'var(--Salubri-background-logo)';
@@ -279,10 +288,10 @@ sleep(120).then(() => {
     else {
         //nothing
     }
-    // для ховера все то же самое 
-    if ((statblockCSSclass = '.vtm-v20-vampire' || '.vtm-v20-vampire-en') && document.querySelector('.popover.hover-popover ' + statblockCSSclass + ' .line.clan .statblock-markdown > p') != null) {
-        var clanNameHover = document.querySelector('.popover.hover-popover ' + statblockCSSclass + ' .line.clan .statblock-markdown > p').innerHTML;
-        const collapsedColumnHover = document.querySelector('.popover.hover-popover ' + statblockCSSclass + ' .collapse-container');
+    // для ховера все то же самое
+    if (document.querySelector(statblockCSSpathHover + '.line.clan .statblock-markdown') != null && (statblockCSSclassHover.endsWith('.vtm-v20-vampire') || statblockCSSclassHover.endsWith('.vtm-v20-vampire-en'))) {
+        var clanNameHover = document.querySelector(statblockCSSpathHover + '.line.clan .statblock-markdown > p').innerHTML;
+        const collapsedColumnHover = document.querySelector(statblockCSSpathHover + '.collapse-container');
         switch (clanNameHover) {
             case 'Ассамиты':
             case 'Assamite':
@@ -417,32 +426,32 @@ sleep(120).then(() => {
                 var clanWeaknessHover = weaknessNosferatuAntitribu;
                 var headerBackgroundClanHover = 'var(--Nosferatu-Antitribu-background-logo)';
                 break;
-            case ('Последователи Сета'):
-            case ('Followers of Set'):
+            case 'Последователи Сета':
+            case 'Followers of Set':
                 var collapsedBackgroundClanHover = 'Followers-of-Set';
                 var clanWeaknessHover = weaknessFollowersOfSet;
                 var headerBackgroundClanHover = 'var(--Followers-of-Set-background-logo)';
                 break;
-            case ('Змеи Света'):
-            case ('Serpents of Light'):
+            case 'Змеи Света':
+            case 'Serpents of Light':
                 var collapsedBackgroundClanHover = 'Serpents-of-Light';
                 var clanWeaknessHover = weaknessSerpentsOfLight;
                 var headerBackgroundClanHover = 'var(--Serpents-of-Light-background-logo)';
                 break;
-            case ('Равнос'):
-            case ('Ravnos'):
+            case 'Равнос':
+            case 'Ravnos':
                 var collapsedBackgroundClanHover = 'Ravnos';
                 var clanWeaknessHover = weaknessRavnos;
                 var headerBackgroundClanHover = 'var(--Ravnos-background-logo)';
                 break;
-            case ('Антитрибу Равнос'):
-            case ('Ravnos Antitribu'):
+            case 'Антитрибу Равнос':
+            case 'Ravnos Antitribu':
                 var collapsedBackgroundClanHover = 'Ravnos-Antitribu';
                 var clanWeaknessHover = weaknessRavnosAntitribu;
                 var headerBackgroundClanHover = 'var(--Ravnos-Antitribu-background-logo)';
                 break;
-            case ('Салюбри'):
-            case ('Salubri'):
+            case 'Салюбри':
+            case 'Salubri':
                 var collapsedBackgroundClanHover = 'Salubri';
                 var clanWeaknessHover = weaknessSalubri;
                 var headerBackgroundClanHover = 'var(--Salubri-background-logo)';
@@ -479,7 +488,7 @@ sleep(120).then(() => {
                 break;
             case 'Антитрибу Тремер':
             case 'Tremere Antitribu':
-                var headerBackgroundClanHover = 'Tremere-Antitribu';
+                var collapsedBackgroundClanHover = 'Tremere-Antitribu';
                 var clanWeaknessHover = weaknessTremereAntitribu;
                 var headerBackgroundClanHover = 'var(--Tremere-Antitribu-background-logo)';
                 break;
@@ -491,9 +500,9 @@ sleep(120).then(() => {
                 break;
         };
         collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
-        document.querySelector('.popover.hover-popover .weakness .inline').innerHTML = clanWeaknessHover;
-        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
-            document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover
+        document.querySelector(statblockCSSpathHover + '.weakness .inline').innerHTML = clanWeaknessHover;
+        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover
         };
     }
     else {
@@ -502,47 +511,46 @@ sleep(120).then(() => {
 
 
     // настройка, отвечающая за отображение изъяна
-    if (document.querySelector('.line.show_weakness .statblock-rendered-text-content') != null) {
-        const showWeakness = document.querySelector('.line.show_weakness .statblock-rendered-text-content').innerHTML;
+    if (document.querySelector(activeTab + '.line.show_weakness .inline') != null) {
+        const showWeakness = document.querySelector(activeTab + '.line.show_weakness .inline').innerHTML;
         switch (showWeakness) {
             case ('no'):
-                console.log('показывать изъян? ' + showWeakness)
-                document.querySelector('.property-container:has(> .line.weakness)').style.display = 'none';
+                // console.log('показывать изъян? ' + showWeakness)
+                document.querySelector(activeTab + '.property-container:has(> .line.weakness)').style.display = 'none';
                 break;
             case ('false'):
-                console.log('показывать изъян? ' + showWeakness)
-                document.querySelector('.property-container:has(.line.weakness)').style.display = 'none';
+                // console.log('показывать изъян? ' + showWeakness)
+                document.querySelector(activeTab + '.property-container:has(> .line.weakness)').style.display = 'none';
                 break;
         }
     }
     else {
-        console.log('показывать изъян? ДА');
+        // console.log('показывать изъян? ДА');
     }
     // и она же для ховера
-    if (document.querySelector('.popover.hover-popover .line.show_weakness .statblock-rendered-text-content') != null) {
-        const showWeaknessHover = document.querySelector('.popover.hover-popover .line.show_weakness .statblock-rendered-text-content').innerHTML;
+    if (document.querySelector(statblockCSSpathHover + '.line.show_weakness .inline') != null) {
+        const showWeaknessHover = document.querySelector(statblockCSSpathHover + '.line.show_weakness .inline').innerHTML;
         switch (showWeaknessHover) {
             case ('no'):
-                console.log('показывать изъян в ховере? ' + showWeaknessHover)
-                document.querySelector('.popover.hover-popover .property-container:has(> .line.weakness)').style.display = 'none';
+                // console.log('показывать изъян в ховере? ' + showWeaknessHover)
+                document.querySelector(statblockCSSpathHover + ' .property-container:has(> .line.weakness)').style.display = 'none';
                 break;
             case ('false'):
-                console.log('показывать изъян в ховере? ' + showWeaknessHover)
-                document.querySelector('.popover.hover-popover .property-container:has(.line.weakness)').style.display = 'none';
+                // console.log('показывать изъян в ховере? ' + showWeaknessHover)
+                document.querySelector(statblockCSSpathHover + '.property-container:has(.line.weakness)').style.display = 'none';
                 break;
         }
     }
     else {
-        console.log('показывать изъян в ховере? ДА');
+        // console.log('показывать изъян в ховере? ДА');
     }
-
 
 
 
     // В зависимости от поколения, меняется значение траты крови в ход
-    if (document.querySelector('.line.generation .statblock-markdown p') != null) {
+    if (document.querySelector(activeTab + '.line.generation .statblock-markdown p') != null) {
         // нашел поколение
-        var generationFull = document.querySelector('.line.generation .statblock-markdown').textContent;
+        var generationFull = document.querySelector(activeTab + '.line.generation .statblock-markdown').textContent;
         // берем только первые два символа, если поколение вдруг длиннее за счет инфы про диаблери
         var generation = generationFull.slice(0, 2);
         // убираем пробелы, если поколение 8-9
@@ -550,75 +558,73 @@ sleep(120).then(() => {
         console.log('поколение - ' + generation);
         switch (generation) {
             case '13':
-                document.querySelector('.line.blood_per_turn .statblock-rendered-text-content.inline').innerHTML = '1'; break;
+                document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '1'; break;
             case '12':
-                document.querySelector('.line.blood_per_turn .statblock-rendered-text-content.inline').innerHTML = '1'; break;
+                document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '1'; break;
             case '11':
-                document.querySelector('.line.blood_per_turn .statblock-rendered-text-content.inline').innerHTML = '1'; break;
+                document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '1'; break;
             case '10':
-                document.querySelector('.line.blood_per_turn .statblock-rendered-text-content.inline').innerHTML = '1'; break;
+                document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '1'; break;
             case '9':
-                document.querySelector('.line.blood_per_turn .statblock-rendered-text-content.inline').innerHTML = '2'; break;
+                document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '2'; break;
             case '8':
-                document.querySelector('.line.blood_per_turn .statblock-rendered-text-content.inline').innerHTML = '3'; break;
+                document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '3'; break;
         }
     }
     else {
         //nothing
     }
     // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .line.generation .statblock-markdown > p') != null) {
+    if (document.querySelector(statblockCSSpathHover + '.line.generation .statblock-markdown > p') != null) {
         const generationFullHover = document.querySelector('.popover.hover-popover .line.generation .statblock-markdown > p').textContent;
         var generationHover = generationFullHover.slice(0, 2);
         var generationHover = generationHover.replace(/\s/g, '');
         console.log('поколение в ховере - ' + generationHover);
         switch (generationHover) {
             case '13':
-                document.querySelector('.popover.hover-popover .line.blood_per_turn .statblock-rendered-text-content.inline').innerHTML = '1'; break;
+                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn .inline').innerHTML = '1'; break;
             case '12':
-                document.querySelector('.popover.hover-popover .line.blood_per_turn .statblock-rendered-text-content.inline').innerHTML = '1'; break;
+                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn .inline').innerHTML = '1'; break;
             case '11':
-                document.querySelector('.popover.hover-popover .line.blood_per_turn .statblock-rendered-text-content.inline').innerHTML = '1'; break;
+                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn .inline').innerHTML = '1'; break;
             case '10':
-                document.querySelector('.popover.hover-popover .line.blood_per_turn .statblock-rendered-text-content.inline').innerHTML = '1'; break;
+                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn .inline').innerHTML = '1'; break;
             case '9':
-                document.querySelector('.popover.hover-popover .line.blood_per_turn .statblock-rendered-text-content.inline').innerHTML = '2'; break;
+                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn .inline').innerHTML = '2'; break;
             case '8':
-                document.querySelector('.popover.hover-popover .line.blood_per_turn .statblock-rendered-text-content.inline').innerHTML = '3'; break;
+                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn .inline').innerHTML = '3'; break;
         }
     }
 
 
 
 
-
     // если имя персонажа, написанное H2, есть в заметке и совпадает с именем в статблоке, то оно удаляется - но остается в оглавлении
-    if (document.querySelector('.workspace-leaf.mod-active .markdown-reading-view h2') != null) {
-        var outlineName = document.querySelector('.workspace-leaf.mod-active .markdown-reading-view h2').innerText
+    if (document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h2 h2') != null) {
+        var outlineName = document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h2 h2').innerText
         console.log(outlineName + ' - имя из заметки');
-        const characterName = document.querySelector('.workspace-leaf.mod-active h1.heading .statblock-rendered-text-content').innerHTML
+        const characterName = document.querySelector(activeTab + 'h1.heading .inline').innerHTML
         console.log('имя из статблока - ' + characterName)
-        if (outlineName.includes(characterName)) {
-            document.querySelector('.workspace-leaf.mod-active .markdown-reading-view h2').style.display = 'none';
+        if (outlineName = characterName && outlineName != null) {
+            document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h2 h2').style.display = 'none';
         }
     }
     else {
         // do nothing
     }
     // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover h2') != null) {
-        var outlineName_hover = document.querySelector('.popover.hover-popover h2').innerText
+    if (document.querySelector('.popover.hover-popover .markdown-preview-sizer > .el-h2 h2') != null) {
+        var outlineNameHover = document.querySelector('.popover.hover-popover .markdown-preview-sizer  > .el-h2 h2').innerText
         //  console.log('имя в заметке в ховере - ' + outlineName_hover)
-        const characterName_hover = document.querySelector('.popover.hover-popover h1.heading .statblock-rendered-text-content').innerHTML
+        const characterNameHover = document.querySelector(statblockCSSpathHover + 'h1.heading .inline').innerHTML
         //  console.log('имя из статблока в ховере = ' + characterName_hover)
-        if (outlineName_hover.includes(characterName_hover)) {
-            document.querySelector('.popover.hover-popover h2').style.display = 'none';
+        if (outlineNameHover = characterNameHover) {
+            document.querySelector('.popover.hover-popover .markdown-preview-sizer > .el-h2 h2').style.display = 'none';
         }
     }
     else {
         // do nothing
     }
-
 
 
     // Разная обработка значений для характеристик, способностей и дисциплин
@@ -630,25 +636,25 @@ sleep(120).then(() => {
     const basicKnowledges = ['.academics', '.science', '.law', '.computer', '.medicine', '.occult', '.politics', '.investigation', '.finance', '.technology']
     const additionalDarkAgesAbilities = ['.legerdemain', '.ride', '.commerce', '.archery', '.enigmas', '.hearthwisdom', '.seneschal', '.theology']
     // собираем все в один список
-    const vampireAbilities = basicAttributes.concat(basicTalents, basicSkills, basicKnowledges, additionalDarkAgesAbilities);
-    for (let x = 0; x < vampireAbilities.length; x++) {
-        if (document.querySelector(vampireAbilities[x]) != null) {
+    const allTraits = basicAttributes.concat(basicTalents, basicSkills, basicKnowledges, additionalDarkAgesAbilities);
+    for (let x = 0; x < allTraits.length; x++) {
+        if (document.querySelector(activeTab + allTraits[x]) != null) {
             // находим имя и значение для каждого параметра
-            var nameAbility = document.querySelector(vampireAbilities[x] + ' .property-name').innerHTML;
-            var valueAbility = document.querySelector(vampireAbilities[x] + ' .statblock-rendered-text-content');
+            var nameAbility = document.querySelector(activeTab + allTraits[x] + ' .property-name').innerHTML;
+            var valueAbility = document.querySelector(activeTab + allTraits[x] + ' .inline');
             // код для обычных точек
             if (valueAbility !== null) {
                 // если привлекательность 0 и в имени клана есть "Носферату" или "Самеди", то строка привлекательности зачеркивается
                 if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (typeof clanName !== 'undefined' && (clanName.includes('Носферату') || clanName.includes('Самеди')))
-                    && (vampireAbilities[x].includes('.appearance'))) {
-                    document.querySelector('.line.appearance .property-name').style.textDecoration = 'line-through';
+                    && (allTraits[x].includes('.appearance'))) {
+                    document.querySelector(activeTab + '.line.appearance .property-name').style.textDecoration = 'line-through';
                 }
                 // если значение характеристик равно 0, вместо точек появится предупреждение 
-                else if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (basicAttributes.includes(vampireAbilities[x]))) {
-                    document.querySelector(vampireAbilities[x] + ' .property-text').style.fontSize = '13px';
-                    document.querySelector(vampireAbilities[x] + ' .property-text').style.fontFamily = 'Marta';
-                    document.querySelector(vampireAbilities[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
-                    document.querySelector(vampireAbilities[x] + ' .statblock-rendered-text-content').innerHTML = 'at least 1'
+                else if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (basicAttributes.includes(allTraits[x]))) {
+                    document.querySelector(activeTab + allTraits[x] + ' .property-text').style.fontSize = '13px';
+                    document.querySelector(activeTab + allTraits[x] + ' .property-text').style.fontFamily = 'Marta';
+                    document.querySelector(activeTab + allTraits[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
+                    document.querySelector(activeTab + allTraits[x] + ' .inline').innerHTML = 'at least 1'
                 }
                 // в зависимости от длины имени и значения, точни будут заменены на цифры
                 else if ((nameAbility.length >= 11 && valueAbility.innerHTML > 9)
@@ -656,40 +662,40 @@ sleep(120).then(() => {
                     || (nameAbility.length >= 13 && valueAbility.innerHTML > 7)
                     || (nameAbility.length >= 14 && valueAbility.innerHTML > 6)
                     || (nameAbility.length >= 15 && valueAbility.innerHTML > 5)) {
-                    document.querySelector(vampireAbilities[x] + ' .property-text').style.fontSize = '14px';
-                    document.querySelector(vampireAbilities[x] + ' .property-text').style.fontFamily = 'Marta';
-                    document.querySelector(vampireAbilities[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
+                    document.querySelector(activeTab + allTraits[x] + ' .property-text').style.fontSize = '14px';
+                    document.querySelector(activeTab + allTraits[x] + ' .property-text').style.fontFamily = 'Marta';
+                    document.querySelector(activeTab + allTraits[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
                 }
                 // меняем десятку на X
                 else if (valueAbility.innerHTML == 10) {
-                    document.querySelector(vampireAbilities[x] + ' .statblock-rendered-text-content').innerHTML = 'X'
+                    document.querySelector(activeTab + allTraits[x] + ' .inline').innerHTML = 'X'
                 }
             }
             // для дайс роллера
             else {
-                valueAbility = document.querySelector(vampireAbilities[x] + ' .dice-roller-result').innerHTML;
-                // console.log(nameAbility + ' - это ' + nameAbility.length + ' и ' + valueAbility);
+                valueAbility = document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').innerHTML;
                 // если привлекательность 0 и в имени клана есть "Носферату" или "Самеди", то строка привлекательности зачеркивается
                 if ((valueAbility === 'null' || valueAbility == 0) && (typeof clanName !== 'undefined' && (clanName.includes('Носферату') || clanName.includes('Самеди')))
-                    && (vampireAbilities[x].includes('.appearance'))) {
-                    // console.log('Какая способность пошла к Носферату? Это ' + vampireAbilities[x]);
-                    document.querySelector('.line.appearance .property-name').style.textDecoration = 'line-through';
-                    document.querySelector('.appearance .dice-roller-result').style.display = 'none';
-                    document.querySelector('.appearance .dice-original').innerHTML = 0;
-                    document.querySelector('.appearance .dice-original').style.display = 'block';
-                    document.querySelector('.appearance .dice-original').style.fontSize = '9px';
-                    document.querySelector('.appearance .dice-original').style.fontFamily = 'SmallCircles';
-                    document.querySelector('.appearance .dice-original').style.textAlign = 'center';
-                    document.querySelector('.appearance .dice-original').style.verticalAlign = 'top';
-                    document.querySelector('.appearance .dice-original').style.fontWeight = 'normal'
+                    && (allTraits[x].includes('.appearance'))) {
+                    // console.log('Какая способность пошла к Носферату? Это ' + allTraits[x]);
+                    document.querySelector(activeTab + '.line.appearance .property-name').style.textDecoration = 'line-through';
+                    document.querySelector(activeTab + '.appearance .dice-roller-result').style.display = 'none';
+                    document.querySelector(activeTab + '.appearance .dice-original').innerHTML = 0;
+                    document.querySelector(activeTab + '.appearance .dice-original').style.display = 'block';
+                    document.querySelector(activeTab + '.appearance .dice-original').style.fontSize = '9px';
+                    document.querySelector(activeTab + '.appearance .dice-original').style.fontFamily = 'SmallCircles';
+                    document.querySelector(activeTab + '.appearance .dice-original').style.textAlign = 'center';
+                    document.querySelector(activeTab + '.appearance .dice-original').style.verticalAlign = 'top';
+                    document.querySelector(activeTab + '.appearance .dice-original').style.fontWeight = 'normal'
                 }
                 // если значение характеристик равно 0, вместо точек появится предупреждение 
-                else if ((valueAbility === 'null' || valueAbility == 0) && (basicAttributes.includes(vampireAbilities[x]))) {
-                    // console.log('У кого нулевое значение? Это ' + vampireAbilities[x]);
-                    document.querySelector(vampireAbilities[x] + ' .roller-result').style.display = 'none';
-                    document.querySelector(vampireAbilities[x] + ' .dice-original').style.display = 'block';
-                    document.querySelector(vampireAbilities[x] + ' .dice-original').style.margin = '-1px 0px 0px 0px';
-                    document.querySelector(vampireAbilities[x] + ' .dice-original').innerHTML = 'at least 1';
+                else if ((valueAbility === 'null' || valueAbility == 0) && (basicAttributes.includes(allTraits[x]))) {
+                    // console.log('У кого нулевое значение? Это ' + allTraits[x]);
+                    document.querySelector(activeTab + allTraits[x] + ' .roller-result').style.display = 'none';
+                    document.querySelector(activeTab + allTraits[x] + ' .dice-original').style.display = 'block';
+                    document.querySelector(activeTab + allTraits[x] + ' .dice-original').style.fontSize = '13px';
+                    document.querySelector(activeTab + allTraits[x] + ' .dice-original').style.margin = '-1px 0px 0px 0px';
+                    document.querySelector(activeTab + allTraits[x] + ' .dice-original').innerHTML = 'at least 1';
                 }
                 // в зависимости от длины имени и значения, точни будут заменены на цифры
                 else if ((nameAbility.length >= 11 && valueAbility > 9)
@@ -697,15 +703,98 @@ sleep(120).then(() => {
                     || (nameAbility.length >= 13 && valueAbility > 7)
                     || (nameAbility.length >= 14 && valueAbility > 6)
                     || (nameAbility.length >= 15 && valueAbility > 5)) {
-                    // console.log('Кому сменили точки на цифры? Это ' + vampireAbilities[x]);
-                    document.querySelector(vampireAbilities[x] + ' .dice-roller-result').style.fontSize = '14px';
-                    document.querySelector(vampireAbilities[x] + ' .dice-roller-result').style.fontFamily = 'Marta';
-                    document.querySelector(vampireAbilities[x] + ' .dice-roller-result').style.margin = '-1px 0px 0px 0px'
+                    // console.log('Кому сменили точки на цифры? Это ' + allTraits[x]);
+                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').style.fontSize = '14px';
+                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').style.fontFamily = 'Marta';
+                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').style.margin = '-1px 0px 0px 0px'
                 }
                 // меняем десятку на X
                 else if (valueAbility == 10) {
-                    // console.log('У кого есть десятка? Это ' + vampireAbilities[x]);
-                    document.querySelector(vampireAbilities[x] + ' .dice-roller-result').innerHTML = 'X'
+                    // console.log('У кого есть десятка? Это ' + allTraits[x]);
+                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').innerHTML = 'X'
+                }
+            }
+        }
+    }
+
+    // характеристики и способности для ховера
+    for (let x = 0; x < allTraits.length; x++) {
+        if (document.querySelector(statblockCSSpathHover + allTraits[x]) != null) {
+            // находим имя и значение для каждого параметра
+            var nameAbility = document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-name').innerHTML;
+            var valueAbility = document.querySelector(statblockCSSpathHover + allTraits[x] + ' .inline');
+            // код для обычных точек
+            if (valueAbility !== null) {
+                // console.log(nameAbility + ' - это ' + nameAbility.length + ' и ' + valueAbility);
+                // если привлекательность 0 и в имени клана есть "Носферату" или "Самеди", то строка привлекательности зачеркивается
+                if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (typeof clanNameHover !== 'undefined' && (clanNameHover.includes('Носферату') || clanNameHover.includes('Самеди')))
+                    && (allTraits[x].includes('.appearance'))) {
+                    document.querySelector(statblockCSSpathHover + '.line.appearance .property-name').style.textDecoration = 'line-through';
+                }
+                // если значение характеристик равно 0, вместо точек появится предупреждение 
+                else if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (basicAttributes.includes(allTraits[x]))) {
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.fontSize = '13px';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.fontFamily = 'Marta';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .inline').innerHTML = 'at least 1'
+                }
+                // в зависимости от длины имени и значения, точни будут заменены на цифры
+                else if ((nameAbility.length >= 11 && valueAbility.innerHTML > 9)
+                    || (nameAbility.length >= 12 && valueAbility.innerHTML > 8)
+                    || (nameAbility.length >= 13 && valueAbility.innerHTML > 7)
+                    || (nameAbility.length >= 14 && valueAbility.innerHTML > 6)
+                    || (nameAbility.length >= 15 && valueAbility.innerHTML > 5)) {
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.fontSize = '14px';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.fontFamily = 'Marta';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
+                }
+                // меняем десятку на X
+                else if (valueAbility.innerHTML == 10) {
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .inline').innerHTML = 'X'
+                }
+            }
+            // для дайс роллера
+            else {
+                valueAbility = document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').innerHTML;
+                // console.log(nameAbility + ' - это ' + nameAbility.length + ' и ' + valueAbility);
+                // если привлекательность 0 и в имени клана есть "Носферату" или "Самеди", то строка привлекательности зачеркивается
+                if ((valueAbility === 'null' || valueAbility == 0) && (typeof clanNameHover !== 'undefined' && (clanNameHover.includes('Носферату') || clanNameHover.includes('Самеди')))
+                    && (allTraits[x].includes('.appearance'))) {
+                    // console.log('Какая способность пошла к Носферату? Это ' + allTraits[x]);
+                    document.querySelector(statblockCSSpathHover + '.line.appearance .property-name').style.textDecoration = 'line-through';
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.display = 'none';
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').innerHTML = 0;
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').style.display = 'block';
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').style.fontSize = '9px';
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').style.fontFamily = 'SmallCircles';
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').style.textAlign = 'center';
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').style.verticalAlign = 'top';
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').style.fontWeight = 'normal'
+                }
+                // если значение характеристик равно 0, вместо точек появится предупреждение 
+                else if ((valueAbility === 'null' || valueAbility == 0) && (basicAttributes.includes(allTraits[x]))) {
+                    // console.log('У кого нулевое значение? Это ' + allTraits[x]);
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .roller-result').style.display = 'none';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-original').style.display = 'block';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-original').style.fontSize = '13px';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-original').style.margin = '-1px 0px 0px 0px';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-original').innerHTML = 'at least 1';
+                }
+                // в зависимости от длины имени и значения, точни будут заменены на цифры
+                else if ((nameAbility.length >= 11 && valueAbility > 9)
+                    || (nameAbility.length >= 12 && valueAbility > 8)
+                    || (nameAbility.length >= 13 && valueAbility > 7)
+                    || (nameAbility.length >= 14 && valueAbility > 6)
+                    || (nameAbility.length >= 15 && valueAbility > 5)) {
+                    // console.log('Кому сменили точки на цифры? Это ' + allTraits[x]);
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').style.fontSize = '14px';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').style.fontFamily = 'Marta';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').style.margin = '-1px 0px 0px 0px'
+                }
+                // меняем десятку на X
+                else if (valueAbility == 10) {
+                    // console.log('У кого есть десятка? Это ' + allTraits[x]);
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').innerHTML = 'X'
                 }
             }
         }
@@ -714,9 +803,9 @@ sleep(120).then(() => {
 
     // Дисциплины
     // Имена некоторых дисциплин слишком длинные; в сочетании с высокими (больше 5) значениями может ломаться отображение. Поэтому кое-где точки будут заменяться на цифры.
-    if (document.querySelector('.discipline1_name .statblock-rendered-text-content')) {
+    if (document.querySelector(activeTab + '.discipline1_name .inline')) {
         // получаем список всего из столбца дисциплин
-        var disciplinesList = document.querySelectorAll('.disciplines-column .statblock-rendered-text-content');
+        var disciplinesList = document.querySelectorAll(activeTab + '.disciplines-column .inline');
         // console.log(disciplinesList);
         // получаем имена дисциплин (они всегда с нечетным индексом) и их значения
         for (let i = 1; i < disciplinesList.length; i += 2) {
@@ -745,8 +834,8 @@ sleep(120).then(() => {
         }
     }
     // все то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .discipline1_name .statblock-rendered-text-content')) {
-        var disciplinesList = document.querySelectorAll('.popover.hover-popover .disciplines-column .statblock-rendered-text-content');
+    if (document.querySelector(statblockCSSpathHover + '.discipline1_name .inline')) {
+        var disciplinesList = document.querySelectorAll(statblockCSSpathHover + '.disciplines-column .inline');
         for (let i = 1; i < disciplinesList.length; i += 2) {
             if (disciplinesList[i].innerHTML.startsWith('<a data')) {
                 if ((disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9)
@@ -774,53 +863,56 @@ sleep(120).then(() => {
 
 
     // в завимимости от названия пути и его значения, проставляется (или удаляется) модификатор столпа
-    if (document.querySelector('.line.path .statblock-rendered-text-content') != null) {
+    if (document.querySelector(activeTab + '.line.path .inline') != null) {
         // найти значение пути, человечность это или нет
-        const path = document.querySelector('.path .statblock-rendered-text-content');
+        const path = document.querySelector(activeTab + '.path .inline');
         // если путь вообще не указан...
         if (path === null) {
             // ...удаляется вся строчка 'Столп'
-            document.querySelector('.bearing').style.display = 'none'
+            document.querySelector(activeTab + '.bearing').style.display = 'none'
         }
         // если путь не человечность, то...
         else if (path.innerHTML != ('ЧЕЛОВЕЧНОСТЬ')) {
             // ...удаляется вся строчка 'Столп'
-            document.querySelector('.bearing').style.display = 'none';
+            document.querySelector(activeTab + '.bearing').style.display = 'none';
             // получаем количество точек в не-человечности
-            var pathModifier = document.querySelector('.line.path_value .statblock-rendered-text-content').innerHTML;
+            var pathModifier = document.querySelector(activeTab + '.line.path_value .inline').innerHTML;
+            // заменяем десятики на Х
             if (pathModifier = 10) {
-                document.querySelector('.path_value .statblock-rendered-text-content').innerHTML = 'X';
+                document.querySelector(activeTab + '.path_value .inline').innerHTML = 'X';
             }
         }
         else {
             // получаем количество точек в человечности
-            var pathModifier = document.querySelector('.line.path_value .statblock-rendered-text-content').innerHTML;
+            var pathModifier = document.querySelector(activeTab + '.line.path_value .inline').innerHTML;
             switch (pathModifier) {
+                // заменяем десятики на Х
                 case '10':
-                    document.querySelector('.line.path_value .statblock-rendered-text-content').innerHTML = 'X';
+                    document.querySelector(activeTab + '.line.path_value .inline').innerHTML = 'X';
+                // каждому значению человечности прописывается соответствующий модификатор столпа
                 case 'X':
-                    document.querySelector('.line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( -2 )'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( -2 )'; break;
                 case '9':
-                    document.querySelector('.line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( -1 )'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( -1 )'; break;
                 case '8':
-                    document.querySelector('.line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( -1 )'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( -1 )'; break;
                 case '7':
-                    document.querySelector('.line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
                 case '6':
-                    document.querySelector('.line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
                 case '5':
-                    document.querySelector('.line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
                 case '4':
-                    document.querySelector('.line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
                 case '3':
-                    document.querySelector('.line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( +1 )'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( +1 )'; break;
                 case '2':
-                    document.querySelector('.line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( +1 )'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( +1 )'; break;
                 case '1':
-                    document.querySelector('.line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( +2 )'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( +2 )'; break;
                 default:
-                    document.querySelector('.line.bearing .statblock-rendered-text-content').innerHTML = 'Теперь ты Зверь!';
-                    if (document.querySelector('.line.bearing .statblock-rendered-text-content').innerHTML === null) {
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Теперь ты Зверь!';
+                    if (document.querySelector(activeTab + '.line.bearing .inline').innerHTML === null) {
                         console.log('пропал блок со столпом')
                     }
             }
@@ -830,47 +922,47 @@ sleep(120).then(() => {
         //nothing
     }
     // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .path .statblock-rendered-text-content') != null) {
-        const pathHover = document.querySelector('.popover.hover-popover .path .statblock-rendered-text-content');
-        console.log(pathHover + 'есть ли путь в ховере')
+    if (document.querySelector(statblockCSSpathHover + '.path .inline') != null) {
+        const pathHover = document.querySelector(statblockCSSpathHover + '.path .inline');
+        console.log(pathHover + 'есть ли путь в ховере?')
         if (pathHover === null) {
-            document.querySelector('.popover.hover-popover .line.bearing').style.display = 'none'
+            document.querySelector(statblockCSSpathHover + '.line.bearing').style.display = 'none'
         }
         else if (pathHover.innerHTML != ('ЧЕЛОВЕЧНОСТЬ')) {
-            document.querySelector('.popover.hover-popover .bearing').style.display = 'none';
-            var pathModifierHover = document.querySelector('.line.path_value .statblock-rendered-text-content').innerHTML;
+            document.querySelector(statblockCSSpathHover + '.bearing').style.display = 'none';
+            var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value .inline').innerHTML;
             if (pathModifierHover = 10) {
-                document.querySelector('.popover.hover-popover .path_value .statblock-rendered-text-content').innerHTML = 'X';
+                document.querySelector(statblockCSSpathHover + '.path_value .inline').innerHTML = 'X';
             }
         }
         else {
-            var pathModifierHover = document.querySelector('.popover.hover-popover .line.path_value .statblock-rendered-text-content').innerHTML;
+            var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value .inline').innerHTML;
             switch (pathModifierHover) {
                 case '10':
-                    document.querySelector('.popover.hover-popover .line.path_value .statblock-rendered-text-content').innerHTML = 'X';
+                    document.querySelector(statblockCSSpathHover + '.line.path_value .inline').innerHTML = 'X';
                 case 'X':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( -2 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность ( -2 )'; break;
                 case '9':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( -1 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность ( -1 )'; break;
                 case '8':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( -1 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность ( -1 )'; break;
                 case '7':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
                 case '6':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
                 case '5':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
                 case '4':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
                 case '3':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( +1 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность ( +1 )'; break;
                 case '2':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( +1 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность ( +1 )'; break;
                 case '1':
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Нормальность ( +2 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность ( +2 )'; break;
                 default:
-                    document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML = 'Теперь ты Зверь!';
-                    if (document.querySelector('.popover.hover-popover .line.bearing .statblock-rendered-text-content').innerHTML === null) {
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Теперь ты Зверь!';
+                    if (document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML === null) {
                         console.log('пропал блок со столпом в ховере')
                     }
             }
@@ -883,39 +975,47 @@ sleep(120).then(() => {
     // задаем названия классов, по которым будем искать волю и запас воли
     const willpowerOptions = ['.willpower_main', '.willpower_current'];
     // проверяем, есть ли вообще воля в статблоке
-    if (document.querySelector('.willpower-block .line.willpower_main') != null) {
+    if (document.querySelector(activeTab + '.willpower-block .line.willpower_main') != null) {
         for (let i = 0; i < willpowerOptions.length; i++) {
-            // находим значение воли или запаса для обычного текса
-            var willpowerValue = document.querySelector(willpowerOptions[i] + ' .statblock-rendered-text-content');
-            // если оно есть и равно десяти...
-            if (willpowerValue != null) {
-                if (willpowerValue.innerHTML == 10) {
-                    // меняем его на Х
-                    document.querySelector(willpowerOptions[i] + ' .statblock-rendered-text-content').innerHTML = 'X'
+            // ищем обычное значение
+            if (document.querySelector(activeTab + willpowerOptions[i] + ' .inline') != null) {
+                var willpowerValue = document.querySelector(activeTab + willpowerOptions[i] + ' .inline');
+                // если оно есть и равно десяти...
+                if (willpowerValue != null) {
+                    if (willpowerValue.innerHTML == 10) {
+                        // меняем его на Х
+                        document.querySelector(activeTab + willpowerOptions[i] + ' .inline').innerHTML = 'X'
+                    }
                 }
             }
-            // если обычного текста нет, значит, тут дайс роллер
-            else {
-                willpowerValue = document.querySelector(willpowerOptions[i] + ' span.dice-roller-result').innerHTML;
+            // ищем дайс роллер
+            if (document.querySelector(activeTab + willpowerOptions[i] + ' .dice-roller-result') != null) {
+                // если оно есть
+                var willpowerValue = document.querySelector(activeTab + willpowerOptions[i] + ' .dice-roller-result').innerHTML;
                 if (willpowerValue == 10) {
-                    document.querySelector(willpowerOptions[i] + ' span.dice-roller-result').innerHTML = 'X'
+                    // меняем десятку на X
+                    document.querySelector(activeTab + willpowerOptions[i] + ' .dice-roller-result').innerHTML = 'X'
                 };
+            }
+            else {
+                // do nothing
             }
         }
     }
+
     // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .willpower-block .line.willpower_main') != null) {
+    if (document.querySelector(statblockCSSpathHover + '.willpower-block .line.willpower_main') != null) {
         for (let i = 0; i < willpowerOptions.length; i++) {
-            var willpowerValue = document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' .statblock-rendered-text-content');
+            var willpowerValue = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .inline');
             if (willpowerValue != null) {
                 if (willpowerValue.innerHTML == 10) {
-                    document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' .statblock-rendered-text-content').innerHTML = 'X'
+                    document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .inline').innerHTML = 'X'
                 }
             }
             else {
-                willpowerValue = document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' span.dice-roller-result');
+                willpowerValue = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result');
                 if (willpowerValue.innerHTML == 10) {
-                    document.querySelector('.popover.hover-popover ' + willpowerOptions[i] + ' span.dice-roller-result').innerHTML = 'X'
+                    document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result').innerHTML = 'X'
                 };
             }
         }
@@ -923,77 +1023,77 @@ sleep(120).then(() => {
 
 
     // Глобальный пересчет крови, чтобы из одной цифры (от 1 до 40) добавлялись и отображались нужные строчки, а ненужные - скрывались
-    if (document.querySelector('.line.blood') != null) {
+    if (document.querySelector(activeTab + '.line.blood') != null) {
         // находим значение крови
-        const bloodCurrent = document.querySelector('.line.blood .statblock-rendered-text-content.inline').innerHTML;
+        const bloodCurrent = document.querySelector(activeTab + '.line.blood .inline').innerHTML;
         console.log('значение крови = ' + bloodCurrent)
         if (bloodCurrent <= 9) {
-            document.querySelector('.property-container:has(> .blood_current2)').style.display = 'none';
-            document.querySelector('.property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector('.property-container:has(> .blood_current4)').style.display = 'none';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'none';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
             console.log('проверка на меньше девяти')
         } else if (bloodCurrent == 10) {
-            document.querySelector('.line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current2)').style.display = 'none';
-            document.querySelector('.property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector('.property-container:has(> .blood_current4)').style.display = 'none';
+            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'none';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
             console.log('проверка на равенство десяти или иксу')
         } else if (bloodCurrent < 20) {
             var bloodCurrentTwo = bloodCurrent - 10;
-            document.querySelector('.line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector('.line.blood_current2 .statblock-rendered-text-content.inline').innerHTML = bloodCurrentTwo;
-            document.querySelector('.property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector('.property-container:has(> .blood_current4)').style.display = 'none';
+            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
+            document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = bloodCurrentTwo;
+            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
             console.log('проверка на меньше двадцати')
         } else if (bloodCurrent == 20) {
-            document.querySelector('.line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector('.line.blood_current2 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector('.property-container:has(> .blood_current4)').style.display = 'none';
+            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
+            document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
             console.log('проверка на равенство двадцати')
         } else if (bloodCurrent < 30) {
             var bloodCurrentThree = bloodCurrent - 20;
-            document.querySelector('.line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector('.line.blood_current2 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector('.line.blood_current3 .statblock-rendered-text-content.inline').innerHTML = bloodCurrentThree;
-            document.querySelector('.property-container:has(> .blood_current4)').style.display = 'none';
+            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
+            document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
+            document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = bloodCurrentThree;
+            document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
             console.log('проверка на меньше тридцати')
         } else if (bloodCurrent == 30) {
-            document.querySelector('.line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector('.line.blood_current2 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector('.line.blood_current3 .statblock-rendered-text-content.inline').innerHTML = 'X';;
-            document.querySelector('.property-container:has(> .blood_current4)').style.display = 'none';
+            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
+            document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
+            document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = 'X';;
+            document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
             console.log('проверка на равенство тридцати')
         } else if (bloodCurrent < 40) {
             var bloodCurrentFour = bloodCurrent - 30;
-            document.querySelector('.line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector('.line.blood_current2 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector('.line.blood_current3 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.line.blood_current4 .statblock-rendered-text-content.inline').innerHTML = bloodCurrentFour;
+            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
+            document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
+            document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood_current4 .inline').innerHTML = bloodCurrentFour;
             console.log('проверка на меньше сорока')
         } else if (bloodCurrent == '40') {
-            document.querySelector('.line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector('.line.blood_current2 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector('.line.blood_current3 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector('.line.blood_current4 .statblock-rendered-text-content.inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
+            document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
+            document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
+            document.querySelector(activeTab + '.line.blood_current4 .inline').innerHTML = 'X';
             console.log('проверка на равенство сорока')
         } else if (bloodCurrent >= 41) {
-            document.querySelector('.line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.statblock-item-container.property-container:has(> .line.blood_current2)').innerHTML = '';
-            document.querySelector('.statblock-item-container.property-container:has(> .line.blood_current3)').innerHTML = '';
-            document.querySelector('.statblock-item-container.property-container:has(> .line.blood_current4)').innerHTML = '';
-            document.querySelector('.line.blood_per_turn').innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrent + '.  Time to think about your Humanity!';
+            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current2)').innerHTML = '';
+            document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current3)').innerHTML = '';
+            document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current4)').innerHTML = '';
+            document.querySelector(activeTab + '.line.blood_per_turn').innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrent + '.  Time to think about your Humanity!';
             console.log('проверка на больше сорока')
         } else {
             // do nothing
@@ -1004,76 +1104,76 @@ sleep(120).then(() => {
         //nothing
     }
     // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .line.blood .statblock-rendered-text-content.inline') != null) {
-        const bloodCurrentHover = document.querySelector('.popover.hover-popover .line.blood .statblock-rendered-text-content.inline').innerHTML;
+    if (document.querySelector(statblockCSSpathHover + '.line.blood .inline') != null) {
+        const bloodCurrentHover = document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML;
         console.log('значение крови в ховере = ' + bloodCurrentHover)
         if (bloodCurrentHover <= 9) {
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current2)').style.display = 'none';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current4)').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
             console.log('проверка на меньше девяти в ховере')
         } else if (bloodCurrentHover == 10) {
-            document.querySelector('.popover.hover-popover .line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current2)').style.display = 'none';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current4)').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
             console.log('проверка на равенство десяти или иксу в ховере')
         } else if (bloodCurrentHover < 20) {
             var bloodCurrentTwoHover = bloodCurrentHover - 10;
-            document.querySelector('.popover.hover-popover .line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector('.popover.hover-popover .line.blood_current2 .statblock-rendered-text-content.inline').innerHTML = bloodCurrentTwoHover;
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current4)').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = bloodCurrentTwoHover;
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
             console.log('проверка на меньше двадцати в ховере')
         } else if (bloodCurrentHover == 20) {
-            document.querySelector('.popover.hover-popover .line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector('.popover.hover-popover .line.blood_current2 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current4)').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
             console.log('проверка на равенство двадцати в ховере')
         } else if (bloodCurrentHover < 30) {
             var bloodCurrentThreeHover = bloodCurrentHover - 20;
-            document.querySelector('.popover.hover-popover .line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector('.popover.hover-popover .line.blood_current2 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector('.popover.hover-popover .line.blood_current3 .statblock-rendered-text-content.inline').innerHTML = bloodCurrentThreeHover;
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current4)').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = bloodCurrentThreeHover;
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
             console.log('проверка на меньше тридцати в ховере')
         } else if (bloodCurrentHover == 30) {
-            document.querySelector('.popover.hover-popover .line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector('.popover.hover-popover .line.blood_current2 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector('.popover.hover-popover .line.blood_current3 .statblock-rendered-text-content.inline').innerHTML = 'X';;
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current4)').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = 'X';;
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
             console.log('проверка на равенство тридцати в ховере')
         } else if (bloodCurrentHover < 40) {
             var bloodCurrentFourHover = bloodCurrentHover - 30;
-            document.querySelector('.popover.hover-popover .line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector('.popover.hover-popover .line.blood_current2 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector('.popover.hover-popover .line.blood_current3 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .line.blood_current4 .statblock-rendered-text-content.inline').innerHTML = bloodCurrentFourHover;
+            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current4 .inline').innerHTML = bloodCurrentFourHover;
             console.log('проверка на меньше сорока в ховере')
         } else if (bloodCurrentHover == '40') {
-            document.querySelector('.popover.hover-popover .line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector('.popover.hover-popover .line.blood_current2 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector('.popover.hover-popover .line.blood_current3 .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector('.popover.hover-popover .line.blood_current4 .statblock-rendered-text-content.inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current4 .inline').innerHTML = 'X';
             console.log('проверка на равенство сорока в ховере')
         } else if (bloodCurrentHover >= 41) {
-            document.querySelector('.popover.hover-popover .line.blood .statblock-rendered-text-content.inline').innerHTML = 'X';
-            document.querySelector('.popover.hover-popover .statblock-item-container.property-container:has(> .line.blood_current2)').innerHTML = '';
-            document.querySelector('.popover.hover-popover .statblock-item-container.property-container:has(> .line.blood_current3)').innerHTML = '';
-            document.querySelector('.popover.hover-popover .statblock-item-container.property-container:has(> .line.blood_current4)').innerHTML = '';
-            document.querySelector('.popover.hover-popover .line.blood_per_turn').innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrentHover + '.  Time to think about your Humanity!';
+            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current2)').innerHTML = '';
+            document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current3)').innerHTML = '';
+            document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current4)').innerHTML = '';
+            document.querySelector(statblockCSSpathHover + '.line.blood_per_turn').innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrentHover + '.  Time to think about your Humanity!';
             console.log('проверка на больше сорока в ховере')
         } else {
             // do nothing
@@ -1086,30 +1186,29 @@ sleep(120).then(() => {
 
 
     // определяем, с какой стороны показывать достоинства и недостатки у оборотней
-    // определяем, с какой стороны показывать достоинства и недостатки у оборотней
-    if (document.querySelector('.merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
-        var whereToShowMeritsAndFlaws = document.querySelector('.line.where-to-show-merits-and-flaws .statblock-rendered-text-content').innerHTML;
+    if (document.querySelector(activeTab + '.merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
+        var whereToShowMeritsAndFlaws = document.querySelector(activeTab + '.line.where-to-show-merits-and-flaws .inline').innerHTML;
         console.log('где же показывать достоинства и недостатки? ' + whereToShowMeritsAndFlaws)
         switch (whereToShowMeritsAndFlaws) {
             case ('left'):
-                document.querySelector('.statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';
+                document.querySelector(activeTab + '.statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';
                 break;
             case ('right'):
-                document.querySelector('.statblock-item-container.group-container:has(>.merits-and-flaws-column-left)').style.display = 'none';
+                document.querySelector(activeTab + '.statblock-item-container.group-container:has(>.merits-and-flaws-column-left)').style.display = 'none';
                 break;
         }
     }
     else { // do nothing
     }
     // то же самое для ховера
-    if (document.querySelector('.popover.hover-popover .merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
-        var whereToShowMeritsAndFlawsHover = document.querySelector('.popover.hover-popover .line.where-to-show-merits-and-flaws .statblock-rendered-text-content').innerHTML;
+    if (document.querySelector(statblockCSSpathHover + '.merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
+        var whereToShowMeritsAndFlawsHover = document.querySelector('.popover.hover-popover .line.where-to-show-merits-and-flaws .inline').innerHTML;
         switch (whereToShowMeritsAndFlawsHover) {
             case ('left'):
-                document.querySelector('.popover.hover-popover .statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';
+                document.querySelector(statblockCSSpathHover + '.statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';
                 break;
             case ('right'):
-                document.querySelector('.popover.hover-popover .statblock-item-container.group-container:has(>.merits-and-flaws-column-left)').style.display = 'none';
+                document.querySelector(statblockCSSpathHover + '.statblock-item-container.group-container:has(>.merits-and-flaws-column-left)').style.display = 'none';
                 break;
         }
     }
@@ -1121,16 +1220,16 @@ sleep(120).then(() => {
     const werewolfOptions = ['rage', 'gnosis', 'glory', 'honor', 'wisdom'];
     for (let y = 0; y < werewolfOptions.length; y++) {
         // если вообще есть соответствующий блок...
-        if (document.querySelector('.' + werewolfOptions[y] + '-block .line.' + werewolfOptions[y] + '_main') != null) {
+        if (document.querySelector(activeTab + '.' + werewolfOptions[y] + '-block .line.' + werewolfOptions[y] + '_main') != null) {
             // console.log('найден блок для ' + werewolfOptions[y].toUpperCase());
-            // ищем значение для обычных точек 
-            optionValue = document.querySelector('.' + werewolfOptions[y] + '_main .statblock-rendered-text-content')
+            // ищем значение для обычных точек
+            optionValue = document.querySelector(activeTab + '.' + werewolfOptions[y] + '_main .inline')
             // если оно есть...
             if (optionValue != null) {
                 // и равно десяти
                 if (optionValue.innerHTML == 10) {
                     // заменяем на Х
-                    document.querySelector('.' + werewolfOptions[y] + '_main .statblock-rendered-text-content').innerHTML = 'X';
+                    document.querySelector(activeTab + '.' + werewolfOptions[y] + '_main .inline').innerHTML = 'X';
                     // console.log('заменили десятку для обычного значения ' + werewolfOptions[y].toUpperCase());
                 }
                 // а если нет - то и ладно
@@ -1140,11 +1239,11 @@ sleep(120).then(() => {
             }
             // если нет обычных точек - значит, тут дайс роллер 
             else {
-                var optionValue = document.querySelector('.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML;
+                var optionValue = document.querySelector(activeTab + '.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML;
                 // если равно десяти
                 if (optionValue == 10) {
                     // заменяем на Х
-                    document.querySelector('.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML = 'X';
+                    document.querySelector(activeTab + '.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML = 'X';
                     // console.log('заменили десятку для дайсового значения ' + werewolfOptions[y].toUpperCase());
                 }
                 // а если нет - то и ладно
@@ -1154,18 +1253,19 @@ sleep(120).then(() => {
             }
         }
         else if (document.querySelector('.wta-v20-werewolf') == null) {
-            //nothing
+            // nothing
         }
         else {
-            console.log('c ' + werewolfOptions[y].toUpperCase() + ' что-то пошло не так')
+            // console.log('c ' + werewolfOptions[y].toUpperCase() + ' что-то пошло не так')
         }
+
         // то же самое для ховера
-        if (document.querySelector('.popover.hover-popover .' + werewolfOptions[y] + '-block .line.' + werewolfOptions[y] + '_main') != null) {
+        if (document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '-block .line.' + werewolfOptions[y] + '_main') != null) {
             // console.log('найден блок для ' + werewolfOptions[y].toUpperCase() + ' в ховере');
-            optionValue = document.querySelector('.popover.hover-popover .' + werewolfOptions[y] + '_main .statblock-rendered-text-content')
+            optionValue = document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '_main .inline')
             if (optionValue != null) {
                 if (optionValue.innerHTML == 10) {
-                    document.querySelector('.popover.hover-popover .' + werewolfOptions[y] + '_main .statblock-rendered-text-content').innerHTML = 'X';
+                    document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '_main .inline').innerHTML = 'X';
                     // console.log('заменили десятку для обычного значения ' + werewolfOptions[y].toUpperCase() + ' в ховере');
                 }
                 else {
@@ -1173,9 +1273,9 @@ sleep(120).then(() => {
                 }
             }
             else {
-                var optionValue = document.querySelector('.popover.hover-popover .' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML;
+                var optionValue = document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML;
                 if (optionValue == 10) {
-                    document.querySelector('.popover.hover-popover .' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML = 'X';
+                    document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML = 'X';
                     // console.log('заменили десятку для дайсового значения ' + werewolfOptions[y].toUpperCase() + ' в ховере');
                 }
                 else {
@@ -1183,121 +1283,79 @@ sleep(120).then(() => {
                 }
             }
         }
-        else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
-            //nothing
+        else if (document.querySelector(statblockCSSpathHover) == null) {
+            // nothing
         }
         else {
-            console.log('c ' + werewolfOptions[y].toUpperCase() + ' в ховере что-то пошло не так')
+            // console.log('c ' + werewolfOptions[y].toUpperCase() + ' в ховере что-то пошло не так')
         }
     }
 
     // запасы тех же самых оборотневых характеристик
     for (let z = 0; z < werewolfOptions.length; z++) {
         // если вообще есть соответствующий блок...
-        if (document.querySelector('.' + werewolfOptions[z] + '-block .line.' + werewolfOptions[z] + '_current') != null) {
+        if (document.querySelector(activeTab + '.' + werewolfOptions[z] + '-block .line.' + werewolfOptions[z] + '_current') != null) {
             // console.log('найден блок для запаса ' + werewolfOptions[z].toUpperCase());
             // ищем 
-            optionValue = document.querySelector('.' + werewolfOptions[z] + '_current .statblock-rendered-text-content')
+            optionValue = document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current .inline')
             if (optionValue != null) {
                 if (optionValue.innerHTML == 10) {
-                    document.querySelector('.' + werewolfOptions[z] + '_current .statblock-rendered-text-content').innerHTML = 'X';
+                    document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current .inline').innerHTML = 'X';
                     // console.log('заменили десятку для обычного значения запаса ' + werewolfOptions[z].toUpperCase());
                 }
                 else {
-                    // console.log('с запасом' + werewolfOptions[z].toUpperCase() + ' в полном порядке')
+                    // console.log('с запасом ' + werewolfOptions[z].toUpperCase() + ' в полном порядке')
                 }
             }
             else {
-                var optionValue = document.querySelector('.' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML;
+                var optionValue = document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML;
                 if (optionValue == 10) {
-                    document.querySelector('.' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML = 'X';
-                    мconsole.log('заменили десятку  для дайсового значения запаса ' + werewolfOptions[z].toUpperCase());
+                    document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML = 'X';
+                    // console.log('заменили десятку  для дайсового значения запаса ' + werewolfOptions[z].toUpperCase());
                 }
                 else {
-                    // console.log('с запасом' + werewolfOptions[z].toUpperCase() + ' в полном порядке')
+                    // console.log('с дайсовым запасом' + werewolfOptions[z].toUpperCase() + ' в полном порядке')
                 }
             }
         }
-        else if (document.querySelector('.wta-v20-werewolf') == null) {
-            //nothing
+        else if (document.querySelector(activeTab) == null) {
+            // nothing
         }
         else {
-            console.log('с запасом ' + werewolfOptions[z].toUpperCase() + ' что-то пошло не так')
+            // console.log('с запасом ' + werewolfOptions[z].toUpperCase() + ' что-то пошло не так')
         }
         // то же самое для ховера
-        if (document.querySelector('.popover.hover-popover .' + werewolfOptions[z] + '-block .line.' + werewolfOptions[z] + '_current') != null) {
+        if (document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '-block .line.' + werewolfOptions[z] + '_current') != null) {
             // console.log('найден блок для ' + werewolfOptions[z].toUpperCase() + ' в ховере');
-            optionValue = document.querySelector('.popover.hover-popover .' + werewolfOptions[z] + '_current .statblock-rendered-text-content')
+            optionValue = document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '_current .inline')
             if (optionValue != null) {
                 if (optionValue.innerHTML == 10) {
-                    document.querySelector('.popover.hover-popover .' + werewolfOptions[z] + '_current .statblock-rendered-text-content').innerHTML = 'X';
+                    document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '_current .inline').innerHTML = 'X';
                     // console.log('заменили десятку для обычного значения запаса ' + werewolfOptions[z].toUpperCase() + ' в ховере');
                 }
                 else {
-                    // console.log('с запасом' + werewolfOptions[z].toUpperCase() + ' в ховере в полном порядке')
+                    // console.log('с запасом ' + werewolfOptions[z].toUpperCase() + ' в ховере в полном порядке')
                 }
             }
             else {
-                var optionValue = document.querySelector('.popover.hover-popover .' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML;
+                var optionValue = document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML;
                 if (optionValue == 10) {
-                    document.querySelector('.popover.hover-popover .' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML = 'X';
+                    document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML = 'X';
                     // console.log('заменили десятку для дайсового значения запаса ' + werewolfOptions[z].toUpperCase()) + ' в ховере';
                 }
                 else {
-                    // console.log('с запасом' + werewolfOptions[z].toUpperCase() + ' в ховере вполном порядке')
+                    // console.log('с запасом ' + werewolfOptions[z].toUpperCase() + ' в ховере вполном порядке')
                 }
             }
         }
-        else if (document.querySelector('.popover.hover-popover .wta-v20-werewolf') == null) {
+        else if (document.querySelector(statblockCSSpathHover) == null) {
             //nothing
         }
         else {
-            console.log('с запасом ' + werewolfOptions[z].toUpperCase() + ' в ховере что-то пошло не так')
+            // console.log('с запасом ' + werewolfOptions[z].toUpperCase() + ' в ховере что-то пошло не так')
         }
     }
 
 
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

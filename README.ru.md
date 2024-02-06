@@ -11,8 +11,8 @@
 Для начала, пример бланка вампиров:
 
 <p align="center">
-    <a href='imgs/vampire_ru.png'><img src='imgs/vampire_ru_small.png' height='675'></a>
-    <a href='imgs/vampire_dark_ages_ru.png'><img src='imgs/vampire_dark_ages_ru_small.png' height='675'></a>
+    <a href='imgs/vampire_ru.png'><img src='imgs/vampire_ru_small.png' width='395'></a>
+    <a href='imgs/vampire_dark_ages_ru.png'><img src='imgs/vampire_dark_ages_ru_small.png' width='395'></a>
 </p>
 
 
@@ -318,8 +318,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
 </details>
 
-<br>
-
 <details>
     <summary>Вампир (Темные века)</summary>
 
@@ -522,8 +520,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
 </details>
 
-<br>
-
 <details>
     <summary>Оборотень</summary>
 
@@ -725,8 +721,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     ```
 
 </details>
-
-<br>
 
 <details>
     <summary>Смертный</summary>
@@ -943,8 +937,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     ```
 
 </details>
-
-<br>
 
 <details>
     <summary>Правительственный агент</summary>

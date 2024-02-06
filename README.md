@@ -11,8 +11,8 @@ Currently, there are **vampires** (modern nights and dark ages), **werewolves**,
 First of all, examples of VtM character sheets:
 
 <p align="center">
-    <a href='imgs/vampire_en.png'><img src='imgs/vampire_en_small.png' height='675'></a>
-    <a href='imgs/vampire_dark_ages_en.png'><img src='imgs/vampire_dark_ages_en_small.png' height='675'></a>
+    <a href='imgs/vampire_en.png'><img src='imgs/vampire_en_small.png' width='395'></a>
+    <a href='imgs/vampire_dark_ages_en.png'><img src='imgs/vampire_dark_ages_en_small.png' width='395'></a>
 </p>
 
 ## Werewolves, mortals and agents
@@ -316,8 +316,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
 </details>
 
-<br>
-
 <details>
     <summary>Vampire Dark Ages (Russian)</summary>
 
@@ -521,8 +519,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
 </details>
 
-<br>
-
 <details>
     <summary>Werewolf</summary>
 
@@ -724,8 +720,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     ```
 
 </details>
-
-<br>
 
 <details>
     <summary>Mortal</summary>
@@ -943,8 +937,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     ```
 
 </details>
-
-<br>
 
 <details>
     <summary>Government agent</summary>

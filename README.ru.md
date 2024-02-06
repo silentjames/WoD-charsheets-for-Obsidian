@@ -1,34 +1,24 @@
-<p align="center">
-    <a style='text-decoration: none' href="README.md"><img src=https://img.shields.io/badge/lang-en-red.svg></a>
-    &nbsp
-    <a style='text-decoration: none' href="README.ru.md"><img src=https://img.shields.io/badge/%D1%8F%D0%B7%D1%8B%D0%BA-ru-cian.svg></a>
-</p>
-
-Несколько бланков персонажей старого Мира Тьмы (для двадцатой редакции, она же v20, она же "Классические правила"). Этакое дополнение, предназначенное для [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) и [Obsidian](https://github.com/obsidianmd).
+Несколько бланков персонажей старого Мира Тьмы (для двадцатой редакции, она же четвертая, она же "Классические правила"). Этакое дополнение, предназначенное для [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) и [Obsidian](https://github.com/obsidianmd).
 На данный момент, доступны бланки для **вампиров** (современность и темные века), **оборотней**, **смертных** и **правительственных агентов** (рескин смертных).
+
+<p align="center">
+    <a style='text-decoration: none' href="README.md"><img src=https://img.shields.io/badge/ReadMe_in_English-here-blue></a>
+</p>
 
 # Общее
 
 ## Вампиры
-Для начала, примеры бланков для вампиров, на русском и английском:
+Для начала, пример бланка вампиров:
 
 <p align="center">
-    <a href='imgs/vampire_en.png'><img src='imgs/vampire_en_small.png' width='395'></a>
-    <a href='imgs/vampire_ru.png'><img src='imgs/vampire_ru_small.png' width='428'></a>
+    <a href='imgs/vampire_ru.png'><img src='imgs/vampire_ru_small.png' height='675'></a>
+    <a href='imgs/vampire_dark_ages_ru.png'><img src='imgs/vampire_dark_ages_ru_small.png' height='675'></a>
 </p>
 
-Остальные персонажи доступны пока только на русском языке - но это можно изменить в ваших настройках Fantasy Statblocks, а после отправить мне пулл-реквест. Если возникнут вопросы - обращайтесь!
 
 ## Оборотни, смертные и агенты
 
 Под спойлером - остальные примеры.
-
-<details>
-    <summary>Вампиры (Темные века)</summary>
-        <p align="center">
-            <a href='imgs/vampire_dark_ages_en.png'><img src='imgs/vampire_dark_ages_en_small.png' width='450'></a>
-        </p>
-</details>
 
 <details>
     <summary>Оборотни</summary>
@@ -56,12 +46,15 @@
 Также добавил возможность использовать только верхнюю часть листа как "шапку" заметки, если лист целиком по каким-то причинам не нужен. Просто оставьте пустыми все поля, за исключением "Основной информации", или добавьте `cssclasses: wod-header` к свойствам заметки.
 
 <p align="center">
-    <img align="center" src='imgs/header_vampire.png' width='395'>
-    <img align="center" src='imgs/header_werewolf.png' width='395'>
+    <img align="center" src='imgs/header_vampire_ru.png' width='395'>
+    <img align="center" src='imgs/header_vampire_dark_ages_ru.png' width='395'>
 </p>
 <p align="center">
-    <img align="center" src='imgs/header_mortal.png' width='395'>
-    <img align="center" src='imgs/header_agent.png' width='395'>
+    <img align="center" src='imgs/header_mortal_ru.png' width='395'>
+    <img align="center" src='imgs/header_agent_ru.png' width='395'>
+</p>
+<p align="center">
+    <img align="center" src='imgs/header_werewolf_ru.png' width='395'>
 </p>
 
 # Описание
@@ -126,7 +119,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 ### Доступные статблоки
 
 <details>
-    <summary>Вампир (RU)</summary>
+    <summary>Вампир</summary>
 
     ```statblock
     columnWidth: 680
@@ -155,19 +148,19 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     Attributes: ХАРАКТЕРИСТИКИ
 
     Physical: ФИЗИЧЕСКИЕ
-    Strength: 0
-    Dexterity: 0
-    Stamina: 0
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
 
     Social: СОЦИАЛЬНЫЕ
-    Charisma: 0
-    Manipulation: 0
-    Appearance: 0
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
 
     Mental: МЕНТАЛЬНЫЕ
-    Perception: 0
-    Intelligence: 0
-    Wits: 0
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
 
                             #### СПОСОБНОСТИ ####
 
@@ -248,9 +241,9 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     background6_value: 
 
     Virtues: ДОБРОДЕТЕЛИ
-    conscience: 0
-    selfcontrol: 0
-    courage: 0
+    conscience: 1
+    selfcontrol: 1
+    courage: 1
 
                         #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
 
@@ -289,19 +282,21 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
                         #### ПУТЬ / ВОЛЯ / КРОВЬ ####
 
     Path: ЧЕЛОВЕЧНОСТЬ
-    path_value: 
+    path_value: 0
 
     Willpower: ВОЛЯ
-    willpower_main: 
-    willpower_current: 
+    willpower_main: 0
+    willpower_current: 0
 
     Bloodpool: ЗАПАС КРОВИ
-    blood: 
+    blood: 0
 
     Health: Здоровье
     aggravated: 
     lethal: 
     bashing: 
+
+                        #### СПЕЦИАЛИЗАЦИЯ ####
 
     Specialties: СПЕЦИАЛИЗАЦИЯ
     specialty1_origin: 
@@ -318,6 +313,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty6_name: 
 
     show_weakness: 
+
     ```
 
 </details>
@@ -325,202 +321,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <br>
 
 <details>
-    <summary>Вампир (EN)</summary>
-
-    ```statblock
-    columnWidth: 680
-    column: 1
-    layout: VtM v20 Vampire en
-    dice: true
-
-                            #### GENERAL INFO ####
-
-    name: 
-    desc: 
-    clan: 
-    generation: 
-    sire: 
-    nature: 
-    demeanor:  # Маска
-    concept:  # Амплуа
-
-    img: 
-    img_title: 
-    img_alt: 
-    img_alt_title: 
-
-                            #### ATTRIBUTES ####
-
-    Attributes: ATTRIBUTES
-
-    Physical: Physical
-    Strength: 0
-    Dexterity: 0
-    Stamina: 0
-
-    Social: Social
-    Charisma: 0
-    Manipulation: 0
-    Appearance: 0
-
-    Mental: Mental
-    Perception: 0
-    Intelligence: 0
-    Wits: 0
-
-                                #### ABILITIES ####
-
-    Abilities: ABILITIES
-
-    Talents: Talents
-    alertness: 0
-    athletics: 0
-    awareness: 0
-    brawl: 0
-    empathy: 0
-    expression: 0
-    intimidation: 0
-    leadership: 0
-    streetwise: 0
-    subterfuge: 0
-    new_talent: 
-    new_talent_value: 
-
-    Skills: Skills
-    animalken: 0
-    crafts: 0
-    drive: 0
-    etiquette: 0
-    firearms: 0
-    larceny: 0
-    melee: 0
-    performance: 0
-    stealth: 0
-    survival: 0
-    new_skill: 
-    new_skill_value: 
-
-    Knowledges: Knowledges
-    academics: 0
-    computer: 0
-    finance: 0
-    investigation: 0
-    law: 0
-    medicine: 0
-    occult: 0
-    politics: 0
-    science: 0
-    technology: 0
-    new_knowledge: 
-    new_knowledge_value: 
-
-                                #### ADVANTAGES #### 
-
-    Advantages: ADVANTAGES
-
-    Disciplines: DISCIPLINES
-    discipline1_name: 
-    discipline1_value: 
-    discipline2_name: 
-    discipline2_value: 
-    discipline3_name: 
-    discipline3_value: 
-    discipline4_name: 
-    discipline4_value: 
-    discipline5_name: 
-    discipline5_value: 
-    discipline6_name: 
-    discipline6_value: 
-
-    Backgrounds: BACKGROUNDS
-    background1_name: 
-    background1_value: 
-    background2_name: 
-    background2_value: 
-    background3_name: 
-    background3_value: 
-    background4_name: 
-    background4_value: 
-    background5_name: 
-    background5_value: 
-    background6_name: 
-    background6_value: 
-
-    Virtues: VIRTUES
-    conscience: 0
-    selfcontrol: 0
-    courage: 0
-
-                        #### MERITS / FLAWS ####
-
-    Merits: MERITS
-    merit1_name: 
-    merit1_value: 
-    merit2_name: 
-    merit2_value: 
-    merit3_name: 
-    merit3_value: 
-    merit4_name: 
-    merit4_value: 
-    merit5_name: 
-    merit5_value: 
-    merit6_name: 
-    merit6_value: 
-
-    Flaws: FLAWS
-    flaw1_name: 
-    flaw1_value: 
-    flaw2_name: 
-    flaw2_value: 
-    flaw3_name: 
-    flaw3_value: 
-    flaw4_name: 
-    flaw4_value: 
-    flaw5_name: 
-    flaw5_value: 
-    flaw6_name: 
-    flaw6_value: 
-
-                        #### PATH / WILLPOWER / BLOOD ####
-
-    Path: HUMANITY
-    path_value: 
-
-    Willpower: WILLPOWER
-    willpower_main: 
-    willpower_current: 
-
-    Bloodpool: BLOOD POOL
-    blood: 
-
-    Health: HEALTH
-    aggravated: 
-    lethal: 
-    bashing: 
-
-    Specialties: SPECIALTIES
-    specialty1_origin: 
-    specialty1_name: 
-    specialty2_origin: 
-    specialty2_name: 
-    specialty3_origin: 
-    specialty3_name: 
-    specialty4_origin: 
-    specialty4_name: 
-    specialty5_origin: 
-    specialty5_name: 
-    specialty6_origin: 
-    specialty6_name: 
-
-    show_weakness: 
-    ```
-
-</details>
-
-<br>
-
-<details>
-    <summary>Вампир Темные века (RU)</summary>
+    <summary>Вампир (Темные века)</summary>
 
     ```statblock
     columnWidth: 680
@@ -549,19 +350,19 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     Attributes: ХАРАКТЕРИСТИКИ
 
     Physical: ФИЗИЧЕСКИЕ
-    Strength: 0
-    Dexterity: 0
-    Stamina: 0
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
 
     Social: СОЦИАЛЬНЫЕ
-    Charisma: 0
-    Manipulation: 0
-    Appearance: 0
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
 
     Mental: МЕНТАЛЬНЫЕ
-    Perception: 0
-    Intelligence: 0
-    Wits: 0
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
 
                             #### СПОСОБНОСТИ ####
 
@@ -642,9 +443,9 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     background6_value: 
 
     Virtues: ДОБРОДЕТЕЛИ
-    conscience: 0
-    selfcontrol: 0
-    courage: 0
+    conscience: 1
+    selfcontrol: 1
+    courage: 1
 
                         #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
 
@@ -683,21 +484,24 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
                         #### ПУТЬ / ВОЛЯ / КРОВЬ ####
 
     Road: ДОРОГА
-    road_name: 
+    road_name: 0
     road_value: 
     aura: 
 
     willpower: ВОЛЯ
-    willpower_main: 
-    willpower_current: 
+    willpower_main: 0
+    willpower_current: 0
 
     bloodpool: ЗАПАС КРОВИ
-    blood: 
+    blood: 0
 
     Health: ЗДОРОВЬЕ
     aggravated: 
     lethal: 
     bashing: 
+
+                        #### СПЕЦИАЛИЗАЦИЯ ####
+
 
     Specialties: СПЕЦИАЛИЗАЦИЯ
     specialty1_origin: 
@@ -721,7 +525,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <br>
 
 <details>
-    <summary>Оборотень (RU)</summary>
+    <summary>Оборотень</summary>
 
     ```statblock
     columnWidth: 680
@@ -752,19 +556,19 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     Attributes: ХАРАКТЕРИСТИКИ
 
     Physical: ФИЗИЧЕСКИЕ
-    Strength: 0
-    Dexterity: 0
-    Stamina: 0
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
 
     Social: СОЦИАЛЬНЫЕ
-    Charisma: 0
-    Manipulation: 0
-    Appearance: 0
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
 
     Mental: МЕНТАЛЬНЫЕ
-    Perception: 0
-    Intelligence: 0
-    Wits: 0
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
 
                                 #### СПОСОБНОСТИ ####
 
@@ -903,6 +707,8 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     lethal: 
     bashing: 
 
+                            #### СПЕЦИАЛИЗАЦИЯ ####
+
     Specialties: СПЕЦИАЛИЗАЦИЯ
     specialty1_origin: 
     specialty1_name: 
@@ -923,7 +729,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <br>
 
 <details>
-    <summary>Смертный (RU)</summary>
+    <summary>Смертный</summary>
 
     ```statblock
     columnWidth: 680
@@ -949,19 +755,19 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     Attributes: Характеристики
 
     Physical: ФИЗИЧЕСКИЕ
-    Strength: 0
-    Dexterity: 0
-    Stamina: 0
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
 
     Social: СОЦИАЛЬНЫЕ
-    Charisma: 0
-    Manipulation: 0
-    Appearance: 0
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
 
     Mental: МЕНТАЛЬНЫЕ
-    Perception: 0
-    Intelligence: 0
-    Wits: 0
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
 
                                 #### СПОСОБНОСТИ ####
 
@@ -1042,9 +848,9 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     background6_value: 
 
     Virtues: ДОБРОДЕТЕЛИ
-    conscience: 0
-    selfcontrol: 0
-    courage: 0
+    conscience: 1
+    selfcontrol: 1
+    courage: 1
 
                         #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
 
@@ -1141,7 +947,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <br>
 
 <details>
-    <summary>Правительственный агент (RU)</summary>
+    <summary>Правительственный агент</summary>
 
     ```statblock
     column: 1
@@ -1170,19 +976,19 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     Attributes: ХАРАКТЕРИСТИКИ
 
     Physical: ФИЗИЧЕСКИЕ
-    Strength: 0
-    Dexterity: 0
-    Stamina: 0
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
 
     Social: СОЦИАЛЬНЫЕ
-    Charisma: 0
-    Manipulation: 0
-    Appearance: 0
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
 
     Mental: МЕНТАЛЬНЫЕ
-    Perception: 0
-    Intelligence: 0
-    Wits: 0
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
 
                                 #### СПОСОБНОСТИ ####
 
@@ -1263,9 +1069,9 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     background6_value: 
 
     Virtues: ДОБРОДЕТЕЛИ
-    conscience: 0
-    selfcontrol: 0
-    courage: 0
+    conscience: 1
+    selfcontrol: 1
+    courage: 1
 
                         #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
 
@@ -1376,6 +1182,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <br>
 **О**: Я не могу добавить шрифты в репозиторий, это было бы нарушением правил площадки. Но вы можете найти их отдельно и установить на свой компьютер, тогда статблок их подхватит.<br>
 Для вампиров и смертных, используются шрифты Marta и Trajan Pro 3.<br>
+Для вампиров темных веков - Lidia и PT Serif Pro.<br>
 Для оборотней - Marta and KistyCC.<br>
 Для агентов - GNUTypewriter.<br>
 А еще статблок поддерживает замечательный плагин [Style Settings](https://github.com/mgmeyers/obsidian-style-settings/), так что можно заменить указанные шрифты на любые другие (если они так же установлены).

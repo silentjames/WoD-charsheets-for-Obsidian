@@ -1,53 +1,42 @@
-<p align="center">
-    <a style='text-decoration: none' href="README.md"><img src=https://img.shields.io/badge/lang-en-red.svg></a>
-    &nbsp
-    <a style='text-decoration: none' href="README.ru.md"><img src=https://img.shields.io/badge/%D1%8F%D0%B7%D1%8B%D0%BA-ru-cian.svg></a>
-</p>
-
-Some character sheets for World of Darkness (v20) characters, based on [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) and [Obsidian](https://github.com/obsidianmd).
+Some character sheets for World of Darkness (20th Anniversary Edition) characters, based on [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) and [Obsidian](https://github.com/obsidianmd).
 Currently, there are **vampires** (modern nights and dark ages), **werewolves**, **mortals** and **government agents** (mortal reskin actually, kinda based on 'Project Twilight').
+
+<p align="center">
+    <a style='text-decoration: none' href="README.ru.md"><img src=https://img.shields.io/badge/ReadMe_%D0%BD%D0%B0_%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%BC-%D0%B7%D0%B4%D0%B5%D1%81%D1%8C-cian></a>
+</p>
 
 # General things
 
 ## Vampires
-First of all, examples of VtM character sheets in English and Russian:
+First of all, examples of VtM character sheets:
 
 <p align="center">
-    <a href='imgs/vampire_en.png'><img src='imgs/vampire_en_small.png' width='395'></a>
-    <a href='imgs/vampire_ru.png'><img src='imgs/vampire_ru_small.png' width='428'></a>
+    <a href='imgs/vampire_en.png'><img src='imgs/vampire_en_small.png' height='675'></a>
+    <a href='imgs/vampire_dark_ages_en.png'><img src='imgs/vampire_dark_ages_en_small.png' height='675'></a>
 </p>
-
-Other charsheets are available at this moment in Russian only - but you can change the names of the abilities manually in Fantasy Statblocks settings and send me a pull request. Feel free to ask for any help!
 
 ## Werewolves, mortals and agents
 
 Under the spoilers, you can find all other charsheets.
 
 <details>
-    <summary>Vampire (Dark ages)</summary>
-        <p align="center">
-            <a href='imgs/vampire_dark_ages_en.png'><img src='imgs/vampire_dark_ages_en_small.png' width='450'></a>
-        </p>
-</details>
-
-<details>
     <summary>Werewolf</summary>
         <p align="center">
-            <a href='imgs/werewolf_ru.png'><img src='imgs/werewolf_ru_small.png' width='450'></a>
+            <a href='imgs/werewolf_en.png'><img src='imgs/werewolf_en_small.png' width='450'></a>
         </p>
 </details>
 
 <details>
     <summary>Mortal (similar to the vampire charsheet)</summary>
         <p align="center">
-            <a href='imgs/mortal_ru.png'><img src='imgs/mortal_ru_small.png' width='450'></a>
+            <a href='imgs/mortal_en.png'><img src='imgs/mortal_en_small.png' width='450'></a>
         </p>
 </details>
 
 <details>
     <summary>"Project Twilight" agent - FBI, SAD, CIA, NSA...</summary>
         <p align="center">
-            <a href='imgs/agent_ru.png'><img src='imgs/agent_ru_small.png' width='450'></a>
+            <a href='imgs/agent_en.png'><img src='imgs/agent_en_small.png' width='450'></a>
         </p>
 </details>
 
@@ -56,12 +45,15 @@ Under the spoilers, you can find all other charsheets.
 There is also the option to add the top part of the charsheet as a header of your note, in case you don't need all the stats of a character - just leave all the fields below image block blank, or add `cssclasses: wod-header` into your note's properties.
 
 <p align="center">
-    <img align="center" src='imgs/header_vampire.png' width='395'>
-    <img align="center" src='imgs/header_werewolf.png' width='395'>
+    <img align="center" src='imgs/header_vampire_en.png' width='395'>
+    <img align="center" src='imgs/header_vampire_dark_ages_en.png' width='395'>
 </p>
 <p align="center">
-    <img align="center" src='imgs/header_mortal.png' width='395'>
-    <img align="center" src='imgs/header_agent.png' width='395'>
+    <img align="center" src='imgs/header_mortal_en.png' width='395'>
+    <img align="center" src='imgs/header_agent_en.png' width='395'>
+</p>
+<p align="center">
+    <img align="center" src='imgs/header_werewolf_en.png' width='395'>
 </p>
 
 # Description
@@ -130,206 +122,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 ### All available statblocks
 
 <details>
-    <summary>Vampire (Russian)</summary>
-
-    ```statblock
-    columnWidth: 680
-    column: 1
-    layout: VtM v20 Vampire
-    dice: true
-
-                            #### ОСНОВНАЯ ИНФОРМАЦИЯ ####
-
-    name: 
-    desc: 
-    clan: 
-    generation: 
-    sire: 
-    nature: 
-    demeanor:  # Маска
-    concept:  # Амплуа
-
-    img: 
-    img_title: 
-    img_alt: 
-    img_alt_title: 
-
-                            #### ХАРАКТЕРИСТИКИ ####
-
-    Attributes: ХАРАКТЕРИСТИКИ
-
-    Physical: ФИЗИЧЕСКИЕ
-    Strength: 0
-    Dexterity: 0
-    Stamina: 0
-
-    Social: СОЦИАЛЬНЫЕ
-    Charisma: 0
-    Manipulation: 0
-    Appearance: 0
-
-    Mental: МЕНТАЛЬНЫЕ
-    Perception: 0
-    Intelligence: 0
-    Wits: 0
-
-                            #### СПОСОБНОСТИ ####
-
-    Abilities: СПОСОБНОСТИ
-
-    Talents: ТАЛАНТЫ
-    athletics: 0
-    alertness: 0 # Бдительность
-    brawl: 0 # Драка
-    intimidation: 0 # Запугивание
-    expression: 0 # Красноречие
-    leadership: 0
-    streetwise: 0 # Уличное чутье
-    subterfuge: 0 # Хитрость
-    awareness: 0 # Шестое чувство
-    empathy: 0
-    new_talent: 
-    new_talent_value: 
-
-    Skills: НАВЫКИ
-    drive: 0
-    larceny: 0 # Воровство
-    survival: 0
-    performance: 0
-    animalken: 0
-    crafts: 0
-    stealth: 0
-    firearms: 0
-    melee: 0
-    etiquette: 0
-    new_skill: 
-    new_skill_value: 
-
-    Knowledges: ЗНАНИЯ
-    academics: 0
-    science: 0
-    law: 0
-    computer: 0 # Информатика
-    medicine: 0
-    occult: 0
-    politics: 0
-    investigation: 0
-    finance: 0
-    technology: 0 # Электроника
-    new_knowledge: 
-    new_knowledge_value: 
-
-                            #### ПРЕИМУЩЕСТВА ####
-
-    Advantages: ПРЕИМУЩЕСТВА
-
-    Disciplines: ДИСЦИПЛИНЫ
-    discipline1_name: 
-    discipline1_value: 
-    discipline2_name: 
-    discipline2_value: 
-    discipline3_name: 
-    discipline3_value: 
-    discipline4_name: 
-    discipline4_value: 
-    discipline5_name: 
-    discipline5_value: 
-    discipline6_name: 
-    discipline6_value: 
-
-    Backgrounds: ФАКТЫ БИОГРАФИИ
-    background1_name: 
-    background1_value: 
-    background2_name: 
-    background2_value: 
-    background3_name: 
-    background3_value: 
-    background4_name: 
-    background4_value: 
-    background5_name: 
-    background5_value: 
-    background6_name: 
-    background6_value: 
-
-    Virtues: ДОБРОДЕТЕЛИ
-    conscience: 0
-    selfcontrol: 0
-    courage: 0
-
-                        #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
-
-    Merits: ДОСТОИНСТВА
-    merit1_name: 
-    merit1_value: 
-    merit2_name: 
-    merit2_value: 
-    merit3_name: 
-    merit3_value: 
-    merit4_name: 
-    merit4_value: 
-    merit5_name: 
-    merit5_value: 
-    merit6_name: 
-    merit6_value: 
-    merit7_name: 
-    merit7_value: 
-
-    Flaws: НЕДОСТАТКИ
-    flaw1_name: 
-    flaw1_value: 
-    flaw2_name: 
-    flaw2_value: 
-    flaw3_name: 
-    flaw3_value: 
-    flaw4_name: 
-    flaw4_value: 
-    flaw5_name: 
-    flaw5_value: 
-    flaw6_name: 
-    flaw6_value: 
-    flaw7_name: 
-    flaw7_value: 
-
-                        #### ПУТЬ / ВОЛЯ / КРОВЬ ####
-
-    Path: ЧЕЛОВЕЧНОСТЬ
-    path_value: 
-
-    Willpower: ВОЛЯ
-    willpower_main: 
-    willpower_current: 
-
-    Bloodpool: ЗАПАС КРОВИ
-    blood: 
-
-    Health: Здоровье
-    aggravated: 
-    lethal: 
-    bashing: 
-
-    Specialties: СПЕЦИАЛИЗАЦИЯ
-    specialty1_origin: 
-    specialty1_name: 
-    specialty2_origin: 
-    specialty2_name: 
-    specialty3_origin: 
-    specialty3_name: 
-    specialty4_origin: 
-    specialty4_name: 
-    specialty5_origin: 
-    specialty5_name: 
-    specialty6_origin: 
-    specialty6_name: 
-
-    show_weakness: 
-    ```
-
-</details>
-
-<br>
-
-<details>
-    <summary>Vampire (English)</summary>
+    <summary>Vampire</summary>
 
     ```statblock
     columnWidth: 680
@@ -358,19 +151,19 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     Attributes: ATTRIBUTES
 
     Physical: Physical
-    Strength: 0
-    Dexterity: 0
-    Stamina: 0
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
 
     Social: Social
-    Charisma: 0
-    Manipulation: 0
-    Appearance: 0
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
 
     Mental: Mental
-    Perception: 0
-    Intelligence: 0
-    Wits: 0
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
 
                                 #### ABILITIES ####
 
@@ -451,9 +244,9 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     background6_value: 
 
     Virtues: VIRTUES
-    conscience: 0
-    selfcontrol: 0
-    courage: 0
+    conscience: 1
+    selfcontrol: 1
+    courage: 1
 
                         #### MERITS / FLAWS ####
 
@@ -488,19 +281,21 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
                         #### PATH / WILLPOWER / BLOOD ####
 
     Path: HUMANITY
-    path_value: 
+    path_value: 0
 
     Willpower: WILLPOWER
-    willpower_main: 
-    willpower_current: 
+    willpower_main: 0
+    willpower_current: 0
 
     Bloodpool: BLOOD POOL
-    blood: 
+    blood: 0
 
     Health: HEALTH
     aggravated: 
     lethal: 
     bashing: 
+
+                                #### SPECIALTIES ####
 
     Specialties: SPECIALTIES
     specialty1_origin: 
@@ -529,10 +324,10 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     ```statblock
     columnWidth: 680
     column: 1
-    layout: VtM v20 Vampire Dark Ages
+    layout: VtM v20 Vampire Dark Ages en
     dice: true
 
-                            #### ОСНОВНАЯ ИНФОРМАЦИЯ ####
+                            #### GENERAL INFO ####
 
     name: 
     desc: 
@@ -540,84 +335,84 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     generation: 
     sire: 
     nature: 
-    demeanor:  # Маска
-    concept:  # Амплуа
+    demeanor: 
+    concept: 
 
     img: 
     img_title: 
     img_alt: 
     img_alt_title: 
 
-                            #### ХАРАКТЕРИСТИКИ ####
+                            #### ATTRIBUTES ####
 
-    Attributes: ХАРАКТЕРИСТИКИ
+    Attributes: ATTRIBUTES
 
-    Physical: ФИЗИЧЕСКИЕ
-    Strength: 0
-    Dexterity: 0
-    Stamina: 0
+    Physical: PHYSICAL
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
 
-    Social: СОЦИАЛЬНЫЕ
-    Charisma: 0
-    Manipulation: 0
-    Appearance: 0
+    Social: SOCIAL
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
 
-    Mental: МЕНТАЛЬНЫЕ
-    Perception: 0
-    Intelligence: 0
-    Wits: 0
+    Mental: MENTAL
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
 
-                            #### СПОСОБНОСТИ ####
+                                #### ABILITIES ####
 
-    Abilities: СПОСОБНОСТИ
+    Abilities: ABILITIES
 
-    Talents: ТАЛАНТЫ
-    athletics: 
-    alertness: 0 # Бдительность
-    brawl: 0 # Драка
-    intimidation: 0 # Запугивание
-    expression: 0 # Красноречие
-    leadership: 0
-    legerdemain: 0 # Ловкость рук
-    subterfuge: 0 # Хитрость
-    awareness: 0 # Шестое чувство
+    Talents: TALENTS
+    alertness: 0
+    athletics: 0
+    awareness: 0
+    brawl: 0
     empathy: 0
+    expression: 0
+    intimidation: 0
+    leadership: 0
+    legerdemain: 0
+    subterfuge: 0
     new_talent: 
     new_talent_value: 
 
-    Skills: НАВЫКИ
-    ride: 0 # Верховая езда
-    survival: 2
-    performance: 0
-    commerce: 0 # Коммерция
+    Skills: SKILLS
     animalken: 0
+    archery: 0
+    commerce: 0
     crafts: 0
-    stealth: 0
-    archery: 0 # Стрельба из лука
-    melee: 0
     etiquette: 0
+    melee: 0
+    performance: 0
+    ride: 0
+    stealth: 0
+    survival: 0
     new_skill: 
     new_skill_value: 
 
-    Knowledges: ЗНАНИЯ
-    enigmas: 0 # Головоломки
+    Knowledges: KNOWLEDGES
     academics: 0
-    hearthwisdom: 0 # Житейская мудрость
+    enigmas: 0
+    hearthwisdom: 0
+    investigation: 0
     law: 0
     medicine: 0
     occult: 0
     politics: 0
     seneschal: 0
-    investigation: 0
     theology: 0
     new_knowledge: 
     new_knowledge_value: 
 
-                            #### ПРЕИМУЩЕСТВА ####
+                                #### ADVANTAGES ####
 
-    Advantages: ПРЕИМУЩЕСТВА
+    Advantages: ADVANTAGES
 
-    Disciplines: ДИСЦИПЛИНЫ
+    Disciplines: DISCIPLINES
     discipline1_name: 
     discipline1_value: 
     discipline2_name: 
@@ -631,7 +426,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     discipline6_name: 
     discipline6_value: 
 
-    Backgrounds: ФАКТЫ БИОГРАФИИ
+    Backgrounds: BACKGROUNDS
     background1_name: 
     background1_value: 
     background2_name: 
@@ -645,14 +440,14 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     background6_name: 
     background6_value: 
 
-    Virtues: ДОБРОДЕТЕЛИ
-    conscience: 0
-    selfcontrol: 0
-    courage: 0
+    Virtues: VIRTUES
+    conscience: 1
+    selfcontrol: 1
+    courage: 1
 
-                        #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
+                            #### MERITS / FLAWS ####
 
-    Merits: ДОСТОИНСТВА
+    Merits: MERITS
     merit1_name: 
     merit1_value: 
     merit2_name: 
@@ -660,7 +455,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     merit3_name: 
     merit3_value: 
     merit4_name: 
-    merit4_value:
+    merit4_value: 
     merit5_name: 
     merit5_value: 
     merit6_name: 
@@ -668,7 +463,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     merit7_name: 
     merit7_value: 
 
-    Flaws: НЕДОСТАТКИ
+    Flaws: FLAWS
     flaw1_name: 
     flaw1_value: 
     flaw2_name: 
@@ -684,26 +479,29 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     flaw7_name: 
     flaw7_value: 
 
-                        #### ПУТЬ / ВОЛЯ / КРОВЬ ####
+                        #### ROAD / WILLPOWER / HEALTH ####
 
-    Road: ДОРОГА
+
+    Road: ROAD
     road_name: 
-    road_value: 
+    road_value: 0
     aura: 
 
-    willpower: ВОЛЯ
-    willpower_main: 
-    willpower_current: 
+    Willpower: WILLPOWER
+    willpower_main: 0
+    willpower_current: 0
 
-    bloodpool: ЗАПАС КРОВИ
-    blood: 
+    Bloodpool: BLOOD POOL
+    blood: 0
 
-    Health: ЗДОРОВЬЕ
+    Health: HEALTH
     aggravated: 
     lethal: 
     bashing: 
 
-    Specialties: СПЕЦИАЛИЗАЦИЯ
+                                #### SPECIALTIES ####
+
+    Specialties: SPECIALTIES
     specialty1_origin: 
     specialty1_name: 
     specialty2_origin: 
@@ -717,7 +515,8 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty6_origin: 
     specialty6_name: 
 
-    show_weakness:
+    show_weakness: yes
+
     ```
 
 </details>
@@ -725,7 +524,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <br>
 
 <details>
-    <summary>Werewolf (Russian)</summary>
+    <summary>Werewolf</summary>
 
     ```statblock
     columnWidth: 680
@@ -743,8 +542,8 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     pack_name: 
     totem: 
     nature: 
-    demeanor:  # Маска
-    concept:  # Амплуа
+    demeanor:  
+    concept:  
 
     img: 
     img_title: 
@@ -756,26 +555,26 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     Attributes: ХАРАКТЕРИСТИКИ
 
     Physical: ФИЗИЧЕСКИЕ
-    Strength: 0
-    Dexterity: 0
-    Stamina: 0
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
 
     Social: СОЦИАЛЬНЫЕ
-    Charisma: 0
-    Manipulation: 0
-    Appearance: 0
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
 
     Mental: МЕНТАЛЬНЫЕ
-    Perception: 0
-    Intelligence: 0
-    Wits: 0
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
 
                                 #### СПОСОБНОСТИ ####
 
     Abilities: СПОСОБНОСТИ
 
     Talents: ТАЛАНТЫ
-    athletics: 0 # Атлетика
+    athletics: 0
     alertness: 0 # Бдительность
     brawl: 0 # Драка
     intimidation: 0 # Запугивание
@@ -907,6 +706,8 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     lethal: 
     bashing: 
 
+                                #### SPECIALTIES ####
+
     Specialties: СПЕЦИАЛИЗАЦИЯ
     specialty1_origin: 
     specialty1_name: 
@@ -927,7 +728,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <br>
 
 <details>
-    <summary>Mortal (Russian)</summary>
+    <summary>Mortal</summary>
 
     ```statblock
     columnWidth: 680
@@ -935,87 +736,87 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     layout: WoD v20 Mortal
     dice: true
 
-                            #### ОСНОВНАЯ ИНФОРМАЦИЯ ####
+                            #### GENERAL INFO ####
 
     name: 
     desc: 
     nature: 
-    demeanor:  # Маска
-    concept:  # Амплуа
+    demeanor: 
+    concept: 
 
     img: 
     img_title: 
     img_alt: 
     img_alt_title: 
 
-                            #### ХАРАКТЕРИСТИКИ ####
+                            #### ATTRIBUTES ####
 
-    Attributes: Характеристики
+    Attributes: ATTRIBUTES
 
-    Physical: ФИЗИЧЕСКИЕ
-    Strength: 0
-    Dexterity: 0
-    Stamina: 0
+    Physical: PHYSICAL
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
 
-    Social: СОЦИАЛЬНЫЕ
-    Charisma: 0
-    Manipulation: 0
-    Appearance: 0
+    Social: SOCIAL
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
 
-    Mental: МЕНТАЛЬНЫЕ
-    Perception: 0
-    Intelligence: 0
-    Wits: 0
+    Mental: MENTAL
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
 
-                                #### СПОСОБНОСТИ ####
+                                #### ABILITIES ####
 
-    Abilities: СПОСОБНОСТИ
+    Abilities: ABILITIES
 
-    Talents: ТАЛАНТЫ
-    athletics: 0 # Атлетика
-    alertness: 0 # Бдительность
-    brawl: 0 # Драка
-    intimidation: 0 # Запугивание
-    expression: 0 # Красноречие
-    leadership: 0
-    streetwise: 0 # Уличное чутье
-    subterfuge: 0 # Хитрость
-    awareness: 0 # Шестое чувство
+    Talents: TALENTS
+    alertness: 0
+    athletics: 0
+    awareness: 0
+    brawl: 0
     empathy: 0
+    expression: 0
+    intimidation: 0
+    leadership: 0
+    streetwise: 0
+    subterfuge: 0
     new_talent: 
     new_talent_value: 
 
-    Skills: НАВЫКИ
-    drive: 0
-    larceny: 0 # Воровство
-    survival: 0
-    performance: 0
+    Skills: SKILLS
     animalken: 0
     crafts: 0
-    stealth: 0
-    firearms: 0
-    melee: 0
+    drive: 0
     etiquette: 0
+    firearms: 0
+    larceny: 0
+    melee: 0
+    performance: 0
+    stealth: 0
+    survival: 0
     new_skill: 
     new_skill_value: 
 
-    Knowledges: ЗНАНИЯ
+    Knowledges: KNOWLEDGES
     academics: 0
-    science: 0
+    computer: 0
+    finance: 0
+    investigation: 0
     law: 0
-    computer: 0 # Информатика
     medicine: 0
     occult: 0
     politics: 0
-    investigation: 0
-    finance: 0
-    technology: 0 # Электроника
+    science: 0
+    technology: 0
     new_knowledge:
     new_knowledge_value:
 
-                                #### ПРЕИМУЩЕСТВА ####
+                                #### ADVANTAGES ####
 
-    Advantages: ПРЕИМУЩЕСТВА
+    Advantages: ADVANTAGES
 
     Numina: NUMINA
     numina1_name: 
@@ -1031,7 +832,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     numina6_name: 
     numina6_value: 
 
-    Backgrounds: ФАКТЫ БИОГРАФИИ
+    Backgrounds: BACKGROUNDS
     background1_name: 
     background1_value: 
     background2_name: 
@@ -1045,14 +846,14 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     background6_name: 
     background6_value: 
 
-    Virtues: ДОБРОДЕТЕЛИ
-    conscience: 0
-    selfcontrol: 0
-    courage: 0
+    Virtues: VIRTUES
+    conscience: 1
+    selfcontrol: 1
+    courage: 1
 
-                        #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
+                            #### MERITS / FLAWS ####
 
-    Merits: ДОСТОИНСТВА
+    Merits: MERITS
     merit1_name: 
     merit1_value: 
     merit2_name: 
@@ -1066,7 +867,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     merit6_name: 
     merit6_value: 
 
-    Flaws: НЕДОСТАТКИ
+    Flaws: FLAWS
     flaw1_name: 
     flaw1_value: 
     flaw2_name: 
@@ -1080,23 +881,23 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     flaw6_name: 
     flaw6_value: 
 
-                        #### ЧЕЛОВЕЧНОСТЬ / ВОЛЯ / ЗДОРОВЬЕ ####
+                        #### HUMANITY / WILLPOWER / HEALTH ####
 
-    humanity: ЧЕЛОВЕЧНОСТЬ
+    Humanity: HUMANITY
     humanity_value: 0
 
-    willpower: ВОЛЯ
+    Willpower: WILLPOWER
     willpower_main: 0
-    willpower_current: 0 
+    willpower_current: 0
 
-    Health: ЗДОРОВЬЕ
-    bashing: 0
-    lethal: 0
+    Health: HEALTH
+    bashing: 
+    lethal: 
 
-                                #### СПЕЦИАЛИЗАЦИЯ ####
+                                #### SPECIALTIES ####
 
-    Specialties: СПЕЦИАЛИЗАЦИЯ
-    specialty1_origin: 
+    Specialties: SPECIALTIES
+    specialty1_origin:
     specialty1_name: 
     specialty2_origin: 
     specialty2_name: 
@@ -1109,7 +910,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty6_origin: 
     specialty6_name: 
 
-                                    #### ОРУЖИЕ ####
+                                    #### WEAPON ####
 
     weapon1_name: 
     damage1: 
@@ -1138,6 +939,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     firerate4: 
     capacity4: 
     conceal4: 
+
     ```
 
 </details>
@@ -1145,21 +947,21 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <br>
 
 <details>
-    <summary>Government agent (Russian)</summary>
+    <summary>Government agent</summary>
 
     ```statblock
-    column: 1
     columnWidth: 680
-    layout: WoD v20 Agent
+    column: 1
+    layout: WoD v20 Agent en
     dice: true
 
-                            #### ОСНОВНАЯ ИНФОРМАЦИЯ ####
+                            #### GENERAL INFO ####
 
     name: 
     desc: 
     nature: 
-    demeanor:  # Маска
-    concept:  # Амплуа
+    demeanor: 
+    concept: 
     agency: 
     rank: 
     codename: 
@@ -1169,76 +971,76 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     img_alt: 
     img_alt_title: 
 
-                            #### ХАРАКТЕРИСТИКИ ####
+                            #### ATTRIBUTES ####
 
-    Attributes: ХАРАКТЕРИСТИКИ
+    Attributes: ATTRIBUTES
 
-    Physical: ФИЗИЧЕСКИЕ
-    Strength: 0
-    Dexterity: 0
-    Stamina: 0
+    Physical: PHYSICAL
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
 
-    Social: СОЦИАЛЬНЫЕ
-    Charisma: 0
-    Manipulation: 0
-    Appearance: 0
+    Social: SOCIAL
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
 
-    Mental: МЕНТАЛЬНЫЕ
-    Perception: 0
-    Intelligence: 0
-    Wits: 0
+    Mental: MENTAL
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
 
-                                #### СПОСОБНОСТИ ####
+                                #### ABILITIES ####
 
-    Abilities: СПОСОБНОСТИ
+    Abilities: ABILITIES
 
-    Talents: ТАЛАНТЫ
-    athletics: 0 # Атлетика
-    alertness: 0 # Бдительность
-    brawl: 0 # Драка
-    intimidation: 0 # Запугивание
-    expression: 0 # Красноречие
-    leadership: 0
-    streetwise: 0 # Уличное чутье
-    subterfuge: 0 # Хитрость
-    awareness: 0 # Шестое чувство
+    Talents: TALENTS
+    alertness: 0
+    athletics: 0
+    awareness: 0
+    brawl: 0
     empathy: 0
+    expression: 0
+    intimidation: 0
+    leadership: 0
+    streetwise: 0
+    subterfuge: 0
     new_talent: 
     new_talent_value: 
 
-    Skills: НАВЫКИ
-    drive: 0
-    larceny: 0 # Воровство
-    survival: 0
-    performance: 0
+    Skills: SKILLS
     animalken: 0
+    drive: 0
     crafts: 0
-    stealth: 0
-    firearms: 0
-    melee: 0
     etiquette: 0
+    firearms: 0
+    larceny: 0
+    melee: 0
+    performance: 0
+    stealth: 0
+    survival: 0
     new_skill: 
     new_skill_value: 
 
-    Knowledges: ЗНАНИЯ
+    Knowledges: KNOWLEDGES
     academics: 0
-    science: 0
+    computer: 0
+    finance: 0
+    investigation: 0
     law: 0
-    computer: 0 # Информатика
     medicine: 0
     occult: 0
     politics: 0
-    investigation: 0
-    finance: 0
-    technology: 0 # Электроника
+    science: 0
+    technology: 0
     new_knowledge: 
     new_knowledge_value: 
 
-                                #### ПРЕИМУЩЕСТВА ####
+                                #### ADVANTAGES ####
 
-    Advantages: ПРЕИМУЩЕСТВА
+    Advantages: ADVANTAGES
 
-    Numina: ДАРЫ И ПАРАМЕТРЫ
+    Numina: NUMINA
     numina1_name: 
     numina1_value: 
     numina2_name: 
@@ -1252,7 +1054,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     numina6_name: 
     numina6_value: 
 
-    Backgrounds: ФАКТЫ БИОГРАФИИ
+    Backgrounds: BACKGROUNDS
     background1_name: 
     background1_value: 
     background2_name: 
@@ -1266,14 +1068,14 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     background6_name: 
     background6_value: 
 
-    Virtues: ДОБРОДЕТЕЛИ
-    conscience: 0
-    selfcontrol: 0
-    courage: 0
+    Virtues: VIRTUES
+    conscience: 1
+    selfcontrol: 1
+    courage: 1
 
-                        #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
+                        #### MERITS / FLAWS ####
 
-    Merits: ДОСТОИНСТВА
+    Merits: MERITS
     merit1_name: 
     merit1_value: 
     merit2_name: 
@@ -1282,8 +1084,14 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     merit3_value: 
     merit4_name: 
     merit4_value: 
+    merit5_name: 
+    merit5_value: 
+    merit6_name: 
+    merit6_value: 
+    merit7_name: 
+    merit7_value: 
 
-    Flaws: НЕДОСТАТКИ
+    Flaws: FLAWS
     flaw1_name: 
     flaw1_value: 
     flaw2_name: 
@@ -1299,22 +1107,22 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     flaw7_name: 
     flaw7_value: 
 
-                        #### ЧЕЛОВЕЧНОСТЬ / ВОЛЯ / ЗДОРОВЬЕ ####
+                        #### HUMANITY / WILLPOWER / HEALTH ####
 
-    Humanity: ЧЕЛОВЕЧНОСТЬ
+    Humanity: HUMANITY
     humanity_value: 0
 
-    Willpower: ВОЛЯ
+    Willpower: WILLPOWER
     willpower_main: 0
     willpower_current: 0
 
-    Health: ЗДОРОВЬЕ
+    Health: HEALTH
     bashing: 0
     lethal: 0
 
-                                #### СПЕЦИАЛИЗАЦИЯ ####
+                                #### SPECIALTIES ####
 
-    Specialties: СПЕЦИАЛИЗАЦИЯ
+    Specialties: SPECIALTIES
     specialty1_origin: 
     specialty1_name: 
     specialty2_origin: 
@@ -1328,13 +1136,13 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty6_origin: 
     specialty6_name: 
 
-                                    #### ОРУЖИЕ ####
+                                #### WEAPON ####
 
     weapon1_name: 
     damage1: 
     range1: 
     firerate1: 
-    clip1: 
+    capacity1: 
     conceal1: 
 
     weapon2_name: 
@@ -1378,6 +1186,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 <br>
 **A**: I can't add these fonts into the statblock because of legal reasons. But you can add them manually into your system, and then the statblock will use them.<br>
 For vampires and mortals, you'll need Marta and Trajan Pro 3.<br>
+For Dark Ages vampires - Lidia and PT Serif Pro.<br>
 For werewolves - Marta and KistyCC.<br>
 For agents - GNUTypewriter.<br>
 Also, this statblock supports the great [Style Settings](https://github.com/mgmeyers/obsidian-style-settings/) plugin, so you can choose other fonts there if you want.

@@ -816,25 +816,25 @@ sleep(120).then(() => {
                     document.querySelector(activeTab + '.line.path_value .inline').innerHTML = 'X';
                 // and then correspinding bearing values will be assigned
                 case 'X':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( -2 )'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( -2 )'; break;
                 case '9':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( -1 )'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( -1 )'; break;
                 case '8':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( -1 )'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( -1 )'; break;
                 case '7':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
                 case '6':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
                 case '5':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
                 case '4':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
                 case '3':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( +1 )'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( +1 )'; break;
                 case '2':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( +1 )'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( +1 )'; break;
                 case '1':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( +2 )'; break;
+                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( +2 )'; break;
                 default:
                     document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'You are the Beast!';
                     if (document.querySelector(activeTab + '.line.bearing .inline').innerHTML === null) {
@@ -866,25 +866,25 @@ sleep(120).then(() => {
                 case '10':
                     document.querySelector(statblockCSSpathHover + '.line.path_value .inline').innerHTML = 'X';
                 case 'X':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность ( -2 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy ( -2 )'; break;
                 case '9':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность ( -1 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy ( -1 )'; break;
                 case '8':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность ( -1 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy ( -1 )'; break;
                 case '7':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
                 case '6':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
                 case '5':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
                 case '4':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
                 case '3':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность ( +1 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy ( +1 )'; break;
                 case '2':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность ( +1 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy ( +1 )'; break;
                 case '1':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Нормальность ( +2 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy ( +2 )'; break;
                 default:
                     document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'You are the Beast!';
                     if (document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML === null) {

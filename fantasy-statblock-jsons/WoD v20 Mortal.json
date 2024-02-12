@@ -851,16 +851,6 @@
                                                     "dice": true
                                                 },
                                                 {
-                                                    "type": "property",
-                                                    "id": "099ae81bbbd8",
-                                                    "properties": [
-                                                        "empty_knowledge"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "display": "________",
-                                                    "conditioned": true
-                                                },
-                                                {
                                                     "type": "inline",
                                                     "id": "9ba8e8a829a9",
                                                     "properties": [],
@@ -2228,7 +2218,7 @@
                                                     "type": "property",
                                                     "id": "0a39b9bbd808",
                                                     "properties": [
-                                                        "clip1"
+                                                        "capacity1"
                                                     ],
                                                     "fallback": "-",
                                                     "conditioned": true
@@ -2324,7 +2314,7 @@
                                                     "type": "property",
                                                     "id": "486a6ad9b8aa",
                                                     "properties": [
-                                                        "clip2"
+                                                        "capacity2"
                                                     ],
                                                     "fallback": "-",
                                                     "conditioned": true
@@ -2420,7 +2410,7 @@
                                                     "type": "property",
                                                     "id": "195bb8dbeafa",
                                                     "properties": [
-                                                        "clip3"
+                                                        "capacity3"
                                                     ],
                                                     "fallback": "-",
                                                     "conditioned": true
@@ -2516,7 +2506,7 @@
                                                     "type": "property",
                                                     "id": "cb7bfb3a0a69",
                                                     "properties": [
-                                                        "clip4"
+                                                        "capacity4"
                                                     ],
                                                     "fallback": "-",
                                                     "conditioned": true
@@ -2612,7 +2602,7 @@
                                                     "type": "property",
                                                     "id": "4bc87898ab9b",
                                                     "properties": [
-                                                        "clip_header"
+                                                        "capacity_header"
                                                     ],
                                                     "fallback": "-",
                                                     "display": "Боезапас"

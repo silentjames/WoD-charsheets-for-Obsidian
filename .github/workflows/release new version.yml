@@ -32,7 +32,7 @@ jobs:
                   js/
                 if-no-files-found: error
 
-            # все русскоязычные JSON-файлы собираются во вторую папку
+            # все русскоязычные JSON-файлы собираются в одну папку
           - name: Collent all RU JSONs into one archive
             uses: actions/upload-artifact@v4
             with:
@@ -42,7 +42,7 @@ jobs:
                   !fantasy-statblock-jsons/?en.json
                 if-no-files-found: error
 
-          # все англоязычные JSON-файлы собираются во вторую папку
+          # все англоязычные JSON-файлы собираются в другую папку
           - name: Collent all EN JSONs into one archive
             uses: actions/upload-artifact@v4
             with:

@@ -1746,7 +1746,8 @@
                                                         "Path"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true
+                                                    "conditioned": true,
+                                                    "markdown": true
                                                 },
                                                 {
                                                     "type": "property",

@@ -1354,12 +1354,13 @@
                                     "nested": [
                                         {
                                             "type": "heading",
-                                            "id": "18a8f8cabb1b",
+                                            "id": "79e939e9cb0b",
                                             "properties": [
                                                 "Merits"
                                             ],
                                             "size": 3,
-                                            "fallback": "-"
+                                            "fallback": "-",
+                                            "conditioned": false
                                         },
                                         {
                                             "type": "inline",
@@ -1740,7 +1741,8 @@
                                                         "Path"
                                                     ],
                                                     "fallback": "-",
-                                                    "conditioned": true
+                                                    "conditioned": true,
+                                                    "markdown": true
                                                 },
                                                 {
                                                     "type": "property",

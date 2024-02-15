@@ -146,47 +146,10 @@
                             ],
                             "fallback": "-",
                             "conditioned": true
-                        },
-                        {
-                            "type": "text",
-                            "id": "4b08e989fa88",
-                            "properties": [
-                                "img_title"
-                            ],
-                            "text": null,
-                            "fallback": "-",
-                            "conditioned": true
                         }
                     ],
                     "heading": "",
                     "cls": "image-main-block"
-                },
-                {
-                    "type": "group",
-                    "id": "ebd818f82a29",
-                    "properties": [],
-                    "nested": [
-                        {
-                            "type": "image",
-                            "id": "bb4ac92aaa5a",
-                            "properties": [
-                                "img_alt"
-                            ],
-                            "fallback": "-",
-                            "conditioned": true
-                        },
-                        {
-                            "type": "text",
-                            "id": "3818e9b8697b",
-                            "properties": [
-                                "img_alt_title"
-                            ],
-                            "text": null,
-                            "fallback": "-",
-                            "conditioned": true
-                        }
-                    ],
-                    "cls": "image-alt-block"
                 }
             ],
             "hasRule": false,

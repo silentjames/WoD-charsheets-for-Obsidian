@@ -863,18 +863,20 @@ sleep(120).then(() => {
 
 
     // в завимимости от названия пути и его значения, проставляется (или удаляется) модификатор столпа
-    if (document.querySelector(activeTab + '.line.path .inline') != null) {
+    if (document.querySelector(activeTab + '.line.path .statblock-markdown > p') != null) {
         // найти значение пути, человечность это или нет
-        const path = document.querySelector(activeTab + '.path .inline');
+        var path = document.querySelector(activeTab + '.line.path .statblock-markdown > p');
         // если путь вообще не указан...
         if (path === null) {
             // ...удаляется вся строчка 'Столп'
             document.querySelector(activeTab + '.bearing').style.display = 'none'
         }
         // если путь не человечность, то...
-        else if (path.innerHTML != ('ЧЕЛОВЕЧНОСТЬ')) {
+        else if (path.innerHTML != (('ЧЕЛОВЕЧНОСТЬ') || ('Человечность'))) {
             // ...удаляется вся строчка 'Столп'
             document.querySelector(activeTab + '.bearing').style.display = 'none';
+            // ... убираются стрелочки вокруг заголовка
+            document.querySelector(activeTab + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
             // получаем количество точек в не-человечности
             var pathModifier = document.querySelector(activeTab + '.line.path_value .inline').innerHTML;
             // заменяем десятики на Х
@@ -884,52 +886,56 @@ sleep(120).then(() => {
         }
         else {
             // получаем количество точек в человечности
-            var pathModifier = document.querySelector(activeTab + '.line.path_value .inline').innerHTML;
-            switch (pathModifier) {
-                // заменяем десятики на Х
-                case '10':
-                    document.querySelector(activeTab + '.line.path_value .inline').innerHTML = 'X';
-                // каждому значению человечности прописывается соответствующий модификатор столпа
-                case 'X':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( -2 )'; break;
-                case '9':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( -1 )'; break;
-                case '8':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( -1 )'; break;
-                case '7':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
-                case '6':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
-                case '5':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
-                case '4':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
-                case '3':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( +1 )'; break;
-                case '2':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( +1 )'; break;
-                case '1':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( +2 )'; break;
-                default:
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Теперь ты Зверь!';
-                    if (document.querySelector(activeTab + '.line.bearing .inline').innerHTML === null) {
-                        console.log('пропал блок со столпом')
-                    }
+            if (document.querySelector(activeTab + '.line.path_value .inline') != null) {
+                var pathModifier = document.querySelector(activeTab + '.line.path_value .inline').innerHTML;
+                switch (pathModifier) {
+                    // заменяем десятики на Х
+                    case '10':
+                        document.querySelector(activeTab + '.line.path_value .inline').innerHTML = 'X';
+                    // каждому значению человечности прописывается соответствующий модификатор столпа
+                    case 'X':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( -2 )'; break;
+                    case '9':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( -1 )'; break;
+                    case '8':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( -1 )'; break;
+                    case '7':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
+                    case '6':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
+                    case '5':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
+                    case '4':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность'; break;
+                    case '3':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( +1 )'; break;
+                    case '2':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( +1 )'; break;
+                    case '1':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Нормальность ( +2 )'; break;
+                    default:
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Теперь ты Зверь!';
+                        if (document.querySelector(activeTab + '.line.bearing .inline').innerHTML === null) {
+                            console.log('пропал блок со столпом')
+                        }
+                }
             }
+            else { }
         }
     }
     else {
         //nothing
     }
     // то же самое, но для ховера
-    if (document.querySelector(statblockCSSpathHover + '.path .inline') != null) {
-        const pathHover = document.querySelector(statblockCSSpathHover + '.path .inline');
-        console.log(pathHover + 'есть ли путь в ховере?')
+    if (document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown p') != null) {
+        var pathHover = document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown p');
+        // console.log(pathHover + 'есть ли путь в ховере?')
         if (pathHover === null) {
             document.querySelector(statblockCSSpathHover + '.line.bearing').style.display = 'none'
         }
-        else if (pathHover.innerHTML != ('ЧЕЛОВЕЧНОСТЬ')) {
+        else if (pathHover.innerHTML != (('ЧЕЛОВЕЧНОСТЬ') || ('Человечность'))) {
             document.querySelector(statblockCSSpathHover + '.bearing').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
             var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value .inline').innerHTML;
             if (pathModifierHover = 10) {
                 document.querySelector(statblockCSSpathHover + '.path_value .inline').innerHTML = 'X';
@@ -968,6 +974,7 @@ sleep(120).then(() => {
             }
         }
     }
+
 
 
     // Меняем всякие иксы на нормальные 10 для воли

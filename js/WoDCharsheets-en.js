@@ -788,18 +788,20 @@ sleep(120).then(() => {
 
 
     // bearing and it's value are displayed based on the path and its value
-    if (document.querySelector(activeTab + '.line.path .inline') != null) {
+    if (document.querySelector(activeTab + '.line.path .statblock-markdown > p') != null) {
         // find the path, is it the humanity or not?
-        const path = document.querySelector(activeTab + '.path .inline');
+        var path = document.querySelector(activeTab + '.line.path .statblock-markdown > p');
         // if the path is not presented...
         if (path === null) {
             // ...bearing line will be hidden
             document.querySelector(activeTab + '.bearing').style.display = 'none'
         }
         // if the path isn't the humanity...
-        else if (path.innerHTML != ('HUMANITY')) {
+        else if (path.innerHTML != (('HUMANITY') || ('Humanity'))) {
             // ...bearing line will be hidden
             document.querySelector(activeTab + '.bearing').style.display = 'none';
+            // ... arrow markers around the title will be removed
+            document.querySelector(activeTab + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
             // let's get the value of non-humanity path
             var pathModifier = document.querySelector(activeTab + '.line.path_value .inline').innerHTML;
             // replace 10 with X
@@ -809,52 +811,56 @@ sleep(120).then(() => {
         }
         else {
             // let's get the value of humanity path
-            var pathModifier = document.querySelector(activeTab + '.line.path_value .inline').innerHTML;
-            switch (pathModifier) {
-                // replace 10 with X
-                case '10':
-                    document.querySelector(activeTab + '.line.path_value .inline').innerHTML = 'X';
-                // and then correspinding bearing values will be assigned
-                case 'X':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( -2 )'; break;
-                case '9':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( -1 )'; break;
-                case '8':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( -1 )'; break;
-                case '7':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
-                case '6':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
-                case '5':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
-                case '4':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
-                case '3':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( +1 )'; break;
-                case '2':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( +1 )'; break;
-                case '1':
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( +2 )'; break;
-                default:
-                    document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'You are the Beast!';
-                    if (document.querySelector(activeTab + '.line.bearing .inline').innerHTML === null) {
-                        console.log('bearing line is missing')
-                    }
+            if (document.querySelector(activeTab + '.line.path_value .inline') != null) {
+                var pathModifier = document.querySelector(activeTab + '.line.path_value .inline').innerHTML;
+                switch (pathModifier) {
+                    // replace 10 with X
+                    case '10':
+                        document.querySelector(activeTab + '.line.path_value .inline').innerHTML = 'X';
+                    // and then correspinding bearing values will be assigned
+                    case 'X':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( -2 )'; break;
+                    case '9':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( -1 )'; break;
+                    case '8':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( -1 )'; break;
+                    case '7':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
+                    case '6':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
+                    case '5':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
+                    case '4':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
+                    case '3':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( +1 )'; break;
+                    case '2':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( +1 )'; break;
+                    case '1':
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( +2 )'; break;
+                    default:
+                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'You are the Beast!';
+                        if (document.querySelector(activeTab + '.line.bearing .inline').innerHTML === null) {
+                            console.log('bearing line is missing')
+                        }
+                }
             }
+            else { }
         }
     }
     else {
         //nothing
     }
     // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.path .inline') != null) {
-        const pathHover = document.querySelector(statblockCSSpathHover + '.path .inline');
+    if (document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown p') != null) {
+        var pathHover = document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown p');
         console.log(pathHover + 'is there the path in hover?')
         if (pathHover === null) {
             document.querySelector(statblockCSSpathHover + '.line.bearing').style.display = 'none'
         }
-        else if (pathHover.innerHTML != ('HUMANITY')) {
+        else if (pathHover.innerHTML != (('HUMANITY') || ('Humanity'))) {
             document.querySelector(statblockCSSpathHover + '.bearing').style.display = 'none';
+            document.querySelector(statblockCSSpathHover + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
             var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value .inline').innerHTML;
             if (pathModifierHover = 10) {
                 document.querySelector(statblockCSSpathHover + '.path_value .inline').innerHTML = 'X';

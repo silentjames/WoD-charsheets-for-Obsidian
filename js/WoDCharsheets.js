@@ -510,6 +510,378 @@ sleep(120).then(() => {
     }
 
 
+    // используется ли вампирский статблок темных веков?
+    if (document.querySelector(activeTab + '.line.clan .statblock-markdown') != null && (statblockCSSclass.endsWith('.vtm-v20-vampire-dark-ages') || statblockCSSclass.endsWith('.vtm-v20-vampire-dark-ages-en'))) {
+        // определяется клан, и каждому клану подставляется своя картинка на бэкграунд, и изъян
+        var clanName = document.querySelector(activeTab + '.line.clan .statblock-markdown > p').innerHTML;
+        console.log(clanName + ' - название клана')
+        // определяется зона, которой будет назначен бэкграунд
+        var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
+        switch (clanName) {
+            case 'Ассамиты':
+            case 'Assamite':
+                // каждому клану назначается соответствующий класс, для которого в css уже вшито изображение
+                var collapsedBackgroundClan = 'Assamite';
+                // изъян - соответствующий клану из списка выше
+                var clanWeakness = weaknessAssamiteDarkAges;
+                break;
+            case 'Бруха':
+            case 'Brujah':
+                var collapsedBackgroundClan = 'Brujah';
+                var clanWeakness = weaknessBrujahDarkAges;
+                break;
+            case 'Вентру':
+            case 'Ventrue':
+                var collapsedBackgroundClan = 'Ventrue';
+                var clanWeakness = weaknessVentrueDarkAges;
+                break;
+            case 'Каппадокийцы':
+            case 'Cappadocians':
+                var collapsedBackgroundClan = 'Cappadocians';
+                var clanWeakness = weaknessCappadociansDarkAges;
+                break;
+            case ('Последователи Сета'):
+            case ('Followers of Set'):
+                var collapsedBackgroundClan = 'Followers-of-Set';
+                var clanWeakness = weaknessFollowersOfSetDarkAges;
+                break;
+            case 'Гангрел':
+            case 'Gangrel':
+                var collapsedBackgroundClan = 'Gangrel';
+                var clanWeakness = weaknessGangrelDarkAges;
+                break;
+            case 'Ласомбра':
+            case 'Lasombra':
+                var collapsedBackgroundClan = 'Lasombra';
+                var clanWeakness = weaknessLasombraDarkAges;
+                break;
+            case 'Малкавиане':
+            case 'Малкавиан':
+            case 'Malkavian':
+                var collapsedBackgroundClan = 'Malkavian';
+                var clanWeakness = weaknessMalkavianDarkAges;
+                break;
+            case 'Носферату':
+            case 'Nosferatu':
+                var collapsedBackgroundClan = 'Nosferatu';
+                var clanWeakness = weaknessNosferatuDarkAges;
+                break;
+            case ('Равнос'):
+            case ('Ravnos'):
+                var collapsedBackgroundClan = 'Ravnos';
+                var clanWeakness = weaknessRavnosDarkAges;
+                break;
+            case 'Тореадор':
+            case 'Toreador':
+                var collapsedBackgroundClan = 'Toreador';
+                var clanWeakness = weaknessToreadorDarkAges;
+                break;
+            case 'Тремер':
+            case 'Tremere':
+                var collapsedBackgroundClan = 'Tremere';
+                var clanWeakness = weaknessTremereDarkAges;
+                break;
+            case 'Цимисхи':
+            case 'Tzimisce':
+                var collapsedBackgroundClan = 'Tzimisce';
+                var clanWeakness = weaknessTzimisceDarkAges;
+                break;
+            case 'Ангра-Майнью':
+            case 'Ahrimanes':
+                var collapsedBackgroundClan = 'Ahrimanes';
+                var clanWeakness = weaknessAhrimanesDarkAges;
+                break;
+            case 'Анда':
+            case 'Anda':
+                var collapsedBackgroundClan = 'Anda';
+                var clanWeakness = weaknessAndaDarkAges;
+                break;
+            case 'Баали':
+            case 'Baali':
+                var collapsedBackgroundClan = 'Baali';
+                var clanWeakness = weaknessBaaliDarkAges;
+                break;
+            case 'Бонсам':
+            case 'Bonsam':
+                var collapsedBackgroundClan = 'Bonsam';
+                var clanWeakness = weaknessBonsamDarkAges;
+                break;
+            case 'Горгульи':
+            case 'Gargoyles':
+                var collapsedBackgroundClan = 'Gargoyles';
+                var clanWeakness = weaknessGargoylesDarkAges;
+                break;
+            case 'Данавы':
+            case 'Данава':
+            case 'Danava':
+                var collapsedBackgroundClan = 'Danava';
+                var clanWeakness = weaknessDanavaDarkAges;
+                break;
+            case 'Дети Осириса':
+            case 'Children of Osiris':
+                var collapsedBackgroundClan = 'Children-of-Osiris';
+                var clanWeakness = weaknessChildrenOfOsirisDarkAges;
+                break;
+            case 'Джованни':
+            case 'Джовани':
+            case 'Giovanni':
+                var collapsedBackgroundClan = 'Giovanni';
+                var clanWeakness = weaknessGiovanniDarkAges;
+                break;
+            case 'Импундулу':
+            case 'Impundulu':
+                var collapsedBackgroundClan = 'Impundulu';
+                var clanWeakness = weaknessImpunduluDarkAges;
+                break;
+            case 'Истинные Бруха':
+            case 'True Brujah':
+                var collapsedBackgroundClan = 'TrueBrujah';
+                var clanWeakness = weaknessTrueBrujahDarkAges;
+                break;
+            case 'Киасид':
+            case 'Киасиды':
+            case 'Kiasyd':
+                var collapsedBackgroundClan = 'Kiasyd';
+                var clanWeakness = weaknessKiasydDarkAges;
+                break;
+            case 'Ламии':
+            case 'Ламия':
+            case 'Lamia':
+                var collapsedBackgroundClan = 'Lamia';
+                var clanWeakness = weaknessLamiaDarkAges;
+                break;
+            case 'Лианнан':
+            case 'Lhiannan':
+                var collapsedBackgroundClan = 'Lhiannan';
+                var clanWeakness = weaknessLhiannanDarkAges;
+                break;
+            case 'Нагараджа':
+            case 'Nagaraja':
+                var collapsedBackgroundClan = 'Nagaraja';
+                var clanWeakness = weaknessNagarajaDarkAges;
+                break;
+            case 'Никтуку':
+            case 'Nictuku':
+                var collapsedBackgroundClan = 'Nictuku';
+                var clanWeakness = weaknessNictukuDarkAges;
+                break;
+            case 'Раманга':
+            case 'Ramanga':
+                var collapsedBackgroundClan = 'Ramanga';
+                var clanWeakness = weaknessRamangaDarkAges;
+                break;
+            case 'Салюбри':
+            case 'Salubri':
+                var collapsedBackgroundClan = 'Salubri';
+                break;
+            case 'Салюбри (целители)':
+            case 'Salubri (Healer Caste)':
+                var collapsedBackgroundClan = 'SalubriHealers';
+                var clanWeakness = weaknessSalubriHealersDarkAges;
+                break;
+            case 'Салюбри (воины)':
+            case 'Salubri (Warriors Caste)':
+                var collapsedBackgroundClan = 'SalubriWarriors';
+                var clanWeakness = weaknessSalubriWarriorsDarkAges;
+                break;
+            case 'Салюбри (наблюдатели)':
+            case 'Salubri (Watchers Caste)':
+                var collapsedBackgroundClan = 'SalubriWatchers';
+                var clanWeakness = weaknessSalubriWatchersDarkAges;
+                break;
+        };
+        collapsedColumn.classList.add(collapsedBackgroundClan);
+        document.querySelector('.weakness .inline').innerHTML = clanWeakness;
+    }
+    else {
+        // nothing
+    }
+
+    // для ховера все то же самое
+    if (document.querySelector(statblockCSSpathHover + '.line.clan .statblock-markdown') != null && (statblockCSSclassHover.endsWith('.vtm-v20-vampire-dark-ages') || statblockCSSclassHover.endsWith('.vtm-v20-vampire-dark-ages-en'))) {
+        var clanNameHover = document.querySelector(statblockCSSpathHover + ' .line.clan .statblock-markdown > p').innerHTML;
+        var collapsedColumnHover = document.querySelector(statblockCSSpathHover + ' .collapse-container');
+        switch (clanNameHover) {
+            case 'Ассамиты':
+            case 'Assamite':
+                // каждому клану назначается соответствующий класс, для которого в css уже вшито изображение
+                var collapsedBackgroundClanHover = 'Assamite';
+                // изъян - соответствующий клану из списка выше
+                var clanWeaknessHover = weaknessAssamiteDarkAges;
+                break;
+            case 'Бруха':
+            case 'Brujah':
+                var collapsedBackgroundClanHover = 'Brujah';
+                var clanWeaknessHover = weaknessBrujahDarkAges;
+                break;
+            case 'Вентру':
+            case 'Ventrue':
+                var collapsedBackgroundClanHover = 'Ventrue';
+                var clanWeaknessHover = weaknessVentrueDarkAges;
+                break;
+            case 'Каппадокийцы':
+            case 'Cappadocians':
+                var collapsedBackgroundClanHover = 'Cappadocians';
+                var clanWeaknessHover = weaknessCappadociansDarkAges;
+                break;
+            case 'Последователи Сета':
+            case 'Followers of Set':
+                var collapsedBackgroundClanHover = 'Followers-of-Set';
+                var clanWeaknessHover = weaknessFollowersOfSetDarkAges;
+                break;
+            case 'Гангрел':
+            case 'Gangrel':
+                var collapsedBackgroundClanHover = 'Gangrel';
+                var clanWeaknessHover = weaknessGangrelDarkAges;
+                break;
+            case 'Ласомбра':
+            case 'Lasombra':
+                var collapsedBackgroundClanHover = 'Lasombra';
+                var clanWeaknessHover = weaknessLasombraDarkAges;
+                break;
+            case 'Малкавиане':
+            case 'Малкавиан':
+            case 'Malkavian':
+                var collapsedBackgroundClanHover = 'Malkavian';
+                var clanWeaknessHover = weaknessMalkavianDarkAges;
+                break;
+            case 'Носферату':
+            case 'Nosferatu':
+                var collapsedBackgroundClanHover = 'Nosferatu';
+                var clanWeaknessHover = weaknessNosferatuDarkAges;
+                break;
+            case 'Равнос':
+            case 'Ravnos':
+                var collapsedBackgroundClanHover = 'Ravnos';
+                var clanWeaknessHover = weaknessRavnosDarkAges;
+                break;
+            case 'Тореадор':
+            case 'Toreador':
+                var collapsedBackgroundClanHover = 'Toreador';
+                var clanWeaknessHover = weaknessToreadorDarkAges;
+                break;
+            case 'Тремер':
+            case 'Tremere':
+                var collapsedBackgroundClanHover = 'Tremere';
+                var clanWeaknessHover = weaknessTremereDarkAges;
+                break;
+            case 'Цимисхи':
+            case 'Tzimisce':
+                var collapsedBackgroundClanHover = 'Tzimisce';
+                var clanWeaknessHover = weaknessTzimisceDarkAges;
+                break;
+            case 'Ангра-Майнью':
+            case 'Ahrimanes':
+                var collapsedBackgroundClanHover = 'Ahrimanes';
+                var clanWeaknessHover = weaknessAhrimanesDarkAges;
+                break;
+            case 'Анда':
+            case 'Anda':
+                var collapsedBackgroundClanHover = 'Anda';
+                var clanWeaknessHover = weaknessAndaDarkAges;
+                break;
+            case 'Баали':
+            case 'Baali':
+                var collapsedBackgroundClanHover = 'Baali';
+                var clanWeaknessHover = weaknessBaaliDarkAges;
+                break;
+            case 'Бонсам':
+            case 'Bonsam':
+                var collapsedBackgroundClanHover = 'Bonsam';
+                var clanWeaknessHover = weaknessBonsamDarkAges;
+                break;
+            case 'Горгульи':
+            case 'Gargoyles':
+                var collapsedBackgroundClanHover = 'Gargoyles';
+                var clanWeaknessHover = weaknessGargoylesDarkAges;
+                break;
+            case 'Данавы':
+            case 'Данава':
+            case 'Danava':
+                var collapsedBackgroundClanHover = 'Danava';
+                var clanWeaknessHover = weaknessDanavaDarkAges;
+                break;
+            case 'Дети Осириса':
+            case 'Children of Osiris':
+                var collapsedBackgroundClanHover = 'Children-of-Osiris';
+                var clanWeaknessHover = weaknessChildrenOfOsirisDarkAges;
+                break;
+            case 'Джованни':
+            case 'Джовани':
+            case 'Giovanni':
+                var collapsedBackgroundClanHover = 'Giovanni';
+                var clanWeaknessHover = weaknessGiovanniDarkAges;
+                break;
+            case 'Импундулу':
+            case 'Impundulu':
+                var collapsedBackgroundClanHover = 'Impundulu';
+                var clanWeaknessHover = weaknessImpunduluDarkAges;
+                break;
+            case 'Истинные Бруха':
+            case 'True Brujah':
+                var collapsedBackgroundClanHover = 'TrueBrujah';
+                var clanWeaknessHover = weaknessTrueBrujahDarkAges;
+                break;
+            case 'Киасид':
+            case 'Киасиды':
+            case 'Kiasyd':
+                var collapsedBackgroundClanHover = 'Kiasyd';
+                var clanWeaknessHover = weaknessKiasydDarkAges;
+                break;
+            case 'Ламии':
+            case 'Ламия':
+            case 'Lamia':
+                var collapsedBackgroundClanHover = 'Lamia';
+                var clanWeaknessHover = weaknessLamiaDarkAges;
+                break;
+            case 'Лианнан':
+            case 'Lhiannan':
+                var collapsedBackgroundClanHover = 'Lhiannan';
+                var clanWeaknessHover = weaknessLhiannanDarkAges;
+                break;
+            case 'Нагараджа':
+            case 'Nagaraja':
+                var collapsedBackgroundClanHover = 'Nagaraja';
+                var clanWeaknessHover = weaknessNagarajaDarkAges;
+                break;
+            case 'Никтуку':
+            case 'Nictuku':
+                var collapsedBackgroundClanHover = 'Nictuku';
+                var clanWeaknessHover = weaknessNictukuDarkAges;
+                break;
+            case 'Раманга':
+            case 'Ramanga':
+                var collapsedBackgroundClanHover = 'Ramanga';
+                var clanWeaknessHover = weaknessRamangaDarkAges;
+                break;
+            case 'Салюбри':
+            case 'Salubri':
+                var collapsedBackgroundClanHover = 'Salubri';
+                break;
+            case 'Салюбри (целители)':
+            case 'Salubri (Healer Caste)':
+                var collapsedBackgroundClanHover = 'SalubriHealers';
+                var clanWeaknessHover = weaknessSalubriHealersDarkAges;
+                break;
+            case 'Салюбри (воины)':
+            case 'Salubri (Warriors Caste)':
+                var collapsedBackgroundClanHover = 'SalubriWarriors';
+                var clanWeaknessHover = weaknessSalubriWarriorsDarkAges;
+                break;
+            case 'Салюбри (наблюдатели)':
+            case 'Salubri (Watchers Caste)':
+                var collapsedBackgroundClanHover = 'SalubriWatchers';
+                var clanWeaknessHover = weaknessSalubriWatchersDarkAges;
+                break;
+        };
+        collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
+        document.querySelector('.popover.hover-popover .weakness .inline').innerHTML = clanWeaknessHover;
+    }
+    else {
+        //nothing
+    }
+
+
     // настройка, отвечающая за отображение изъяна
     if (document.querySelector(activeTab + '.line.show_weakness .inline') != null) {
         const showWeakness = document.querySelector(activeTab + '.line.show_weakness .inline').innerHTML;

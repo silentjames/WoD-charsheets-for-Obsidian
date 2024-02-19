@@ -44,6 +44,43 @@ sleep(120).then(() => {
     const weaknessTrueBrujah = '';
 
 
+    // the list of weakness for Dark Ages
+    // Clans
+    const weaknessAssamiteDarkAges = '';
+    const weaknessBrujahDarkAges = '';
+    const weaknessCappadociansDarkAges = '';
+    const weaknessFollowersOfSetDarkAges = '';
+    const weaknessGangrelDarkAges = '';
+    const weaknessLasombraDarkAges = '';
+    const weaknessMalkavianDarkAges = '';
+    const weaknessNosferatuDarkAges = '';
+    const weaknessRavnosDarkAges = '';
+    const weaknessToreadorDarkAges = '';
+    const weaknessTremereDarkAges = '';
+    const weaknessTzimisceDarkAges = '';
+    const weaknessVentrueDarkAges = '';
+    // Bloodlines
+    const weaknessAhrimanesDarkAges = '';
+    const weaknessAndaDarkAges = '';
+    const weaknessBaaliDarkAges = '';
+    const weaknessBonsamDarkAges = '';
+    const weaknessChildrenOfOsirisDarkAges = '';
+    const weaknessDanavaDarkAges = '';
+    const weaknessGargoylesDarkAges = '';
+    const weaknessGiovanniDarkAges = '';
+    const weaknessImpunduluDarkAges = '';
+    const weaknessKiasydDarkAges = '';
+    const weaknessLamiaDarkAges = '';
+    const weaknessLhiannanDarkAges = '';
+    const weaknessNagarajaDarkAges = '';
+    const weaknessNictukuDarkAges = '';
+    const weaknessRamangaDarkAges = '';
+    const weaknessSalubriHealersDarkAges = '';
+    const weaknessSalubriWarriorsDarkAges = '';
+    const weaknessSalubriWatchersDarkAges = '';
+    const weaknessTrueBrujahDarkAges = '';
+
+
     // найти активную открытую вкладку для вампирского статблока
     const statblockClassList = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock').classList
     var allClasses = statblockClassList.value.toString()
@@ -884,7 +921,7 @@ sleep(120).then(() => {
 
     // настройка, отвечающая за отображение изъяна
     if (document.querySelector(activeTab + '.line.show_weakness .inline') != null) {
-        const showWeakness = document.querySelector(activeTab + '.line.show_weakness .inline').innerHTML;
+        var showWeakness = document.querySelector(activeTab + '.line.show_weakness .inline').innerHTML;
         switch (showWeakness) {
             case ('no'):
                 // console.log('показывать изъян? ' + showWeakness)
@@ -901,7 +938,7 @@ sleep(120).then(() => {
     }
     // и она же для ховера
     if (document.querySelector(statblockCSSpathHover + '.line.show_weakness .inline') != null) {
-        const showWeaknessHover = document.querySelector(statblockCSSpathHover + '.line.show_weakness .inline').innerHTML;
+        var showWeaknessHover = document.querySelector(statblockCSSpathHover + '.line.show_weakness .inline').innerHTML;
         switch (showWeaknessHover) {
             case ('no'):
                 // console.log('показывать изъян в ховере? ' + showWeaknessHover)
@@ -928,6 +965,7 @@ sleep(120).then(() => {
         // убираем пробелы, если поколение 8-9
         var generation = generation.replace(/\s/g, '');
         console.log('поколение - ' + generation);
+        // console.log(document.querySelector(activeTab + '.line.blood_per_turn .inline'))
         switch (generation) {
             case '13':
                 document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '1'; break;
@@ -944,11 +982,11 @@ sleep(120).then(() => {
         }
     }
     else {
-        //nothing
+        // nothing
     }
     // то же самое, но для ховера
     if (document.querySelector(statblockCSSpathHover + '.line.generation .statblock-markdown > p') != null) {
-        const generationFullHover = document.querySelector('.popover.hover-popover .line.generation .statblock-markdown > p').textContent;
+        var generationFullHover = document.querySelector('.popover.hover-popover .line.generation .statblock-markdown > p').textContent;
         var generationHover = generationFullHover.slice(0, 2);
         var generationHover = generationHover.replace(/\s/g, '');
         console.log('поколение в ховере - ' + generationHover);
@@ -1016,6 +1054,7 @@ sleep(120).then(() => {
             var valueAbility = document.querySelector(activeTab + allTraits[x] + ' .inline');
             // код для обычных точек
             if (valueAbility !== null) {
+                // console.log(nameAbility + ' в ховере - длина имени ' + nameAbility.length + ' и значение ' + valueAbility);
                 // если привлекательность 0 и в имени клана есть "Носферату" или "Самеди", то строка привлекательности зачеркивается
                 if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (typeof clanName !== 'undefined' && (clanName.includes('Носферату') || clanName.includes('Самеди')))
                     && (allTraits[x].includes('.appearance'))) {
@@ -1097,7 +1136,7 @@ sleep(120).then(() => {
             var valueAbility = document.querySelector(statblockCSSpathHover + allTraits[x] + ' .inline');
             // код для обычных точек
             if (valueAbility !== null) {
-                // console.log(nameAbility + ' - это ' + nameAbility.length + ' и ' + valueAbility);
+                // console.log(nameAbility + ' в ховере - длина имени ' + nameAbility.length + ' и значение ' + valueAbility);
                 // если привлекательность 0 и в имени клана есть "Носферату" или "Самеди", то строка привлекательности зачеркивается
                 if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (typeof clanNameHover !== 'undefined' && (clanNameHover.includes('Носферату') || clanNameHover.includes('Самеди')))
                     && (allTraits[x].includes('.appearance'))) {
@@ -1120,7 +1159,7 @@ sleep(120).then(() => {
                     document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.fontFamily = 'Marta';
                     document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
                 }
-                // меняем десятку на X
+                // меняем десятки на X
                 else if (valueAbility.innerHTML == 10) {
                     document.querySelector(statblockCSSpathHover + allTraits[x] + ' .inline').innerHTML = 'X'
                 }
@@ -1348,7 +1387,6 @@ sleep(120).then(() => {
     }
 
 
-
     // Меняем всякие иксы на нормальные 10 для воли
 
     // задаем названия классов, по которым будем искать волю и запас воли
@@ -1410,13 +1448,13 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('проверка на меньше девяти')
+            // console.log('проверка на меньше девяти')
         } else if (bloodCurrent == 10) {
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('проверка на равенство десяти или иксу')
+            // console.log('проверка на равенство десяти или иксу')
         } else if (bloodCurrent < 20) {
             var bloodCurrentTwo = bloodCurrent - 10;
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
@@ -1424,7 +1462,7 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = bloodCurrentTwo;
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('проверка на меньше двадцати')
+            // console.log('проверка на меньше двадцати')
         } else if (bloodCurrent == 20) {
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
@@ -1440,7 +1478,7 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = bloodCurrentThree;
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('проверка на меньше тридцати')
+            // console.log('проверка на меньше тридцати')
         } else if (bloodCurrent == 30) {
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
@@ -1448,7 +1486,7 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = 'X';;
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('проверка на равенство тридцати')
+            // console.log('проверка на равенство тридцати')
         } else if (bloodCurrent < 40) {
             var bloodCurrentFour = bloodCurrent - 30;
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
@@ -1457,7 +1495,7 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.line.blood_current4 .inline').innerHTML = bloodCurrentFour;
-            console.log('проверка на меньше сорока')
+            // console.log('проверка на меньше сорока')
         } else if (bloodCurrent == '40') {
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
@@ -1466,7 +1504,7 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(activeTab + '.line.blood_current4 .inline').innerHTML = 'X';
-            console.log('проверка на равенство сорока')
+            // console.log('проверка на равенство сорока')
         } else if (bloodCurrent >= 41) {
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current2)').innerHTML = '';
@@ -1490,13 +1528,13 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('проверка на меньше девяти в ховере')
+            // console.log('проверка на меньше девяти в ховере')
         } else if (bloodCurrentHover == 10) {
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('проверка на равенство десяти или иксу в ховере')
+            // console.log('проверка на равенство десяти или иксу в ховере')
         } else if (bloodCurrentHover < 20) {
             var bloodCurrentTwoHover = bloodCurrentHover - 10;
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
@@ -1504,14 +1542,14 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = bloodCurrentTwoHover;
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('проверка на меньше двадцати в ховере')
+            // console.log('проверка на меньше двадцати в ховере')
         } else if (bloodCurrentHover == 20) {
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
             document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('проверка на равенство двадцати в ховере')
+            // console.log('проверка на равенство двадцати в ховере')
         } else if (bloodCurrentHover < 30) {
             var bloodCurrentThreeHover = bloodCurrentHover - 20;
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
@@ -1520,7 +1558,7 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = bloodCurrentThreeHover;
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('проверка на меньше тридцати в ховере')
+            // console.log('проверка на меньше тридцати в ховере')
         } else if (bloodCurrentHover == 30) {
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
@@ -1528,7 +1566,7 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = 'X';;
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('проверка на равенство тридцати в ховере')
+            // console.log('проверка на равенство тридцати в ховере')
         } else if (bloodCurrentHover < 40) {
             var bloodCurrentFourHover = bloodCurrentHover - 30;
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
@@ -1537,7 +1575,7 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.line.blood_current4 .inline').innerHTML = bloodCurrentFourHover;
-            console.log('проверка на меньше сорока в ховере')
+            // console.log('проверка на меньше сорока в ховере')
         } else if (bloodCurrentHover == '40') {
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
@@ -1546,14 +1584,14 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(statblockCSSpathHover + '.line.blood_current4 .inline').innerHTML = 'X';
-            console.log('проверка на равенство сорока в ховере')
+            // console.log('проверка на равенство сорока в ховере')
         } else if (bloodCurrentHover >= 41) {
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current2)').innerHTML = '';
             document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current3)').innerHTML = '';
             document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current4)').innerHTML = '';
             document.querySelector(statblockCSSpathHover + '.line.blood_per_turn').innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrentHover + '.  Time to think about your Humanity!';
-            console.log('проверка на больше сорока в ховере')
+            // console.log('проверка на больше сорока в ховере')
         } else {
             // do nothing
             console.log('что-то с кровью в ховере пошло не так')
@@ -1675,7 +1713,6 @@ sleep(120).then(() => {
         // если вообще есть соответствующий блок...
         if (document.querySelector(activeTab + '.' + werewolfOptions[z] + '-block .line.' + werewolfOptions[z] + '_current') != null) {
             // console.log('найден блок для запаса ' + werewolfOptions[z].toUpperCase());
-            // ищем 
             optionValue = document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current .inline')
             if (optionValue != null) {
                 if (optionValue.innerHTML == 10) {
@@ -1728,7 +1765,7 @@ sleep(120).then(() => {
             }
         }
         else if (document.querySelector(statblockCSSpathHover) == null) {
-            //nothing
+            // nothing
         }
         else {
             // console.log('с запасом ' + werewolfOptions[z].toUpperCase() + ' в ховере что-то пошло не так')

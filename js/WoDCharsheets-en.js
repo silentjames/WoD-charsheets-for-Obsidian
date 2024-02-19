@@ -44,6 +44,43 @@ sleep(120).then(() => {
     const weaknessTrueBrujah = '';
 
 
+    // the list of weakness for Dark Ages
+    // Clans
+    const weaknessAssamiteDarkAges = '';
+    const weaknessBrujahDarkAges = '';
+    const weaknessCappadociansDarkAges = '';
+    const weaknessFollowersOfSetDarkAges = '';
+    const weaknessGangrelDarkAges = '';
+    const weaknessLasombraDarkAges = '';
+    const weaknessMalkavianDarkAges = '';
+    const weaknessNosferatuDarkAges = '';
+    const weaknessRavnosDarkAges = '';
+    const weaknessToreadorDarkAges = '';
+    const weaknessTremereDarkAges = '';
+    const weaknessTzimisceDarkAges = '';
+    const weaknessVentrueDarkAges = '';
+    // Bloodlines
+    const weaknessAhrimanesDarkAges = '';
+    const weaknessAndaDarkAges = '';
+    const weaknessBaaliDarkAges = '';
+    const weaknessBonsamDarkAges = '';
+    const weaknessChildrenOfOsirisDarkAges = '';
+    const weaknessDanavaDarkAges = '';
+    const weaknessGargoylesDarkAges = '';
+    const weaknessGiovanniDarkAges = '';
+    const weaknessImpunduluDarkAges = '';
+    const weaknessKiasydDarkAges = '';
+    const weaknessLamiaDarkAges = '';
+    const weaknessLhiannanDarkAges = '';
+    const weaknessNagarajaDarkAges = '';
+    const weaknessNictukuDarkAges = '';
+    const weaknessRamangaDarkAges = '';
+    const weaknessSalubriHealersDarkAges = '';
+    const weaknessSalubriWarriorsDarkAges = '';
+    const weaknessSalubriWatchersDarkAges = '';
+    const weaknessTrueBrujahDarkAges = '';
+
+
     // find the statblock's layout name and active tab that has it
     const statblockClassList = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock').classList
     var allClasses = statblockClassList.value.toString()
@@ -738,7 +775,7 @@ sleep(120).then(() => {
 
     // setting to display wampire's weakness
     if (document.querySelector(activeTab + '.line.show_weakness .inline') != null) {
-        const showWeakness = document.querySelector(activeTab + '.line.show_weakness .inline').innerHTML;
+        var showWeakness = document.querySelector(activeTab + '.line.show_weakness .inline').innerHTML;
         switch (showWeakness) {
             case ('no'):
                 // console.log('do you wanna see the weakness? ' + showWeakness)
@@ -755,7 +792,7 @@ sleep(120).then(() => {
     }
     // same code, but for a statblock in hover
     if (document.querySelector(statblockCSSpathHover + '.line.show_weakness .inline') != null) {
-        const showWeaknessHover = document.querySelector(statblockCSSpathHover + '.line.show_weakness .inline').innerHTML;
+        var showWeaknessHover = document.querySelector(statblockCSSpathHover + '.line.show_weakness .inline').innerHTML;
         switch (showWeaknessHover) {
             case ('no'):
                 // console.log('do you wanna see the weakness in hover? ' + showWeaknessHover)
@@ -798,11 +835,11 @@ sleep(120).then(() => {
         }
     }
     else {
-        //nothing
+        // nothing
     }
     // same code, but for a statblock in hover
     if (document.querySelector(statblockCSSpathHover + '.line.generation .statblock-markdown > p') != null) {
-        const generationFullHover = document.querySelector('.popover.hover-popover .line.generation .statblock-markdown > p').textContent;
+        var generationFullHover = document.querySelector('.popover.hover-popover .line.generation .statblock-markdown > p').textContent;
         var generationHover = generationFullHover.slice(0, 2);
         var generationHover = generationHover.replace(/\s/g, '');
         console.log('the generation in hover - ' + generationHover);
@@ -870,6 +907,7 @@ sleep(120).then(() => {
             var valueAbility = document.querySelector(activeTab + allTraits[x] + ' .inline');
             // the code for usual dots
             if (valueAbility !== null) {
+                // console.log(nameAbility + ' has name length ' + nameAbility.length + ' and value  ' + valueAbility);
                 // special case - if the Appearance is 0 and the clan has 'Nosferatu' or 'Samedi', the appearance line will be strikethrough
                 if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (typeof clanName !== 'undefined' && (clanName.includes('Носферату') || clanName.includes('Самеди')))
                     && (allTraits[x].includes('.appearance'))) {
@@ -951,6 +989,7 @@ sleep(120).then(() => {
             var valueAbility = document.querySelector(statblockCSSpathHover + allTraits[x] + ' .inline');
             // the code for usual dots
             if (valueAbility !== null) {
+                // console.log(nameAbility + ' in hover  has name length ' + nameAbility.length + ' and value  ' + valueAbility);
                 // special case - if the Appearance is 0 and the clan has 'Nosferatu' or 'Samedi', the appearance line will be strikethrough
                 if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (typeof clanNameHover !== 'undefined' && (clanNameHover.includes('Nosferatu') || clanNameHover.includes('Samedi')))
                     && (allTraits[x].includes('.appearance'))) {
@@ -1258,13 +1297,13 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('small check when bloodpool is less than 9')
+            // console.log('small check when bloodpool is less than 9')
         } else if (bloodCurrent == 10) {
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('small check when bloodpool is equal to 10 or X')
+            // console.log('small check when bloodpool is equal to 10 or X')
         } else if (bloodCurrent < 20) {
             var bloodCurrentTwo = bloodCurrent - 10;
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
@@ -1272,14 +1311,14 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = bloodCurrentTwo;
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('small check when bloodpool is less than 20')
+            // console.log('small check when bloodpool is less than 20')
         } else if (bloodCurrent == 20) {
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
             document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('small check when bloodpool is equal to 20')
+            // console.log('small check when bloodpool is equal to 20')
         } else if (bloodCurrent < 30) {
             var bloodCurrentThree = bloodCurrent - 20;
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
@@ -1288,7 +1327,7 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = bloodCurrentThree;
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('small check when bloodpool is less than 30')
+            // console.log('small check when bloodpool is less than 30')
         } else if (bloodCurrent == 30) {
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
@@ -1296,7 +1335,7 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = 'X';;
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('small check when bloodpool is equal to 30')
+            // console.log('small check when bloodpool is equal to 30')
         } else if (bloodCurrent < 40) {
             var bloodCurrentFour = bloodCurrent - 30;
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
@@ -1305,7 +1344,7 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.line.blood_current4 .inline').innerHTML = bloodCurrentFour;
-            console.log('small check when bloodpool is less than 40')
+            // console.log('small check when bloodpool is less than 40')
         } else if (bloodCurrent == '40') {
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
@@ -1314,14 +1353,14 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(activeTab + '.line.blood_current4 .inline').innerHTML = 'X';
-            console.log('small check when bloodpool is equal to 40')
+            // console.log('small check when bloodpool is equal to 40')
         } else if (bloodCurrent >= 41) {
             document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current2)').innerHTML = '';
             document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current3)').innerHTML = '';
             document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current4)').innerHTML = '';
             document.querySelector(activeTab + '.line.blood_per_turn').innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrent + '.  Time to think about your Humanity!';
-            console.log('small check when bloodpool is greather than 40')
+            // console.log('small check when bloodpool is greather than 40')
         } else {
             // do nothing
             console.log('something went wrong with bloodpool')
@@ -1338,13 +1377,13 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('small check when bloodpool is less than 9 in hover')
+            // console.log('small check when bloodpool is less than 9 in hover')
         } else if (bloodCurrentHover == 10) {
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('small check when bloodpool is equal to 10 or X in hover')
+            // console.log('small check when bloodpool is equal to 10 or X in hover')
         } else if (bloodCurrentHover < 20) {
             var bloodCurrentTwoHover = bloodCurrentHover - 10;
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
@@ -1352,14 +1391,14 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = bloodCurrentTwoHover;
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('small check when bloodpool is less than 20 in hover')
+            // console.log('small check when bloodpool is less than 20 in hover')
         } else if (bloodCurrentHover == 20) {
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
             document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('small check when bloodpool is equal to 20 in hover')
+            // console.log('small check when bloodpool is equal to 20 in hover')
         } else if (bloodCurrentHover < 30) {
             var bloodCurrentThreeHover = bloodCurrentHover - 20;
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
@@ -1368,7 +1407,7 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = bloodCurrentThreeHover;
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('small check when bloodpool is less than 30 in hover')
+            // console.log('small check when bloodpool is less than 30 in hover')
         } else if (bloodCurrentHover == 30) {
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
@@ -1376,7 +1415,7 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = 'X';;
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            console.log('small check when bloodpool is equal to 30 in hover')
+            // console.log('small check when bloodpool is equal to 30 in hover')
         } else if (bloodCurrentHover < 40) {
             var bloodCurrentFourHover = bloodCurrentHover - 30;
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
@@ -1385,7 +1424,7 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.line.blood_current4 .inline').innerHTML = bloodCurrentFourHover;
-            console.log('small check when bloodpool is less than 40 in hover')
+            // console.log('small check when bloodpool is less than 40 in hover')
         } else if (bloodCurrentHover == '40') {
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
@@ -1394,14 +1433,14 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
             document.querySelector(statblockCSSpathHover + '.line.blood_current4 .inline').innerHTML = 'X';
-            console.log('small check when bloodpool is equal to 40 in hover')
+            // console.log('small check when bloodpool is equal to 40 in hover')
         } else if (bloodCurrentHover >= 41) {
             document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current2)').innerHTML = '';
             document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current3)').innerHTML = '';
             document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current4)').innerHTML = '';
             document.querySelector(statblockCSSpathHover + '.line.blood_per_turn').innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrentHover + '.  Time to think about your Humanity!';
-            console.log('small check when bloodpool is greather than 40 in hover')
+            // console.log('small check when bloodpool is greather than 40 in hover')
         } else {
             // do nothing
             console.log('something went wrong with bloodpool in hover')
@@ -1523,7 +1562,6 @@ sleep(120).then(() => {
         // если вообще есть соответствующий блок...
         if (document.querySelector(activeTab + '.' + werewolfOptions[z] + '-block .line.' + werewolfOptions[z] + '_current') != null) {
             // console.log('the block for current ' + werewolfOptions[z].toUpperCase() + ' was found');
-            // ищем 
             optionValue = document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current .inline')
             if (optionValue != null) {
                 if (optionValue.innerHTML == 10) {
@@ -1585,4 +1623,4 @@ sleep(120).then(() => {
 
 
 
-})   
+})

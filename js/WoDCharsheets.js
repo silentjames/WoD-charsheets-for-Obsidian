@@ -87,7 +87,7 @@ sleep(120).then(() => {
     var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
     var statblockCSSclass = '.' + allClasses.match(regex);
     // console.log(statblockCSSclass + ' |=| css-класс статблока')
-    const activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass + ' ';
+    var activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass + ' ';
 
     // найти статблок в ховере
     if (document.querySelector('.popover.hover-popover') != null) {
@@ -97,6 +97,7 @@ sleep(120).then(() => {
         // console.log(statblockCSSclassHover + ' |=| css-класс статблока в ховере')
         var statblockCSSpathHover = '.popover.hover-popover ' + statblockCSSclassHover + ' ';
     }
+    else { }
 
 
     // используется ли обычный вампирский статблок?
@@ -105,7 +106,7 @@ sleep(120).then(() => {
         var clanName = document.querySelector(activeTab + '.line.clan .statblock-markdown > p').innerHTML;
         console.log(clanName + ' - название клана')
         // определяется зона, которой будет назначен бэкграунд
-        const collapsedColumn = document.querySelector(activeTab + '.collapse-container');
+        var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
         switch (clanName) {
             case 'Ассамиты':
             case 'Assamite':
@@ -317,18 +318,18 @@ sleep(120).then(() => {
                 break;
         };
         collapsedColumn.classList.add(collapsedBackgroundClan);
-        document.querySelector('.weakness .inline').innerHTML = clanWeakness;
+        document.querySelector(activeTab + '.weakness .inline').innerHTML = clanWeakness;
         if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
             document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
         };
     }
     else {
-        //nothing
+        // nothing
     }
     // для ховера все то же самое
     if (document.querySelector(statblockCSSpathHover + '.line.clan .statblock-markdown') != null && (statblockCSSclassHover.endsWith('.vtm-v20-vampire') || statblockCSSclassHover.endsWith('.vtm-v20-vampire-en'))) {
         var clanNameHover = document.querySelector(statblockCSSpathHover + '.line.clan .statblock-markdown > p').innerHTML;
-        const collapsedColumnHover = document.querySelector(statblockCSSpathHover + '.collapse-container');
+        var collapsedColumnHover = document.querySelector(statblockCSSpathHover + '.collapse-container');
         switch (clanNameHover) {
             case 'Ассамиты':
             case 'Assamite':
@@ -543,7 +544,7 @@ sleep(120).then(() => {
         };
     }
     else {
-        //nothing
+        // nothing
     }
 
 
@@ -916,6 +917,144 @@ sleep(120).then(() => {
     }
     else {
         //nothing
+    }
+
+
+    // может, это вообще оборотень?
+    if (document.querySelector(activeTab + '.line.tribe .statblock-markdown') != null && (statblockCSSclass.endsWith('.wta-w20-werewolf') || statblockCSSclass.endsWith('.wta-w20-werewolf-en'))) {
+        // определяется племя, и каждому племени подставляется своя картинка на бэкграунд
+        var tribeName = document.querySelector(activeTab + '.line.tribe .statblock-markdown > p').innerHTML;
+        console.log(tribeName + ' - название племени')
+        // определяется зона, которой будет назначен бэкграунд
+        var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
+        switch (tribeName) {
+            case 'Черные Фурии':
+            case 'Black Furies':
+                // каждому племени назначается соответствующий класс, для которого в css уже вшито изображение
+                var collapsedBackgroundClan = 'BlackFuries';
+                break;
+            case 'Танцоры Чёрной Спирали':
+            case 'Танцоры Черной Спирали':
+            case 'Black Spiral Dancers':
+                var collapsedBackgroundClan = 'BlackSpiralDancers';
+                break;
+            case 'Костегрызы':
+            case 'Bone Gnawers':
+                var collapsedBackgroundClan = 'BoneGnawers';
+                break;
+            case 'Bunyip':
+                var collapsedBackgroundClan = 'Bunyip';
+                break;
+            case ('Дети Гайи'):
+            case ('Children of Gaia'):
+                var collapsedBackgroundClan = 'Children-of-Gaia';
+                break;
+            case 'Кроатан':
+            case 'Croatan':
+                var collapsedBackgroundClan = 'Croatan';
+                break;
+            case 'Фианна':
+            case 'Fianna':
+                var collapsedBackgroundClan = 'Fianna';
+                break;
+            case 'Потомки Фенрира':
+            case 'Get of Fenris':
+                var collapsedBackgroundClan = 'Get-of-Fenris';
+                break;
+            case 'Стеклоходы':
+            case 'Glass Walkers':
+                var collapsedBackgroundClan = 'GlassWalkers';
+                break;
+            case ('Красные Когти'):
+            case ('Красные когти'):
+            case ('Red Talons'):
+                var collapsedBackgroundClan = 'RedTalons';
+                break;
+            case 'Теневые Владыки':
+            case 'Теневые владыки':
+            case 'Shadow Lords':
+                var collapsedBackgroundClan = 'ShadowLords';
+                break;
+            case 'Безмолвные Странники':
+            case 'Безмолвные cтранники':
+            case 'Silent Striders':
+                var collapsedBackgroundClan = 'SilentStriders';
+                break;
+            case 'Серебряные Клыки':
+            case 'Серебряные клыки':
+            case 'Silver Fangs':
+                var collapsedBackgroundClan = 'SilverFangs';
+                break;
+            case 'Звездочеты':
+            case 'Stargazers':
+                var collapsedBackgroundClan = 'Stargazers';
+                break;
+            case 'Уктена':
+            case 'Uktena':
+                var collapsedBackgroundClan = 'Uktena';
+                break;
+            case 'Вендиго':
+            case 'Wendigo':
+                var collapsedBackgroundClan = 'Wendigo';
+                break;
+            case 'Белые Завыватели':
+            case 'Белые завыватели':
+            case 'White Howlers':
+                var collapsedBackgroundClan = 'WhiteHowlers';
+                break;
+            case 'Ajaba':
+                var collapsedBackgroundClan = 'Ajaba';
+                break;
+            case 'Ананаси':
+            case 'Ананси':
+            case 'Ananasi':
+                var collapsedBackgroundClan = 'Ananasi';
+                break;
+            case 'Бастет':
+            case 'Bastet':
+                var collapsedBackgroundClan = 'Bastet';
+                break;
+            case 'Кораксы':
+            case 'Коракс':
+            case 'Corax':
+                var collapsedBackgroundClan = 'Corax';
+                break;
+            case 'Gurahl':
+                var collapsedBackgroundClan = 'Gurahl';
+                break;
+            case 'Кицунэ':
+            case 'Kitsune':
+                var collapsedBackgroundClan = 'Kitsune';
+                break;
+            case 'Моколе':
+            case 'Mokole':
+                var collapsedBackgroundClan = 'Mokole';
+                break;
+            case 'Наги':
+            case 'Нага':
+            case 'Nagah':
+                var collapsedBackgroundClan = 'Nagah';
+                break;
+            case 'Nuwisha':
+                var collapsedBackgroundClan = 'Nuwisha';
+                break;
+            case 'Раткины':
+            case 'Раткин':
+            case 'Ratkin':
+                var collapsedBackgroundClan = 'Ratkin';
+                break;
+            case 'Рокеа':
+            case 'Rokea':
+                var collapsedBackgroundClan = 'Rokea';
+                break;
+        };
+        collapsedColumn.classList.add(collapsedBackgroundClan);
+        if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
+        };
+    }
+    else {
+        // nothing
     }
 
 

@@ -11,8 +11,8 @@ Currently, there are **vampires** (modern nights and dark ages), **werewolves**,
 First of all, examples of VtM character sheets:
 
 <p align="center">
-    <a href='imgs/vampire_en.png'><img src='imgs/vampire_en_small.png' width='395'></a>
-    <a href='imgs/vampire_dark_ages_en.png'><img src='imgs/vampire_dark_ages_en_small.png' width='395'></a>
+    <a href='imgs/vampire_en.png'><img src='imgs/vampire_en_small.png' height='660' width='auto'></a>
+    <a href='imgs/vampire_dark_ages_en.png'><img src='imgs/vampire_dark_ages_en_small.png' height='660' width='auto'></a>
 </p>
 
 ## Werewolves, mortals and agents
@@ -63,7 +63,7 @@ This statblock contains the custom layout JSON (obviously), CSS snippet and JS s
 **JSON + CSS**
 <br>
 
-- the snippet stores all the graphic elements of the statblock - background textures, clan logos, etc;
+- the snippet stores all the graphic elements of the statblock - background textures, clan and tribe logos, some fonts, etc;
 - all dots and squares are shown using a few custom fonts (also stored inside the snippet). Values from 0 to 9 can be easily displayed (in the most common cases, 5 or less are enough), but for "10" you must type "X" (if you don’t want to use the JS script);
 - the layouts support [Dice Roller](https://github.com/javalent/dice-roller) plugin;
 - internal links inside various lines (such as nature, demeanor, disciplines, flaws and merits) will be displayed as simple text, but still work.
@@ -73,7 +73,7 @@ This statblock contains the custom layout JSON (obviously), CSS snippet and JS s
 
 It adds a couple of simple visual tricks and also does some automation, just to simplify some things;
 - you can add the name of your character in H2 above the statblock, and it will be hidden in the reading view – but it remains in the outline panel;
-- change the clan image background according to the “Clan” property;
+- add the background image according to the “Clan” or "Tribe" property;
 - “Weakness” is also filled automatically, according to the clan.
 - The “Blood per Turn” value will be calculated according to the “Generation” property;
 - all Attributes are equal to 1 by default; 
@@ -82,7 +82,7 @@ It adds a couple of simple visual tricks and also does some automation, just to 
 - you can now set "10" property value as well, not "X";
 - The “Bloodpool” area will add new lines of squares if there are more blood than 10, 20, etc, up to 40 as max;
 
-Almost all the things I mentioned could be done manually (except clan image, I suppose), so the script just automates some stuff.
+Almost all the things I mentioned could be done manually (except clan\tribe image, I suppose), so the script just automates some stuff.
 
 > To run the script, you’ll need [Obsidian Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin. 
 
@@ -97,23 +97,28 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
 
 ## What should you do to start using these statblocks?
 
-1. Download JSON file for a needed character, `world-of-darkness-statblocks.css`, and `WoDCharsheets.js` (or `WoDCharsheets-en.js` for English version);
+1. Download `world-of-darkness-statblocks.css`, `WoDCharsheets-en.js` and `WoD-statblock-jsons-en.zip` from latest release page;
 2. Install [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) plugin and enable it;
-3. Go to Fantasy Statblocks and upload the JSON using the "Import From JSON" button. The new layout must appear in the list below.
+3. Go to Fantasy Statblocks and upload the needed JSON (from the archive) using the "Import From JSON" button. The new layout must appear in the list below.
 4. Copy `world-of-darkness-statblocks.css` into your Obsidian "snippets" folder, then go to Obsidian's Appearance settings and enable it;
-5. Copy `WoDCharsheets.js` (or `WoDCharsheets-en.js`) **into the folder inside your Obsidian vault**;
+5. Copy `WoDCharsheets-en.js` **into the folder inside your Obsidian vault**;
 6. Install [Obsidian Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin and enable it;
-7. Create a new note;
-8. At the beginning of a note, add:
-````
-```dataviewjs
-dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
-```
-````
-`"/z_Z manuals/WoDCharsheets.js"` - it's my path to the JS file inside my Obsidian vault, you must replace it with your own.
+7. Go to Dataview settings and turn "Enable JavaScript Queries" on;
+    <p align="center">
+        <img src='imgs/dataview_settings.png' width='650'>
+    </p>
+8. Create a new note;
+9.  At the beginning of a note, add:
+    ````
+    ```dataviewjs
+    dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
+    ```
+    ````
+    `"/z_Z manuals/WoDCharsheets-en.js"` - it's my path to the JS file inside my Obsidian vault, you must replace it with your own.
 
-9. Copy the blank layout of your character from below and paste it into your note;
-10.   Done! Now you can start filling a charsheet!
+10. Copy the blank layout of your future character from the below and paste it into your note;
+11.  Optional: you might need to reopen the note (or oven restart Obsidian, but in most cases it's not needed);
+12.  Done! Now you can start filling a charsheet!
 
 <p align="center">
     <img src='imgs/dataview_example.png' width='650'>
@@ -317,7 +322,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 </details>
 
 <details>
-    <summary>Vampire Dark Ages (Russian)</summary>
+    <summary>Vampire Dark Ages</summary>
 
     ```statblock
     columnWidth: 680
@@ -525,10 +530,10 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     ```statblock
     columnWidth: 680
     column: 1
-    layout: WtA v20 Werewolf
+    layout: WtA w20 Werewolf
     dice: true
 
-                            #### ОСНОВНАЯ ИНФОРМАЦИЯ ####
+                        #### GENERAL INFO ####
 
     name: 
     desc: 
@@ -538,84 +543,84 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     pack_name: 
     totem: 
     nature: 
-    demeanor:  
-    concept:  
+    demeanor: 
+    concept: 
 
     img: 
     img_title: 
     img_alt: 
     img_alt_title: 
 
-                                #### ХАРАКТЕРИСТИКИ ####
+                            #### ATTRIBUTES ####
 
-    Attributes: ХАРАКТЕРИСТИКИ
+    Attributes: ATTRIBUTES
 
-    Physical: ФИЗИЧЕСКИЕ
+    Physical: PHYSICAL
     Strength: 1
     Dexterity: 1
     Stamina: 1
 
-    Social: СОЦИАЛЬНЫЕ
+    Social: SOCIAL
     Charisma: 1
     Manipulation: 1
     Appearance: 1
 
-    Mental: МЕНТАЛЬНЫЕ
+    Mental: MENTAL
     Perception: 1
     Intelligence: 1
     Wits: 1
 
-                                #### СПОСОБНОСТИ ####
+                            #### ABILITIES ####
 
-    Abilities: СПОСОБНОСТИ
+    Abilities: ABILITIES
 
-    Talents: ТАЛАНТЫ
+    Talents: TALENTS
     athletics: 0
-    alertness: 0 # Бдительность
-    brawl: 0 # Драка
-    intimidation: 0 # Запугивание
-    expression: 0 # Красноречие
-    leadership: 0
-    primalurge: 0 # Первобытный инстинкт
-    streetwise: 0 # Уличное чутье
-    subterfuge: 0 # Хитрость
+    alertness: 0
+    brawl: 0
     empathy: 0
+    expression: 0
+    intimidation: 0
+    leadership: 0
+    primalurge: 0
+    streetwise: 0
+    subterfuge: 0
     new_talent: 
     new_talent_value: 
 
-    Skills: НАВЫКИ
-    drive: 0
-    larceny: 0 # Воровство
-    survival: 0
-    performance: 0
+    Skills: SKILLS
     animalken: 0
     crafts: 0
-    stealth: 0
-    firearms: 0
-    melee: 0
+    drive: 0
     etiquette: 0
-    new_skill:
-    new_skill_value:
+    firearms: 0
+    larceny: 0
+    melee: 0
+    performance: 0
+    stealth: 0
+    survival: 0
+    new_skill: 
+    new_skill_value: 
 
-    Knowledges: ЗНАНИЯ
+    Knowledges: KNOWLEDGES
     academics: 0
-    science: 0
-    enigmas: 0 # Загадки
-    law: 0
     computer: 0
+    enigmas: 0
+    investigation: 0
+    law: 0
     medicine: 0
     occult: 0
-    rituals: 0 # Ритуалы
-    investigation: 0
+    rituals: 0
+    science: 0
     technology: 0
-    new_knowledge:
-    new_knowledge_value:
+    new_knowledge: 
+    new_knowledge_value: 
 
-                            #### ПРЕИМУЩЕСТВА ####
+                            #### ADVANTAGES ####
 
-    Advantages: ПРЕИМУЩЕСТВА
+    Advantages: ADVANTAGES
 
-    Backgrounds: ФАКТЫ БИОГРАФИИ
+    Backgrounds: BACKGROUNDS
     background1_name: 
     background1_value: 
     background2_name: 
@@ -629,7 +634,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     background6_name: 
     background6_value: 
 
-    Gifts: ДАРЫ
+    Gifts: GIFTS
     gift1: 
     gift2: 
     gift3: 
@@ -641,11 +646,32 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     gift9: 
     gift10: 
 
-                        #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
+                            #### FETISHES and RITES ####
+
+    Fetishes: FETISHES
+
+    fetish1_name: 
+    fetish1_level: 
+    fetish1_gnosis: 
+    fetish2_name: 
+    fetish2_level: 
+    fetish2_gnosis: 
+    fetish3_name: 
+    fetish3_level: 
+    fetish3_gnosis: 
+
+    Rites: RITES
+    rite1: 
+    rite2: 
+    rite3: 
+    rite4: 
+    rite5:
+
+                        #### MERITS / FLAWS ####
 
     where-to-show-merits-and-flaws: right
 
-    Merits: ДОСТОИНСТВА
+    Merits: MERITS
     merit1_name: 
     merit1_value: 
     merit2_name: 
@@ -656,8 +682,12 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     merit4_value: 
     merit5_name: 
     merit5_value: 
+    merit6_name: 
+    merit6_value: 
+    merit7_name: 
+    merit7_value: 
 
-    Flaws: НЕДОСТАТКИ
+    Flaws: FLAWS
     flaw1_name: 
     flaw1_value: 
     flaw2_name: 
@@ -667,44 +697,52 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     flaw4_name: 
     flaw4_value: 
     flaw5_name: 
-    flaw5_value:
+    flaw5_value: 
+    flaw6_name: 
+    flaw6_value: 
+    flaw7_name: 
+    flaw7_value: 
 
-                            #### ПОЧЕТ / ВОЛЯ / ЗДОРОВЬЕ ####
+                                #### RENOWN ####
 
-    Renown: Почет
+    Renown: RENOWN
 
-    Glory: Слава
+    Glory: GLORY
     glory_main: 0
     glory_current: 0
 
-    Honor: Честь
+    Honor: HONOR
     honor_main: 0
     honor_current: 0
 
-    Wisdom: Мудрость
+    Wisdom: WISODM
     wisdom_main: 0
     wisdom_current: 0
 
-    Rage: Ярость
+                        #### RAGE / WILLPOWER /  HEALTH ####
+
+    Rage: RAGE
     rage_main: 0
     rage_current: 0
 
-    Gnosis: Гнозис
+    Gnosis: GNOSIS
     gnosis_main: 0
     gnosis_current: 0
 
-    willpower: ВОЛЯ
+    Willpower: WILLPOWER
     willpower_main: 0
     willpower_current: 0
 
-    Health: ЗДОРОВЬЕ
+    Rank: 0
+
+    Health: HEALTH
     aggravated: 
     lethal: 
     bashing: 
 
                                 #### SPECIALTIES ####
 
-    Specialties: СПЕЦИАЛИЗАЦИЯ
+    Specialties: SPECIALTIES
     specialty1_origin: 
     specialty1_name: 
     specialty2_origin: 
@@ -716,7 +754,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     specialty5_origin: 
     specialty5_name: 
     specialty6_origin: 
-    specialty6_name: 
+    specialty6_name:  
     ```
 
 </details>
@@ -957,11 +995,7 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
     agency: 
     rank: 
     codename: 
-
     img: 
-    img_title: 
-    img_alt: 
-    img_alt_title: 
 
                             #### ATTRIBUTES ####
 

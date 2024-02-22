@@ -105,7 +105,7 @@
         <img src='imgs/dataview_settings.png' width='650'>
     </p> 
 8. Создать новую заметку;
-9.  В начало заметки добавить:
+9. В начало заметки добавить:
     ````
     ```dataviewjs
     dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))

@@ -36,7 +36,7 @@ jobs:
           - name: Collent all RU JSONs into one archive
             uses: actions/upload-artifact@v4
             with:
-                name: jsons-ru-${{ steps.tag_version.outputs.new_tag }}
+                name: WoD-statblock-jsons-ru-${{ steps.tag_version.outputs.new_tag }}
                 path: | 
                   fantasy-statblock-jsons/*
                   !fantasy-statblock-jsons/*en.json
@@ -46,7 +46,7 @@ jobs:
           - name: Collent all EN JSONs into one archive
             uses: actions/upload-artifact@v4
             with:
-                name: jsons-en-${{ steps.tag_version.outputs.new_tag }}
+                name: WoD-statblock-jsons-en-${{ steps.tag_version.outputs.new_tag }}
                 path: fantasy-statblock-jsons/*en.json
                 if-no-files-found: error
 
@@ -66,15 +66,16 @@ jobs:
             - name: Add version comment to CSS and JS files
               run: sed -i '1 i /*  version ${{needs.build-prepare.outputs.new-tag-created}}  */' ./world-of-darkness-statblocks-${{needs.build-prepare.outputs.new-tag-created}}/css-snippets/*.css ./world-of-darkness-statblocks-${{needs.build-prepare.outputs.new-tag-created}}/js/*.js
 
+            # добавляется комментарий с версией в JSON файлы
             - name: Add version comment to JSON files
-              run: sed -i '2 i "version":\ "${{needs.build-prepare.outputs.new-tag-created}}",' ./world-of-darkness-statblocks-${{needs.build-prepare.outputs.new-tag-created}}/fantasy-statblock-jsons/*.json
+              run: sed -i '2 i "version":\ "${{needs.build-prepare.outputs.new-tag-created}}",' ./WoD-statblock-jsons-*/*.json
 
             # создается отдельный архив для русскоязычных JSON файлов
             - name: Create RU JSON archive
               uses: thedoctor0/zip-release@0.7.5
               with:
                 type: 'zip'
-                path: ./jsons-ru-${{needs.build-prepare.outputs.new-tag-created}}
+                path: ./WoD-statblock-jsons-ru-${{needs.build-prepare.outputs.new-tag-created}}
                 filename: 'statblock-jsons-ru.zip'
 
             # создается отдельный архив для англоязычных JSON файлов
@@ -82,7 +83,7 @@ jobs:
               uses: thedoctor0/zip-release@0.7.5
               with:
                 type: 'zip'
-                path: ./jsons-en-${{needs.build-prepare.outputs.new-tag-created}}
+                path: ./WoD-statblock-jsons-en-${{needs.build-prepare.outputs.new-tag-created}}
                 filename: 'statblock-jsons-en.zip'
 
             # создается релиз
@@ -152,4 +153,4 @@ jobs:
                 asset_path: ./statblock-jsons-en.zip
                 asset_name: WoD-statblock-jsons-en-${{needs.build-prepare.outputs.new-tag-created}}.zip
                 asset_content_type: application/zip
-
+                

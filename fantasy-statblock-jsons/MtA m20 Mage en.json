@@ -1266,6 +1266,186 @@
                                         },
                                         {
                                             "type": "group",
+                                            "id": "493a1b6af978",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "38885afba828",
+                                                    "properties": [
+                                                        "Othertraits"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-"
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "684a8b8bda29",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "1b0b4868394a",
+                                                            "properties": [
+                                                                "othertrait1_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true,
+                                                            "markdown": false
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "5ba88b0a2ac8",
+                                                            "properties": [
+                                                                "othertrait1_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "other-trait-one",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "fbb818298bf8",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "b8f9391a0b69",
+                                                            "properties": [
+                                                                "othertrait2_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "db18db1aa949",
+                                                            "properties": [
+                                                                "othertrait2_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "other-trait-two",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "7b9b09797b28",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "dba9481bd85a",
+                                                            "properties": [
+                                                                "othertrait3_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "d81bf8d91bb8",
+                                                            "properties": [
+                                                                "othertrait3_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "other-trait-three",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "ea4a8909f8da",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "8bdadb49abba",
+                                                            "properties": [
+                                                                "othertrait4_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "49583a08e9bb",
+                                                            "properties": [
+                                                                "othertrait4_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "cls": "other-trait-four",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "d8ba8a6ab92a",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "e94aea192a4a",
+                                                            "properties": [
+                                                                "othertrait5_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "ba184bc98b79",
+                                                            "properties": [
+                                                                "othertrait5_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "conditioned": true,
+                                                    "cls": "other-trait-five"
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "d86a897afafb",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "db79c9e80a1a",
+                                                            "properties": [
+                                                                "othertrait6_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "59eb58ebbba9",
+                                                            "properties": [
+                                                                "othertrait6_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "conditioned": true,
+                                                    "cls": "other-trait-six"
+                                                }
+                                            ],
+                                            "cls": "other-traits-column"
+                                        },
+                                        {
+                                            "type": "group",
                                             "id": "bb8a7bba1be9",
                                             "properties": [],
                                             "nested": [
@@ -1746,6 +1926,13 @@
                                                     ],
                                                     "fallback": "-",
                                                     "conditioned": false
+                                                },
+                                                {
+                                                    "type": "text",
+                                                    "id": "7b98c86b8abb",
+                                                    "properties": [],
+                                                    "text": null,
+                                                    "fallback": "•"
                                                 },
                                                 {
                                                     "type": "property",

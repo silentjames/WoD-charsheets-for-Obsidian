@@ -109,7 +109,8 @@
                                     "display": "Concept:"
                                 }
                             ],
-                            "cls": "info-group"
+                            "cls": "info-group",
+                            "conditioned": true
                         }
                     ],
                     "hasRule": false,
@@ -141,7 +142,8 @@
                         }
                     ],
                     "heading": "",
-                    "cls": "image-main-block"
+                    "cls": "image-main-block",
+                    "conditioned": true
                 },
                 {
                     "type": "group",
@@ -168,7 +170,8 @@
                             "conditioned": true
                         }
                     ],
-                    "cls": "image-alt-block"
+                    "cls": "image-alt-block",
+                    "conditioned": true
                 }
             ],
             "hasRule": false,
@@ -569,7 +572,8 @@
                                                             "dice": true
                                                         }
                                                     ],
-                                                    "cls": "new-talent-line"
+                                                    "cls": "new-talent-line",
+                                                    "conditioned": true
                                                 }
                                             ],
                                             "cls": "talents-column"
@@ -737,7 +741,8 @@
                                                             "diceCallback": "return [{ text: monster.new_skill_value + 'd10|none|noform|nodice|text(' + monster.new_skill_value +')' }]"
                                                         }
                                                     ],
-                                                    "cls": "new-skill-line"
+                                                    "cls": "new-skill-line",
+                                                    "conditioned": true
                                                 }
                                             ],
                                             "cls": "skills-column"
@@ -904,7 +909,8 @@
                                                             "dice": true
                                                         }
                                                     ],
-                                                    "cls": "new-knowledge-line"
+                                                    "cls": "new-knowledge-line",
+                                                    "conditioned": true
                                                 }
                                             ],
                                             "cls": "knowledges-column"
@@ -948,7 +954,7 @@
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
-                                                    "conditioned": false
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -976,7 +982,8 @@
                                                         }
                                                     ],
                                                     "heading": "",
-                                                    "cls": ""
+                                                    "cls": "",
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1001,7 +1008,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1026,7 +1034,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1051,7 +1060,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1076,7 +1086,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1101,10 +1112,12 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 }
                                             ],
-                                            "cls": "disciplines-column"
+                                            "cls": "disciplines-column",
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "group",
@@ -1119,7 +1132,7 @@
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
-                                                    "conditioned": false
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1144,7 +1157,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1169,7 +1183,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1194,7 +1209,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1219,7 +1235,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1244,7 +1261,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1269,11 +1287,13 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 }
                                             ],
                                             "heading": "",
-                                            "cls": "backgrounds-column"
+                                            "cls": "backgrounds-column",
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "group",
@@ -1288,7 +1308,7 @@
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
-                                                    "conditioned": false
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -1331,15 +1351,18 @@
                                                     "diceCallback": "return [{ text: monster.courage + 'd10|none|nodice|noform|text(' + monster.courage +')' }]"
                                                 }
                                             ],
-                                            "cls": "virtues-column"
+                                            "cls": "virtues-column",
+                                            "conditioned": true
                                         }
                                     ],
                                     "heading": "",
-                                    "cls": ""
+                                    "cls": "",
+                                    "conditioned": true
                                 }
                             ],
                             "hasRule": true,
-                            "cls": "advantages-group"
+                            "cls": "advantages-group",
+                            "conditioned": true
                         },
                         {
                             "type": "inline",
@@ -1358,7 +1381,8 @@
                                                 "Merits"
                                             ],
                                             "size": 3,
-                                            "fallback": "-"
+                                            "fallback": "-",
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1549,7 +1573,8 @@
                                                 "Flaws"
                                             ],
                                             "size": 3,
-                                            "fallback": "-"
+                                            "fallback": "-",
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1574,7 +1599,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1599,7 +1625,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1624,7 +1651,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1649,7 +1677,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1674,7 +1703,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1699,7 +1729,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "group",
@@ -1724,10 +1755,12 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         }
                                     ],
-                                    "cls": "merits-and-flaws-column"
+                                    "cls": "merits-and-flaws-column",
+                                    "conditioned": true
                                 },
                                 {
                                     "type": "group",
@@ -2080,7 +2113,7 @@
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
-                                                    "conditioned": false
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "group",
@@ -2107,7 +2140,8 @@
                                                         }
                                                     ],
                                                     "heading": "",
-                                                    "cls": "specialty_one"
+                                                    "cls": "specialty_one",
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "group",
@@ -2133,7 +2167,8 @@
                                                             "conditioned": true
                                                         }
                                                     ],
-                                                    "cls": "specialty_two"
+                                                    "cls": "specialty_two",
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "group",
@@ -2159,7 +2194,8 @@
                                                             "conditioned": true
                                                         }
                                                     ],
-                                                    "cls": "specialty_three"
+                                                    "cls": "specialty_three",
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "group",
@@ -2185,7 +2221,8 @@
                                                             "conditioned": true
                                                         }
                                                     ],
-                                                    "cls": "specialty_four"
+                                                    "cls": "specialty_four",
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "group",
@@ -2211,7 +2248,8 @@
                                                             "conditioned": true
                                                         }
                                                     ],
-                                                    "cls": "specialty_five"
+                                                    "cls": "specialty_five",
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "group",
@@ -2237,11 +2275,13 @@
                                                             "conditioned": true
                                                         }
                                                     ],
-                                                    "cls": "specialty_six"
+                                                    "cls": "specialty_six",
+                                                    "conditioned": true
                                                 }
                                             ],
                                             "cls": "specialities-block",
-                                            "heading": ""
+                                            "heading": "",
+                                            "conditioned": true
                                         }
                                     ]
                                 }
@@ -2281,5 +2321,9 @@
         }
     ],
     "name": "VtM v20 Vampire en",
-    "id": "484a3b88da7b"
+    "id": "484a3b88da7b",
+    "cssProperties": {
+        "barColor": "#023015",
+        "fontColor": "#2c313c"
+    }
 }

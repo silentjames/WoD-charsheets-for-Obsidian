@@ -127,7 +127,8 @@
                                     "display": "Place of Birth:"
                                 }
                             ],
-                            "cls": "agent-info-group"
+                            "cls": "agent-info-group",
+                            "conditioned": true
                         }
                     ],
                     "hasRule": false,
@@ -149,7 +150,8 @@
                         }
                     ],
                     "heading": "",
-                    "cls": "image-main-block"
+                    "cls": "image-main-block",
+                    "conditioned": true
                 }
             ],
             "hasRule": false,
@@ -546,7 +548,8 @@
                                                             "conditioned": true
                                                         }
                                                     ],
-                                                    "cls": "new-talent-line"
+                                                    "cls": "new-talent-line",
+                                                    "conditioned": true
                                                 }
                                             ],
                                             "cls": "talents-column"
@@ -714,7 +717,8 @@
                                                             "dice": true
                                                         }
                                                     ],
-                                                    "cls": "new-skill-line"
+                                                    "cls": "new-skill-line",
+                                                    "conditioned": true
                                                 }
                                             ],
                                             "cls": "skills-column"
@@ -880,7 +884,8 @@
                                                             "dice": true
                                                         }
                                                     ],
-                                                    "cls": "new-knowledge-line"
+                                                    "cls": "new-knowledge-line",
+                                                    "conditioned": true
                                                 }
                                             ],
                                             "cls": "knowledges-column"
@@ -924,7 +929,7 @@
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
-                                                    "conditioned": false
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -952,7 +957,8 @@
                                                         }
                                                     ],
                                                     "heading": "",
-                                                    "cls": ""
+                                                    "cls": "",
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -977,7 +983,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1002,7 +1009,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1027,7 +1035,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1052,7 +1061,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1077,10 +1087,12 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 }
                                             ],
-                                            "cls": "numina-column"
+                                            "cls": "numina-column",
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "group",
@@ -1095,7 +1107,7 @@
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
-                                                    "conditioned": false
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1120,7 +1132,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1145,7 +1158,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1170,7 +1184,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1195,7 +1210,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1220,7 +1236,8 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -1245,11 +1262,13 @@
                                                             "fallback": "-",
                                                             "conditioned": true
                                                         }
-                                                    ]
+                                                    ],
+                                                    "conditioned": true
                                                 }
                                             ],
                                             "heading": "",
-                                            "cls": "backgrounds-column"
+                                            "cls": "backgrounds-column",
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "group",
@@ -1264,7 +1283,7 @@
                                                     ],
                                                     "size": 3,
                                                     "fallback": "-",
-                                                    "conditioned": false
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -1307,15 +1326,18 @@
                                                     "diceCallback": "return [{ text: monster.courage + 'd10|none|nodice|noform|text(' + monster.courage +')' }]"
                                                 }
                                             ],
-                                            "cls": "virtues-column"
+                                            "cls": "virtues-column",
+                                            "conditioned": true
                                         }
                                     ],
                                     "heading": "",
-                                    "cls": ""
+                                    "cls": "",
+                                    "conditioned": true
                                 }
                             ],
                             "hasRule": true,
-                            "cls": "advantages-group"
+                            "cls": "advantages-group",
+                            "conditioned": true
                         },
                         {
                             "type": "inline",
@@ -1334,7 +1356,8 @@
                                                 "Merits"
                                             ],
                                             "size": 3,
-                                            "fallback": "-"
+                                            "fallback": "-",
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1359,7 +1382,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1384,7 +1408,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1409,7 +1434,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1434,7 +1460,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1459,7 +1486,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1484,7 +1512,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "group",
@@ -1509,7 +1538,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "heading",
@@ -1518,7 +1548,8 @@
                                                 "Flaws"
                                             ],
                                             "size": 3,
-                                            "fallback": "-"
+                                            "fallback": "-",
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1543,7 +1574,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1568,7 +1600,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1593,7 +1626,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1618,7 +1652,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1643,7 +1678,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "inline",
@@ -1668,7 +1704,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "group",
@@ -1693,10 +1730,12 @@
                                                     "fallback": "-",
                                                     "conditioned": true
                                                 }
-                                            ]
+                                            ],
+                                            "conditioned": true
                                         }
                                     ],
-                                    "cls": "merits-and-flaws-column"
+                                    "cls": "merits-and-flaws-column",
+                                    "conditioned": true
                                 },
                                 {
                                     "type": "group",
@@ -1715,7 +1754,8 @@
                                                         "Humanity"
                                                     ],
                                                     "size": 3,
-                                                    "fallback": "-"
+                                                    "fallback": "-",
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -1727,7 +1767,9 @@
                                                     "conditioned": true
                                                 }
                                             ],
-                                            "cls": "path-block"
+                                            "cls": "path-block",
+                                            "hasRule": false,
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "group",
@@ -1768,7 +1810,8 @@
                                                 }
                                             ],
                                             "heading": "",
-                                            "cls": "willpower-block"
+                                            "cls": "willpower-block",
+                                            "conditioned": true
                                         },
                                         {
                                             "type": "group",
@@ -1952,187 +1995,187 @@
                                 },
                                 {
                                     "type": "group",
-                                    "id": "eb4b8a8be8fa",
+                                    "id": "5acb8b597b0a",
                                     "properties": [],
                                     "nested": [
                                         {
+                                            "type": "heading",
+                                            "id": "da2a3b9b0a0a",
+                                            "properties": [
+                                                "Specialties"
+                                            ],
+                                            "size": 3,
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
                                             "type": "group",
-                                            "id": "5acb8b597b0a",
+                                            "id": "5aaaf9aa3898",
                                             "properties": [],
                                             "nested": [
                                                 {
-                                                    "type": "heading",
-                                                    "id": "da2a3b9b0a0a",
+                                                    "type": "property",
+                                                    "id": "6869bbcbf99b",
                                                     "properties": [
-                                                        "Specialties"
+                                                        "specialty1_origin"
                                                     ],
-                                                    "size": 3,
                                                     "fallback": "-",
-                                                    "conditioned": false
+                                                    "conditioned": true
                                                 },
                                                 {
-                                                    "type": "group",
-                                                    "id": "5aaaf9aa3898",
-                                                    "properties": [],
-                                                    "nested": [
-                                                        {
-                                                            "type": "property",
-                                                            "id": "6869bbcbf99b",
-                                                            "properties": [
-                                                                "specialty1_origin"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        },
-                                                        {
-                                                            "type": "property",
-                                                            "id": "cb6bc99a096b",
-                                                            "properties": [
-                                                                "specialty1_name"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true,
-                                                            "markdown": false
-                                                        }
+                                                    "type": "property",
+                                                    "id": "cb6bc99a096b",
+                                                    "properties": [
+                                                        "specialty1_name"
                                                     ],
-                                                    "heading": "",
-                                                    "cls": "specialty_one"
-                                                },
-                                                {
-                                                    "type": "group",
-                                                    "id": "5aab39dafa78",
-                                                    "properties": [],
-                                                    "nested": [
-                                                        {
-                                                            "type": "property",
-                                                            "id": "69ea2af89b6a",
-                                                            "properties": [
-                                                                "specialty2_origin"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        },
-                                                        {
-                                                            "type": "property",
-                                                            "id": "e9eb5b983aa8",
-                                                            "properties": [
-                                                                "specialty2_name"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        }
-                                                    ],
-                                                    "cls": "specialty_two"
-                                                },
-                                                {
-                                                    "type": "group",
-                                                    "id": "3a9ab9fbeb69",
-                                                    "properties": [],
-                                                    "nested": [
-                                                        {
-                                                            "type": "property",
-                                                            "id": "c8c87b292b98",
-                                                            "properties": [
-                                                                "specialty3_origin"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        },
-                                                        {
-                                                            "type": "property",
-                                                            "id": "8b0aabdbca4b",
-                                                            "properties": [
-                                                                "specialty3_name"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        }
-                                                    ],
-                                                    "cls": "specialty_three"
-                                                },
-                                                {
-                                                    "type": "group",
-                                                    "id": "da09ab8b1b59",
-                                                    "properties": [],
-                                                    "nested": [
-                                                        {
-                                                            "type": "property",
-                                                            "id": "d9ebc9b99b89",
-                                                            "properties": [
-                                                                "specialty4_origin"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        },
-                                                        {
-                                                            "type": "property",
-                                                            "id": "38a81a7a0879",
-                                                            "properties": [
-                                                                "specialty4_name"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        }
-                                                    ],
-                                                    "cls": "specialty_four"
-                                                },
-                                                {
-                                                    "type": "group",
-                                                    "id": "68f84b69c8cb",
-                                                    "properties": [],
-                                                    "nested": [
-                                                        {
-                                                            "type": "property",
-                                                            "id": "d909ea98fba9",
-                                                            "properties": [
-                                                                "specialty5_origin"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        },
-                                                        {
-                                                            "type": "property",
-                                                            "id": "6af9e90a89d9",
-                                                            "properties": [
-                                                                "specialty5_name"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        }
-                                                    ],
-                                                    "cls": "specialty_five"
-                                                },
-                                                {
-                                                    "type": "group",
-                                                    "id": "8b49fb6aa968",
-                                                    "properties": [],
-                                                    "nested": [
-                                                        {
-                                                            "type": "property",
-                                                            "id": "89e819fa5828",
-                                                            "properties": [
-                                                                "specialty6_origin"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        },
-                                                        {
-                                                            "type": "property",
-                                                            "id": "58cb4a0aa80a",
-                                                            "properties": [
-                                                                "specialty6_name"
-                                                            ],
-                                                            "fallback": "-",
-                                                            "conditioned": true
-                                                        }
-                                                    ],
-                                                    "cls": "specialty_six"
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "markdown": false
                                                 }
                                             ],
-                                            "cls": "specialities-block",
-                                            "heading": ""
+                                            "heading": "",
+                                            "cls": "specialty_one",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "5aab39dafa78",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "69ea2af89b6a",
+                                                    "properties": [
+                                                        "specialty2_origin"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "e9eb5b983aa8",
+                                                    "properties": [
+                                                        "specialty2_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ],
+                                            "cls": "specialty_two",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "3a9ab9fbeb69",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "c8c87b292b98",
+                                                    "properties": [
+                                                        "specialty3_origin"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "8b0aabdbca4b",
+                                                    "properties": [
+                                                        "specialty3_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ],
+                                            "cls": "specialty_three",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "da09ab8b1b59",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "d9ebc9b99b89",
+                                                    "properties": [
+                                                        "specialty4_origin"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "38a81a7a0879",
+                                                    "properties": [
+                                                        "specialty4_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ],
+                                            "cls": "specialty_four",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "68f84b69c8cb",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "d909ea98fba9",
+                                                    "properties": [
+                                                        "specialty5_origin"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "6af9e90a89d9",
+                                                    "properties": [
+                                                        "specialty5_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ],
+                                            "cls": "specialty_five",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "8b49fb6aa968",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "property",
+                                                    "id": "89e819fa5828",
+                                                    "properties": [
+                                                        "specialty6_origin"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "58cb4a0aa80a",
+                                                    "properties": [
+                                                        "specialty6_name"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                }
+                                            ],
+                                            "cls": "specialty_six",
+                                            "conditioned": true
                                         }
-                                    ]
+                                    ],
+                                    "cls": "specialities-block",
+                                    "heading": "",
+                                    "conditioned": true
                                 }
                             ],
                             "hasRule": false,

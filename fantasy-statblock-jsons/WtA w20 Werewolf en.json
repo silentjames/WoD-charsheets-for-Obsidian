@@ -1963,7 +1963,7 @@
                                             ],
                                             "fallback": "-",
                                             "conditioned": true,
-                                            "display": "Ранг",
+                                            "display": "Rank",
                                             "markdown": true
                                         }
                                     ],

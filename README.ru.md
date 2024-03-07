@@ -723,6 +723,28 @@
     specialty5_name: 
     specialty6_origin: 
     specialty6_name: 
+
+                             #### ФЕТИШИ И РИТУАЛЫ ####
+
+    Fetishes: Фетиши
+
+    fetish1_name: 
+    fetish1_level: 
+    fetish1_gnosis: 
+    fetish2_name: 
+    fetish2_level: 
+    fetish2_gnosis: 
+    fetish3_name: 
+    fetish3_level: 
+    fetish3_gnosis: 
+
+    Rites: Ритуалы
+    rite1: 
+    rite2: 
+    rite3: 
+    rite4: 
+    rite5:
+
     ```
 
 </details>

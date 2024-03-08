@@ -1091,6 +1091,259 @@
                             "cls": "spheres-group"
                         },
                         {
+                            "type": "group",
+                            "id": "384929c88a9b",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "heading",
+                                    "id": "bac9bb98fb39",
+                                    "properties": [
+                                        "Focus"
+                                    ],
+                                    "size": 2,
+                                    "fallback": "-",
+                                    "conditioned": true
+                                },
+                                {
+                                    "type": "inline",
+                                    "id": "68bbebba08d9",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "group",
+                                            "id": "09c8fbfa6899",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "group",
+                                                    "id": "1bdb6bca18aa",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "heading",
+                                                            "id": "aa4bd839bb28",
+                                                            "properties": [
+                                                                "Paradigm"
+                                                            ],
+                                                            "size": 3,
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "6b2908ba8959",
+                                                            "properties": [
+                                                                "paradigm_text"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "conditioned": true,
+                                                    "heading": "",
+                                                    "cls": "paradigm-group"
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "98eb3839ebf8",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "heading",
+                                                            "id": "8b2a788959bb",
+                                                            "properties": [
+                                                                "Practices"
+                                                            ],
+                                                            "size": 3,
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "inline",
+                                                            "id": "8889f878ea1b",
+                                                            "properties": [],
+                                                            "nested": [
+                                                                {
+                                                                    "type": "property",
+                                                                    "id": "f93bf85a4a98",
+                                                                    "properties": [
+                                                                        "practice1_name"
+                                                                    ],
+                                                                    "fallback": "-",
+                                                                    "conditioned": true
+                                                                },
+                                                                {
+                                                                    "type": "property",
+                                                                    "id": "d98818493a0a",
+                                                                    "properties": [
+                                                                        "practice1_value"
+                                                                    ],
+                                                                    "fallback": "-",
+                                                                    "conditioned": true
+                                                                }
+                                                            ],
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "inline",
+                                                            "id": "7929d9692bc9",
+                                                            "properties": [],
+                                                            "nested": [
+                                                                {
+                                                                    "type": "property",
+                                                                    "id": "8be939bbf9b8",
+                                                                    "properties": [
+                                                                        "practice2_name"
+                                                                    ],
+                                                                    "fallback": "-",
+                                                                    "conditioned": true
+                                                                },
+                                                                {
+                                                                    "type": "property",
+                                                                    "id": "ab0beb39582b",
+                                                                    "properties": [
+                                                                        "practice2_value"
+                                                                    ],
+                                                                    "fallback": "-",
+                                                                    "conditioned": true
+                                                                }
+                                                            ],
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "inline",
+                                                            "id": "0b5869cacb7a",
+                                                            "properties": [],
+                                                            "nested": [
+                                                                {
+                                                                    "type": "property",
+                                                                    "id": "6ad8987b385b",
+                                                                    "properties": [
+                                                                        "practice3_name"
+                                                                    ],
+                                                                    "fallback": "-",
+                                                                    "conditioned": true
+                                                                },
+                                                                {
+                                                                    "type": "property",
+                                                                    "id": "0b3a1b1849bb",
+                                                                    "properties": [
+                                                                        "practice3_value"
+                                                                    ],
+                                                                    "fallback": "-",
+                                                                    "conditioned": true
+                                                                }
+                                                            ],
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "conditioned": true,
+                                                    "cls": "practices-group"
+                                                }
+                                            ],
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "group",
+                                            "id": "eaf9585aabdb",
+                                            "properties": [],
+                                            "nested": [
+                                                {
+                                                    "type": "heading",
+                                                    "id": "c8b94a1beb69",
+                                                    "properties": [
+                                                        "Instruments"
+                                                    ],
+                                                    "size": 3,
+                                                    "fallback": "-",
+                                                    "conditioned": true
+                                                },
+                                                {
+                                                    "type": "group",
+                                                    "id": "487bb88b39f9",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "4bda7a485aa9",
+                                                            "properties": [
+                                                                "instrument1"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "e998a9f9aab8",
+                                                            "properties": [
+                                                                "instrument2"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "7a8a0a6a3abb",
+                                                            "properties": [
+                                                                "instrument3"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "6aa8688869cb",
+                                                            "properties": [
+                                                                "instrument4"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "b94bbadb0938",
+                                                            "properties": [
+                                                                "instrument5"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "ebf80839fbe9",
+                                                            "properties": [
+                                                                "instrument6"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "fbbbbb182bc8",
+                                                            "properties": [
+                                                                "instrument7"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ],
+                                                    "conditioned": true,
+                                                    "cls": "instruments-table"
+                                                }
+                                            ],
+                                            "conditioned": true,
+                                            "cls": "instruments-group"
+                                        }
+                                    ],
+                                    "conditioned": true
+                                }
+                            ],
+                            "conditioned": true,
+                            "cls": "focus-group",
+                            "hasRule": true
+                        },
+                        {
                             "type": "inline",
                             "id": "5aaadbab0a4a",
                             "properties": [],
@@ -1274,7 +1527,8 @@
                                                 }
                                             ],
                                             "cls": "backgrounds-column",
-                                            "conditioned": true
+                                            "conditioned": true,
+                                            "heading": ""
                                         },
                                         {
                                             "type": "group",
@@ -2381,5 +2635,8 @@
     ],
     "name": "MtA m20 Mage en",
     "id": "399abbba6a08",
-    "diceParsing": []
+    "diceParsing": [],
+    "cssProperties": {
+        "backgroundColor": "#ffffff"
+    }
 }

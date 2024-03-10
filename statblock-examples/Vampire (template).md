@@ -1,23 +1,25 @@
 ---
-tags: 
 cssclasses: 
+tags: 
 ---
 
 ```dataviewjs
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
-## Edward Lewis
+## 
 ```statblock
 columnWidth: 680
 layout: VtM v20 Vampire en
 dice: true
 
+                        #### GENERAL INFO ####
+
 name: Edward Lewis 
 desc: NSA agent
 clan: Tremere
 generation: 8
-sire: [[Duncan Fegredo]]
+sire: [[Дункан Фегредо | Duncan Fegredo]]
 nature: Bon Vivant
 demeanor: Competitor
 concept: Deviant
@@ -27,30 +29,30 @@ img_title: favorire look
 img_alt: 
 img_alt_title: 
 
-                        #### GENERAL INFO ####
+                        #### ATTRIBUTES ####
 
-Attributes: Attributes
+Attributes: ATTRIBUTES
 
-Physical: Physical
+Physical: PHYSICAL
 Strength: 1
 Dexterity: 2
 Stamina: 3
 
-Social: Social
+Social: SOCIAL
 Charisma: 4
 Manipulation: 5
 Appearance: 6
 
-Mental: Mental
+Mental: MENTAL
 Perception: 5
 Intelligence: 4
 Wits: 3
 
-                            #### Abilities ####
+                            #### ABILITIES ####
 
-Abilities: Abilities
+Abilities: ABILITIES
 
-Talents: Talents
+Talents: TALENTS
 alertness: 1
 athletics: 2
 awareness: 3
@@ -61,8 +63,10 @@ intimidation: 3
 leadership: 2
 streetwise: 1
 subterfuge: 0
+new_talent: 
+new_talent_value: 
 
-Skills: Skills
+Skills: SKILLS
 animalken: 5
 crafts: 4
 drive: 3
@@ -73,8 +77,10 @@ melee: 1
 performance: 2
 stealth: 3
 survival: 4
+new_skill: 
+new_skill_value: 
 
-Knowledges: Knowledges
+Knowledges: KNOWLEDGES
 academics: 1
 computer: 1
 finance: 2
@@ -85,10 +91,12 @@ occult: 4
 politics: 4
 science: 5
 technology: 5
+new_knowledge: 
+new_knowledge_value: 
 
-                            #### Advantages #### 
+                            #### ADVANTAGES #### 
 
-Advantages: Advantages
+Advantages: ADVANTAGES
 
 Disciplines: DISCIPLINES
 discipline1_name: Animalism
@@ -123,7 +131,7 @@ conscience: 1
 selfcontrol: 3
 courage: 4
 
-                    #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
+                        #### MERITS / FLAWS ####
 
 Merits: MERITS
 merit1_name: Natural Leader
@@ -138,6 +146,8 @@ merit5_name: Arcane
 merit5_value: -5
 merit6_name: 
 merit6_value: 
+merit7_name: 
+merit7_value: 
 
 Flaws: FLAWS
 flaw1_name: Deep Sleeper
@@ -152,6 +162,8 @@ flaw5_name: Laughingstock
 flaw5_value: +5
 flaw6_name: 
 flaw6_value: 
+flaw7_name: 
+flaw7_value: 
 
                     #### PATH / WILLPOWER / BLOOD ####
 
@@ -186,6 +198,7 @@ specialty5_name:
 specialty6_origin: 
 specialty6_name: 
 
-show_weakness: no
+Weakness: 
+show_weakness: yes
 
 ```

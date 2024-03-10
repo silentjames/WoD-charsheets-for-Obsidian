@@ -4,7 +4,7 @@ tags:
 ---
 
 ```dataviewjs
-dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
+dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
 ##
@@ -19,10 +19,10 @@ dice: true
 name: Robert Norge
 desc: teacher at Norge High
 nature: Judge
-demeanor: [[Организатор|Director]]
-concept: [[Организатор|Director]]
+demeanor: [[Director]]
+concept: [[Director]]
 
-img: [[Роберт Хилл.png]]
+img: [[Robert Norge.png]]
 img_title: 
 img_alt: 
 img_alt_title: 
@@ -144,6 +144,8 @@ merit5_name:
 merit5_value: 
 merit6_name: 
 merit6_value: 
+merit7_name: 
+merit7_value: 
 
 Flaws: FLAWS
 flaw1_name: Overextended
@@ -158,6 +160,8 @@ flaw5_name:
 flaw5_value: 
 flaw6_name: 
 flaw6_value: 
+flaw7_name: 
+flaw7_value: 
 
                     #### HUMANITY / WILLPOWER / HEALTH ####
 
@@ -189,6 +193,8 @@ specialty6_origin:
 specialty6_name: 
 
                                 #### WEAPON ####
+
+Weapon: WEAPON
 
 weapon1_name: SIG-Sauer P226 9mm
 damage1: 4

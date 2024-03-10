@@ -4,7 +4,7 @@ tags:
 ---
 
 ```dataviewjs
-dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
+dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
 ##
@@ -27,7 +27,7 @@ nature: Masochist / Martyr
 demeanor: 
 concept: Sycophant / Penitent
 
-img: [[Стью Пауэлл.png]]
+img: [[Stu Powell.png]]
 img_title: 
 img_alt: 
 img_alt_title: 

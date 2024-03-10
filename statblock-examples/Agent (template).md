@@ -1,11 +1,10 @@
 ---
 cssclasses:
-  - wod-header
 tags: 
 ---
 
 ```dataviewjs
-dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
+dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
 ##
@@ -198,12 +197,14 @@ specialty6_name:
 
                             #### WEAPON ####
 
+Weapon: WEAPON
+
 weapon1_name: SIG-Sauer P226 9mm
 damage1: 4
 range1: 20
 firerate1: 4
 capacity1: 15
-conceal1: ПК
+conceal1: P
 
 weapon2_name: 
 damage2: 

@@ -82,7 +82,8 @@ sleep(120).then(() => {
 
 
     // find the statblock's layout name and active tab that has it
-    const statblockClassList = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock').classList
+    var findClasses = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock')
+    const statblockClassList = findClasses.classList
     var allClasses = statblockClassList.value.toString()
     var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
     var statblockCSSclass = '.' + allClasses.match(regex);

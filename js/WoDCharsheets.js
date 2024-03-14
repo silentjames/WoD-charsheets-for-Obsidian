@@ -82,7 +82,8 @@ sleep(120).then(() => {
 
 
     // найти активную открытую вкладку для вампирского статблока
-    const statblockClassList = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock').classList
+    var findClasses = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock')
+    const statblockClassList = findClasses.classList
     var allClasses = statblockClassList.value.toString()
     var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
     var statblockCSSclass = '.' + allClasses.match(regex);

@@ -445,7 +445,8 @@
                                                     "fallback": "-",
                                                     "conditioned": true,
                                                     "dice": true,
-                                                    "diceCallback": "return [{ text: monster.art + 'd10|none|noform|nodice|text(' + monster.art +')' }]"
+                                                    "diceCallback": "return [{ text: monster.art + 'd10|none|noform|nodice|text(' + monster.art +')' }]",
+                                                    "display": "art"
                                                 },
                                                 {
                                                     "type": "property",

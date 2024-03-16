@@ -237,8 +237,7 @@
                                                     "conditioned": true,
                                                     "display": "Strength",
                                                     "diceCallback": "return [{ text: monster.Strength + 'd10>=6=-1sa\\|none|noform|nodice|text(' + monster.Strength +')' }]",
-                                                    "dice": true,
-                                                    "callback": ""
+                                                    "dice": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -250,8 +249,7 @@
                                                     "display": "Dexterity",
                                                     "conditioned": true,
                                                     "dice": true,
-                                                    "diceCallback": "return [{ text: monster.Dexterity + 'd10>=6=-1sa\\|none|noform|nodice|text(' + monster.Dexterity +')' }]",
-                                                    "callback": ""
+                                                    "diceCallback": "return [{ text: monster.Dexterity + 'd10>=6=-1sa\\|none|noform|nodice|text(' + monster.Dexterity +')' }]"
                                                 },
                                                 {
                                                     "type": "property",

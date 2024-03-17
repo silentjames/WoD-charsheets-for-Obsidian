@@ -2304,7 +2304,7 @@
                             "type": "property",
                             "id": "7b282acb6869",
                             "properties": [
-                                "weakness"
+                                "Weakness"
                             ],
                             "fallback": "-",
                             "display": "Weakness",

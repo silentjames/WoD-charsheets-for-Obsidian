@@ -2307,6 +2307,339 @@
                             ],
                             "fallback": "-",
                             "conditioned": true
+                        },
+                        {
+                            "type": "group",
+                            "id": "89d89aa8586b",
+                            "properties": [],
+                            "nested": [
+                                {
+                                    "type": "heading",
+                                    "id": "49e88998f949",
+                                    "properties": [
+                                        "Weapon"
+                                    ],
+                                    "size": 2,
+                                    "fallback": "-",
+                                    "conditioned": true
+                                },
+                                {
+                                    "type": "inline",
+                                    "id": "cae9eba9bab8",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "property",
+                                            "id": "b93a08781bc9",
+                                            "properties": [
+                                                "weapon_header"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Название"
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "2b99099b7818",
+                                            "properties": [
+                                                "damage_header"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Урон"
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "5a59695889f9",
+                                            "properties": [
+                                                "range_header"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Дистанция"
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "897a586a39c8",
+                                            "properties": [
+                                                "firerate_header"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Скорострельн."
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "89fae989b83b",
+                                            "properties": [
+                                                "capacity_header"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Боезапас"
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "6b68dbdb1b28",
+                                            "properties": [
+                                                "conceal_header"
+                                            ],
+                                            "fallback": "-",
+                                            "display": "Ношение"
+                                        }
+                                    ],
+                                    "conditioned": false,
+                                    "cls": "weapon-table-header"
+                                },
+                                {
+                                    "type": "inline",
+                                    "id": "3ba98b5bd979",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "property",
+                                            "id": "fa18bb4b2989",
+                                            "properties": [
+                                                "weapon1_name"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "a8da6b9ab899",
+                                            "properties": [
+                                                "damage1"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "485b4b890a28",
+                                            "properties": [
+                                                "range1"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "79d84b686b2a",
+                                            "properties": [
+                                                "firerate1"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "4a584a181808",
+                                            "properties": [
+                                                "capacity1"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "28293b9a89b9",
+                                            "properties": [
+                                                "conceal1"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        }
+                                    ],
+                                    "conditioned": true,
+                                    "cls": "weapon-one"
+                                },
+                                {
+                                    "type": "inline",
+                                    "id": "e98af9e95b4b",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "property",
+                                            "id": "1bab784b8ba9",
+                                            "properties": [
+                                                "weapon2_name"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "f95b6b69380a",
+                                            "properties": [
+                                                "damage2"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "5978c999cbb9",
+                                            "properties": [
+                                                "range2"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "e89b1abb3a09",
+                                            "properties": [
+                                                "firerate2"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "48da4a297928",
+                                            "properties": [
+                                                "capacity2"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "5a8938fb3b09",
+                                            "properties": [
+                                                "conceal2"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        }
+                                    ],
+                                    "conditioned": true,
+                                    "cls": "weapon-two"
+                                },
+                                {
+                                    "type": "inline",
+                                    "id": "ba2b4a0aca88",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "property",
+                                            "id": "69481aabb9ba",
+                                            "properties": [
+                                                "weapon3_name"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "cb88488b3b6b",
+                                            "properties": [
+                                                "damage3"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "7bf87b6b1819",
+                                            "properties": [
+                                                "range3"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "482a795b8959",
+                                            "properties": [
+                                                "firerate3"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "48384899ca58",
+                                            "properties": [
+                                                "capacity3"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "183a3ba948db",
+                                            "properties": [
+                                                "conceal3"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        }
+                                    ],
+                                    "conditioned": true,
+                                    "cls": "weapon-three"
+                                },
+                                {
+                                    "type": "inline",
+                                    "id": "980b0bbb2a4a",
+                                    "properties": [],
+                                    "nested": [
+                                        {
+                                            "type": "property",
+                                            "id": "99ca7b097b5a",
+                                            "properties": [
+                                                "weapon4_name"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "79a9cb99fa39",
+                                            "properties": [
+                                                "damage4"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "c8a848398968",
+                                            "properties": [
+                                                "range4"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "287bda1b3a0a",
+                                            "properties": [
+                                                "firerate4"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "99eb09da08bb",
+                                            "properties": [
+                                                "capacity4"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        },
+                                        {
+                                            "type": "property",
+                                            "id": "b9e95b6a0a8b",
+                                            "properties": [
+                                                "conceal4"
+                                            ],
+                                            "fallback": "-",
+                                            "conditioned": true
+                                        }
+                                    ],
+                                    "conditioned": true,
+                                    "cls": "weapon-four"
+                                }
+                            ],
+                            "cls": "weapon-table"
                         }
                     ]
                 }

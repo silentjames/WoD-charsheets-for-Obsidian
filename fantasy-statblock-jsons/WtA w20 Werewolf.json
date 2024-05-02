@@ -257,8 +257,7 @@
                                                     "conditioned": true,
                                                     "display": "Сила",
                                                     "diceCallback": "return [{ text: monster.Strength + 'd10>=6=-1sa\\|nodice|render|text(' + monster.Strength +')' }]",
-                                                    "dice": true,
-                                                    "callback": ""
+                                                    "dice": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -368,8 +367,7 @@
                                                     "display": "Восприятие",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.Perception + 'd10|none|noform|nodice|text(' + monster.Perception +')' }]",
-                                                    "dice": true,
-                                                    "diceProperty": ""
+                                                    "dice": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -2034,7 +2032,8 @@
                                                             "properties": [
                                                                 "dmg_sq1"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2042,7 +2041,8 @@
                                                             "properties": [
                                                                 "dmg_sq2"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2050,7 +2050,8 @@
                                                             "properties": [
                                                                 "dmg_sq3"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2058,7 +2059,8 @@
                                                             "properties": [
                                                                 "dmg_sq4"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2066,7 +2068,8 @@
                                                             "properties": [
                                                                 "dmg_sq5"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2074,7 +2077,8 @@
                                                             "properties": [
                                                                 "dmg_sq6"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2082,7 +2086,8 @@
                                                             "properties": [
                                                                 "dmg_sq7"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         }
                                                     ],
                                                     "cls": "damage-squares"
@@ -3023,7 +3028,6 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Сила:",
-                                            "diceCallback": "",
                                             "callback": "return monster.Strength + 2"
                                         },
                                         {
@@ -3150,8 +3154,6 @@
                                                 "crinos_note"
                                             ],
                                             "fallback": "-",
-                                            "callback": "",
-                                            "diceCallback": "",
                                             "display": "ВЫЗЫВАЕТ ПЕРВОБЫТНЫЙ УЖАС"
                                         }
                                     ],
@@ -3315,7 +3317,7 @@
                     ]
                 }
             ],
-            "open": false
+            "open": true
         },
         {
             "type": "javascript",
@@ -3325,5 +3327,6 @@
         }
     ],
     "name": "WtA w20 Werewolf",
-    "id": "ab2a9a89096a"
+    "id": "ab2a9a89096a",
+    "diceParsing": []
 }

@@ -224,8 +224,7 @@
                                                     "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false,
-                                                    "dice": false,
-                                                    "diceCallback": ""
+                                                    "dice": false
                                                 },
                                                 {
                                                     "type": "property",
@@ -237,8 +236,7 @@
                                                     "conditioned": true,
                                                     "display": "Сила",
                                                     "diceCallback": "return [{ text: monster.Strength + 'd10>=6=-1sa\\|none|noform|nodice|text(' + monster.Strength +')' }]",
-                                                    "dice": true,
-                                                    "callback": ""
+                                                    "dice": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -250,8 +248,7 @@
                                                     "display": "Ловкость",
                                                     "conditioned": true,
                                                     "dice": true,
-                                                    "diceCallback": "return [{ text: monster.Dexterity + 'd10>=6=-1sa\\|none|noform|nodice|text(' + monster.Dexterity +')' }]",
-                                                    "callback": ""
+                                                    "diceCallback": "return [{ text: monster.Dexterity + 'd10>=6=-1sa\\|none|noform|nodice|text(' + monster.Dexterity +')' }]"
                                                 },
                                                 {
                                                     "type": "property",
@@ -349,8 +346,7 @@
                                                     "display": "Восприятие",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.Perception + 'd10|none|noform|nodice|text(' + monster.Perception +')' }]",
-                                                    "dice": true,
-                                                    "diceProperty": ""
+                                                    "dice": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -1320,9 +1316,7 @@
                                                     "display": "Cовесть/Решимость",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.conscience + 'd10|none|nodice|noform|text(' + monster.conscience +')' }]",
-                                                    "dice": true,
-                                                    "callback": "",
-                                                    "diceProperty": ""
+                                                    "dice": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -1986,7 +1980,8 @@
                                                             "properties": [
                                                                 "dmg_sq1"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -1994,7 +1989,8 @@
                                                             "properties": [
                                                                 "dmg_sq2"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2002,7 +1998,8 @@
                                                             "properties": [
                                                                 "dmg_sq3"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2010,7 +2007,8 @@
                                                             "properties": [
                                                                 "dmg_sq4"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2018,7 +2016,8 @@
                                                             "properties": [
                                                                 "dmg_sq5"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2026,7 +2025,8 @@
                                                             "properties": [
                                                                 "dmg_sq6"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2034,7 +2034,8 @@
                                                             "properties": [
                                                                 "dmg_sq7"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         }
                                                     ],
                                                     "cls": "damage-squares"

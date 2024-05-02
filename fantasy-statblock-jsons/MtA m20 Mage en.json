@@ -224,8 +224,7 @@
                                                     "size": 3,
                                                     "fallback": "-",
                                                     "conditioned": false,
-                                                    "dice": false,
-                                                    "diceCallback": ""
+                                                    "dice": false
                                                 },
                                                 {
                                                     "type": "property",
@@ -347,8 +346,7 @@
                                                     "display": "Perception",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.Perception + 'd10|none|noform|nodice|text(' + monster.Perception +')' }]",
-                                                    "dice": true,
-                                                    "diceProperty": ""
+                                                    "dice": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -567,7 +565,6 @@
                                                                 "new_talent"
                                                             ],
                                                             "fallback": "-",
-                                                            "display": "",
                                                             "conditioned": true
                                                         },
                                                         {
@@ -2305,7 +2302,8 @@
                                                             "properties": [
                                                                 "dmg_sq1"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2313,7 +2311,8 @@
                                                             "properties": [
                                                                 "dmg_sq2"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2321,7 +2320,8 @@
                                                             "properties": [
                                                                 "dmg_sq3"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2329,7 +2329,8 @@
                                                             "properties": [
                                                                 "dmg_sq4"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2337,7 +2338,8 @@
                                                             "properties": [
                                                                 "dmg_sq5"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2345,7 +2347,8 @@
                                                             "properties": [
                                                                 "dmg_sq6"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         },
                                                         {
                                                             "type": "property",
@@ -2353,7 +2356,8 @@
                                                             "properties": [
                                                                 "dmg_sq7"
                                                             ],
-                                                            "fallback": "-"
+                                                            "fallback": "",
+                                                            "display": "-"
                                                         }
                                                     ],
                                                     "cls": "damage-squares"
@@ -2968,7 +2972,7 @@
         }
     ],
     "name": "MtA m20 Mage en",
-    "id": "399abbba6a08",
+    "id": "2949cb0aba48",
     "diceParsing": [],
     "cssProperties": {
         "backgroundColor": "#ffffff"

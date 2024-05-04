@@ -284,7 +284,7 @@ sleep(120).then(() => {
                 break;
         };
         collapsedColumn.classList.add(collapsedBackgroundClan);
-        document.querySelector(activeTab + '.weakness .inline').innerHTML = clanWeakness;
+        document.querySelector(activeTab + '.weakness p').innerHTML = clanWeakness;
         if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
             document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
         };
@@ -469,7 +469,7 @@ sleep(120).then(() => {
                 break;
         };
         collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
-        document.querySelector(statblockCSSpathHover + '.weakness .inline').innerHTML = clanWeaknessHover;
+        document.querySelector(statblockCSSpathHover + '.weakness p').innerHTML = clanWeaknessHover;
         if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container') != null) {
             document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover
         };
@@ -622,7 +622,7 @@ sleep(120).then(() => {
                 break;
         };
         collapsedColumn.classList.add(collapsedBackgroundClan);
-        document.querySelector('.weakness .inline').innerHTML = clanWeakness;
+        document.querySelector('.weakness p').innerHTML = clanWeakness;
     }
     else {
         // nothing
@@ -768,7 +768,7 @@ sleep(120).then(() => {
                 break;
         };
         collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
-        document.querySelector('.popover.hover-popover .weakness .inline').innerHTML = clanWeaknessHover;
+        document.querySelector('.popover.hover-popover .weakness p').innerHTML = clanWeaknessHover;
     }
     else {
         //nothing
@@ -880,8 +880,8 @@ sleep(120).then(() => {
 
 
     // setting to display wampire's weakness
-    if (document.querySelector(activeTab + '.line.show_weakness .inline') != null) {
-        var showWeakness = document.querySelector(activeTab + '.line.show_weakness .inline').innerHTML;
+    if (document.querySelector(activeTab + '.line.show_weakness p') != null) {
+        var showWeakness = document.querySelector(activeTab + '.line.show_weakness p').innerHTML;
         switch (showWeakness) {
             case ('no'):
                 // console.log('do you wanna see the weakness? ' + showWeakness)
@@ -897,8 +897,8 @@ sleep(120).then(() => {
         // console.log('the weakness will be displayed');
     }
     // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.line.show_weakness .inline') != null) {
-        var showWeaknessHover = document.querySelector(statblockCSSpathHover + '.line.show_weakness .inline').innerHTML;
+    if (document.querySelector(statblockCSSpathHover + '.line.show_weakness p') != null) {
+        var showWeaknessHover = document.querySelector(statblockCSSpathHover + '.line.show_weakness p').innerHTML;
         switch (showWeaknessHover) {
             case ('no'):
                 // console.log('do you wanna see the weakness in hover? ' + showWeaknessHover)
@@ -920,24 +920,24 @@ sleep(120).then(() => {
     if (document.querySelector(activeTab + '.line.generation .statblock-markdown p') != null) {
         // find the generation
         var generationFull = document.querySelector(activeTab + '.line.generation .statblock-markdown').textContent;
-        // pick only two first symbols, in case if the generation has info about diablery (like 9  ̶1̶0̶)
+        // pick only two first symbols, in case if the generation has info about diablery (like 9 1̶0̶)
         var generation = generationFull.slice(0, 2);
         // remove spaces, if the generation is 8 or 9
         var generation = generation.replace(/\s/g, '');
         console.log('the generation of this Kindred is ' + generation);
         switch (generation) {
             case '13':
-                document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '1'; break;
+                document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '1'; break;
             case '12':
-                document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '1'; break;
+                document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '1'; break;
             case '11':
-                document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '1'; break;
+                document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '1'; break;
             case '10':
-                document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '1'; break;
+                document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '1'; break;
             case '9':
-                document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '2'; break;
+                document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '2'; break;
             case '8':
-                document.querySelector(activeTab + '.line.blood_per_turn .inline').innerHTML = '3'; break;
+                document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '3'; break;
         }
     }
     else {
@@ -951,17 +951,17 @@ sleep(120).then(() => {
         console.log('the generation in hover - ' + generationHover);
         switch (generationHover) {
             case '13':
-                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn .inline').innerHTML = '1'; break;
+                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '1'; break;
             case '12':
-                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn .inline').innerHTML = '1'; break;
+                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '1'; break;
             case '11':
-                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn .inline').innerHTML = '1'; break;
+                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '1'; break;
             case '10':
-                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn .inline').innerHTML = '1'; break;
+                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '1'; break;
             case '9':
-                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn .inline').innerHTML = '2'; break;
+                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '2'; break;
             case '8':
-                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn .inline').innerHTML = '3'; break;
+                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '3'; break;
         }
     }
 
@@ -1010,7 +1010,7 @@ sleep(120).then(() => {
         if (document.querySelector(activeTab + allTraits[x]) != null) {
             // let's find the name of the property and its value
             var nameAbility = document.querySelector(activeTab + allTraits[x] + ' .property-name').innerHTML;
-            var valueAbility = document.querySelector(activeTab + allTraits[x] + ' .inline');
+            var valueAbility = document.querySelector(activeTab + allTraits[x] + ' p:not(:has(> .dice-roller))');
             // the code for usual dots
             if (valueAbility !== null) {
                 // console.log(nameAbility + ' has name length ' + nameAbility.length + ' and value  ' + valueAbility);
@@ -1021,10 +1021,10 @@ sleep(120).then(() => {
                 }
                 // if attributes value is 0, there will be warning 
                 else if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (basicAttributes.includes(allTraits[x]))) {
-                    document.querySelector(activeTab + allTraits[x] + ' .property-text').style.fontSize = '13px';
-                    document.querySelector(activeTab + allTraits[x] + ' .property-text').style.fontFamily = 'Marta';
-                    document.querySelector(activeTab + allTraits[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
-                    document.querySelector(activeTab + allTraits[x] + ' .inline').innerHTML = 'at least 1'
+                    document.querySelector(activeTab + allTraits[x] + ' p').style.fontSize = '13px';
+                    document.querySelector(activeTab + allTraits[x] + ' p').style.fontFamily = 'Marta';
+                    document.querySelector(activeTab + allTraits[x] + ' p').style.margin = '-1px 0px 0px 0px'
+                    document.querySelector(activeTab + allTraits[x] + ' p').innerHTML = 'at least 1'
                 }
                 // if the name is is too long and the value is too big, the dots could be replaced with numbers; some changes might be required as all these values were originally set for Russian version
                 else if ((nameAbility.length >= 11 && valueAbility.innerHTML > 9)
@@ -1032,13 +1032,13 @@ sleep(120).then(() => {
                     || (nameAbility.length >= 13 && valueAbility.innerHTML > 7)
                     || (nameAbility.length >= 14 && valueAbility.innerHTML > 6)
                     || (nameAbility.length >= 15 && valueAbility.innerHTML > 5)) {
-                    document.querySelector(activeTab + allTraits[x] + ' .property-text').style.fontSize = '14px';
-                    document.querySelector(activeTab + allTraits[x] + ' .property-text').style.fontFamily = 'Marta';
-                    document.querySelector(activeTab + allTraits[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
+                    document.querySelector(activeTab + allTraits[x] + ' p').style.fontSize = '14px';
+                    document.querySelector(activeTab + allTraits[x] + ' p').style.fontFamily = 'Marta';
+                    document.querySelector(activeTab + allTraits[x] + ' p').style.margin = '-1px 0px 0px 0px'
                 }
                 // replace 10s with Xs
                 else if (valueAbility.innerHTML == 10) {
-                    document.querySelector(activeTab + allTraits[x] + ' .inline').innerHTML = 'X'
+                    document.querySelector(activeTab + allTraits[x] + ' p').innerHTML = 'X'
                 }
             }
             // same code, but for Dice Roller
@@ -1049,23 +1049,20 @@ sleep(120).then(() => {
                     && (allTraits[x].includes('.appearance'))) {
                     // console.log('who goes there, to see the ugly Nosferaty? it's ' + allTraits[x]);
                     document.querySelector(activeTab + '.line.appearance .property-name').style.textDecoration = 'line-through';
-                    document.querySelector(activeTab + '.appearance .dice-roller-result').style.display = 'none';
-                    document.querySelector(activeTab + '.appearance .dice-original').innerHTML = 0;
-                    document.querySelector(activeTab + '.appearance .dice-original').style.display = 'block';
-                    document.querySelector(activeTab + '.appearance .dice-original').style.fontSize = '9px';
-                    document.querySelector(activeTab + '.appearance .dice-original').style.fontFamily = 'SmallCircles';
-                    document.querySelector(activeTab + '.appearance .dice-original').style.textAlign = 'center';
-                    document.querySelector(activeTab + '.appearance .dice-original').style.verticalAlign = 'top';
-                    document.querySelector(activeTab + '.appearance .dice-original').style.fontWeight = 'normal'
+                    document.querySelector(activeTab + '.appearance .dice-roller-result').innerHTML = 0;
+                    document.querySelector(activeTab + '.appearance .dice-roller-result').style.fontSize = '9px';
+                    document.querySelector(activeTab + '.appearance .dice-roller-result').style.fontFamily = 'SmallCircles';
+                    document.querySelector(activeTab + '.appearance .dice-roller-result').style.textAlign = 'center';
+                    document.querySelector(activeTab + '.appearance .dice-roller-result').style.verticalAlign = 'top';
+                    document.querySelector(activeTab + '.appearance .dice-roller-result').style.fontWeight = 'normal'
                 }
                 // if attributes value is 0, there will be warning 
                 else if ((valueAbility === 'null' || valueAbility == 0) && (basicAttributes.includes(allTraits[x]))) {
                     // console.log('is there a zero value??? yes, in ' + allTraits[x]);
-                    document.querySelector(activeTab + allTraits[x] + ' .roller-result').style.display = 'none';
-                    document.querySelector(activeTab + allTraits[x] + ' .dice-original').style.display = 'block';
-                    document.querySelector(activeTab + allTraits[x] + ' .dice-original').style.fontSize = '13px';
-                    document.querySelector(activeTab + allTraits[x] + ' .dice-original').style.margin = '-1px 0px 0px 0px';
-                    document.querySelector(activeTab + allTraits[x] + ' .dice-original').innerHTML = 'at least 1';
+                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').style.fontSize = '14px';
+                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').style.fontFamily = 'Marta';
+                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').style.margin = '-1px 0px 0px 0px';
+                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').innerHTML = 'at least 1';
                 }
                 // if the name is is too long and the value is too big, the dots could be replaced with numbers
                 else if ((nameAbility.length >= 11 && valueAbility > 9)
@@ -1092,7 +1089,7 @@ sleep(120).then(() => {
         if (document.querySelector(statblockCSSpathHover + allTraits[x]) != null) {
             // let's find the name of the property and its value
             var nameAbility = document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-name').innerHTML;
-            var valueAbility = document.querySelector(statblockCSSpathHover + allTraits[x] + ' .inline');
+            var valueAbility = document.querySelector(statblockCSSpathHover + allTraits[x] + ' p:not(:has(> .dice-roller))');
             // the code for usual dots
             if (valueAbility !== null) {
                 // console.log(nameAbility + ' in hover  has name length ' + nameAbility.length + ' and value  ' + valueAbility);
@@ -1103,10 +1100,10 @@ sleep(120).then(() => {
                 }
                 // if attributes value is 0, there will be warning 
                 else if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (basicAttributes.includes(allTraits[x]))) {
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.fontSize = '13px';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.fontFamily = 'Marta';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .inline').innerHTML = 'at least 1'
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').style.fontSize = '14px';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').style.fontFamily = 'Marta';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').style.margin = '-1px 0px 0px 0px'
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').innerHTML = 'at least 1'
                 }
                 // if the name is is too long and the value is too big, the dots could be replaced with numbers; some changes might be required as all these values were originally set for Russian version
                 else if ((nameAbility.length >= 11 && valueAbility.innerHTML > 9)
@@ -1114,38 +1111,36 @@ sleep(120).then(() => {
                     || (nameAbility.length >= 13 && valueAbility.innerHTML > 7)
                     || (nameAbility.length >= 14 && valueAbility.innerHTML > 6)
                     || (nameAbility.length >= 15 && valueAbility.innerHTML > 5)) {
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.fontSize = '14px';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.fontFamily = 'Marta';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-text').style.margin = '-1px 0px 0px 0px'
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').style.fontSize = '14px';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').style.fontFamily = 'Marta';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').style.margin = '-1px 0px 0px 0px'
                 }
                 // replace 10s with Xs
                 else if (valueAbility.innerHTML == 10) {
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .inline').innerHTML = 'X'
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').innerHTML = 'X'
                 }
             }
             // same code, but for Dice Roller
             else {
                 valueAbility = document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').innerHTML;
                 // special case - if the Appearance is 0 and the clan has 'Nosferatu' or 'Samedi', the appearance line will be strikethrough
-                if ((valueAbility === 'null' || valueAbility == 0) && (typeof clanName !== 'undefined' && (clanName.includes('Носферату') || clanName.includes('Самеди')))
+                if ((valueAbility === 'null' || valueAbility == 0) && (typeof clanNameHover !== 'undefined' && (clanNameHover.includes('Носферату') || clanNameHover.includes('Самеди')))
                     && (allTraits[x].includes('.appearance'))) {
                     document.querySelector(statblockCSSpathHover + '.line.appearance .property-name').style.textDecoration = 'line-through';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.display = 'none';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').innerHTML = 0;
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').style.display = 'block';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').style.fontSize = '9px';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').style.fontFamily = 'SmallCircles';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').style.textAlign = 'center';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').style.verticalAlign = 'top';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-original').style.fontWeight = 'normal'
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').innerHTML = 0;
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.display = 'block';
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.fontSize = '9px';
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.fontFamily = 'SmallCircles';
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.textAlign = 'center';
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.verticalAlign = 'top';
+                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.fontWeight = 'normal'
                 }
                 // if attributes value is 0, there will be warning 
                 else if ((valueAbility === 'null' || valueAbility == 0) && (basicAttributes.includes(allTraits[x]))) {
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .roller-result').style.display = 'none';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-original').style.display = 'block';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-original').style.fontSize = '13px';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-original').style.margin = '-1px 0px 0px 0px';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-original').innerHTML = 'at least 1';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').style.fontSize = '14px';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').style.fontFamily = 'Marta';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').style.margin = '-1px 0px 0px 0px';
+                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').innerHTML = 'at least 1';
                 }
                 // if the name is is too long and the value is too big, the dots could be replaced with numbers; some changes might be required as all these values were originally set for Russian version
                 else if ((nameAbility.length >= 11 && valueAbility > 9)
@@ -1169,12 +1164,12 @@ sleep(120).then(() => {
 
     // Disciplines
     // Some high values will be transformed from dots to digits, based on the lenght of a disciple's name, to keep columns width
-    if (document.querySelector(activeTab + '.discipline1_name .inline')) {
+    if (document.querySelector(activeTab + '.discipline1_name p')) {
         // get all the data from disciplines column, including unnecessary ones
-        var disciplinesList = document.querySelectorAll(activeTab + '.disciplines-column .inline');
+        var disciplinesList = document.querySelectorAll(activeTab + '.disciplines-column p');
         // console.log(disciplinesList);
         // get the disciplines (they all have odd indexes) and their values
-        for (let i = 1; i < disciplinesList.length; i += 2) {
+        for (let i = 0; i < disciplinesList.length; i += 2) {
             // if the name contains a link
             if (disciplinesList[i].innerHTML.startsWith('<a data')) {
                 if ((disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9)
@@ -1200,9 +1195,9 @@ sleep(120).then(() => {
         }
     }
     // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.discipline1_name .inline')) {
-        var disciplinesList = document.querySelectorAll(statblockCSSpathHover + '.disciplines-column .inline');
-        for (let i = 1; i < disciplinesList.length; i += 2) {
+    if (document.querySelector(statblockCSSpathHover + '.discipline1_name p')) {
+        var disciplinesList = document.querySelectorAll(statblockCSSpathHover + '.disciplines-column p');
+        for (let i = 0; i < disciplinesList.length; i += 2) {
             if (disciplinesList[i].innerHTML.startsWith('<a data')) {
                 if ((disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9)
                     || (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8)
@@ -1244,44 +1239,44 @@ sleep(120).then(() => {
             // ... arrow markers around the title will be removed
             document.querySelector(activeTab + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
             // let's get the value of non-humanity path
-            var pathModifier = document.querySelector(activeTab + '.line.path_value .inline').innerHTML;
+            var pathModifier = document.querySelector(activeTab + '.line.path_value p').innerHTML;
             // replace 10 with X
             if (pathModifier = 10) {
-                document.querySelector(activeTab + '.path_value .inline').innerHTML = 'X';
+                document.querySelector(activeTab + '.path_value p').innerHTML = 'X';
             }
         }
         else {
             // let's get the value of humanity path
-            if (document.querySelector(activeTab + '.line.path_value .inline') != null) {
-                var pathModifier = document.querySelector(activeTab + '.line.path_value .inline').innerHTML;
+            if (document.querySelector(activeTab + '.line.path_value p') != null) {
+                var pathModifier = document.querySelector(activeTab + '.line.path_value p').innerHTML;
                 switch (pathModifier) {
                     // replace 10 with X
                     case '10':
-                        document.querySelector(activeTab + '.line.path_value .inline').innerHTML = 'X';
+                        document.querySelector(activeTab + '.line.path_value p').innerHTML = 'X';
                     // and then correspinding bearing values will be assigned
                     case 'X':
-                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( -2 )'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy ( -2 )'; break;
                     case '9':
-                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( -1 )'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy ( -1 )'; break;
                     case '8':
-                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( -1 )'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy ( -1 )'; break;
                     case '7':
-                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy'; break;
                     case '6':
-                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy'; break;
                     case '5':
-                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy'; break;
                     case '4':
-                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy'; break;
                     case '3':
-                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( +1 )'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy ( +1 )'; break;
                     case '2':
-                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( +1 )'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy ( +1 )'; break;
                     case '1':
-                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'Normalcy ( +2 )'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy ( +2 )'; break;
                     default:
-                        document.querySelector(activeTab + '.line.bearing .inline').innerHTML = 'You are the Beast!';
-                        if (document.querySelector(activeTab + '.line.bearing .inline').innerHTML === null) {
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'You are the Beast!';
+                        if (document.querySelector(activeTab + '.line.bearing p').innerHTML === null) {
                             console.log('bearing line is missing')
                         }
                 }
@@ -1302,39 +1297,39 @@ sleep(120).then(() => {
         else if (pathHover.innerHTML != (('HUMANITY') || ('Humanity'))) {
             document.querySelector(statblockCSSpathHover + '.bearing').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
-            var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value .inline').innerHTML;
+            var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML;
             if (pathModifierHover = 10) {
-                document.querySelector(statblockCSSpathHover + '.path_value .inline').innerHTML = 'X';
+                document.querySelector(statblockCSSpathHover + '.path_value p').innerHTML = 'X';
             }
         }
         else {
-            var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value .inline').innerHTML;
+            var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML;
             switch (pathModifierHover) {
                 case '10':
-                    document.querySelector(statblockCSSpathHover + '.line.path_value .inline').innerHTML = 'X';
+                    document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML = 'X';
                 case 'X':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy ( -2 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy ( -2 )'; break;
                 case '9':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy ( -1 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy ( -1 )'; break;
                 case '8':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy ( -1 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy ( -1 )'; break;
                 case '7':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy'; break;
                 case '6':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy'; break;
                 case '5':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy'; break;
                 case '4':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy'; break;
                 case '3':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy ( +1 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy ( +1 )'; break;
                 case '2':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy ( +1 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy ( +1 )'; break;
                 case '1':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'Normalcy ( +2 )'; break;
+                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy ( +2 )'; break;
                 default:
-                    document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML = 'You are the Beast!';
-                    if (document.querySelector(statblockCSSpathHover + '.line.bearing .inline').innerHTML === null) {
+                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'You are the Beast!';
+                    if (document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML === null) {
                         console.log('bearing line in hover is missing')
                     }
             }
@@ -1350,13 +1345,13 @@ sleep(120).then(() => {
     if (document.querySelector(activeTab + '.willpower-block .line.willpower_main') != null) {
         for (let i = 0; i < willpowerOptions.length; i++) {
             // find the simple main willpower value or current one
-            if (document.querySelector(activeTab + willpowerOptions[i] + ' .inline') != null) {
-                var willpowerValue = document.querySelector(activeTab + willpowerOptions[i] + ' .inline');
+            if (document.querySelector(activeTab + willpowerOptions[i] + ' p') != null) {
+                var willpowerValue = document.querySelector(activeTab + willpowerOptions[i] + ' p');
                 // if it is and equal to 10
                 if (willpowerValue != null) {
                     if (willpowerValue.innerHTML == 10) {
                         // replace 10 with X
-                        document.querySelector(activeTab + willpowerOptions[i] + ' .inline').innerHTML = 'X'
+                        document.querySelector(activeTab + willpowerOptions[i] + ' p').innerHTML = 'X'
                     }
                 }
             }
@@ -1378,10 +1373,10 @@ sleep(120).then(() => {
     // same code, but for hover
     if (document.querySelector(statblockCSSpathHover + '.willpower-block .line.willpower_main') != null) {
         for (let i = 0; i < willpowerOptions.length; i++) {
-            var willpowerValue = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .inline');
+            var willpowerValue = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p');
             if (willpowerValue != null) {
                 if (willpowerValue.innerHTML == 10) {
-                    document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .inline').innerHTML = 'X'
+                    document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p').innerHTML = 'X'
                 }
             }
             else {
@@ -1397,7 +1392,7 @@ sleep(120).then(() => {
     // The great recalculation of blood, to use one parameter\number - then show all the needen line and hide others
     if (document.querySelector(activeTab + '.line.blood') != null) {
         // first line of blood
-        const bloodCurrent = document.querySelector(activeTab + '.line.blood .inline').innerHTML;
+        const bloodCurrent = document.querySelector(activeTab + '.line.blood p').innerHTML;
         console.log('blood value = ' + bloodCurrent)
         if (bloodCurrent <= 9) {
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'none';
@@ -1405,63 +1400,63 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
             // console.log('small check when bloodpool is less than 9')
         } else if (bloodCurrent == 10) {
-            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
             // console.log('small check when bloodpool is equal to 10 or X')
         } else if (bloodCurrent < 20) {
             var bloodCurrentTwo = bloodCurrent - 10;
-            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = bloodCurrentTwo;
+            document.querySelector(activeTab + '.line.blood_current2 p').innerHTML = bloodCurrentTwo;
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
             // console.log('small check when bloodpool is less than 20')
         } else if (bloodCurrent == 20) {
-            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood_current2 p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
             // console.log('small check when bloodpool is equal to 20')
         } else if (bloodCurrent < 30) {
             var bloodCurrentThree = bloodCurrent - 20;
-            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood_current2 p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = bloodCurrentThree;
+            document.querySelector(activeTab + '.line.blood_current3 p').innerHTML = bloodCurrentThree;
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
             // console.log('small check when bloodpool is less than 30')
         } else if (bloodCurrent == 30) {
-            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood_current2 p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = 'X';;
+            document.querySelector(activeTab + '.line.blood_current3 p').innerHTML = 'X';;
             document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
             // console.log('small check when bloodpool is equal to 30')
         } else if (bloodCurrent < 40) {
             var bloodCurrentFour = bloodCurrent - 30;
-            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood_current2 p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = 'X';
-            document.querySelector(activeTab + '.line.blood_current4 .inline').innerHTML = bloodCurrentFour;
+            document.querySelector(activeTab + '.line.blood_current3 p').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood_current4 p').innerHTML = bloodCurrentFour;
             // console.log('small check when bloodpool is less than 40')
         } else if (bloodCurrent == '40') {
-            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood_current2 p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current3 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood_current3 p').innerHTML = 'X';
             document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current4 .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood_current4 p').innerHTML = 'X';
             // console.log('small check when bloodpool is equal to 40')
         } else if (bloodCurrent >= 41) {
-            document.querySelector(activeTab + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
             document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current2)').innerHTML = '';
             document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current3)').innerHTML = '';
             document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current4)').innerHTML = '';
@@ -1476,7 +1471,7 @@ sleep(120).then(() => {
         //nothing
     }
     // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.line.blood .inline') != null) {
+    if (document.querySelector(statblockCSSpathHover + '.line.blood p') != null) {
         const bloodCurrentHover = document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML;
         console.log('blood value in hover = ' + bloodCurrentHover)
         if (bloodCurrentHover <= 9) {
@@ -1485,63 +1480,63 @@ sleep(120).then(() => {
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
             // console.log('small check when bloodpool is less than 9 in hover')
         } else if (bloodCurrentHover == 10) {
-            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
             // console.log('small check when bloodpool is equal to 10 or X in hover')
         } else if (bloodCurrentHover < 20) {
             var bloodCurrentTwoHover = bloodCurrentHover - 10;
-            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = bloodCurrentTwoHover;
+            document.querySelector(statblockCSSpathHover + '.line.blood_current2 p').innerHTML = bloodCurrentTwoHover;
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
             // console.log('small check when bloodpool is less than 20 in hover')
         } else if (bloodCurrentHover == 20) {
-            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current2 p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
             // console.log('small check when bloodpool is equal to 20 in hover')
         } else if (bloodCurrentHover < 30) {
             var bloodCurrentThreeHover = bloodCurrentHover - 20;
-            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current2 p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = bloodCurrentThreeHover;
+            document.querySelector(statblockCSSpathHover + '.line.blood_current3 p').innerHTML = bloodCurrentThreeHover;
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
             // console.log('small check when bloodpool is less than 30 in hover')
         } else if (bloodCurrentHover == 30) {
-            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current2 p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = 'X';;
+            document.querySelector(statblockCSSpathHover + '.line.blood_current3 p').innerHTML = 'X';;
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
             // console.log('small check when bloodpool is equal to 30 in hover')
         } else if (bloodCurrentHover < 40) {
             var bloodCurrentFourHover = bloodCurrentHover - 30;
-            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current2 p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current4 .inline').innerHTML = bloodCurrentFourHover;
+            document.querySelector(statblockCSSpathHover + '.line.blood_current3 p').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current4 p').innerHTML = bloodCurrentFourHover;
             // console.log('small check when bloodpool is less than 40 in hover')
         } else if (bloodCurrentHover == '40') {
-            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current2 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current2 p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current3 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current3 p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current4 .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood_current4 p').innerHTML = 'X';
             // console.log('small check when bloodpool is equal to 40 in hover')
         } else if (bloodCurrentHover >= 41) {
-            document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML = 'X';
+            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
             document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current2)').innerHTML = '';
             document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current3)').innerHTML = '';
             document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current4)').innerHTML = '';
@@ -1559,7 +1554,7 @@ sleep(120).then(() => {
 
     // define where to show merits and flaws, on the left or right - for WEREWOLVES
     if (document.querySelector(activeTab + '.merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
-        var whereToShowMeritsAndFlaws = document.querySelector(activeTab + '.line.where-to-show-merits-and-flaws .inline').innerHTML;
+        var whereToShowMeritsAndFlaws = document.querySelector(activeTab + '.line.where-to-show-merits-and-flaws p').innerHTML;
         console.log('where to show merits and flaws? left or right? = ' + whereToShowMeritsAndFlaws)
         switch (whereToShowMeritsAndFlaws) {
             case ('left'):
@@ -1574,7 +1569,7 @@ sleep(120).then(() => {
     }
     // same code, but for a statblock in hover
     if (document.querySelector(statblockCSSpathHover + '.merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
-        var whereToShowMeritsAndFlawsHover = document.querySelector('.popover.hover-popover .line.where-to-show-merits-and-flaws .inline').innerHTML;
+        var whereToShowMeritsAndFlawsHover = document.querySelector('.popover.hover-popover .line.where-to-show-merits-and-flaws p').innerHTML;
         switch (whereToShowMeritsAndFlawsHover) {
             case ('left'):
                 document.querySelector(statblockCSSpathHover + '.statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';
@@ -1595,13 +1590,13 @@ sleep(120).then(() => {
         if (document.querySelector(activeTab + '.' + werewolfOptions[y] + '-block .line.' + werewolfOptions[y] + '_main') != null) {
             // console.log('the block for ' + werewolfOptions[y].toUpperCase() + ' was found');
             // looking for the simple dots
-            optionValue = document.querySelector(activeTab + '.' + werewolfOptions[y] + '_main .inline')
+            optionValue = document.querySelector(activeTab + '.' + werewolfOptions[y] + '_main p')
             // if they are here...
             if (optionValue != null) {
                 // and euqal to 10
                 if (optionValue.innerHTML == 10) {
                     // replace it with X
-                    document.querySelector(activeTab + '.' + werewolfOptions[y] + '_main .inline').innerHTML = 'X';
+                    document.querySelector(activeTab + '.' + werewolfOptions[y] + '_main p').innerHTML = 'X';
                     // console.log('replacing 10 for the simple dots of ' + werewolfOptions[y].toUpperCase());
                 }
                 // if not 10 - aliright then
@@ -1634,10 +1629,10 @@ sleep(120).then(() => {
         // same code, but for a statblock in hover
         if (document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '-block .line.' + werewolfOptions[y] + '_main') != null) {
             // console.log('the block for ' + werewolfOptions[y].toUpperCase() + ' was found in hover');
-            optionValue = document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '_main .inline')
+            optionValue = document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '_main p')
             if (optionValue != null) {
                 if (optionValue.innerHTML == 10) {
-                    document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '_main .inline').innerHTML = 'X';
+                    document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '_main p').innerHTML = 'X';
                     // console.log('replacing 10 for the simple dots of ' + werewolfOptions[y].toUpperCase() + ' in hover');
                 }
                 else {
@@ -1668,10 +1663,10 @@ sleep(120).then(() => {
         // если вообще есть соответствующий блок...
         if (document.querySelector(activeTab + '.' + werewolfOptions[z] + '-block .line.' + werewolfOptions[z] + '_current') != null) {
             // console.log('the block for current ' + werewolfOptions[z].toUpperCase() + ' was found');
-            optionValue = document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current .inline')
+            optionValue = document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current p')
             if (optionValue != null) {
                 if (optionValue.innerHTML == 10) {
-                    document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current .inline').innerHTML = 'X';
+                    document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current p').innerHTML = 'X';
                     // console.log('replacing 10 for the simple dots of current ' + werewolfOptions[z].toUpperCase());
                 }
                 else {
@@ -1698,10 +1693,10 @@ sleep(120).then(() => {
         // same code, but for a statblock in hover
         if (document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '-block .line.' + werewolfOptions[z] + '_current') != null) {
             // console.log('the block for current ' + werewolfOptions[z].toUpperCase() + ' was found in hover');
-            optionValue = document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '_current .inline')
+            optionValue = document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '_current p')
             if (optionValue != null) {
                 if (optionValue.innerHTML == 10) {
-                    document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '_current .inline').innerHTML = 'X';
+                    document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '_current p').innerHTML = 'X';
                     // console.log('replacing 10 for the simple dots of current ' + werewolfOptions[z].toUpperCase() + ' in hover');
                 }
                 else {

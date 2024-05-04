@@ -3000,9 +3000,8 @@
                                             "properties": [
                                                 "homid_difficulty"
                                             ],
-                                            "fallback": "-",
-                                            "display": "Difficulty: ",
-                                            "callback": "return 6"
+                                            "fallback": "6",
+                                            "display": "Difficulty: "
                                         }
                                     ],
                                     "heading": "",
@@ -3030,7 +3029,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Strength:",
-                                            "callback": "return monster.Strength + 2"
+                                            "diceCallback": "var glabro_strength = monster.Strength + 2;\nreturn [{ text: glabro_strength + 'd10>=7=-1sa|nodice|render|text(' + glabro_strength + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3040,7 +3039,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Stamina:",
-                                            "callback": "return monster.Stamina + 2"
+                                            "diceCallback": "var glabro_stamina = monster.Stamina + 2;\nreturn [{ text: glabro_stamina + 'd10>=7=-1sa\\|nodice|render|text(' + glabro_stamina + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3050,7 +3049,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Appearance:",
-                                            "callback": "return monster.Appearance - 1"
+                                            "diceCallback": "var glabro_appearance = monster.Appearance - 1;\nif (glabro_appearance < 0) {glabro_appearance = 0};\nreturn [{ text: glabro_appearance + 'd10>=7=-1sa\\|nodice|render|text(' + glabro_appearance + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3060,7 +3059,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Manipulation:",
-                                            "callback": "return monster.Manipulation - 2"
+                                            "diceCallback": "var glabro_manipulation = monster.Manipulation - 2;\nif (glabro_manipulation < 0) {glabro_manipulation = 0};\nreturn [{ text: glabro_manipulation + 'd10>=7=-1sa\\|nodice|render|text(' + glabro_manipulation + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3068,9 +3067,8 @@
                                             "properties": [
                                                 "glabro_difficulty"
                                             ],
-                                            "fallback": "-",
-                                            "display": "Difficulty: ",
-                                            "callback": "return 7"
+                                            "fallback": "7",
+                                            "display": "Difficulty: "
                                         }
                                     ],
                                     "cls": "glabro-column"
@@ -3097,7 +3095,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Strength:",
-                                            "callback": "return monster.Strength + 4"
+                                            "diceCallback": "var crinos_strength = monster.Strength + 4;\nreturn [{ text: crinos_strength + 'd10>=6=-1sa\\|nodice|render|text(' + crinos_strength + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3107,7 +3105,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Dexterity:",
-                                            "callback": "return monster.Dexterity + 1"
+                                            "diceCallback": "var crinos_dexterity = monster.Dexterity + 1;\nreturn [{ text: crinos_dexterity + 'd10>=6=-1sa\\|nodice|render|text(' + crinos_dexterity + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3117,7 +3115,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Stamina:",
-                                            "callback": "return monster.Stamina + 3"
+                                            "diceCallback": "var crinos_stamina = monster.Stamina + 3;\nreturn [{ text: crinos_stamina + 'd10>=6=-1sa\\|nodice|render|text(' + crinos_stamina + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3127,7 +3125,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Manipulation:",
-                                            "callback": "return monster.Manipulation - 3"
+                                            "diceCallback": "var crinos_manipulation = monster.Manipulation - 3;\nif (crinos_manipulation < 0) {crinos_manipulation = 0};\nreturn [{ text: crinos_manipulation + 'd10>=6=-1sa\\|nodice|render|text(' + crinos_manipulation + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3137,7 +3135,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Apearance: ",
-                                            "callback": "return 0"
+                                            "diceCallback": "return [{ text: '1d10>=6=-1sa\\|nodice|render|text(0)'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3145,9 +3143,8 @@
                                             "properties": [
                                                 "crinos_difficulty"
                                             ],
-                                            "fallback": "-",
-                                            "display": "Difficulty: ",
-                                            "callback": "return 6"
+                                            "fallback": "6",
+                                            "display": "Difficulty: "
                                         },
                                         {
                                             "type": "property",
@@ -3183,7 +3180,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Strength:",
-                                            "callback": "return monster.Strength + 3"
+                                            "diceCallback": "var hispo_strength = monster.Strength + 3;\nreturn [{ text: hispo_strength + 'd10>=7=-1sa\\|nodice|render|text(' + hispo_strength + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3193,7 +3190,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Dexterity:",
-                                            "callback": "return monster.Dexterity + 2"
+                                            "diceCallback": "var hispo_dexterity = monster.Dexterity + 2;\nreturn [{ text: hispo_dexterity + 'd10>=7=-1sa\\|nodice|render|text(' + hispo_dexterity + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3203,7 +3200,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Stamina:",
-                                            "callback": "return monster.Stamina + 3"
+                                            "diceCallback": "var hispo_stamina = monster.Stamina + 3;\nreturn [{ text: hispo_stamina + 'd10>=7=-1sa\\|nodice|render|text(' + hispo_stamina + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3213,7 +3210,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Manipulation:",
-                                            "callback": "return monster.Manipulation - 3"
+                                            "diceCallback": "var hispo_manipulation = monster.Manipulation - 3;\nif (hispo_manipulation < 0) {hispo_manipulation = 0};\nreturn [{ text: hispo_manipulation + 'd10>=6=-1sa\\|nodice|render|text(' + hispo_manipulation + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3230,9 +3227,8 @@
                                             "properties": [
                                                 "hispo_difficulty"
                                             ],
-                                            "fallback": "-",
-                                            "display": "Difficulty:",
-                                            "callback": "return 7"
+                                            "fallback": "7",
+                                            "display": "Difficulty:"
                                         }
                                     ],
                                     "cls": "hispo-column"
@@ -3259,7 +3255,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Strength:",
-                                            "callback": "return monster.Strength + 1"
+                                            "diceCallback": "var lupus_strength = monster.Strength + 1;\nreturn [{ text: lupus_strength + 'd10>=6=-1sa\\|nodice|render|text(' + lupus_strength + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3269,7 +3265,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Dexterity:",
-                                            "callback": "return monster.Dexterity + 2"
+                                            "diceCallback": "var lupus_dexterity = monster.Dexterity + 2;\nreturn [{ text: lupus_dexterity + 'd10>=6=-1sa\\|nodice|render|text(' + lupus_dexterity + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3279,7 +3275,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Stamina:",
-                                            "callback": "return monster.Stamina + 2"
+                                            "diceCallback": "var lupus_stamina = monster.Stamina + 2;\nreturn [{ text: lupus_stamina + 'd10>=6=-1sa\\|nodice|render|text(' + lupus_stamina + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3289,7 +3285,7 @@
                                             ],
                                             "fallback": "-",
                                             "display": "Manipulation:",
-                                            "callback": "return monster.Manipulation - 3"
+                                            "diceCallback": "var lupus_manipulation = monster.Manipulation - 3;\nif (lupus_manipulation < 0) {lupus_manipulation = 0};\nreturn [{ text: lupus_manipulation + 'd10>=6=-1sa\\|nodice|render|text(' + lupus_manipulation + ')'}];"
                                         },
                                         {
                                             "type": "property",
@@ -3306,9 +3302,9 @@
                                             "properties": [
                                                 "lupus_difficulty"
                                             ],
-                                            "fallback": "-",
+                                            "fallback": "6",
                                             "display": "Difficulty:",
-                                            "callback": "return 6"
+                                            "callback": ""
                                         }
                                     ],
                                     "cls": "lupus-column"
@@ -3329,6 +3325,6 @@
         }
     ],
     "name": "WtA w20 Werewolf en",
-    "id": "6bfbeb5af81b",
+    "id": "2a1b5a0bfa08",
     "diceParsing": []
 }

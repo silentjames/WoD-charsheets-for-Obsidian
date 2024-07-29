@@ -66,17 +66,6 @@
                                 },
                                 {
                                     "type": "property",
-                                    "id": "0b3ba91959d8",
-                                    "properties": [
-                                        "concept"
-                                    ],
-                                    "fallback": "-",
-                                    "conditioned": true,
-                                    "markdown": true,
-                                    "display": "Concept:"
-                                },
-                                {
-                                    "type": "property",
                                     "id": "3b7bc9ba6ae9",
                                     "properties": [
                                         "essence"
@@ -107,6 +96,17 @@
                                     "display": "Sect:",
                                     "conditioned": true,
                                     "markdown": true
+                                },
+                                {
+                                    "type": "property",
+                                    "id": "0b3ba91959d8",
+                                    "properties": [
+                                        "concept"
+                                    ],
+                                    "fallback": "-",
+                                    "conditioned": true,
+                                    "markdown": true,
+                                    "display": "Concept:"
                                 }
                             ],
                             "cls": "info-group",
@@ -2972,7 +2972,7 @@
         }
     ],
     "name": "MtA m20 Mage en",
-    "id": "2949cb0aba48",
+    "id": "fafb3ab8ea78",
     "diceParsing": [],
     "cssProperties": {
         "backgroundColor": "#ffffff"

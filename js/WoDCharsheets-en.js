@@ -1,7 +1,7 @@
 async function sleep(ms) { // sleep is needed to wait for a note and a statblok to be fully loaded
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-sleep(120).then(() => {
+sleep(160).then(() => {
 
     // the list of weaknesses for all the supported clans
     // Camarilla
@@ -13,10 +13,12 @@ sleep(120).then(() => {
     const weaknessToreador = '';
     const weaknessTremere = '';
     const weaknessVentrue = '';
-    // Shabbat
+    // Sabbat
     const weaknessAssamiteAntitribu = '';
     const weaknessBrujahAntitribu = '';
     const weaknessCaitiffAntitribuPander = '';
+    const weaknessCountryGangrel = '';
+    const weaknessCityGangrel = '';
     const weaknessLasombra = '';
     const weaknessMalkavianAntitribu = '';
     const weaknessNosferatuAntitribu = '';
@@ -34,8 +36,6 @@ sleep(120).then(() => {
     // Bloodlines
     const weaknessBaali = '';
     const weaknessCappadocians = '';
-    const weaknessCountryGangrel = '';
-    const weaknessCityGangrel = '';
     const weaknessDaughtersOfCacophony = '';
     const weaknessKiasyd = '';
     const weaknessSalubri = '';
@@ -110,7 +110,7 @@ sleep(120).then(() => {
         var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
         switch (clanName) {
             case 'Assamite':
-                // corresponding css-class is assigned for each clan 
+                // corresponding css-class is assigned for each clan
                 var collapsedBackgroundClan = 'Assamite';
                 // and clan weakness is also added
                 var clanWeakness = weaknessAssamite;
@@ -488,9 +488,9 @@ sleep(120).then(() => {
         var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
         switch (clanName) {
             case 'Assamite':
-                // каждому клану назначается соответствующий класс, для которого в css уже вшито изображение
+                // corresponding css-class is assigned for each clan
                 var collapsedBackgroundClan = 'Assamite';
-                // изъян - соответствующий клану из списка выше
+                // and clan weakness is also added
                 var clanWeakness = weaknessAssamiteDarkAges;
                 break;
             case 'Brujah':
@@ -777,13 +777,13 @@ sleep(120).then(() => {
 
     // is there Werewolf statblock?
     if (document.querySelector(activeTab + '.line.tribe .statblock-markdown') != null && (statblockCSSclass.endsWith('.wta-w20-werewolf') || statblockCSSclass.endsWith('.wta-w20-werewolf-en'))) {
-        // определяется племя, и каждому племени подставляется своя картинка на бэкграунд
+        // define tribe
         var tribeName = document.querySelector(activeTab + '.line.tribe .statblock-markdown > p').innerHTML;
         console.log(tribeName + ' - название племени')
-        // определяется зона, которой будет назначен бэкграунд
+        // define the area where a tribe image should be placed
         var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
         switch (tribeName) {
-            case 'Черные Фурии':
+            case 'Black Furies':
                 // corresponding css-class is assigned for each tribe 
                 var collapsedBackgroundClan = 'BlackFuries';
                 break;
@@ -796,7 +796,7 @@ sleep(120).then(() => {
             case 'Bunyip':
                 var collapsedBackgroundClan = 'Bunyip';
                 break;
-            case ('Children of Gaia'):
+            case 'Children of Gaia':
                 var collapsedBackgroundClan = 'Children-of-Gaia';
                 break;
             case 'Croatan':
@@ -879,7 +879,173 @@ sleep(120).then(() => {
     }
 
 
-    // setting to display wampire's weakness
+    // is there Mage statblock?
+    if (document.querySelector(activeTab + '.line.affiliation .statblock-markdown') != null && (statblockCSSclass.endsWith('.mta-m20-mage') || statblockCSSclass.endsWith('.mta-m20-mage-en'))) {
+        // define affiliation
+        var affiliationName = document.querySelector(activeTab + '.line.affiliation .statblock-markdown > p').innerHTML;
+        console.log(affiliationName + ' - название секты')
+        // define the area where a tribe image should be placed
+        var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
+        switch (affiliationName) {
+            case 'Akashic Brotherhood':
+            case 'Akashayana':
+                // corresponding css-class is assigned
+                var collapsedBackgroundClan = 'AkashicBrotherhood';
+                break;
+            case 'Celestial Chorus':
+                var collapsedBackgroundClan = 'CelestialChorus';
+                break;
+            case 'Cult of Ecstasy':
+            case 'Sahajiya':
+                var collapsedBackgroundClan = 'Cult-of-Ecstasy';
+                break;
+            case 'Dreamspeakers':
+            case 'Kha’vadi':
+                var collapsedBackgroundClan = 'Dreamspeakers';
+                break;
+            case 'Euthanatos':
+            case 'Chakravanti':
+                var collapsedBackgroundClan = 'Euthanatos';
+                break;
+            case 'Order of Hermes':
+                var collapsedBackgroundClan = 'Order-of-Hermes';
+                break;
+            case 'Sons of Ether':
+            case 'Society of Ether':
+                var collapsedBackgroundClan = 'Sons-of-Ether';
+                break;
+            case 'Verbena':
+                var collapsedBackgroundClan = 'Verbena';
+                break;
+            case 'Virtual Adepts':
+                var collapsedBackgroundClan = 'VirtualAdepts';
+                break;
+            case 'Ahl-i-Batin':
+                var collapsedBackgroundClan = 'Ahl-i-Batin';
+                break;
+            case 'Bata’a':
+            case 'Bataa':
+                var collapsedBackgroundClan = 'Bataa';
+                break;
+            case 'Children of Knowledge':
+            case 'True Solificati':
+                var collapsedBackgroundClan = 'Children-of-Knowledge';
+                break;
+            case 'Hollow Ones':
+                var collapsedBackgroundClan = 'HollowOnes';
+                break;
+            case 'Kopa Loei':
+                var collapsedBackgroundClan = 'KopaLoei';
+                break;
+            case 'Ngoma':
+                var collapsedBackgroundClan = 'Ngoma';
+                break;
+            case 'Orphans':
+                var collapsedBackgroundClan = 'Orphans';
+                break;
+            case 'Sisters of Hippolyta':
+            case 'Hippolytoi':
+                var collapsedBackgroundClan = 'Sisters-of-Hippolyta';
+                break;
+            case 'Templar Knights':
+                var collapsedBackgroundClan = 'TemplarKnights';
+                break;
+            case 'WuLung':
+                var collapsedBackgroundClan = 'WuLung';
+                break;
+        };
+        collapsedColumn.classList.add(collapsedBackgroundClan);
+        if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
+        };
+    }
+    else {
+        // nothing
+    }
+
+    // same code, but for a statblock in hover
+    if (document.querySelector(statblockCSSpathHover + '.line.affiliation .statblock-markdown') != null && (statblockCSSclassHover.endsWith('.mta-m20-mage') || statblockCSSclassHover.endsWith('.mta-m20-mage-en'))) {
+        var affiliationNameHover = document.querySelector(statblockCSSpathHover + ' .line.affiliation .statblock-markdown > p').innerHTML;
+        var collapsedColumnHover = document.querySelector(statblockCSSpathHover + ' .collapse-container');
+        switch (affiliationNameHover) {
+            case 'Akashic Brotherhood':
+            case 'Akashayana':
+                // corresponding css-class is assigned
+                var collapsedBackgroundClanHover = 'AkashicBrotherhood';
+                break;
+            case 'Celestial Chorus':
+                var collapsedBackgroundClanHover = 'CelestialChorus';
+                break;
+            case 'Cult of Ecstasy':
+            case 'Sahajiya':
+                var collapsedBackgroundClanHover = 'Cult-of-Ecstasy';
+                break;
+            case 'Dreamspeakers':
+            case 'Kha’vadi':
+                var collapsedBackgroundClanHover = 'Dreamspeakers';
+                break;
+            case 'Euthanatos':
+            case 'Chakravanti':
+                var collapsedBackgroundClanHover = 'Euthanatos';
+                break;
+            case 'Order of Hermes':
+                var collapsedBackgroundClanHover = 'Order-of-Hermes';
+                break;
+            case 'Sons of Ether':
+            case 'Society of Ether':
+                var collapsedBackgroundClanHover = 'Sons-of-Ether';
+                break;
+            case 'Verbena':
+                var collapsedBackgroundClanHover = 'Verbena';
+                break;
+            case 'Virtual Adepts':
+                var collapsedBackgroundClanHover = 'VirtualAdepts';
+                break;
+            case 'Ahl-i-Batin':
+                var collapsedBackgroundClanHover = 'Ahl-i-Batin';
+                break;
+            case 'Bata’a':
+                var collapsedBackgroundClanHover = 'Bataa';
+                break;
+            case 'Bataa':
+                var collapsedBackgroundClanHover = 'Bataa';
+                break;
+            case 'Children of Knowledge':
+            case 'True Solificati':
+                var collapsedBackgroundClanHover = 'Children-of-Knowledge';
+                break;
+            case 'Hollow Ones':
+                var collapsedBackgroundClanHover = 'HollowOnes';
+                break;
+            case 'Kopa Loei':
+                var collapsedBackgroundClanHover = 'KopaLoei';
+                break;
+            case 'Ngoma':
+                var collapsedBackgroundClanHover = 'Ngoma';
+                break;
+            case 'Orphans':
+                var collapsedBackgroundClanHover = 'Orphans';
+                break;
+            case 'Sisters of Hippolyta':
+            case 'Hippolytoi':
+                var collapsedBackgroundClanHover = 'Sisters-of-Hippolyta';
+                break;
+            case 'Templar Knights':
+                var collapsedBackgroundClanHover = 'TemplarKnights';
+                break;
+            case 'WuLung':
+                var collapsedBackgroundClanHover = 'WuLung';
+                break;
+        };
+        collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
+    }
+    else {
+        //nothing
+    }
+
+
+
+    // setting to display vampire's weakness
     if (document.querySelector(activeTab + '.line.show_weakness p') != null) {
         var showWeakness = document.querySelector(activeTab + '.line.show_weakness p').innerHTML;
         switch (showWeakness) {

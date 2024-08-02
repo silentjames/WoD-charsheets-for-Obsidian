@@ -127,8 +127,6 @@
     <summary>Вампир</summary>
 
     ```statblock
-    columnWidth: 680
-    column: 1
     layout: VtM v20 Vampire
     dice: true
 
@@ -327,8 +325,6 @@
     <summary>Вампир (Темные века)</summary>
 
     ```statblock
-    columnWidth: 680
-    column: 1
     layout: VtM v20 Vampire Dark Ages
     dice: true
 
@@ -529,8 +525,6 @@
     <summary>Оборотень</summary>
 
     ```statblock
-    columnWidth: 680
-    column: 1
     layout: WtA w20 Werewolf
     dice: true
 
@@ -753,8 +747,6 @@
     <summary>Смертный</summary>
 
     ```statblock
-    columnWidth: 680
-    column: 1
     layout: WoD v20 Mortal
     dice: true
 
@@ -969,8 +961,6 @@
     <summary>Правительственный агент</summary>
 
     ```statblock
-    column: 1
-    columnWidth: 680
     layout: WoD v20 Agent
     dice: true
 
@@ -1200,9 +1190,9 @@
 Для вампиров темных веков - Lidia и PT Serif Pro.<br>
 Для оборотней - Marta и KistyCC.<br>
 Для агентов - GNUTypewriter.<br>
-А еще статблок поддерживает замечательный плагин [Style Settings](https://github.com/mgmeyers/obsidian-style-settings/), так что можно заменить указанные шрифты на любые другие (если они так же установлены).
+А еще можно в настройках конкретного статблока, вкладка Apperance, заменить указанные шрифты на любые другие (если они так же установлены).
 <p align="center">
-    <img src='imgs/style_settings.png' width='650'>
+    <img src='imgs/statblock_settings.png' width='650'>
 </p>
 
 <!--

@@ -130,8 +130,6 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
     <summary>Vampire</summary>
 
     ```statblock
-    columnWidth: 680
-    column: 1
     layout: VtM v20 Vampire en
     dice: true
 
@@ -325,8 +323,6 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
     <summary>Vampire Dark Ages</summary>
 
     ```statblock
-    columnWidth: 680
-    column: 1
     layout: VtM v20 Vampire Dark Ages en
     dice: true
 
@@ -528,8 +524,6 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
     <summary>Werewolf</summary>
 
     ```statblock
-    columnWidth: 680
-    column: 1
     layout: WtA w20 Werewolf
     dice: true
 
@@ -760,11 +754,272 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
 </details>
 
 <details>
+    <summary>Mage</summary>
+
+    ```statblock
+    layout: MtA m20 Mage en
+
+                            #### GENERAL INFO ####
+
+    name: 
+    desc: 
+    nature: 
+    demeanor: 
+    concept: 
+    essence: 
+    affiliation: 
+    sect: 
+
+    img: 
+    img_title: 
+    img_alt: 
+    img_alt_title: 
+
+                                #### ATTRIBUTES ####
+
+    Attributes: ATTRIBUTES
+
+    Physical: PHYSICAL
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
+
+    Social: SOCIAL
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
+
+    Mental: MENTAL
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
+
+                                #### ABILITIES ####
+
+    Abilities: ABILITIES
+
+    Talents: TALENTS
+    alertness: 0
+    art: 0
+    athletics: 0
+    awareness: 0
+    brawl: 0
+    empathy: 0
+    expression: 0
+    intimidation: 0
+    leadership: 0
+    streetwise: 0
+    subterfuge: 0
+    new_talent: 
+    new_talent_value: 
+
+    Skills: SKILLS
+    crafts: 0
+    drive: 0
+    etiquette: 0
+    firearms: 0
+    martialarts: 0
+    meditation: 0
+    melee: 0
+    research: 0
+    stealth: 0
+    survival: 0
+    technology: 0
+    new_skill: 
+    new_skill_value: 
+
+    Knowledges: KNOWLEDGES
+    academics: 0
+    computer: 0
+    cosmology: 0
+    enigmas: 0
+    esoterica: 0
+    investigation: 0
+    law: 0
+    medicine: 0
+    occult: 0
+    politics: 0
+    science: 0
+    new_knowledge: 
+    new_knowledge_value: 
+
+                                #### SPHERES #### 
+
+    Spheres: SPHERES
+
+    correspondence: 
+    entroty: 
+    forces: 
+    life: 
+    matter: 
+    mind: 
+    prime: 
+    spirit: 
+    time: 
+
+                                #### FOCUS ####
+
+    Focus: FOCUS
+
+    Paradigm: PARADIGM
+    paradigm_text: 
+
+    Practices: PRACTICES
+    practice1_name: 
+    practice1_value: 
+    practice2_name: 
+    practice2_value: 
+    practice3_name: 
+    practice3_value: 
+
+    Instruments: INSTRUMENTS
+    instrument1: 
+    instrument2: 
+    instrument3: 
+    instrument4: 
+    instrument5: 
+    instrument6: 
+    instrument7: 
+
+                        #### BACKGROUNDS / OTHER TRAITS ####
+
+    Backgrounds: BACKGROUNDS
+    background1_name: 
+    background1_value: 
+    background2_name: 
+    background2_value: 
+    background3_name: 
+    background3_value: 
+    background4_name: 
+    background4_value: 
+    background5_name: 
+    background5_value: 
+    background6_name: 
+    background6_value: 
+
+    Othertraits: OTHER TRAITS
+    othertrait1_name: 
+    othertrait1_value: 
+    othertrait2_name: 
+    othertrait2_value: 
+    othertrait3_name: 
+    othertrait3_value: 
+    othertrait4_name: 
+    othertrait4_value: 
+    othertrait5_name: 
+    othertrait5_value: 
+    othertrait6_name: 
+    othertrait6_value: 
+
+                            #### MERITS / FLAWS ####
+
+    Merits: MERITS
+    merit1_name: 
+    merit1_value: 
+    merit2_name: 
+    merit2_value: 
+    merit3_name: 
+    merit3_value: 
+    merit4_name: 
+    merit4_value: 
+    merit5_name: 
+    merit5_value: 
+    merit6_name: 
+    merit6_value: 
+    merit7_name: 
+    merit7_value: 
+
+    Flaws: FLAWS
+    flaw1_name: 
+    flaw1_value: 
+    flaw2_name: 
+    flaw2_value: 
+    flaw3_name: 
+    flaw3_value: 
+    flaw4_name: 
+    flaw4_value: 
+    flaw5_name: 
+    flaw5_value: 
+    flaw6_name: 
+    flaw6_value: 
+    flaw7_name: 
+    flaw7_value: 
+
+                        #### ARETE / WILLPOWER / PARADOX ####
+
+    Arete: ARETE
+    arete_value: 0
+
+    Willpower: WILLPOWER
+    willpower_main: 0
+    willpower_current: 0
+
+    Quintessence: QUINTESSENCE
+    quintessence_value: 0
+    Paradox: PARADOX
+    paradox_value: 0
+
+    Health: HEALTH
+    aggravated: 
+    lethal: 
+    bashing: 
+
+                                #### SPECIALTIES ####
+
+    Specialties: SPECIALTIES
+    specialty1_origin: 
+    specialty1_name: 
+    specialty2_origin: 
+    specialty2_name: 
+    specialty3_origin: 
+    specialty3_name: 
+    specialty4_origin: 
+    specialty4_name: 
+    specialty5_origin: 
+    specialty5_name: 
+    specialty6_origin: 
+    specialty6_name: 
+
+                                #### WEAPON ####
+
+    Weapon: WEAPON
+
+    weapon1_name: 
+    damage1: 
+    range1: 
+    firerate1: 
+    capacity1: 
+    conceal1: 
+
+    weapon2_name: 
+    damage2: 
+    range2: 
+    firerate2: 
+    capacity2: 
+    conceal2: 
+
+    weapon3_name: 
+    damage3: 
+    range3: 
+    firerate3: 
+    capacity3: 
+    conceal3: 
+
+    weapon4_name: 
+    damage4: 
+    range4: 
+    firerate4: 
+    capacity4: 
+    conceal4: 
+
+    ```
+
+</details>
+
+<details>
     <summary>Mortal</summary>
 
     ```statblock
-    columnWidth: 680
-    column: 1
     layout: WoD v20 Mortal
     dice: true
 
@@ -980,8 +1235,6 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
     <summary>Government agent</summary>
 
     ```statblock
-    columnWidth: 680
-    column: 1
     layout: WoD v20 Agent en
     dice: true
 
@@ -1212,12 +1465,13 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
 <br>
 **A**: I can't add these fonts into the statblock because of legal reasons. But you can add them manually into your system, and then the statblock will use them.<br>
 For vampires and mortals, you'll need Marta and Trajan Pro 3.<br>
-For Dark Ages vampires - Lidia and PT Serif Pro.<br>
+For Dark Ages vampires - PT Serif Pro and Lidia.<br>
 For werewolves - Marta and KistyCC.<br>
 For agents - GNUTypewriter.<br>
-Also, this statblock supports the great [Style Settings](https://github.com/mgmeyers/obsidian-style-settings/) plugin, so you can choose other fonts there if you want.
+For mages - Marta and Abbess.<br>
+Also, you can change all fonts you want, using Apperance tab in each statblock's settings:
 <p align="center">
-    <img src='imgs/style_settings.png' width='650'>
+    <img src='imgs/statblock_settings.png' width='650'>
 </p>
 
 <!--

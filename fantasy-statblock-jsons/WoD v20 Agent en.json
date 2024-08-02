@@ -2531,6 +2531,17 @@
         }
     ],
     "name": "WoD v20 Agent en",
-    "id": "0b8879c94b4b",
-    "diceParsing": []
+    "id": "fa4ba81b4ac9",
+    "diceParsing": [],
+    "cssProperties": {
+        "imageWidth": "120px",
+        "imageHeight": "120px",
+        "primaryColor": "#2c313c",
+        "contentFont": "\"GNUTypewriter\", \"Myriad Pro\", Calibri, Helvetica, Arial, sans-serif",
+        "headingFont": "\"GNUTypewriter\", \"Lora\", \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif",
+        "boxShadowColor": "#d9e6de",
+        "backgroundColor": "#e0c9a6"
+    },
+    "columns": 1,
+    "columnWidth": 680
 }

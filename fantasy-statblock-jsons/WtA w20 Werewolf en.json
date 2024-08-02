@@ -3325,6 +3325,18 @@
         }
     ],
     "name": "WtA w20 Werewolf en",
-    "id": "2a1b5a0bfa08",
-    "diceParsing": []
+    "id": "cac878b828a8",
+    "diceParsing": [],
+    "cssProperties": {
+        "imageWidth": "120px",
+        "imageHeight": "120px",
+        "contentFont": "\"Marta\", \"Myriad Pro\", Calibri, Helvetica, Arial, sans-serif",
+        "primaryColor": "#2c313c",
+        "headingFont": "\"KistyCC\", \"Lora\", \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif",
+        "boxShadowColor": "#aa8758",
+        "barColor": "#392314",
+        "backgroundColor": "#aa8758"
+    },
+    "columns": 1,
+    "columnWidth": 680
 }

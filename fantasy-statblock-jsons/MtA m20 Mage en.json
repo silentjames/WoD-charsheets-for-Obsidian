@@ -2975,6 +2975,16 @@
     "id": "fafb3ab8ea78",
     "diceParsing": [],
     "cssProperties": {
-        "backgroundColor": "#ffffff"
-    }
+        "backgroundColor": "#ffffff",
+        "imageWidth": "120px",
+        "imageHeight": "120px",
+        "contentFont": "\"Marta\", \"Myriad Pro\", Calibri, Helvetica, Arial, sans-serif",
+        "headingFont": "\"Abbess\", \"Lora\", \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif",
+        "primaryColor": "#2c313c",
+        "boxShadowColor": "barColor",
+        "imageBorderColor": "barColor",
+        "barColor": "#e7ca69"
+    },
+    "columns": 1,
+    "columnWidth": 680
 }

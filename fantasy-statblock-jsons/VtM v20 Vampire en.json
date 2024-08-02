@@ -2655,9 +2655,20 @@
         }
     ],
     "name": "VtM v20 Vampire en",
-    "id": "484a3b88da7b",
+    "id": "78fa5aca68da",
     "cssProperties": {
         "barColor": "#023015",
-        "fontColor": "#2c313c"
-    }
+        "fontColor": "#2c313c",
+        "contentFont": "\"Marta\", \"Myriad Pro\", Calibri, Helvetica, Arial, sans-serif",
+        "headingFont": "\"Trajan Pro 3\", \"Lora\", \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif",
+        "imageWidth": "120px",
+        "imageHeight": "120px",
+        "boxShadowColor": "#6fb88a",
+        "headingFontSize": "16px",
+        "primaryColor": "#2c313c",
+        "headingFontWeight": "700"
+    },
+    "diceParsing": [],
+    "columns": 1,
+    "columnWidth": 680
 }

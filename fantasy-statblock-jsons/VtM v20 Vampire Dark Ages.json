@@ -2334,5 +2334,17 @@
         }
     ],
     "name": "VtM v20 Vampire Dark Ages",
-    "id": "b919aa8af898"
+    "id": "eb596aba4a28",
+    "diceParsing": [],
+    "cssProperties": {
+        "imageWidth": "120px",
+        "imageHeight": "120px",
+        "headingFont": "\"Lidia\", \"Lora\", \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif",
+        "contentFont": "\"PT Serif Pro\", \"Myriad Pro\", Calibri, Helvetica, Arial, sans-serif",
+        "primaryColor": "#2c313c",
+        "barColor": "#853439",
+        "boxShadowColor": "#5c2125"
+    },
+    "columns": 1,
+    "columnWidth": 680
 }

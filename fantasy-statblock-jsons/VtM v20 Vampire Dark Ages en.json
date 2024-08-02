@@ -1906,7 +1906,7 @@
                                                         "blood_per_turn"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Предел траты в ход: "
+                                                    "display": "Blood per turn: "
                                                 }
                                             ],
                                             "cls": "blood-block"
@@ -2333,5 +2333,17 @@
         }
     ],
     "name": "VtM v20 Vampire Dark Ages en",
-    "id": "885a599a58c9"
+    "id": "685a69c80a3b",
+    "diceParsing": [],
+    "cssProperties": {
+        "imageWidth": "120px",
+        "imageHeight": "120px",
+        "headingFont": "\"Lidia\", \"Lora\", \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif",
+        "contentFont": "\"PT Serif Pro\", \"Myriad Pro\", Calibri, Helvetica, Arial, sans-serif",
+        "primaryColor": "#2c313c",
+        "barColor": "#853439",
+        "boxShadowColor": "#5c2125"
+    },
+    "columns": 1,
+    "columnWidth": 680
 }

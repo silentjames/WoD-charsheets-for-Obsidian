@@ -2972,5 +2972,14 @@
         }
     ],
     "name": "MtA m20 Technocrat en",
-    "id": "28499a28eaea"
+    "id": "28499a28eaea",
+    "cssProperties": {
+        "imageWidth": "120px",
+        "imageHeight": "120px",
+        "contentFont": "\"Marta\", \"Myriad Pro\", Calibri, Helvetica, Arial, sans-serif",
+        "headingFont": "\"Abbess\", \"Lora\", \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif",
+        "primaryColor": "#2c313c"
+    },
+    "columns": 1,
+    "columnWidth": 680
 }

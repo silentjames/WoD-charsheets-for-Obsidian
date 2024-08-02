@@ -2520,5 +2520,17 @@
         }
     ],
     "name": "WoD v20 Mortal en",
-    "id": "cbab1a3ada08"
+    "id": "d83b3859ba3a",
+    "diceParsing": [],
+    "cssProperties": {
+        "imageWidth": "120px",
+        "imageHeight": "120px",
+        "contentFont": "\"Marta\", \"Myriad Pro\", Calibri, Helvetica, Arial, sans-serif",
+        "headingFont": "\"Trajan Pro 3\", \"Lora\", \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif",
+        "primaryColor": "#2c313c",
+        "boxShadowColor": "#d9e6de",
+        "barColor": "#b29c97"
+    },
+    "columns": 1,
+    "columnWidth": 680
 }

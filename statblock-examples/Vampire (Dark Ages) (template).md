@@ -9,7 +9,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 
 ## 
 ```statblock
-columnWidth: 680
 layout: VtM v20 Vampire Dark Ages en
 dice: true
 

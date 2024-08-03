@@ -9,8 +9,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 
 ## 
 ```statblock
-columnWidth: 680
-column: 1
 layout: MtA m20 Technocrat en
 dice: true
 

@@ -8,8 +8,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 
 ##
 ```statblock
-columnWidth: 680
-column: 1
 layout: WoD v20 Agent
 dice: true
 

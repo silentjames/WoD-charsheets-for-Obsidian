@@ -1,7 +1,7 @@
 async function sleep(ms) { // sleep is needed to wait for a note and a statblok to be fully loaded
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-sleep(160).then(() => {
+sleep(130).then(() => {
 
     // the list of weaknesses for all the supported clans
     // Camarilla
@@ -887,71 +887,113 @@ sleep(160).then(() => {
         // define the area where a tribe image should be placed
         var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
         switch (affiliationName) {
+            case 'The Akashic Brotherhood':
             case 'Akashic Brotherhood':
             case 'Akashayana':
                 // corresponding css-class is assigned
                 var collapsedBackgroundClan = 'AkashicBrotherhood';
+                var headerBackgroundClan = 'var(--AkashicBrotherhood-background-logo)';
                 break;
+            case 'The Celestial Chorus':
             case 'Celestial Chorus':
                 var collapsedBackgroundClan = 'CelestialChorus';
+                var headerBackgroundClan = 'var(--CelestialChorus-background-logo)';
                 break;
+            case 'The Cult of Ecstasy':
             case 'Cult of Ecstasy':
             case 'Sahajiya':
                 var collapsedBackgroundClan = 'Cult-of-Ecstasy';
+                var headerBackgroundClan = 'var(--Cult-of-Ecstasy-background-logo)';
                 break;
+            case 'The Dreamspeakers':
             case 'Dreamspeakers':
             case 'Kha’vadi':
                 var collapsedBackgroundClan = 'Dreamspeakers';
+                var headerBackgroundClan = 'var(--Dreamspeakers-background-logo)';
                 break;
+            case 'The Euthanatos':
             case 'Euthanatos':
             case 'Chakravanti':
                 var collapsedBackgroundClan = 'Euthanatos';
+                var headerBackgroundClan = 'var(--Euthanatos-background-logo)';
                 break;
+            case 'The Order of Hermes':
             case 'Order of Hermes':
                 var collapsedBackgroundClan = 'Order-of-Hermes';
+                var headerBackgroundClan = 'var(--Order-of-Hermes-background-logo)';
                 break;
+            case 'The Sons of Ether':
             case 'Sons of Ether':
             case 'Society of Ether':
                 var collapsedBackgroundClan = 'Sons-of-Ether';
+                var headerBackgroundClan = 'var(--Sons-of-Ether-background-logo)';
                 break;
+            case 'The Verbena':
             case 'Verbena':
                 var collapsedBackgroundClan = 'Verbena';
+                var headerBackgroundClan = 'var(--Verbena-background-logo)';
                 break;
+            case 'The Virtual Adepts':
             case 'Virtual Adepts':
                 var collapsedBackgroundClan = 'VirtualAdepts';
+                var headerBackgroundClan = 'var(--VirtualAdepts-background-logo)';
                 break;
+            case 'The Ahl-i-Batin':
             case 'Ahl-i-Batin':
                 var collapsedBackgroundClan = 'Ahl-i-Batin';
+                var headerBackgroundClan = 'var(--Ahl-i-Batin-background-logo)';
                 break;
+            case 'The Bata’a':
             case 'Bata’a':
+            case 'The Bataa':
             case 'Bataa':
                 var collapsedBackgroundClan = 'Bataa';
+                var headerBackgroundClan = 'var(--Bataa-background-logo)';
                 break;
+            case 'The Children of Knowledge':
             case 'Children of Knowledge':
+            case 'Thу True Solificati':
             case 'True Solificati':
                 var collapsedBackgroundClan = 'Children-of-Knowledge';
+                var headerBackgroundClan = 'var(--Children-of-Knowledge-background-logo)';
                 break;
+            case 'The Hollow Ones':
             case 'Hollow Ones':
                 var collapsedBackgroundClan = 'HollowOnes';
+                var headerBackgroundClan = 'var(--HollowOnes-background-logo)';
                 break;
+            case 'The Kopa Loei':
             case 'Kopa Loei':
                 var collapsedBackgroundClan = 'KopaLoei';
+                var headerBackgroundClan = 'var(--KopaLoei-background-logo)';
                 break;
+            case 'The Ngoma':
             case 'Ngoma':
                 var collapsedBackgroundClan = 'Ngoma';
+                var headerBackgroundClan = 'var(--Ngoma-background-logo)';
                 break;
             case 'Orphans':
                 var collapsedBackgroundClan = 'Orphans';
+                var headerBackgroundClan = 'var(--Orphans-background-logo)';
                 break;
+            case 'The Sisters of Hippolyta':
             case 'Sisters of Hippolyta':
+            case 'The Hippolytoi':
             case 'Hippolytoi':
                 var collapsedBackgroundClan = 'Sisters-of-Hippolyta';
+                var headerBackgroundClan = 'var(--Sisters-of-Hippolyta-background-logo)';
                 break;
+            case 'The Templar Knights':
             case 'Templar Knights':
                 var collapsedBackgroundClan = 'TemplarKnights';
+                var headerBackgroundClan = 'var(--TemplarKnights-background-logo)';
                 break;
+            case 'The WuLung':
             case 'WuLung':
+            case 'The Wu Lung':
+            case 'Wu Lung':
                 var collapsedBackgroundClan = 'WuLung';
+                var headerBackgroundClan = 'var(--WuLung-background-logo)';
                 break;
         };
         collapsedColumn.classList.add(collapsedBackgroundClan);
@@ -968,76 +1010,120 @@ sleep(160).then(() => {
         var affiliationNameHover = document.querySelector(statblockCSSpathHover + ' .line.affiliation .statblock-markdown > p').innerHTML;
         var collapsedColumnHover = document.querySelector(statblockCSSpathHover + ' .collapse-container');
         switch (affiliationNameHover) {
+            case 'The Akashic Brotherhood':
             case 'Akashic Brotherhood':
             case 'Akashayana':
                 // corresponding css-class is assigned
                 var collapsedBackgroundClanHover = 'AkashicBrotherhood';
+                var headerBackgroundClanHover = 'var(--AkashicBrotherhood-background-logo)';
                 break;
+            case 'The Celestial Chorus':
             case 'Celestial Chorus':
                 var collapsedBackgroundClanHover = 'CelestialChorus';
+                var headerBackgroundClanHover = 'var(--CelestialChorus-background-logo)';
                 break;
+            case 'The Cult of Ecstasy':
             case 'Cult of Ecstasy':
             case 'Sahajiya':
                 var collapsedBackgroundClanHover = 'Cult-of-Ecstasy';
+                var headerBackgroundClanHover = 'var(--Cult-of-Ecstasy-background-logo)';
                 break;
+            case 'The Dreamspeakers':
             case 'Dreamspeakers':
             case 'Kha’vadi':
                 var collapsedBackgroundClanHover = 'Dreamspeakers';
+                var headerBackgroundClanHover = 'var(--Dreamspeakers-background-logo)';
                 break;
+            case 'The Euthanatos':
             case 'Euthanatos':
             case 'Chakravanti':
                 var collapsedBackgroundClanHover = 'Euthanatos';
+                var headerBackgroundClanHover = 'var(--Euthanatos-background-logo)';
                 break;
+            case 'The Order of Hermes':
             case 'Order of Hermes':
                 var collapsedBackgroundClanHover = 'Order-of-Hermes';
+                var headerBackgroundClanHover = 'var(--Order-of-Hermes-background-logo)';
                 break;
+            case 'The Sons of Ether':
             case 'Sons of Ether':
             case 'Society of Ether':
                 var collapsedBackgroundClanHover = 'Sons-of-Ether';
+                var headerBackgroundClanHover = 'var(--Sons-of-Ether-background-logo)';
                 break;
+            case 'The Verbena':
             case 'Verbena':
                 var collapsedBackgroundClanHover = 'Verbena';
+                var headerBackgroundClanHover = 'var(--Verbena-background-logo)';
                 break;
+            case 'The Virtual Adepts':
             case 'Virtual Adepts':
                 var collapsedBackgroundClanHover = 'VirtualAdepts';
+                var headerBackgroundClanHover = 'var(--VirtualAdepts-background-logo)';
                 break;
+            case 'The Ahl-i-Batin':
             case 'Ahl-i-Batin':
                 var collapsedBackgroundClanHover = 'Ahl-i-Batin';
+                var headerBackgroundClanHover = 'var(--Ahl-i-Batin-background-logo)';
                 break;
+            case 'The Bata’a':
             case 'Bata’a':
-                var collapsedBackgroundClanHover = 'Bataa';
-                break;
+            case 'The Bataa':
             case 'Bataa':
                 var collapsedBackgroundClanHover = 'Bataa';
+                var headerBackgroundClanHover = 'var(--Bataa-background-logo)';
                 break;
+            case 'The Children of Knowledge':
             case 'Children of Knowledge':
+            case 'Thу True Solificati':
             case 'True Solificati':
                 var collapsedBackgroundClanHover = 'Children-of-Knowledge';
+                var headerBackgroundClanHover = 'var(--Children-of-Knowledge-background-logo)';
                 break;
+            case 'The Hollow Ones':
             case 'Hollow Ones':
                 var collapsedBackgroundClanHover = 'HollowOnes';
+                var headerBackgroundClanHover = 'var(--HollowOnes-background-logo)';
                 break;
+            case 'The Kopa Loei':
             case 'Kopa Loei':
                 var collapsedBackgroundClanHover = 'KopaLoei';
+                var headerBackgroundClanHover = 'var(--KopaLoei-background-logo)';
                 break;
+            case 'The Ngoma':
             case 'Ngoma':
                 var collapsedBackgroundClanHover = 'Ngoma';
+                var headerBackgroundClanHover = 'var(--Ngoma-background-logo)';
                 break;
             case 'Orphans':
                 var collapsedBackgroundClanHover = 'Orphans';
+                var headerBackgroundClanHover = 'var(--Orphans-background-logo)';
                 break;
+            case 'The Sisters of Hippolyta':
             case 'Sisters of Hippolyta':
+            case 'The Hippolytoi':
             case 'Hippolytoi':
                 var collapsedBackgroundClanHover = 'Sisters-of-Hippolyta';
+                var headerBackgroundClanHover = 'var(--Sisters-of-Hippolyta-background-logo)';
                 break;
+            case 'The Templar Knights':
             case 'Templar Knights':
                 var collapsedBackgroundClanHover = 'TemplarKnights';
+                var headerBackgroundClanHover = 'var(--TemplarKnights-background-logo)';
                 break;
+            case 'The WuLung':
             case 'WuLung':
+            case 'The Wu Lung':
+            case 'Wu Lung':
                 var collapsedBackgroundClanHover = 'WuLung';
+                var headerBackgroundClanHover = 'var(--WuLung-background-logo)';
                 break;
         };
         collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
+        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover
+        };
+
     }
     else {
         //nothing

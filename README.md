@@ -1,5 +1,5 @@
 Some character sheets for World of Darkness (20th Anniversary Edition) characters, based on [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) and [Obsidian](https://github.com/obsidianmd).
-Currently, there are **vampires** (modern nights and dark ages), **werewolves**, **mortals** and **government agents** (mortal reskin actually, kinda based on 'Project Twilight').
+Currently, there are **vampires** (modern nights and dark ages), **werewolves**, **mages** (from Traditions and Technocracy), **mortals** and **government agents** (mortal reskin actually, kinda based on 'Project Twilight').
 
 <p align="center">
     <a style='text-decoration: none' href="README.ru.md"><img src=https://img.shields.io/badge/ReadMe_%D0%BD%D0%B0_%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%BC-%D0%B7%D0%B4%D0%B5%D1%81%D1%8C-cian></a>
@@ -27,6 +27,18 @@ Under the spoilers, you can find all other charsheets.
 </details>
 
 <details>
+    <summary>Mage (Traditions) and Technocrat (Technocratic Union)</summary>
+        <p align="center">
+            <a>The design of Technocrat statblock is raw and (probably) will be changed</a>
+        </p>
+        <p align="center">
+            <a></a>
+            <a href='imgs/mage_en.png'><img src='imgs/mage_en_small.png' height='600' width='auto'></a>
+            <a href='imgs/technocrat_en.png'><img src='imgs/technocrat_en_small.png' height='600' width='auto'></a>
+        </p>
+</details>
+
+<details>
     <summary>Mortal (similar to the vampire charsheet)</summary>
         <p align="center">
             <a href='imgs/mortal_en.png'><img src='imgs/mortal_en_small.png' width='450'></a>
@@ -47,6 +59,10 @@ There is also the option to add the top part of the charsheet as a header of you
 <p align="center">
     <img align="center" src='imgs/header_vampire_en.png' width='395'>
     <img align="center" src='imgs/header_vampire_dark_ages_en.png' width='395'>
+</p>
+<p align="center">
+    <img align="center" src='imgs/header_mage_en.png' width='395'>
+    <img align="center" src='imgs/header_technocrat_en.png' width='395'>
 </p>
 <p align="center">
     <img align="center" src='imgs/header_mortal_en.png' width='395'>
@@ -320,7 +336,7 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
 </details>
 
 <details>
-    <summary>Vampire Dark Ages</summary>
+    <summary>Vampire (Dark Ages)</summary>
 
     ```statblock
     layout: VtM v20 Vampire Dark Ages en
@@ -956,6 +972,269 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
 
     Quintessence: QUINTESSENCE
     quintessence_value: 0
+    Paradox: PARADOX
+    paradox_value: 0
+
+    Health: HEALTH
+    aggravated: 
+    lethal: 
+    bashing: 
+
+                                #### SPECIALTIES ####
+
+    Specialties: SPECIALTIES
+    specialty1_origin: 
+    specialty1_name: 
+    specialty2_origin: 
+    specialty2_name: 
+    specialty3_origin: 
+    specialty3_name: 
+    specialty4_origin: 
+    specialty4_name: 
+    specialty5_origin: 
+    specialty5_name: 
+    specialty6_origin: 
+    specialty6_name: 
+
+                                #### WEAPON ####
+
+    Weapon: WEAPON
+
+    weapon1_name: 
+    damage1: 
+    range1: 
+    firerate1: 
+    capacity1: 
+    conceal1: 
+
+    weapon2_name: 
+    damage2: 
+    range2: 
+    firerate2: 
+    capacity2: 
+    conceal2: 
+
+    weapon3_name: 
+    damage3: 
+    range3: 
+    firerate3: 
+    capacity3: 
+    conceal3: 
+
+    weapon4_name: 
+    damage4: 
+    range4: 
+    firerate4: 
+    capacity4: 
+    conceal4: 
+
+    ```
+
+</details>
+
+<details>
+    <summary>Technocrat</summary>
+
+    ```statblock
+    layout: MtA m20 Technocrat en
+
+                        #### GENERAL INFO ####
+
+    name: 
+    desc: 
+    nature: 
+    demeanor: 
+    essence: 
+    affiliation: 
+    sect: 
+    concept: 
+
+    img: 
+    img_title: 
+    img_alt: 
+    img_alt_title: 
+
+                                #### ATTRIBUTES ####
+
+    Attributes: ATTRIBUTES
+
+    Physical: PHYSICAL
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
+
+    Social: SOCIAL
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
+
+    Mental: MENTAL
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
+
+                                #### ABILITIES ####
+
+    Abilities: ABILITIES
+
+    Talents: TALENTS
+    alertness: 0
+    art: 0
+    athletics: 0
+    awareness: 0
+    brawl: 0
+    empathy: 0
+    expression: 0
+    intimidation: 0
+    leadership: 0
+    streetwise: 0
+    subterfuge: 0
+    new_talent: 
+    new_talent_value: 
+
+    Skills: SKILLS
+    crafts: 0
+    drive: 0
+    etiquette: 0
+    firearms: 0
+    martialarts: 0
+    meditation: 0
+    melee: 0
+    research: 0
+    stealth: 0
+    survival: 0
+    technology: 0
+    new_skill: 
+    new_skill_value: 
+
+    Knowledges: KNOWLEDGES
+    academics: 0
+    computer: 0
+    cosmology: 0
+    enigmas: 0
+    esoterica: 0
+    investigation: 0
+    law: 0
+    medicine: 0
+    occult: 0
+    politics: 0
+    science: 0
+    new_knowledge: 
+    new_knowledge_value: 
+
+                                #### SPHERES #### 
+
+    Spheres: SPHERES
+
+    data: 
+    dimensionalscience: 
+    entroty: 
+    forces: 
+    life: 
+    matter: 
+    mind: 
+    primalutility: 
+    time: 
+
+                                #### FOCUS ####
+
+    Focus: 
+
+    Paradigm: 
+    paradigm_text: 
+
+    Practices: 
+    practice1_name: 
+    practice1_value: 
+    practice2_name: 
+    practice2_value: 
+    practice3_name: 
+    practice3_value: 
+
+    Instruments: 
+    instrument1: 
+    instrument2: 
+    instrument3: 
+    instrument4: 
+    instrument5: 
+    instrument6: 
+    instrument7: 
+
+                        #### BACKGROUNDS / OTHER TRAITS ####
+
+    Backgrounds: BACKGROUNDS
+    background1_name: 
+    background1_value: 
+    background2_name: 
+    background2_value: 
+    background3_name: 
+    background3_value: 
+    background4_name: 
+    background4_value: 
+    background5_name: 
+    background5_value: 
+    background6_name: 
+    background6_value: 
+
+    Othertraits: OTHER TRAITS
+    othertrait1_name: 
+    othertrait1_value: 
+    othertrait2_name: 
+    othertrait2_value: 
+    othertrait3_name: 
+    othertrait3_value: 
+    othertrait4_name: 
+    othertrait4_value: 
+    othertrait5_name: 
+    othertrait5_value: 
+    othertrait6_name: 
+    othertrait6_value: 
+
+                            #### MERITS / FLAWS ####
+
+    Merits: 
+    merit1_name: 
+    merit1_value: 
+    merit2_name: 
+    merit2_value: 
+    merit3_name: 
+    merit3_value: 
+    merit4_name: 
+    merit4_value: 
+    merit5_name: 
+    merit5_value: 
+    merit6_name: 
+    merit6_value: 
+    merit7_name: 
+    merit7_value: 
+
+    Flaws: 
+    flaw1_name: 
+    flaw1_value: 
+    flaw2_name: 
+    flaw2_value: 
+    flaw3_name: 
+    flaw3_value: 
+    flaw4_name: 
+    flaw4_value: 
+    flaw5_name: 
+    flaw5_value: 
+    flaw6_name: 
+    flaw6_value: 
+    flaw7_name: 
+    flaw7_value: 
+
+                    #### ENLIGHTENMENT / WILLPOWER / PARADOX ####
+
+    Enlightenment: ENLIGHTENMENT
+    enlightenment_value: 0
+
+    Willpower: WILLPOWER
+    willpower_main: 0
+    willpower_current: 0
+
+    PrimalEnergy: PRIMAL ENERGY
+    primalenergy_value: 0
     Paradox: PARADOX
     paradox_value: 0
 

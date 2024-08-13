@@ -1,5 +1,5 @@
 Несколько бланков персонажей старого Мира Тьмы (для двадцатой редакции, она же четвертая, она же "Классические правила"). Этакое дополнение, предназначенное для [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) и [Obsidian](https://github.com/obsidianmd).
-На данный момент, доступны бланки для **вампиров** (современность и темные века), **оборотней**, **смертных** и **правительственных агентов** (рескин смертных).
+На данный момент, доступны бланки для **вампиров** (современность и темные века), **оборотней**, **магов** (пока что только на английском), **смертных** и **правительственных агентов** (рескин смертных).
 
 <p align="center">
     <a style='text-decoration: none' href="README.md"><img src=https://img.shields.io/badge/ReadMe_in_English-here-blue></a>
@@ -24,6 +24,18 @@
     <summary>Оборотни</summary>
         <p align="center">
             <a href='imgs/werewolf_ru.png'><img src='imgs/werewolf_ru_small.png' width='450'></a>
+        </p>
+</details>
+
+<details>
+    <summary>Маги и Технократы</summary>
+        <p align="center">
+            <a>Пока что только английские версии - ждем официальной локализации</a>
+        </p>
+        <p align="center">
+            <a></a>
+            <a href='imgs/mage_en.png'><img src='imgs/mage_en_small.png' height='600' width='auto'></a>
+            <a href='imgs/technocrat_en.png'><img src='imgs/technocrat_en_small.png' height='600' width='auto'></a>
         </p>
 </details>
 

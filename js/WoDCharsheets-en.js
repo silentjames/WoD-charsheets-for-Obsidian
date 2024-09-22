@@ -1,7 +1,7 @@
 async function sleep(ms) { // sleep is needed to wait for a note and a statblok to be fully loaded
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-sleep(130).then(() => {
+sleep(200).then(() => {
 
     // the list of weaknesses for all the supported clans
     // Camarilla
@@ -82,18 +82,22 @@ sleep(130).then(() => {
 
 
     // find the statblock's layout name and active tab that has it
-    var findClasses = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock')
-    const statblockClassList = findClasses.classList
-    var allClasses = statblockClassList.value.toString()
-    var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
-    var statblockCSSclass = '.' + allClasses.match(regex);
-    // console.log(statblockCSSclass + ' |=| statblock css-class')
-    var activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass + ' ';
+    if (document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock') != null) {
+        var findClasses = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock')
+        const statblockClassList = findClasses.classList
+        var allClasses = statblockClassList.value.toString()
+        var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
+        var statblockCSSclass = '.' + allClasses.match(regex);
+        // console.log(statblockCSSclass + ' |=| statblock css-class')
+        var activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass + ' ';
+    }
+    else { }
 
     // find statblock in hover
     if (document.querySelector('.popover.hover-popover') != null) {
         var statblockClassListHover = document.querySelector('.popover.hover-popover .obsidian-statblock-plugin.statblock').classList;
         var allClassesHover = statblockClassListHover.value.toString()
+        var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
         var statblockCSSclassHover = '.' + allClassesHover.match(regex);
         // console.log(statblockCSSclassHover + ' |=| css-класс статблока в ховере')
         var statblockCSSpathHover = '.popover.hover-popover ' + statblockCSSclassHover + ' ';
@@ -1130,6 +1134,98 @@ sleep(130).then(() => {
     }
 
 
+    // is there Technocrat statblock?
+    if (document.querySelector(activeTab + '.line.affiliation .statblock-markdown') != null && (statblockCSSclass.endsWith('.mta-m20-technocrat') || statblockCSSclass.endsWith('.mta-m20-technocrat-en'))) {
+        // define affiliation
+        var affiliationName = document.querySelector(activeTab + '.line.affiliation .statblock-markdown > p').innerHTML;
+        console.log(affiliationName + ' - название секты')
+        // define the area where a tribe image should be placed
+        var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
+        switch (affiliationName) {
+            case 'Iteration X':
+                // corresponding css-class is assigned
+                var collapsedBackgroundClan = 'IterationX';
+                var headerBackgroundClan = 'var(--IterationX-background-logo)';
+                break;
+            case 'The New World Order':
+            case 'New World Order':
+            case 'The NWO':
+            case 'NWO':
+                var collapsedBackgroundClan = 'NewWorldOrder';
+                var headerBackgroundClan = 'var(--NewWorldOrder-background-logo)';
+                break;
+            case 'The Progenitors':
+            case 'Progenitors':
+                var collapsedBackgroundClan = 'Progenitors';
+                var headerBackgroundClan = 'var(--Progenitors-background-logo)';
+                break;
+            case 'The Syndicate':
+            case 'Syndicate':
+                var collapsedBackgroundClan = 'Syndicate';
+                var headerBackgroundClan = 'var(--Syndicate-background-logo)';
+                break;
+            case 'The Void Engineers':
+            case 'Void Engineers':
+                var collapsedBackgroundClan = 'VoidEngineers';
+                var headerBackgroundClan = 'var(--VoidEngineers-background-logo)';
+                break;
+        };
+        collapsedColumn.classList.add(collapsedBackgroundClan);
+        if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
+        };
+    }
+    else {
+        // nothing
+    }
+
+    // same code, but for a statblock in hover
+    if (document.querySelector(statblockCSSpathHover + '.line.affiliation .statblock-markdown') != null && (statblockCSSclassHover.endsWith('.mta-m20-mage') || statblockCSSclassHover.endsWith('.mta-m20-mage-en'))) {
+        var affiliationNameHover = document.querySelector(statblockCSSpathHover + ' .line.affiliation .statblock-markdown > p').innerHTML;
+        var collapsedColumnHover = document.querySelector(statblockCSSpathHover + ' .collapse-container');
+        switch (affiliationNameHover) {
+            case 'The Akashic Brotherhood':
+            case 'Akashic Brotherhood':
+            case 'Akashayana':
+                // corresponding css-class is assigned
+                var collapsedBackgroundClanHover = 'AkashicBrotherhood';
+                var headerBackgroundClanHover = 'var(--AkashicBrotherhood-background-logo)';
+                break;
+            case 'The Celestial Chorus':
+            case 'Celestial Chorus':
+                var collapsedBackgroundClanHover = 'CelestialChorus';
+                var headerBackgroundClanHover = 'var(--CelestialChorus-background-logo)';
+                break;
+            case 'The Cult of Ecstasy':
+            case 'Cult of Ecstasy':
+            case 'Sahajiya':
+                var collapsedBackgroundClanHover = 'Cult-of-Ecstasy';
+                var headerBackgroundClanHover = 'var(--Cult-of-Ecstasy-background-logo)';
+                break;
+            case 'The Dreamspeakers':
+            case 'Dreamspeakers':
+            case 'Kha’vadi':
+                var collapsedBackgroundClanHover = 'Dreamspeakers';
+                var headerBackgroundClanHover = 'var(--Dreamspeakers-background-logo)';
+                break;
+            case 'The Euthanatos':
+            case 'Euthanatos':
+            case 'Chakravanti':
+                var collapsedBackgroundClanHover = 'Euthanatos';
+                var headerBackgroundClanHover = 'var(--Euthanatos-background-logo)';
+                break;
+        };
+        collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
+        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover
+        };
+
+    }
+    else {
+        //nothing
+    }
+
+
 
     // setting to display vampire's weakness
     if (document.querySelector(activeTab + '.line.show_weakness p') != null) {
@@ -1176,7 +1272,7 @@ sleep(130).then(() => {
         var generation = generationFull.slice(0, 2);
         // remove spaces, if the generation is 8 or 9
         var generation = generation.replace(/\s/g, '');
-        console.log('the generation of this Kindred is ' + generation);
+        // console.log('the generation of this Kindred is ' + generation);
         switch (generation) {
             case '13':
                 document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '1'; break;
@@ -1200,7 +1296,7 @@ sleep(130).then(() => {
         var generationFullHover = document.querySelector('.popover.hover-popover .line.generation .statblock-markdown > p').textContent;
         var generationHover = generationFullHover.slice(0, 2);
         var generationHover = generationHover.replace(/\s/g, '');
-        console.log('the generation in hover - ' + generationHover);
+        // console.log('the generation in hover - ' + generationHover);
         switch (generationHover) {
             case '13':
                 document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '1'; break;
@@ -1542,7 +1638,7 @@ sleep(130).then(() => {
     // same code, but for a statblock in hover
     if (document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown p') != null) {
         var pathHover = document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown p');
-        console.log(pathHover + 'is there the path in hover?')
+        // console.log(pathHover + 'is there the path in hover?')
         if (pathHover === null) {
             document.querySelector(statblockCSSpathHover + '.line.bearing').style.display = 'none'
         }
@@ -1807,7 +1903,7 @@ sleep(130).then(() => {
     // define where to show merits and flaws, on the left or right - for WEREWOLVES
     if (document.querySelector(activeTab + '.merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
         var whereToShowMeritsAndFlaws = document.querySelector(activeTab + '.line.where-to-show-merits-and-flaws p').innerHTML;
-        console.log('where to show merits and flaws? left or right? = ' + whereToShowMeritsAndFlaws)
+        // console.log('where to show merits and flaws? left or right? = ' + whereToShowMeritsAndFlaws)
         switch (whereToShowMeritsAndFlaws) {
             case ('left'):
                 document.querySelector(activeTab + '.statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';

@@ -1,7 +1,7 @@
 async function sleep(ms) { // сон, чтобы успела прогрузиться вся страница
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-sleep(120).then(() => {
+sleep(200).then(() => {
 
     // список изъянов для кланов
     // Камарилья
@@ -82,18 +82,22 @@ sleep(120).then(() => {
 
 
     // найти активную открытую вкладку для вампирского статблока
-    var findClasses = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock')
-    const statblockClassList = findClasses.classList
-    var allClasses = statblockClassList.value.toString()
-    var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
-    var statblockCSSclass = '.' + allClasses.match(regex);
-    // console.log(statblockCSSclass + ' |=| css-класс статблока')
-    var activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass + ' ';
+    if (document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock') != null) {
+        var findClasses = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock')
+        const statblockClassList = findClasses.classList
+        var allClasses = statblockClassList.value.toString()
+        var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
+        var statblockCSSclass = '.' + allClasses.match(regex);
+        // console.log(statblockCSSclass + ' |=| css-класс статблока')
+        var activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass + ' ';
+    }
+    else { }
 
     // найти статблок в ховере
     if (document.querySelector('.popover.hover-popover') != null) {
         var statblockClassListHover = document.querySelector('.popover.hover-popover .obsidian-statblock-plugin.statblock').classList;
         var allClassesHover = statblockClassListHover.value.toString()
+        var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
         var statblockCSSclassHover = '.' + allClassesHover.match(regex);
         // console.log(statblockCSSclassHover + ' |=| css-класс статблока в ховере')
         var statblockCSSpathHover = '.popover.hover-popover ' + statblockCSSclassHover + ' ';
@@ -946,8 +950,8 @@ sleep(120).then(() => {
             case 'Bunyip':
                 var collapsedBackgroundClan = 'Bunyip';
                 break;
-            case ('Дети Гайи'):
-            case ('Children of Gaia'):
+            case 'Дети Гайи':
+            case 'Children of Gaia':
                 var collapsedBackgroundClan = 'Children-of-Gaia';
                 break;
             case 'Кроатан':
@@ -1104,7 +1108,7 @@ sleep(120).then(() => {
         var generation = generationFull.slice(0, 2);
         // убираем пробелы, если поколение 8-9
         var generation = generation.replace(/\s/g, '');
-        console.log('поколение - ' + generation);
+        // console.log('поколение - ' + generation);
         // console.log(document.querySelector(activeTab + '.line.blood_per_turn p'))
         switch (generation) {
             case '13':
@@ -1129,7 +1133,7 @@ sleep(120).then(() => {
         var generationFullHover = document.querySelector('.popover.hover-popover .line.generation .statblock-markdown > p').textContent;
         var generationHover = generationFullHover.slice(0, 2);
         var generationHover = generationHover.replace(/\s/g, '');
-        console.log('поколение в ховере - ' + generationHover);
+        // console.log('поколение в ховере - ' + generationHover);
         switch (generationHover) {
             case '13':
                 document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '1'; break;
@@ -1226,7 +1230,6 @@ sleep(120).then(() => {
             // для дайс роллера
             else {
                 valueAbility = document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').innerHTML;
-                console.log('test')
                 // если привлекательность 0 и в имени клана есть "Носферату" или "Самеди", то строка привлекательности зачеркивается
                 if ((valueAbility === 'null' || valueAbility == 0) && (typeof clanName !== 'undefined' && (clanName.includes('Носферату') || clanName.includes('Самеди')))
                     && (allTraits[x].includes('.appearance'))) {
@@ -1420,7 +1423,7 @@ sleep(120).then(() => {
             document.querySelector(activeTab + '.bearing').style.display = 'none'
         }
         // если путь не человечность, то...
-        else if (path.innerHTML != ('ЧЕЛОВЕЧНОСТЬ') || path.innerHTML != ('Человечность')) {
+        else if ((path.innerHTML != ('ЧЕЛОВЕЧНОСТЬ') && path.innerHTML != ('Человечность'))) {
             // ...удаляется вся строчка 'Столп'
             document.querySelector(activeTab + '.bearing').style.display = 'none';
             // ... убираются стрелочки вокруг заголовка
@@ -1742,7 +1745,7 @@ sleep(120).then(() => {
     // определяем, с какой стороны показывать достоинства и недостатки у оборотней
     if (document.querySelector(activeTab + '.merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
         var whereToShowMeritsAndFlaws = document.querySelector(activeTab + '.line.where-to-show-merits-and-flaws p').innerHTML;
-        console.log('где же показывать достоинства и недостатки? ' + whereToShowMeritsAndFlaws)
+        // console.log('где же показывать достоинства и недостатки? ' + whereToShowMeritsAndFlaws)
         switch (whereToShowMeritsAndFlaws) {
             case ('left'):
                 document.querySelector(activeTab + '.statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';

@@ -1574,26 +1574,15 @@ sleep(200).then(() => {
     // bearing and it's value are displayed based on the path and its value
     if (document.querySelector(activeTab + '.line.path .statblock-markdown > p') != null) {
         // find the path, is it the humanity or not?
-        var path = document.querySelector(activeTab + '.line.path .statblock-markdown > p');
+        var path = document.querySelector(activeTab + '.line.path .statblock-markdown > p').innerHTML;
+        // console.log('path is... ' + path)
         // if the path is not presented...
         if (path === null) {
             // ...bearing line will be hidden
             document.querySelector(activeTab + '.bearing').style.display = 'none'
         }
-        // if the path isn't the humanity...
-        else if (path.innerHTML != (('HUMANITY') || ('Humanity'))) {
-            // ...bearing line will be hidden
-            document.querySelector(activeTab + '.bearing').style.display = 'none';
-            // ... arrow markers around the title will be removed
-            document.querySelector(activeTab + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
-            // let's get the value of non-humanity path
-            var pathModifier = document.querySelector(activeTab + '.line.path_value p').innerHTML;
-            // replace 10 with X
-            if (pathModifier = 10) {
-                document.querySelector(activeTab + '.path_value p').innerHTML = 'X';
-            }
-        }
-        else {
+        // if the path is humanity
+        else if ((path == 'Humanity') || (path == 'HUMANITY')) {
             // let's get the value of humanity path
             if (document.querySelector(activeTab + '.line.path_value p') != null) {
                 var pathModifier = document.querySelector(activeTab + '.line.path_value p').innerHTML;
@@ -1603,25 +1592,25 @@ sleep(200).then(() => {
                         document.querySelector(activeTab + '.line.path_value p').innerHTML = 'X';
                     // and then correspinding bearing values will be assigned
                     case 'X':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy ( -2 )'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность ( -2 )'; break;
                     case '9':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy ( -1 )'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность ( -1 )'; break;
                     case '8':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy ( -1 )'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность ( -1 )'; break;
                     case '7':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность'; break;
                     case '6':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность'; break;
                     case '5':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность'; break;
                     case '4':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность'; break;
                     case '3':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy ( +1 )'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность ( +1 )'; break;
                     case '2':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy ( +1 )'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность ( +1 )'; break;
                     case '1':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Normalcy ( +2 )'; break;
+                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность ( +2 )'; break;
                     default:
                         document.querySelector(activeTab + '.line.bearing p').innerHTML = 'You are the Beast!';
                         if (document.querySelector(activeTab + '.line.bearing p').innerHTML === null) {
@@ -1631,55 +1620,80 @@ sleep(200).then(() => {
             }
             else { }
         }
-    }
-    else {
-        //nothing
-    }
-    // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown p') != null) {
-        var pathHover = document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown p');
-        // console.log(pathHover + 'is there the path in hover?')
-        if (pathHover === null) {
-            document.querySelector(statblockCSSpathHover + '.line.bearing').style.display = 'none'
-        }
-        else if (pathHover.innerHTML != (('HUMANITY') || ('Humanity'))) {
-            document.querySelector(statblockCSSpathHover + '.bearing').style.display = 'none';
-            document.querySelector(statblockCSSpathHover + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
-            var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML;
-            if (pathModifierHover = 10) {
-                document.querySelector(statblockCSSpathHover + '.path_value p').innerHTML = 'X';
+        else {
+            // ...bearing line will be hidden
+            document.querySelector(activeTab + '.bearing').style.display = 'none';
+            // ... arrow markers around the title will be also removed
+            document.querySelector(activeTab + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
+            // let's get the value of non-humanity path
+            var pathModifier = document.querySelector(activeTab + '.line.path_value p').innerHTML;
+            // replace 10 with X
+            if (pathModifier == 10) {
+                document.querySelector(activeTab + '.path_value p').innerHTML = 'X';
             }
         }
+    }
+
+
+    // same code, but for a statblock in hover
+    if (document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown > p') != null) {
+        // find the path, is it the humanity or not?
+        var pathHover = document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown > p').innerHTML;
+        console.log('путь это ' + path)
+        // if the path is not presented...
+        if (pathHover === null) {
+            // ...bearing line will be hidden
+            document.querySelector(statblockCSSpathHover + '.bearing').style.display = 'none'
+        }
+        // if the path is humanity
+        else if ((pathHover == 'Humanity') || (pathHover == 'HUMANITY')) {
+            // let's get the value of humanity path
+            if (document.querySelector(statblockCSSpathHover + '.line.path_value p') != null) {
+                var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML;
+                switch (pathModifierHover) {
+                    // replace 10 with X
+                    case '10':
+                        document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML = 'X';
+                    // and then correspinding bearing values will be assigned
+                    case 'X':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( -2 )'; break;
+                    case '9':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( -1 )'; break;
+                    case '8':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( -1 )'; break;
+                    case '7':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
+                    case '6':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
+                    case '5':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
+                    case '4':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
+                    case '3':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( +1 )'; break;
+                    case '2':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( +1 )'; break;
+                    case '1':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( +2 )'; break;
+                    default:
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'You are the Beast!';
+                        if (document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML === null) {
+                            console.log('bearing line is missing in hover')
+                        }
+                }
+            }
+            else { }
+        }
         else {
+            // ...bearing line will be hidden
+            document.querySelector(statblockCSSpathHover + '.bearing').style.display = 'none';
+            // ... arrow markers around the title will be also removed
+            document.querySelector(statblockCSSpathHover + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
+            // let's get the value of non-humanity path
             var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML;
-            switch (pathModifierHover) {
-                case '10':
-                    document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML = 'X';
-                case 'X':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy ( -2 )'; break;
-                case '9':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy ( -1 )'; break;
-                case '8':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy ( -1 )'; break;
-                case '7':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy'; break;
-                case '6':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy'; break;
-                case '5':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy'; break;
-                case '4':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy'; break;
-                case '3':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy ( +1 )'; break;
-                case '2':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy ( +1 )'; break;
-                case '1':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Normalcy ( +2 )'; break;
-                default:
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'You are the Beast!';
-                    if (document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML === null) {
-                        console.log('bearing line in hover is missing')
-                    }
+            // replace 10 with X
+            if (pathModifierHover == 10) {
+                document.querySelector(statblockCSSpathHover + '.path_value p').innerHTML = 'X';
             }
         }
     }

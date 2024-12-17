@@ -1416,26 +1416,15 @@ sleep(200).then(() => {
     // в завимимости от названия пути и его значения, проставляется (или удаляется) модификатор столпа
     if (document.querySelector(activeTab + '.line.path .statblock-markdown > p') != null) {
         // найти значение пути, человечность это или нет
-        var path = document.querySelector(activeTab + '.line.path .statblock-markdown > p');
+        var path = document.querySelector(activeTab + '.line.path .statblock-markdown > p').innerHTML;
+        // console.log('путь это... ' + path)
         // если путь вообще не указан...
         if (path === null) {
             // ...удаляется вся строчка 'Столп'
             document.querySelector(activeTab + '.bearing').style.display = 'none'
         }
-        // если путь не человечность, то...
-        else if ((path.innerHTML != ('ЧЕЛОВЕЧНОСТЬ') && path.innerHTML != ('Человечность'))) {
-            // ...удаляется вся строчка 'Столп'
-            document.querySelector(activeTab + '.bearing').style.display = 'none';
-            // ... убираются стрелочки вокруг заголовка
-            document.querySelector(activeTab + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
-            // получаем количество точек в не-человечности
-            var pathModifier = document.querySelector(activeTab + '.line.path_value p').innerHTML;
-            // заменяем десятики на Х
-            if (pathModifier = 10) {
-                document.querySelector(activeTab + '.path_value p').innerHTML = 'X';
-            }
-        }
-        else {
+        // если путь это человечность, то...
+        else if ((path == 'Человечность') || (path == 'ЧЕЛОВЕЧНОСТЬ')) {
             // получаем количество точек в человечности
             if (document.querySelector(activeTab + '.line.path_value p') != null) {
                 var pathModifier = document.querySelector(activeTab + '.line.path_value p').innerHTML;
@@ -1473,55 +1462,81 @@ sleep(200).then(() => {
             }
             else { }
         }
-    }
-    else {
-        //nothing
-    }
-    // то же самое, но для ховера
-    if (document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown p') != null) {
-        var pathHover = document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown p');
-        // console.log(pathHover + 'есть ли путь в ховере?')
-        if (pathHover === null) {
-            document.querySelector(statblockCSSpathHover + '.line.bearing').style.display = 'none'
-        }
-        else if (pathHover.innerHTML != (('ЧЕЛОВЕЧНОСТЬ') || ('Человечность'))) {
-            document.querySelector(statblockCSSpathHover + '.bearing').style.display = 'none';
-            document.querySelector(statblockCSSpathHover + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
-            var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML;
-            if (pathModifierHover = 10) {
-                document.querySelector(statblockCSSpathHover + '.path_value p').innerHTML = 'X';
+        else {
+            // ...удаляется вся строчка 'Столп'
+            document.querySelector(activeTab + '.bearing').style.display = 'none';
+            // ... убираются стрелочки вокруг заголовка
+            document.querySelector(activeTab + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
+            // получаем количество точек в не-человечности
+            var pathModifier = document.querySelector(activeTab + '.line.path_value p').innerHTML;
+            // заменяем десятики на Х
+            if (pathModifier == 10) {
+                document.querySelector(activeTab + '.path_value p').innerHTML = 'X';
             }
         }
+    }
+
+
+    // то же самое, но для ховера
+    if (document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown > p') != null) {
+        // найти значение пути, человечность это или нет
+        var pathHover = document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown > p').innerHTML;
+        // console.log('путь в ховере это... ' + path)
+        // если путь вообще не указан...
+        if (pathHover === null) {
+            // ...удаляется вся строчка 'Столп'
+            document.querySelector(statblockCSSpathHover + '.bearing').style.display = 'none'
+        }
+        // если путь это человечность, то...
+        else if ((pathHover == 'Человечность') || (pathHover == 'ЧЕЛОВЕЧНОСТЬ')) {
+            console.log('нашли человечность')
+            // получаем количество точек в человечности
+            if (document.querySelector(statblockCSSpathHover + '.line.path_value p') != null) {
+                var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML;
+                switch (pathModifierHover) {
+                    // заменяем десятики на Х
+                    case '10':
+                        document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML = 'X';
+                    // каждому значению человечности прописывается соответствующий модификатор столпа
+                    case 'X':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( -2 )'; break;
+                    case '9':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( -1 )'; break;
+                    case '8':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( -1 )'; break;
+                    case '7':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
+                    case '6':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
+                    case '5':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
+                    case '4':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
+                    case '3':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( +1 )'; break;
+                    case '2':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( +1 )'; break;
+                    case '1':
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( +2 )'; break;
+                    default:
+                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Теперь ты Зверь!';
+                        if (document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML === null) {
+                            console.log('пропал блок со столпом')
+                        }
+                }
+            }
+            else { }
+        }
         else {
+            // ...удаляется вся строчка 'Столп'
+            document.querySelector(statblockCSSpathHover + '.bearing').style.display = 'none';
+            // ... убираются стрелочки вокруг заголовка
+            document.querySelector(statblockCSSpathHover + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
+            // получаем количество точек в не-человечности
             var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML;
-            switch (pathModifierHover) {
-                case '10':
-                    document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML = 'X';
-                case 'X':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( -2 )'; break;
-                case '9':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( -1 )'; break;
-                case '8':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( -1 )'; break;
-                case '7':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
-                case '6':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
-                case '5':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
-                case '4':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
-                case '3':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( +1 )'; break;
-                case '2':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( +1 )'; break;
-                case '1':
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( +2 )'; break;
-                default:
-                    document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Теперь ты Зверь!';
-                    if (document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML === null) {
-                        console.log('пропал блок со столпом в ховере')
-                    }
+            // заменяем десятики на Х
+            if (pathModifierHover == 10) {
+                document.querySelector(statblockCSSpathHover + '.path_value p').innerHTML = 'X';
             }
         }
     }

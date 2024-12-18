@@ -1735,15 +1735,17 @@ sleep(200).then(() => {
     // same code, but for hover
     if (document.querySelector(statblockCSSpathHover + '.willpower-block .line.willpower_main') != null) {
         for (let i = 0; i < willpowerOptions.length; i++) {
-            var willpowerValue = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p');
-            if (willpowerValue != null) {
-                if (willpowerValue.innerHTML == 10) {
-                    document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p').innerHTML = 'X'
+            if (document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p') != null) {
+                var willpowerValueHover = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p');
+                if (willpowerValueHover != null) {
+                    if (willpowerValueHover.innerHTML == 10) {
+                        document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p').innerHTML = 'X'
+                    }
                 }
             }
-            else {
-                willpowerValue = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result');
-                if (willpowerValue.innerHTML == 10) {
+            if (document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result') != null) {
+                var willpowerValueHover = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result').innerHTML;
+                if (willpowerValueHover == 10) {
                     document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result').innerHTML = 'X'
                 };
             }

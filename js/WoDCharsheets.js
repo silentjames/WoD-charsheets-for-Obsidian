@@ -1562,7 +1562,7 @@ sleep(200).then(() => {
             }
             // ищем дайс роллер
             if (document.querySelector(activeTab + willpowerOptions[i] + ' .dice-roller-result') != null) {
-                // если оно есть
+                // если он есть
                 var willpowerValue = document.querySelector(activeTab + willpowerOptions[i] + ' .dice-roller-result').innerHTML;
                 if (willpowerValue == 10) {
                     // меняем десятку на X
@@ -1578,15 +1578,17 @@ sleep(200).then(() => {
     // то же самое, но для ховера
     if (document.querySelector(statblockCSSpathHover + '.willpower-block .line.willpower_main') != null) {
         for (let i = 0; i < willpowerOptions.length; i++) {
-            var willpowerValue = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p');
-            if (willpowerValue != null) {
-                if (willpowerValue.innerHTML == 10) {
-                    document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p').innerHTML = 'X'
+            if (document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p') != null) {
+                var willpowerValueHover = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p');
+                if (willpowerValueHover != null) {
+                    if (willpowerValueHover.innerHTML == 10) {
+                        document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p').innerHTML = 'X'
+                    }
                 }
             }
-            else {
-                willpowerValue = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result');
-                if (willpowerValue.innerHTML == 10) {
+            if (document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result') != null) {
+                var willpowerValueHover = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result').innerHTML;
+                if (willpowerValueHover == 10) {
                     document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result').innerHTML = 'X'
                 };
             }

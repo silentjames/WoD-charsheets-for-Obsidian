@@ -157,8 +157,8 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
     generation: 
     sire: 
     nature: 
-    demeanor:  # Маска
-    concept:  # Амплуа
+    demeanor: 
+    concept: 
 
     img: 
     img_title: 

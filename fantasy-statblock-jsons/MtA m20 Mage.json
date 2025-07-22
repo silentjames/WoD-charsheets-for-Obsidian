@@ -71,7 +71,7 @@
                                         "essence"
                                     ],
                                     "fallback": "-",
-                                    "display": "Essence:",
+                                    "display": "Сущность:",
                                     "conditioned": true,
                                     "markdown": true
                                 },
@@ -82,7 +82,7 @@
                                         "affiliation"
                                     ],
                                     "fallback": "-",
-                                    "display": "Affiliation:",
+                                    "display": "Принадлежность:",
                                     "conditioned": true,
                                     "markdown": true
                                 },
@@ -93,7 +93,7 @@
                                         "sect"
                                     ],
                                     "fallback": "-",
-                                    "display": "Sect:",
+                                    "display": "Фракция:",
                                     "conditioned": true,
                                     "markdown": true
                                 },
@@ -471,6 +471,18 @@
                                                 },
                                                 {
                                                     "type": "property",
+                                                    "id": "4959dafac8d8",
+                                                    "properties": [
+                                                        "art"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.art + 'd10|none|noform|nodice|text(' + monster.art +')' }]",
+                                                    "display": "Искусство"
+                                                },
+                                                {
+                                                    "type": "property",
                                                     "id": "f8f8d9b97899",
                                                     "properties": [
                                                         "expression"
@@ -479,41 +491,6 @@
                                                     "display": "Красноречие",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.expression + 'd10|none|noform|nodice|text(' + monster.expression +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "4959dafac8d8",
-                                                    "properties": [
-                                                        "art"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "dice": true,
-                                                    "diceCallback": "return [{ text: monster.art + 'd10|none|noform|nodice|text(' + monster.art +')' }]"
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "2bb9da7b9a9b",
-                                                    "properties": [
-                                                        "awareness"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "display": "Шестое чувство",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.awareness + 'd10|none|noform|nodice|text(' + monster.awareness +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "2839ab59a96a",
-                                                    "properties": [
-                                                        "empathy"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Эмпатия",
-                                                    "diceCallback": "return [{ text: monster.empathy + 'd10|none|noform|nodice|text(' + monster.empathy +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -550,6 +527,30 @@
                                                     "display": "Хитрость",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.subterfuge + 'd10|none|noform|nodice|text(' + monster.subterfuge +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2bb9da7b9a9b",
+                                                    "properties": [
+                                                        "awareness"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Шестое чувство",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.awareness + 'd10|none|noform|nodice|text(' + monster.awareness +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2839ab59a96a",
+                                                    "properties": [
+                                                        "empathy"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Эмпатия",
+                                                    "diceCallback": "return [{ text: monster.empathy + 'd10|none|noform|nodice|text(' + monster.empathy +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -602,15 +603,16 @@
                                                 },
                                                 {
                                                     "type": "property",
-                                                    "id": "2ae8ba69aadb",
+                                                    "id": "ba29c9da5959",
                                                     "properties": [
-                                                        "crafts"
+                                                        "martialarts"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Ремесло",
                                                     "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.crafts + 'd10|none|noform|nodice|text(' + monster.crafts +')' }]",
-                                                    "dice": true
+                                                    "display": "Боевые искусства",
+                                                    "diceCallback": "return [{ text: monster.martialarts + 'd10|none|noform|nodice|text(' + monster.martialarts +')' }]",
+                                                    "dice": true,
+                                                    "hasRule": false
                                                 },
                                                 {
                                                     "type": "property",
@@ -626,63 +628,14 @@
                                                 },
                                                 {
                                                     "type": "property",
-                                                    "id": "98b87a294858",
+                                                    "id": "a9dae9982aba",
                                                     "properties": [
-                                                        "etiquette"
+                                                        "survival"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Этикет",
+                                                    "display": "Выживание",
                                                     "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.etiquette + 'd10|none|noform|nodice|text(' + monster.etiquette +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "984b1b9a9b18",
-                                                    "properties": [
-                                                        "firearms"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "display": "Стрельба",
-                                                    "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.firearms + 'd10|none|noform|nodice|text(' + monster.firearms +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "ba29c9da5959",
-                                                    "properties": [
-                                                        "martialarts"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "martial arts",
-                                                    "diceCallback": "return [{ text: monster.martialarts + 'd10|none|noform|nodice|text(' + monster.martialarts +')' }]",
-                                                    "dice": true,
-                                                    "hasRule": false
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "4b9adb2a7808",
-                                                    "properties": [
-                                                        "meditation"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "meditation",
-                                                    "diceCallback": "return [{ text: monster.meditation + 'd10|none|noform|nodice|text(' + monster.meditation +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "dab80bf8fbfa",
-                                                    "properties": [
-                                                        "melee"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Фехтование",
-                                                    "diceCallback": "return [{ text: monster.melee + 'd10|none|noform|nodice|text(' + monster.melee +')' }]",
+                                                    "diceCallback": "return [{ text: monster.survival + 'd10|none|noform|nodice|text(' + monster.survival +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -692,9 +645,33 @@
                                                         "research"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "research",
+                                                    "display": "Исследование",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.research + 'd10|none|noform|nodice|text(' + monster.research +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "4b9adb2a7808",
+                                                    "properties": [
+                                                        "meditation"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Медитация",
+                                                    "diceCallback": "return [{ text: monster.meditation + 'd10|none|noform|nodice|text(' + monster.meditation +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2ae8ba69aadb",
+                                                    "properties": [
+                                                        "crafts"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Ремесло",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.crafts + 'd10|none|noform|nodice|text(' + monster.crafts +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -712,14 +689,26 @@
                                                 },
                                                 {
                                                     "type": "property",
-                                                    "id": "a9dae9982aba",
+                                                    "id": "984b1b9a9b18",
                                                     "properties": [
-                                                        "survival"
+                                                        "firearms"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Выживание",
+                                                    "display": "Стрельба",
                                                     "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.survival + 'd10|none|noform|nodice|text(' + monster.survival +')' }]",
+                                                    "diceCallback": "return [{ text: monster.firearms + 'd10|none|noform|nodice|text(' + monster.firearms +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "dab80bf8fbfa",
+                                                    "properties": [
+                                                        "melee"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Фехтование",
+                                                    "diceCallback": "return [{ text: monster.melee + 'd10|none|noform|nodice|text(' + monster.melee +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -732,6 +721,18 @@
                                                     "display": "Электроника",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.technology + 'd10|none|noform|nodice|text(' + monster.technology +')' }]"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "98b87a294858",
+                                                    "properties": [
+                                                        "etiquette"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Этикет",
+                                                    "conditioned": true,
+                                                    "diceCallback": "return [{ text: monster.etiquette + 'd10|none|noform|nodice|text(' + monster.etiquette +')' }]",
+                                                    "dice": true
                                                 },
                                                 {
                                                     "type": "inline",
@@ -848,20 +849,8 @@
                                                     ],
                                                     "fallback": "-",
                                                     "conditioned": true,
-                                                    "display": "cosmology",
+                                                    "display": "Космология",
                                                     "diceCallback": "return [{ text: monster.cosmology + 'd10|none|noform|nodice|text(' + monster.cosmology +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "8bc82858c92b",
-                                                    "properties": [
-                                                        "esoterica"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "esoterica",
-                                                    "diceCallback": "return [{ text: monster.esoterica + 'd10|none|noform|nodice|text(' + monster.esoterica +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -910,6 +899,18 @@
                                                     "conditioned": true,
                                                     "display": "Расследование",
                                                     "diceCallback": "return [{ text: monster.investigation + 'd10|none|noform|nodice|text(' + monster.investigation +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "8bc82858c92b",
+                                                    "properties": [
+                                                        "esoterica"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Эзотерика",
+                                                    "diceCallback": "return [{ text: monster.esoterica + 'd10|none|noform|nodice|text(' + monster.esoterica +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -978,31 +979,30 @@
                                             "nested": [
                                                 {
                                                     "type": "property",
-                                                    "id": "0a68aa9b6938",
+                                                    "id": "a8883beb3ad8",
                                                     "properties": [
-                                                        "correspondence"
+                                                        "time"
                                                     ],
                                                     "fallback": "0",
-                                                    "markdown": false,
-                                                    "display": "Correspondence"
+                                                    "display": "Время"
                                                 },
                                                 {
                                                     "type": "property",
-                                                    "id": "c818dab81938",
+                                                    "id": "3b884b48f93a",
                                                     "properties": [
-                                                        "entroty"
+                                                        "spirit"
                                                     ],
                                                     "fallback": "0",
-                                                    "display": "Entropy"
+                                                    "display": "Дух"
                                                 },
                                                 {
                                                     "type": "property",
-                                                    "id": "2869b8081a6a",
+                                                    "id": "ba68bb3af9b8",
                                                     "properties": [
-                                                        "forces"
+                                                        "life"
                                                     ],
                                                     "fallback": "0",
-                                                    "display": "Forces"
+                                                    "display": "Жизнь"
                                                 }
                                             ],
                                             "cls": "spheres-column"
@@ -1014,21 +1014,21 @@
                                             "nested": [
                                                 {
                                                     "type": "property",
-                                                    "id": "ba68bb3af9b8",
-                                                    "properties": [
-                                                        "life"
-                                                    ],
-                                                    "fallback": "0",
-                                                    "display": "Life"
-                                                },
-                                                {
-                                                    "type": "property",
                                                     "id": "bb98987b2919",
                                                     "properties": [
                                                         "matter"
                                                     ],
                                                     "fallback": "0",
-                                                    "display": "Matter"
+                                                    "display": "Материя"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "8b3b783a7869",
+                                                    "properties": [
+                                                        "prime"
+                                                    ],
+                                                    "fallback": "0",
+                                                    "display": "Первооснова"
                                                 },
                                                 {
                                                     "type": "property",
@@ -1037,7 +1037,7 @@
                                                         "mind"
                                                     ],
                                                     "fallback": "0",
-                                                    "display": "Mind"
+                                                    "display": "Разум"
                                                 }
                                             ],
                                             "heading": "",
@@ -1050,30 +1050,31 @@
                                             "nested": [
                                                 {
                                                     "type": "property",
-                                                    "id": "8b3b783a7869",
+                                                    "id": "0a68aa9b6938",
                                                     "properties": [
-                                                        "prime"
+                                                        "correspondence"
                                                     ],
                                                     "fallback": "0",
-                                                    "display": "Prime"
+                                                    "markdown": false,
+                                                    "display": "Связи"
                                                 },
                                                 {
                                                     "type": "property",
-                                                    "id": "3b884b48f93a",
+                                                    "id": "2869b8081a6a",
                                                     "properties": [
-                                                        "spirit"
+                                                        "forces"
                                                     ],
                                                     "fallback": "0",
-                                                    "display": "Spirit"
+                                                    "display": "Силы"
                                                 },
                                                 {
                                                     "type": "property",
-                                                    "id": "a8883beb3ad8",
+                                                    "id": "c818dab81938",
                                                     "properties": [
-                                                        "time"
+                                                        "entroty"
                                                     ],
                                                     "fallback": "0",
-                                                    "display": "Time"
+                                                    "display": "Энтропия"
                                                 }
                                             ],
                                             "cls": "spheres-column"

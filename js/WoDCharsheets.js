@@ -1063,7 +1063,333 @@ sleep(200).then(() => {
     }
 
 
-    // настройка, отвечающая за отображение изъяна
+
+    // или даже маг?
+    if (document.querySelector(activeTab + '.line.affiliation .statblock-markdown') != null && (statblockCSSclass.endsWith('.mta-m20-mage') || statblockCSSclass.endsWith('.mta-m20-mage-en'))) {
+        // определяем принадлежность
+        var affiliationName = document.querySelector(activeTab + '.line.affiliation .statblock-markdown > p').innerHTML;
+        console.log(affiliationName + ' - это принадлежность')
+        // определяется зона, которой будет назначен бэкграунд
+        var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
+        switch (affiliationName) {
+            case 'Акашийское Братство':
+            case 'Акашаяна':
+                // назначается соответствующий класс, для которого в css уже вшито изображение
+                var collapsedBackgroundClan = 'AkashicBrotherhood';
+                var headerBackgroundClan = 'var(--AkashicBrotherhood-background-logo)';
+                break;
+            case 'Небесный Хор':
+            case 'Хористы':
+                var collapsedBackgroundClan = 'CelestialChorus';
+                var headerBackgroundClan = 'var(--CelestialChorus-background-logo)';
+                break;
+            case 'Культ Экстаза':
+            case 'Экстатики':
+            case 'Экстатик':
+                var collapsedBackgroundClan = 'Cult-of-Ecstasy';
+                var headerBackgroundClan = 'var(--Cult-of-Ecstasy-background-logo)';
+                break;
+            case 'Говорящие с Грёзой':
+            case 'Говорящие с Грезой':
+            case 'Общество Грёз':
+            case 'Общество Грез':
+            case 'Кха’вади':
+            case 'Кхавади':
+                var collapsedBackgroundClan = 'Dreamspeakers';
+                var headerBackgroundClan = 'var(--Dreamspeakers-background-logo)';
+                break;
+            case 'Эвтанатос':
+            case 'Эвтанаты':
+            case 'Чакраванти':
+                var collapsedBackgroundClan = 'Euthanatos';
+                var headerBackgroundClan = 'var(--Euthanatos-background-logo)';
+                break;
+            case 'Орден Гермеса':
+                var collapsedBackgroundClan = 'Order-of-Hermes';
+                var headerBackgroundClan = 'var(--Order-of-Hermes-background-logo)';
+                break;
+            case 'Сыны Эфира':
+            case 'Эфириты':
+            case 'Общество Эфира':
+                var collapsedBackgroundClan = 'Sons-of-Ether';
+                var headerBackgroundClan = 'var(--Sons-of-Ether-background-logo)';
+                break;
+            case 'Вербена':
+            case 'Вербены':
+                var collapsedBackgroundClan = 'Verbena';
+                var headerBackgroundClan = 'var(--Verbena-background-logo)';
+                break;
+            case 'Адепты Виртуальности':
+            case 'Адепт Виртуальности':
+                var collapsedBackgroundClan = 'VirtualAdepts';
+                var headerBackgroundClan = 'var(--VirtualAdepts-background-logo)';
+                break;
+            case 'Нефанди':
+                var collapsedBackgroundClan = 'Nephandi';
+                var headerBackgroundClan = 'var(--Nephandi-background-logo)';
+                break;
+            case 'Аль-и-Батин':
+                var collapsedBackgroundClan = 'Ahl-i-Batin';
+                var headerBackgroundClan = 'var(--Ahl-i-Batin-background-logo)';
+                break;
+            case 'Бата’а':
+            case 'Батаа':
+                var collapsedBackgroundClan = 'Bataa';
+                var headerBackgroundClan = 'var(--Bataa-background-logo)';
+                break;
+            case 'Дети Знания':
+            case 'Солификати':
+                var collapsedBackgroundClan = 'Children-of-Knowledge';
+                var headerBackgroundClan = 'var(--Children-of-Knowledge-background-logo)';
+                break;
+            case 'Пустые':
+                var collapsedBackgroundClan = 'HollowOnes';
+                var headerBackgroundClan = 'var(--HollowOnes-background-logo)';
+                break;
+            case 'Копа Лоэй':
+                var collapsedBackgroundClan = 'KopaLoei';
+                var headerBackgroundClan = 'var(--KopaLoei-background-logo)';
+                break;
+            case 'Нгома':
+                var collapsedBackgroundClan = 'Ngoma';
+                var headerBackgroundClan = 'var(--Ngoma-background-logo)';
+                break;
+            case 'Сироты':
+            case 'Сирота':
+                var collapsedBackgroundClan = 'Orphans';
+                var headerBackgroundClan = 'var(--Orphans-background-logo)';
+                break;
+            case 'Сёстры Ипполиты':
+            case 'Сестры Ипполиты':
+                var collapsedBackgroundClan = 'Sisters-of-Hippolyta';
+                var headerBackgroundClan = 'var(--Sisters-of-Hippolyta-background-logo)';
+                break;
+            case 'Тафтани':
+                var collapsedBackgroundClan = 'Taftani';
+                var headerBackgroundClan = 'var(--Taftani-background-logo)';
+                break;
+            case 'Рыцари-Тамплиерыы':
+                var collapsedBackgroundClan = 'TemplarKnights';
+                var headerBackgroundClan = 'var(--TemplarKnights-background-logo)';
+                break;
+            case 'У-Лун':
+                var collapsedBackgroundClan = 'WuLung';
+                var headerBackgroundClan = 'var(--WuLung-background-logo)';
+                break;
+        };
+        collapsedColumn.classList.add(collapsedBackgroundClan);
+        if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
+        };
+    }
+    else {
+        // nothing
+    }
+
+    // но же самое, но для ховера
+    if (document.querySelector(statblockCSSpathHover + '.line.affiliation .statblock-markdown') != null && (statblockCSSclassHover.endsWith('.mta-m20-mage') || statblockCSSclassHover.endsWith('.mta-m20-mage-en'))) {
+        var affiliationNameHover = document.querySelector(statblockCSSpathHover + ' .line.affiliation .statblock-markdown > p').innerHTML;
+        var collapsedColumnHover = document.querySelector(statblockCSSpathHover + ' .collapse-container');
+        switch (affiliationNameHover) {
+            case 'Акашийское Братство':
+            case 'Акашаяна':
+                // назначается соответствующий класс, для которого в css уже вшито изображение
+                var collapsedBackgroundClanHover = 'AkashicBrotherhood';
+                var headerBackgroundClanHover = 'var(--AkashicBrotherhood-background-logo)';
+                break;
+            case 'Небесный Хор':
+            case 'Хористы':
+                var collapsedBackgroundClanHover = 'CelestialChorus';
+                var headerBackgroundClanHover = 'var(--CelestialChorus-background-logo)';
+                break;
+            case 'Культ Экстаза':
+            case 'Экстатики':
+            case 'Экстатик':
+                var collapsedBackgroundClanHover = 'Cult-of-Ecstasy';
+                var headerBackgroundClanHover = 'var(--Cult-of-Ecstasy-background-logo)';
+                break;
+            case 'Говорящие с Грёзой':
+            case 'Говорящие с Грезой':
+            case 'Общество Грёз':
+            case 'Общество Грез':
+            case 'Кха’вади':
+            case 'Кхавади':
+                var collapsedBackgroundClanHover = 'Dreamspeakers';
+                var headerBackgroundClanHover = 'var(--Dreamspeakers-background-logo)';
+                break;
+            case 'Эвтанатос':
+            case 'Эвтанаты':
+            case 'Чакраванти':
+                var collapsedBackgroundClanHover = 'Euthanatos';
+                var headerBackgroundClanHover = 'var(--Euthanatos-background-logo)';
+                break;
+            case 'Орден Гермеса':
+                var collapsedBackgroundClanHover = 'Order-of-Hermes';
+                var headerBackgroundClanHover = 'var(--Order-of-Hermes-background-logo)';
+                break;
+            case 'Сыны Эфира':
+            case 'Эфириты':
+            case 'Общество Эфира':
+                var collapsedBackgroundClanHover = 'Sons-of-Ether';
+                var headerBackgroundClanHover = 'var(--Sons-of-Ether-background-logo)';
+                break;
+            case 'Вербена':
+            case 'Вербены':
+                var collapsedBackgroundClanHover = 'Verbena';
+                var headerBackgroundClanHover = 'var(--Verbena-background-logo)';
+                break;
+            case 'Адепты Виртуальности':
+            case 'Адепт Виртуальности':
+                var collapsedBackgroundClanHover = 'VirtualAdepts';
+                var headerBackgroundClanHover = 'var(--VirtualAdepts-background-logo)';
+                break;
+            case 'Нефанди':
+                var collapsedBackgroundClanHover = 'Nephandi';
+                var headerBackgroundClanHover = 'var(--Nephandi-background-logo)';
+                break;
+            case 'Аль-и-Батин':
+                var collapsedBackgroundClanHover = 'Ahl-i-Batin';
+                var headerBackgroundClanHover = 'var(--Ahl-i-Batin-background-logo)';
+                break;
+            case 'Бата’а':
+            case 'Батаа':
+                var collapsedBackgroundClanHover = 'Bataa';
+                var headerBackgroundClanHover = 'var(--Bataa-background-logo)';
+                break;
+            case 'Дети Знания':
+            case 'Солификати':
+                var collapsedBackgroundClanHover = 'Children-of-Knowledge';
+                var headerBackgroundClanHover = 'var(--Children-of-Knowledge-background-logo)';
+                break;
+            case 'Пустые':
+                var collapsedBackgroundClanHover = 'HollowOnes';
+                var headerBackgroundClanHover = 'var(--HollowOnes-background-logo)';
+                break;
+            case 'Копа Лоэй':
+                var collapsedBackgroundClanHover = 'KopaLoei';
+                var headerBackgroundClanHover = 'var(--KopaLoei-background-logo)';
+                break;
+            case 'Нгома':
+                var collapsedBackgroundClanHover = 'Ngoma';
+                var headerBackgroundClanHover = 'var(--Ngoma-background-logo)';
+                break;
+            case 'Сироты':
+            case 'Сирота':
+                var collapsedBackgroundClanHover = 'Orphans';
+                var headerBackgroundClanHover = 'var(--Orphans-background-logo)';
+                break;
+            case 'Сёстры Ипполиты':
+            case 'Сестры Ипполиты':
+                var collapsedBackgroundClanHover = 'Sisters-of-Hippolyta';
+                var headerBackgroundClanHover = 'var(--Sisters-of-Hippolyta-background-logo)';
+                break;
+            case 'Тафтани':
+                var collapsedBackgroundClanHover = 'Taftani';
+                var headerBackgroundClanHover = 'var(--Taftani-background-logo)';
+                break;
+            case 'Рыцари-Тамплиерыы':
+                var collapsedBackgroundClanHover = 'TemplarKnights';
+                var headerBackgroundClanHover = 'var(--TemplarKnights-background-logo)';
+                break;
+            case 'У-Лун':
+                var collapsedBackgroundClanHover = 'WuLung';
+                var headerBackgroundClanHover = 'var(--WuLung-background-logo)';
+                break;
+        };
+        collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
+        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover
+        };
+
+    }
+    else {
+        //nothing
+    }
+
+
+    // технократ?
+    if (document.querySelector(activeTab + '.line.affiliation .statblock-markdown') != null && (statblockCSSclass.endsWith('.mta-m20-technocrat') || statblockCSSclass.endsWith('.mta-m20-technocrat-en'))) {
+        // определяем принадлежность
+        var affiliationName = document.querySelector(activeTab + '.line.affiliation .statblock-markdown > p').innerHTML;
+        console.log(affiliationName + ' - название секты')
+        // определяется зона, которой будет назначен бэкграунд
+        var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
+        switch (affiliationName) {
+            case 'Итерация Икс':
+                // назначается соответствующий класс
+                var collapsedBackgroundClan = 'IterationX';
+                var headerBackgroundClan = 'var(--IterationX-background-logo)';
+                break;
+            case 'Новый Мировой Порядок':
+            case 'НМП':
+                var collapsedBackgroundClan = 'NewWorldOrder';
+                var headerBackgroundClan = 'var(--NewWorldOrder-background-logo)';
+                break;
+            case 'Родоначальники':
+                var collapsedBackgroundClan = 'Progenitors';
+                var headerBackgroundClan = 'var(--Progenitors-background-logo)';
+                break;
+            case 'Синдикат':
+            case 'Синдикат':
+                var collapsedBackgroundClan = 'Syndicate';
+                var headerBackgroundClan = 'var(--Syndicate-background-logo)';
+                break;
+            case 'Инженеры Пустоты':
+                var collapsedBackgroundClan = 'VoidEngineers';
+                var headerBackgroundClan = 'var(--VoidEngineers-background-logo)';
+                break;
+        };
+        collapsedColumn.classList.add(collapsedBackgroundClan);
+        if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
+        };
+    }
+    else {
+        // nothing
+    }
+
+    // то же самое, но для ховера
+    if (document.querySelector(statblockCSSpathHover + '.line.affiliation .statblock-markdown') != null && (statblockCSSclassHover.endsWith('.mta-m20-mage') || statblockCSSclassHover.endsWith('.mta-m20-mage-en'))) {
+        var affiliationNameHover = document.querySelector(statblockCSSpathHover + ' .line.affiliation .statblock-markdown > p').innerHTML;
+        var collapsedColumnHover = document.querySelector(statblockCSSpathHover + ' .collapse-container');
+        switch (affiliationNameHover) {
+            case 'Итерация Икс':
+                // назначается соответствующий класс
+                var collapsedBackgroundClanHover = 'IterationX';
+                var headerBackgroundClanHover = 'var(--IterationX-background-logo)';
+                break;
+            case 'Новый Мировой Порядок':
+            case 'НМП':
+                var collapsedBackgroundClanHover = 'NewWorldOrder';
+                var headerBackgroundClanHover = 'var(--NewWorldOrder-background-logo)';
+                break;
+            case 'Родоначальники':
+                var collapsedBackgroundClanHover = 'Progenitors';
+                var headerBackgroundClanHover = 'var(--Progenitors-background-logo)';
+                break;
+            case 'Синдикат':
+            case 'Синдикат':
+                var collapsedBackgroundClanHover = 'Syndicate';
+                var headerBackgroundClanHover = 'var(--Syndicate-background-logo)';
+                break;
+            case 'Инженеры Пустоты':
+                var collapsedBackgroundClanHover = 'VoidEngineers';
+                var headerBackgroundClanHover = 'var(--VoidEngineers-background-logo)';
+                break;
+        };
+        collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
+        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container') != null) {
+            document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover
+        };
+
+    }
+    else {
+        //nothing
+    }
+
+
+
+    // настройка, отвечающая за отображение вампирского изъяна
     if (document.querySelector(activeTab + '.line.show_weakness p') != null) {
         var showWeakness = document.querySelector(activeTab + '.line.show_weakness p').innerHTML;
         switch (showWeakness) {

@@ -942,6 +942,10 @@ sleep(200).then(() => {
                 var collapsedBackgroundClan = 'VirtualAdepts';
                 var headerBackgroundClan = 'var(--VirtualAdepts-background-logo)';
                 break;
+            case 'Nephandi':
+                var collapsedBackgroundClan = 'Nephandi';
+                var headerBackgroundClan = 'var(--Nephandi-background-logo)';
+                break;
             case 'The Ahl-i-Batin':
             case 'Ahl-i-Batin':
                 var collapsedBackgroundClan = 'Ahl-i-Batin';
@@ -986,6 +990,11 @@ sleep(200).then(() => {
             case 'Hippolytoi':
                 var collapsedBackgroundClan = 'Sisters-of-Hippolyta';
                 var headerBackgroundClan = 'var(--Sisters-of-Hippolyta-background-logo)';
+                break;
+            case 'Taftâni':
+            case 'Taftani':
+                var collapsedBackgroundClan = 'Taftani';
+                var headerBackgroundClan = 'var(--Taftani-background-logo)';
                 break;
             case 'The Templar Knights':
             case 'Templar Knights':
@@ -1065,6 +1074,10 @@ sleep(200).then(() => {
                 var collapsedBackgroundClanHover = 'VirtualAdepts';
                 var headerBackgroundClanHover = 'var(--VirtualAdepts-background-logo)';
                 break;
+            case 'Nephandi':
+                var collapsedBackgroundClanHover = 'Nephandi';
+                var headerBackgroundClanHover = 'var(--Nephandi-background-logo)';
+                break;
             case 'The Ahl-i-Batin':
             case 'Ahl-i-Batin':
                 var collapsedBackgroundClanHover = 'Ahl-i-Batin';
@@ -1109,6 +1122,11 @@ sleep(200).then(() => {
             case 'Hippolytoi':
                 var collapsedBackgroundClanHover = 'Sisters-of-Hippolyta';
                 var headerBackgroundClanHover = 'var(--Sisters-of-Hippolyta-background-logo)';
+                break;
+            case 'Taftâni':
+            case 'Taftani':
+                var collapsedBackgroundClanHover = 'Taftani';
+                var headerBackgroundClanHover = 'var(--Taftani-background-logo)';
                 break;
             case 'The Templar Knights':
             case 'Templar Knights':

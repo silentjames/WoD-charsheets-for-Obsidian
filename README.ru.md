@@ -30,12 +30,9 @@
 <details>
     <summary>Маги и Технократы</summary>
         <p align="center">
-            <a>Пока что только английские версии - ждем официальной локализации</a>
-        </p>
-        <p align="center">
             <a></a>
-            <a href='imgs/mage_en.png'><img src='imgs/mage_en_small.png' height='600' width='auto'></a>
-            <a href='imgs/technocrat_en.png'><img src='imgs/technocrat_en_small.png' height='600' width='auto'></a>
+            <a href='imgs/mage_ru.png'><img src='imgs/mage_ru_small.png' height='600' width='auto'></a>
+            <a href='imgs/technocrat_ru.png'><img src='imgs/technocrat_ru_small.png' height='600' width='auto'></a>
         </p>
 </details>
 
@@ -60,6 +57,10 @@
 <p align="center">
     <img align="center" src='imgs/header_vampire_ru.png' width='395'>
     <img align="center" src='imgs/header_vampire_dark_ages_ru.png' width='395'>
+</p>
+<p align="center">
+    <img align="center" src='imgs/header_mage_ru.png' width='395'>
+    <img align="center" src='imgs/header_technocrat_ru.png' width='395'>
 </p>
 <p align="center">
     <img align="center" src='imgs/header_mortal_ru.png' width='395'>
@@ -756,6 +757,538 @@
 </details>
 
 <details>
+    <summary>Маг</summary>
+
+    ```statblock
+    layout: MtA m20 Mage
+    dice: true
+
+                            #### ОСНОВНАЯ ИНФОРМАЦИЯ ####
+
+    name: 
+    desc: 
+    nature: 
+    demeanor: 
+    essence: 
+    affiliation:  # Принадлежность
+    sect:  # Фракция
+    concept:  # Амплуа
+
+    img: 
+    img_title: 
+    img_alt: 
+    img_alt_title: 
+
+                            #### ХАРАКТЕРИСТИКИ ####
+
+    Attributes: ХАРАКТЕРИСТИКИ
+
+    Physical: Физические
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
+
+    Social: Социальные
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
+
+    Mental: Ментальные
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
+
+                            #### СПОСОБНОСТИ ####
+
+    Abilities: СПОСОБНОСТИ
+
+    Talents: ТАЛАНТЫ
+    athletics: 0
+    alertness: 0 # Бдительность
+    brawl: 0 # Драка
+    intimidation: 0 # Запугивание
+    art: 0
+    expression: 0 # Красноречие
+    leadership: 0
+    streetwise: 0 # Уличное чутье
+    subterfuge: 0 # Хитрость
+    awareness: 0 # Шестое чувство
+    empathy: 0
+    new_talent: 
+    new_talent_value: 
+
+    Skills: НАВЫКИ
+    martialarts: 0 # Боевые искусства
+    drive: 0
+    survival: 0
+    research: 0
+    meditation: 0
+    crafts: 0
+    stealth: 0
+    firearms: 0
+    melee: 0
+    technology: 0 # Электроника
+    etiquette: 0
+    new_skill: 
+    new_skill_value: 
+
+    Knowledges: ЗНАНИЯ
+    academics: 0
+    science: 0
+    enigmas: 0
+    law: 0
+    computer: 0 # Информатика
+    cosmology: 0
+    medicine: 0
+    occult: 0
+    politics: 0
+    investigation: 0
+    esoterica: 0
+    new_knowledge: 
+    new_knowledge_value: 
+
+                                #### СФЕРЫ #### 
+
+    Spheres: СФЕРЫ
+
+    time: 
+    spirit: 
+    life: 
+
+    matter: 
+    prime:  # Первооснова
+    mind: 
+
+    correspondence:  # Связи
+    forces: 
+    entroty: 
+
+                                #### ФОКУС ####
+
+    Focus: ФОКУС
+
+    Paradigm: ПАРАДИГМА
+    paradigm_text: 
+
+    Practices: ПРАКТИКИ
+    practice1_name: 
+    practice1_value: 
+    practice2_name: 
+    practice2_value: 
+    practice3_name: 
+    practice3_value: 
+
+    Instruments: ИНСТРУМЕНТЫ
+    instrument1: 
+    instrument2: 
+    instrument3: 
+    instrument4: 
+    instrument5: 
+    instrument6: 
+    instrument7: 
+
+                        #### ФАКТЫ БИОГРАФИИ / ДРУГИЕ СПОСОБНОСТИ ####
+
+    Backgrounds: ФАКТЫ БИОГРАФИИ
+    background1_name: 
+    background1_value: 
+    background2_name: 
+    background2_value: 
+    background3_name: 
+    background3_value: 
+    background4_name: 
+    background4_value: 
+    background5_name: 
+    background5_value: 
+    background6_name: 
+    background6_value: 
+
+    Othertraits: ДРУГИЕ СПОСОБНОСТИ
+    othertrait1_name: 
+    othertrait1_value: 
+    othertrait2_name: 
+    othertrait2_value: 
+    othertrait3_name: 
+    othertrait3_value: 
+    othertrait4_name: 
+    othertrait4_value: 
+    othertrait5_name: 
+    othertrait5_value: 
+    othertrait6_name: 
+    othertrait6_value: 
+
+                            #### ДОСТОИНСТВА И НЕДОСТАТКИ ####
+
+    Merits: ДОСТОИНСТВА
+    merit1_name: 
+    merit1_value: 
+    merit2_name: 
+    merit2_value: 
+    merit3_name: 
+    merit3_value: 
+    merit4_name: 
+    merit4_value: 
+    merit5_name: 
+    merit5_value: 
+    merit6_name: 
+    merit6_value: 
+    merit7_name: 
+    merit7_value: 
+
+    Flaws: НЕДОСТАТКИ
+    flaw1_name: 
+    flaw1_value: 
+    flaw2_name: 
+    flaw2_value: 
+    flaw3_name: 
+    flaw3_value: 
+    flaw4_name: 
+    flaw4_value: 
+    flaw5_name: 
+    flaw5_value: 
+    flaw6_name: 
+    flaw6_value: 
+    flaw7_name: 
+    flaw7_value: 
+
+                        #### АРЕТЕ / ВОЛЯ / ПАРАДОКС ####
+
+    Arete: АРЕТЕ
+    arete_value: 0
+
+    Willpower: ВОЛЯ
+    willpower_main: 0
+    willpower_current: 0
+
+    Quintessence: КВИНТЭССЕНЦИЯ
+    quintessence_value: 0
+    Paradox: ПАРАДОКС
+    paradox_value: 0
+
+    Health: ЗДОРОВЬЕ
+    aggravated: 
+    lethal: 
+    bashing: 
+
+                                #### СПЕЦИАЛИЗАЦИЯ ####
+
+    Specialties: СПЕЦИАЛИЗАЦИЯ
+    specialty1_origin: 
+    specialty1_name: 
+    specialty2_origin: 
+    specialty2_name: 
+    specialty3_origin: 
+    specialty3_name: 
+    specialty4_origin: 
+    specialty4_name: 
+    specialty5_origin: 
+    specialty5_name: 
+    specialty6_origin: 
+    specialty6_name: 
+
+                                #### ОРУЖИЕ ####
+
+    Weapon: ОРУЖИЕ
+
+    weapon1_name: 
+    damage1: 
+    range1: 
+    firerate1: 
+    capacity1: 
+    conceal1: 
+
+    weapon2_name: 
+    damage2: 
+    range2: 
+    firerate2: 
+    capacity2: 
+    conceal2: 
+
+    weapon3_name: 
+    damage3: 
+    range3: 
+    firerate3: 
+    capacity3: 
+    conceal3: 
+
+    weapon4_name: 
+    damage4: 
+    range4: 
+    firerate4: 
+    capacity4: 
+    conceal4: 
+
+    ```
+
+</details>
+
+<details>
+    <summary>Технократ</summary>
+
+    ```statblock
+    layout: MtA m20 Technocrat
+    dice: true
+
+                            #### ОСНОВНАЯ ИНФОРМАЦИЯ ####
+
+    name: 
+    desc: 
+    nature: 
+    demeanor: 
+    essence: 
+    affiliation:  # Принадлежность
+    sect:  # Фракция
+    concept:  # Амплуа
+
+    img: 
+    img_title: 
+    img_alt: 
+    img_alt_title: 
+
+                            #### ХАРАКТЕРИСТИКИ ####
+
+    Attributes: ХАРАКТЕРИСТИКИ
+
+    Physical: Физические
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
+
+    Social: Социальные
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
+
+    Mental: Ментальные
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
+
+                            #### СПОСОБНОСТИ ####
+
+    Abilities: СПОСОБНОСТИ
+
+    Talents: ТАЛАНТЫ
+    athletics: 0
+    alertness: 0 # Бдительность
+    brawl: 0 # Драка
+    intimidation: 0 # Запугивание
+    art: 0
+    expression: 0 # Красноречие
+    leadership: 0
+    streetwise: 0 # Уличное чутье
+    subterfuge: 0 # Хитрость
+    awareness: 0 # Шестое чувство
+    empathy: 0
+    new_talent: 
+    new_talent_value: 
+
+    Skills: НАВЫКИ
+    martialarts: 0 # Боевые искусства
+    drive: 0
+    survival: 0
+    research: 0
+    meditation: 0
+    crafts: 0
+    stealth: 0
+    firearms: 0
+    melee: 0
+    technology: 0 # Электроника
+    etiquette: 0
+    new_skill: 
+    new_skill_value: 
+
+    Knowledges: ЗНАНИЯ
+    academics: 0
+    science: 0
+    enigmas: 0
+    law: 0
+    computer: 0 # Информатика
+    cosmology: 0
+    medicine: 0
+    occult: 0
+    politics: 0
+    investigation: 0
+    esoterica: 0
+    new_knowledge: 
+    new_knowledge_value: 
+
+                                #### СФЕРЫ #### 
+
+    Spheres: СФЕРЫ
+
+    time: 
+    data:  # Данные
+    life: 
+
+    matter: 
+    primalutility:  # Первичная Польза
+    dimensionalscience: # Пространственная Наука
+
+    mind: 
+    forces: 
+    entroty: 
+
+                                #### ФОКУС ####
+
+    Focus: 
+
+    Paradigm: 
+    paradigm_text: 
+
+    Practices: 
+    practice1_name: 
+    practice1_value: 
+    practice2_name: 
+    practice2_value: 
+    practice3_name: 
+    practice3_value: 
+
+    Instruments: 
+    instrument1: 
+    instrument2: 
+    instrument3: 
+    instrument4: 
+    instrument5: 
+    instrument6: 
+    instrument7: 
+
+                        #### ФАКТЫ БИОГРАФИИ / ДРУГИЕ СПОСОБНОСТИ ####
+
+    Backgrounds: ФАКТЫ БИОГРАФИИ
+    background1_name: 
+    background1_value: 
+    background2_name: 
+    background2_value: 
+    background3_name: 
+    background3_value: 
+    background4_name: 
+    background4_value: 
+    background5_name: 
+    background5_value: 
+    background6_name: 
+    background6_value: 
+
+    Othertraits: ДРУГИЕ СПОСОБНОСТИ
+    othertrait1_name: 
+    othertrait1_value: 
+    othertrait2_name: 
+    othertrait2_value: 
+    othertrait3_name: 
+    othertrait3_value: 
+    othertrait4_name: 
+    othertrait4_value: 
+    othertrait5_name: 
+    othertrait5_value: 
+    othertrait6_name: 
+    othertrait6_value: 
+
+                            #### ДОСТОИНСТВА И НЕДОСТАТКИ ####
+
+    Merits: 
+    merit1_name: 
+    merit1_value: 
+    merit2_name: 
+    merit2_value: 
+    merit3_name: 
+    merit3_value: 
+    merit4_name: 
+    merit4_value: 
+    merit5_name: 
+    merit5_value: 
+    merit6_name: 
+    merit6_value: 
+    merit7_name: 
+    merit7_value: 
+
+    Flaws: 
+    flaw1_name: 
+    flaw1_value: 
+    flaw2_name: 
+    flaw2_value: 
+    flaw3_name: 
+    flaw3_value: 
+    flaw4_name: 
+    flaw4_value: 
+    flaw5_name: 
+    flaw5_value: 
+    flaw6_name: 
+    flaw6_value: 
+    flaw7_name: 
+    flaw7_value: 
+
+                        #### АРЕТЕ / ВОЛЯ / ПАРАДОКС ####
+
+    Arete: АРЕТЕ
+    arete_value: 0
+
+    Willpower: ВОЛЯ
+    willpower_main: 0
+    willpower_current: 0
+
+    Quintessence: ПЕРВОРОДНАЯ ЭНЕРГИЯ
+    quintessence_value: 0
+    Paradox: ПАРАДОКС
+    paradox_value: 0
+
+    Health: ЗДОРОВЬЕ
+    aggravated: 
+    lethal: 
+    bashing: 
+
+                                #### СПЕЦИАЛИЗАЦИЯ ####
+
+    Specialties: СПЕЦИАЛИЗАЦИЯ
+    specialty1_origin: 
+    specialty1_name: 
+    specialty2_origin: 
+    specialty2_name: 
+    specialty3_origin: 
+    specialty3_name: 
+    specialty4_origin: 
+    specialty4_name: 
+    specialty5_origin: 
+    specialty5_name: 
+    specialty6_origin: 
+    specialty6_name: 
+
+                                #### ОРУЖИЕ ####
+
+    Weapon: ОРУЖИЕ
+
+    weapon1_name: 
+    damage1: 
+    range1: 
+    firerate1: 
+    capacity1: 
+    conceal1: 
+
+    weapon2_name: 
+    damage2: 
+    range2: 
+    firerate2: 
+    capacity2: 
+    conceal2: 
+
+    weapon3_name: 
+    damage3: 
+    range3: 
+    firerate3: 
+    capacity3: 
+    conceal3: 
+
+    weapon4_name: 
+    damage4: 
+    range4: 
+    firerate4: 
+    capacity4: 
+    conceal4: 
+
+    ```
+
+</details>
+
+<details>
     <summary>Смертный</summary>
 
     ```statblock
@@ -1199,8 +1732,9 @@
 <br>
 **О**: Я не могу добавить шрифты в репозиторий, это было бы нарушением правил площадки. Но вы можете найти их отдельно и установить на свой компьютер, тогда статблок их подхватит.<br>
 Для вампиров и смертных, используются шрифты Marta и Trajan Pro 3.<br>
-Для вампиров темных веков - Lidia и PT Serif Pro.<br>
+Для вампиров темных веков - PT Serif Pro и Lidia.<br>
 Для оборотней - Marta и KistyCC.<br>
+Для магов - Marta и Akvitania Modern.<br>
 Для агентов - GNUTypewriter.<br>
 А еще можно в настройках конкретного статблока, вкладка Apperance, заменить указанные шрифты на любые другие (если они так же установлены).
 <p align="center">

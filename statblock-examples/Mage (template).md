@@ -2,6 +2,7 @@
 cssclasses: 
 tags:
 ---
+
 ```dataviewjs
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
@@ -14,12 +15,12 @@ layout: MtA m20 Mage en
 
 name: Nicole Beladonna Scott
 desc: impatient girl from the streets of London
-nature: Survivalist
-demeanor: Survivalist
-concept: Annoyed by past-life
+nature: Visionary
+demeanor: Heretic
 essence: Pattern
 affiliation: Orphans
 sect: Traditions
+concept: Annoyed by past-life
 
 img: [[Анна Уиллер.png]]
 img_title: 
@@ -31,19 +32,19 @@ img_alt_title:
 Attributes: ATTRIBUTES
 
 Physical: PHYSICAL
-Strength: 3
+Strength: 2
 Dexterity: 3
-Stamina: 2
+Stamina: 3
 
 Social: SOCIAL
-Charisma: 2
-Manipulation: 2
-Appearance: 2
+Charisma: 3
+Manipulation: 1
+Appearance: 3
 
 Mental: MENTAL
 Perception: 3
-Intelligence: 3
-Wits: 4
+Intelligence: 5
+Wits: 3
 
                             #### ABILITIES ####
 
@@ -53,7 +54,7 @@ Talents: TALENTS
 alertness: 2
 art: 0
 athletics: 3
-awareness: 0
+awareness: 3
 brawl: 2
 empathy: 1
 expression: 1
@@ -80,7 +81,7 @@ new_skill:
 new_skill_value: 
 
 Knowledges: KNOWLEDGES
-academics: 1
+academics: 3
 computer: 1
 cosmology: 2
 enigmas: 3
@@ -135,16 +136,16 @@ instrument7: Writings, inscriptions, and runes
                     #### BACKGROUNDS / OTHER TRAITS ####
 
 Backgrounds: BACKGROUNDS
-background1_name: Herd
-background1_value: 1
-background2_name: Fame
-background2_value: 2
-background3_name: Status
+background1_name: Resources
+background1_value: 4
+background2_name: Avatar
+background2_value: 3
+background3_name: Contacts
 background3_value: 3
-background4_name: Resources
-background4_value: 4
-background5_name: 
-background5_value: 
+background4_name: Library
+background4_value: 3
+background5_name: Status
+background5_value: 2
 background6_name: 
 background6_value: 
 
@@ -165,12 +166,12 @@ othertrait6_value:
                          #### MERITS / FLAWS ####
 
 Merits: MERITS
-merit1_name: Natural Leader
+merit1_name: Acute Senses
 merit1_value: -1
-merit2_name: Old Pal
-merit2_value: -2
-merit3_name: Friend of the Underground
-merit3_value: -3
+merit2_name: Dark Triad
+merit2_value: -3
+merit3_name: 
+merit3_value: 
 merit4_name: 
 merit4_value: 
 merit5_name: 
@@ -181,12 +182,12 @@ merit7_name:
 merit7_value: 
 
 Flaws: FLAWS
-flaw1_name: Deep Sleeper
-flaw1_value: +1
-flaw2_name: Vulnerability to Silver
-flaw2_value: +2
-flaw3_name: Repelled by Crosses
-flaw3_value: +3
+flaw1_name: Cursed
+flaw1_value: +2
+flaw2_name: Addiction
+flaw2_value: +3
+flaw3_name: 
+flaw3_value: 
 flaw4_name: 
 flaw4_value: 
 flaw5_name: 
@@ -199,7 +200,7 @@ flaw7_value:
                     #### ARETE / WILLPOWER / PARADOX ####
 
 Arete: ARETE
-arete_value: 3
+arete_value: 6
 
 Willpower: WILLPOWER
 willpower_main: 8
@@ -218,36 +219,36 @@ bashing: 1
                             #### SPECIALTIES ####
 
 Specialties: SPECIALTIES
-specialty1_origin: Strength
-specialty1_name: Powerful Arms
-specialty2_origin: Stamina
-specialty2_name: Tough as Nails
-specialty3_origin: Expression
-specialty3_name: Impromptu
-specialty4_origin: Larceny
-specialty4_name: Pickpocketing
-specialty5_origin: Strength
-specialty5_name: Powerful Arms
-specialty6_origin: Stamina
-specialty6_name: Tough as Nails
+specialty1_origin: Computer
+specialty1_name: Data Systems
+specialty2_origin: Occult
+specialty2_name: Neopaganism
+specialty3_origin: Research
+specialty3_name: Hidden Sources
+specialty4_origin: Science
+specialty4_name: Biology
+specialty5_origin: Technology
+specialty5_name: Technomagick
+specialty6_origin: 
+specialty6_name: 
 
                             #### WEAPON ####
 
 Weapon: WEAPON
 
-weapon1_name: SIG-Sauer P226 9mm
+weapon1_name: Revolver, Lt. SW M640 (.38 Special)
 damage1: 4
-range1: 20
-firerate1: 4
-capacity1: 15
+range1: 12
+firerate1: 3
+capacity1: 6
 conceal1: P
 
-weapon2_name: Springfield HS 2000 .45
-damage2: 5
-range2: 25
-firerate2: 3
-capacity2: 13+1
-conceal2: J
+weapon2_name: Shotgun Ithaca M-37 (12 Gauge)
+damage2: 8
+range2: 20
+firerate2: 1
+capacity2: 5+1
+conceal2: T
 
 weapon3_name: 
 damage3: 

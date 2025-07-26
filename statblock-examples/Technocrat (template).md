@@ -1,6 +1,6 @@
 ---
 cssclasses: 
-tags:
+tags: 
 ---
 
 ```dataviewjs
@@ -10,7 +10,6 @@ dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ## 
 ```statblock
 layout: MtA m20 Technocrat en
-dice: true
 
                         #### GENERAL INFO ####
 
@@ -19,11 +18,11 @@ desc: NWO Field Agent
 nature: Survivalist
 demeanor: Traditionalist
 essence: Pattern
-affiliation: NWO
+affiliation: The New World Order
 sect: Technocratic Union
 concept: Vat-Grown Black Suit
 
-img: [[Primrose Smith.png]]
+img: [[Иден Корлисс 3 1.png]]
 img_title: 
 img_alt: 
 img_alt_title: 
@@ -103,9 +102,11 @@ Spheres: SPHERES
 data: 2
 dimensionalscience: 
 entroty: 
+
 forces: 
 life: 
 matter: 
+
 mind: 2
 primalutility: 0
 time: 1
@@ -198,7 +199,7 @@ flaw6_value:
 flaw7_name: 
 flaw7_value: 
 
-                    #### ARETE / WILLPOWER / PARADOX ####
+                #### ENLIGHTENMENT / WILLPOWER / PARADOX ####
 
 Enlightenment: ENLIGHTENMENT
 enlightenment_value: 3
@@ -237,19 +238,19 @@ specialty6_name:
 
 Weapon: 
 
-weapon1_name: 
-damage1: 
-range1: 
-firerate1: 
-capacity1: 
-conceal1: 
+weapon1_name: Biggs X-5 Model R Protector
+damage1: 5
+range1: 40
+firerate1: 4
+capacity1: 12+1
+conceal1: J
 
-weapon2_name: 
-damage2: 
-range2: 
-firerate2: 
-capacity2: 
-conceal2: 
+weapon2_name: Castle-Graves WW-3
+damage2: 8
+range2: 200
+firerate2: 3
+capacity2: 50+1
+conceal2: N
 
 weapon3_name: 
 damage3: 

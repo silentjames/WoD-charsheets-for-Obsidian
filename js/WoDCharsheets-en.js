@@ -1202,35 +1202,32 @@ sleep(200).then(() => {
         var affiliationNameHover = document.querySelector(statblockCSSpathHover + ' .line.affiliation .statblock-markdown > p').innerHTML;
         var collapsedColumnHover = document.querySelector(statblockCSSpathHover + ' .collapse-container');
         switch (affiliationNameHover) {
-            case 'The Akashic Brotherhood':
-            case 'Akashic Brotherhood':
-            case 'Akashayana':
+            case 'Iteration X':
                 // corresponding css-class is assigned
-                var collapsedBackgroundClanHover = 'AkashicBrotherhood';
-                var headerBackgroundClanHover = 'var(--AkashicBrotherhood-background-logo)';
+                var collapsedBackgroundClanHover = 'IterationX';
+                var headerBackgroundClanHover = 'var(--IterationX-background-logo)';
                 break;
-            case 'The Celestial Chorus':
-            case 'Celestial Chorus':
-                var collapsedBackgroundClanHover = 'CelestialChorus';
-                var headerBackgroundClanHover = 'var(--CelestialChorus-background-logo)';
+            case 'The New World Order':
+            case 'New World Order':
+            case 'The NWO':
+            case 'NWO':
+                var collapsedBackgroundClanHover = 'NewWorldOrder';
+                var headerBackgroundClanHover = 'var(--NewWorldOrder-background-logo)';
                 break;
-            case 'The Cult of Ecstasy':
-            case 'Cult of Ecstasy':
-            case 'Sahajiya':
-                var collapsedBackgroundClanHover = 'Cult-of-Ecstasy';
-                var headerBackgroundClanHover = 'var(--Cult-of-Ecstasy-background-logo)';
+            case 'The Progenitors':
+            case 'Progenitors':
+                var collapsedBackgroundClanHover = 'Progenitors';
+                var headerBackgroundClanHover = 'var(--Progenitors-background-logo)';
                 break;
-            case 'The Dreamspeakers':
-            case 'Dreamspeakers':
-            case 'Kha’vadi':
-                var collapsedBackgroundClanHover = 'Dreamspeakers';
-                var headerBackgroundClanHover = 'var(--Dreamspeakers-background-logo)';
+            case 'The Syndicate':
+            case 'Syndicate':
+                var collapsedBackgroundClanHover = 'Syndicate';
+                var headerBackgroundClanHover = 'var(--Syndicate-background-logo)';
                 break;
-            case 'The Euthanatos':
-            case 'Euthanatos':
-            case 'Chakravanti':
-                var collapsedBackgroundClanHover = 'Euthanatos';
-                var headerBackgroundClanHover = 'var(--Euthanatos-background-logo)';
+            case 'The Void Engineers':
+            case 'Void Engineers':
+                var collapsedBackgroundClanHover = 'VoidEngineers';
+                var headerBackgroundClanHover = 'var(--VoidEngineers-background-logo)';
                 break;
         };
         collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
@@ -1370,8 +1367,9 @@ sleep(200).then(() => {
     const basicSkills = ['.drive', '.larceny', '.survival', '.performance', '.animalken', '.crafts', '.stealth', '.firearms', '.melee', '.etiquette']
     const basicKnowledges = ['.academics', '.science', '.law', '.computer', '.medicine', '.occult', '.politics', '.investigation', '.finance', '.technology']
     const additionalDarkAgesAbilities = ['.legerdemain', '.ride', '.commerce', '.archery', '.enigmas', '.hearthwisdom', '.seneschal', '.theology']
+    const mageAbilities = ['.art', '.martialarts', '.research', '.meditation', '.cosmology', '.esoterica']
     // combine all into one list\array
-    const allTraits = basicAttributes.concat(basicTalents, basicSkills, basicKnowledges, additionalDarkAgesAbilities);
+    const allTraits = basicAttributes.concat(basicTalents, basicSkills, basicKnowledges, additionalDarkAgesAbilities, mageAbilities);
     for (let x = 0; x < allTraits.length; x++) {
         if (document.querySelector(activeTab + allTraits[x]) != null) {
             // let's find the name of the property and its value

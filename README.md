@@ -5,6 +5,8 @@ Currently, there are **vampires** (modern nights and dark ages), **werewolves**,
     <a style='text-decoration: none' href="README.ru.md"><img src=https://img.shields.io/badge/ReadMe_%D0%BD%D0%B0_%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%BC-%D0%B7%D0%B4%D0%B5%D1%81%D1%8C-cian></a>
 </p>
 
+If you want a custom character sheet adapted to your specific RPG (not just World of Darkness), I’m open for commissions. To get started, DM me on Discord: 'cybercrabs'.
+
 # General things
 
 ## Vampires

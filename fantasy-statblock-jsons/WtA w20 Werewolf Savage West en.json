@@ -3330,7 +3330,8 @@
         "imageWidth": "120px",
         "imageHeight": "120px",
         "contentFont": "\"Hagin Caps Medium\", \"Myriad Pro\", Calibri, Helvetica, Arial, sans-serif",
-        "primaryColor": "#2c313c"
+        "primaryColor": "#2c313c",
+        "headingFont": "\"URWWoodTypD\", \"Lora\", \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif"
     },
     "columns": 1,
     "columnWidth": 680

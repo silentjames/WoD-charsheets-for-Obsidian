@@ -86,7 +86,7 @@ sleep(200).then(() => {
         var findClasses = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock')
         const statblockClassList = findClasses.classList
         var allClasses = statblockClassList.value.toString()
-        var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
+        var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,30}/gm;
         var statblockCSSclass = '.' + allClasses.match(regex);
         // console.log(statblockCSSclass + ' |=| css-класс статблока')
         var activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass + ' ';
@@ -97,7 +97,7 @@ sleep(200).then(() => {
     if (document.querySelector('.popover.hover-popover') != null) {
         var statblockClassListHover = document.querySelector('.popover.hover-popover .obsidian-statblock-plugin.statblock').classList;
         var allClassesHover = statblockClassListHover.value.toString()
-        var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
+        var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,30}/gm;
         var statblockCSSclassHover = '.' + allClassesHover.match(regex);
         // console.log(statblockCSSclassHover + ' |=| css-класс статблока в ховере')
         var statblockCSSpathHover = '.popover.hover-popover ' + statblockCSSclassHover + ' ';
@@ -106,7 +106,7 @@ sleep(200).then(() => {
 
 
     // используется ли обычный вампирский статблок?
-    if (document.querySelector(activeTab + '.line.clan .statblock-markdown') != null && (statblockCSSclass.endsWith('.vtm-v20-vampire') || statblockCSSclass.endsWith('.vtm-v20-vampire-en'))) {
+    if (document.querySelector(activeTab + '.line.clan .statblock-markdown') != null && (statblockCSSclass.endsWith('.vtm-v20-vampire') || statblockCSSclass.endsWith('.vtm-v20-vampire-en') || statblockCSSclass.endsWith('.vtm-v20-vampire-wild-west') || statblockCSSclass.endsWith('.vtm-v20-vampire-wild-west-en'))) {
         // определяется клан, и каждому клану подставляется своя картинка на бэкграунд, и изъян
         var clanName = document.querySelector(activeTab + '.line.clan .statblock-markdown > p').innerHTML;
         console.log(clanName + ' - название клана')
@@ -926,7 +926,7 @@ sleep(200).then(() => {
 
 
     // может, это вообще оборотень?
-    if (document.querySelector(activeTab + '.line.tribe .statblock-markdown') != null && (statblockCSSclass.endsWith('.wta-w20-werewolf') || statblockCSSclass.endsWith('.wta-w20-werewolf-en'))) {
+    if (document.querySelector(activeTab + '.line.tribe .statblock-markdown') != null && (statblockCSSclass.endsWith('.wta-w20-werewolf') || statblockCSSclass.endsWith('.wta-w20-werewolf-en') || statblockCSSclass.endsWith('.wta-w20-werewolf-savage-west') || statblockCSSclass.endsWith('.wta-w20-werewolf-savage-west-en'))) {
         // определяется племя, и каждому племени подставляется своя картинка на бэкграунд
         var tribeName = document.querySelector(activeTab + '.line.tribe .statblock-markdown > p').innerHTML;
         console.log(tribeName + ' - название племени')
@@ -1063,7 +1063,6 @@ sleep(200).then(() => {
     }
 
 
-
     // или даже маг?
     if (document.querySelector(activeTab + '.line.affiliation .statblock-markdown') != null && (statblockCSSclass.endsWith('.mta-m20-mage') || statblockCSSclass.endsWith('.mta-m20-mage-en'))) {
         // определяем принадлежность
@@ -1072,23 +1071,34 @@ sleep(200).then(() => {
         // определяется зона, которой будет назначен бэкграунд
         var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
         switch (affiliationName) {
+            case 'The Akashic Brotherhood':
+            case 'Akashic Brotherhood':
+            case 'Akashayana':
             case 'Акашийское Братство':
             case 'Акашаяна':
                 // назначается соответствующий класс, для которого в css уже вшито изображение
                 var collapsedBackgroundClan = 'AkashicBrotherhood';
                 var headerBackgroundClan = 'var(--AkashicBrotherhood-background-logo)';
                 break;
+            case 'The Celestial Chorus':
+            case 'Celestial Chorus':
             case 'Небесный Хор':
             case 'Хористы':
                 var collapsedBackgroundClan = 'CelestialChorus';
                 var headerBackgroundClan = 'var(--CelestialChorus-background-logo)';
                 break;
+            case 'The Cult of Ecstasy':
+            case 'Cult of Ecstasy':
+            case 'Sahajiya':
             case 'Культ Экстаза':
             case 'Экстатики':
             case 'Экстатик':
                 var collapsedBackgroundClan = 'Cult-of-Ecstasy';
                 var headerBackgroundClan = 'var(--Cult-of-Ecstasy-background-logo)';
                 break;
+            case 'The Dreamspeakers':
+            case 'Dreamspeakers':
+            case 'Kha’vadi':
             case 'Говорящие с Грёзой':
             case 'Говорящие с Грезой':
             case 'Общество Грёз':
@@ -1098,80 +1108,122 @@ sleep(200).then(() => {
                 var collapsedBackgroundClan = 'Dreamspeakers';
                 var headerBackgroundClan = 'var(--Dreamspeakers-background-logo)';
                 break;
+            case 'The Euthanatos':
+            case 'Euthanatos':
+            case 'Chakravanti':
             case 'Эвтанатос':
             case 'Эвтанаты':
             case 'Чакраванти':
                 var collapsedBackgroundClan = 'Euthanatos';
                 var headerBackgroundClan = 'var(--Euthanatos-background-logo)';
                 break;
+            case 'The Order of Hermes':
+            case 'Order of Hermes':
             case 'Орден Гермеса':
                 var collapsedBackgroundClan = 'Order-of-Hermes';
                 var headerBackgroundClan = 'var(--Order-of-Hermes-background-logo)';
                 break;
+            case 'The Sons of Ether':
+            case 'Sons of Ether':
+            case 'Society of Ether':
             case 'Сыны Эфира':
             case 'Эфириты':
             case 'Общество Эфира':
                 var collapsedBackgroundClan = 'Sons-of-Ether';
                 var headerBackgroundClan = 'var(--Sons-of-Ether-background-logo)';
                 break;
+            case 'The Verbena':
+            case 'Verbena':
             case 'Вербена':
             case 'Вербены':
                 var collapsedBackgroundClan = 'Verbena';
                 var headerBackgroundClan = 'var(--Verbena-background-logo)';
                 break;
+            case 'The Virtual Adepts':
+            case 'Virtual Adepts':
             case 'Адепты Виртуальности':
             case 'Адепт Виртуальности':
                 var collapsedBackgroundClan = 'VirtualAdepts';
                 var headerBackgroundClan = 'var(--VirtualAdepts-background-logo)';
                 break;
+            case 'Nephandi':
             case 'Нефанди':
                 var collapsedBackgroundClan = 'Nephandi';
                 var headerBackgroundClan = 'var(--Nephandi-background-logo)';
                 break;
+            case 'The Ahl-i-Batin':
+            case 'Ahl-i-Batin':
             case 'Аль-и-Батин':
                 var collapsedBackgroundClan = 'Ahl-i-Batin';
                 var headerBackgroundClan = 'var(--Ahl-i-Batin-background-logo)';
                 break;
+            case 'The Bata’a':
+            case 'Bata’a':
+            case 'The Bataa':
+            case 'Bataa':
             case 'Бата’а':
             case 'Батаа':
                 var collapsedBackgroundClan = 'Bataa';
                 var headerBackgroundClan = 'var(--Bataa-background-logo)';
                 break;
+            case 'The Children of Knowledge':
+            case 'Children of Knowledge':
+            case 'Thу True Solificati':
+            case 'True Solificati':
             case 'Дети Знания':
             case 'Солификати':
                 var collapsedBackgroundClan = 'Children-of-Knowledge';
                 var headerBackgroundClan = 'var(--Children-of-Knowledge-background-logo)';
                 break;
+            case 'The Hollow Ones':
+            case 'Hollow Ones':
             case 'Пустые':
                 var collapsedBackgroundClan = 'HollowOnes';
                 var headerBackgroundClan = 'var(--HollowOnes-background-logo)';
                 break;
+            case 'The Kopa Loei':
+            case 'Kopa Loei':
             case 'Копа Лоэй':
                 var collapsedBackgroundClan = 'KopaLoei';
                 var headerBackgroundClan = 'var(--KopaLoei-background-logo)';
                 break;
+            case 'The Ngoma':
+            case 'Ngoma':
             case 'Нгома':
                 var collapsedBackgroundClan = 'Ngoma';
                 var headerBackgroundClan = 'var(--Ngoma-background-logo)';
                 break;
+            case 'Orphans':
             case 'Сироты':
             case 'Сирота':
                 var collapsedBackgroundClan = 'Orphans';
                 var headerBackgroundClan = 'var(--Orphans-background-logo)';
                 break;
+            case 'The Sisters of Hippolyta':
+            case 'Sisters of Hippolyta':
+            case 'The Hippolytoi':
+            case 'Hippolytoi':
             case 'Сёстры Ипполиты':
             case 'Сестры Ипполиты':
                 var collapsedBackgroundClan = 'Sisters-of-Hippolyta';
                 var headerBackgroundClan = 'var(--Sisters-of-Hippolyta-background-logo)';
                 break;
+            case 'Taftâni':
+            case 'Taftani':
             case 'Тафтани':
                 var collapsedBackgroundClan = 'Taftani';
                 var headerBackgroundClan = 'var(--Taftani-background-logo)';
                 break;
+            case 'The Templar Knights':
+            case 'Templar Knights':
             case 'Рыцари-Тамплиерыы':
                 var collapsedBackgroundClan = 'TemplarKnights';
                 var headerBackgroundClan = 'var(--TemplarKnights-background-logo)';
                 break;
+            case 'The WuLung':
+            case 'WuLung':
+            case 'The Wu Lung':
+            case 'Wu Lung':
             case 'У-Лун':
                 var collapsedBackgroundClan = 'WuLung';
                 var headerBackgroundClan = 'var(--WuLung-background-logo)';
@@ -1191,23 +1243,34 @@ sleep(200).then(() => {
         var affiliationNameHover = document.querySelector(statblockCSSpathHover + ' .line.affiliation .statblock-markdown > p').innerHTML;
         var collapsedColumnHover = document.querySelector(statblockCSSpathHover + ' .collapse-container');
         switch (affiliationNameHover) {
+            case 'The Akashic Brotherhood':
+            case 'Akashic Brotherhood':
+            case 'Akashayana':
             case 'Акашийское Братство':
             case 'Акашаяна':
                 // назначается соответствующий класс, для которого в css уже вшито изображение
                 var collapsedBackgroundClanHover = 'AkashicBrotherhood';
                 var headerBackgroundClanHover = 'var(--AkashicBrotherhood-background-logo)';
                 break;
+            case 'The Celestial Chorus':
+            case 'Celestial Chorus':
             case 'Небесный Хор':
             case 'Хористы':
                 var collapsedBackgroundClanHover = 'CelestialChorus';
                 var headerBackgroundClanHover = 'var(--CelestialChorus-background-logo)';
                 break;
+            case 'The Cult of Ecstasy':
+            case 'Cult of Ecstasy':
+            case 'Sahajiya':
             case 'Культ Экстаза':
             case 'Экстатики':
             case 'Экстатик':
                 var collapsedBackgroundClanHover = 'Cult-of-Ecstasy';
                 var headerBackgroundClanHover = 'var(--Cult-of-Ecstasy-background-logo)';
                 break;
+            case 'The Dreamspeakers':
+            case 'Dreamspeakers':
+            case 'Kha’vadi':
             case 'Говорящие с Грёзой':
             case 'Говорящие с Грезой':
             case 'Общество Грёз':
@@ -1217,80 +1280,122 @@ sleep(200).then(() => {
                 var collapsedBackgroundClanHover = 'Dreamspeakers';
                 var headerBackgroundClanHover = 'var(--Dreamspeakers-background-logo)';
                 break;
+            case 'The Euthanatos':
+            case 'Euthanatos':
+            case 'Chakravanti':
             case 'Эвтанатос':
             case 'Эвтанаты':
             case 'Чакраванти':
                 var collapsedBackgroundClanHover = 'Euthanatos';
                 var headerBackgroundClanHover = 'var(--Euthanatos-background-logo)';
                 break;
+            case 'The Order of Hermes':
+            case 'Order of Hermes':
             case 'Орден Гермеса':
                 var collapsedBackgroundClanHover = 'Order-of-Hermes';
                 var headerBackgroundClanHover = 'var(--Order-of-Hermes-background-logo)';
                 break;
+            case 'The Sons of Ether':
+            case 'Sons of Ether':
+            case 'Society of Ether':
             case 'Сыны Эфира':
             case 'Эфириты':
             case 'Общество Эфира':
                 var collapsedBackgroundClanHover = 'Sons-of-Ether';
                 var headerBackgroundClanHover = 'var(--Sons-of-Ether-background-logo)';
                 break;
+            case 'The Verbena':
+            case 'Verbena':
             case 'Вербена':
             case 'Вербены':
                 var collapsedBackgroundClanHover = 'Verbena';
                 var headerBackgroundClanHover = 'var(--Verbena-background-logo)';
                 break;
+            case 'The Virtual Adepts':
+            case 'Virtual Adepts':
             case 'Адепты Виртуальности':
             case 'Адепт Виртуальности':
                 var collapsedBackgroundClanHover = 'VirtualAdepts';
                 var headerBackgroundClanHover = 'var(--VirtualAdepts-background-logo)';
                 break;
+            case 'Nephandi':
             case 'Нефанди':
                 var collapsedBackgroundClanHover = 'Nephandi';
                 var headerBackgroundClanHover = 'var(--Nephandi-background-logo)';
                 break;
+            case 'The Ahl-i-Batin':
+            case 'Ahl-i-Batin':
             case 'Аль-и-Батин':
                 var collapsedBackgroundClanHover = 'Ahl-i-Batin';
                 var headerBackgroundClanHover = 'var(--Ahl-i-Batin-background-logo)';
                 break;
+            case 'The Bata’a':
+            case 'Bata’a':
+            case 'The Bataa':
+            case 'Bataa':
             case 'Бата’а':
             case 'Батаа':
                 var collapsedBackgroundClanHover = 'Bataa';
                 var headerBackgroundClanHover = 'var(--Bataa-background-logo)';
                 break;
+            case 'The Children of Knowledge':
+            case 'Children of Knowledge':
+            case 'Thу True Solificati':
+            case 'True Solificati':
             case 'Дети Знания':
             case 'Солификати':
                 var collapsedBackgroundClanHover = 'Children-of-Knowledge';
                 var headerBackgroundClanHover = 'var(--Children-of-Knowledge-background-logo)';
                 break;
+            case 'The Hollow Ones':
+            case 'Hollow Ones':
             case 'Пустые':
                 var collapsedBackgroundClanHover = 'HollowOnes';
                 var headerBackgroundClanHover = 'var(--HollowOnes-background-logo)';
                 break;
+            case 'The Kopa Loei':
+            case 'Kopa Loei':
             case 'Копа Лоэй':
                 var collapsedBackgroundClanHover = 'KopaLoei';
                 var headerBackgroundClanHover = 'var(--KopaLoei-background-logo)';
                 break;
+            case 'The Ngoma':
+            case 'Ngoma':
             case 'Нгома':
                 var collapsedBackgroundClanHover = 'Ngoma';
                 var headerBackgroundClanHover = 'var(--Ngoma-background-logo)';
                 break;
+            case 'Orphans':
             case 'Сироты':
             case 'Сирота':
                 var collapsedBackgroundClanHover = 'Orphans';
                 var headerBackgroundClanHover = 'var(--Orphans-background-logo)';
                 break;
+            case 'The Sisters of Hippolyta':
+            case 'Sisters of Hippolyta':
+            case 'The Hippolytoi':
+            case 'Hippolytoi':
             case 'Сёстры Ипполиты':
             case 'Сестры Ипполиты':
                 var collapsedBackgroundClanHover = 'Sisters-of-Hippolyta';
                 var headerBackgroundClanHover = 'var(--Sisters-of-Hippolyta-background-logo)';
                 break;
+            case 'Taftâni':
+            case 'Taftani':
             case 'Тафтани':
                 var collapsedBackgroundClanHover = 'Taftani';
                 var headerBackgroundClanHover = 'var(--Taftani-background-logo)';
                 break;
+            case 'The Templar Knights':
+            case 'Templar Knights':
             case 'Рыцари-Тамплиерыы':
                 var collapsedBackgroundClanHover = 'TemplarKnights';
                 var headerBackgroundClanHover = 'var(--TemplarKnights-background-logo)';
                 break;
+            case 'The WuLung':
+            case 'WuLung':
+            case 'The Wu Lung':
+            case 'Wu Lung':
             case 'У-Лун':
                 var collapsedBackgroundClanHover = 'WuLung';
                 var headerBackgroundClanHover = 'var(--WuLung-background-logo)';
@@ -1315,25 +1420,36 @@ sleep(200).then(() => {
         // определяется зона, которой будет назначен бэкграунд
         var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
         switch (affiliationName) {
+            case 'Iteration X':
             case 'Итерация Икс':
                 // назначается соответствующий класс
                 var collapsedBackgroundClan = 'IterationX';
                 var headerBackgroundClan = 'var(--IterationX-background-logo)';
                 break;
+            case 'The New World Order':
+            case 'New World Order':
+            case 'The NWO':
+            case 'NWO':
             case 'Новый Мировой Порядок':
             case 'НМП':
                 var collapsedBackgroundClan = 'NewWorldOrder';
                 var headerBackgroundClan = 'var(--NewWorldOrder-background-logo)';
                 break;
+            case 'The Progenitors':
+            case 'Progenitors':
             case 'Родоначальники':
                 var collapsedBackgroundClan = 'Progenitors';
                 var headerBackgroundClan = 'var(--Progenitors-background-logo)';
                 break;
+            case 'The Syndicate':
+            case 'Syndicate':
             case 'Синдикат':
             case 'Синдикат':
                 var collapsedBackgroundClan = 'Syndicate';
                 var headerBackgroundClan = 'var(--Syndicate-background-logo)';
                 break;
+            case 'The Void Engineers':
+            case 'Void Engineers':
             case 'Инженеры Пустоты':
                 var collapsedBackgroundClan = 'VoidEngineers';
                 var headerBackgroundClan = 'var(--VoidEngineers-background-logo)';
@@ -1353,25 +1469,36 @@ sleep(200).then(() => {
         var affiliationNameHover = document.querySelector(statblockCSSpathHover + ' .line.affiliation .statblock-markdown > p').innerHTML;
         var collapsedColumnHover = document.querySelector(statblockCSSpathHover + ' .collapse-container');
         switch (affiliationNameHover) {
+            case 'Iteration X':
             case 'Итерация Икс':
                 // назначается соответствующий класс
                 var collapsedBackgroundClanHover = 'IterationX';
                 var headerBackgroundClanHover = 'var(--IterationX-background-logo)';
                 break;
+            case 'The New World Order':
+            case 'New World Order':
+            case 'The NWO':
+            case 'NWO':
             case 'Новый Мировой Порядок':
             case 'НМП':
                 var collapsedBackgroundClanHover = 'NewWorldOrder';
                 var headerBackgroundClanHover = 'var(--NewWorldOrder-background-logo)';
                 break;
+            case 'The Progenitors':
+            case 'Progenitors':
             case 'Родоначальники':
                 var collapsedBackgroundClanHover = 'Progenitors';
                 var headerBackgroundClanHover = 'var(--Progenitors-background-logo)';
                 break;
+            case 'The Syndicate':
+            case 'Syndicate':
             case 'Синдикат':
             case 'Синдикат':
                 var collapsedBackgroundClanHover = 'Syndicate';
                 var headerBackgroundClanHover = 'var(--Syndicate-background-logo)';
                 break;
+            case 'The Void Engineers':
+            case 'Void Engineers':
             case 'Инженеры Пустоты':
                 var collapsedBackgroundClanHover = 'VoidEngineers';
                 var headerBackgroundClanHover = 'var(--VoidEngineers-background-logo)';
@@ -1480,26 +1607,26 @@ sleep(200).then(() => {
 
 
     // если имя персонажа, написанное H2, есть в заметке и совпадает с именем в статблоке, то оно удаляется - но остается в оглавлении
-    if (document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h2 h2') != null) {
-        var outlineName = document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h2 h2').innerText
+    if (document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h1 h1') != null) {
+        var outlineName = document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h1 h1').innerText
         console.log(outlineName + ' - имя из заметки');
         const characterName = document.querySelector(activeTab + 'h1.heading .inline').innerHTML
         console.log('имя из статблока - ' + characterName)
         if (outlineName = characterName && outlineName != null) {
-            document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h2 h2').style.display = 'none';
+            document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h1 h1').style.display = 'none';
         }
     }
     else {
         // do nothing
     }
     // то же самое, но для ховера
-    if (document.querySelector('.popover.hover-popover .markdown-preview-sizer > .el-h2 h2') != null) {
-        var outlineNameHover = document.querySelector('.popover.hover-popover .markdown-preview-sizer  > .el-h2 h2').innerText
+    if (document.querySelector('.popover.hover-popover .markdown-preview-sizer > .el-h1 h1') != null) {
+        var outlineNameHover = document.querySelector('.popover.hover-popover .markdown-preview-sizer  > .el-h1 h1').innerText
         //  console.log('имя в заметке в ховере - ' + outlineName_hover)
         const characterNameHover = document.querySelector(statblockCSSpathHover + 'h1.heading .inline').innerHTML
         //  console.log('имя из статблока в ховере = ' + characterName_hover)
         if (outlineNameHover = characterNameHover) {
-            document.querySelector('.popover.hover-popover .markdown-preview-sizer > .el-h2 h2').style.display = 'none';
+            document.querySelector('.popover.hover-popover .markdown-preview-sizer > .el-h1 h1').style.display = 'none';
         }
     }
     else {
@@ -1515,8 +1642,10 @@ sleep(200).then(() => {
     const basicSkills = ['.drive', '.larceny', '.survival', '.performance', '.animalken', '.crafts', '.stealth', '.firearms', '.melee', '.etiquette']
     const basicKnowledges = ['.academics', '.science', '.law', '.computer', '.medicine', '.occult', '.politics', '.investigation', '.finance', '.technology']
     const additionalDarkAgesAbilities = ['.legerdemain', '.ride', '.commerce', '.archery', '.enigmas', '.hearthwisdom', '.seneschal', '.theology']
+    const mageAbilities = ['.art', '.martialarts', '.research', '.meditation', '.cosmology', '.esoterica']
+    const wildWestAbilities = ['.smithwork', '.geology', '.culture']
     // собираем все в один список
-    const allTraits = basicAttributes.concat(basicTalents, basicSkills, basicKnowledges, additionalDarkAgesAbilities);
+    const allTraits = basicAttributes.concat(basicTalents, basicSkills, basicKnowledges, additionalDarkAgesAbilities, mageAbilities, wildWestAbilities);
     for (let x = 0; x < allTraits.length; x++) {
         if (document.querySelector(activeTab + allTraits[x]) != null) {
             // находим имя и значение для каждого параметра

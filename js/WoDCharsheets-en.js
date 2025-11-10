@@ -86,7 +86,7 @@ sleep(200).then(() => {
         var findClasses = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock')
         const statblockClassList = findClasses.classList
         var allClasses = statblockClassList.value.toString()
-        var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
+        var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,30}/gm;
         var statblockCSSclass = '.' + allClasses.match(regex);
         // console.log(statblockCSSclass + ' |=| statblock css-class')
         var activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass + ' ';
@@ -99,14 +99,14 @@ sleep(200).then(() => {
         var allClassesHover = statblockClassListHover.value.toString()
         var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
         var statblockCSSclassHover = '.' + allClassesHover.match(regex);
-        // console.log(statblockCSSclassHover + ' |=| css-класс статблока в ховере')
+        console.log(statblockCSSclassHover + ' |=| css-класс статблока в ховере')
         var statblockCSSpathHover = '.popover.hover-popover ' + statblockCSSclassHover + ' ';
     }
     else { }
 
 
     // define a clan, and set up different background and weakness for each clan
-    if (document.querySelector(activeTab + '.line.clan .statblock-markdown') != null && (statblockCSSclass.endsWith('.vtm-v20-vampire') || statblockCSSclass.endsWith('.vtm-v20-vampire-en'))) {
+    if (document.querySelector(activeTab + '.line.clan .statblock-markdown') != null && (statblockCSSclass.endsWith('.vtm-v20-vampire') || statblockCSSclass.endsWith('.vtm-v20-vampire-en') || statblockCSSclass.endsWith('.vtm-v20-vampire-wild-west') || statblockCSSclass.endsWith('.vtm-v20-vampire-wild-west-en'))) {
         // define clan
         var clanName = document.querySelector(activeTab + '.line.clan .statblock-markdown > p').innerHTML;
         console.log(clanName + ' - the clan')
@@ -297,7 +297,7 @@ sleep(200).then(() => {
         // nothing
     }
     // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.line.clan .statblock-markdown') != null && (statblockCSSclassHover.endsWith('.vtm-v20-vampire') || statblockCSSclassHover.endsWith('.vtm-v20-vampire-en'))) {
+    if (document.querySelector(statblockCSSpathHover + '.line.clan .statblock-markdown') != null && (statblockCSSclass.endsWith('.vtm-v20-vampire') || statblockCSSclass.endsWith('.vtm-v20-vampire-en') || statblockCSSclass.endsWith('.vtm-v20-vampire-wild-west') || statblockCSSclass.endsWith('.vtm-v20-vampire-wild-west-en'))) {
         var clanNameHover = document.querySelector(statblockCSSpathHover + '.line.clan .statblock-markdown > p').innerHTML;
         var collapsedColumnHover = document.querySelector(statblockCSSpathHover + '.collapse-container');
         switch (clanNameHover) {
@@ -780,7 +780,7 @@ sleep(200).then(() => {
 
 
     // is there Werewolf statblock?
-    if (document.querySelector(activeTab + '.line.tribe .statblock-markdown') != null && (statblockCSSclass.endsWith('.wta-w20-werewolf') || statblockCSSclass.endsWith('.wta-w20-werewolf-en'))) {
+    if (document.querySelector(activeTab + '.line.tribe .statblock-markdown') != null && (statblockCSSclass.endsWith('.wta-w20-werewolf') || statblockCSSclass.endsWith('.wta-w20-werewolf-en') || statblockCSSclass.endsWith('.wta-w20-werewolf-savage-west') || statblockCSSclass.endsWith('.wta-w20-werewolf-savage-west-en'))) {
         // define tribe
         var tribeName = document.querySelector(activeTab + '.line.tribe .statblock-markdown > p').innerHTML;
         console.log(tribeName + ' - название племени')
@@ -1332,13 +1332,13 @@ sleep(200).then(() => {
 
 
     // you can type character's name (in level 2 heading) in the note above the statblock, and if this heading is the same as character name in the statblock, it will be hidden in the reading view, but remains in the outlina panel
-    if (document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h2 h2') != null) {
-        var outlineName = document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h2 h2').innerText
-        console.log(outlineName + ' - H2 name from the note');
+    if (document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h1 h1') != null) {
+        var outlineName = document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h1 h1').innerText
+        console.log(outlineName + ' - H1 name from the note');
         const characterName = document.querySelector(activeTab + 'h1.heading .inline').innerHTML
         console.log('the name from the statblock - ' + characterName)
         if (outlineName = characterName && outlineName != null) {
-            document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h2 h2').style.display = 'none';
+            document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h1 h1').style.display = 'none';
         }
     }
     else {

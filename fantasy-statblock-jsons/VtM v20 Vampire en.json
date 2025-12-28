@@ -1320,6 +1320,11 @@
                                                 },
                                                 {
                                                     "type": "property",
+                                                    "id": "0a4998e9db58",
+                                                    "properties": []
+                                                },
+                                                {
+                                                    "type": "property",
                                                     "id": "c8485a5bc8d8",
                                                     "properties": [
                                                         "selfcontrol"
@@ -1330,6 +1335,11 @@
                                                     "diceCallback": "return [{ text: monster.selfcontrol + 'd10|none|nodice|noform|text(' + monster.selfcontrol +')' }]",
                                                     "dice": true,
                                                     "hasRule": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "a96989589978",
+                                                    "properties": []
                                                 },
                                                 {
                                                     "type": "property",

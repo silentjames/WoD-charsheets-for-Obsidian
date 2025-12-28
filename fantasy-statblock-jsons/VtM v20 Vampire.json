@@ -1312,7 +1312,7 @@
                                                         "conscience"
                                                     ],
                                                     "fallback": "1",
-                                                    "display": "Cовесть/Решимость",
+                                                    "display": "Cовесть",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.conscience + 'd10|none|nodice|noform|text(' + monster.conscience +')' }]",
                                                     "dice": true
@@ -1321,12 +1321,12 @@
                                                     "type": "property",
                                                     "id": "c8485a5bc8d8",
                                                     "properties": [
-                                                        "selfcontrol"
+                                                        "conviction"
                                                     ],
                                                     "fallback": "1",
-                                                    "display": "Самоконтроль/Инстинкты",
+                                                    "display": "Решимость",
                                                     "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.selfcontrol + 'd10|none|nodice|noform|text(' + monster.selfcontrol +')' }]",
+                                                    "diceCallback": "return [{ text: monster.conviction + 'd10|none|nodice|noform|text(' + monster.conviction +')' }]",
                                                     "dice": true,
                                                     "hasRule": false
                                                 },
@@ -1334,14 +1334,38 @@
                                                     "type": "property",
                                                     "id": "db0809595be8",
                                                     "properties": [
-                                                        "courage"
+                                                        "selfcontrol"
                                                     ],
                                                     "fallback": "1",
                                                     "conditioned": true,
-                                                    "display": "Смелость",
+                                                    "display": "Самоконтроль",
                                                     "dice": true,
                                                     "hasRule": false,
-                                                    "diceCallback": "return [{ text: monster.courage + 'd10|none|nodice|noform|text(' + monster.courage +')' }]"
+                                                    "diceCallback": "return [{ text: monster.selfcontrol + 'd10|none|nodice|noform|text(' + monster.selfcontrol +')' }]"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "99ca190b5bf8",
+                                                    "properties": [
+                                                        "instinct"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "dice": true,
+                                                    "conditioned": true,
+                                                    "display": "Инстинкты",
+                                                    "diceCallback": "return [{ text: monster.instinct + 'd10|none|nodice|noform|text(' + monster.instinct +')' }]"
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "7a98483ba9d9",
+                                                    "properties": [
+                                                        "courage"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "diceCallback": "return [{ text: monster.courage + 'd10|none|nodice|noform|text(' + monster.courage +')' }]",
+                                                    "display": "Смелость",
+                                                    "conditioned": true,
+                                                    "dice": true
                                                 }
                                             ],
                                             "cls": "virtues-column",

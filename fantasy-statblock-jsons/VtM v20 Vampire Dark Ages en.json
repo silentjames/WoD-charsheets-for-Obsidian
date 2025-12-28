@@ -1312,10 +1312,22 @@
                                                         "conscience"
                                                     ],
                                                     "fallback": "1",
-                                                    "display": "Conscience/Conviction",
+                                                    "display": "Conscience",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.conscience + 'd10|none|nodice|noform|text(' + monster.conscience +')' }]",
                                                     "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "181b58cb1b5b",
+                                                    "properties": [
+                                                        "conviction"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Conviction",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.conviction + 'd10|none|nodice|noform|text(' + monster.conviction +')' }]"
                                                 },
                                                 {
                                                     "type": "property",
@@ -1324,11 +1336,23 @@
                                                         "selfcontrol"
                                                     ],
                                                     "fallback": "1",
-                                                    "display": "Self-Control/Instinct",
+                                                    "display": "Self-Control",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.selfcontrol + 'd10|none|nodice|noform|text(' + monster.selfcontrol +')' }]",
                                                     "dice": true,
                                                     "hasRule": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "ba4bd878fa5b",
+                                                    "properties": [
+                                                        "instinct"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Instinct",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.instinct + 'd10|none|nodice|noform|text(' + monster.instinct +')' }]"
                                                 },
                                                 {
                                                     "type": "property",

@@ -263,7 +263,6 @@
                                                     "dice": true
                                                 }
                                             ],
-                                            "heading": "",
                                             "cls": "physical-column"
                                         },
                                         {
@@ -318,7 +317,6 @@
                                                     "dice": true
                                                 }
                                             ],
-                                            "heading": "",
                                             "cls": "social-column"
                                         },
                                         {
@@ -373,12 +371,10 @@
                                                     "dice": true
                                                 }
                                             ],
-                                            "heading": "",
                                             "cls": "mental-column"
                                         }
                                     ],
-                                    "cls": "",
-                                    "heading": ""
+                                    "cls": ""
                                 }
                             ],
                             "hasRule": false,
@@ -1334,7 +1330,6 @@
                                                     "conditioned": true
                                                 }
                                             ],
-                                            "heading": "",
                                             "cls": "backgrounds-column",
                                             "conditioned": true
                                         },
@@ -1360,10 +1355,22 @@
                                                         "conscience"
                                                     ],
                                                     "fallback": "1",
-                                                    "display": "Cовесть/Решимость",
+                                                    "display": "Cовесть",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.conscience + 'd10|none|nodice|noform|text(' + monster.conscience +')' }]",
                                                     "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "ba891a49d8da",
+                                                    "properties": [
+                                                        "conviction"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Решимость",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.conviction + 'd10|none|nodice|noform|text(' + monster.conviction +')' }]"
                                                 },
                                                 {
                                                     "type": "property",
@@ -1372,11 +1379,23 @@
                                                         "selfcontrol"
                                                     ],
                                                     "fallback": "1",
-                                                    "display": "Самоконтроль/Инстинкты",
+                                                    "display": "Самоконтроль",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.selfcontrol + 'd10|none|nodice|noform|text(' + monster.selfcontrol +')' }]",
                                                     "dice": true,
                                                     "hasRule": false
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "ba0878b8f9b8",
+                                                    "properties": [
+                                                        "instinct"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.instinct + 'd10|none|nodice|noform|text(' + monster.instinct +')' }]",
+                                                    "display": "Инстинкты",
+                                                    "conditioned": true
                                                 },
                                                 {
                                                     "type": "property",
@@ -1882,7 +1901,6 @@
                                                     "conditioned": true
                                                 }
                                             ],
-                                            "heading": "",
                                             "cls": "willpower-block",
                                             "conditioned": true
                                         },
@@ -2329,7 +2347,6 @@
                                                 }
                                             ],
                                             "cls": "specialities-block",
-                                            "heading": "",
                                             "conditioned": true
                                         }
                                     ]
@@ -2688,7 +2705,8 @@
                                     "cls": "weapon-four"
                                 }
                             ],
-                            "cls": "weapon-table"
+                            "cls": "weapon-table",
+                            "conditioned": true
                         }
                     ]
                 }

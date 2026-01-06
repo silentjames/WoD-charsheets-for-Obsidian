@@ -1,9 +1,46 @@
-async function sleep(ms) { // sleep is needed to wait for a note and a statblok to be fully loaded
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-sleep(200).then(() => {
+async function waitForAnySelector(selectors, opts = {}) {
+    // Ожидание появления любого из селекторов
+    // Wait until any of the selectors appears
+    const timeoutMs = opts.timeoutMs ?? 2000;
+    const intervalMs = opts.intervalMs ?? 50;
 
-    // the list of weaknesses for all the supported clans
+    const start = performance.now();
+    while (performance.now() - start <= timeoutMs) {
+        for (let i = 0; i < selectors.length; i++) {
+            const el = document.querySelector(selectors[i]);
+            if (el != null) return el;
+        }
+        await new Promise((resolve) => setTimeout(resolve, intervalMs));
+    }
+    return null;
+}
+
+
+// Основной запуск после того, как статблок успел дорендериться
+// Main entrypoint after the statblock has finished rendering
+(async function run() {
+
+
+    // --- Logging (disable by default) ---
+    // --- Логирование (по умолчанию выключено) ---
+    const DEBUG = false;
+    function log() {
+        if (!DEBUG) return;
+        console.log.apply(console, arguments);
+    }
+
+
+
+    // Ждём, пока в активной вкладке или в hover появится ключевой узел statblock'а.
+    // Wait until a key statblock node appears in the active leaf or hover popover.
+    const ACTIVE_READY_SEL = '.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock .collapse-container';
+    const HOVER_READY_SEL = '.popover.hover-popover .obsidian-statblock-plugin.statblock .collapse-container';
+    await waitForAnySelector([ACTIVE_READY_SEL, HOVER_READY_SEL], { timeoutMs: 2000, intervalMs: 50 });
+
+    // Список изъянов для кланов
+    // List of clan weaknesses
+
+    // Камарилья
     // Camarilla
     const weaknessBrujah = '';
     const weaknessCaitiff = '';
@@ -13,12 +50,11 @@ sleep(200).then(() => {
     const weaknessToreador = '';
     const weaknessTremere = '';
     const weaknessVentrue = '';
+    // Шабаш
     // Sabbat
     const weaknessAssamiteAntitribu = '';
     const weaknessBrujahAntitribu = '';
     const weaknessCaitiffAntitribuPander = '';
-    const weaknessCountryGangrel = '';
-    const weaknessCityGangrel = '';
     const weaknessLasombra = '';
     const weaknessMalkavianAntitribu = '';
     const weaknessNosferatuAntitribu = '';
@@ -28,14 +64,18 @@ sleep(200).then(() => {
     const weaknessTremereAntitribu = '';
     const weaknessTzimisce = '';
     const weaknessVentrueAntitribu = '';
+    // Независимые кланы
     // Independent clans
     const weaknessAssamite = '';
     const weaknessFollowersOfSet = '';
     const weaknessGiovanni = '';
     const weaknessRavnos = '';
+    // Линии крови
     // Bloodlines
     const weaknessBaali = '';
     const weaknessCappadocians = '';
+    const weaknessCountryGangrel = '';
+    const weaknessCityGangrel = '';
     const weaknessDaughtersOfCacophony = '';
     const weaknessKiasyd = '';
     const weaknessSalubri = '';
@@ -44,8 +84,8 @@ sleep(200).then(() => {
     const weaknessTrueBrujah = '';
 
 
-    // the list of weakness for Dark Ages
-    // Clans
+    // Список изъянов для Dark Ages
+    // List of weakness for Dark Ages
     const weaknessAssamiteDarkAges = '';
     const weaknessBrujahDarkAges = '';
     const weaknessCappadociansDarkAges = '';
@@ -60,6 +100,7 @@ sleep(200).then(() => {
     const weaknessTzimisceDarkAges = '';
     const weaknessVentrueDarkAges = '';
     // Bloodlines
+    // Линии крови
     const weaknessAhrimanesDarkAges = '';
     const weaknessAndaDarkAges = '';
     const weaknessBaaliDarkAges = '';
@@ -81,2027 +122,1662 @@ sleep(200).then(() => {
     const weaknessTrueBrujahDarkAges = '';
 
 
-    // find the statblock's layout name and active tab that has it
-    if (document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock') != null) {
-        var findClasses = document.querySelector('.workspace-leaf.mod-active .obsidian-statblock-plugin.statblock')
-        const statblockClassList = findClasses.classList
-        var allClasses = statblockClassList.value.toString()
-        var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,30}/gm;
-        var statblockCSSclass = '.' + allClasses.match(regex);
-        // console.log(statblockCSSclass + ' |=| statblock css-class')
-        var activeTab = '.workspace-leaf.mod-active ' + statblockCSSclass + ' ';
+    // --- Селекторы, ограниченные корнем (чтобы не собирать префиксы вроде "activeTab + ...") ---
+    // --- Root-scoped selectors (avoid building string prefixes like "activeTab + ...") ---
+    const ACTIVE_LEAF_SEL = '.workspace-leaf.mod-active';
+    const STATBLOCK_SEL = '.obsidian-statblock-plugin.statblock';
+
+    // --- Корневые контейнеры для всех последующих запросов --- 
+    // --- Root containers for all subsequent queries --- 
+    const activeRoot = document.querySelector(`${ACTIVE_LEAF_SEL} ${STATBLOCK_SEL}`);
+    const hoverRoot = document.querySelector(`.popover.hover-popover ${STATBLOCK_SEL}`);
+
+    // Все DOM-запросы ниже должны быть ограничены через ctx.qs/ctx.qsa, чтобы избежать утечек между вкладками/ховером.
+    // All DOM queries below should be scoped via ctx.qs/ctx.qsa to avoid cross-tab/hover leaks.
+
+    // --- Сохраняем строку sheetClass, потому что часть проверок опирается на неё (например, endsWith) ---
+    // --- Keep sheet-class strings because some feature-gates rely on them (e.g., endsWith checks) --- 
+    const sheetClassRe = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,30}/gm;
+
+    let statblockCSSclass = '';
+    if (activeRoot != null) {
+        const allClasses = activeRoot.classList.value.toString();
+        const match = allClasses.match(sheetClassRe);
+        statblockCSSclass = match ? ('.' + match[0]) : '';
     }
-    else { }
 
-    // find statblock in hover
-    if (document.querySelector('.popover.hover-popover') != null) {
-        var statblockClassListHover = document.querySelector('.popover.hover-popover .obsidian-statblock-plugin.statblock').classList;
-        var allClassesHover = statblockClassListHover.value.toString()
-        var regex = /[a-z]{3}-[a-z]{1}20-[a-z-]{0,20}/gm;
-        var statblockCSSclassHover = '.' + allClassesHover.match(regex);
-        console.log(statblockCSSclassHover + ' |=| css-класс статблока в ховере')
-        var statblockCSSpathHover = '.popover.hover-popover ' + statblockCSSclassHover + ' ';
+    let statblockCSSclassHover = '';
+    if (hoverRoot != null) {
+        const allClassesHover = hoverRoot.classList.value.toString();
+        const matchHover = allClassesHover.match(sheetClassRe);
+        statblockCSSclassHover = matchHover ? ('.' + matchHover[0]) : '';
     }
-    else { }
 
 
-    // define a clan, and set up different background and weakness for each clan
-    if (document.querySelector(activeTab + '.line.clan .statblock-markdown') != null && (statblockCSSclass.endsWith('.vtm-v20-vampire') || statblockCSSclass.endsWith('.vtm-v20-vampire-en') || statblockCSSclass.endsWith('.vtm-v20-vampire-wild-west') || statblockCSSclass.endsWith('.vtm-v20-vampire-wild-west-en'))) {
-        // define clan
-        var clanName = document.querySelector(activeTab + '.line.clan .statblock-markdown > p').innerHTML;
-        console.log(clanName + ' - the clan')
-        // define the area where a clan image should be placed 
-        var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
+    // --- Единые контексты обработки (активная вкладка + ховер) ---
+    // --- Unified processing contexts (active tab + hover) ---
+    function makeProcessingContext(root, sheetClass, mode) {
+        return {
+            root: root,
+            sheetClass: sheetClass,
+            mode: mode,
+            qs: function (sel) { return root.querySelector(sel); },
+            qsa: function (sel) { return root.querySelectorAll(sel); },
+            text: function (sel) {
+                const el = root.querySelector(sel);
+                if (el == null) return '';
+                return (el.textContent || '').trim();
+            }
+        };
+    }
+
+    const processingContexts = [];
+    if (activeRoot != null) processingContexts.push(makeProcessingContext(activeRoot, statblockCSSclass, 'active'));
+    if (hoverRoot != null) processingContexts.push(makeProcessingContext(hoverRoot, statblockCSSclassHover, 'hover'));
+
+    function forEachProcessingContext(fn) {
+        for (let i = 0; i < processingContexts.length; i++) {
+            fn(processingContexts[i]);
+        }
+    }
+
+    // --- Безопасные DOM-хелперы: чтобы отсутствие опциональных блоков не валило весь DataviewJS-рендер ---
+    // --- Safe DOM helpers: avoid crashing the whole DataviewJS render when optional blocks are missing ---
+
+    function setText(el, value) {
+        if (el != null) el.textContent = value;
+    }
+
+    function setStyle(el, prop, value) {
+        if (el != null) el.style[prop] = value;
+    }
+
+
+    function getBloodPropertyContainer(ctx, index) {
+        const line = ctx.qs('.line.blood_current' + index) || ctx.qs('.blood_current' + index);
+        if (line == null) return null;
+        return line.closest('.property-container');
+    }
+
+
+    // --- Вампирские кланы: общая логика для активной вкладки и ховера ---
+    // --- Vampire clans: shared logic for active tab and hover ---
+    const VTM_V20_VAMPIRE_SHEETS = [
+        '.vtm-v20-vampire',
+        '.vtm-v20-vampire-en',
+        '.vtm-v20-vampire-wild-west',
+        '.vtm-v20-vampire-wild-west-en',
+    ];
+
+    const VTM_V20_VAMPIRE_DARK_AGES_SHEETS = [
+        '.vtm-v20-vampire-dark-ages',
+        '.vtm-v20-vampire-dark-ages-en',
+    ];
+
+    const WTA_W20_WEREWOLF_SHEETS = [
+        '.wta-w20-werewolf',
+        '.wta-w20-werewolf-en',
+        '.wta-w20-werewolf-savage-west',
+        '.wta-w20-werewolf-savage-west-en',
+    ];
+
+    const WOD_V20_AGENT_SHEETS = [
+        '.wod-v20-agent',
+        '.wod-v20-agent-en',
+    ];
+
+    const MTA_M20_MAGE_SHEETS = [
+        '.mta-m20-mage',
+        '.mta-m20-mage-en',
+    ];
+
+    const MTA_M20_TECHNOCRAT_SHEETS = [
+        '.mta-m20-technocrat',
+        '.mta-m20-technocrat-en',
+    ];
+
+
+    function sheetMatchesEndsWith(sheetClass, allowedEndings) {
+        return sheetClass != null && allowedEndings.some((ending) => sheetClass.endsWith(ending));
+    }
+
+    function getClanNameFromStatblock(root) {
+        const el = root.querySelector('.line.clan .statblock-markdown > p');
+        return el ? (el.textContent ?? '').trim() : '';
+    }
+
+    function getTribeNameFromStatblock(root) {
+        const el = root.querySelector('.line.tribe .statblock-markdown > p');
+        return el ? (el.textContent ?? '').trim() : '';
+    }
+
+    function getAgencyNameFromStatblock(root) {
+        const el = root.querySelector('.line.agency .statblock-markdown > p');
+        return el ? (el.textContent ?? '').trim() : '';
+    }
+
+    function getAffiliationNameFromStatblock(root) {
+        const el = root.querySelector('.line.affiliation .statblock-markdown > p');
+        return el ? (el.textContent ?? '').trim() : '';
+    }
+
+
+
+
+    function applyV20VampireClanBranding(root, sheetClass) {
+        if (root == null) return;
+        if (!sheetMatchesEndsWith(sheetClass, VTM_V20_VAMPIRE_SHEETS)) return;
+        if (root.querySelector('.line.clan .statblock-markdown') == null) return;
+
+        const clanName = getClanNameFromStatblock(root);
+        if (!clanName) return;
+        log('Clan:', clanName);
+
+        const collapsedColumn = root.querySelector('.collapse-container');
+        if (collapsedColumn == null) return;
+
+        let collapsedBackgroundClan;
+        let clanWeakness;
+        let headerBackgroundClan;
+
         switch (clanName) {
+            case 'Ассамиты':
             case 'Assamite':
-                // corresponding css-class is assigned for each clan
-                var collapsedBackgroundClan = 'Assamite';
-                // and clan weakness is also added
-                var clanWeakness = weaknessAssamite;
-                // if note has 'csslacss: wod-header', clan logo will be displayed there, as background for general character info
-                var headerBackgroundClan = 'var(--Assamite-background-logo)';
+                // каждому клану назначается соответствующий класс, для которого в css уже вшито изображение
+                // assign a clan-specific CSS class (the image is embedded in CSS)
+                collapsedBackgroundClan = 'Assamite';
+                // изъян - соответствующий клану из списка выше
+                // weakness text for this clan (from the list above)
+                clanWeakness = weaknessAssamite;
+                // если у заметки есть класс wod-header, логотип клана будет под именем, рядом с фото
+                // if the note has the wod-header class, show the clan logo in the header next to the portrait
+                headerBackgroundClan = 'var(--Assamite-background-logo)';
                 break;
+            case 'Антитрибу Ассамитов':
             case 'Assamite Antitribu':
-                var collapsedBackgroundClan = 'Assamite-Antitribu';
-                var clanWeakness = weaknessAssamiteAntitribu;
-                var headerBackgroundClan = 'var(--Assamite-Antitribu-background-logo)';
+                collapsedBackgroundClan = 'Assamite-Antitribu';
+                clanWeakness = weaknessAssamiteAntitribu;
+                headerBackgroundClan = 'var(--Assamite-Antitribu-background-logo)';
                 break;
+            case 'Баали':
             case 'Baali':
-                var collapsedBackgroundClan = 'Baali';
-                var clanWeakness = weaknessBaali;
-                var headerBackgroundClan = 'var(--Baali-background-logo)';
+                collapsedBackgroundClan = 'Baali';
+                clanWeakness = weaknessBaali;
+                headerBackgroundClan = 'var(--Baali-background-logo)';
                 break;
+            case 'Бруха':
             case 'Brujah':
-                var collapsedBackgroundClan = 'Brujah';
-                var clanWeakness = weaknessBrujah;
-                var headerBackgroundClan = 'var(--Brujah-background-logo)';
+                collapsedBackgroundClan = 'Brujah';
+                clanWeakness = weaknessBrujah;
+                headerBackgroundClan = 'var(--Brujah-background-logo)';
                 break;
+            case 'Антитрибу Бруха':
             case 'Brujah Antitribu':
-                var collapsedBackgroundClan = 'Brujah-Antitribu';
-                var clanWeakness = weaknessBrujahAntitribu;
-                var headerBackgroundClan = 'var(--Brujah-Antitribu-background-logo)';
+                collapsedBackgroundClan = 'Brujah-Antitribu';
+                clanWeakness = weaknessBrujahAntitribu;
+                headerBackgroundClan = 'var(--Brujah-Antitribu-background-logo)';
                 break;
+            case 'Истинные Бруха':
             case 'True Brujah':
-                var collapsedBackgroundClan = 'True-Brujah';
-                var clanWeakness = weaknessTrueBrujah;
-                var headerBackgroundClan = 'var(--True-Brujah-background-logo)';
+                collapsedBackgroundClan = 'True-Brujah';
+                clanWeakness = weaknessTrueBrujah;
+                headerBackgroundClan = 'var(--True-Brujah-background-logo)';
                 break;
+            case 'Каппадокийцы':
             case 'Cappadocians':
-                var collapsedBackgroundClan = 'Cappadocians';
-                var clanWeakness = weaknessCappadocians;
-                var headerBackgroundClan = 'var(--Cappadocians-background-logo)';
+                collapsedBackgroundClan = 'Cappadocians';
+                clanWeakness = weaknessCappadocians;
+                headerBackgroundClan = 'var(--Cappadocians-background-logo)';
                 break;
+            case 'Каитиф':
             case 'Caitiff':
-                var collapsedBackgroundClan = 'Caitiff';
-                var clanWeakness = weaknessCaitiff;
-                var headerBackgroundClan = 'var(--Caitiff-background-logo)';
+                collapsedBackgroundClan = 'Caitiff';
+                clanWeakness = weaknessCaitiff;
+                headerBackgroundClan = 'var(--Caitiff-background-logo)';
                 break;
+            case 'Пандер':
             case 'Pander':
-                var collapsedBackgroundClan = 'Caitiff-Antitribu-Pander';
-                var clanWeakness = weaknessCaitiffAntitribuPander;
-                var headerBackgroundClan = 'var(--Caitiff-Antitribu-Pander-background-logo)';
+                collapsedBackgroundClan = 'Caitiff-Antitribu-Pander';
+                clanWeakness = weaknessCaitiffAntitribuPander;
+                headerBackgroundClan = 'var(--Caitiff-Antitribu-Pander-background-logo)';
                 break;
+            case 'Вентру':
             case 'Ventrue':
-                var collapsedBackgroundClan = 'Ventrue';
-                var clanWeakness = weaknessVentrue;
-                var headerBackgroundClan = 'var(--Ventrue-background-logo)';
+                collapsedBackgroundClan = 'Ventrue';
+                clanWeakness = weaknessVentrue;
+                headerBackgroundClan = 'var(--Ventrue-background-logo)';
                 break;
+            case 'Антитрибу Вентру':
             case 'Ventrue Antitribu':
-                var collapsedBackgroundClan = 'Ventrue-Antitribu';
-                var clanWeakness = weaknessVentrueAntitribu;
-                var headerBackgroundClan = 'var(--Ventrue-Antitribu-background-logo)';
+                collapsedBackgroundClan = 'Ventrue-Antitribu';
+                clanWeakness = weaknessVentrueAntitribu;
+                headerBackgroundClan = 'var(--Ventrue-Antitribu-background-logo)';
                 break;
+            case 'Гангрел':
             case 'Gangrel':
-                var collapsedBackgroundClan = 'Gangrel';
-                var clanWeakness = weaknessGangrel;
-                var headerBackgroundClan = 'var(--Gangrel-background-logo)';
+                collapsedBackgroundClan = 'Gangrel';
+                clanWeakness = weaknessGangrel;
+                headerBackgroundClan = 'var(--Gangrel-background-logo)';
                 break;
+            case 'Дикие Гангрелы':
             case 'Country Gangrel':
-                var collapsedBackgroundClan = 'Country-Gangrel';
-                var clanWeakness = weaknessCountryGangrel;
-                var headerBackgroundClan = 'var(--Country-Gangrel-background-logo)';
+                collapsedBackgroundClan = 'Country-Gangrel';
+                clanWeakness = weaknessCountryGangrel;
+                headerBackgroundClan = 'var(--Country-Gangrel-background-logo)';
                 break;
+            case 'Городские Гангрелы':
             case 'City Gangrel':
-                var collapsedBackgroundClan = 'City-Gangrel';
-                var clanWeakness = weaknessCityGangrel;
-                var headerBackgroundClan = 'var(--City-Gangrel-background-logo)';
+                collapsedBackgroundClan = 'City-Gangrel';
+                clanWeakness = weaknessCityGangrel;
+                headerBackgroundClan = 'var(--City-Gangrel-background-logo)';
                 break;
+            case 'Джованни':
             case 'Giovanni':
-                var collapsedBackgroundClan = 'Giovanni';
-                var clanWeakness = weaknessGiovanni;
-                var headerBackgroundClan = 'var(--Giovanni-background-logo)';
+                collapsedBackgroundClan = 'Giovanni';
+                clanWeakness = weaknessGiovanni;
+                headerBackgroundClan = 'var(--Giovanni-background-logo)';
                 break;
+            case 'Дочери Какофонии':
             case 'Daughters of Cacophony':
-                var collapsedBackgroundClan = 'Daughters-of-Cacophony';
-                var clanWeakness = weaknessDaughtersOfCacophony;
-                var headerBackgroundClan = 'var(--Daughters-of-Cacophony-background-logo)';
+                collapsedBackgroundClan = 'Daughters-of-Cacophony';
+                clanWeakness = weaknessDaughtersOfCacophony;
+                headerBackgroundClan = 'var(--Daughters-of-Cacophony-background-logo)';
                 break;
+            case 'Киасиды':
             case 'Kiasyd':
-                var collapsedBackgroundClan = 'Kiasyd';
-                var clanWeakness = weaknessKiasyd;
-                var headerBackgroundClan = 'var(--Kiasyd-background-logo)';
+                collapsedBackgroundClan = 'Kiasyd';
+                clanWeakness = weaknessKiasyd;
+                headerBackgroundClan = 'var(--Kiasyd-background-logo)';
                 break;
+            case 'Ласомбра':
             case 'Lasombra':
-                var collapsedBackgroundClan = 'Lasombra';
-                var clanWeakness = weaknessLasombra;
-                var headerBackgroundClan = 'var(--Lasombra-background-logo)';
+                collapsedBackgroundClan = 'Lasombra';
+                clanWeakness = weaknessLasombra;
+                headerBackgroundClan = 'var(--Lasombra-background-logo)';
                 break;
+            case 'Малкавиане':
+            case 'Малкавиан':
             case 'Malkavian':
-                var collapsedBackgroundClan = 'Malkavian';
-                var clanWeakness = weaknessMalkavian;
-                var headerBackgroundClan = 'var(--Malkavian-background-logo)';
+                collapsedBackgroundClan = 'Malkavian';
+                clanWeakness = weaknessMalkavian;
+                headerBackgroundClan = 'var(--Malkavian-background-logo)';
                 break;
+            case 'Антитрибу Малкавиан':
             case 'Malkavian Antitribu':
-                var collapsedBackgroundClan = 'Malkavian-Antitribu';
-                var clanWeakness = weaknessMalkavianAntitribu;
-                var headerBackgroundClan = 'var(--Malkavian-Antitribu-background-logo)';
+                collapsedBackgroundClan = 'Malkavian-Antitribu';
+                clanWeakness = weaknessMalkavianAntitribu;
+                headerBackgroundClan = 'var(--Malkavian-Antitribu-background-logo)';
                 break;
+            case 'Носферату':
             case 'Nosferatu':
-                var collapsedBackgroundClan = 'Nosferatu';
-                var clanWeakness = weaknessNosferatu;
-                var headerBackgroundClan = 'var(--Nosferatu-background-logo)';
+                collapsedBackgroundClan = 'Nosferatu';
+                clanWeakness = weaknessNosferatu;
+                headerBackgroundClan = 'var(--Nosferatu-background-logo)';
                 break;
+            case 'Антитрибу Носферату':
             case 'Nosferatu Antitribu':
-                var collapsedBackgroundClan = 'Nosferatu-Antitribu';
-                var clanWeakness = weaknessNosferatuAntitribu;
-                var headerBackgroundClan = 'var(--Nosferatu-Antitribu-background-logo)';
+                collapsedBackgroundClan = 'Nosferatu-Antitribu';
+                clanWeakness = weaknessNosferatuAntitribu;
+                headerBackgroundClan = 'var(--Nosferatu-Antitribu-background-logo)';
                 break;
+            case 'Последователи Сета':
             case 'Followers of Set':
-                var collapsedBackgroundClan = 'Followers-of-Set';
-                var clanWeakness = weaknessFollowersOfSet;
-                var headerBackgroundClan = 'var(--Followers-of-Set-background-logo)';
+                collapsedBackgroundClan = 'Followers-of-Set';
+                clanWeakness = weaknessFollowersOfSet;
+                headerBackgroundClan = 'var(--Followers-of-Set-background-logo)';
                 break;
+            case 'Змеи Света':
             case 'Serpents of Light':
-                var collapsedBackgroundClan = 'Serpents-of-Light';
-                var clanWeakness = weaknessSerpentsOfLight;
-                var headerBackgroundClan = 'var(--Serpents-of-Light-background-logo)';
+                collapsedBackgroundClan = 'Serpents-of-Light';
+                clanWeakness = weaknessSerpentsOfLight;
+                headerBackgroundClan = 'var(--Serpents-of-Light-background-logo)';
                 break;
+            case 'Равнос':
             case 'Ravnos':
-                var collapsedBackgroundClan = 'Ravnos';
-                var clanWeakness = weaknessRavnos;
-                var headerBackgroundClan = 'var(--Ravnos-background-logo)';
+                collapsedBackgroundClan = 'Ravnos';
+                clanWeakness = weaknessRavnos;
+                headerBackgroundClan = 'var(--Ravnos-background-logo)';
                 break;
+            case 'Антитрибу Равнос':
             case 'Ravnos Antitribu':
-                var collapsedBackgroundClan = 'Ravnos-Antitribu';
-                var clanWeakness = weaknessRavnosAntitribu;
-                var headerBackgroundClan = 'var(--Ravnos-Antitribu-background-logo)';
+                collapsedBackgroundClan = 'Ravnos-Antitribu';
+                clanWeakness = weaknessRavnosAntitribu;
+                headerBackgroundClan = 'var(--Ravnos-Antitribu-background-logo)';
                 break;
+            case 'Салюбри':
             case 'Salubri':
-                var collapsedBackgroundClan = 'Salubri';
-                var clanWeakness = weaknessSalubri;
-                var headerBackgroundClan = 'var(--Salubri-background-logo)';
+                collapsedBackgroundClan = 'Salubri';
+                clanWeakness = weaknessSalubri;
+                headerBackgroundClan = 'var(--Salubri-background-logo)';
                 break;
+            case 'Антитрибу Салюбри':
             case 'Salubri Antitribu':
-                var collapsedBackgroundClan = 'Salubri-Antitribu';
-                var clanWeakness = weaknessSalubriAntitribu;
-                var headerBackgroundClan = 'var(--Salubri-Antitribu-background-logo)';
+                collapsedBackgroundClan = 'Salubri-Antitribu';
+                clanWeakness = weaknessSalubriAntitribu;
+                headerBackgroundClan = 'var(--Salubri-Antitribu-background-logo)';
                 break;
+            case 'Самеди':
             case 'Samedi':
-                var collapsedBackgroundClan = 'Samedi';
-                var clanWeakness = weaknessSamedi;
-                var headerBackgroundClan = 'var(--Samedi-background-logo)';
+                collapsedBackgroundClan = 'Samedi';
+                clanWeakness = weaknessSamedi;
+                headerBackgroundClan = 'var(--Samedi-background-logo)';
                 break;
+            case 'Тореадор':
             case 'Toreador':
-                var collapsedBackgroundClan = 'Toreador';
-                var clanWeakness = weaknessToreador;
-                var headerBackgroundClan = 'var(--Toreador-background-logo)';
+                collapsedBackgroundClan = 'Toreador';
+                clanWeakness = weaknessToreador;
+                headerBackgroundClan = 'var(--Toreador-background-logo)';
                 break;
+            case 'Антитрибу Тореадор':
             case 'Toreador Antitribu':
-                var collapsedBackgroundClan = 'Toreador-Antitribu';
-                var clanWeakness = weaknessToreadorAntitribu;
-                var headerBackgroundClan = 'var(--Toreador-Antitribu-background-logo)';
+                collapsedBackgroundClan = 'Toreador-Antitribu';
+                clanWeakness = weaknessToreadorAntitribu;
+                headerBackgroundClan = 'var(--Toreador-Antitribu-background-logo)';
                 break;
+            case 'Тремер':
             case 'Tremere':
-                var collapsedBackgroundClan = 'Tremere';
-                var clanWeakness = weaknessTremere;
-                var headerBackgroundClan = 'var(--Tremere-background-logo)';
+                collapsedBackgroundClan = 'Tremere';
+                clanWeakness = weaknessTremere;
+                headerBackgroundClan = 'var(--Tremere-background-logo)';
                 break;
+            case 'Антитрибу Тремер':
             case 'Tremere Antitribu':
-                var collapsedBackgroundClan = 'Tremere-Antitribu';
-                var clanWeakness = weaknessTremereAntitribu;
-                var headerBackgroundClan = 'var(--Tremere-Antitribu-background-logo)';
+                collapsedBackgroundClan = 'Tremere-Antitribu';
+                clanWeakness = weaknessTremereAntitribu;
+                headerBackgroundClan = 'var(--Tremere-Antitribu-background-logo)';
                 break;
+            case 'Цимисхи':
             case 'Tzimisce':
-                var collapsedBackgroundClan = 'Tzimisce';
-                var clanWeakness = weaknessTzimisce;
-                var headerBackgroundClan = 'var(--Tzimisce-background-logo)';
+                collapsedBackgroundClan = 'Tzimisce';
+                clanWeakness = weaknessTzimisce;
+                headerBackgroundClan = 'var(--Tzimisce-background-logo)';
                 break;
         };
+
+        if (!collapsedBackgroundClan) return;
         collapsedColumn.classList.add(collapsedBackgroundClan);
-        document.querySelector(activeTab + '.weakness p').innerHTML = clanWeakness;
-        if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
-            document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
-        };
-    }
-    else {
-        // nothing
-    }
-    // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.line.clan .statblock-markdown') != null && (statblockCSSclass.endsWith('.vtm-v20-vampire') || statblockCSSclass.endsWith('.vtm-v20-vampire-en') || statblockCSSclass.endsWith('.vtm-v20-vampire-wild-west') || statblockCSSclass.endsWith('.vtm-v20-vampire-wild-west-en'))) {
-        var clanNameHover = document.querySelector(statblockCSSpathHover + '.line.clan .statblock-markdown > p').innerHTML;
-        var collapsedColumnHover = document.querySelector(statblockCSSpathHover + '.collapse-container');
-        switch (clanNameHover) {
-            case 'Assamite':
-                var collapsedBackgroundClanHover = 'Assamite';
-                var clanWeaknessHover = weaknessAssamite;
-                var headerBackgroundClanHover = 'var(--Assamite-background-logo)';
-                break;
-            case 'Assamite Antitribu':
-                var collapsedBackgroundClanHover = 'Assamite-Antitribu';
-                var clanWeaknessHover = weaknessAssamiteAntitribu;
-                var headerBackgroundClanHover = 'var(--Assamite-Antitribu-background-logo)';
-                break;
-            case 'Baali':
-                var collapsedBackgroundClanHover = 'Baali';
-                var clanWeaknessHover = weaknessBaali;
-                var headerBackgroundClanHover = 'var(--Baali-background-logo)';
-                break;
-            case 'Brujah':
-                var collapsedBackgroundClanHover = 'Brujah';
-                var clanWeaknessHover = weaknessBrujah;
-                var headerBackgroundClanHover = 'var(--Brujah-background-logo)';
-                break;
-            case 'Brujah Antitribu':
-                var collapsedBackgroundClanHover = 'Brujah-Antitribu';
-                var clanWeaknessHover = weaknessBrujahAntitribu;
-                var headerBackgroundClanHover = 'var(--Brujah-Antitribu-background-logo)';
-                break;
-            case 'True Brujah':
-                var collapsedBackgroundClanHover = 'True-Brujah';
-                var clanWeaknessHover = weaknessTrueBrujah;
-                var headerBackgroundClanHover = 'var(--True-Brujah-background-logo)';
-                break;
-            case 'Cappadocians':
-                var collapsedBackgroundClanHover = 'Cappadocians';
-                var clanWeaknessHover = weaknessCappadocians;
-                var headerBackgroundClanHover = 'var(--Cappadocians-background-logo)';
-                break;
-            case 'Caitiff':
-                var collapsedBackgroundClanHover = 'Caitiff';
-                var clanWeaknessHover = weaknessCaitiff;
-                var headerBackgroundClanHover = 'var(--Caitiff-background-logo)';
-                break;
-            case 'Pander':
-                var collapsedBackgroundClanHover = 'Caitiff-Antitribu-Pander';
-                var clanWeaknessHover = weaknessCaitiffAntitribuPander;
-                var headerBackgroundClanHover = 'var(--Caitiff-Antitribu-Pander-background-logo)';
-                break;
-            case 'Ventrue':
-                var collapsedBackgroundClanHover = 'Ventrue';
-                var clanWeaknessHover = weaknessVentrue;
-                var headerBackgroundClanHover = 'var(--Ventrue-background-logo)';
-                break;
-            case 'Ventrue Antitribu':
-                var collapsedBackgroundClanHover = 'Ventrue-Antitribu';
-                var clanWeaknessHover = weaknessVentrueAntitribu;
-                var headerBackgroundClanHover = 'var(--Ventrue-Antitribu-background-logo)';
-                break;
-            case 'Gangrel':
-                var collapsedBackgroundClanHover = 'Gangrel';
-                var clanWeaknessHover = weaknessGangrel;
-                var headerBackgroundClanHover = 'var(--Gangrel-background-logo)';
-                break;
-            case 'Country Gangrel':
-                var collapsedBackgroundClanHover = 'Country-Gangrel';
-                var clanWeaknessHover = weaknessCountryGangrel;
-                var headerBackgroundClanHover = 'var(--Country-Gangrel-background-logo)';
-                break;
-            case 'City Gangrel':
-                var collapsedBackgroundClanHover = 'City-Gangrel';
-                var clanWeaknessHover = weaknessCityGangrel;
-                var headerBackgroundClanHover = 'var(--City-Gangrel-background-logo)';
-                break;
-            case 'Giovanni':
-                var collapsedBackgroundClanHover = 'Giovanni';
-                var clanWeaknessHover = weaknessGiovanni;
-                var headerBackgroundClanHover = 'var(--Giovanni-background-logo)';
-                break;
-            case 'Daughters of Cacophony':
-                var collapsedBackgroundClanHover = 'Daughters-of-Cacophony';
-                var clanWeaknessHover = weaknessDaughtersOfCacophony;
-                var headerBackgroundClanHover = 'var(--Daughters-of-Cacophony-background-logo)';
-                break;
-            case 'Kiasyd':
-                var collapsedBackgroundClanHover = 'Kiasyd';
-                var clanWeaknessHover = weaknessKiasyd;
-                var headerBackgroundClanHover = 'var(--Kiasyd-background-logo)';
-                break;
-            case 'Lasombra':
-                var collapsedBackgroundClanHover = 'Lasombra';
-                var clanWeaknessHover = weaknessLasombra;
-                var headerBackgroundClanHover = 'var(--Lasombra-background-logo)';
-                break;
-            case 'Malkavian':
-                var collapsedBackgroundClanHover = 'Malkavian';
-                var clanWeaknessHover = weaknessMalkavian;
-                var headerBackgroundClanHover = 'var(--Malkavian-background-logo)';
-                break;
-            case 'Malkavian Antitribu':
-                var collapsedBackgroundClanHover = 'Malkavian-Antitribu';
-                var clanWeaknessHover = weaknessMalkavianAntitribu;
-                var headerBackgroundClanHover = 'var(--Malkavian-Antitribu-background-logo)';
-                break;
-            case 'Nosferatu':
-                var collapsedBackgroundClanHover = 'Nosferatu';
-                var clanWeaknessHover = weaknessNosferatu;
-                var headerBackgroundClanHover = 'var(--Nosferatu-background-logo)';
-                break;
-            case 'Nosferatu Antitribu':
-                var collapsedBackgroundClanHover = 'Nosferatu-Antitribu';
-                var clanWeaknessHover = weaknessNosferatuAntitribu;
-                var headerBackgroundClanHover = 'var(--Nosferatu-Antitribu-background-logo)';
-                break;
-            case 'Followers of Set':
-                var collapsedBackgroundClanHover = 'Followers-of-Set';
-                var clanWeaknessHover = weaknessFollowersOfSet;
-                var headerBackgroundClanHover = 'var(--Followers-of-Set-background-logo)';
-                break;
-            case 'Serpents of Light':
-                var collapsedBackgroundClanHover = 'Serpents-of-Light';
-                var clanWeaknessHover = weaknessSerpentsOfLight;
-                var headerBackgroundClanHover = 'var(--Serpents-of-Light-background-logo)';
-                break;
-            case 'Ravnos':
-                var collapsedBackgroundClanHover = 'Ravnos';
-                var clanWeaknessHover = weaknessRavnos;
-                var headerBackgroundClanHover = 'var(--Ravnos-background-logo)';
-                break;
-            case 'Ravnos Antitribu':
-                var collapsedBackgroundClanHover = 'Ravnos-Antitribu';
-                var clanWeaknessHover = weaknessRavnosAntitribu;
-                var headerBackgroundClanHover = 'var(--Ravnos-Antitribu-background-logo)';
-                break;
-            case 'Salubri':
-                var collapsedBackgroundClanHover = 'Salubri';
-                var clanWeaknessHover = weaknessSalubri;
-                var headerBackgroundClanHover = 'var(--Salubri-background-logo)';
-                break;
-            case 'Salubri Antitribu':
-                var collapsedBackgroundClanHover = 'Salubri-Antitribu';
-                var clanWeaknessHover = weaknessSalubriAntitribu;
-                var headerBackgroundClanHover = 'var(--Salubri-Antitribu-background-logo)';
-                break;
-            case 'Samedi':
-                var collapsedBackgroundClanHover = 'Samedi';
-                var clanWeaknessHover = weaknessSamedi;
-                var headerBackgroundClanHover = 'var(--Samedi-background-logo)';
-                break;
-            case 'Toreador':
-                var collapsedBackgroundClanHover = 'Toreador';
-                var clanWeaknessHover = weaknessToreador;
-                var headerBackgroundClanHover = 'var(--Toreador-background-logo)';
-                break;
-            case 'Toreador Antitribu':
-                var collapsedBackgroundClanHover = 'Toreador-Antitribu';
-                var clanWeaknessHover = weaknessToreadorAntitribu;
-                var headerBackgroundClanHover = 'var(--Toreador-Antitribu-background-logo)';
-                break;
-            case 'Tremere':
-                var collapsedBackgroundClanHover = 'Tremere';
-                var clanWeaknessHover = weaknessTremere;
-                var headerBackgroundClanHover = 'var(--Tremere-background-logo)';
-                break;
-            case 'Tremere Antitribu':
-                var collapsedBackgroundClanHover = 'Tremere-Antitribu';
-                var clanWeaknessHover = weaknessTremereAntitribu;
-                var headerBackgroundClanHover = 'var(--Tremere-Antitribu-background-logo)';
-                break;
-            case 'Tzimisce':
-                var collapsedBackgroundClanHover = 'Tzimisce';
-                var clanWeaknessHover = weaknessTzimisce;
-                var headerBackgroundClanHover = 'var(--Tzimisce-background-logo)';
-                break;
-        };
-        collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
-        document.querySelector(statblockCSSpathHover + '.weakness p').innerHTML = clanWeaknessHover;
-        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container') != null) {
-            document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover
-        };
-    }
-    else {
-        // nothing
+        setWeaknessInStatblock(root, clanWeakness, { onlyIfEmpty: true });
+        setHeaderLogoIfWodHeaderPresent(root, headerBackgroundClan);
     }
 
+    function applyDarkAgesVampireClanBranding(root, sheetClass) {
+        if (root == null) return;
+        if (!sheetMatchesEndsWith(sheetClass, VTM_V20_VAMPIRE_DARK_AGES_SHEETS)) return;
+        if (root.querySelector('.line.clan .statblock-markdown') == null) return;
 
-    // is there a Dark Ages Vampire statblock?
-    if (document.querySelector(activeTab + '.line.clan .statblock-markdown') != null && (statblockCSSclass.endsWith('.vtm-v20-vampire-dark-ages') || statblockCSSclass.endsWith('.vtm-v20-vampire-dark-ages-en'))) {
-        // define clan
-        var clanName = document.querySelector(activeTab + '.line.clan .statblock-markdown > p').innerHTML;
-        console.log(clanName + ' - название клана')
-        // define the area where a clan image should be placed 
-        var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
+        const clanName = getClanNameFromStatblock(root);
+        if (!clanName) return;
+        log('Dark Ages clan:', clanName);
+
+        const collapsedColumn = root.querySelector('.collapse-container');
+        if (collapsedColumn == null) return;
+
+        let collapsedBackgroundClan;
+        let clanWeakness;
+
         switch (clanName) {
+            case 'Ассамиты':
             case 'Assamite':
-                // corresponding css-class is assigned for each clan
-                var collapsedBackgroundClan = 'Assamite';
-                // and clan weakness is also added
-                var clanWeakness = weaknessAssamiteDarkAges;
+                // каждому клану назначается соответствующий класс, для которого в css уже вшито изображение
+                // assign a clan-specific CSS class (the image is embedded in CSS)
+                collapsedBackgroundClan = 'Assamite';
+                // изъян - соответствующий клану из списка выше
+                // weakness text for this clan (from the list above)
+                clanWeakness = weaknessAssamiteDarkAges;
                 break;
+            case 'Бруха':
             case 'Brujah':
-                var collapsedBackgroundClan = 'Brujah';
-                var clanWeakness = weaknessBrujahDarkAges;
+                collapsedBackgroundClan = 'Brujah';
+                clanWeakness = weaknessBrujahDarkAges;
                 break;
+            case 'Вентру':
             case 'Ventrue':
-                var collapsedBackgroundClan = 'Ventrue';
-                var clanWeakness = weaknessVentrueDarkAges;
+                collapsedBackgroundClan = 'Ventrue';
+                clanWeakness = weaknessVentrueDarkAges;
                 break;
+            case 'Каппадокийцы':
             case 'Cappadocians':
-                var collapsedBackgroundClan = 'Cappadocians';
-                var clanWeakness = weaknessCappadociansDarkAges;
+                collapsedBackgroundClan = 'Cappadocians';
+                clanWeakness = weaknessCappadociansDarkAges;
                 break;
+            case ('Последователи Сета'):
             case ('Followers of Set'):
-                var collapsedBackgroundClan = 'Followers-of-Set';
-                var clanWeakness = weaknessFollowersOfSetDarkAges;
+                collapsedBackgroundClan = 'Followers-of-Set';
+                clanWeakness = weaknessFollowersOfSetDarkAges;
                 break;
+            case 'Гангрел':
             case 'Gangrel':
-                var collapsedBackgroundClan = 'Gangrel';
-                var clanWeakness = weaknessGangrelDarkAges;
+                collapsedBackgroundClan = 'Gangrel';
+                clanWeakness = weaknessGangrelDarkAges;
                 break;
+            case 'Ласомбра':
             case 'Lasombra':
-                var collapsedBackgroundClan = 'Lasombra';
-                var clanWeakness = weaknessLasombraDarkAges;
+                collapsedBackgroundClan = 'Lasombra';
+                clanWeakness = weaknessLasombraDarkAges;
                 break;
+            case 'Малкавиане':
+            case 'Малкавиан':
             case 'Malkavian':
-                var collapsedBackgroundClan = 'Malkavian';
-                var clanWeakness = weaknessMalkavianDarkAges;
+                collapsedBackgroundClan = 'Malkavian';
+                clanWeakness = weaknessMalkavianDarkAges;
                 break;
+            case 'Носферату':
             case 'Nosferatu':
-                var collapsedBackgroundClan = 'Nosferatu';
-                var clanWeakness = weaknessNosferatuDarkAges;
+                collapsedBackgroundClan = 'Nosferatu';
+                clanWeakness = weaknessNosferatuDarkAges;
                 break;
+            case ('Равнос'):
             case ('Ravnos'):
-                var collapsedBackgroundClan = 'Ravnos';
-                var clanWeakness = weaknessRavnosDarkAges;
+                collapsedBackgroundClan = 'Ravnos';
+                clanWeakness = weaknessRavnosDarkAges;
                 break;
+            case 'Тореадор':
             case 'Toreador':
-                var collapsedBackgroundClan = 'Toreador';
-                var clanWeakness = weaknessToreadorDarkAges;
+                collapsedBackgroundClan = 'Toreador';
+                clanWeakness = weaknessToreadorDarkAges;
                 break;
+            case 'Тремер':
             case 'Tremere':
-                var collapsedBackgroundClan = 'Tremere';
-                var clanWeakness = weaknessTremereDarkAges;
+                collapsedBackgroundClan = 'Tremere';
+                clanWeakness = weaknessTremereDarkAges;
                 break;
+            case 'Цимисхи':
             case 'Tzimisce':
-                var collapsedBackgroundClan = 'Tzimisce';
-                var clanWeakness = weaknessTzimisceDarkAges;
+                collapsedBackgroundClan = 'Tzimisce';
+                clanWeakness = weaknessTzimisceDarkAges;
                 break;
+            case 'Ангра-Майнью':
             case 'Ahrimanes':
-                var collapsedBackgroundClan = 'Ahrimanes';
-                var clanWeakness = weaknessAhrimanesDarkAges;
+                collapsedBackgroundClan = 'Ahrimanes';
+                clanWeakness = weaknessAhrimanesDarkAges;
                 break;
+            case 'Анда':
             case 'Anda':
-                var collapsedBackgroundClan = 'Anda';
-                var clanWeakness = weaknessAndaDarkAges;
+                collapsedBackgroundClan = 'Anda';
+                clanWeakness = weaknessAndaDarkAges;
                 break;
+            case 'Баали':
             case 'Baali':
-                var collapsedBackgroundClan = 'Baali';
-                var clanWeakness = weaknessBaaliDarkAges;
+                collapsedBackgroundClan = 'Baali';
+                clanWeakness = weaknessBaaliDarkAges;
                 break;
+            case 'Бонсам':
             case 'Bonsam':
-                var collapsedBackgroundClan = 'Bonsam';
-                var clanWeakness = weaknessBonsamDarkAges;
+                collapsedBackgroundClan = 'Bonsam';
+                clanWeakness = weaknessBonsamDarkAges;
                 break;
+            case 'Горгульи':
             case 'Gargoyles':
-                var collapsedBackgroundClan = 'Gargoyles';
-                var clanWeakness = weaknessGargoylesDarkAges;
+                collapsedBackgroundClan = 'Gargoyles';
+                clanWeakness = weaknessGargoylesDarkAges;
                 break;
+            case 'Данавы':
+            case 'Данава':
             case 'Danava':
-                var collapsedBackgroundClan = 'Danava';
-                var clanWeakness = weaknessDanavaDarkAges;
+                collapsedBackgroundClan = 'Danava';
+                clanWeakness = weaknessDanavaDarkAges;
                 break;
+            case 'Дети Осириса':
             case 'Children of Osiris':
-                var collapsedBackgroundClan = 'Children-of-Osiris';
-                var clanWeakness = weaknessChildrenOfOsirisDarkAges;
+                collapsedBackgroundClan = 'Children-of-Osiris';
+                clanWeakness = weaknessChildrenOfOsirisDarkAges;
                 break;
+            case 'Джованни':
+            case 'Джовани':
             case 'Giovanni':
-                var collapsedBackgroundClan = 'Giovanni';
-                var clanWeakness = weaknessGiovanniDarkAges;
+                collapsedBackgroundClan = 'Giovanni';
+                clanWeakness = weaknessGiovanniDarkAges;
                 break;
+            case 'Импундулу':
             case 'Impundulu':
-                var collapsedBackgroundClan = 'Impundulu';
-                var clanWeakness = weaknessImpunduluDarkAges;
+                collapsedBackgroundClan = 'Impundulu';
+                clanWeakness = weaknessImpunduluDarkAges;
                 break;
+            case 'Истинные Бруха':
             case 'True Brujah':
-                var collapsedBackgroundClan = 'TrueBrujah';
-                var clanWeakness = weaknessTrueBrujahDarkAges;
+                collapsedBackgroundClan = 'TrueBrujah';
+                clanWeakness = weaknessTrueBrujahDarkAges;
                 break;
+            case 'Киасид':
+            case 'Киасиды':
             case 'Kiasyd':
-                var collapsedBackgroundClan = 'Kiasyd';
-                var clanWeakness = weaknessKiasydDarkAges;
+                collapsedBackgroundClan = 'Kiasyd';
+                clanWeakness = weaknessKiasydDarkAges;
                 break;
+            case 'Ламии':
+            case 'Ламия':
             case 'Lamia':
-                var collapsedBackgroundClan = 'Lamia';
-                var clanWeakness = weaknessLamiaDarkAges;
+                collapsedBackgroundClan = 'Lamia';
+                clanWeakness = weaknessLamiaDarkAges;
                 break;
+            case 'Лианнан':
             case 'Lhiannan':
-                var collapsedBackgroundClan = 'Lhiannan';
-                var clanWeakness = weaknessLhiannanDarkAges;
+                collapsedBackgroundClan = 'Lhiannan';
+                clanWeakness = weaknessLhiannanDarkAges;
                 break;
+            case 'Нагараджа':
             case 'Nagaraja':
-                var collapsedBackgroundClan = 'Nagaraja';
-                var clanWeakness = weaknessNagarajaDarkAges;
+                collapsedBackgroundClan = 'Nagaraja';
+                clanWeakness = weaknessNagarajaDarkAges;
                 break;
+            case 'Никтуку':
             case 'Nictuku':
-                var collapsedBackgroundClan = 'Nictuku';
-                var clanWeakness = weaknessNictukuDarkAges;
+                collapsedBackgroundClan = 'Nictuku';
+                clanWeakness = weaknessNictukuDarkAges;
                 break;
+            case 'Раманга':
             case 'Ramanga':
-                var collapsedBackgroundClan = 'Ramanga';
-                var clanWeakness = weaknessRamangaDarkAges;
+                collapsedBackgroundClan = 'Ramanga';
+                clanWeakness = weaknessRamangaDarkAges;
                 break;
+            case 'Салюбри':
             case 'Salubri':
-                var collapsedBackgroundClan = 'Salubri';
+                collapsedBackgroundClan = 'Salubri';
                 break;
+            case 'Салюбри (целители)':
             case 'Salubri (Healer Caste)':
-                var collapsedBackgroundClan = 'SalubriHealers';
-                var clanWeakness = weaknessSalubriHealersDarkAges;
+                collapsedBackgroundClan = 'SalubriHealers';
+                clanWeakness = weaknessSalubriHealersDarkAges;
                 break;
+            case 'Салюбри (воины)':
             case 'Salubri (Warriors Caste)':
-                var collapsedBackgroundClan = 'SalubriWarriors';
-                var clanWeakness = weaknessSalubriWarriorsDarkAges;
+                collapsedBackgroundClan = 'SalubriWarriors';
+                clanWeakness = weaknessSalubriWarriorsDarkAges;
                 break;
+            case 'Салюбри (наблюдатели)':
             case 'Salubri (Watchers Caste)':
-                var collapsedBackgroundClan = 'SalubriWatchers';
-                var clanWeakness = weaknessSalubriWatchersDarkAges;
+                collapsedBackgroundClan = 'SalubriWatchers';
+                clanWeakness = weaknessSalubriWatchersDarkAges;
                 break;
         };
+
+        if (!collapsedBackgroundClan) return;
         collapsedColumn.classList.add(collapsedBackgroundClan);
-        document.querySelector('.weakness p').innerHTML = clanWeakness;
-    }
-    else {
-        // nothing
-    }
-
-    // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.line.clan .statblock-markdown') != null && (statblockCSSclassHover.endsWith('.vtm-v20-vampire-dark-ages') || statblockCSSclassHover.endsWith('.vtm-v20-vampire-dark-ages-en'))) {
-        var clanNameHover = document.querySelector(statblockCSSpathHover + ' .line.clan .statblock-markdown > p').innerHTML;
-        var collapsedColumnHover = document.querySelector(statblockCSSpathHover + ' .collapse-container');
-        switch (clanNameHover) {
-            case 'Assamite':
-                // corresponding css-class is assigned for each clan 
-                var collapsedBackgroundClanHover = 'Assamite';
-                // and clan weakness is also added
-                var clanWeaknessHover = weaknessAssamiteDarkAges;
-                break;
-            case 'Brujah':
-                var collapsedBackgroundClanHover = 'Brujah';
-                var clanWeaknessHover = weaknessBrujahDarkAges;
-                break;
-            case 'Ventrue':
-                var collapsedBackgroundClanHover = 'Ventrue';
-                var clanWeaknessHover = weaknessVentrueDarkAges;
-                break;
-            case 'Cappadocians':
-                var collapsedBackgroundClanHover = 'Cappadocians';
-                var clanWeaknessHover = weaknessCappadociansDarkAges;
-                break;
-            case 'Followers of Set':
-                var collapsedBackgroundClanHover = 'Followers-of-Set';
-                var clanWeaknessHover = weaknessFollowersOfSetDarkAges;
-                break;
-            case 'Gangrel':
-                var collapsedBackgroundClanHover = 'Gangrel';
-                var clanWeaknessHover = weaknessGangrelDarkAges;
-                break;
-            case 'Lasombra':
-                var collapsedBackgroundClanHover = 'Lasombra';
-                var clanWeaknessHover = weaknessLasombraDarkAges;
-                break;
-            case 'Malkavian':
-                var collapsedBackgroundClanHover = 'Malkavian';
-                var clanWeaknessHover = weaknessMalkavianDarkAges;
-                break;
-            case 'Nosferatu':
-                var collapsedBackgroundClanHover = 'Nosferatu';
-                var clanWeaknessHover = weaknessNosferatuDarkAges;
-                break;
-            case 'Ravnos':
-                var collapsedBackgroundClanHover = 'Ravnos';
-                var clanWeaknessHover = weaknessRavnosDarkAges;
-                break;
-            case 'Toreador':
-                var collapsedBackgroundClanHover = 'Toreador';
-                var clanWeaknessHover = weaknessToreadorDarkAges;
-                break;
-            case 'Tremere':
-                var collapsedBackgroundClanHover = 'Tremere';
-                var clanWeaknessHover = weaknessTremereDarkAges;
-                break;
-            case 'Tzimisce':
-                var collapsedBackgroundClanHover = 'Tzimisce';
-                var clanWeaknessHover = weaknessTzimisceDarkAges;
-                break;
-            case 'Ahrimanes':
-                var collapsedBackgroundClanHover = 'Ahrimanes';
-                var clanWeaknessHover = weaknessAhrimanesDarkAges;
-                break;
-            case 'Anda':
-                var collapsedBackgroundClanHover = 'Anda';
-                var clanWeaknessHover = weaknessAndaDarkAges;
-                break;
-            case 'Baali':
-                var collapsedBackgroundClanHover = 'Baali';
-                var clanWeaknessHover = weaknessBaaliDarkAges;
-                break;
-            case 'Bonsam':
-                var collapsedBackgroundClanHover = 'Bonsam';
-                var clanWeaknessHover = weaknessBonsamDarkAges;
-                break;
-            case 'Gargoyles':
-                var collapsedBackgroundClanHover = 'Gargoyles';
-                var clanWeaknessHover = weaknessGargoylesDarkAges;
-                break;
-            case 'Danava':
-                var collapsedBackgroundClanHover = 'Danava';
-                var clanWeaknessHover = weaknessDanavaDarkAges;
-                break;
-            case 'Children of Osiris':
-                var collapsedBackgroundClanHover = 'Children-of-Osiris';
-                var clanWeaknessHover = weaknessChildrenOfOsirisDarkAges;
-                break;
-            case 'Giovanni':
-                var collapsedBackgroundClanHover = 'Giovanni';
-                var clanWeaknessHover = weaknessGiovanniDarkAges;
-                break;
-            case 'Impundulu':
-                var collapsedBackgroundClanHover = 'Impundulu';
-                var clanWeaknessHover = weaknessImpunduluDarkAges;
-                break;
-            case 'True Brujah':
-                var collapsedBackgroundClanHover = 'TrueBrujah';
-                var clanWeaknessHover = weaknessTrueBrujahDarkAges;
-                break;
-            case 'Kiasyd':
-                var collapsedBackgroundClanHover = 'Kiasyd';
-                var clanWeaknessHover = weaknessKiasydDarkAges;
-                break;
-            case 'Lamia':
-                var collapsedBackgroundClanHover = 'Lamia';
-                var clanWeaknessHover = weaknessLamiaDarkAges;
-                break;
-            case 'Lhiannan':
-                var collapsedBackgroundClanHover = 'Lhiannan';
-                var clanWeaknessHover = weaknessLhiannanDarkAges;
-                break;
-            case 'Nagaraja':
-                var collapsedBackgroundClanHover = 'Nagaraja';
-                var clanWeaknessHover = weaknessNagarajaDarkAges;
-                break;
-            case 'Nictuku':
-                var collapsedBackgroundClanHover = 'Nictuku';
-                var clanWeaknessHover = weaknessNictukuDarkAges;
-                break;
-            case 'Ramanga':
-                var collapsedBackgroundClanHover = 'Ramanga';
-                var clanWeaknessHover = weaknessRamangaDarkAges;
-                break;
-            case 'Salubri':
-                var collapsedBackgroundClanHover = 'Salubri';
-                break;
-            case 'Salubri (Healer Caste)':
-                var collapsedBackgroundClanHover = 'SalubriHealers';
-                var clanWeaknessHover = weaknessSalubriHealersDarkAges;
-                break;
-            case 'Salubri (Warriors Caste)':
-                var collapsedBackgroundClanHover = 'SalubriWarriors';
-                var clanWeaknessHover = weaknessSalubriWarriorsDarkAges;
-                break;
-            case 'Salubri (Watchers Caste)':
-                var collapsedBackgroundClanHover = 'SalubriWatchers';
-                var clanWeaknessHover = weaknessSalubriWatchersDarkAges;
-                break;
-        };
-        collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
-        document.querySelector('.popover.hover-popover .weakness p').innerHTML = clanWeaknessHover;
-    }
-    else {
-        //nothing
+        setWeaknessInStatblock(root, clanWeakness, { onlyIfEmpty: true });
     }
 
 
-    // is there Werewolf statblock?
-    if (document.querySelector(activeTab + '.line.tribe .statblock-markdown') != null && (statblockCSSclass.endsWith('.wta-w20-werewolf') || statblockCSSclass.endsWith('.wta-w20-werewolf-en') || statblockCSSclass.endsWith('.wta-w20-werewolf-savage-west') || statblockCSSclass.endsWith('.wta-w20-werewolf-savage-west-en'))) {
-        // define tribe
-        var tribeName = document.querySelector(activeTab + '.line.tribe .statblock-markdown > p').innerHTML;
-        console.log(tribeName + ' - название племени')
-        // define the area where a tribe image should be placed
-        var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
+    function applyW20WerewolfTribeBranding(root, sheetClass) {
+        if (root == null) return;
+        if (!sheetMatchesEndsWith(sheetClass, WTA_W20_WEREWOLF_SHEETS)) return;
+        if (root.querySelector('.line.tribe .statblock-markdown') == null) return;
+
+        const tribeName = getTribeNameFromStatblock(root);
+        if (!tribeName) return;
+        log('Tribe:', tribeName);
+
+        const collapsedColumn = root.querySelector('.collapse-container');
+        if (collapsedColumn == null) return;
+
+        let collapsedBackgroundTribe;
+        let headerBackgroundTribe;
+
         switch (tribeName) {
+            case 'Черные Фурии':
             case 'Black Furies':
-                // corresponding css-class is assigned for each tribe 
-                var collapsedBackgroundClan = 'BlackFuries';
+                // каждому племени назначается соответствующий класс, для которого в css уже вшито изображение
+                // assign a tribe-specific CSS class (the image is embedded in CSS)
+                collapsedBackgroundTribe = 'BlackFuries';
+                headerBackgroundTribe = 'var(--BlackFuries-background-logo)';
                 break;
+            case 'Танцоры Чёрной Спирали':
+            case 'Танцоры Черной Спирали':
             case 'Black Spiral Dancers':
-                var collapsedBackgroundClan = 'BlackSpiralDancers';
+                collapsedBackgroundTribe = 'BlackSpiralDancers';
+                headerBackgroundTribe = 'var(--BlackSpiralDancers-background-logo)';
                 break;
+            case 'Костегрызы':
             case 'Bone Gnawers':
-                var collapsedBackgroundClan = 'BoneGnawers';
+                collapsedBackgroundTribe = 'BoneGnawers';
+                headerBackgroundTribe = 'var(--BoneGnawers-background-logo)';
                 break;
             case 'Bunyip':
-                var collapsedBackgroundClan = 'Bunyip';
+                collapsedBackgroundTribe = 'Bunyip';
+                headerBackgroundTribe = 'var(--Bunyip-background-logo)';
                 break;
+            case 'Дети Гайи':
             case 'Children of Gaia':
-                var collapsedBackgroundClan = 'Children-of-Gaia';
+                collapsedBackgroundTribe = 'Children-of-Gaia';
+                headerBackgroundTribe = 'var(--ChildrenOfGaia-background-logo)';
                 break;
+            case 'Кроатан':
             case 'Croatan':
-                var collapsedBackgroundClan = 'Croatan';
+                collapsedBackgroundTribe = 'Croatan';
+                headerBackgroundTribe = 'var(--Croatan-background-logo)';
                 break;
+            case 'Фианна':
             case 'Fianna':
-                var collapsedBackgroundClan = 'Fianna';
+                collapsedBackgroundTribe = 'Fianna';
+                headerBackgroundTribe = 'var(--Fianna-background-logo)';
                 break;
+            case 'Потомки Фенрира':
             case 'Get of Fenris':
-                var collapsedBackgroundClan = 'Get-of-Fenris';
+                collapsedBackgroundTribe = 'Get-of-Fenris';
+                headerBackgroundTribe = 'var(--GetOfFenris-background-logo)';
                 break;
+            case 'Стеклоходы':
             case 'Glass Walkers':
-                var collapsedBackgroundClan = 'GlassWalkers';
+                collapsedBackgroundTribe = 'GlassWalkers';
+                headerBackgroundTribe = 'var(--GlassWalkers-background-logo)';
                 break;
+            case ('Красные Когти'):
+            case ('Красные когти'):
             case ('Red Talons'):
-                var collapsedBackgroundClan = 'RedTalons';
+                collapsedBackgroundTribe = 'RedTalons';
+                headerBackgroundTribe = 'var(--RedTalons-background-logo)';
                 break;
+            case 'Теневые Владыки':
+            case 'Теневые владыки':
             case 'Shadow Lords':
-                var collapsedBackgroundClan = 'ShadowLords';
+                collapsedBackgroundTribe = 'ShadowLords';
+                headerBackgroundTribe = 'var(--ShadowLords-background-logo)';
                 break;
+            case 'Безмолвные Странники':
+            case 'Безмолвные cтранники':
             case 'Silent Striders':
-                var collapsedBackgroundClan = 'SilentStriders';
+                collapsedBackgroundTribe = 'SilentStriders';
+                headerBackgroundTribe = 'var(--SilentStriders-background-logo)';
                 break;
+            case 'Серебряные Клыки':
+            case 'Серебряные клыки':
             case 'Silver Fangs':
-                var collapsedBackgroundClan = 'SilverFangs';
+                collapsedBackgroundTribe = 'SilverFangs';
+                headerBackgroundTribe = 'var(--SilverFangs-background-logo)';
                 break;
+            case 'Звездочеты':
             case 'Stargazers':
-                var collapsedBackgroundClan = 'Stargazers';
+                collapsedBackgroundTribe = 'Stargazers';
+                headerBackgroundTribe = 'var(--Stargazers-background-logo)';
                 break;
+            case 'Уктена':
             case 'Uktena':
-                var collapsedBackgroundClan = 'Uktena';
+                collapsedBackgroundTribe = 'Uktena';
+                headerBackgroundTribe = 'var(--Uktena-background-logo)';
                 break;
+            case 'Вендиго':
             case 'Wendigo':
-                var collapsedBackgroundClan = 'Wendigo';
+                collapsedBackgroundTribe = 'Wendigo';
+                headerBackgroundTribe = 'var(--Wendigo-background-logo)';
                 break;
+            case 'Белые Завыватели':
+            case 'Белые завыватели':
             case 'White Howlers':
-                var collapsedBackgroundClan = 'WhiteHowlers';
+                collapsedBackgroundTribe = 'WhiteHowlers';
+                headerBackgroundTribe = 'var(--WhiteHowlers-background-logo)';
                 break;
             case 'Ajaba':
-                var collapsedBackgroundClan = 'Ajaba';
+                collapsedBackgroundTribe = 'Ajaba';
+                headerBackgroundTribe = 'var(--Ajaba-background-logo)';
                 break;
+            case 'Ананаси':
+            case 'Ананси':
             case 'Ananasi':
-                var collapsedBackgroundClan = 'Ananasi';
+                collapsedBackgroundTribe = 'Ananasi';
+                headerBackgroundTribe = 'var(--Ananasi-background-logo)';
                 break;
+            case 'Бастет':
             case 'Bastet':
-                var collapsedBackgroundClan = 'Bastet';
+                collapsedBackgroundTribe = 'Bastet';
+                headerBackgroundTribe = 'var(--Bastet-background-logo)';
                 break;
+            case 'Кораксы':
+            case 'Коракс':
             case 'Corax':
-                var collapsedBackgroundClan = 'Corax';
+                collapsedBackgroundTribe = 'Corax';
+                headerBackgroundTribe = 'var(--Corax-background-logo)';
                 break;
             case 'Gurahl':
-                var collapsedBackgroundClan = 'Gurahl';
+                collapsedBackgroundTribe = 'Gurahl';
+                headerBackgroundTribe = 'var(--Gurahl-background-logo)';
                 break;
+            case 'Кицунэ':
             case 'Kitsune':
-                var collapsedBackgroundClan = 'Kitsune';
+                collapsedBackgroundTribe = 'Kitsune';
+                headerBackgroundTribe = 'var(--Kitsune-background-logo)';
                 break;
+            case 'Моколе':
             case 'Mokole':
-                var collapsedBackgroundClan = 'Mokole';
+                collapsedBackgroundTribe = 'Mokole';
+                headerBackgroundTribe = 'var(--Mokole-background-logo)';
                 break;
+            case 'Наги':
+            case 'Нага':
             case 'Nagah':
-                var collapsedBackgroundClan = 'Nagah';
+                collapsedBackgroundTribe = 'Nagah';
+                headerBackgroundTribe = 'var(--Nagah-background-logo)';
                 break;
             case 'Nuwisha':
-                var collapsedBackgroundClan = 'Nuwisha';
+                collapsedBackgroundTribe = 'Nuwisha';
+                headerBackgroundTribe = 'var(--Nuwisha-background-logo)';
                 break;
+            case 'Раткины':
+            case 'Раткин':
             case 'Ratkin':
-                var collapsedBackgroundClan = 'Ratkin';
+                collapsedBackgroundTribe = 'Ratkin';
+                headerBackgroundTribe = 'var(--Ratkin-background-logo)';
                 break;
+            case 'Рокеа':
             case 'Rokea':
-                var collapsedBackgroundClan = 'Rokea';
+                collapsedBackgroundTribe = 'Rokea';
+                headerBackgroundTribe = 'var(--Rokea-background-logo)';
                 break;
         };
-        collapsedColumn.classList.add(collapsedBackgroundClan);
-        if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
-            document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
-        };
+
+        if (collapsedBackgroundTribe) collapsedColumn.classList.add(collapsedBackgroundTribe);
+        setHeaderLogoIfWodHeaderPresent(root, headerBackgroundTribe);
     }
-    else {
-        // nothing
+
+    function applyV20AgentAgencyBranding(root, sheetClass) {
+        if (root == null) return;
+        if (!sheetMatchesEndsWith(sheetClass, WOD_V20_AGENT_SHEETS)) return;
+        if (root.querySelector('.line.agency .statblock-markdown') == null) return;
+
+        const agencyName = getAgencyNameFromStatblock(root);
+        if (!agencyName) return;
+        log('Agency:', agencyName);
+
+        const collapsedColumn = root.querySelector('.collapse-container');
+        if (collapsedColumn == null) return;
+
+        let collapsedBackgroundAgency;
+
+        // В зависимости от агентства назначается класс, в CSS для него вшит фон
+        // EN: Depending on the agency, assign a CSS class (the background is embedded in CSS)
+        switch (agencyName) {
+            case 'FBI':
+            case 'ФБР':
+                collapsedBackgroundAgency = 'FBI';
+                break;
+            case 'SAD':
+            case 'ДОР':
+            case 'ДОР ФБР':
+                collapsedBackgroundAgency = 'SAD';
+                break;
+            case 'CIA':
+            case 'ЦРУ':
+                collapsedBackgroundAgency = 'CIA';
+                break;
+            case 'NSA':
+                collapsedBackgroundAgency = 'NSA';
+                break;
+            default:
+                // Если агентство неизвестно — ничего не делаем (но можно расширить список выше)
+                // Unknown agency — do nothing (extend the list above if needed)
+                return;
+        }
+
+        collapsedColumn.classList.add(collapsedBackgroundAgency);
     }
 
 
-    // is there Mage statblock?
-    if (document.querySelector(activeTab + '.line.affiliation .statblock-markdown') != null && (statblockCSSclass.endsWith('.mta-m20-mage') || statblockCSSclass.endsWith('.mta-m20-mage-en'))) {
-        // define affiliation
-        var affiliationName = document.querySelector(activeTab + '.line.affiliation .statblock-markdown > p').innerHTML;
-        console.log(affiliationName + ' - название секты')
-        // define the area where a tribe image should be placed
-        var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
+    function applyM20MageAffiliationBranding(root, sheetClass) {
+        if (root == null) return;
+        if (!sheetMatchesEndsWith(sheetClass, MTA_M20_MAGE_SHEETS)) return;
+        if (root.querySelector('.line.affiliation .statblock-markdown') == null) return;
+
+        const affiliationName = getAffiliationNameFromStatblock(root);
+        if (!affiliationName) return;
+        log('Affiliation:', affiliationName);
+
+        const collapsedColumn = root.querySelector('.collapse-container');
+        if (collapsedColumn == null) return;
+
+        let collapsedBackgroundAffiliation;
+        let headerBackgroundAffiliation;
+
         switch (affiliationName) {
             case 'The Akashic Brotherhood':
             case 'Akashic Brotherhood':
             case 'Akashayana':
-                // corresponding css-class is assigned
-                var collapsedBackgroundClan = 'AkashicBrotherhood';
-                var headerBackgroundClan = 'var(--AkashicBrotherhood-background-logo)';
+            case 'Акашийское Братство':
+            case 'Акашаяна':
+                collapsedBackgroundAffiliation = 'AkashicBrotherhood';
+                headerBackgroundAffiliation = 'var(--AkashicBrotherhood-background-logo)';
                 break;
             case 'The Celestial Chorus':
             case 'Celestial Chorus':
-                var collapsedBackgroundClan = 'CelestialChorus';
-                var headerBackgroundClan = 'var(--CelestialChorus-background-logo)';
+            case 'Небесный Хор':
+            case 'Хористы':
+                collapsedBackgroundAffiliation = 'CelestialChorus';
+                headerBackgroundAffiliation = 'var(--CelestialChorus-background-logo)';
                 break;
             case 'The Cult of Ecstasy':
             case 'Cult of Ecstasy':
             case 'Sahajiya':
-                var collapsedBackgroundClan = 'Cult-of-Ecstasy';
-                var headerBackgroundClan = 'var(--Cult-of-Ecstasy-background-logo)';
+            case 'Культ Экстаза':
+            case 'Экстатики':
+            case 'Экстатик':
+                collapsedBackgroundAffiliation = 'Cult-of-Ecstasy';
+                headerBackgroundAffiliation = 'var(--Cult-of-Ecstasy-background-logo)';
                 break;
             case 'The Dreamspeakers':
             case 'Dreamspeakers':
             case 'Kha’vadi':
-                var collapsedBackgroundClan = 'Dreamspeakers';
-                var headerBackgroundClan = 'var(--Dreamspeakers-background-logo)';
+            case 'Говорящие с Грёзой':
+            case 'Говорящие с Грезой':
+            case 'Общество Грёз':
+            case 'Общество Грез':
+            case 'Кха’вади':
+            case 'Кхавади':
+                collapsedBackgroundAffiliation = 'Dreamspeakers';
+                headerBackgroundAffiliation = 'var(--Dreamspeakers-background-logo)';
                 break;
             case 'The Euthanatos':
             case 'Euthanatos':
             case 'Chakravanti':
-                var collapsedBackgroundClan = 'Euthanatos';
-                var headerBackgroundClan = 'var(--Euthanatos-background-logo)';
+            case 'Эвтанатос':
+            case 'Эвтанаты':
+            case 'Чакраванти':
+                collapsedBackgroundAffiliation = 'Euthanatos';
+                headerBackgroundAffiliation = 'var(--Euthanatos-background-logo)';
                 break;
             case 'The Order of Hermes':
             case 'Order of Hermes':
-                var collapsedBackgroundClan = 'Order-of-Hermes';
-                var headerBackgroundClan = 'var(--Order-of-Hermes-background-logo)';
+            case 'Орден Гермеса':
+                collapsedBackgroundAffiliation = 'Order-of-Hermes';
+                headerBackgroundAffiliation = 'var(--Order-of-Hermes-background-logo)';
                 break;
             case 'The Sons of Ether':
             case 'Sons of Ether':
             case 'Society of Ether':
-                var collapsedBackgroundClan = 'Sons-of-Ether';
-                var headerBackgroundClan = 'var(--Sons-of-Ether-background-logo)';
+            case 'Сыны Эфира':
+            case 'Эфириты':
+            case 'Общество Эфира':
+                collapsedBackgroundAffiliation = 'Sons-of-Ether';
+                headerBackgroundAffiliation = 'var(--Sons-of-Ether-background-logo)';
                 break;
             case 'The Verbena':
             case 'Verbena':
-                var collapsedBackgroundClan = 'Verbena';
-                var headerBackgroundClan = 'var(--Verbena-background-logo)';
+            case 'Вербена':
+            case 'Вербены':
+                collapsedBackgroundAffiliation = 'Verbena';
+                headerBackgroundAffiliation = 'var(--Verbena-background-logo)';
                 break;
             case 'The Virtual Adepts':
             case 'Virtual Adepts':
-                var collapsedBackgroundClan = 'VirtualAdepts';
-                var headerBackgroundClan = 'var(--VirtualAdepts-background-logo)';
+            case 'Адепты Виртуальности':
+            case 'Адепт Виртуальности':
+                collapsedBackgroundAffiliation = 'VirtualAdepts';
+                headerBackgroundAffiliation = 'var(--VirtualAdepts-background-logo)';
                 break;
             case 'Nephandi':
-                var collapsedBackgroundClan = 'Nephandi';
-                var headerBackgroundClan = 'var(--Nephandi-background-logo)';
+            case 'Нефанди':
+                collapsedBackgroundAffiliation = 'Nephandi';
+                headerBackgroundAffiliation = 'var(--Nephandi-background-logo)';
                 break;
             case 'The Ahl-i-Batin':
             case 'Ahl-i-Batin':
-                var collapsedBackgroundClan = 'Ahl-i-Batin';
-                var headerBackgroundClan = 'var(--Ahl-i-Batin-background-logo)';
+            case 'Аль-и-Батин':
+                collapsedBackgroundAffiliation = 'Ahl-i-Batin';
+                headerBackgroundAffiliation = 'var(--Ahl-i-Batin-background-logo)';
                 break;
             case 'The Bata’a':
             case 'Bata’a':
             case 'The Bataa':
             case 'Bataa':
-                var collapsedBackgroundClan = 'Bataa';
-                var headerBackgroundClan = 'var(--Bataa-background-logo)';
+            case 'Бата’а':
+            case 'Батаа':
+                collapsedBackgroundAffiliation = 'Bataa';
+                headerBackgroundAffiliation = 'var(--Bataa-background-logo)';
                 break;
             case 'The Children of Knowledge':
             case 'Children of Knowledge':
-            case 'Thу True Solificati':
+            case 'The True Solificati':
             case 'True Solificati':
-                var collapsedBackgroundClan = 'Children-of-Knowledge';
-                var headerBackgroundClan = 'var(--Children-of-Knowledge-background-logo)';
+            case 'Дети Знания':
+            case 'Солификати':
+                collapsedBackgroundAffiliation = 'Children-of-Knowledge';
+                headerBackgroundAffiliation = 'var(--Children-of-Knowledge-background-logo)';
                 break;
             case 'The Hollow Ones':
             case 'Hollow Ones':
-                var collapsedBackgroundClan = 'HollowOnes';
-                var headerBackgroundClan = 'var(--HollowOnes-background-logo)';
+            case 'Пустые':
+                collapsedBackgroundAffiliation = 'HollowOnes';
+                headerBackgroundAffiliation = 'var(--HollowOnes-background-logo)';
                 break;
             case 'The Kopa Loei':
             case 'Kopa Loei':
-                var collapsedBackgroundClan = 'KopaLoei';
-                var headerBackgroundClan = 'var(--KopaLoei-background-logo)';
+            case 'Копа Лоэй':
+                collapsedBackgroundAffiliation = 'KopaLoei';
+                headerBackgroundAffiliation = 'var(--KopaLoei-background-logo)';
                 break;
             case 'The Ngoma':
             case 'Ngoma':
-                var collapsedBackgroundClan = 'Ngoma';
-                var headerBackgroundClan = 'var(--Ngoma-background-logo)';
+            case 'Нгома':
+                collapsedBackgroundAffiliation = 'Ngoma';
+                headerBackgroundAffiliation = 'var(--Ngoma-background-logo)';
                 break;
             case 'Orphans':
-                var collapsedBackgroundClan = 'Orphans';
-                var headerBackgroundClan = 'var(--Orphans-background-logo)';
+            case 'Сироты':
+            case 'Сирота':
+                collapsedBackgroundAffiliation = 'Orphans';
+                headerBackgroundAffiliation = 'var(--Orphans-background-logo)';
                 break;
             case 'The Sisters of Hippolyta':
             case 'Sisters of Hippolyta':
             case 'The Hippolytoi':
             case 'Hippolytoi':
-                var collapsedBackgroundClan = 'Sisters-of-Hippolyta';
-                var headerBackgroundClan = 'var(--Sisters-of-Hippolyta-background-logo)';
+            case 'Сёстры Ипполиты':
+            case 'Сестры Ипполиты':
+                collapsedBackgroundAffiliation = 'Sisters-of-Hippolyta';
+                headerBackgroundAffiliation = 'var(--Sisters-of-Hippolyta-background-logo)';
                 break;
             case 'Taftâni':
             case 'Taftani':
-                var collapsedBackgroundClan = 'Taftani';
-                var headerBackgroundClan = 'var(--Taftani-background-logo)';
+            case 'Тафтани':
+                collapsedBackgroundAffiliation = 'Taftani';
+                headerBackgroundAffiliation = 'var(--Taftani-background-logo)';
                 break;
             case 'The Templar Knights':
             case 'Templar Knights':
-                var collapsedBackgroundClan = 'TemplarKnights';
-                var headerBackgroundClan = 'var(--TemplarKnights-background-logo)';
+            case 'Рыцари-Тамплиерыы':
+                collapsedBackgroundAffiliation = 'TemplarKnights';
+                headerBackgroundAffiliation = 'var(--TemplarKnights-background-logo)';
                 break;
             case 'The WuLung':
             case 'WuLung':
             case 'The Wu Lung':
             case 'Wu Lung':
-                var collapsedBackgroundClan = 'WuLung';
-                var headerBackgroundClan = 'var(--WuLung-background-logo)';
+            case 'У-Лун':
+                collapsedBackgroundAffiliation = 'WuLung';
+                headerBackgroundAffiliation = 'var(--WuLung-background-logo)';
                 break;
         };
-        collapsedColumn.classList.add(collapsedBackgroundClan);
-        if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
-            document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
-        };
-    }
-    else {
-        // nothing
+
+        if (!collapsedBackgroundAffiliation) return;
+        collapsedColumn.classList.add(collapsedBackgroundAffiliation);
+        setHeaderLogoIfWodHeaderPresent(root, headerBackgroundAffiliation);
     }
 
-    // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.line.affiliation .statblock-markdown') != null && (statblockCSSclassHover.endsWith('.mta-m20-mage') || statblockCSSclassHover.endsWith('.mta-m20-mage-en'))) {
-        var affiliationNameHover = document.querySelector(statblockCSSpathHover + ' .line.affiliation .statblock-markdown > p').innerHTML;
-        var collapsedColumnHover = document.querySelector(statblockCSSpathHover + ' .collapse-container');
-        switch (affiliationNameHover) {
-            case 'The Akashic Brotherhood':
-            case 'Akashic Brotherhood':
-            case 'Akashayana':
-                // corresponding css-class is assigned
-                var collapsedBackgroundClanHover = 'AkashicBrotherhood';
-                var headerBackgroundClanHover = 'var(--AkashicBrotherhood-background-logo)';
-                break;
-            case 'The Celestial Chorus':
-            case 'Celestial Chorus':
-                var collapsedBackgroundClanHover = 'CelestialChorus';
-                var headerBackgroundClanHover = 'var(--CelestialChorus-background-logo)';
-                break;
-            case 'The Cult of Ecstasy':
-            case 'Cult of Ecstasy':
-            case 'Sahajiya':
-                var collapsedBackgroundClanHover = 'Cult-of-Ecstasy';
-                var headerBackgroundClanHover = 'var(--Cult-of-Ecstasy-background-logo)';
-                break;
-            case 'The Dreamspeakers':
-            case 'Dreamspeakers':
-            case 'Kha’vadi':
-                var collapsedBackgroundClanHover = 'Dreamspeakers';
-                var headerBackgroundClanHover = 'var(--Dreamspeakers-background-logo)';
-                break;
-            case 'The Euthanatos':
-            case 'Euthanatos':
-            case 'Chakravanti':
-                var collapsedBackgroundClanHover = 'Euthanatos';
-                var headerBackgroundClanHover = 'var(--Euthanatos-background-logo)';
-                break;
-            case 'The Order of Hermes':
-            case 'Order of Hermes':
-                var collapsedBackgroundClanHover = 'Order-of-Hermes';
-                var headerBackgroundClanHover = 'var(--Order-of-Hermes-background-logo)';
-                break;
-            case 'The Sons of Ether':
-            case 'Sons of Ether':
-            case 'Society of Ether':
-                var collapsedBackgroundClanHover = 'Sons-of-Ether';
-                var headerBackgroundClanHover = 'var(--Sons-of-Ether-background-logo)';
-                break;
-            case 'The Verbena':
-            case 'Verbena':
-                var collapsedBackgroundClanHover = 'Verbena';
-                var headerBackgroundClanHover = 'var(--Verbena-background-logo)';
-                break;
-            case 'The Virtual Adepts':
-            case 'Virtual Adepts':
-                var collapsedBackgroundClanHover = 'VirtualAdepts';
-                var headerBackgroundClanHover = 'var(--VirtualAdepts-background-logo)';
-                break;
-            case 'Nephandi':
-                var collapsedBackgroundClanHover = 'Nephandi';
-                var headerBackgroundClanHover = 'var(--Nephandi-background-logo)';
-                break;
-            case 'The Ahl-i-Batin':
-            case 'Ahl-i-Batin':
-                var collapsedBackgroundClanHover = 'Ahl-i-Batin';
-                var headerBackgroundClanHover = 'var(--Ahl-i-Batin-background-logo)';
-                break;
-            case 'The Bata’a':
-            case 'Bata’a':
-            case 'The Bataa':
-            case 'Bataa':
-                var collapsedBackgroundClanHover = 'Bataa';
-                var headerBackgroundClanHover = 'var(--Bataa-background-logo)';
-                break;
-            case 'The Children of Knowledge':
-            case 'Children of Knowledge':
-            case 'Thу True Solificati':
-            case 'True Solificati':
-                var collapsedBackgroundClanHover = 'Children-of-Knowledge';
-                var headerBackgroundClanHover = 'var(--Children-of-Knowledge-background-logo)';
-                break;
-            case 'The Hollow Ones':
-            case 'Hollow Ones':
-                var collapsedBackgroundClanHover = 'HollowOnes';
-                var headerBackgroundClanHover = 'var(--HollowOnes-background-logo)';
-                break;
-            case 'The Kopa Loei':
-            case 'Kopa Loei':
-                var collapsedBackgroundClanHover = 'KopaLoei';
-                var headerBackgroundClanHover = 'var(--KopaLoei-background-logo)';
-                break;
-            case 'The Ngoma':
-            case 'Ngoma':
-                var collapsedBackgroundClanHover = 'Ngoma';
-                var headerBackgroundClanHover = 'var(--Ngoma-background-logo)';
-                break;
-            case 'Orphans':
-                var collapsedBackgroundClanHover = 'Orphans';
-                var headerBackgroundClanHover = 'var(--Orphans-background-logo)';
-                break;
-            case 'The Sisters of Hippolyta':
-            case 'Sisters of Hippolyta':
-            case 'The Hippolytoi':
-            case 'Hippolytoi':
-                var collapsedBackgroundClanHover = 'Sisters-of-Hippolyta';
-                var headerBackgroundClanHover = 'var(--Sisters-of-Hippolyta-background-logo)';
-                break;
-            case 'Taftâni':
-            case 'Taftani':
-                var collapsedBackgroundClanHover = 'Taftani';
-                var headerBackgroundClanHover = 'var(--Taftani-background-logo)';
-                break;
-            case 'The Templar Knights':
-            case 'Templar Knights':
-                var collapsedBackgroundClanHover = 'TemplarKnights';
-                var headerBackgroundClanHover = 'var(--TemplarKnights-background-logo)';
-                break;
-            case 'The WuLung':
-            case 'WuLung':
-            case 'The Wu Lung':
-            case 'Wu Lung':
-                var collapsedBackgroundClanHover = 'WuLung';
-                var headerBackgroundClanHover = 'var(--WuLung-background-logo)';
-                break;
-        };
-        collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
-        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container') != null) {
-            document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover
-        };
+    function applyM20TechnocratAffiliationBranding(root, sheetClass) {
+        if (root == null) return;
+        if (!sheetMatchesEndsWith(sheetClass, MTA_M20_TECHNOCRAT_SHEETS)) return;
+        if (root.querySelector('.line.affiliation .statblock-markdown') == null) return;
 
-    }
-    else {
-        //nothing
-    }
+        const affiliationName = getAffiliationNameFromStatblock(root);
+        if (!affiliationName) return;
+        log('Affiliation:', affiliationName);
 
+        const collapsedColumn = root.querySelector('.collapse-container');
+        if (collapsedColumn == null) return;
 
-    // is there Technocrat statblock?
-    if (document.querySelector(activeTab + '.line.affiliation .statblock-markdown') != null && (statblockCSSclass.endsWith('.mta-m20-technocrat') || statblockCSSclass.endsWith('.mta-m20-technocrat-en'))) {
-        // define affiliation
-        var affiliationName = document.querySelector(activeTab + '.line.affiliation .statblock-markdown > p').innerHTML;
-        console.log(affiliationName + ' - название секты')
-        // define the area where a tribe image should be placed
-        var collapsedColumn = document.querySelector(activeTab + '.collapse-container');
+        let collapsedBackgroundAffiliation;
+        let headerBackgroundAffiliation;
+
         switch (affiliationName) {
             case 'Iteration X':
-                // corresponding css-class is assigned
-                var collapsedBackgroundClan = 'IterationX';
-                var headerBackgroundClan = 'var(--IterationX-background-logo)';
+            case 'Итерация Икс':
+                collapsedBackgroundAffiliation = 'IterationX';
+                headerBackgroundAffiliation = 'var(--IterationX-background-logo)';
                 break;
             case 'The New World Order':
             case 'New World Order':
             case 'The NWO':
             case 'NWO':
-                var collapsedBackgroundClan = 'NewWorldOrder';
-                var headerBackgroundClan = 'var(--NewWorldOrder-background-logo)';
+            case 'Новый Мировой Порядок':
+            case 'НМП':
+                collapsedBackgroundAffiliation = 'NewWorldOrder';
+                headerBackgroundAffiliation = 'var(--NewWorldOrder-background-logo)';
                 break;
             case 'The Progenitors':
             case 'Progenitors':
-                var collapsedBackgroundClan = 'Progenitors';
-                var headerBackgroundClan = 'var(--Progenitors-background-logo)';
+            case 'Родоначальники':
+                collapsedBackgroundAffiliation = 'Progenitors';
+                headerBackgroundAffiliation = 'var(--Progenitors-background-logo)';
                 break;
             case 'The Syndicate':
             case 'Syndicate':
-                var collapsedBackgroundClan = 'Syndicate';
-                var headerBackgroundClan = 'var(--Syndicate-background-logo)';
+            case 'Синдикат':
+                collapsedBackgroundAffiliation = 'Syndicate';
+                headerBackgroundAffiliation = 'var(--Syndicate-background-logo)';
                 break;
             case 'The Void Engineers':
             case 'Void Engineers':
-                var collapsedBackgroundClan = 'VoidEngineers';
-                var headerBackgroundClan = 'var(--VoidEngineers-background-logo)';
+            case 'Инженеры Пустоты':
+                collapsedBackgroundAffiliation = 'VoidEngineers';
+                headerBackgroundAffiliation = 'var(--VoidEngineers-background-logo)';
                 break;
-        };
-        collapsedColumn.classList.add(collapsedBackgroundClan);
-        if (document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container') != null) {
-            document.querySelector('.view-content:has(.wod-header) ' + statblockCSSclass + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClan
-        };
-    }
-    else {
-        // nothing
-    }
-
-    // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.line.affiliation .statblock-markdown') != null && (statblockCSSclassHover.endsWith('.mta-m20-mage') || statblockCSSclassHover.endsWith('.mta-m20-mage-en'))) {
-        var affiliationNameHover = document.querySelector(statblockCSSpathHover + ' .line.affiliation .statblock-markdown > p').innerHTML;
-        var collapsedColumnHover = document.querySelector(statblockCSSpathHover + ' .collapse-container');
-        switch (affiliationNameHover) {
-            case 'Iteration X':
-                // corresponding css-class is assigned
-                var collapsedBackgroundClanHover = 'IterationX';
-                var headerBackgroundClanHover = 'var(--IterationX-background-logo)';
-                break;
-            case 'The New World Order':
-            case 'New World Order':
-            case 'The NWO':
-            case 'NWO':
-                var collapsedBackgroundClanHover = 'NewWorldOrder';
-                var headerBackgroundClanHover = 'var(--NewWorldOrder-background-logo)';
-                break;
-            case 'The Progenitors':
-            case 'Progenitors':
-                var collapsedBackgroundClanHover = 'Progenitors';
-                var headerBackgroundClanHover = 'var(--Progenitors-background-logo)';
-                break;
-            case 'The Syndicate':
-            case 'Syndicate':
-                var collapsedBackgroundClanHover = 'Syndicate';
-                var headerBackgroundClanHover = 'var(--Syndicate-background-logo)';
-                break;
-            case 'The Void Engineers':
-            case 'Void Engineers':
-                var collapsedBackgroundClanHover = 'VoidEngineers';
-                var headerBackgroundClanHover = 'var(--VoidEngineers-background-logo)';
-                break;
-        };
-        collapsedColumnHover.classList.add(collapsedBackgroundClanHover);
-        if (document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container') != null) {
-            document.querySelector('.popover.hover-popover .markdown-embed-content:has(.wod-header) ' + statblockCSSclassHover + ' .general-info-group > .statblock-inline-item.group-container').style.backgroundImage = headerBackgroundClanHover
         };
 
+        if (!collapsedBackgroundAffiliation) return;
+        collapsedColumn.classList.add(collapsedBackgroundAffiliation);
+        setHeaderLogoIfWodHeaderPresent(root, headerBackgroundAffiliation);
     }
-    else {
-        //nothing
+
+    function setHeaderLogoIfWodHeaderPresent(root, headerBackgroundClan) {
+        if (headerBackgroundClan === undefined || headerBackgroundClan === null || headerBackgroundClan === '') return;
+        const container = root.closest('.view-content') || root.closest('.markdown-embed-content') || root;
+        if (container.querySelector('.wod-header') == null) return;
+        const target = root.querySelector('.general-info-group > .statblock-inline-item.group-container');
+        if (target != null) target.style.backgroundImage = headerBackgroundClan;
     }
 
 
 
-    // setting to display vampire's weakness
-    if (document.querySelector(activeTab + '.line.show_weakness p') != null) {
-        var showWeakness = document.querySelector(activeTab + '.line.show_weakness p').innerHTML;
-        switch (showWeakness) {
-            case ('no'):
-                // console.log('do you wanna see the weakness? ' + showWeakness)
-                document.querySelector(activeTab + '.property-container:has(> .line.weakness)').style.display = 'none';
-                break;
-            case ('false'):
-                // console.log('do you wanna see the weakness? ' + showWeakness)
-                document.querySelector(activeTab + '.property-container:has(> .line.weakness)').style.display = 'none';
-                break;
+    // --- настройка, отвечающая за отображение вампирского изъяна --- 
+    // --- setting that controls whether the vampire weakness is displayed --- 
+    function applyWeaknessVisibility(ctx) {
+        const flagEl = ctx.qs('.line.show_weakness p');
+        if (flagEl == null) return;
+
+        const raw = (flagEl.textContent || '').trim().toLowerCase();
+        const hide = (raw === 'no' || raw === 'false');
+
+        const weaknessLine = ctx.qs('.line.weakness');
+        if (weaknessLine == null) return;
+
+        const container = weaknessLine.closest('.property-container');
+        if (container != null) container.style.display = hide ? 'none' : '';
+    }
+
+    function setWeaknessInStatblock(root, weaknessHtml, opts = {}) {
+        if (weaknessHtml === undefined || weaknessHtml === null) return;
+        const el = root.querySelector('.weakness p');
+        if (el == null) return;
+
+        const onlyIfEmpty = !!opts.onlyIfEmpty;
+        if (onlyIfEmpty) {
+            const existing = (el.textContent ?? '').trim();
+            const isPlaceholderDash = /^[-–—]$/.test(existing);
+            if (existing.length > 0 && !isPlaceholderDash) return;
         }
-    }
-    else {
-        // console.log('the weakness will be displayed');
-    }
-    // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.line.show_weakness p') != null) {
-        var showWeaknessHover = document.querySelector(statblockCSSpathHover + '.line.show_weakness p').innerHTML;
-        switch (showWeaknessHover) {
-            case ('no'):
-                // console.log('do you wanna see the weakness in hover? ' + showWeaknessHover)
-                document.querySelector(statblockCSSpathHover + ' .property-container:has(> .line.weakness)').style.display = 'none';
-                break;
-            case ('false'):
-                // console.log('do you wanna see the weakness in hover ' + showWeaknessHover)
-                document.querySelector(statblockCSSpathHover + '.property-container:has(.line.weakness)').style.display = 'none';
-                break;
-        }
-    }
-    else {
-        // console.log('the weakness in hover will be displayed');
+
+        el.innerHTML = weaknessHtml;
     }
 
+    // --- В зависимости от поколения, меняется значение траты крови в ход ---
+    // --- depending on Generation, update the per-turn blood spend value ---
+    function applyBloodPerTurnByGeneration(ctx) {
+        const generationBlock = ctx.qs('.line.generation .statblock-markdown');
+        if (generationBlock == null) return;
 
+        const outEl = ctx.qs('.line.blood_per_turn p');
+        if (outEl == null) return;
 
-    // Set up blood per turn value, based on the generation
-    if (document.querySelector(activeTab + '.line.generation .statblock-markdown p') != null) {
-        // find the generation
-        var generationFull = document.querySelector(activeTab + '.line.generation .statblock-markdown').textContent;
-        // pick only two first symbols, in case if the generation has info about diablery (like 9 1̶0̶)
-        var generation = generationFull.slice(0, 2);
-        // remove spaces, if the generation is 8 or 9
-        var generation = generation.replace(/\s/g, '');
-        // console.log('the generation of this Kindred is ' + generation);
+        // берем только первые два символа, если поколение вдруг длиннее за счет инфы про диаблери
+        // take only the first two characters in case the generation string is longer (e.g., includes diablerie notes)
+        let generation = (generationBlock.textContent || '').slice(0, 2);
+        // убираем пробелы, если поколение 8-9
+        // remove spaces if the generation is a single digit (8–9)
+        generation = generation.replace(/\s/g, '');
+
         switch (generation) {
             case '13':
-                document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '1'; break;
             case '12':
-                document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '1'; break;
             case '11':
-                document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '1'; break;
             case '10':
-                document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '1'; break;
+                outEl.textContent = '1'; break;
             case '9':
-                document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '2'; break;
+                outEl.textContent = '2'; break;
             case '8':
-                document.querySelector(activeTab + '.line.blood_per_turn p').innerHTML = '3'; break;
+                outEl.textContent = '3'; break;
+            default:
+                // nothing
+                // ничего
+                break;
         }
     }
-    else {
-        // nothing
-    }
-    // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.line.generation .statblock-markdown > p') != null) {
-        var generationFullHover = document.querySelector('.popover.hover-popover .line.generation .statblock-markdown > p').textContent;
-        var generationHover = generationFullHover.slice(0, 2);
-        var generationHover = generationHover.replace(/\s/g, '');
-        // console.log('the generation in hover - ' + generationHover);
-        switch (generationHover) {
-            case '13':
-                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '1'; break;
-            case '12':
-                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '1'; break;
-            case '11':
-                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '1'; break;
-            case '10':
-                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '1'; break;
-            case '9':
-                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '2'; break;
-            case '8':
-                document.querySelector(statblockCSSpathHover + '.line.blood_per_turn p').innerHTML = '3'; break;
+    // --- Скрывается H1 в заметке, если совпадает с именем персонажа в статблоке (active + hover) ---
+    // --- hide the note H1 if it matches the character name in the statblock (active + hover) ---
+    function applyHideNoteH1IfMatchesCharacter(ctx) {
+        // Контейнер, в котором находится контент заметки
+        // container that holds the note content
+        let container = null;
+        if (ctx.mode === 'hover') {
+            container = ctx.root.closest('.popover.hover-popover') || document.querySelector('.popover.hover-popover');
+        }
+        else {
+            container = ctx.root.closest('.workspace-leaf') || document.querySelector('.workspace-leaf.mod-active');
+        }
+        if (container == null) return;
+
+        const noteH1 = container.querySelector('.markdown-preview-sizer > .el-h1 h1');
+        if (noteH1 == null) return;
+
+        const outlineName = (noteH1.innerText || '').trim();
+        if (!outlineName) return;
+
+        const statblockNameEl = ctx.qs('h1.heading .inline');
+        if (statblockNameEl == null) return;
+
+        const characterName = (statblockNameEl.textContent || '').trim();
+        if (!characterName) return;
+
+        if (outlineName === characterName) {
+            noteH1.style.display = 'none';
         }
     }
 
+    // --- Разная обработка значений для характеристик, способностей и дисциплин ---
+    // --- different formatting for attributes, abilities, and disciplines values ---
 
-
-
-    // you can type character's name (in level 2 heading) in the note above the statblock, and if this heading is the same as character name in the statblock, it will be hidden in the reading view, but remains in the outlina panel
-    if (document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h1 h1') != null) {
-        var outlineName = document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h1 h1').innerText
-        console.log(outlineName + ' - H1 name from the note');
-        const characterName = document.querySelector(activeTab + 'h1.heading .inline').innerHTML
-        console.log('the name from the statblock - ' + characterName)
-        if (outlineName = characterName && outlineName != null) {
-            document.querySelector('.workspace-leaf.mod-active .markdown-preview-sizer > .el-h1 h1').style.display = 'none';
-        }
-    }
-    else {
-        // do nothing
-    }
-    // same code, but for a statblock in hover
-    if (document.querySelector('.popover.hover-popover .markdown-preview-sizer > .el-h2 h2') != null) {
-        var outlineNameHover = document.querySelector('.popover.hover-popover .markdown-preview-sizer  > .el-h2 h2').innerText
-        //  console.log('note's name in a hover - ' + outlineName_hover)
-        const characterNameHover = document.querySelector(statblockCSSpathHover + 'h1.heading .inline').innerHTML
-        //  console.log('character's name from statblock in a hover = ' + characterName_hover)
-        if (outlineNameHover = characterNameHover) {
-            document.querySelector('.popover.hover-popover .markdown-preview-sizer > .el-h2 h2').style.display = 'none';
-        }
-    }
-    else {
-        // do nothing
-    }
-
-
-    // Some various modifications for attributes, abilities and disciplines
-
-    // set up the names of all Attributes and Abilities 
+    // Задаем названия классов, по которым будем искать 
+    // Define the CSS class names we will search for
     const basicAttributes = ['.strength', '.dexterity', '.stamina', '.charisma', '.manipulation', '.appearance', '.perception', '.intelligence', '.wits'];
     const basicTalents = ['.athletics', '.alertness', '.brawl', '.intimidation', '.expression', '.leadership', '.streetwise', '.subterfuge', '.awareness', '.empathy']
     const basicSkills = ['.drive', '.larceny', '.survival', '.performance', '.animalken', '.crafts', '.stealth', '.firearms', '.melee', '.etiquette']
     const basicKnowledges = ['.academics', '.science', '.law', '.computer', '.medicine', '.occult', '.politics', '.investigation', '.finance', '.technology']
     const additionalDarkAgesAbilities = ['.legerdemain', '.ride', '.commerce', '.archery', '.enigmas', '.hearthwisdom', '.seneschal', '.theology']
     const mageAbilities = ['.art', '.martialarts', '.research', '.meditation', '.cosmology', '.esoterica']
-    // combine all into one list\array
-    const allTraits = basicAttributes.concat(basicTalents, basicSkills, basicKnowledges, additionalDarkAgesAbilities, mageAbilities);
-    for (let x = 0; x < allTraits.length; x++) {
-        if (document.querySelector(activeTab + allTraits[x]) != null) {
-            // let's find the name of the property and its value
-            var nameAbility = document.querySelector(activeTab + allTraits[x] + ' .property-name').innerHTML;
-            var valueAbility = document.querySelector(activeTab + allTraits[x] + ' p:not(:has(> .dice-roller))');
-            // the code for usual dots
-            if (valueAbility !== null) {
-                // console.log(nameAbility + ' has name length ' + nameAbility.length + ' and value  ' + valueAbility);
-                // special case - if the Appearance is 0 and the clan has 'Nosferatu' or 'Samedi', the appearance line will be strikethrough
-                if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (typeof clanName !== 'undefined' && (clanName.includes('Носферату') || clanName.includes('Самеди')))
-                    && (allTraits[x].includes('.appearance'))) {
-                    document.querySelector(activeTab + '.line.appearance .property-name').style.textDecoration = 'line-through';
+    const wildWestAbilities = ['.smithwork', '.geology', '.culture']
+    // Cобираем все в один список
+    // Сombine everything into a single list
+    const allTraits = basicAttributes.concat(basicTalents, basicSkills, basicKnowledges, additionalDarkAgesAbilities, mageAbilities, wildWestAbilities);
+
+    function applyTraitsFormatting(ctx) {
+        // Клан используется только для вампиров; для других листов вернётся пустая строка
+        // Clan is only used for vampires; other sheets will return an empty string
+        const clanNameLocal = getClanNameFromStatblock(ctx.root) || '';
+        const isNosferatuOrSamedi =
+            clanNameLocal.includes('Носферату') || clanNameLocal.includes('Nosferatu') ||
+            clanNameLocal.includes('Самеди') || clanNameLocal.includes('Samedi');
+
+        for (let x = 0; x < allTraits.length; x++) {
+            const baseSel = allTraits[x];
+
+            // Строка может отсутствовать в некоторых шаблонах — просто пропускаем
+            // The row may be missing in some templates — just skip it
+            if (ctx.qs(baseSel) == null) continue;
+
+            // Находим имя и значение для каждого параметра
+            // Find the name and value for each entry
+            const nameEl = ctx.qs(baseSel + ' .property-name');
+            if (nameEl == null) continue;
+
+            // Имя может содержать разметку, поэтому берём текст
+            // The name may include markup, so we take textContent
+            const nameAbility = (nameEl.textContent || '').trim();
+
+            // код для обычных точек (без dice-roller)
+            // logic for plain dots (no dice-roller)
+            let valueEl = null;
+
+            // В некоторых шаблонах внутри строки могут быть несколько <p> (в т.ч. в имени), поэтому берём первый <p>, который не лежит внутри .property-name и не содержит .dice-roller.
+            // Some templates may have multiple <p> (including inside the name); pick the first <p> not inside .property-name and not containing .dice-roller.
+            const pCandidates = ctx.root.querySelectorAll(baseSel + ' p');
+            for (let i = 0; i < pCandidates.length; i++) {
+                const pEl = pCandidates[i];
+                if (pEl.closest('.property-name')) continue;
+                if (pEl.querySelector('.dice-roller')) continue;
+                valueEl = pEl;
+                break;
+            }
+            if (valueEl !== null) {
+                const rawValText = (valueEl.textContent || '').trim();
+                const rawValNum = Number(rawValText);
+                const rawValIsNull = (rawValText === 'null');
+                const rawValIsZero = (rawValText === '' || (Number.isFinite(rawValNum) && rawValNum === 0));
+
+                // Если привлекательность 0 и клан Носферату/Самеди — строка привлекательности зачеркивается
+                // If Appearance is 0 and the clan is Nosferatu/Samedi, strike through the Appearance row
+                if ((rawValIsNull || rawValIsZero) && isNosferatuOrSamedi && baseSel.includes('.appearance')) {
+                    const appearanceName = ctx.qs('.line.appearance .property-name');
+                    setStyle(appearanceName, 'textDecoration', 'line-through');
                 }
-                // if attributes value is 0, there will be warning 
-                else if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (basicAttributes.includes(allTraits[x]))) {
-                    document.querySelector(activeTab + allTraits[x] + ' p').style.fontSize = '13px';
-                    document.querySelector(activeTab + allTraits[x] + ' p').style.fontFamily = 'Marta';
-                    document.querySelector(activeTab + allTraits[x] + ' p').style.margin = '-1px 0px 0px 0px'
-                    document.querySelector(activeTab + allTraits[x] + ' p').innerHTML = 'at least 1'
+                // Eсли значение характеристик равно 0, вместо точек появится предупреждение
+                // If an attribute value is 0, show a warning instead of dots
+                else if ((rawValIsNull || rawValIsZero) && basicAttributes.includes(baseSel)) {
+                    setStyle(valueEl, 'fontSize', (ctx.mode === 'active') ? '13px' : '14px');
+                    setStyle(valueEl, 'fontFamily', 'Marta');
+                    setStyle(valueEl, 'margin', '-1px 0px 0px 0px');
+                    setText(valueEl, 'at least 1');
                 }
-                // if the name is is too long and the value is too big, the dots could be replaced with numbers; some changes might be required as all these values were originally set for Russian version
-                else if ((nameAbility.length >= 11 && valueAbility.innerHTML > 9)
-                    || (nameAbility.length >= 12 && valueAbility.innerHTML > 8)
-                    || (nameAbility.length >= 13 && valueAbility.innerHTML > 7)
-                    || (nameAbility.length >= 14 && valueAbility.innerHTML > 6)
-                    || (nameAbility.length >= 15 && valueAbility.innerHTML > 5)) {
-                    document.querySelector(activeTab + allTraits[x] + ' p').style.fontSize = '14px';
-                    document.querySelector(activeTab + allTraits[x] + ' p').style.fontFamily = 'Marta';
-                    document.querySelector(activeTab + allTraits[x] + ' p').style.margin = '-1px 0px 0px 0px'
+                // В зависимости от длины имени и значения, точки будут заменены на цифры
+                // Depending on name length and value, dots will be replaced with numbers
+                else if ((nameAbility.length >= 11 && rawValNum > 9)
+                    || (nameAbility.length >= 12 && rawValNum > 8)
+                    || (nameAbility.length >= 13 && rawValNum > 7)
+                    || (nameAbility.length >= 14 && rawValNum > 6)
+                    || (nameAbility.length >= 15 && rawValNum > 5)) {
+
+                    setStyle(valueEl, 'fontSize', '14px');
+                    setStyle(valueEl, 'fontFamily', 'Marta');
+                    setStyle(valueEl, 'margin', '-1px 0px 0px 0px');
                 }
-                // replace 10s with Xs
-                else if (valueAbility.innerHTML == 10) {
-                    document.querySelector(activeTab + allTraits[x] + ' p').innerHTML = 'X'
+                // Mеняем десятку на X
+                // Replace 10 with X
+                else if (rawValNum === 10) {
+                    setText(valueEl, 'X');
                 }
             }
-            // same code, but for Dice Roller
+            // Для дайс роллера
+            // For the dice-roller output
             else {
-                valueAbility = document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').innerHTML;
-                // special case - if the Appearance is 0 and the clan has 'Nosferatu' or 'Samedi', the appearance line will be strikethrough
-                if ((valueAbility === 'null' || valueAbility == 0) && (typeof clanName !== 'undefined' && (clanName.includes('Носферату') || clanName.includes('Самеди')))
-                    && (allTraits[x].includes('.appearance'))) {
-                    // console.log('who goes there, to see the ugly Nosferaty? it's ' + allTraits[x]);
-                    document.querySelector(activeTab + '.line.appearance .property-name').style.textDecoration = 'line-through';
-                    document.querySelector(activeTab + '.appearance .dice-roller-result').innerHTML = 0;
-                    document.querySelector(activeTab + '.appearance .dice-roller-result').style.fontSize = '9px';
-                    document.querySelector(activeTab + '.appearance .dice-roller-result').style.fontFamily = 'SmallCircles';
-                    document.querySelector(activeTab + '.appearance .dice-roller-result').style.textAlign = 'center';
-                    document.querySelector(activeTab + '.appearance .dice-roller-result').style.verticalAlign = 'top';
-                    document.querySelector(activeTab + '.appearance .dice-roller-result').style.fontWeight = 'normal'
-                }
-                // if attributes value is 0, there will be warning 
-                else if ((valueAbility === 'null' || valueAbility == 0) && (basicAttributes.includes(allTraits[x]))) {
-                    // console.log('is there a zero value??? yes, in ' + allTraits[x]);
-                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').style.fontSize = '14px';
-                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').style.fontFamily = 'Marta';
-                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').style.margin = '-1px 0px 0px 0px';
-                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').innerHTML = 'at least 1';
-                }
-                // if the name is is too long and the value is too big, the dots could be replaced with numbers
-                else if ((nameAbility.length >= 11 && valueAbility > 9)
-                    || (nameAbility.length >= 12 && valueAbility > 8)
-                    || (nameAbility.length >= 13 && valueAbility > 7)
-                    || (nameAbility.length >= 14 && valueAbility > 6)
-                    || (nameAbility.length >= 15 && valueAbility > 5)) {
-                    // console.log('were the dots replaced with numbers??? yes, in ' + allTraits[x]);
-                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').style.fontSize = '14px';
-                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').style.fontFamily = 'Marta';
-                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').style.margin = '-1px 0px 0px 0px'
-                }
-                // replace 10s with Xs
-                else if (valueAbility == 10) {
-                    // console.log('who has 10? it's ' + allTraits[x]);
-                    document.querySelector(activeTab + allTraits[x] + ' .dice-roller-result').innerHTML = 'X'
-                }
-            }
-        }
-    }
+                const diceEl = ctx.qs(baseSel + ' .dice-roller-result');
+                if (diceEl == null) continue;
 
-    // all Attributes and Abilities in hover
-    for (let x = 0; x < allTraits.length; x++) {
-        if (document.querySelector(statblockCSSpathHover + allTraits[x]) != null) {
-            // let's find the name of the property and its value
-            var nameAbility = document.querySelector(statblockCSSpathHover + allTraits[x] + ' .property-name').innerHTML;
-            var valueAbility = document.querySelector(statblockCSSpathHover + allTraits[x] + ' p:not(:has(> .dice-roller))');
-            // the code for usual dots
-            if (valueAbility !== null) {
-                // console.log(nameAbility + ' in hover  has name length ' + nameAbility.length + ' and value  ' + valueAbility);
-                // special case - if the Appearance is 0 and the clan has 'Nosferatu' or 'Samedi', the appearance line will be strikethrough
-                if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (typeof clanNameHover !== 'undefined' && (clanNameHover.includes('Nosferatu') || clanNameHover.includes('Samedi')))
-                    && (allTraits[x].includes('.appearance'))) {
-                    document.querySelector(statblockCSSpathHover + '.line.appearance .property-name').style.textDecoration = 'line-through';
-                }
-                // if attributes value is 0, there will be warning 
-                else if ((valueAbility.innerHTML === 'null' || valueAbility.innerHTML == 0) && (basicAttributes.includes(allTraits[x]))) {
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').style.fontSize = '14px';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').style.fontFamily = 'Marta';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').style.margin = '-1px 0px 0px 0px'
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').innerHTML = 'at least 1'
-                }
-                // if the name is is too long and the value is too big, the dots could be replaced with numbers; some changes might be required as all these values were originally set for Russian version
-                else if ((nameAbility.length >= 11 && valueAbility.innerHTML > 9)
-                    || (nameAbility.length >= 12 && valueAbility.innerHTML > 8)
-                    || (nameAbility.length >= 13 && valueAbility.innerHTML > 7)
-                    || (nameAbility.length >= 14 && valueAbility.innerHTML > 6)
-                    || (nameAbility.length >= 15 && valueAbility.innerHTML > 5)) {
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').style.fontSize = '14px';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').style.fontFamily = 'Marta';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').style.margin = '-1px 0px 0px 0px'
-                }
-                // replace 10s with Xs
-                else if (valueAbility.innerHTML == 10) {
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' p').innerHTML = 'X'
-                }
-            }
-            // same code, but for Dice Roller
-            else {
-                valueAbility = document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').innerHTML;
-                // special case - if the Appearance is 0 and the clan has 'Nosferatu' or 'Samedi', the appearance line will be strikethrough
-                if ((valueAbility === 'null' || valueAbility == 0) && (typeof clanNameHover !== 'undefined' && (clanNameHover.includes('Носферату') || clanNameHover.includes('Самеди')))
-                    && (allTraits[x].includes('.appearance'))) {
-                    document.querySelector(statblockCSSpathHover + '.line.appearance .property-name').style.textDecoration = 'line-through';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').innerHTML = 0;
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.display = 'block';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.fontSize = '9px';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.fontFamily = 'SmallCircles';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.textAlign = 'center';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.verticalAlign = 'top';
-                    document.querySelector(statblockCSSpathHover + '.appearance .dice-roller-result').style.fontWeight = 'normal'
-                }
-                // if attributes value is 0, there will be warning 
-                else if ((valueAbility === 'null' || valueAbility == 0) && (basicAttributes.includes(allTraits[x]))) {
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').style.fontSize = '14px';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').style.fontFamily = 'Marta';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').style.margin = '-1px 0px 0px 0px';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').innerHTML = 'at least 1';
-                }
-                // if the name is is too long and the value is too big, the dots could be replaced with numbers; some changes might be required as all these values were originally set for Russian version
-                else if ((nameAbility.length >= 11 && valueAbility > 9)
-                    || (nameAbility.length >= 12 && valueAbility > 8)
-                    || (nameAbility.length >= 13 && valueAbility > 7)
-                    || (nameAbility.length >= 14 && valueAbility > 6)
-                    || (nameAbility.length >= 15 && valueAbility > 5)) {
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').style.fontSize = '14px';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').style.fontFamily = 'Marta';
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').style.margin = '-1px 0px 0px 0px'
-                }
-                // replace 10s with Xs
-                else if (valueAbility == 10) {
-                    // console.log('who has 10 in hover? it's ' + allTraits[x]);
-                    document.querySelector(statblockCSSpathHover + allTraits[x] + ' .dice-roller-result').innerHTML = 'X'
-                }
-            }
-        }
-    }
+                const valueAbilityText = (diceEl.textContent || '').trim();
 
+                const valueAbilityNum = Number(valueAbilityText);
+                const valueAbilityIsNull = (valueAbilityText === 'null');
+                const valueAbilityIsZero = (valueAbilityText === '' || (Number.isFinite(valueAbilityNum) && valueAbilityNum === 0));
 
-    // Disciplines
-    // Some high values will be transformed from dots to digits, based on the lenght of a disciple's name, to keep columns width
-    if (document.querySelector(activeTab + '.discipline1_name p')) {
-        // get all the data from disciplines column, including unnecessary ones
-        var disciplinesList = document.querySelectorAll(activeTab + '.disciplines-column p');
-        // console.log(disciplinesList);
-        // get the disciplines (they all have odd indexes) and their values
-        for (let i = 0; i < disciplinesList.length; i += 2) {
-            // if the name contains a link
-            if (disciplinesList[i].innerHTML.startsWith('<a data')) {
-                if ((disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9)
-                    || (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8)
-                    || (disciplinesList[i].innerText.length >= 13 && disciplinesList[i + 1].innerText > 7)
-                    || (disciplinesList[i].innerText.length >= 14 && disciplinesList[i + 1].innerText > 6)
-                    || (disciplinesList[i].innerText.length >= 15 && disciplinesList[i + 1].innerText > 5)) {
-                    disciplinesList[i + 1].style.fontSize = '14px';
-                    disciplinesList[i + 1].style.fontFamily = 'Marta';
-                    disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
-                }
-            }
-            // if the name is just a text
-            else if ((disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9)
-                || (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8)
-                || (disciplinesList[i].innerText.length >= 13 && disciplinesList[i + 1].innerText > 7)
-                || (disciplinesList[i].innerText.length >= 14 && disciplinesList[i + 1].innerText > 6)
-                || (disciplinesList[i].innerText.length >= 15 && disciplinesList[i + 1].innerText > 5)) {
-                disciplinesList[i + 1].style.fontSize = '14px';
-                disciplinesList[i + 1].style.fontFamily = 'Marta';
-                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
-            }
-        }
-    }
-    // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.discipline1_name p')) {
-        var disciplinesList = document.querySelectorAll(statblockCSSpathHover + '.disciplines-column p');
-        for (let i = 0; i < disciplinesList.length; i += 2) {
-            if (disciplinesList[i].innerHTML.startsWith('<a data')) {
-                if ((disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9)
-                    || (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8)
-                    || (disciplinesList[i].innerText.length >= 13 && disciplinesList[i + 1].innerText > 7)
-                    || (disciplinesList[i].innerText.length >= 14 && disciplinesList[i + 1].innerText > 6)
-                    || (disciplinesList[i].innerText.length >= 15 && disciplinesList[i + 1].innerText > 5)) {
-                    disciplinesList[i + 1].style.fontSize = '14px';
-                    disciplinesList[i + 1].style.fontFamily = 'Marta';
-                    disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
-                }
-            }
-            else if ((disciplinesList[i].innerText.length >= 11 && disciplinesList[i + 1].innerText > 9)
-                || (disciplinesList[i].innerText.length >= 12 && disciplinesList[i + 1].innerText > 8)
-                || (disciplinesList[i].innerText.length >= 13 && disciplinesList[i + 1].innerText > 7)
-                || (disciplinesList[i].innerText.length >= 14 && disciplinesList[i + 1].innerText > 6)
-                || (disciplinesList[i].innerText.length >= 15 && disciplinesList[i + 1].innerText > 5)) {
-                disciplinesList[i + 1].style.fontSize = '14px';
-                disciplinesList[i + 1].style.fontFamily = 'Marta';
-                disciplinesList[i + 1].style.margin = '-2px 0px 0px 0px'
-            }
-        }
-    }
+                // Eсли привлекательность 0 и клан Носферату/Самеди — строка привлекательности зачеркивается
+                // If Appearance is 0 and the clan is Nosferatu/Samedi, strike through the Appearance row
+                if ((valueAbilityIsNull || valueAbilityIsZero) && isNosferatuOrSamedi && baseSel.includes('.appearance')) {
+                    const appearanceName2 = ctx.qs('.line.appearance .property-name');
+                    setStyle(appearanceName2, 'textDecoration', 'line-through');
 
-
-
-    // bearing and it's value are displayed based on the path and its value
-    if (document.querySelector(activeTab + '.line.path .statblock-markdown > p') != null) {
-        // find the path, is it the humanity or not?
-        var path = document.querySelector(activeTab + '.line.path .statblock-markdown > p').innerHTML;
-        // console.log('path is... ' + path)
-        // if the path is not presented...
-        if (path === null) {
-            // ...bearing line will be hidden
-            document.querySelector(activeTab + '.bearing').style.display = 'none'
-        }
-        // if the path is humanity
-        else if ((path == 'Humanity') || (path == 'HUMANITY')) {
-            // let's get the value of humanity path
-            if (document.querySelector(activeTab + '.line.path_value p') != null) {
-                var pathModifier = document.querySelector(activeTab + '.line.path_value p').innerHTML;
-                switch (pathModifier) {
-                    // replace 10 with X
-                    case '10':
-                        document.querySelector(activeTab + '.line.path_value p').innerHTML = 'X';
-                    // and then correspinding bearing values will be assigned
-                    case 'X':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность ( -2 )'; break;
-                    case '9':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность ( -1 )'; break;
-                    case '8':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность ( -1 )'; break;
-                    case '7':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность'; break;
-                    case '6':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность'; break;
-                    case '5':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность'; break;
-                    case '4':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность'; break;
-                    case '3':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность ( +1 )'; break;
-                    case '2':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность ( +1 )'; break;
-                    case '1':
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'Нормальность ( +2 )'; break;
-                    default:
-                        document.querySelector(activeTab + '.line.bearing p').innerHTML = 'You are the Beast!';
-                        if (document.querySelector(activeTab + '.line.bearing p').innerHTML === null) {
-                            console.log('bearing line is missing')
-                        }
-                }
-            }
-            else { }
-        }
-        else {
-            // ...bearing line will be hidden
-            document.querySelector(activeTab + '.bearing').style.display = 'none';
-            // ... arrow markers around the title will be also removed
-            document.querySelector(activeTab + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
-            // let's get the value of non-humanity path
-            var pathModifier = document.querySelector(activeTab + '.line.path_value p').innerHTML;
-            // replace 10 with X
-            if (pathModifier == 10) {
-                document.querySelector(activeTab + '.path_value p').innerHTML = 'X';
-            }
-        }
-    }
-
-
-    // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown > p') != null) {
-        // find the path, is it the humanity or not?
-        var pathHover = document.querySelector(statblockCSSpathHover + '.line.path .statblock-markdown > p').innerHTML;
-        console.log('путь это ' + path)
-        // if the path is not presented...
-        if (pathHover === null) {
-            // ...bearing line will be hidden
-            document.querySelector(statblockCSSpathHover + '.bearing').style.display = 'none'
-        }
-        // if the path is humanity
-        else if ((pathHover == 'Humanity') || (pathHover == 'HUMANITY')) {
-            // let's get the value of humanity path
-            if (document.querySelector(statblockCSSpathHover + '.line.path_value p') != null) {
-                var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML;
-                switch (pathModifierHover) {
-                    // replace 10 with X
-                    case '10':
-                        document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML = 'X';
-                    // and then correspinding bearing values will be assigned
-                    case 'X':
-                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( -2 )'; break;
-                    case '9':
-                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( -1 )'; break;
-                    case '8':
-                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( -1 )'; break;
-                    case '7':
-                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
-                    case '6':
-                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
-                    case '5':
-                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
-                    case '4':
-                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность'; break;
-                    case '3':
-                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( +1 )'; break;
-                    case '2':
-                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( +1 )'; break;
-                    case '1':
-                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'Нормальность ( +2 )'; break;
-                    default:
-                        document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML = 'You are the Beast!';
-                        if (document.querySelector(statblockCSSpathHover + '.line.bearing p').innerHTML === null) {
-                            console.log('bearing line is missing in hover')
-                        }
-                }
-            }
-            else { }
-        }
-        else {
-            // ...bearing line will be hidden
-            document.querySelector(statblockCSSpathHover + '.bearing').style.display = 'none';
-            // ... arrow markers around the title will be also removed
-            document.querySelector(statblockCSSpathHover + '.statblock-item-container.path-block:has(> .path)').style.backgroundImage = 'none';
-            // let's get the value of non-humanity path
-            var pathModifierHover = document.querySelector(statblockCSSpathHover + '.line.path_value p').innerHTML;
-            // replace 10 with X
-            if (pathModifierHover == 10) {
-                document.querySelector(statblockCSSpathHover + '.path_value p').innerHTML = 'X';
-            }
-        }
-    }
-
-
-    // Replace more 10s with Xs for Willpower
-
-    // set up some willpower css classes to work with
-    const willpowerOptions = ['.willpower_main', '.willpower_current'];
-    // let's check if the willpower block exists in the statblock
-    if (document.querySelector(activeTab + '.willpower-block .line.willpower_main') != null) {
-        for (let i = 0; i < willpowerOptions.length; i++) {
-            // find the simple main willpower value or current one
-            if (document.querySelector(activeTab + willpowerOptions[i] + ' p') != null) {
-                var willpowerValue = document.querySelector(activeTab + willpowerOptions[i] + ' p');
-                // if it is and equal to 10
-                if (willpowerValue != null) {
-                    if (willpowerValue.innerHTML == 10) {
-                        // replace 10 with X
-                        document.querySelector(activeTab + willpowerOptions[i] + ' p').innerHTML = 'X'
+                    const appearanceDice = ctx.qs('.appearance .dice-roller-result');
+                    if (appearanceDice != null) {
+                        setText(appearanceDice, '0');
+                        if (ctx.mode === 'hover') setStyle(appearanceDice, 'display', 'block');
+                        setStyle(appearanceDice, 'fontSize', '9px');
+                        setStyle(appearanceDice, 'fontFamily', 'SmallCircles');
+                        setStyle(appearanceDice, 'textAlign', 'center');
+                        setStyle(appearanceDice, 'verticalAlign', 'top');
+                        setStyle(appearanceDice, 'fontWeight', 'normal');
                     }
                 }
-            }
-            // looking for Dice Roller 
-            if (document.querySelector(activeTab + willpowerOptions[i] + ' .dice-roller-result') != null) {
-                // if it exists
-                var willpowerValue = document.querySelector(activeTab + willpowerOptions[i] + ' .dice-roller-result').innerHTML;
-                if (willpowerValue == 10) {
-                    // replace 10 with X
-                    document.querySelector(activeTab + willpowerOptions[i] + ' .dice-roller-result').innerHTML = 'X'
-                };
-            }
-            else {
-                // do nothing
+                // Если значение характеристик равно 0, вместо точек появится предупреждение
+                // If an attribute value is 0, show a warning instead of dots
+                else if ((valueAbilityIsNull || valueAbilityIsZero) && basicAttributes.includes(baseSel)) {
+                    setStyle(diceEl, 'fontSize', '14px');
+                    setStyle(diceEl, 'fontFamily', 'Marta');
+                    setStyle(diceEl, 'margin', '-1px 0px 0px 0px');
+                    setText(diceEl, 'at least 1');
+                }
+                // В зависимости от длины имени и значения, точки будут заменяться на цифры
+                // Depending on name length and value, dots will be replaced with numbers
+                else if ((nameAbility.length >= 11 && valueAbilityNum > 9)
+                    || (nameAbility.length >= 12 && valueAbilityNum > 8)
+                    || (nameAbility.length >= 13 && valueAbilityNum > 7)
+                    || (nameAbility.length >= 14 && valueAbilityNum > 6)
+                    || (nameAbility.length >= 15 && valueAbilityNum > 5)) {
+
+                    setStyle(diceEl, 'fontSize', '14px');
+                    setStyle(diceEl, 'fontFamily', 'Marta');
+                    setStyle(diceEl, 'margin', '-1px 0px 0px 0px');
+                }
+                // Меняем десятку на X
+                // Replace 10 with X
+                else if (valueAbilityNum === 10) {
+                    setText(diceEl, 'X');
+                }
             }
         }
     }
 
-    // same code, but for hover
-    if (document.querySelector(statblockCSSpathHover + '.willpower-block .line.willpower_main') != null) {
+    // --- Дисциплины --- 
+    // --- Disciplines --- 
+
+    // Имена некоторых дисциплин слишком длинные; в сочетании с высокими (больше 5) значениями может ломаться отображение. Поэтому кое-где точки будут заменяться на цифры (уменьшаем размер/межстрочные отступы у значения дисциплины).
+    // Some discipline names are too long; combined with high values (over 5) this can break the layout. So in some cases dots are replaced with numbers (reduce font size/line spacing for the discipline value)
+    function applyDisciplinesFormatting(ctx) {
+        if (ctx.qs('.discipline1_name p') == null) return;
+
+        // Получаем список всего из столбца дисциплин: name/value чередуются
+        // Get the full list from the disciplines column (name/value alternating)
+        const disciplinesList = ctx.qsa('.disciplines-column p');
+        if (disciplinesList == null || disciplinesList.length < 2) return;
+
+        for (let i = 0; i < disciplinesList.length; i += 2) {
+            const nameEl = disciplinesList[i];
+            const valueEl = disciplinesList[i + 1];
+            if (!nameEl || !valueEl) continue;
+
+            const nameLen = ((nameEl.innerText || nameEl.textContent || '').trim()).length;
+            const valueNum = Number((valueEl.innerText || valueEl.textContent || '').trim());
+            if (!Number.isFinite(valueNum)) continue;
+
+            let didStyleAdjust = false;
+
+            if ((nameLen >= 11 && valueNum > 9)
+                || (nameLen >= 12 && valueNum > 8)
+                || (nameLen >= 13 && valueNum > 7)
+                || (nameLen >= 14 && valueNum > 6)
+                || (nameLen >= 15 && valueNum > 5)) {
+
+                didStyleAdjust = true;
+                setStyle(valueEl, 'fontSize', '14px');
+                setStyle(valueEl, 'fontFamily', 'Marta');
+                setStyle(valueEl, 'margin', '-2px 0px 0px 0px');
+            }
+
+            // Заменяем 10 на X для дисциплин (и в обычном значении, и в dice-roller)
+            // Replace 10 with X for disciplines (both normal value and dice-roller)
+            if (!didStyleAdjust && valueNum === 10) {
+                const diceResultEl = valueEl.querySelector('.dice-roller-result');
+                setText(diceResultEl != null ? diceResultEl : valueEl, 'X');
+            }
+        }
+    }
+
+
+    // --- В завимимости от названия пути и его значения, проставляется (или удаляется) модификатор столпа --- 
+    // --- Depending on the Path name and its value, set (or remove) the Bearing modifier --- 
+    function applyBearingModifier(ctx) {
+        const pathEl = ctx.qs('.line.path .statblock-markdown > p');
+        if (pathEl == null) return;
+
+        const path = (pathEl.textContent || '').trim();
+
+        // Если путь вообще не указан...
+        // If the Path is not specified at all...
+        if (!path) {
+            const bearingRow = ctx.qs('.bearing');
+            if (bearingRow != null) bearingRow.style.display = 'none';
+            return;
+        }
+
+        // Если путь это человечность, то...
+        // If the Path is Humanity, then...
+        if (path.toLowerCase() === 'человечность') {
+            const pathValueEl = ctx.qs('.line.path_value p');
+            if (pathValueEl == null) return;
+
+            let pathModifier = (pathValueEl.textContent || '').trim();
+
+            // Заменяем десятики на X
+            // Replace 10s with X
+            if (pathModifier === '10') {
+                pathModifier = 'X';
+                pathValueEl.textContent = 'X';
+            }
+
+            const bearingValueEl = ctx.qs('.line.bearing p');
+            if (bearingValueEl == null) return;
+
+            switch (pathModifier) {
+                case 'X':
+                    bearingValueEl.textContent = 'Нормальность ( -2 )'; break;
+                case '9':
+                case '8':
+                    bearingValueEl.textContent = 'Нормальность ( -1 )'; break;
+                case '7':
+                case '6':
+                case '5':
+                case '4':
+                    bearingValueEl.textContent = 'Нормальность'; break;
+                case '3':
+                case '2':
+                    bearingValueEl.textContent = 'Нормальность ( +1 )'; break;
+                case '1':
+                    bearingValueEl.textContent = 'Нормальность ( +2 )'; break;
+                default:
+                    bearingValueEl.textContent = 'Теперь ты Зверь!';
+                    break;
+            }
+            return;
+        }
+
+        // Иначе (не-человечность\путь) — скрываем столп и убираем стрелочки вокруг заголовка
+        // Otherwise (non-Humanity\Path) — hide Bearing and remove the header arrows
+        const bearingRow2 = ctx.qs('.bearing');
+        if (bearingRow2 != null) bearingRow2.style.display = 'none';
+
+        const pathEl2 = ctx.qs('.path');
+        const pathBlock = pathEl2 ? pathEl2.closest('.statblock-item-container.path-block') : null;
+        if (pathBlock != null) pathBlock.style.backgroundImage = 'none';
+
+        // Заменяем 10 на X (как было раньше)
+        // Replace 10 with X (as before)
+        const pathValueEl2 = ctx.qs('.line.path_value p');
+        if (pathValueEl2 != null) {
+            const pv2 = (pathValueEl2.textContent || '').trim();
+            if (pv2 === '10') pathValueEl2.textContent = 'X';
+        }
+    }
+
+
+    // --- Меняем всякие иксы на нормальные 10 для воли --- 
+    // --- Convert 10s to X for Willpower (comment duplicated) --- 
+
+    function applyWillpowerX(ctx) {
+        // Задаем названия классов, по которым будем искать волю и запас воли
+        // Define the class names used to find Willpower and Willpower (current)
+        const willpowerOptions = ['.willpower_main', '.willpower_current'];
+
+        // Проверяем, есть ли вообще воля в статблоке
+        // Check whether Willpower exists in the statblock
+        if (ctx.qs('.willpower-block .line.willpower_main') == null) return;
+
         for (let i = 0; i < willpowerOptions.length; i++) {
-            if (document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p') != null) {
-                var willpowerValueHover = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p');
-                if (willpowerValueHover != null) {
-                    if (willpowerValueHover.innerHTML == 10) {
-                        document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' p').innerHTML = 'X'
-                    }
+            const base = willpowerOptions[i];
+
+            // Ищем обычное значение
+            // Look for the normal value
+            const pEl = ctx.qs(base + ' p');
+            if (pEl != null) {
+                const val = (pEl.textContent || '').trim();
+                if (val === '10') {
+                    pEl.textContent = 'X';
                 }
             }
-            if (document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result') != null) {
-                var willpowerValueHover = document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result').innerHTML;
-                if (willpowerValueHover == 10) {
-                    document.querySelector(statblockCSSpathHover + willpowerOptions[i] + ' .dice-roller-result').innerHTML = 'X'
-                };
+
+            // Ищем дайс роллер
+            // Look for the dice-roller value
+            const diceEl = ctx.qs(base + ' .dice-roller-result');
+            if (diceEl != null) {
+                const diceVal = (diceEl.textContent || '').trim();
+                if (diceVal === '10') {
+                    diceEl.textContent = 'X';
+                }
             }
         }
     }
 
 
-    // The great recalculation of blood, to use one parameter\number - then show all the needen line and hide others
-    if (document.querySelector(activeTab + '.line.blood') != null) {
-        // first line of blood
-        const bloodCurrent = document.querySelector(activeTab + '.line.blood p').innerHTML;
-        console.log('blood value = ' + bloodCurrent)
-        if (bloodCurrent <= 9) {
-            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'none';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            // console.log('small check when bloodpool is less than 9')
-        } else if (bloodCurrent == 10) {
-            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'none';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            // console.log('small check when bloodpool is equal to 10 or X')
-        } else if (bloodCurrent < 20) {
-            var bloodCurrentTwo = bloodCurrent - 10;
-            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current2 p').innerHTML = bloodCurrentTwo;
-            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            // console.log('small check when bloodpool is less than 20')
-        } else if (bloodCurrent == 20) {
-            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current2 p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            // console.log('small check when bloodpool is equal to 20')
-        } else if (bloodCurrent < 30) {
-            var bloodCurrentThree = bloodCurrent - 20;
-            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current2 p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current3 p').innerHTML = bloodCurrentThree;
-            document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            // console.log('small check when bloodpool is less than 30')
-        } else if (bloodCurrent == 30) {
-            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current2 p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current3 p').innerHTML = 'X';;
-            document.querySelector(activeTab + '.property-container:has(> .blood_current4)').style.display = 'none';
-            // console.log('small check when bloodpool is equal to 30')
-        } else if (bloodCurrent < 40) {
-            var bloodCurrentFour = bloodCurrent - 30;
-            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current2 p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current3 p').innerHTML = 'X';
-            document.querySelector(activeTab + '.line.blood_current4 p').innerHTML = bloodCurrentFour;
-            // console.log('small check when bloodpool is less than 40')
-        } else if (bloodCurrent == '40') {
-            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current2 p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current3 p').innerHTML = 'X';
-            document.querySelector(activeTab + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(activeTab + '.line.blood_current4 p').innerHTML = 'X';
-            // console.log('small check when bloodpool is equal to 40')
-        } else if (bloodCurrent >= 41) {
-            document.querySelector(activeTab + '.line.blood p').innerHTML = 'X';
-            document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current2)').innerHTML = '';
-            document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current3)').innerHTML = '';
-            document.querySelector(activeTab + '.statblock-item-container.property-container:has(> .line.blood_current4)').innerHTML = '';
-            document.querySelector(activeTab + '.line.blood_per_turn').innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrent + '.  Time to think about your Humanity!';
-            // console.log('small check when bloodpool is greather than 40')
-        } else {
-            // do nothing
-            console.log('something went wrong with bloodpool')
+    // --- Глобальный пересчет крови, чтобы из одной цифры (от 1 до 40) добавлялись и отображались нужные строчки, а ненужные скрывались --- 
+    // --- Global blood recalculation: from a single number (1–40) show the required extra rows and hide the unnecessary ones --- 
+    function applyBloodCurrentRecalc(ctx) {
+        if (ctx.qs('.line.blood') != null) {
+            // Находим значение крови
+            // Read the blood value
+            const bloodEl = ctx.qs('.line.blood p');
+            if (bloodEl == null) return;
+            const bloodCurrentRaw = (bloodEl.textContent || '').trim();
+            const bloodCurrent = Number(bloodCurrentRaw);
+            // Кэшируем контейнеры для строк blood_current2/3/4
+            // Cache containers for blood_current2/3/4 rows
+            const bloodCurrent2Container = getBloodPropertyContainer(ctx, 2);
+            const bloodCurrent3Container = getBloodPropertyContainer(ctx, 3);
+            const bloodCurrent4Container = getBloodPropertyContainer(ctx, 4);
+            log('Blood value' + (ctx.mode === 'hover' ? ' in hover' : '') + ' = ' + bloodCurrentRaw)
+            if (bloodCurrent <= 9) {
+                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'none';
+                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'none';
+                if (bloodCurrent4Container != null) bloodCurrent4Container.style.display = 'none';
+                log('blood check for less than nine')
+            } else if (bloodCurrent == 10) {
+                ctx.qs('.line.blood p').innerHTML = 'X';
+                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'none';
+                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'none';
+                if (bloodCurrent4Container != null) bloodCurrent4Container.style.display = 'none';
+                log('blood check for equal to ten (or X)')
+            } else if (bloodCurrent < 20) {
+                const bloodCurrentTwo = bloodCurrent - 10;
+                ctx.qs('.line.blood p').innerHTML = 'X';
+                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'block';
+                ctx.qs('.line.blood_current2 p').innerHTML = bloodCurrentTwo;
+                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'none';
+                if (bloodCurrent4Container != null) bloodCurrent4Container.style.display = 'none';
+                log('blood check for less than twenty')
+            } else if (bloodCurrent == 20) {
+                ctx.qs('.line.blood p').innerHTML = 'X';
+                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'block';
+                ctx.qs('.line.blood_current2 p').innerHTML = 'X';
+                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'none';
+                if (bloodCurrent4Container != null) bloodCurrent4Container.style.display = 'none';
+                log('blood check for less than twenty')
+            } else if (bloodCurrent < 30) {
+                const bloodCurrentThree = bloodCurrent - 20;
+                ctx.qs('.line.blood p').innerHTML = 'X';
+                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'block';
+                ctx.qs('.line.blood_current2 p').innerHTML = 'X';
+                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'block';
+                ctx.qs('.line.blood_current3 p').innerHTML = bloodCurrentThree;
+                if (bloodCurrent4Container != null) bloodCurrent4Container.style.display = 'none';
+                log('blood check for less than thirty')
+            } else if (bloodCurrent == 30) {
+                ctx.qs('.line.blood p').innerHTML = 'X';
+                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'block';
+                ctx.qs('.line.blood_current2 p').innerHTML = 'X';
+                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'block';
+                ctx.qs('.line.blood_current3 p').innerHTML = 'X';;
+                if (bloodCurrent4Container != null) bloodCurrent4Container.style.display = 'none';
+                log('blood check for equal to thirty')
+            } else if (bloodCurrent < 40) {
+                const bloodCurrentFour = bloodCurrent - 30;
+                ctx.qs('.line.blood p').innerHTML = 'X';
+                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'block';
+                ctx.qs('.line.blood_current2 p').innerHTML = 'X';
+                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'block';
+                ctx.qs('.line.blood_current3 p').innerHTML = 'X';
+                ctx.qs('.line.blood_current4 p').innerHTML = bloodCurrentFour;
+                log('blood check for less than forty')
+            } else if (bloodCurrent === 40) {
+                ctx.qs('.line.blood p').innerHTML = 'X';
+                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'block';
+                ctx.qs('.line.blood_current2 p').innerHTML = 'X';
+                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'block';
+                ctx.qs('.line.blood_current3 p').innerHTML = 'X';
+                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'block';
+                ctx.qs('.line.blood_current4 p').innerHTML = 'X';
+                log('blood check for equal to forty')
+            } else if (bloodCurrent >= 41) {
+                ctx.qs('.line.blood p').innerHTML = 'X';
+                const c2 = bloodCurrent2Container;
+                if (c2 != null) c2.innerHTML = '';
+                const c3 = bloodCurrent3Container;
+                if (c3 != null) c3.innerHTML = '';
+                const c4 = bloodCurrent4Container;
+                if (c4 != null) c4.innerHTML = '';
+                ctx.qs('.line.blood_per_turn').innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrentRaw + '.  Time to think about your Humanity!';
+                log('blood check for more than forty')
+            } else {
+                log('blood' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' fails')
+            }
         }
-    }
-    else {
-        //nothing
-    }
-    // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.line.blood p') != null) {
-        const bloodCurrentHover = document.querySelector(statblockCSSpathHover + '.line.blood .inline').innerHTML;
-        console.log('blood value in hover = ' + bloodCurrentHover)
-        if (bloodCurrentHover <= 9) {
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'none';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            // console.log('small check when bloodpool is less than 9 in hover')
-        } else if (bloodCurrentHover == 10) {
-            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'none';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            // console.log('small check when bloodpool is equal to 10 or X in hover')
-        } else if (bloodCurrentHover < 20) {
-            var bloodCurrentTwoHover = bloodCurrentHover - 10;
-            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current2 p').innerHTML = bloodCurrentTwoHover;
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            // console.log('small check when bloodpool is less than 20 in hover')
-        } else if (bloodCurrentHover == 20) {
-            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current2 p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'none';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            // console.log('small check when bloodpool is equal to 20 in hover')
-        } else if (bloodCurrentHover < 30) {
-            var bloodCurrentThreeHover = bloodCurrentHover - 20;
-            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current2 p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current3 p').innerHTML = bloodCurrentThreeHover;
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            // console.log('small check when bloodpool is less than 30 in hover')
-        } else if (bloodCurrentHover == 30) {
-            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current2 p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current3 p').innerHTML = 'X';;
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current4)').style.display = 'none';
-            // console.log('small check when bloodpool is equal to 30 in hover')
-        } else if (bloodCurrentHover < 40) {
-            var bloodCurrentFourHover = bloodCurrentHover - 30;
-            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current2 p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current3 p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current4 p').innerHTML = bloodCurrentFourHover;
-            // console.log('small check when bloodpool is less than 40 in hover')
-        } else if (bloodCurrentHover == '40') {
-            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current2)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current2 p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current3 p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.property-container:has(> .blood_current3)').style.display = 'block';
-            document.querySelector(statblockCSSpathHover + '.line.blood_current4 p').innerHTML = 'X';
-            // console.log('small check when bloodpool is equal to 40 in hover')
-        } else if (bloodCurrentHover >= 41) {
-            document.querySelector(statblockCSSpathHover + '.line.blood p').innerHTML = 'X';
-            document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current2)').innerHTML = '';
-            document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current3)').innerHTML = '';
-            document.querySelector(statblockCSSpathHover + '.statblock-item-container.property-container:has(> .line.blood_current4)').innerHTML = '';
-            document.querySelector(statblockCSSpathHover + '.line.blood_per_turn').innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrentHover + '.  Time to think about your Humanity!';
-            // console.log('small check when bloodpool is greather than 40 in hover')
-        } else {
-            // do nothing
-            console.log('something went wrong with bloodpool in hover')
+        else {
+
         }
+
     }
 
 
-    //  WEREWOLVES
 
+    // --- ОБОРОТНИ --- 
+    // --- WEREWOLVES --- 
 
-    // define where to show merits and flaws, on the left or right - for WEREWOLVES
-    if (document.querySelector(activeTab + '.merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
-        var whereToShowMeritsAndFlaws = document.querySelector(activeTab + '.line.where-to-show-merits-and-flaws p').innerHTML;
-        // console.log('where to show merits and flaws? left or right? = ' + whereToShowMeritsAndFlaws)
-        switch (whereToShowMeritsAndFlaws) {
-            case ('left'):
-                document.querySelector(activeTab + '.statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';
+    // Определяем, с какой стороны показывать достоинства и недостатки у оборотней
+    // Сhoose which side to display werewolf merits and flaws on
+    function applyMeritsFlawsPlacement(ctx) {
+        if (!sheetMatchesEndsWith(ctx.sheetClass, WTA_W20_WEREWOLF_SHEETS)) return;
+
+        const whereEl = ctx.qs('.line.where-to-show-merits-and-flaws p');
+        if (whereEl == null) return;
+
+        const where = (whereEl.textContent || '').trim().toLowerCase();
+        // Контейнеры колонок
+        // Column containers
+        const rightCol = ctx.qs('.merits-and-flaws-column-right');
+        const rightContainer = rightCol ? rightCol.closest('.statblock-item-container.group-container') : null;
+        const leftCol = ctx.qs('.merits-and-flaws-column-left');
+        const leftContainer = leftCol ? leftCol.closest('.statblock-item-container.group-container') : null;
+
+        switch (where) {
+            case 'left':
+                if (rightContainer != null) rightContainer.style.display = 'none';
                 break;
-            case ('right'):
-                document.querySelector(activeTab + '.statblock-item-container.group-container:has(>.merits-and-flaws-column-left)').style.display = 'none';
+            case 'right':
+                if (leftContainer != null) leftContainer.style.display = 'none';
                 break;
         }
     }
-    else { // do nothing
-    }
-    // same code, but for a statblock in hover
-    if (document.querySelector(statblockCSSpathHover + '.merits-and-flaws-column-left .line.where-to-show-merits-and-flaws') != null) {
-        var whereToShowMeritsAndFlawsHover = document.querySelector('.popover.hover-popover .line.where-to-show-merits-and-flaws p').innerHTML;
-        switch (whereToShowMeritsAndFlawsHover) {
-            case ('left'):
-                document.querySelector(statblockCSSpathHover + '.statblock-item-container.group-container:has(>.merits-and-flaws-column-right)').style.display = 'none';
-                break;
-            case ('right'):
-                document.querySelector(statblockCSSpathHover + '.statblock-item-container.group-container:has(>.merits-and-flaws-column-left)').style.display = 'none';
-                break;
-        }
-    }
-    else { // do nothing
-    }
 
 
-    // set up some specific werewolf's characteristics to search
-    const werewolfOptions = ['rage', 'gnosis', 'glory', 'honor', 'wisdom'];
-    for (let y = 0; y < werewolfOptions.length; y++) {
-        // if the corresponding block exists ...
-        if (document.querySelector(activeTab + '.' + werewolfOptions[y] + '-block .line.' + werewolfOptions[y] + '_main') != null) {
-            // console.log('the block for ' + werewolfOptions[y].toUpperCase() + ' was found');
-            // looking for the simple dots
-            optionValue = document.querySelector(activeTab + '.' + werewolfOptions[y] + '_main p')
-            // if they are here...
-            if (optionValue != null) {
-                // and euqal to 10
-                if (optionValue.innerHTML == 10) {
-                    // replace it with X
-                    document.querySelector(activeTab + '.' + werewolfOptions[y] + '_main p').innerHTML = 'X';
-                    // console.log('replacing 10 for the simple dots of ' + werewolfOptions[y].toUpperCase());
-                }
-                // if not 10 - aliright then
-                else {
-                    // console.log('simple dots of ' + werewolfOptions[y].toUpperCase() + ' are fine')
-                }
-            }
-            // if there are no simple dots - there must be a Dice Roller
-            else {
-                var optionValue = document.querySelector(activeTab + '.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML;
-                // if euqal to 10
-                if (optionValue == 10) {
-                    // replace it with X
-                    document.querySelector(activeTab + '.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML = 'X';
-                    // console.log('replacing 10 for Dice Roller of ' + werewolfOptions[y].toUpperCase());
-                }
-                // if not 10 - aliright then
-                else {
-                    // console.log('Dice Roller of ' + werewolfOptions[y].toUpperCase() + ' is fine')
-                }
-            }
-        }
-        else if (document.querySelector('.wta-v20-werewolf') == null) {
-            // nothing
-        }
-        else {
-            // console.log('something went wrong with ' + werewolfOptions[y].toUpperCase())
-        }
+    // Задаем названия классов, по которым будем искать оборотневские характеристики
+    // Define the class names used to find werewolf stats
+    function applyWerewolfOptionsX(ctx) {
+        // Применяем только к листам оборотней
+        // Apply only to werewolf sheets
+        if (!sheetMatchesEndsWith(ctx.sheetClass, WTA_W20_WEREWOLF_SHEETS)) return;
 
-        // same code, but for a statblock in hover
-        if (document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '-block .line.' + werewolfOptions[y] + '_main') != null) {
-            // console.log('the block for ' + werewolfOptions[y].toUpperCase() + ' was found in hover');
-            optionValue = document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '_main p')
-            if (optionValue != null) {
-                if (optionValue.innerHTML == 10) {
-                    document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '_main p').innerHTML = 'X';
-                    // console.log('replacing 10 for the simple dots of ' + werewolfOptions[y].toUpperCase() + ' in hover');
+        // Названия характеристик/добродетелей, у которых бывают точки или dice-roller
+        // Names of stats/virtues that can appear as dots or via dice-roller
+        const werewolfOptions = ['rage', 'gnosis', 'glory', 'honor', 'wisdom'];
+        // Базовое значение и запас
+        // Base value and current pool
+        const suffixes = ['_main', '_current'];
+
+        for (let i = 0; i < werewolfOptions.length; i++) {
+            const opt = werewolfOptions[i];
+
+            for (let j = 0; j < suffixes.length; j++) {
+                const suffix = suffixes[j];
+
+                // Если вообще есть соответствующий блок...
+                // If the corresponding block exists at all...
+                if (ctx.qs('.' + opt + '-block .line.' + opt + suffix) == null) continue;
+
+                const baseSel = '.' + opt + suffix;
+
+                // Обычное значение
+                // Normal value
+                const pEl = ctx.qs(baseSel + ' p');
+                if (pEl != null) {
+                    const val = (pEl.textContent || '').trim();
+                    if (val === '10') setText(pEl, 'X');
+                    continue;
                 }
-                else {
-                    // console.log('simple dots of ' + werewolfOptions[y].toUpperCase() + ' are fine in hover')
+
+                // Dice-roller
+                const diceEl = ctx.qs(baseSel + ' .dice-roller-result');
+                if (diceEl != null) {
+                    const diceVal = (diceEl.textContent || '').trim();
+                    if (diceVal === '10') setText(diceEl, 'X');
                 }
             }
-            else {
-                var optionValue = document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML;
-                if (optionValue == 10) {
-                    document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[y] + '_main span.dice-roller-result').innerHTML = 'X';
-                    // console.log('replacing 10 for Dice Roller of '  + werewolfOptions[y].toUpperCase() + ' in hover');
-                }
-                else {
-                    // console.log('Dice Roller of ' + werewolfOptions[y].toUpperCase() + ' is fine in hover')
-                }
-            }
-        }
-        else if (document.querySelector(statblockCSSpathHover) == null) {
-            // nothing
-        }
-        else {
-            // console.log('something went wrong with ' + werewolfOptions[y].toUpperCase())
         }
     }
 
-    // specific werewolf's characteristics, current values
-    for (let z = 0; z < werewolfOptions.length; z++) {
-        // если вообще есть соответствующий блок...
-        if (document.querySelector(activeTab + '.' + werewolfOptions[z] + '-block .line.' + werewolfOptions[z] + '_current') != null) {
-            // console.log('the block for current ' + werewolfOptions[z].toUpperCase() + ' was found');
-            optionValue = document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current p')
-            if (optionValue != null) {
-                if (optionValue.innerHTML == 10) {
-                    document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current p').innerHTML = 'X';
-                    // console.log('replacing 10 for the simple dots of current ' + werewolfOptions[z].toUpperCase());
-                }
-                else {
-                    // console.log('simple dots of current ' + werewolfOptions[z].toUpperCase() + ' are fine')
-                }
-            }
-            else {
-                var optionValue = document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML;
-                if (optionValue == 10) {
-                    document.querySelector(activeTab + '.' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML = 'X';
-                    // console.log('replacing 10 for Dice Roller of current ' + werewolfOptions[z].toUpperCase());
-                }
-                else {
-                    // console.log('Dice Roller current of ' + werewolfOptions[z].toUpperCase() + ' is fine')
-                }
-            }
-        }
-        else if (document.querySelector(activeTab) == null) {
-            // nothing
-        }
-        else {
-            // console.log('с запасом ' + werewolfOptions[z].toUpperCase() + ' что-то пошло не так')
-        }
-        // same code, but for a statblock in hover
-        if (document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '-block .line.' + werewolfOptions[z] + '_current') != null) {
-            // console.log('the block for current ' + werewolfOptions[z].toUpperCase() + ' was found in hover');
-            optionValue = document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '_current p')
-            if (optionValue != null) {
-                if (optionValue.innerHTML == 10) {
-                    document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '_current p').innerHTML = 'X';
-                    // console.log('replacing 10 for the simple dots of current ' + werewolfOptions[z].toUpperCase() + ' in hover');
-                }
-                else {
-                    // console.log('simple dots of current ' + werewolfOptions[z].toUpperCase() + ' are fine in hover')
-                }
-            }
-            else {
-                var optionValue = document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML;
-                if (optionValue == 10) {
-                    document.querySelector(statblockCSSpathHover + '.' + werewolfOptions[z] + '_current span.dice-roller-result').innerHTML = 'X';
-                    // console.log('replacing 10 for Dice Roller of current ' + werewolfOptions[z].toUpperCase()) + ' in hover';
-                }
-                else {
-                    // console.log('Dice Roller current of  ' + werewolfOptions[z].toUpperCase() + ' is fine in hover')
-                }
-            }
-        }
-        else if (document.querySelector(statblockCSSpathHover) == null) {
-            // nothing
-        }
-        else {
-            // console.log('something went wrong with ' + werewolfOptions[z].toUpperCase() + ' in hover')
-        }
-    }
+    // --- Единый проход по контекстам (active + hover): запускаем все обработчики в одном месте ---
+    // --- Unified pass over contexts (active + hover): run all handlers in one place --- 
+    forEachProcessingContext(function (ctx) {
+        // Брендинг листа (фоны, логотипы, дефолтная слабость)
+        // Sheet branding (backgrounds, logos, default weakness)
+        applyV20VampireClanBranding(ctx.root, ctx.sheetClass);
+        applyDarkAgesVampireClanBranding(ctx.root, ctx.sheetClass);
+        applyW20WerewolfTribeBranding(ctx.root, ctx.sheetClass);
+        applyV20AgentAgencyBranding(ctx.root, ctx.sheetClass);
+        applyM20MageAffiliationBranding(ctx.root, ctx.sheetClass);
+        applyM20TechnocratAffiliationBranding(ctx.root, ctx.sheetClass);
+
+        // Отображение кланового изъяна
+        // Weakness visibility
+        applyWeaknessVisibility(ctx);
+
+        // Вычисление предела траты крови в ход
+        // "Blood per Turn" calculation
+        applyBloodPerTurnByGeneration(ctx);
+
+        // Косметика заметки
+        // note cosmetics
+        applyHideNoteH1IfMatchesCharacter(ctx);
+
+        // Форматирование значений способностей и дисциплин
+        // formatting of values of trais and disciplines
+        applyTraitsFormatting(ctx);
+        applyDisciplinesFormatting(ctx);
+
+        // Модификатор Пути/Человечности
+        // Path/Humanity bearing modifier
+        applyBearingModifier(ctx);
+
+        // Пересчет Х для воли и крови
+        // Willpower and blood tens-to-X transformation
+        applyWillpowerX(ctx);
+        applyBloodCurrentRecalc(ctx);
+
+        // Расположение оборотневых достоинств и недостатков слева или справа
+        // Werewolf's merits and flaws left or roght placement
+        applyMeritsFlawsPlacement(ctx);
+
+        // Пересчет Х для оборотневых опций
+        // Werewolf tens-to-X transformation
+        applyWerewolfOptionsX(ctx);
+    });
 
 
-
-})
+})();

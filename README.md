@@ -542,7 +542,7 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
     <summary>Werewolf</summary>
 
     ```statblock
-    layout: WtA w20 Werewolf
+    layout: WtA w20 Werewolf en
     dice: true
 
                         #### GENERAL INFO ####
@@ -1301,7 +1301,7 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
     <summary>Mortal</summary>
 
     ```statblock
-    layout: WoD v20 Mortal
+    layout: WoD v20 Mortal en
     dice: true
 
                             #### GENERAL INFO ####

@@ -864,6 +864,18 @@
                                                 },
                                                 {
                                                     "type": "property",
+                                                    "id": "8bc82858c92b",
+                                                    "properties": [
+                                                        "mechanics"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Механика",
+                                                    "diceCallback": "return [{ text: monster.mechanics + 'd10|none|noform|nodice|text(' + monster.mechanics +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
                                                     "id": "093b2889fa4a",
                                                     "properties": [
                                                         "occult"
@@ -908,18 +920,6 @@
                                                     "conditioned": true,
                                                     "display": "Финансы",
                                                     "diceCallback": "return [{ text: monster.finance + 'd10|none|noform|nodice|text(' + monster.finance +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "8bc82858c92b",
-                                                    "properties": [
-                                                        "mechanics"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Механика",
-                                                    "diceCallback": "return [{ text: monster.mechanics + 'd10|none|noform|nodice|text(' + monster.mechanics +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -2712,16 +2712,10 @@
                 }
             ],
             "open": true
-        },
-        {
-            "type": "javascript",
-            "id": "4ae91a6b7b48",
-            "conditioned": false,
-            "code": ""
         }
     ],
     "name": "VtM v20 Vampire Wild West",
-    "id": "196a7999084a",
+    "id": "c81b7a991b98",
     "columnWidth": 680,
     "columns": 1,
     "cssProperties": {
@@ -2730,5 +2724,6 @@
         "primaryColor": "#2c313c",
         "imageWidth": "120px",
         "imageHeight": "120px"
-    }
+    },
+    "diceParsing": []
 }

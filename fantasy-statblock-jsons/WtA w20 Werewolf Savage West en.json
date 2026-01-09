@@ -624,6 +624,18 @@
                                                 },
                                                 {
                                                     "type": "property",
+                                                    "id": "19cbbaf8eb1a",
+                                                    "properties": [
+                                                        "archery"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "diceCallback": "return [{ text: monster.archery + 'd10|none|noform|nodice|text(' + monster.archery +')' }]",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "display": "Archery"
+                                                },
+                                                {
+                                                    "type": "property",
                                                     "id": "2ae8ba69aadb",
                                                     "properties": [
                                                         "crafts"
@@ -632,18 +644,6 @@
                                                     "display": "Crafts",
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.crafts + 'd10|none|noform|nodice|text(' + monster.crafts +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "49db69f88a8a",
-                                                    "properties": [
-                                                        "drive"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Drive",
-                                                    "diceCallback": "return [{ text: monster.drive + 'd10|none|noform|nodice|text(' + monster.drive +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -705,6 +705,30 @@
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.performance + 'd10|none|noform|nodice|text(' + monster.performance +')' }]",
                                                     "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "49db69f88a8a",
+                                                    "properties": [
+                                                        "ride"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Ride",
+                                                    "diceCallback": "return [{ text: monster.ride + 'd10|none|noform|nodice|text(' + monster.ride +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "faea98eb5bd8",
+                                                    "properties": [
+                                                        "smithwork"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "diceCallback": "return [{ text: monster.smithwork + 'd10|none|noform|nodice|text(' + monster.smithwork +')' }]",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "display": "Smithwork"
                                                 },
                                                 {
                                                     "type": "property",
@@ -794,12 +818,12 @@
                                                     "type": "property",
                                                     "id": "68298b8b395b",
                                                     "properties": [
-                                                        "computer"
+                                                        "culture"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Computer",
+                                                    "display": "Culture",
                                                     "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.computer + 'd10|none|noform|nodice|text(' + monster.computer +')' }]",
+                                                    "diceCallback": "return [{ text: monster.culture + 'd10|none|noform|nodice|text(' + monster.culture +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -813,6 +837,18 @@
                                                     "display": "Enigmas",
                                                     "diceCallback": "return [{ text: monster.enigmas + 'd10|none|noform|nodice|text(' + monster.enigmas +')' }]",
                                                     "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "c9aa6919b9f8",
+                                                    "properties": [
+                                                        "geology"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "display": "Geology",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.geology + 'd10|none|noform|nodice|text(' + monster.geology +')' }]"
                                                 },
                                                 {
                                                     "type": "property",

@@ -2706,16 +2706,10 @@
                 }
             ],
             "open": true
-        },
-        {
-            "type": "javascript",
-            "id": "4ae91a6b7b48",
-            "conditioned": false,
-            "code": ""
         }
     ],
     "name": "VtM v20 Vampire Wild West en",
-    "id": "0b48fa5a79db",
+    "id": "79e968eb9b3b",
     "columnWidth": 680,
     "columns": 1,
     "cssProperties": {
@@ -2724,5 +2718,6 @@
         "imageHeight": "120px",
         "contentFont": "\"Hagin Caps Medium\", \"Myriad Pro\", Calibri, Helvetica, Arial, sans-serif",
         "headingFont": "\"Chibola\", \"Lora\", \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif"
-    }
+    },
+    "diceParsing": []
 }

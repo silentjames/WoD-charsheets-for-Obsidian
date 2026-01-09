@@ -613,12 +613,12 @@
                                                     "type": "property",
                                                     "id": "49db69f88a8a",
                                                     "properties": [
-                                                        "drive"
+                                                        "ride"
                                                     ],
                                                     "fallback": "-",
                                                     "conditioned": true,
-                                                    "display": "Вождение",
-                                                    "diceCallback": "return [{ text: monster.drive + 'd10|none|noform|nodice|text(' + monster.drive +')' }]",
+                                                    "display": "Верховая езда",
+                                                    "diceCallback": "return [{ text: monster.ride + 'd10|none|noform|nodice|text(' + monster.ride +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -656,6 +656,18 @@
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.performance + 'd10|none|noform|nodice|text(' + monster.performance +')' }]",
                                                     "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "2be859b88bba",
+                                                    "properties": [
+                                                        "smithwork"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "diceCallback": "return [{ text: monster.smithwork + 'd10|none|noform|nodice|text(' + monster.smithwork +')' }]",
+                                                    "display": "Кузнечное дело"
                                                 },
                                                 {
                                                     "type": "property",
@@ -706,6 +718,18 @@
                                                     "conditioned": true,
                                                     "diceCallback": "return [{ text: monster.firearms + 'd10|none|noform|nodice|text(' + monster.firearms +')' }]",
                                                     "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "891ae9fbb998",
+                                                    "properties": [
+                                                        "archery"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "diceCallback": "return [{ text: monster.archery + 'd10|none|noform|nodice|text(' + monster.archery +')' }]",
+                                                    "conditioned": true,
+                                                    "dice": true,
+                                                    "display": "Стрельба из лука"
                                                 },
                                                 {
                                                     "type": "property",
@@ -780,6 +804,18 @@
                                                 },
                                                 {
                                                     "type": "property",
+                                                    "id": "9899c81968f8",
+                                                    "properties": [
+                                                        "geology"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "diceCallback": "return [{ text: monster.geology + 'd10|none|noform|nodice|text(' + monster.geology +')' }]",
+                                                    "display": "Геология",
+                                                    "conditioned": true,
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
                                                     "id": "581bc82bc888",
                                                     "properties": [
                                                         "academics"
@@ -830,12 +866,12 @@
                                                     "type": "property",
                                                     "id": "68298b8b395b",
                                                     "properties": [
-                                                        "computer"
+                                                        "culture"
                                                     ],
                                                     "fallback": "-",
-                                                    "display": "Информатика",
+                                                    "display": "Культура",
                                                     "conditioned": true,
-                                                    "diceCallback": "return [{ text: monster.computer + 'd10|none|noform|nodice|text(' + monster.computer +')' }]",
+                                                    "diceCallback": "return [{ text: monster.culture + 'd10|none|noform|nodice|text(' + monster.culture +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -848,6 +884,18 @@
                                                     "conditioned": true,
                                                     "display": "Медицина",
                                                     "diceCallback": "return [{ text: monster.medicine + 'd10|none|noform|nodice|text(' + monster.medicine +')' }]",
+                                                    "dice": true
+                                                },
+                                                {
+                                                    "type": "property",
+                                                    "id": "8bc82858c92b",
+                                                    "properties": [
+                                                        "mechanics"
+                                                    ],
+                                                    "fallback": "-",
+                                                    "conditioned": true,
+                                                    "display": "Механика",
+                                                    "diceCallback": "return [{ text: monster.mechanics + 'd10|none|noform|nodice|text(' + monster.mechanics +')' }]",
                                                     "dice": true
                                                 },
                                                 {
@@ -884,18 +932,6 @@
                                                     "conditioned": true,
                                                     "display": "Ритуалы",
                                                     "diceCallback": "return [{ text: monster.rituals + 'd10|none|noform|nodice|text(' + monster.rituals +')' }]",
-                                                    "dice": true
-                                                },
-                                                {
-                                                    "type": "property",
-                                                    "id": "8bc82858c92b",
-                                                    "properties": [
-                                                        "technology"
-                                                    ],
-                                                    "fallback": "-",
-                                                    "conditioned": true,
-                                                    "display": "Электроника",
-                                                    "diceCallback": "return [{ text: monster.technology + 'd10|none|noform|nodice|text(' + monster.technology +')' }]",
                                                     "dice": true
                                                 },
                                                 {

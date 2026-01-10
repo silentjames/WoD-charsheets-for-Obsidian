@@ -1,5 +1,5 @@
 Несколько бланков персонажей старого Мира Тьмы (для двадцатой редакции, она же четвертая, она же "Классические правила"). Этакое дополнение, предназначенное для [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) и [Obsidian](https://github.com/obsidianmd).
-На данный момент, доступны бланки для **вампиров** (современность и темные века), **оборотней**, **магов** (пока что только на английском), **смертных** и **правительственных агентов** (рескин смертных).
+На данный момент, доступны бланки для **вампиров** (современность, Дикий Запад, и Темные Века), **оборотней** (современность и Дикий\Буйный Запад) , **магов** (Традиции и Технократия), **смертных**, и **правительственных агентов** (рескин смертных).
 
 <p align="center">
     <a style='text-decoration: none' href="README.md"><img src=https://img.shields.io/badge/ReadMe_in_English-here-blue></a>
@@ -11,19 +11,20 @@
 Для начала, пример бланка вампиров:
 
 <p align="center">
-    <a href='imgs/vampire_ru.png'><img src='imgs/vampire_ru_small.png' height='646' width='auto'></a>
-    <a href='imgs/vampire_dark_ages_ru.png'><img src='imgs/vampire_dark_ages_ru_small.png' height='646' width='auto'></a>
+    <a href='imgs/vampire_ru.png'><img src='imgs/vampire_ru_small.png' height='430' width='auto'></a>
+    <a href='imgs/vampire_wild_west_ru.png'><img src='imgs/vampire_wild_west_ru_small.png' height='430' width='auto'></a>
+    <a href='imgs/vampire_dark_ages_ru.png'><img src='imgs/vampire_dark_ages_ru_small.png' height='430' width='auto'></a>
 </p>
-
 
 ## Оборотни, смертные и агенты
 
 Под спойлером - остальные примеры.
 
 <details>
-    <summary>Оборотни</summary>
+    <summary>Оборотни (современность и Дикий\Буйный Запад)</summary>
         <p align="center">
-            <a href='imgs/werewolf_ru.png'><img src='imgs/werewolf_ru_small.png' width='450'></a>
+            <a href='imgs/werewolf_ru.png'><img src='imgs/werewolf_ru_small.png' height='646' width='auto'></a>
+            <a href='imgs/werewolf_savage_west_ru.png'><img src='imgs/werewolf_savage_west_ru_small.png' height='646' width='auto'></a>
         </p>
 </details>
 
@@ -59,15 +60,19 @@
     <img align="center" src='imgs/header_vampire_dark_ages_ru.png' width='395'>
 </p>
 <p align="center">
+    <img align="center" src='imgs/header_vampire_dark_ages_ru.png' width='395'>
+</p>
+<p align="center">
+    <img align="center" src='imgs/header_werewolf_ru.png' width='395'>
+    <img align="center" src='imgs/header_werewolf_savage_west_ru.png' width='395'>
+</p>
+<p align="center">
     <img align="center" src='imgs/header_mage_ru.png' width='395'>
     <img align="center" src='imgs/header_technocrat_ru.png' width='395'>
 </p>
 <p align="center">
     <img align="center" src='imgs/header_mortal_ru.png' width='395'>
     <img align="center" src='imgs/header_agent_ru.png' width='395'>
-</p>
-<p align="center">
-    <img align="center" src='imgs/header_werewolf_ru.png' width='395'>
 </p>
 
 # Описание
@@ -733,7 +738,7 @@
 
                              #### ФЕТИШИ И РИТУАЛЫ ####
 
-    Fetishes: Фетиши
+    Fetishes: ФЕТИШИ
 
     fetish1_name: 
     fetish1_level: 
@@ -745,7 +750,245 @@
     fetish3_level: 
     fetish3_gnosis: 
 
-    Rites: Ритуалы
+    Rites: РИТУАЛЫ
+    rite1: 
+    rite2: 
+    rite3: 
+    rite4: 
+    rite5:
+
+    ```
+
+</details>
+
+<details>
+    <summary>Оборотень (Буйный Запад)</summary>
+
+    ```statblock
+    layout: WtA w20 Werewolf Savage West
+    dice: true
+
+                            #### ОСНОВНАЯ ИНФОРМАЦИЯ ####
+
+    name: 
+    desc: 
+    breed: 
+    auspice: 
+    tribe: 
+    pack_name: 
+    totem: 
+    nature: 
+    concept: 
+    demeanor: 
+
+    img: 
+    img_title: 
+    img_alt: 
+    img_alt_title: 
+
+                            #### ХАРАКТЕРИСТИКИ ####
+
+    Attributes: ХАРАКТЕРИСТИКИ
+
+    Physical: ФИЗИЧЕСКИЕ
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
+
+    Social: СОЦИАЛЬНЫЕ
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
+
+    Mental: МЕНТАЛЬНЫЕ
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
+
+                                #### СПОСОБНОСТИ ####
+
+    Abilities: СПОСОБНОСТИ
+
+    Talents: ТАЛАНТЫ
+    athletics: 0 # Атлетика
+    alertness: 0 # Бдительность
+    brawl: 0 # Драка
+    intimidation: 0 # Запугивание
+    expression: 0 # Красноречие
+    leadership: 0
+    primalurge: 0 # Первобытный инстинкт
+    streetwise: 0 # Уличное чутье
+    subterfuge: 0 # Хитрость
+    empathy: 0
+    new_talent: 
+    new_talent_value: 
+
+    Skills: НАВЫКИ
+    ride: 0 # Верховая езда
+    larceny: 0 # Воровство
+    survival: 0
+    performance: 0
+    smithwork: 0 # Кузнечное дело
+    animalken: 0
+    crafts: 0
+    stealth: 0
+    firearms: 0
+    archery: 0 # Стрельба из лука
+    melee: 0
+    etiquette: 0
+    new_skill: 
+    new_skill_value: 
+
+    Knowledges: ЗНАНИЯ
+    geology: 0
+    academics: 0
+    science: 0
+    enigmas: 0 # Загадки
+    law: 0
+    culture: 0
+    medicine: 0
+    mechanics: 0
+    occult: 0
+    rituals: 0 # Ритуалы
+    investigation: 0
+    technology: 0
+    new_knowledge: 
+    new_knowledge_value: 
+
+                            #### ПРЕИМУЩЕСТВА ####
+
+    Advantages: ПРЕИМУЩЕСТВА
+
+    Backgrounds: ФАКТЫ  БИОГРАФИИ
+    background1_name: 
+    background1_value: 
+    background2_name: 
+    background2_value: 
+    background3_name: 
+    background3_value: 
+    background4_name: 
+    background4_value: 
+    background5_name: 
+    background5_value: 
+    background6_name: 
+    background6_value: 
+
+    Gifts: ДАРЫ
+    gift1: 
+    gift2: 
+    gift3: 
+    gift4: 
+    gift5: 
+    gift6: 
+    gift7: 
+    gift8: 
+    gift9: 
+    gift10: 
+
+                        #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
+
+    where-to-show-merits-and-flaws: right
+
+    Merits: ДОСТОИНСТВА
+    merit1_name: 
+    merit1_value: 
+    merit2_name: 
+    merit2_value: 
+    merit3_name: 
+    merit3_value: 
+    merit4_name: 
+    merit4_value: 
+    merit5_name: 
+    merit5_value: 
+    merit6_name: 
+    merit6_value: 
+    merit7_name: 
+    merit7_value: 
+
+    Flaws: 
+    flaw1_name: 
+    flaw1_value: 
+    flaw2_name: 
+    flaw2_value: 
+    flaw3_name: 
+    flaw3_value: 
+    flaw4_name: 
+    flaw4_value: 
+    flaw5_name: 
+    flaw5_value: 
+    flaw6_name: 
+    flaw6_value: 
+    flaw7_name: 
+    flaw7_value: 
+
+                                #### ПОЧЕТ ####
+
+    Renown: ПОЧЕТ
+
+    Glory: Слава
+    glory_main: 0
+    glory_current: 0
+
+    Honor: Честь
+    honor_main: 0
+    honor_current: 0
+
+    Wisdom: Мудрость
+    wisdom_main: 0
+    wisdom_current: 0
+
+                        #### ЯРОСТЬ / ВОЛЯ /  ЗДОРОВЬЕ ####
+
+    Rage: Ярость
+    rage_main: 0
+    rage_current: 0
+
+    Gnosis: Гнозис
+    gnosis_main: 0
+    gnosis_current: 0
+
+    Willpower: Воля
+    willpower_main: 0
+    willpower_current: 0
+
+    Rank: 0
+
+    Health: ЗДОРОВЬЕ
+    aggravated: 
+    lethal: 
+    bashing: 
+
+                            #### СПЕЦИАЛИЗАЦИЯ ####
+
+    Specialties: СПЕЦИАЛИЗАЦИЯ
+    specialty1_origin: 
+    specialty1_name: 
+    specialty2_origin: 
+    specialty2_name: 
+    specialty3_origin: 
+    specialty3_name: 
+    specialty4_origin: 
+    specialty4_name: 
+    specialty5_origin: 
+    specialty5_name: 
+    specialty6_origin: 
+    specialty6_name:  
+
+                            #### ФЕТИШИ И РИТУАЛЫ ####
+
+    Fetishes: ФЕТИШИ
+
+    fetish1_name: 
+    fetish1_level: 
+    fetish1_gnosis: 
+    fetish2_name: 
+    fetish2_level: 
+    fetish2_gnosis: 
+    fetish3_name: 
+    fetish3_level: 
+    fetish3_gnosis: 
+
+    Rites: РИТУАЛЫ
     rite1: 
     rite2: 
     rite3: 

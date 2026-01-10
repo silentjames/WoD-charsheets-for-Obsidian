@@ -1,5 +1,5 @@
 Some character sheets for World of Darkness (20th Anniversary Edition) characters, based on [Fantasy Statblocks](https://github.com/javalent/fantasy-statblocks) and [Obsidian](https://github.com/obsidianmd).
-Currently, there are **vampires** (modern nights and dark ages), **werewolves**, **mages** (from Traditions and Technocracy), **mortals** and **government agents** (mortal reskin actually, kinda based on 'Project Twilight').
+Currently, there are **vampires** (modern nights, Wild West and Dark Ages), **werewolves** (modern days and Wyld/Savage West), **mages** (from Traditions and Technocracy), **mortals** and **government agents** (mortal reskin actually, kinda based on 'Project Twilight').
 
 <p align="center">
     <a style='text-decoration: none' href="README.ru.md"><img src=https://img.shields.io/badge/ReadMe_%D0%BD%D0%B0_%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%BC-%D0%B7%D0%B4%D0%B5%D1%81%D1%8C-cian></a>
@@ -13,8 +13,9 @@ If you want a custom character sheet adapted to your specific RPG (not just Worl
 First of all, examples of VtM character sheets:
 
 <p align="center">
-    <a href='imgs/vampire_en.png'><img src='imgs/vampire_en_small.png' height='660' width='auto'></a>
-    <a href='imgs/vampire_dark_ages_en.png'><img src='imgs/vampire_dark_ages_en_small.png' height='660' width='auto'></a>
+    <a href='imgs/vampire_en.png'><img src='imgs/vampire_en_small.png' height='430' width='auto'></a>
+    <a href='imgs/vampire_wild_west_en.png'><img src='imgs/vampire_wild_west_en_small.png' height='430' width='auto'></a>
+    <a href='imgs/vampire_dark_ages_en.png'><img src='imgs/vampire_dark_ages_en_small.png' height='430' width='auto'></a>
 </p>
 
 ## Werewolves, mortals and agents
@@ -22,9 +23,10 @@ First of all, examples of VtM character sheets:
 Under the spoilers, you can find all other charsheets.
 
 <details>
-    <summary>Werewolf</summary>
+    <summary>Werewolf (modern days and Wyld/Savage West)</summary>
         <p align="center">
-            <a href='imgs/werewolf_en.png'><img src='imgs/werewolf_en_small.png' width='450'></a>
+            <a href='imgs/werewolf_en.png'><img src='imgs/werewolf_en_small.png' height='646' width='auto'></a>
+            <a href='imgs/werewolf_savage_west_en.png'><img src='imgs/werewolf_savage_west_en_small.png' height='646' width='auto'></a>
         </p>
 </details>
 
@@ -60,7 +62,14 @@ There is also the option to add the top part of the charsheet as a header of you
 
 <p align="center">
     <img align="center" src='imgs/header_vampire_en.png' width='395'>
+    <img align="center" src='imgs/header_vampire_wild_west_en.png' width='395'>
+</p>
+<p align="center">
     <img align="center" src='imgs/header_vampire_dark_ages_en.png' width='395'>
+</p>
+<p align="center">
+    <img align="center" src='imgs/header_werewolf_en.png' width='395'>
+    <img align="center" src='imgs/header_werewolf_savage_west_en.png' width='395'>
 </p>
 <p align="center">
     <img align="center" src='imgs/header_mage_en.png' width='395'>
@@ -69,9 +78,6 @@ There is also the option to add the top part of the charsheet as a header of you
 <p align="center">
     <img align="center" src='imgs/header_mortal_en.png' width='395'>
     <img align="center" src='imgs/header_agent_en.png' width='395'>
-</p>
-<p align="center">
-    <img align="center" src='imgs/header_werewolf_en.png' width='395'>
 </p>
 
 # Description
@@ -767,6 +773,242 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
     specialty5_name: 
     specialty6_origin: 
     specialty6_name:  
+    ```
+
+</details>
+
+<details>
+    <summary>Werewolf (Savage West)</summary>
+
+    ```statblock
+    layout: WtA w20 Werewolf Savage West en
+    dice: true
+
+                            #### GENERAL INFO ####
+
+    name: 
+    desc: 
+    breed: 
+    auspice: 
+    tribe: 
+    pack_name: 
+    totem: 
+    nature: 
+    demeanor: 
+    concept: 
+
+    img: 
+    img_title: 
+    img_alt: 
+    img_alt_title: 
+
+                                #### ATTRIBUTES ####
+
+    Attributes: ATTRIBUTES
+
+    Physical: PHYSICAL
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
+
+    Social: SOCIAL
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
+
+    Mental: MENTAL
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
+
+                                #### ABILITIES ####
+
+    Abilities: ABILITIES
+
+    Talents: TALENTS
+    alertness: 0
+    athletics: 0
+    brawl: 0
+    empathy: 0
+    expression: 0
+    intimidation: 0
+    leadership: 0
+    primalurge: 0
+    streetwise: 0
+    subterfuge: 0
+    new_talent: 
+    new_talent_value: 
+
+    Skills: SKILLS
+    animalken: 0
+    archery: 0
+    crafts: 0
+    etiquette: 0
+    firearms: 0
+    larceny: 0
+    melee: 0
+    performance: 0
+    ride: 0
+    smithwork: 0
+    stealth: 0
+    survival: 0
+    new_skill: 
+    new_skill_value: 
+
+    Knowledges: KNOWLEDGES
+    academics: 0
+    culture: 0
+    enigmas: 0
+    geology: 0
+    investigation: 0
+    law: 0
+    medicine: 0
+    occult: 0
+    rituals: 0
+    science: 0
+    technology: 0
+    new_knowledge: 
+    new_knowledge_value: 
+
+                                #### ADVANTAGES ####
+
+    Advantages: ADVANTAGES
+
+    Backgrounds: BACKGROUNDS
+    background1_name: 
+    background1_value: 
+    background2_name: 
+    background2_value: 
+    background3_name: 
+    background3_value: 
+    background4_name: 
+    background4_value: 
+    background5_name: 
+    background5_value: 
+    background6_name: 
+    background6_value: 
+
+    Gifts: GIFTS
+    gift1: 
+    gift2: 
+    gift3: 
+    gift4: 
+    gift5: 
+    gift6: 
+    gift7: 
+    gift8: 
+    gift9: 
+    gift10: 
+
+                                #### MERITS / FLAWS ####
+
+    where-to-show-merits-and-flaws: right
+
+    Merits: MERITS
+    merit1_name: 
+    merit1_value: 
+    merit2_name: 
+    merit2_value: 
+    merit3_name: 
+    merit3_value: 
+    merit4_name: 
+    merit4_value: 
+    merit5_name: 
+    merit5_value: 
+    merit6_name: 
+    merit6_value: 
+    merit7_name: 
+    merit7_value: 
+
+    Flaws: 
+    flaw1_name: 
+    flaw1_value: 
+    flaw2_name: 
+    flaw2_value: 
+    flaw3_name: 
+    flaw3_value: 
+    flaw4_name: 
+    flaw4_value: 
+    flaw5_name: 
+    flaw5_value: 
+    flaw6_name: 
+    flaw6_value: 
+    flaw7_name: 
+    flaw7_value: 
+
+                                #### RENOWN ####
+
+    Renown: Renown
+
+    Glory: Glory
+    glory_main: 0
+    glory_current: 0
+
+    Honor: Honor
+    honor_main: 0
+    honor_current: 0
+
+    Wisdom: Wisdom
+    wisdom_main: 0
+    wisdom_current: 0
+
+                        #### RAGE / WILLPOWER /  HEALTH ####
+
+    Rage: RAGE
+    rage_main: 0
+    rage_current: 0
+
+    Gnosis: GNOSIS
+    gnosis_main: 0
+    gnosis_current: 0
+
+    Willpower: WILLPOWER
+    willpower_main: 0
+    willpower_current: 0
+
+    Rank: 0
+
+    Health: HEALTH
+    aggravated: 
+    lethal: 
+    bashing: 
+
+                                #### SPECIALTIES ####
+
+    Specialties: 
+    specialty1_origin: 
+    specialty1_name: 
+    specialty2_origin: 
+    specialty2_name: 
+    specialty3_origin: 
+    specialty3_name: 
+    specialty4_origin: 
+    specialty4_name: 
+    specialty5_origin: 
+    specialty5_name: 
+    specialty6_origin: 
+    specialty6_name:  
+
+                            #### FETISHES and RITES ####
+
+    Fetishes: FETISHES
+
+    fetish1_name: 
+    fetish1_level: 
+    fetish1_gnosis: 
+    fetish2_name: 
+    fetish2_level: 
+    fetish2_gnosis: 
+    fetish3_name: 
+    fetish3_level: 
+    fetish3_gnosis: 
+
+    Rites: RITES
+    rite1: 
+    rite2: 
+    rite3: 
+    rite4: 
+    rite5:
     ```
 
 </details>

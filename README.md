@@ -138,7 +138,7 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
     dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
     ```
     ````
-    `"/z_Z manuals/WoDCharsheets-en.js"` - it's my path to the JS file inside my Obsidian vault, you must replace it with your own.
+    `"/z_Z manuals/WoDCharsheets-en.js"` - it's my path to the JS file **inside Obsidian vault**, you must replace it with your own.
 
 10. Copy the blank layout of your future character from the below and paste it into your note;
 11.  Optional: you might need to reopen the note (or oven restart Obsidian, but in most cases it's not needed);
@@ -1988,10 +1988,12 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
 <br>
 **A**: I can't add these fonts into the statblock because of legal reasons. But you can add them manually into your system, and then the statblock will use them.<br>
 For vampires and mortals, you'll need Marta and Trajan Pro 3.<br>
+For Wild West vampires - Hagin Caps Medium and Chibola.<br>
 For Dark Ages vampires - PT Serif Pro and Lidia.<br>
 For werewolves - Marta and KistyCC.<br>
+For Savage West werewolves - Hagin Caps Medium and URWWoodTypD.<br>
 For agents - GNUTypewriter.<br>
-For mages - Marta and Abbess.<br>
+For mages and technocrats - Marta and Abbess.<br>
 Also, you can change all fonts you want, using Apperance tab in each statblock's settings:
 <p align="center">
     <img src='imgs/statblock_settings.png' width='650'>

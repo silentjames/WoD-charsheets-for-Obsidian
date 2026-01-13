@@ -1462,7 +1462,7 @@ async function waitForAnySelector(selectors, opts = {}) {
 
         // Если путь это человечность, то...
         // If the Path is Humanity, then...
-        if (path.toLowerCase() === 'человечность') {
+        if (path.toLowerCase() === 'humanity') {
             const pathValueEl = ctx.qs('.line.path_value p');
             if (pathValueEl == null) return;
 
@@ -1480,22 +1480,22 @@ async function waitForAnySelector(selectors, opts = {}) {
 
             switch (pathModifier) {
                 case 'X':
-                    bearingValueEl.textContent = 'Нормальность ( -2 )'; break;
+                    bearingValueEl.textContent = 'Normalcy ( -2 )'; break;
                 case '9':
                 case '8':
-                    bearingValueEl.textContent = 'Нормальность ( -1 )'; break;
+                    bearingValueEl.textContent = 'Normalcy ( -1 )'; break;
                 case '7':
                 case '6':
                 case '5':
                 case '4':
-                    bearingValueEl.textContent = 'Нормальность'; break;
+                    bearingValueEl.textContent = 'Normalcy'; break;
                 case '3':
                 case '2':
-                    bearingValueEl.textContent = 'Нормальность ( +1 )'; break;
+                    bearingValueEl.textContent = 'Normalcy ( +1 )'; break;
                 case '1':
-                    bearingValueEl.textContent = 'Нормальность ( +2 )'; break;
+                    bearingValueEl.textContent = 'Normalcy ( +2 )'; break;
                 default:
-                    bearingValueEl.textContent = 'Теперь ты Зверь!';
+                    bearingValueEl.textContent = 'You`re the Beast!';
                     break;
             }
             return;
@@ -1646,7 +1646,7 @@ async function waitForAnySelector(selectors, opts = {}) {
                 ctx.qs('.line.blood_per_turn').innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrentRaw + '.  Time to think about your Humanity!';
                 log('blood check for more than forty')
             } else {
-                log('blood' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' fails')
+                log('blood' + (ctx.mode === 'hover' ? ' in hover' : '') + ' fails')
             }
         }
         else {

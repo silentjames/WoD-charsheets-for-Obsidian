@@ -1211,6 +1211,14 @@ async function waitForAnySelector(selectors, opts = {}) {
                 outEl.textContent = '2'; break;
             case '8':
                 outEl.textContent = '3'; break;
+            case '7':
+                outEl.textContent = '4'; break;
+            case '6':
+                outEl.textContent = '6'; break;
+            case '5':
+                outEl.textContent = '8'; break;
+            case '4':
+                outEl.textContent = '10'; break;
             default:
                 // nothing
                 // ничего

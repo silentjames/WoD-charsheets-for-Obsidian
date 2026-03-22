@@ -7,7 +7,7 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
-##
+# Robert Norge
 ```statblock
 layout: WoD v20 Mortal en
 dice: true

@@ -7,7 +7,7 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
-## 
+# Morticia Fulton
 ```statblock
 layout: VtM v20 Vampire Dark Ages en
 dice: true
@@ -23,7 +23,7 @@ nature: [[Director]]
 demeanor: [[Confidant]]
 concept: Soothsayer
 
-img: [[Хантер.png]]
+img: [[Morticia Fulton.png]]
 img_title: 
 img_alt: 
 img_alt_title: 
@@ -110,6 +110,10 @@ discipline5_name: [[Dominate]]
 discipline5_value: 4
 discipline6_name: [[Presence]]
 discipline6_value: 4
+discipline7_name: 
+discipline7_value: 
+discipline8_name: 
+discipline8_value: 
 
 Backgrounds: BACKGROUNDS
 background1_name: Influence
@@ -127,7 +131,9 @@ background6_value:
 
 Virtues: VIRTUES
 conscience: 4
+conviction: 
 selfcontrol: 3
+instinct: 
 courage: 4
 
                         #### MERITS / FLAWS ####

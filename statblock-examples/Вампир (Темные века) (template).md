@@ -6,7 +6,7 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 ```
 
-## 
+# Мортиция Фултон
 ```statblock
 layout: VtM v20 Vampire Dark Ages
 dice: true
@@ -108,6 +108,10 @@ discipline5_name: [[Доминирование]]
 discipline5_value: 4
 discipline6_name: [[Величие]]
 discipline6_value: 4
+discipline7_name: 
+discipline7_value: 
+discipline8_name: 
+discipline8_value: 
 
 Backgrounds: ФАКТЫ  БИОГРАФИИ
 background1_name: Статус
@@ -125,7 +129,9 @@ background6_value:
 
 Virtues: ДОБРОДЕТЕЛИ
 conscience: 4
+conviction: 
 selfcontrol: 3
+instinct: 
 courage: 4
 
                     #### ДОСТОИНСТВА / НЕДОСТАТКИ ####

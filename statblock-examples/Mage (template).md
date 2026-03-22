@@ -7,7 +7,7 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
-## 
+# Nicole Beladonna Scott
 ```statblock
 layout: MtA m20 Mage en
 
@@ -22,7 +22,7 @@ affiliation: Orphans
 sect: Traditions
 concept: Annoyed by past-life
 
-img: [[Анна Уиллер.png]]
+img: [[Nicole Beladonna Scott.png]]
 img_title: 
 img_alt: 
 img_alt_title: 
@@ -102,9 +102,11 @@ Spheres: SPHERES
 correspondence: 2
 entroty: 
 forces: 
+
 life: 
 matter: 2
 mind: 2
+
 prime: 1
 spirit: 
 time: 

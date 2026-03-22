@@ -7,7 +7,7 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
-##
+# Stu Powell
 ```statblock
 layout: WtA w20 Werewolf en
 dice: true

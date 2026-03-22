@@ -6,7 +6,7 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 ```
 
-##
+# Франциск "Франц" Галлахер
 ```statblock
 layout: VtM v20 Vampire
 dice: true
@@ -109,6 +109,10 @@ discipline5_name:
 discipline5_value: 
 discipline6_name: 
 discipline6_value: 
+discipline7_name: 
+discipline7_value: 
+discipline8_name: 
+discipline8_value: 
 
 Backgrounds: ФАКТЫ БИОГРАФИИ
 background1_name: Поколение
@@ -126,7 +130,9 @@ background6_value:
 
 Virtues: ДОБРОДЕТЕЛИ
 conscience: 4
+conviction: 
 selfcontrol: 5
+instinct: 
 courage: 5
 
                     #### ДОСТОИНСТВА / НЕДОСТАТКИ ####

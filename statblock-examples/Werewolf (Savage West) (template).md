@@ -6,7 +6,7 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
-# Stu Powell
+# Fast-as-Shadow
 ```statblock
 layout: WtA w20 Werewolf Savage West en
 
@@ -18,12 +18,12 @@ breed: Homid
 auspice: Galliard
 tribe: Uktena
 pack_name: нет
-totem: Шакал
+totem: Jackal
 nature: 
 demeanor: 
 concept: 
 
-img: [[Быстрый-как-Тень.png]]
+img: [[Fast-as-Shadow.png]]
 img_title: 
 img_alt: 
 img_alt_title: 
@@ -131,7 +131,7 @@ gift10:
 where-to-show-merits-and-flaws: right
 
 Merits: MERITS
-merit1_name: [[Язык|Language]] (Navajo)
+merit1_name: [[Language]] (Navajo)
 merit1_value: +1
 merit2_name: 
 merit2_value: 

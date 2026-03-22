@@ -7,7 +7,7 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
-##
+# Gerald Osbourne
 ```statblock
 layout: WoD v20 Agent en
 dice: true
@@ -23,7 +23,7 @@ agency: FBI
 rank: SAD Director
 codename: 
 
-img: [[Джеральд Осборн.png]]
+img: [[Gerald Osbourne.png]]
 img_title: 
 img_alt: 
 img_alt_title: 
@@ -133,7 +133,7 @@ courage: 4
                     #### MERITS / FLAWS ####
 
 Merits: MERITS
-merit1_name: [[Здравый смысл|Common Sense]]
+merit1_name: [[Common Sense]]
 merit1_value: -1
 merit2_name: Top Secret Access
 merit2_value: -2

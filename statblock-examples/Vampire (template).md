@@ -7,23 +7,23 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
-## 
+# Edward Lewis
 ```statblock
 layout: VtM v20 Vampire en
 dice: true
 
                         #### GENERAL INFO ####
 
-name: Edward Lewis 
+name: Edward Lewis
 desc: NSA agent
 clan: Tremere
 generation: 8
-sire: [[Дункан Фегредо | Duncan Fegredo]]
+sire: [[Duncan Fegredo]]
 nature: Bon Vivant
 demeanor: Competitor
 concept: Deviant
 
-img: [[Валентайн.png]]
+img: [[Edward Lewis.png]]
 img_title: favorire look
 img_alt: 
 img_alt_title: 
@@ -110,6 +110,10 @@ discipline5_name: Precence
 discipline5_value: 1
 discipline6_name: Obtenebration
 discipline6_value: 1
+discipline7_name: 
+discipline7_value: 
+discipline8_name: 
+discipline8_value: 
 
 Backgrounds: BACKGROUNDS
 background1_name: Herd
@@ -127,7 +131,9 @@ background6_value:
 
 Virtues: VIRTUES
 conscience: 1
+conviction: 
 selfcontrol: 3
+instinct: 
 courage: 4
 
                         #### MERITS / FLAWS ####

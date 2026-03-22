@@ -7,7 +7,7 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
-## 
+# Primrose Smith
 ```statblock
 layout: MtA m20 Technocrat en
 
@@ -22,7 +22,7 @@ affiliation: The New World Order
 sect: Technocratic Union
 concept: Vat-Grown Black Suit
 
-img: [[Иден Корлисс 3 1.png]]
+img: [[Primrose Smith.png]]
 img_title: 
 img_alt: 
 img_alt_title: 

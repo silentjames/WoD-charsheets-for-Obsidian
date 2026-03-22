@@ -6,7 +6,7 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets-en.js"))
 ```
 
-
+# Thomas Scott
 ```statblock
 layout: VtM v20 Vampire Wild West en
 
@@ -18,10 +18,10 @@ clan: Tremere
 generation: 11
 sire: Robert Johnson
 nature: Dabbler
-demeanor: Scientist # Маска
-concept: Loudmouth # Амплуа
+demeanor: Scientist
+concept: Loudmouth
 
-img: [[Томас Скотт.png]]
+img: [[Thomas Scott.png]]
 img_title: 
 img_alt: 
 img_alt_title: 
@@ -99,9 +99,9 @@ new_knowledge_value:
 Advantages: ADVANTAGES
 
 Disciplines: DISCIPLINES
-discipline1_name: [[Доминирование|Dominate]]
+discipline1_name: [[Dominate]]
 discipline1_value: 1
-discipline2_name: [[Тауматургия|Thaumaturgy]]
+discipline2_name: [[Thaumaturgy]]
 discipline2_value: 3
 discipline3_name: 
 discipline3_value: 
@@ -111,13 +111,17 @@ discipline5_name:
 discipline5_value: 
 discipline6_name: 
 discipline6_value: 
+discipline7_name: 
+discipline7_value: 
+discipline8_name: 
+discipline8_value: 
 
 Backgrounds: BACKGROUNDS
-background1_name: [[z_Z Правила/Смертные v3-v20/Новые параметры/Факты биографии/Богатство|Resources]]
+background1_name: [[Resources]]
 background1_value: 3
-background2_name: [[Поколение|Generation]]
+background2_name: [[Generation]]
 background2_value: 2
-background3_name: [[Подручные|Retainers]]
+background3_name: [[Retainers]]
 background3_value: 1
 background4_name: 
 background4_value: 
@@ -150,9 +154,9 @@ merit6_name:
 merit6_value: 
 
 Flaws: FLAWS
-flaw1_name: [[Вспыльчивость|Short Fuse]]
+flaw1_name: [[Short Fuse]]
 flaw1_value: +2
-flaw2_name: [[Светобоязнь|Light-Sensitive]]
+flaw2_name: [[Light-Sensitive]]
 flaw2_value: +5
 flaw3_name: 
 flaw3_value: 
@@ -196,6 +200,7 @@ specialty5_name:
 specialty6_origin: 
 specialty6_name: 
 
-show_weakness: yes
 Weakness: Vampires of Clan Tremere are blood bound by only two draughts of another Kindred's vitae. The first draught is treated as if another vampire had two.
-````
+show_weakness: yes
+
+```

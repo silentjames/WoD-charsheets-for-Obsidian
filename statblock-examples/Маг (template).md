@@ -7,7 +7,7 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 ```
 
-## 
+# Николь Беладонна Скотт
 ```statblock
 layout: MtA m20 Mage
 dice: true

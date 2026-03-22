@@ -7,7 +7,7 @@ tags:
 dv.executeJs(await dv.io.load("/z_Z manuals/WoDCharsheets.js"))
 ```
 
-## 
+# Примроуз Смит
 ```statblock
 layout: MtA m20 Technocrat
 dice: true

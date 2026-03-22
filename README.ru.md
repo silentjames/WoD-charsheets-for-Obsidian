@@ -246,6 +246,10 @@
     discipline5_value: 
     discipline6_name: 
     discipline6_value: 
+    discipline7_name: 
+    discipline7_value: 
+    discipline8_name: 
+    discipline8_value: 
 
     Backgrounds: ФАКТЫ БИОГРАФИИ
     background1_name: 
@@ -334,6 +338,241 @@
     specialty6_name: 
 
     show_weakness: 
+
+    ```
+
+</details>
+
+<details>
+    <summary>Вампир (Дикий Запад)</summary>
+
+    ```statblock
+    layout: VtM v20 Vampire Wild West
+
+                            #### ОСНОВНАЯ ИНФОРМАЦИЯ ####
+
+    name: 
+    desc: 
+    clan: 
+    generation: 
+    sire: 
+    nature: 
+    demeanor:  # Маска
+    concept:  # Амплуа
+
+    img: 
+    img_title: 
+    img_alt: 
+    img_alt_title:
+
+                            #### ХАРАКТЕРИСТИКИ ####
+
+    Attributes: характеристики
+
+    Physical: ФИЗИЧЕСКИЕ
+    Strength: 1
+    Dexterity: 1
+    Stamina: 1
+
+    Social: СОЦИАЛЬНЫЕ
+    Charisma: 1
+    Manipulation: 1
+    Appearance: 1
+
+    Mental: МЕНТАЛЬНЫЕ
+    Perception: 1
+    Intelligence: 1
+    Wits: 1
+
+                                #### СПОСОБНОСТИ ####
+
+    Abilities: СПОСОБНОСТИ
+
+    Talents: ТАЛАНТЫ
+    athletics: 0 # Атлетика
+    alertness: 0 # Бдительность
+    brawl: 0 # Драка
+    intimidation: 0 # Запугивание
+    expression: 0 # Красноречие
+    leadership: 0
+    streetwise: 0 # Уличное чутье
+    subterfuge: 0 # Хитрость
+    awareness: 0 # Шестое чувство
+    empathy: 0
+    new_talent:
+    new_talent_value:
+
+    Skills: НАВЫКИ
+    ride: 0 # Верховая езда
+    larceny: 0 # Воровство
+    survival: 0
+    performance: 0
+    smithwork:  # Кузнечное дело
+    animalken: 0
+    crafts: 0
+    stealth: 0
+    firearms: 0
+    archery:  # Стрельба из лука
+    melee: 0
+    etiquette: 0
+    new_skill:
+    new_skill_value:
+
+    Knowledges: ЗНАНИЯ
+    geology: 
+    academics: 0
+    science: 0
+    enigmas: 
+    law: 0
+    culture: 0
+    medicine: 0
+    mechanics: 0
+    occult: 0
+    politics: 0
+    investigation: 0
+    finance: 0
+    new_knowledge:
+    new_knowledge_value:
+
+                                #### ПРЕИМУЩЕСТВА ####
+
+    Advantages: ПРЕИМУЩЕСТВА
+
+    Disciplines: ДИСЦИПЛИНЫ
+    discipline1_name: 
+    discipline1_value: 
+    discipline2_name: 
+    discipline2_value: 
+    discipline3_name: 
+    discipline3_value: 
+    discipline4_name: 
+    discipline4_value: 
+    discipline5_name: 
+    discipline5_value: 
+    discipline6_name: 
+    discipline6_value: 
+    discipline7_name: 
+    discipline7_value: 
+    discipline8_name: 
+    discipline8_value: 
+
+    Backgrounds: ФАКТЫ БИОГРАФИИ
+    background1_name: 
+    background1_value: 
+    background2_name: 
+    background2_value: 
+    background3_name: 
+    background3_value: 
+    background4_name: 
+    background4_value: 
+    background5_name: 
+    background5_value: 
+    background6_name: 
+    background6_value: 
+
+    Virtues: ДОБРОДЕТЕЛИ
+    conscience: 1
+    selfcontrol: 1
+    courage: 1
+
+                        #### ДОСТОИНСТВА / НЕДОСТАТКИ ####
+
+    Merits: 
+    merit1_name: 
+    merit1_value: 
+    merit2_name: 
+    merit2_value: 
+    merit3_name: 
+    merit3_value: 
+    merit4_name: 
+    merit4_value: 
+    merit5_name: 
+    merit5_value: 
+    merit6_name: 
+    merit6_value: 
+    merit7_name: 
+    merit7_value: 
+
+    Flaws: НЕДОСТАТКИ
+    flaw1_name: 
+    flaw1_value: 
+    flaw2_name: 
+    flaw2_value: 
+    flaw3_name: 
+    flaw3_value: 
+    flaw4_name: 
+    flaw4_value: 
+    flaw5_name: 
+    flaw5_value: 
+    flaw6_name: 
+    flaw6_value: 
+    flaw7_name: 
+    flaw7_value: 
+
+                        #### ПУТЬ / ВОЛЯ / КРОВЬ ####
+
+    Path: ЧЕЛОВЕЧНОСТЬ
+    path_value: 0
+
+    Willpower: Воля
+    willpower_main: 0
+    willpower_current: 0
+
+    Bloodpool: Запас крови
+    blood: 0
+
+    Health: Здоровье
+    aggravated: 
+    lethal: 
+    bashing: 
+
+    Specialties: Специализация
+    specialty1_origin: 
+    specialty1_name: 
+    specialty2_origin: 
+    specialty2_name: 
+    specialty3_origin: 
+    specialty3_name: 
+    specialty4_origin: 
+    specialty4_name: 
+    specialty5_origin: 
+    specialty5_name: 
+    specialty6_origin: 
+    specialty6_name: 
+
+    show_weakness: yes
+
+                                #### ОРУЖИЕ ####
+
+    Weapon: 
+
+    weapon1_name: 
+    damage1: 
+    range1: 
+    firerate1: 
+    capacity1: 
+    conceal1: 
+
+    weapon2_name: 
+    damage2: 
+    range2: 
+    firerate2: 
+    capacity2: 
+    conceal2: 
+
+    weapon3_name: 
+    damage3: 
+    range3: 
+    firerate3: 
+    capacity3: 
+    conceal3: 
+
+    weapon4_name: 
+    damage4: 
+    range4: 
+    firerate4: 
+    capacity4: 
+    conceal4: 
 
     ```
 
@@ -444,6 +683,10 @@
     discipline5_value: 
     discipline6_name: 
     discipline6_value: 
+    discipline7_name: 
+    discipline7_value: 
+    discipline8_name: 
+    discipline8_value: 
 
     Backgrounds: ФАКТЫ БИОГРАФИИ
     background1_name: 

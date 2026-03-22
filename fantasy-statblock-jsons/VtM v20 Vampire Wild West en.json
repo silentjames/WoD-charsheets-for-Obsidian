@@ -1146,6 +1146,56 @@
                                                         }
                                                     ],
                                                     "conditioned": true
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "689858290abb",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "696beae8a8c9",
+                                                            "properties": [
+                                                                "discipline7_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "9a3b694bbb68",
+                                                            "properties": [
+                                                                "discipline7_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "inline",
+                                                    "id": "88092b7978ab",
+                                                    "properties": [],
+                                                    "nested": [
+                                                        {
+                                                            "type": "property",
+                                                            "id": "38aabbf9f92b",
+                                                            "properties": [
+                                                                "discipline8_name"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "id": "d94af8dad83a",
+                                                            "properties": [
+                                                                "discipline8_value"
+                                                            ],
+                                                            "fallback": "-",
+                                                            "conditioned": true
+                                                        }
+                                                    ]
                                                 }
                                             ],
                                             "cls": "disciplines-column",

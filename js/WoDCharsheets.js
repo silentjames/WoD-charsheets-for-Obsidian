@@ -1185,39 +1185,71 @@ async function waitForAnySelector(selectors, opts = {}) {
         el.innerHTML = weaknessHtml;
     }
 
-    // --- В зависимости от поколения, меняется значение траты крови в ход ---
+
+        // --- Получаем числовое поколение из строки поколения ---
+    // --- get the numeric Generation from the generation field ---
+    function getGenerationNumber(ctx) {
+        const generationBlock = ctx.qs('.line.generation .statblock-markdown');
+        if (generationBlock == null) return null;
+
+        // берем только первые два символа, если поколение длиннее за счет инфы про диаблери
+        // take only the first two characters in case the generation string is longer
+        let generation = (generationBlock.textContent || '').slice(0, 2);
+        generation = generation.replace(/\s/g, '');
+
+        const generationNumber = Number(generation);
+        if (!Number.isFinite(generationNumber)) return null;
+
+        return generationNumber;
+    }
+
+    // --- Сколько дополнительных строк крови нужно показывать по максимуму поколения ---
+    // --- how many extra blood rows must be visible based on generation maximum ---
+    function getForcedBloodRowsForGeneration(generationNumber) {
+        if (generationNumber == null) return 1;
+
+        // 13–7 поколение: показываем 2-ю строку
+        // generations 13–7: force row 2
+        if (generationNumber >= 7 && generationNumber <= 13) return 2;
+
+        // 6 поколение: показываем 2-ю и 3-ю строки
+        // generation 6: force rows 2 and 3
+        if (generationNumber === 6) return 3;
+
+        // 5 поколение и сильнее: показываем 2-ю, 3-ю и 4-ю строки
+        // generation 5 and stronger: force rows 2, 3 and 4
+        if (generationNumber <= 5) return 4;
+
+        return 1;
+    }
+
+
+        // --- В зависимости от поколения, меняется значение траты крови в ход ---
     // --- depending on Generation, update the per-turn blood spend value ---
     function applyBloodPerTurnByGeneration(ctx) {
-        const generationBlock = ctx.qs('.line.generation .statblock-markdown');
-        if (generationBlock == null) return;
+        const generationNumber = getGenerationNumber(ctx);
+        if (generationNumber == null) return;
 
         const outEl = ctx.qs('.line.blood_per_turn p');
         if (outEl == null) return;
 
-        // берем только первые два символа, если поколение вдруг длиннее за счет инфы про диаблери
-        // take only the first two characters in case the generation string is longer (e.g., includes diablerie notes)
-        let generation = (generationBlock.textContent || '').slice(0, 2);
-        // убираем пробелы, если поколение 8-9
-        // remove spaces if the generation is a single digit (8–9)
-        generation = generation.replace(/\s/g, '');
-
-        switch (generation) {
-            case '13':
-            case '12':
-            case '11':
-            case '10':
+        switch (generationNumber) {
+            case 13:
+            case 12:
+            case 11:
+            case 10:
                 outEl.textContent = '1'; break;
-            case '9':
+            case 9:
                 outEl.textContent = '2'; break;
-            case '8':
+            case 8:
                 outEl.textContent = '3'; break;
-            case '7':
+            case 7:
                 outEl.textContent = '4'; break;
-            case '6':
+            case 6:
                 outEl.textContent = '6'; break;
-            case '5':
+            case 5:
                 outEl.textContent = '8'; break;
-            case '4':
+            case 4:
                 outEl.textContent = '10'; break;
             default:
                 // nothing
@@ -1225,6 +1257,8 @@ async function waitForAnySelector(selectors, opts = {}) {
                 break;
         }
     }
+
+
     // --- Скрывается H1 в заметке, если совпадает с именем персонажа в статблоке (active + hover) ---
     // --- hide the note H1 if it matches the character name in the statblock (active + hover) ---
     function applyHideNoteH1IfMatchesCharacter(ctx) {
@@ -1566,109 +1600,141 @@ async function waitForAnySelector(selectors, opts = {}) {
     }
 
 
-    // --- Глобальный пересчет крови, чтобы из одной цифры (от 1 до 40) добавлялись и отображались нужные строчки, а ненужные скрывались --- 
-    // --- Global blood recalculation: from a single number (1–40) show the required extra rows and hide the unnecessary ones --- 
+    // --- Глобальный пересчет крови, чтобы из одной цифры (от 1 до 40) добавлялись и отображались нужные строчки, а ненужные скрывались ---
+    // --- Global blood recalculation: from a single number (1–40) show the required extra rows and hide the unnecessary ones ---
     function applyBloodCurrentRecalc(ctx) {
-        if (ctx.qs('.line.blood') != null) {
-            // Находим значение крови
-            // Read the blood value
-            const bloodEl = ctx.qs('.line.blood p');
-            if (bloodEl == null) return;
-            const bloodCurrentRaw = (bloodEl.textContent || '').trim();
-            const bloodCurrent = Number(bloodCurrentRaw);
-            // Кэшируем контейнеры для строк blood_current2/3/4
-            // Cache containers for blood_current2/3/4 rows
-            const bloodCurrent2Container = getBloodPropertyContainer(ctx, 2);
-            const bloodCurrent3Container = getBloodPropertyContainer(ctx, 3);
-            const bloodCurrent4Container = getBloodPropertyContainer(ctx, 4);
-            log('значение крови' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' = ' + bloodCurrentRaw)
-            if (bloodCurrent <= 9) {
-                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'none';
-                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'none';
-                if (bloodCurrent4Container != null) bloodCurrent4Container.style.display = 'none';
-                log('проверка на меньше девяти')
-                // debug: check for less than nine
-            } else if (bloodCurrent == 10) {
-                ctx.qs('.line.blood p').innerHTML = 'X';
-                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'none';
-                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'none';
-                if (bloodCurrent4Container != null) bloodCurrent4Container.style.display = 'none';
-                log('проверка на равенство десяти или иксу')
-                // debug: check for equal to ten (or X)
-            } else if (bloodCurrent < 20) {
-                const bloodCurrentTwo = bloodCurrent - 10;
-                ctx.qs('.line.blood p').innerHTML = 'X';
-                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'block';
-                ctx.qs('.line.blood_current2 p').innerHTML = bloodCurrentTwo;
-                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'none';
-                if (bloodCurrent4Container != null) bloodCurrent4Container.style.display = 'none';
-                log('проверка на меньше двадцати')
-                // debug: check for less than twenty
-            } else if (bloodCurrent == 20) {
-                ctx.qs('.line.blood p').innerHTML = 'X';
-                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'block';
-                ctx.qs('.line.blood_current2 p').innerHTML = 'X';
-                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'none';
-                if (bloodCurrent4Container != null) bloodCurrent4Container.style.display = 'none';
-                log('проверка на равенство двадцати')
-                // debug: check for less than twenty
-            } else if (bloodCurrent < 30) {
-                const bloodCurrentThree = bloodCurrent - 20;
-                ctx.qs('.line.blood p').innerHTML = 'X';
-                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'block';
-                ctx.qs('.line.blood_current2 p').innerHTML = 'X';
-                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'block';
-                ctx.qs('.line.blood_current3 p').innerHTML = bloodCurrentThree;
-                if (bloodCurrent4Container != null) bloodCurrent4Container.style.display = 'none';
-                log('проверка на меньше тридцати')
-                // debug: check for less than thirty
-            } else if (bloodCurrent == 30) {
-                ctx.qs('.line.blood p').innerHTML = 'X';
-                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'block';
-                ctx.qs('.line.blood_current2 p').innerHTML = 'X';
-                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'block';
-                ctx.qs('.line.blood_current3 p').innerHTML = 'X';;
-                if (bloodCurrent4Container != null) bloodCurrent4Container.style.display = 'none';
-                log('проверка на равенство тридцати')
-                // debug: check for equal to thirty
-            } else if (bloodCurrent < 40) {
-                const bloodCurrentFour = bloodCurrent - 30;
-                ctx.qs('.line.blood p').innerHTML = 'X';
-                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'block';
-                ctx.qs('.line.blood_current2 p').innerHTML = 'X';
-                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'block';
-                ctx.qs('.line.blood_current3 p').innerHTML = 'X';
-                ctx.qs('.line.blood_current4 p').innerHTML = bloodCurrentFour;
-                log('проверка на меньше сорока')
-                // debug: check for less than forty
-            } else if (bloodCurrent === 40) {
-                ctx.qs('.line.blood p').innerHTML = 'X';
-                if (bloodCurrent2Container != null) bloodCurrent2Container.style.display = 'block';
-                ctx.qs('.line.blood_current2 p').innerHTML = 'X';
-                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'block';
-                ctx.qs('.line.blood_current3 p').innerHTML = 'X';
-                if (bloodCurrent3Container != null) bloodCurrent3Container.style.display = 'block';
-                ctx.qs('.line.blood_current4 p').innerHTML = 'X';
-                log('проверка на равенство сорока')
-                // debug: check for equal to forty
-            } else if (bloodCurrent >= 41) {
-                ctx.qs('.line.blood p').innerHTML = 'X';
-                const c2 = bloodCurrent2Container;
-                if (c2 != null) c2.innerHTML = '';
-                const c3 = bloodCurrent3Container;
-                if (c3 != null) c3.innerHTML = '';
-                const c4 = bloodCurrent4Container;
-                if (c4 != null) c4.innerHTML = '';
-                ctx.qs('.line.blood_per_turn').innerHTML = 'A current value of BLOOD cannot be more than 40. Now it is ' + bloodCurrentRaw + '.  Time to think about your Humanity!';
-                log('проверка на больше сорока')
+        if (ctx.qs('.line.blood') == null) return;
+
+        const bloodEl = ctx.qs('.line.blood p');
+        if (bloodEl == null) return;
+
+        const bloodCurrentRaw = (bloodEl.textContent || '').trim();
+        const bloodCurrent = Number(bloodCurrentRaw);
+        if (!Number.isFinite(bloodCurrent)) {
+            log('что-то с кровью' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' пошло не так');
+            return;
+        }
+
+        const generationNumber = getGenerationNumber(ctx);
+        const forcedRows = getForcedBloodRowsForGeneration(generationNumber);
+
+        // Кэшируем контейнеры и значения для строк blood_current2/3/4
+        // Cache containers and value elements for blood_current2/3/4 rows
+        const bloodCurrent2Container = getBloodPropertyContainer(ctx, 2);
+        const bloodCurrent3Container = getBloodPropertyContainer(ctx, 3);
+        const bloodCurrent4Container = getBloodPropertyContainer(ctx, 4);
+
+        const bloodCurrent2El = ctx.qs('.line.blood_current2 p');
+        const bloodCurrent3El = ctx.qs('.line.blood_current3 p');
+        const bloodCurrent4El = ctx.qs('.line.blood_current4 p');
+
+        log('значение крови' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' = ' + bloodCurrentRaw);
+        log('поколение' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' = ' + generationNumber);
+        //log('принудительно отображаем строк крови до' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' = ' + forcedRows);
+
+        // Больше 40 пока по-прежнему считаем ошибкой
+        // Values above 40 are still treated as invalid
+        if (bloodCurrent >= 41) {
+            bloodEl.textContent = 'X';
+
+            if (bloodCurrent2Container != null) bloodCurrent2Container.innerHTML = '';
+            if (bloodCurrent3Container != null) bloodCurrent3Container.innerHTML = '';
+            if (bloodCurrent4Container != null) bloodCurrent4Container.innerHTML = '';
+
+            const bloodPerTurnLine = ctx.qs('.line.blood_per_turn');
+            if (bloodPerTurnLine != null) {
+                bloodPerTurnLine.innerHTML =
+                    'A current value of BLOOD cannot be more than 40. Now it is ' +
+                    bloodCurrentRaw +
+                    '. Time to think about your Humanity!';
+            }
+
+            log('проверка на больше сорока');
+            return;
+        }
+
+        // Первая строка крови
+        // Main blood row
+        if (bloodCurrent >= 10) {
+            bloodEl.textContent = 'X';
+        } else {
+            bloodEl.textContent = String(bloodCurrent);
+        }
+
+        // Нужные строки по текущему значению крови
+        // Rows naturally needed by the current blood value
+        const naturalRows =
+            bloodCurrent >= 31 ? 4 :
+                bloodCurrent >= 21 ? 3 :
+                    bloodCurrent >= 11 ? 2 :
+                        1;
+
+        // Итог: показываем максимум из "по текущей крови" и "по поколению"
+        // Final visibility = max(natural blood rows, generation-forced rows)
+        const visibleRows = Math.max(naturalRows, forcedRows);
+
+        // Вторая строка
+        // Second row
+        if (bloodCurrent2Container != null) {
+            bloodCurrent2Container.style.display = (visibleRows >= 2) ? 'block' : 'none';
+        }
+        if (bloodCurrent2El != null && visibleRows >= 2) {
+            if (bloodCurrent >= 20) {
+                bloodCurrent2El.textContent = 'X';
+            } else if (bloodCurrent >= 11) {
+                bloodCurrent2El.textContent = String(bloodCurrent - 10);
             } else {
-                log('что-то с кровью' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' пошло не так')
+                bloodCurrent2El.textContent = '0';
             }
         }
-        else {
 
+        // Третья строка
+        // Third row
+        if (bloodCurrent3Container != null) {
+            bloodCurrent3Container.style.display = (visibleRows >= 3) ? 'block' : 'none';
+        }
+        if (bloodCurrent3El != null && visibleRows >= 3) {
+            if (bloodCurrent >= 30) {
+                bloodCurrent3El.textContent = 'X';
+            } else if (bloodCurrent >= 21) {
+                bloodCurrent3El.textContent = String(bloodCurrent - 20);
+            } else {
+                bloodCurrent3El.textContent = '0';
+            }
         }
 
+        // Четвертая строка
+        // Fourth row
+        if (bloodCurrent4Container != null) {
+            bloodCurrent4Container.style.display = (visibleRows >= 4) ? 'block' : 'none';
+        }
+        if (bloodCurrent4El != null && visibleRows >= 4) {
+            if (bloodCurrent >= 40) {
+                bloodCurrent4El.textContent = 'X';
+            } else if (bloodCurrent >= 31) {
+                bloodCurrent4El.textContent = String(bloodCurrent - 30);
+            } else {
+                bloodCurrent4El.textContent = '0';
+            }
+        }
+
+        if (bloodCurrent <= 9) {
+            log('проверка на меньше девяти');
+        } else if (bloodCurrent === 10) {
+            log('проверка на равенство десяти');
+        } else if (bloodCurrent < 20) {
+            log('проверка на меньше двадцати');
+        } else if (bloodCurrent === 20) {
+            log('проверка на равенство двадцати');
+        } else if (bloodCurrent < 30) {
+            log('проверка на меньше тридцати');
+        } else if (bloodCurrent === 30) {
+            log('проверка на равенство тридцати');
+        } else if (bloodCurrent < 40) {
+            log('проверка на меньше сорока');
+        } else if (bloodCurrent === 40) {
+            log('проверка на равенство сорока');
+        }
     }
 
 

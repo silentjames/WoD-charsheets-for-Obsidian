@@ -1186,7 +1186,7 @@ async function waitForAnySelector(selectors, opts = {}) {
     }
 
 
-        // --- Получаем числовое поколение из строки поколения ---
+    // --- Получаем числовое поколение из строки поколения ---
     // --- get the numeric Generation from the generation field ---
     function getGenerationNumber(ctx) {
         const generationBlock = ctx.qs('.line.generation .statblock-markdown');
@@ -1258,7 +1258,7 @@ async function waitForAnySelector(selectors, opts = {}) {
         }
     }
 
-    
+
     // --- Скрывается H1 в заметке, если совпадает с именем персонажа в статблоке (active + hover) ---
     // --- hide the note H1 if it matches the character name in the statblock (active + hover) ---
     function applyHideNoteH1IfMatchesCharacter(ctx) {
@@ -1600,37 +1600,97 @@ async function waitForAnySelector(selectors, opts = {}) {
     }
 
 
-    // --- Глобальный пересчет крови, чтобы из одной цифры (от 1 до 40) добавлялись и отображались нужные строчки, а ненужные скрывались --- 
-    // --- Global blood recalculation: from a single number (1–40) show the required extra rows and hide the unnecessary ones --- 
+    // --- Глобальный пересчет крови, чтобы из одной цифры (от 1 до 40) добавлялись и отображались нужные строчки, а ненужные скрывались ---
+    // --- Global blood recalculation: from a single number (1–40) show the required extra rows and hide the unnecessary ones ---
     function applyBloodCurrentRecalc(ctx) {
-        if (ctx.qs('.line.blood') == null) return;
+        const generationNumber = getGenerationNumber(ctx);
 
-            const bloodEl = ctx.qs('.line.blood p');
-            if (bloodEl == null) return;
+        // Сколько строк крови нужно показывать по максимуму поколения
+        // How many blood rows must be visible based on generation maximum
+        let forcedRows = 1;
 
-            const bloodCurrentRaw = (bloodEl.textContent || '').trim();
-            const bloodCurrent = Number(bloodCurrentRaw);
-        if (!Number.isFinite(bloodCurrent)) {
-            log('something went wrong ' + (ctx.mode === 'hover' ? ' in hover' : '') + ' with blood');
-            return;
+        if (generationNumber != null) {
+            // 13 поколение: максимум 10 крови, дополнительная строка не нужна
+            // 13th generation: max 10 blood, no extra row needed
+            if (generationNumber >= 13) {
+                forcedRows = 1;
+            }
+
+            // 12–7 поколение: максимум больше 10, но не больше 20 — показываем 2-ю строку
+            // generations 12–7: max above 10 but not above 20 — force row 2
+            else if (generationNumber >= 7 && generationNumber <= 12) {
+                forcedRows = 2;
+            }
+
+            // 6 поколение: максимум до 30 — показываем 2-ю и 3-ю строки
+            // generation 6: max up to 30 — force rows 2 and 3
+            else if (generationNumber === 6) {
+                forcedRows = 3;
+            }
+
+            // 5 поколение и сильнее: максимум до 40 — показываем 2-ю, 3-ю и 4-ю строки
+            // generation 5 and stronger: max up to 40 — force rows 2, 3 and 4
+            else if (generationNumber <= 5) {
+                forcedRows = 4;
+            }
         }
 
-        const generationNumber = getGenerationNumber(ctx);
-        const forcedRows = getForcedBloodRowsForGeneration(generationNumber);
+        const bloodLine = ctx.qs('.line.blood');
+        const bloodEl = ctx.qs('.line.blood p');
 
         // Кэшируем контейнеры и значения для строк blood_current2/3/4
         // Cache containers and value elements for blood_current2/3/4 rows
-            const bloodCurrent2Container = getBloodPropertyContainer(ctx, 2);
-            const bloodCurrent3Container = getBloodPropertyContainer(ctx, 3);
-            const bloodCurrent4Container = getBloodPropertyContainer(ctx, 4);
+        const bloodCurrent2Container = getBloodPropertyContainer(ctx, 2);
+        const bloodCurrent3Container = getBloodPropertyContainer(ctx, 3);
+        const bloodCurrent4Container = getBloodPropertyContainer(ctx, 4);
 
         const bloodCurrent2El = ctx.qs('.line.blood_current2 p');
         const bloodCurrent3El = ctx.qs('.line.blood_current3 p');
         const bloodCurrent4El = ctx.qs('.line.blood_current4 p');
 
-        log('blood value' + (ctx.mode === 'hover' ? ' in hover' : '') + ' = ' + bloodCurrentRaw);
-        log('generation ' + (ctx.mode === 'hover' ? ' in hover' : '') + ' = ' + generationNumber);
-        //log('принудительно отображаем строк крови до' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' = ' + forcedRows);
+        const bloodCurrentRaw = bloodEl != null ? (bloodEl.textContent || '').trim() : '';
+        const bloodIsMissing =
+            bloodEl == null ||
+            bloodLine == null ||
+            bloodCurrentRaw === '' ||
+            /^[-–—]$/.test(bloodCurrentRaw);
+
+        log('значение крови' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' = ' + bloodCurrentRaw);
+        log('поколение' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' = ' + generationNumber);
+        log('принудительно отображаем строк крови до' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' = ' + forcedRows);
+
+        // Если кровь не указана, но поколение известно — всё равно показываем нужные строки по максимуму поколения.
+        // If BLOOD is not specified but Generation is known, still show the extra rows required by generation.
+        if (bloodIsMissing) {
+            if (generationNumber == null) return;
+
+            // Если поле blood существует, но пустое или содержит плейсхолдер "-", показываем 0
+            // If the blood field exists but is empty or contains the "-" placeholder, show 0
+            if (bloodEl != null) bloodEl.textContent = '0';
+
+            if (bloodCurrent2Container != null) {
+                bloodCurrent2Container.style.display = (forcedRows >= 2) ? 'block' : 'none';
+            }
+            if (bloodCurrent3Container != null) {
+                bloodCurrent3Container.style.display = (forcedRows >= 3) ? 'block' : 'none';
+            }
+            if (bloodCurrent4Container != null) {
+                bloodCurrent4Container.style.display = (forcedRows >= 4) ? 'block' : 'none';
+            }
+
+            if (bloodCurrent2El != null && forcedRows >= 2) bloodCurrent2El.textContent = '0';
+            if (bloodCurrent3El != null && forcedRows >= 3) bloodCurrent3El.textContent = '0';
+            if (bloodCurrent4El != null && forcedRows >= 4) bloodCurrent4El.textContent = '0';
+
+            log('кровь не указана, строки отображены по поколению' + (ctx.mode === 'hover' ? ' в ховере' : ''));
+            return;
+        }
+
+        const bloodCurrent = Number(bloodCurrentRaw);
+        if (!Number.isFinite(bloodCurrent)) {
+            log('что-то с кровью' + (ctx.mode === 'hover' ? ' в ховере' : '') + ' пошло не так');
+            return;
+        }
 
         // Больше 40 пока по-прежнему считаем ошибкой
         // Values above 40 are still treated as invalid
@@ -1718,21 +1778,21 @@ async function waitForAnySelector(selectors, opts = {}) {
             }
         }
 
-            if (bloodCurrent <= 9) {
+        if (bloodCurrent <= 9) {
             log('проверка на меньше девяти');
         } else if (bloodCurrent === 10) {
             log('проверка на равенство десяти');
-            } else if (bloodCurrent < 20) {
+        } else if (bloodCurrent < 20) {
             log('проверка на меньше двадцати');
         } else if (bloodCurrent === 20) {
             log('проверка на равенство двадцати');
-            } else if (bloodCurrent < 30) {
+        } else if (bloodCurrent < 30) {
             log('проверка на меньше тридцати');
         } else if (bloodCurrent === 30) {
             log('проверка на равенство тридцати');
-            } else if (bloodCurrent < 40) {
+        } else if (bloodCurrent < 40) {
             log('проверка на меньше сорока');
-            } else if (bloodCurrent === 40) {
+        } else if (bloodCurrent === 40) {
             log('проверка на равенство сорока');
         }
     }

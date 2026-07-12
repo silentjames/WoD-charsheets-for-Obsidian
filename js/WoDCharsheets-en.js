@@ -785,6 +785,7 @@ async function waitForAnySelector(selectors, opts = {}) {
                 headerBackgroundTribe = 'var(--SilverFangs-background-logo)';
                 break;
             case 'Звездочеты':
+            case 'Stargazer':
             case 'Stargazers':
                 collapsedBackgroundTribe = 'Stargazers';
                 headerBackgroundTribe = 'var(--Stargazers-background-logo)';

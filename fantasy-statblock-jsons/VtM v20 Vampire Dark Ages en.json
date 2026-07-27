@@ -1608,8 +1608,8 @@
                                             "conditioned": true
                                         },
                                         {
-                                            "type": "group",
-                                            "id": "3bfae87ab9db",
+                                            "type": "inline",
+                                            "id": "88498bf8aa18",
                                             "properties": [],
                                             "nested": [
                                                 {
@@ -1800,8 +1800,8 @@
                                             "conditioned": true
                                         },
                                         {
-                                            "type": "group",
-                                            "id": "bbc95b1a1b08",
+                                            "type": "inline",
+                                            "id": "78d93a7b6b2a",
                                             "properties": [],
                                             "nested": [
                                                 {

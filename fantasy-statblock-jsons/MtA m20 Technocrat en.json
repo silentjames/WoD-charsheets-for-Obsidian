@@ -1881,8 +1881,8 @@
                                                     "conditioned": true
                                                 },
                                                 {
-                                                    "type": "group",
-                                                    "id": "3bfae87ab9db",
+                                                    "type": "inline",
+                                                    "id": "9b7a0a18fa49",
                                                     "properties": [],
                                                     "nested": [
                                                         {
@@ -2073,8 +2073,8 @@
                                                     "conditioned": true
                                                 },
                                                 {
-                                                    "type": "group",
-                                                    "id": "bbc95b1a1b08",
+                                                    "type": "inline",
+                                                    "id": "4a88d8a978ba",
                                                     "properties": [],
                                                     "nested": [
                                                         {
@@ -2978,7 +2978,10 @@
         "imageHeight": "120px",
         "contentFont": "\"Marta\", \"Myriad Pro\", Calibri, Helvetica, Arial, sans-serif",
         "headingFont": "\"Abbess\", \"Lora\", \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif",
-        "primaryColor": "#2c313c"
+        "primaryColor": "#181d28",
+        "barColor": "#8f9295",
+        "imageBorderColor": "barColor",
+        "boxShadowColor": "barColor"
     },
     "columns": 1,
     "columnWidth": 680

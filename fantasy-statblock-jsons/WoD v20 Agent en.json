@@ -1512,8 +1512,8 @@
                                             "conditioned": true
                                         },
                                         {
-                                            "type": "group",
-                                            "id": "1a8b7aa96bc8",
+                                            "type": "inline",
+                                            "id": "b9f918ab08d8",
                                             "properties": [],
                                             "nested": [
                                                 {
@@ -1704,8 +1704,8 @@
                                             "conditioned": true
                                         },
                                         {
-                                            "type": "group",
-                                            "id": "0b89faab6afa",
+                                            "type": "inline",
+                                            "id": "dae8488bdbc8",
                                             "properties": [],
                                             "nested": [
                                                 {

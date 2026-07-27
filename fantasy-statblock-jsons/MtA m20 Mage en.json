@@ -1881,8 +1881,8 @@
                                                     "conditioned": true
                                                 },
                                                 {
-                                                    "type": "group",
-                                                    "id": "3bfae87ab9db",
+                                                    "type": "inline",
+                                                    "id": "8b8ad8d81a7a",
                                                     "properties": [],
                                                     "nested": [
                                                         {
@@ -2073,8 +2073,8 @@
                                                     "conditioned": true
                                                 },
                                                 {
-                                                    "type": "group",
-                                                    "id": "bbc95b1a1b08",
+                                                    "type": "inline",
+                                                    "id": "69eb0b8bd9cb",
                                                     "properties": [],
                                                     "nested": [
                                                         {

@@ -546,8 +546,7 @@ And one final warning – I’m not a software developer at all, so CSS and JS f
     specialty6_name: 
 
     show_weakness: yes
-
-```
+    ```
 </details>
 
 <details>
